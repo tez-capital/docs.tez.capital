@@ -1,0 +1,19 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docs.tez.capital – tezpay</title>
+    <link>/tezpay/</link>
+    <description>Recent content in tezpay on docs.tez.capital</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>tez.capital</copyright>
+    
+	  <atom:link href="/tezpay/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+  </channel>
+</rss>
