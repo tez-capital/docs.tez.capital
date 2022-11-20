@@ -2,23 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tezpay/configuration/default/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <loc>/tezpay/configuration/examples/default/</loc>
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
+  </url><url>
+    <loc>/tezbake/</loc>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
   </url><url>
     <loc>/tezpay/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
   </url><url>
     <loc>/tezpay/tutorial/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
   </url><url>
     <loc>/tezpay/configuration/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
   </url><url>
-    <loc>/tezpay/configuration/sample/</loc>
-    <lastmod>2022-11-20T18:37:35+01:00</lastmod>
+    <loc>/tezpay/configuration/examples/sample/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/test/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay/</loc>
+  </url><url>
+    <loc>/tezpay/reference/</loc>
+    <lastmod>2022-11-20T20:49:15+01:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
   </url><url>
