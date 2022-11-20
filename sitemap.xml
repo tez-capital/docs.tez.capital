@@ -2,31 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tezpay/configuration/examples/default/</loc>
-  </url><url>
     <loc>/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
   </url><url>
     <loc>/tezbake/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
   </url><url>
     <loc>/tezpay/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
   </url><url>
     <loc>/tezpay/tutorial/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
   </url><url>
     <loc>/tezpay/configuration/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
+  </url><url>
+    <loc>/tezpay/configuration/examples/default/</loc>
+  </url><url>
+    <loc>/tezpay/reference/</loc>
+    <lastmod>2022-11-20T23:47:27+01:00</lastmod>
   </url><url>
     <loc>/tezpay/configuration/examples/sample/</loc>
   </url><url>
-    <loc>/tezpay/reference/cmd/test/</loc>
-  </url><url>
     <loc>/tezpay/reference/cmd/tezpay/</loc>
   </url><url>
-    <loc>/tezpay/reference/</loc>
-    <lastmod>2022-11-20T23:10:52+01:00</lastmod>
+    <loc>/tezpay/reference/cmd/tezpay_generate-payouts/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_pay/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_statistics/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_test-notify/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_transfer/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_version/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>
