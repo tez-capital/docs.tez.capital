@@ -293,8 +293,8 @@ TezPay, the <em>Configuration File</em> will essentially tell the application
 file how to run and will be edited by the baker (we will cover this
 later), and the <em>Private-Key File</em> will contain the private key for a
 wallet you have designated to pay your delegators (we will explain an
-easy way to get this later as well).<em><strong>A note on the Private-key
-file - it is not recommended to use an existing wallet that may house
+easy way to get this later as well).
+<em><strong>A note on the Private-key file - it is not recommended to use an existing wallet that may house
 important assets (including NFT&rsquo;s or crypto tokens) but to create a new
 wallet that contains only enough Tezos to pay out delegates.</strong></em></p>
 <hr>
@@ -378,8 +378,9 @@ payout wallet, or know how, skip this section.</p>
 </tr>
 </thead>
 </table>
-<pre><code>**Then**, click the icon in the upper right again
-</code></pre>
+<ul>
+<li><strong>Then</strong>, click the icon in the upper right again</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -387,8 +388,9 @@ payout wallet, or know how, skip this section.</p>
 </tr>
 </thead>
 </table>
-<pre><code>**Then**, go to **Settings**
-</code></pre>
+<ul>
+<li><strong>Then</strong>, go to <strong>Settings</strong></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -396,8 +398,9 @@ payout wallet, or know how, skip this section.</p>
 </tr>
 </thead>
 </table>
-<pre><code>**Then**, go to **Reveal Private Key**
-</code></pre>
+<ul>
+<li><strong>Then</strong>, go to <strong>Reveal Private Key</strong></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -405,8 +408,9 @@ payout wallet, or know how, skip this section.</p>
 </tr>
 </thead>
 </table>
-<pre><code>**Then**, you will be prompt to input your password for the account
-</code></pre>
+<ul>
+<li><strong>Then</strong>, you will be prompt to input your password for the account</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -480,9 +484,9 @@ custom file as well - but should be done by experienced users.</p>
 </thead>
 </table>
 <p><em>Yellow is areas you will input data/edit fields</em>
-<em>Blue are comments about Configuration File objects</em>\ \</p>
+<em>Blue are comments about Configuration File objects</em></p>
 <ol>
-<li>Paste your\&lsquo;a0<strong>Baker</strong>\&lsquo;a0wallet in between the quotes</li>
+<li>Paste your <strong>Baker</strong> wallet in between the quotes</li>
 <li>Set your Baker fee (ie 5% = 0.05)</li>
 <li>Input minimum payout for delegators (ie. 1 = 1 XTZ)</li>
 <li>Input minimum staking balance for delegators</li>
@@ -499,7 +503,7 @@ delegator, and false applies the fee specified in the line
 above</li>
 <li>Input minimum balance override for specified wallet\</li>
 <li>If you wish to add multiple wallets for over rides, add another
-wallet following same format keeping the \{\} to contain the
+wallet following same format keeping the <code>{ }</code> to contain the
 wallet attribute as shown.</li>
 </ol>
 </li>
@@ -528,7 +532,7 @@ user</strong></li>
 to specific platforms in order to broadcast messages (ie <em>&lsquo;Bakery
 has paid 100XTZ in rewards for latest cycle&rsquo;</em> <strong>We will cover this
 in a separate section</strong>
-<em>see appendix X</em> and platforms supported are <em><strong>Twitter, Discord, and E-mail</strong></em>\</li>
+<em>see appendix X</em> and platforms supported are <em><strong>Twitter, Discord, and E-mail</strong></em></li>
 </ol>
 <hr>
 <h3 id="set-up-step-2-private-key-file">Set Up: Step 2: Private-Key File</h3>
@@ -578,11 +582,7 @@ configuration file</em>)</li>
 allow you to call the application via commands and set permissions
 While in the TezPay directory in the terminal, run the following
 commands (<em>see code and examples below</em>):</p>
-<pre><code>mv tezpay-linux-amd64 tezpay
-
-
-
-chmod +x tezpay
+<pre><code>`mv tezpay-linux-amd64 tezpay`
 </code></pre>
 <table>
 <thead>
@@ -591,6 +591,8 @@ chmod +x tezpay
 </tr>
 </thead>
 </table>
+<pre><code> `chmod +x tezpay`
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -606,7 +608,7 @@ baking (both block rewards &amp; fees from delegates), review payout per
 delegator from their stake, and other data (see below).</p>
 <p>The command to generate a payout table is as follows (always remember to be in the
 <em>tezpay</em> directory:</p>
-<pre><code>./tezpay generate-payouts
+<pre><code>`./tezpay generate-payouts`
 </code></pre>
 <p>This will generate a payout table, as exampled below:</p>
 <table>
@@ -642,8 +644,7 @@ TezPay application. This step will NOT need to be completed every
 payout, but only when you changes messages to test that it was
 successful.</p>
 <p>while in the <em>tezpay</em> directory, use the command:</p>
-<pre><code>./tezpay test-notify
-</code></pre>
+<p><code> ./tezpay test-notify</code></p>
 <h4 id="using-tezpay-step-3---initiating-a-payout">Using TezPay: Step 3 - Initiating a Payout</h4>
 <p>To use the TezPay application to send a payment will require 1
 line of code and one additional confirmation while it runs.</p>
@@ -686,7 +687,7 @@ decentralizing the Tezos Blockchain.</p>
 <a href="https://t.me/bakebuddy">Telegram</a></p>
 <h2 id="appendix">Appendix</h2>
 <ol>
-<li>Notification setup in Configuration File (<em>coming soon</em>)}</li>
+<li>Notification setup in Configuration File (<em>coming soon</em>)</li>
 </ol>
 <p><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></p>
 
