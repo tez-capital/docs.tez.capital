@@ -245,27 +245,22 @@
 
 		
 	</header>
-	<p>{\rtf1\ansi\ansicpg1252\cocoartf2706
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0
-Helvetica;} {\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0</p>
-<p>\f0\fs24 \cf0 ======TezPay======\ <em>A payment distribution tool
-developed by YourBakeBuddy for Bakers on the Tezos Blockchain</em>\ \
-TezPay is a tool developed by the development team behind YourBakeBuddy,
+	<p>#<strong>TezPay</strong>
+<em>A payment distribution tool
+developed by YourBakeBuddy for Bakers on the Tezos Blockchain</em></p>
+<p>TezPay is a tool developed by the development team behind YourBakeBuddy,
 a simplified workflow to set up and execute a Baker (Validator) on the
 Tezos blockchain. The goal of this document is to instruct a baker on
 how to set up TezPay and how to pay-out the bakers delegates. The
 workflow will accomplish these tasks from Command-line-interface(CLI) -
 if you do not have experience in CLI this tutorial will include screen
 captures as well as examples and explanations of the steps. This
-tutorial is meant to cover all skill levels from novice to expert. \ \</p>
+tutorial is meant to cover all skill levels from novice to expert.</p>
 <h2 id="preparation">Preparation</h2>
-<p>\ There is minimal preparation needed to utilize TezPay, assuming that
+<p>There is minimal preparation needed to utilize TezPay, assuming that
 you have a functioning public baker running. To get help with setting up
-a baker see <em>YourBakeBuddy - Setting up a public Baker</em>. \ &mdash;-\ \
-<strong>Preparation Summary</strong>\ \</p>
+a baker see <em>YourBakeBuddy - Setting up a public Baker</em>.
+<strong>Preparation Summary</strong></p>
 <ol>
 <li>Create a directory (folder) on your desktop (or appropriate
 location) to store the application files and required config files\</li>
@@ -274,219 +269,212 @@ wallet files from github\</li>
 <li>Create a &lsquo;pay-out&rsquo; wallet and store the private key (not baker or
 hot wallet)\</li>
 </ol>
-<p>\ &mdash;-\</p>
 <h3 id="preparation-step-1-create-tezpay-directory">Preparation: Step 1 <em>Create TezPay Directory</em></h3>
-<p>\ \ Create a new folder on the desktop or in a location that you want
-to store the necessary files for Tezpay.\ \
+<p>Create a new folder on the desktop or in a location that you want
+to store the necessary files for Tezpay.
 \{\{:screenshot_2022-11-17_at_1.10.24_pm.png?200|\}\}\ \ This
 folder will contain 3 files: \</p>
 <ol>
-<li>TezPay Application File\</li>
-<li>Configuration File\</li>
-<li>Private-Key File \</li>
+<li>TezPay Application File</li>
+<li>Configuration File</li>
+<li>Private-Key File</li>
 </ol>
-<p>\ The <em>TezPay Application File</em> will execute the commands that will run
+<p>The <em>TezPay Application File</em> will execute the commands that will run
 TezPay, the <em>Configuration File</em> will essentially tell the application
 file how to run and will be edited by the baker (we will cover this
 later), and the <em>Private-Key File</em> will contain the private key for a
 wallet you have designated to pay your delegators (we will explain an
-easy way to get this later as well). \ \ <em><strong>A note on the Private-key
+easy way to get this later as well).<em><strong>A note on the Private-key
 file - it is not recommended to use an existing wallet that may house
 important assets (including NFT&rsquo;s or crypto tokens) but to create a new
-wallet that contains only enough Tezos to pay out delegates.</strong></em>\ \ \</p>
+wallet that contains only enough Tezos to pay out delegates.</strong></em></p>
 <h3 id="preparation-step-2-download-files">Preparation: Step 2 <em>Download Files</em></h3>
-<p>\ Download the software from Github using the link:
-<a href="https://github.com/alis-is/tezpay/releases">https://github.com/alis-is/tezpay/releases</a>\ \ In this repository,
+<p>Download the software from Github using the link:
+<a href="https://github.com/alis-is/tezpay/releases">https://github.com/alis-is/tezpay/releases</a>. In this repository,
 select the correct operating system and system architecture (arm64 or
-amd64). For this example we will be using <em>arm64</em>\ \
-\{\{:screenshot_2022-11-17_at_2.10.30_pm.png?600|\}\}\ \ \ \
-\ Note: If you do not know the system architecture you can find out by
+amd64). For this example we will be using <em>arm64</em>
+\{\{:screenshot_2022-11-17_at_2.10.30_pm.png?600|\}\}</p>
+<p>Note: If you do not know the system architecture you can find out by
 opening a Terminal and executing the command <code>uname -m</code>, and this will
-return the system architecture<code>arm64</code> or <code>amd64</code>. The example below
-displays <em>arm64</em>\ \
-\{\{:screenshot_2022-11-17_at_2.11.47_pm.png?200|\}\}\ \ \ If
-you would rather utilize CLI to download the application you will need
+return the system architecture<code>arm64</code> or <code>amd64</code>.</p>
+<p>The example below displays <em>arm64</em>
+\{\{:screenshot_2022-11-17_at_2.11.47_pm.png?200|\}\}</p>
+<p>If you would rather utilize CLI to download the application you will need
 to change directory (cd) to the TezPay directory created in step 1 in
-the terminal, <strong>then</strong> use command <code>wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;&amp; sh /tmp/install.sh</code> See example code below (<em>note:
-input begins after last &lsquo;%&rsquo; character</em>): \ \
-\{\{:screenshot_2022-11-18_at_7.39.13_pm.png?direct&amp;600|\}\}\
-\ <strong>The above example is an alternative to downloading from the GitHub
-repository</strong>\ \ <strong>Next</strong>, you will download the sample configuration
+the terminal, <strong>then</strong> use command <code>wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;&amp; sh /tmp/install.sh</code></p>
+<p>See example code below (<em>note: input begins after last &lsquo;%&rsquo; character</em>): {\{:screenshot_2022-11-18_at_7.39.13_pm.png?direct&amp;600|\}\}</p>
+<p><strong>The above example is an alternative to downloading from the GitHub
+repository</strong></p>
+<p><strong>Next</strong>, you will download the sample configuration
 file &amp; <em>payout_wallet_private.sample.key</em> file from :
 <a href="https://github.com/alis-is/tezpay/blob/main/docs/configuration/">https://github.com/alis-is/tezpay/blob/main/docs/configuration/</a> - <em>or
-you can open file in GitHub and copy text to a text editor</em>. \ \
-<em>Note, there are two choices for the configuration files</em>:\</p>
+you can open file in GitHub and copy text to a text editor</em>.</p>
+<p><em>Note, there are two choices for the configuration files</em>:</p>
 <ol>
 <li>Simple Config file : config.default.hjson (basic arguments to run
-Tezpay)\</li>
+Tezpay)</li>
 <li>Full Config: config.sample.hjson (advanced arguements to run
-Tezpay)\</li>
+Tezpay)</li>
 </ol>
-<p>\{\{:screenshot_2022-11-17_at_2.17.21_pm.png?800|\}\}\ \
-&mdash;-\ \</p>
+<p>{\{:screenshot_2022-11-17_at_2.17.21_pm.png?800|\}\}</p>
 <h3 id="preparation-step-3---payout-wallet-optional">Preparation: Step 3 - Payout Wallet (optional)</h3>
-<p>\ \ <strong>Lastly</strong>, you will need to download the create a new wallet and
+<p><strong>Lastly</strong>, you will need to download the create a new wallet and
 retrieve the private key. We will be using the Temple Wallet extension
 to create a new wallet and to get the private key. If you already have a
-payout wallet, or know how, skip this section\ \</p>
+payout wallet, or know how, skip this section.</p>
 <ul>
-<li><strong>First</strong>, open <strong>Temple Wallet</strong> and select the icon in upper right
-\</li>
+<li><strong>First</strong>, open <strong>Temple Wallet</strong> and select the icon in upper right</li>
 </ul>
-<p>\ \{\{:wallet_0.jpg?direct&amp;200|\}\}\ \</p>
+<p>\ \{\{:wallet_0.jpg?direct&amp;200|\}\}\</p>
 <ul>
-<li><strong>Next</strong>, select &rsquo;new account&rsquo;, and input a new (ie Tezpay1)\</li>
+<li><strong>Next</strong>, select &rsquo;new account&rsquo;, and input a new (ie Tezpay1)</li>
 </ul>
-<p>\ \{\{:wallet_new.jpg?direct&amp;200|\}\}\ \</p>
-<pre><code>***Then**, click the icon in the upper right again\
+<p>\ \{\{:wallet_new.jpg?direct&amp;200|\}\}\</p>
+<pre><code>**Then**, click the icon in the upper right again
 </code></pre>
-<p>\ \{\{:new_wallet_1.jpg?direct&amp;200|\}\} \ \</p>
-<pre><code>***Then**, go to //Settings//\
+<p>\ \{\{:new_wallet_1.jpg?direct&amp;200|\}\}</p>
+<pre><code>**Then**, go to **Settings**
 </code></pre>
 <p>\ \{\{:wallet_2.jpg?direct&amp;200|\}\}\ \</p>
-<pre><code>***Then**, go to //Reveal Private Key//\
+<pre><code>**Then**, go to **Reveal Private Key**
 </code></pre>
 <p>\ \{\{:wallet_3.jpg?direct&amp;200|\}\}\ \</p>
-<pre><code>***Then**, you will be prompt to input your password for the account\
+<pre><code>**Then**, you will be prompt to input your password for the account
 </code></pre>
 <p>\ \
-\{\{:screenshot_2022-11-17_at_4.18.47_pm.png?direct&amp;200|\}\}\
-\ Your <em>private key</em> will be displayed here\ \
-\{\{:screenshot_2022-11-17_at_4.20.31_pm.png?direct&amp;200|\}\}\
-\ &mdash;-\ \</p>
+\{\{:screenshot_2022-11-17_at_4.18.47_pm.png?direct&amp;200|\}\}\</p>
+<p>Your <em>private key</em> will be displayed here:</p>
+<p>\{\{:screenshot_2022-11-17_at_4.20.31_pm.png?direct&amp;200|\}\}\</p>
 <h2 id="set-up">Set Up</h2>
-<p>\ \ The next section will review the setup needed for Tezpay. We will
+<p>The next section will review the setup needed for Tezpay. We will
 review the Configuration File and Payout Wallet files. In this section
-we will review: \</p>
+we will review:</p>
 <ol>
-<li>Configuration File (simple)\</li>
-<li>Configuration File (advanced)\</li>
-<li>Private-Key File\</li>
+<li>Configuration File (simple)</li>
+<li>Configuration File (advanced)</li>
+<li>Private-Key File</li>
 </ol>
-<p>\</p>
 <h3 id="set-up-step-1a-configuration-file-simple">Set Up: Step 1a: Configuration File (simple)</h3>
-<p>\ \ This section will review how to setup the configuration file
-(simple-version) to be used by the TezPay application. \ \ <em>Note: must
-have file name <strong>config.hjson</strong>, case-sensative</em>\ \ \
+<p>This section will review how to setup the configuration file
+(simple-version) to be used by the TezPay application.</p>
+<p><em>Note: must have file name <strong>config.hjson</strong>, case-sensative</em>
 \{\{:screenshot_2022-11-17_at_5.42.43_pm.png?direct&amp;600|\}\}\
-\ <em>Yellow is areas you will input data/edit fields</em> \ \ <em>Blue are
-comments about Configuration File objects</em>\ \</p>
+<em>Yellow is areas you will input data/edit fields</em><br>
+<em>Blue are comments about Configuration File objects</em></p>
 <ol>
-<li>Paste your <strong>Baker</strong> wallet in between the quotes\</li>
-<li>Set your Baker fee (ie 0.05 = 5% fee)\</li>
-<li>Input minimum payout for delegators (ie. 1 = 1 XTZ)\</li>
+<li>Paste your <strong>Baker</strong> wallet in between the quotes</li>
+<li>Set your Baker fee (ie 0.05 = 5% fee)</li>
+<li>Input minimum payout for delegators (ie. 1 = 1 XTZ)</li>
 <li>This section allows you to split payments for baking (Bonds) and
 fees from delegators (Fees) if you want - input <strong>Baker</strong> wallet
 address and percentage to split. This example does not split, where
-1=100% to baker wallet.\</li>
+1=100% to baker wallet.</li>
 <li>This section refers to network parameters to fetch information about
 the baker in order to compile rewards and payouts - <strong>Do not edit
-unless you are an experienced user</strong>\</li>
+unless you are an experienced user</strong></li>
 <li>Over delegation projection prohibits you from over paying beyond
 your delegation limit - <strong>Do not edit unless you are an experience
-user</strong>\</li>
+user</strong></li>
 </ol>
-<p>\ This is as basic configuration file for running the TezPay
+<p>This is as basic configuration file for running the TezPay
 application. The next section will review the advanced configuration
 file, giving more options and customization to the TezPay application. A
 user may splice sections from the advanced file to the simple to build a
-custom file as well - but should be done by experienced users. \ \ \</p>
+custom file as well - but should be done by experienced users.</p>
 <h3 id="set-up-step-1b-configuration-file-advanced">Set Up: Step 1b: Configuration File (advanced)</h3>
-<p>\ \ This section will review how to setup the configuration file
-(advanced-version) to be used by the TezPay application. \ \ <em>Note:
-must have file name <strong>config.hjson</strong>, case-sensative</em>\ \
-\{\{:screenshot_2022-11-18_at_1.36.42_pm.png?direct&amp;600|\}\}\
-\ <em>Yellow is areas you will input data/edit fields</em>\ \ <em>Blue are
-comments about Configuration File objects</em>\ \</p>
+<p>This section will review how to setup the configuration file
+(advanced-version) to be used by the TezPay application.</p>
+<p><em>Note: must have file name <strong>config.hjson</strong>, case-sensative</em>
+\{\{:screenshot_2022-11-18_at_1.36.42_pm.png?direct&amp;600|\}\}</p>
+<p><em>Yellow is areas you will input data/edit fields</em>
+<em>Blue are comments about Configuration File objects</em>\ \</p>
 <ol>
-<li>Paste your\&lsquo;a0<strong>Baker</strong>\&lsquo;a0wallet in between the quotes\</li>
-<li>Set your Baker fee (ie 5% = 0.05)\</li>
-<li>Input minimum payout for delegators (ie. 1 = 1 XTZ)\</li>
-<li>Input minimum staking balance for delegators\</li>
+<li>Paste your\&lsquo;a0<strong>Baker</strong>\&lsquo;a0wallet in between the quotes</li>
+<li>Set your Baker fee (ie 5% = 0.05)</li>
+<li>Input minimum payout for delegators (ie. 1 = 1 XTZ)</li>
+<li>Input minimum staking balance for delegators</li>
 <li>Input delegators wallets that you wish to ignore completely (not
-often used)\</li>
+often used)</li>
 <li>Overrides: These will override global settings for delegators - you
-may <em>delete/remove</em> specific fields where you want to ignore\
+may <em>delete/remove</em> specific fields where you want to ignore
 <ol>
 <li>Input wallet address for specific delegator you wish to apply
-overrides for\</li>
-<li>Input a delegator-specific custom fee (ie 0.5% = 0.005)\</li>
+overrides for</li>
+<li>Input a delegator-specific custom fee (ie 0.5% = 0.005)</li>
 <li>Input either true or false where true removes the fee from
 delegator, and false applies the fee specified in the line
-above\</li>
+above</li>
 <li>Input minimum balance override for specified wallet\</li>
 <li>If you wish to add multiple wallets for over rides, add another
 wallet following same format keeping the \{\} to contain the
-wallet attribute as shown.\</li>
+wallet attribute as shown.</li>
 </ol>
 </li>
 <li>This section allows you to split payments for baking (Bonds), input
 wallet address and percentage to allocate (see example above for
-structure of more than 1 wallet. 100%=1.00\</li>
+structure of more than 1 wallet. 100%=1.00</li>
 <li>This section allows you to split payments for fees collected (Fees),
 input wallet address and percentage to allocate (see example above
-for structure of more than 1 wallet. 100%=1.00\</li>
+for structure of more than 1 wallet. 100%=1.00</li>
 <li>Donations refer to donating a specific amount of XTZ to wallets
-every payout\
+every payout
 <ol>
 <li>Input a donation amount in <em>donate</em> field as a percentage (ie
-2.5% = 0.025)\</li>
+2.5% = 0.025)</li>
 <li>Input wallets that you wish to donate to and percentage for each
-(ie 100% = 1.0)\</li>
+(ie 100% = 1.0)</li>
 </ol>
 </li>
 <li>This section refers to network parameters to fetch information about
-the baker in order to compile rewards and payouts -\&lsquo;a0Do not edit
-unless you are an experienced user\</li>
+the baker in order to compile rewards and payouts <strong>Do not edit
+unless you are an experienced user</strong></li>
 <li>Over delegation projection prohibits you from over paying beyond
-your delegation limit -\&lsquo;a0Do not edit unless you are an experience
-user\</li>
+your delegation limit <strong>Do not edit unless you are an experience
+user</strong></li>
 <li>This section allows for automatic notifications/messages to be sent
 to specific platforms in order to broadcast messages (ie <em>&lsquo;Bakery
 has paid 100XTZ in rewards for latest cycle&rsquo;</em> <strong>We will cover this
-in a separate section</strong>- <em>see appendix X</em> and platforms supported
-are <em><strong>Twitter, Discord, and E-mail</strong></em>\</li>
+in a separate section</strong>
+<em>see appendix X</em> and platforms supported are <em><strong>Twitter, Discord, and E-mail</strong></em>\</li>
 </ol>
-<p>\</p>
 <h3 id="set-up-step-2-private-key-file">Set Up: Step 2: Private-Key File</h3>
-<p>\ \ The Private Key file is used to sign the transaction(s) that will
+<p>The Private Key file is used to sign the transaction(s) that will
 payout the rewards. From a security perspective, it is recommended
 <em><strong>NOT</strong></em> to use the Baker private key due to security concerns with the
 private key being displayed in plain-text in a file. This section will
 use the new account and private-key that was acquired in Step 3 - Payout
-Wallet.\ \</p>
+Wallet.</p>
 <ol>
 <li>Retrieve the private-key of the wallet you wish to use from the
-payout wallet of your choice\</li>
+payout wallet of your choice</li>
 <li>Paste into a text file (or replace the example that was downloaded
-from the GitHub repository \</li>
+from the GitHub repository</li>
 <li>Save the file with <em><strong>exact</strong></em> file name and extension
 <em>payout_wallet_private.key</em> - note: the .key is required in this
-instance (see below)\</li>
+instance (see below)</li>
 </ol>
-<p>\ \{\{:private-key_file.jpg?direct&amp;200|\}\}\ \</p>
+<p>\ \{\{:private-key_file.jpg?direct&amp;200|\}\}\</p>
 <h3 id="set-up-summary">Set Up: Summary</h3>
-<p>\ At this point there should be 3 files in the directory <em>tezpay</em>.
+<p>At this point there should be 3 files in the directory <em>tezpay</em>.
 These three files will be used to run the application and payouts. The
-next section will show the commands to run the TezPay software. \ \
-&mdash;-\ \</p>
+next section will show the commands to run the TezPay software.</p>
 <h2 id="using-tezpay">Using TezPay</h2>
-<p>\ \ \ \</p>
 <h4 id="summary-of-using-tezpay">Summary of Using Tezpay</h4>
-<p>\ \ Using the TezPay application is through CLI for now and will be
-carried out through a few commands.\ \ This section will review:\</p>
+<p>Using the TezPay application is through CLI for now and will be
+carried out through a few commands.</p>
+<p>This section will review:</p>
 <ol>
-<li>Generating a payout table for all delegates\</li>
+<li>Generating a payout table for all delegates</li>
 <li>Generating a test notification (<em>Testing the
 <strong>Twitter</strong>/<strong>Discord</strong>/<strong>E-mail</strong> notifications from the advanced
-configuration file</em>)\</li>
-<li>Generating an actual payout\</li>
+configuration file</em>)</li>
+<li>Generating an actual payout</li>
 </ol>
-<p>\ Before using a command in TezPay, you will need to run
-<strong><span class="underline">two additional commands</span></strong> that will
-allow you to call the application via commands and set permissions\ \
+<p>Before using a command in TezPay, you will need to run
+<em><strong>two additional commands</span></strong></em> that will
+allow you to call the application via commands and set permissions
 While in the TezPay directory in the terminal, run the following
-commands (<em>see code and examples below</em>:\</p>
+commands (<em>see code and examples below</em>):</p>
 <pre><code>mv tezpay-linux-amd64 tezpay
 </code></pre>
 <p>\</p>
@@ -498,80 +486,77 @@ commands (<em>see code and examples below</em>:\</p>
 \{\{:screenshot_2022-11-19_at_2.12.51_pm.png?direct&amp;600|\}\}\
 \ \ \ \</p>
 <h4 id="using-tezpay-step-1---generating-a-payout-table">Using TezPay: Step 1 - Generating a payout Table</h4>
-<p>\ \ Generating a payout table is a took that is useful for Public
+<p>Generating a payout table is a took that is useful for Public
 Bakers because it allows the baker to see the incoming rewards from
 baking (both block rewards &amp; fees from delegates), review payout per
-delegator from their stake, and other data (see below).\ \ The command
-to generate a payout table is as follows (always remember to be in the
-<em>tezpay</em> directory: \ \</p>
+delegator from their stake, and other data (see below).</p>
+<p>The command to generate a payout table is as follows (always remember to be in the
+<em>tezpay</em> directory:</p>
 <pre><code>./tezpay generate-payouts
 </code></pre>
-<p>\ \ This will generate a payout table, as exampled below: \ \
-\{\{:screenshot_2022-11-19_at_1.59.10_pm.png?direct&amp;600|\}\}\
-\ <em><strong>Note: the Delegator &amp; Recipient columns have been hidden</strong></em>\ \</p>
+<p>This will generate a payout table, as exampled below:</p>
+<p>\{\{:screenshot_2022-11-19_at_1.59.10_pm.png?direct&amp;600|\}\}\</p>
+<p><em><strong>Note: the Delegator &amp; Recipient columns have been hidden</strong></em></p>
 <ol>
 <li>Represents the table of <em>invalid</em> delegators that will <strong>not</strong> be
 paid out due to not meeting specific thresholds (ie minimum payout
-threshold/minimum balance)\</li>
-<li>Represents the table of <em>valid</em> delegators that will be paid out\</li>
+threshold/minimum balance)</li>
+<li>Represents the table of <em>valid</em> delegators that will be paid out</li>
 <li>The list of Delegators first 4 and last 4 characters of their
-wallet\</li>
+wallet</li>
 <li>The list of Recipients of payment first 4 and last 4 characters of
-their wallet (often the same as Delegator)\</li>
-<li>The delegated balance for each Delegator for that particular cycle\</li>
+their wallet (often the same as Delegator)</li>
+<li>The delegated balance for each Delegator for that particular cycle</li>
 <li>Represents the kind of reward given (ie delegator reward, baker
-reward, and fee income)\</li>
-<li>The amount of the specific reward to be paid out\</li>
+reward, and fee income)</li>
+<li>The amount of the specific reward to be paid out</li>
 <li>The fee rate for each delegator, will reflect those delegators who
-have custom fees per the configuration file\</li>
+have custom fees per the configuration file</li>
 <li>The fee collected by the baker from each delegator for hosting their
-delegation\</li>
-<li>The transaction fee to pay out each reward\</li>
+delegation</li>
+<li>The transaction fee to pay out each reward</li>
 </ol>
-<p>\ \</p>
 <h4 id="using-tezpay-step-2---testing-notifications">Using TezPay: Step 2 - Testing Notifications</h4>
-<p>\ \ This step will be used to test the notification system for your
+<p>This step will be used to test the notification system for your
 TezPay application. This step will NOT need to be completed every
 payout, but only when you changes messages to test that it was
-successful. \ \ while in the <em>tezpay</em> directory, use the command: \
-\</p>
+successful.</p>
+<p>while in the <em>tezpay</em> directory, use the command:</p>
 <pre><code>./tezpay test-notify
 </code></pre>
-<p>\ \</p>
 <h4 id="using-tezpay-step-3---initiating-a-payout">Using TezPay: Step 3 - Initiating a Payout</h4>
-<p>\ \ To use the TezPay application to send a payment will require 1
-line of code and one additional confirmation while it runs. \ \ To run
-TezPay, run the code: \ \ &lt;code&gt;./tezpay pay&lt;/&gt;\ \ The system
-will initiate the TezPay application at this point and present a payout
-table, similar to the table(s) from step 1. \ \ Once the table is
-displayed, the prompt will ask you to confirm the payout, and you need
-to confirm <em>y</em> or <em>n</em> (see below)\ \
-\{\{:screenshot_2022-11-19_at_2.35.00_pm.png?direct&amp;600|\}\}\
+<p>To use the TezPay application to send a payment will require 1
+line of code and one additional confirmation while it runs.</p>
+<p>To run TezPay, run the code:</p>
+<p><code>./tezpay pay</code></p>
+<p>The system will initiate the TezPay application at this point and present a payout
+table, similar to the table(s) from step 1.</p>
+<p>Once the table is displayed, the prompt will ask you to confirm the payout, and you need to confirm <em>y</em> or <em>n</em> (see below):</p>
+<p>\{\{:screenshot_2022-11-19_at_2.35.00_pm.png?direct&amp;600|\}\}\
 \</p>
 <ol>
 <li>You will be asked to confirm, type &lsquo;<em><strong>y</strong></em>&rsquo; for yes or &lsquo;<em><strong>n</strong></em>&rsquo;
-for no\</li>
+for no</li>
 </ol>
-<p>\ If you confirm the transaction, the payouts will proceed and your
+<p>If you confirm the transaction, the payouts will proceed and your
 delegates will be paid out, as well as your Baker wallet. Remember, if
 you are using a separate wallet to payout from your Baker wallet you
-will need to add funds to cover the payments.\ \ At this point you
-have successfully ran the TezPay application and paid out your
+will need to add funds to cover the payments.</p>
+<p>At this point you have successfully ran the TezPay application and paid out your
 delegates. Be sure to check the confirmations and any errors that may
 have been broadcasted in the terminal (ie, the example above did not
-send notifications because that was not set up).\ \ \</p>
+send notifications because that was not set up).</p>
 <h2 id="summary-tezpay">Summary: TezPay</h2>
-<p>\ \ TezPay is an application that allows for easy payouts for public
+<p>TezPay is an application that allows for easy payouts for public
 bakers on the Tezos Blockchain. This allows for significant
 customizations and flexibility with respect to the payout system and
 empowers bakers to further take control of their Bakery and aid in
-decentralizing the Tezos Blockchain.\ \ Any
-questions/comments/concerns please contact the YourBakeBuddy team on
+decentralizing the Tezos Blockchain.</p>
+<p>Any questions/comments/concerns please contact the YourBakeBuddy team on
 <a href="https://discord.gg/vykxNSnvQY">Discord</a>,
 <a href="https://twitter.com/YourBakeBuddy">Twitter</a>, or
-<a href="https://t.me/bakebuddy">Telegram</a>\ \ \</p>
+<a href="https://t.me/bakebuddy">Telegram</a></p>
 <h2 id="appendix">Appendix</h2>
-<p>\ \</p>
 <ol>
 <li>Notification setup in Configuration File (<em>coming soon</em>)}</li>
 </ol>
