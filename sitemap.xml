@@ -22,6 +22,8 @@
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay/</loc>
   </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_continual/</loc>
+  </url><url>
     <loc>/tezpay/reference/cmd/tezpay_generate-payouts/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_pay/</loc>
