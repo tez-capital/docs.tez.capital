@@ -66,9 +66,10 @@ Copyright © 2022 alis.is&lt;/p&gt;
 &lt;p&gt;runs payout until stopped manually&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezpay continual [flags]
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -c, --cycle int        initial cycle
-  -h, --help             help for continual
-      --no-separate-sc   disables smart contract separation (mixes txs and smart contract calls within batches)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -c, --cycle int                   initial cycle
+      --force-confirmation-prompt   forces confirmation prompts for each payout
+  -h, --help                        help for continual
+      --no-separate-sc              disables smart contract separation (mixes txs and smart contract calls within batches)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets log level format (trace/debug/info/warn/error) (default &amp;#34;auto&amp;#34;)
