@@ -822,7 +822,7 @@ iv. Click &lsquo;save&rsquo; when finished.</p>
 <p>#####TezPay Config Setup#####
 We will use the API Key and Secret as well as the Access Token and Secret to edit the Config file to allow for permissions and calls to push notifcations upon each successful payout.</p>
 <pre><code> 1. You will add the following code block at the base of the config.json file to enable the notifications for TezPay. Note that the message_template can be anything and you can use the &lt;Cyle&gt;, &lt;Delegators&gt;, &lt;DistributedRewards&gt; terms to automatically fill in these terms for each cycle. 
-           &lt;code&gt; notifications: [
+           ` notifications: [
 {
   access_token: Your_Acces_Token
   access_token_secret: Your_Access_Token_Secret
@@ -831,7 +831,7 @@ We will use the API Key and Secret as well as the Access Token and Secret to edi
   message_template: Rewards for &lt;Cycle&gt; have been paid to &lt;Delegators&gt; delegates in amount of &lt;DistributedRewards&gt; using #TezPay.👀 XTZ baked with bakebuddy.xyz! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.
   type: twitter
 }
-]&lt;/code&gt;
+]`
 
                | ![&lt;Fill in the information for the config.json file with you information!&gt;](/tezpay/tutorial/twitterNotificationimage11.png) |
 </code></pre>
