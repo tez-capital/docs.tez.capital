@@ -191,7 +191,7 @@
     <li><a href="#summary-tezpay">Summary: TezPay</a></li>
     <li><a href="#appendix">Appendix</a></li>
     <li><a href="#notification-setup-in-configuration-file">Notification setup in Configuration File</a></li>
-    <li><a href="#tezpay-config-setup">TezPay Config Setup</a></li>
+    <li><a href="#tezpay-configjson-setup-for-twitter-notifications">TezPay config.json Setup for Twitter Notifications</a></li>
   </ul>
 </nav>
       </div>
@@ -829,21 +829,12 @@ b. Access Token and Secret</li>
 </tr>
 </thead>
 </table>
-<h2 id="tezpay-config-setup">TezPay Config Setup</h2>
-<pre><code>We will use the API Key and Secret as well as the Access Token and Secret to edit the Config file to allow for permissions and calls to push notifcations upon each successful payout.
-           
- 1. You will add the following code block at the base of the config.json file to enable the notifications for TezPay. Note that the message_template can be anything and you can use the &lt;Cyle&gt;, &lt;Delegators&gt;, &lt;DistributedRewards&gt; terms to automatically fill in these terms for each cycle. 
-           ` notifications: [
-{
-  access_token: Your_Acces_Token
-  access_token_secret: Your_Access_Token_Secret
-  consumer_key: Your_Consumer_Key
-  consumer_secret: Your_Consumer_Key_Secret
-  message_template: Rewards for &lt;Cycle&gt; have been paid to &lt;Delegators&gt; delegates in amount of &lt;DistributedRewards&gt; using #TezPay.👀 XTZ baked with bakebuddy.xyz! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.
-  type: twitter
-}
-]`
-</code></pre>
+<h2 id="tezpay-configjson-setup-for-twitter-notifications">TezPay config.json Setup for Twitter Notifications</h2>
+<p>We will use the API Key and Secret as well as the Access Token and Secret to edit the Config file to allow for permissions and calls to push notifcations upon each successful payout.</p>
+<ol>
+<li>You will add the following code block at the base of the config.json file to enable the notifications for TezPay. Note that the message_template can be anything and you can use the <Cyle>, <Delegators>, <DistributedRewards> terms to automatically fill in these terms for each cycle.
+<code> notifications: [ { access_token: Your_Acces_Token access_token_secret: Your_Access_Token_Secret consumer_key: Your_Consumer_Key consumer_secret: Your_Consumer_Key_Secret message_template: Rewards for &lt;Cycle&gt; have been paid to &lt;Delegators&gt; delegates in amount of &lt;DistributedRewards&gt; using #TezPay.👀 XTZ baked with bakebuddy.xyz! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos. type: twitter } ]</code></li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -851,9 +842,10 @@ b. Access Token and Secret</li>
 </tr>
 </thead>
 </table>
-<pre><code> 2. Once you have filled in the necessary information - you have setup Notifications for Twitter! Test the notification by using command: 
-                          a. &lt;code&gt; tezpay test-notify&lt;/code&gt;
-</code></pre>
+<ol start="2">
+<li>Once you have filled in the necessary information - you have setup Notifications for Twitter! Test the notification by using command:
+a. <code>tezpay test-notify</code></li>
+</ol>
 <p><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></p>
 
         <div class="section-index">
