@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorial</title>
-    <link>/tezpay/tutorial/</link>
-    <description>Recent content in Tutorial on docs.tez.capital</description>
+    <title>docs.tez.capital – Tutorials</title>
+    <link>/tezpay/tutorials/</link>
+    <description>Recent content in Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
     
-	  <atom:link href="/tezpay/tutorial/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="/tezpay/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     
       
