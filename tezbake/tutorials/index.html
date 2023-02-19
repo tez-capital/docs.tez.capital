@@ -107,8 +107,13 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
   <a href="/tezbake/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezbake"><span class="">TezBake</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbaketutorials-li">
   <a href="/tezbake/tutorials/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-tezbaketutorials"><span class="td-sidebar-nav-active-item">Tutorials</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialshow-to-bake-li">
+  <a href="/tezbake/tutorials/how-to-bake/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialshow-to-bake"><span class="">How to Bake</span></a>
+</li>
+  </ul>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgov-li">
@@ -173,18 +178,7 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#tezbake"><strong>TezBake</strong></a></li>
-    <li><a href="#preparation">Preparation</a></li>
-    <li><a href="#installation">Installation</a>
-      <ul>
-        <li><a href="#download-and-copy-bb-cli">Download and copy bb-cli</a></li>
-        <li><a href="#setup-tezos-node-signer-and-install-bb-cli-dependencies">Setup Tezos node, signer and install bb-cli dependencies</a></li>
-        <li><a href="#bootstrap-tezos-node">Bootstrap Tezos node</a></li>
-        <li><a href="#start-tezos-node">Start Tezos node</a></li>
-        <li><a href="#import-ledger-key">Import Ledger key</a></li>
-        <li><a href="#authorize-ledger-to-bake-for-key">Authorize Ledger to bake for key</a></li>
-        <li><a href="#register-ledger-key-as-baker-on-the-blockchain">Register Ledger key as baker on the blockchain</a></li>
-      </ul>
-    </li>
+    <li><a href="#tutorials">Tutorials</a></li>
   </ul>
 </nav>
       </div>
@@ -248,58 +242,7 @@
 developed by Tezos Capital for Bakers on the Tezos Blockchain</em></p>
 <p>BakeBuddy CLI is a command line tool for Linux which integrates its function with the official Tezos binary images provided by the Tezos developers, with the goal to deliver a seamless experience in installing, upgrading and monitoring a Tezos node. BakeBuddy CLI (BB-CLI) is the tool used by BakeBuddy GUI (BB-GUI) &ldquo;under the hood&rdquo; to provide the core functionality.
 There are 2 ways to bake on Tezos depending on your intention. You can learn how to bake on a testnet with fake tokens or you can bake on mainnet with real tez. Either way BakeBuddy has your back.</p>
-<hr>
-<h2 id="preparation">Preparation</h2>
-<p>Installing BakeBuddy CLI (bb-cli) and using it to setup your Tezos baker is very simple. You will need the following tools:</p>
-<ol>
-<li>Spare computer or existing computer with Linux installed. We recommend Ubuntu Linux.
-(note: you must have an SSD drive or better &amp; at least 8GB RAM)</li>
-<li>Ledger Nano S hardware wallet with Tezos Wallet &amp; Baker apps installed.
-(note: it&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings)</li>
-</ol>
-<hr>
-<h2 id="installation">Installation</h2>
-<h3 id="download-and-copy-bb-cli">Download and copy bb-cli</h3>
-<p>To begin, download the latest bb-cli version for your Linux desktop and copy it to a universally available location so you can execute BB-CLI command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
-If you have a regular Intel or AMD computer that&rsquo;s not &ldquo;ARM&rdquo; based.</p>
-<pre tabindex="0"><code>cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;&amp; chmod +x bb-cli-linux-amd64
-sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
-# you may be prompted for sudo password; execute 1 line at a time
-</code></pre><p>If you have a Raspberry Pi or you&rsquo;re running Linux on macOS M1 architecture:</p>
-<pre tabindex="0"><code>cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;&amp; chmod +x bb-cli-linux-arm64
-sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
-# you may be prompted for sudo password; execute 1 line at a time
-</code></pre><h3 id="setup-tezos-node-signer-and-install-bb-cli-dependencies">Setup Tezos node, signer and install bb-cli dependencies</h3>
-<pre tabindex="0"><code>bb-cli setup -a
-# you may be prompted for sudo password
-</code></pre><h3 id="bootstrap-tezos-node">Bootstrap Tezos node</h3>
-<p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.</p>
-<pre tabindex="0"><code>bb-cli bootstrap-node --tarball
-</code></pre><h3 id="start-tezos-node">Start Tezos node</h3>
-<p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
-<pre tabindex="0"><code>bb-cli start
-</code></pre><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
-<pre tabindex="0"><code>bb-cli info
-</code></pre><p>Level refers to the latest block number on mainnet. Navigate to <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.</p>
-<h3 id="import-ledger-key">Import Ledger key</h3>
-<p>Now that your node is in full sync, you can import your Ledger key. You will need to connect your Ledger and enter your Ledger PIN. Then open the Tezos Baking app.</p>
-<pre tabindex="0"><code>bb-cli import-key --derivation-path=&#34;ed25519/0h/0h&#34;
-# If you have a custom derivation path, you can change ed to bip as shown (--derivation-path=&#34;bip25519/3h/6h/9h&#34;)
-</code></pre><p>The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&rsquo;t have this information yet, don&rsquo;t worry. To get the address of the ledger that&rsquo;s used by default simply go to <a href="https://kukai.app">https://kukai.app</a> and login with ledger, accepting the default derivation path.</p>
-<p>bip is supposed to be more strong in the long term than ed25519, which is the default one. Including it in the command above as shown does not change the default behavior but it shows which path is default so it can be customized for preference and security.</p>
-<p>Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.</p>
-<h3 id="authorize-ledger-to-bake-for-key">Authorize Ledger to bake for key</h3>
-<p>Having imported your Ledger key to your signer, it&rsquo;s time to authorize your Ledger to bake for this key.</p>
-<pre tabindex="0"><code>bb-cli setup-ledger --main-hwm 1
-# Pay careful attention to the value of --main-hwm
-</code></pre><p>If your device was used to bake before it might have a &ldquo;high watermark&rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&rsquo;re trying to use now but it&rsquo;s been a while, it&rsquo;s highly recommended to change the 1 above to the current Tezos block, which can be found at.</p>
-<p>The watermark is simply a record of the lack block number your ledger helped to bake or endorse. If you&rsquo;re setting up a brand new device that&rsquo;s not been used for baking before, there is no need to alter the default command above.</p>
-<p>Always make sure you&rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures.</p>
-<h3 id="register-ledger-key-as-baker-on-the-blockchain">Register Ledger key as baker on the blockchain</h3>
-<p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker. For all other operations, you must use the Tezos Baking app.</p>
-<pre tabindex="0"><code>bb-cli register-key
-</code></pre><p>Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of actively baking.</p>
+<h2 id="tutorials">Tutorials</h2>
 
         <div class="section-index">
     
@@ -310,6 +253,16 @@ If you used to bake on mainnet with the same ledger as you&rsquo;re trying to us
     
     
     
+    <hr class="panel-line">
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezbake/tutorials/how-to-bake/">How to Bake</a>
+                </h5>
+                <p></p>
+            </div>
+        
     
 </div>
 
