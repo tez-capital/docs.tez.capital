@@ -15,5 +15,666 @@
       
     
     
+    <item>
+      <title>Tezpay: &gt; How to Setup</title>
+      <link>/tezpay/tutorials/how-to-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-setup/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;There is minimal preparation needed to utilize TezPay, assuming that
+you have a functioning public baker running. To get help with setting up
+a baker see &lt;em&gt;YourBakeBuddy - Setting up a public Baker&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Preparation Summary&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a directory (folder) on your desktop (or appropriate
+location) to store the application files and required config files&lt;/li&gt;
+&lt;li&gt;Download the Tezpay software, sample configuration, and payout
+wallet files from github&lt;/li&gt;
+&lt;li&gt;Create a &amp;lsquo;pay-out&amp;rsquo; wallet and store the private key (not baker or
+hot wallet)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;preparation-step-1-create-tezpay-directory&#34;&gt;Preparation: Step 1 &lt;em&gt;Create TezPay Directory&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;Create a new folder on the desktop or in a location that you want
+to store the necessary files for Tezpay.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage1.png&#34; alt=&#34;&amp;lt;Newly created TezPay directory, will contain all files for Tezpay Application.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;This folder will eventually contain 3 files:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;TezPay Application File&lt;/li&gt;
+&lt;li&gt;Configuration File&lt;/li&gt;
+&lt;li&gt;Private-Key File&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;em&gt;TezPay Application File&lt;/em&gt; will execute the commands that will run
+TezPay, the &lt;em&gt;Configuration File&lt;/em&gt; will essentially tell the application
+file how to run and will be edited by the baker (we will cover this
+later), and the &lt;em&gt;Private-Key File&lt;/em&gt; will contain the private key for a
+wallet you have designated to pay your delegators (we will explain an
+easy way to get this later as well).
+&lt;em&gt;&lt;strong&gt;A note on the Private-key file - it is not recommended to use an existing wallet that may house
+important assets (including NFT&amp;rsquo;s or crypto tokens) but to create a new
+wallet that contains only enough Tezos to pay out delegates.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;preparation-step-2-download-files&#34;&gt;Preparation: Step 2 &lt;em&gt;Download Files&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;Download the software from Github using the link:
+&lt;a href=&#34;https://github.com/alis-is/tezpay/releases&#34;&gt;https://github.com/alis-is/tezpay/releases&lt;/a&gt;. In this repository,
+select the correct operating system and system architecture (arm64 or
+amd64). For this example we will be using &lt;em&gt;arm64&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage2.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;Note: If you do not know the system architecture you can find out by
+opening a Terminal and executing the command &lt;code&gt;uname -m&lt;/code&gt;, and this will
+return the system architecture&lt;code&gt;arm64&lt;/code&gt; or &lt;code&gt;amd64&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The example below displays &lt;em&gt;arm64&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage3.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;If you would rather utilize CLI to download the application you will need
+to change directory (cd) to the TezPay directory created in step 1 in
+the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;See example code below (&lt;em&gt;note: input begins after last &amp;lsquo;%&amp;rsquo; character&lt;/em&gt;):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage4.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;The above example is an alternative to downloading from the GitHub
+repository&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Next&lt;/strong&gt;, you will download the sample configuration
+file &amp;amp; &lt;em&gt;payout_wallet_private.sample.key&lt;/em&gt; file from :
+&lt;a href=&#34;https://github.com/alis-is/tezpay/blob/main/docs/configuration/&#34;&gt;https://github.com/alis-is/tezpay/blob/main/docs/configuration/&lt;/a&gt; - &lt;em&gt;or
+you can open file in GitHub and copy text to a text editor&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note, there are two choices for the configuration files&lt;/em&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Simple Config file : config.default.hjson (basic arguments to run
+Tezpay)&lt;/li&gt;
+&lt;li&gt;Full Config: config.sample.hjson (advanced arguements to run
+Tezpay)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage5.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;preparation-step-3---payout-wallet-optional&#34;&gt;Preparation: Step 3 - Payout Wallet (optional)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Lastly&lt;/strong&gt;, you will need to download the create a new wallet and
+retrieve the private key. We will be using the Temple Wallet extension
+to create a new wallet and to get the private key. If you already have a
+payout wallet, or know how, skip this section.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;First&lt;/strong&gt;, open &lt;strong&gt;Temple Wallet&lt;/strong&gt; and select the icon in upper right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage6.jpg&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Next&lt;/strong&gt;, select &amp;rsquo;new account&amp;rsquo;, and input a new (ie Tezpay1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage7.jpg&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Then&lt;/strong&gt;, click the icon in the upper right again&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage8.png&#34; alt=&#34;&amp;lt;Access Temple Wallet menu, again.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Then&lt;/strong&gt;, go to &lt;strong&gt;Settings&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage9.jpg&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Then&lt;/strong&gt;, go to &lt;strong&gt;Reveal Private Key&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage10.jpg&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Then&lt;/strong&gt;, you will be prompt to input your password for the account&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage11.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;Your &lt;em&gt;private key&lt;/em&gt; will be displayed here:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage12.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;The next section will review the setup needed for Tezpay. We will
+review the Configuration File and Payout Wallet files. In this section
+we will review:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Configuration File (simple)&lt;/li&gt;
+&lt;li&gt;Configuration File (advanced)&lt;/li&gt;
+&lt;li&gt;Private-Key File&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;setup-step-1a-configuration-file-simple&#34;&gt;Setup: Step 1a: Configuration File (simple)&lt;/h3&gt;
+&lt;p&gt;This section will review how to setup the configuration file
+(simple-version) to be used by the TezPay application.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensative&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage13.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Yellow is areas you will input data/edit fields&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Paste your &lt;strong&gt;Baker&lt;/strong&gt; wallet in between the quotes&lt;/li&gt;
+&lt;li&gt;Set your Baker fee (ie 0.05 = 5% fee)&lt;/li&gt;
+&lt;li&gt;Input minimum payout for delegators (ie. 1 = 1 XTZ)&lt;/li&gt;
+&lt;li&gt;This section allows you to split payments for baking (Bonds) and
+fees from delegators (Fees) if you want - input &lt;strong&gt;Baker&lt;/strong&gt; wallet
+address and percentage to split. This example does not split, where
+1=100% to baker wallet.&lt;/li&gt;
+&lt;li&gt;This section refers to network parameters to fetch information about
+the baker in order to compile rewards and payouts - &lt;strong&gt;Do not edit
+unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Over delegation projection prohibits you from over paying beyond
+your delegation limit - &lt;strong&gt;Do not edit unless you are an experience
+user&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is as basic configuration file for running the TezPay
+application. The next section will review the advanced configuration
+file, giving more options and customization to the TezPay application. A
+user may splice sections from the advanced file to the simple to build a
+custom file as well - but should be done by experienced users.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;setup-step-1b-configuration-file-advanced&#34;&gt;Setup: Step 1b: Configuration File (advanced)&lt;/h3&gt;
+&lt;p&gt;This section will review how to setup the configuration file
+(advanced-version) to be used by the TezPay application.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensative&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage14.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;Yellow is areas you will input data/edit fields&lt;/em&gt;
+&lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Paste your &lt;strong&gt;Baker&lt;/strong&gt; wallet in between the quotes&lt;/li&gt;
+&lt;li&gt;Set your Baker fee (ie 5% = 0.05)&lt;/li&gt;
+&lt;li&gt;Input minimum payout for delegators (ie. 1 = 1 XTZ)&lt;/li&gt;
+&lt;li&gt;Input minimum staking balance for delegators&lt;/li&gt;
+&lt;li&gt;Input delegators wallets that you wish to ignore completely (not
+often used)&lt;/li&gt;
+&lt;li&gt;Overrides: These will override global settings for delegators - you
+may &lt;em&gt;delete/remove&lt;/em&gt; specific fields where you want to ignore
+&lt;ol&gt;
+&lt;li&gt;Input wallet address for specific delegator you wish to apply
+overrides for&lt;/li&gt;
+&lt;li&gt;Input a delegator-specific custom fee (ie 0.5% = 0.005)&lt;/li&gt;
+&lt;li&gt;Input either true or false where true removes the fee from
+delegator, and false applies the fee specified in the line
+above&lt;/li&gt;
+&lt;li&gt;Input minimum balance override for specified wallet\&lt;/li&gt;
+&lt;li&gt;If you wish to add multiple wallets for over rides, add another
+wallet following same format keeping the &lt;code&gt;{ }&lt;/code&gt; to contain the
+wallet attribute as shown.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;This section allows you to split payments for baking (Bonds), input
+wallet address and percentage to allocate (see example above for
+structure of more than 1 wallet. 100%=1.00&lt;/li&gt;
+&lt;li&gt;This section allows you to split payments for fees collected (Fees),
+input wallet address and percentage to allocate (see example above
+for structure of more than 1 wallet. 100%=1.00&lt;/li&gt;
+&lt;li&gt;Donations refer to donating a specific amount of XTZ to wallets
+every payout
+&lt;ol&gt;
+&lt;li&gt;Input a donation amount in &lt;em&gt;donate&lt;/em&gt; field as a percentage (ie
+2.5% = 0.025)&lt;/li&gt;
+&lt;li&gt;Input wallets that you wish to donate to and percentage for each
+(ie 100% = 1.0)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;This section refers to network parameters to fetch information about
+the baker in order to compile rewards and payouts &lt;strong&gt;Do not edit
+unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Over delegation projection prohibits you from over paying beyond
+your delegation limit &lt;strong&gt;Do not edit unless you are an experience
+user&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;This section allows for automatic notifications/messages to be sent
+to specific platforms in order to broadcast messages (ie &lt;em&gt;&amp;lsquo;Bakery
+has paid 100XTZ in rewards for latest cycle&amp;rsquo;&lt;/em&gt; &lt;strong&gt;We will cover this
+in a separate section&lt;/strong&gt;
+&lt;em&gt;see appendix X&lt;/em&gt; and platforms supported are &lt;em&gt;&lt;strong&gt;Twitter, Discord, and E-mail&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;setup-step-2-private-key-file&#34;&gt;Setup: Step 2: Private-Key File&lt;/h3&gt;
+&lt;p&gt;The Private Key file is used to sign the transaction(s) that will
+payout the rewards. From a security perspective, it is recommended
+&lt;em&gt;&lt;strong&gt;NOT&lt;/strong&gt;&lt;/em&gt; to use the Baker private key due to security concerns with the
+private key being displayed in plain-text in a file. This section will
+use the new account and private-key that was acquired in Step 3 - Payout
+Wallet.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Retrieve the private-key of the wallet you wish to use from the
+payout wallet of your choice&lt;/li&gt;
+&lt;li&gt;Paste into a text file (or replace the example that was downloaded
+from the GitHub repository&lt;/li&gt;
+&lt;li&gt;Save the file with &lt;em&gt;&lt;strong&gt;exact&lt;/strong&gt;&lt;/em&gt; file name and extension
+&lt;em&gt;payout_wallet_private.key&lt;/em&gt; - note: the .key is required in this
+instance (see below)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage15.jpg&#34; alt=&#34;&amp;lt;format for naming private key file - must be exactly the same.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;setup-summary&#34;&gt;Setup: Summary&lt;/h3&gt;
+&lt;p&gt;At this point there should be 3 files in the directory &lt;em&gt;tezpay&lt;/em&gt;.
+These three files will be used to run the application and payouts.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: How to Pay Stakers</title>
+      <link>/tezpay/tutorials/how-to-pay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-pay/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;using-tezpay&#34;&gt;Using TezPay&lt;/h2&gt;
+&lt;h3 id=&#34;summary-of-using-tezpay&#34;&gt;Summary of Using Tezpay&lt;/h3&gt;
+&lt;p&gt;Using the TezPay application is through CLI for now and will be
+carried out through a few commands.&lt;/p&gt;
+&lt;p&gt;This section will review:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Generating a payout table for all delegates&lt;/li&gt;
+&lt;li&gt;Generating a test notification (&lt;em&gt;Testing the
+&lt;strong&gt;Twitter&lt;/strong&gt;/&lt;strong&gt;Discord&lt;/strong&gt;/&lt;strong&gt;E-mail&lt;/strong&gt; notifications from the advanced
+configuration file&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;Generating an actual payout&lt;/li&gt;
+&lt;li&gt;Running a continual payout&lt;/li&gt;
+&lt;li&gt;Keeping TezPay up-to-date&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before using a command in TezPay, you will need to run
+&lt;em&gt;&lt;strong&gt;two additional commands&lt;/span&gt;&lt;/strong&gt;&lt;/em&gt; that will
+allow you to call the application via commands and set permissions
+While in the TezPay directory in the terminal, run the following
+commands (&lt;em&gt;see code and examples below&lt;/em&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mv tezpay-linux-amd64 tezpay&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage16.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;chmod +x tezpay&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage17.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;using-tezpay-step-1---generating-a-payout-table&#34;&gt;Using TezPay: Step 1 - Generating a payout Table&lt;/h3&gt;
+&lt;p&gt;Generating a payout table is a took that is useful for Public
+Bakers because it allows the baker to see the incoming rewards from
+baking (both block rewards &amp;amp; fees from delegates), review payout per
+delegator from their stake, and other data (see below).&lt;/p&gt;
+&lt;p&gt;The command to generate a payout table is as follows (always remember to be in the
+&lt;em&gt;tezpay&lt;/em&gt; directory:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will generate a payout table, as exampled below:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage18.png&#34; alt=&#34;&amp;lt;Description of output for ./tezpay generate-payout command.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note: the Delegator &amp;amp; Recipient columns have been hidden&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Represents the table of &lt;em&gt;invalid&lt;/em&gt; delegators that will &lt;strong&gt;not&lt;/strong&gt; be
+paid out due to not meeting specific thresholds (ie minimum payout
+threshold/minimum balance)&lt;/li&gt;
+&lt;li&gt;Represents the table of &lt;em&gt;valid&lt;/em&gt; delegators that will be paid out&lt;/li&gt;
+&lt;li&gt;The list of Delegators first 4 and last 4 characters of their
+wallet&lt;/li&gt;
+&lt;li&gt;The list of Recipients of payment first 4 and last 4 characters of
+their wallet (often the same as Delegator)&lt;/li&gt;
+&lt;li&gt;The delegated balance for each Delegator for that particular cycle&lt;/li&gt;
+&lt;li&gt;Represents the kind of reward given (ie delegator reward, baker
+reward, and fee income)&lt;/li&gt;
+&lt;li&gt;The amount of the specific reward to be paid out&lt;/li&gt;
+&lt;li&gt;The fee rate for each delegator, will reflect those delegators who
+have custom fees per the configuration file&lt;/li&gt;
+&lt;li&gt;The fee collected by the baker from each delegator for hosting their
+delegation&lt;/li&gt;
+&lt;li&gt;The transaction fee to pay out each reward&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;using-tezpay-step-2---testing-notifications&#34;&gt;Using TezPay: Step 2 - Testing Notifications&lt;/h3&gt;
+&lt;p&gt;This step will be used to test the notification system for your
+TezPay application. This step will NOT need to be completed every
+payout, but only when you changes messages to test that it was
+successful.&lt;/p&gt;
+&lt;p&gt;while in the &lt;em&gt;tezpay&lt;/em&gt; directory, use the command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay test-notify&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;using-tezpay-step-3---initiating-a-payout&#34;&gt;Using TezPay: Step 3 - Initiating a Payout&lt;/h3&gt;
+&lt;p&gt;To use the TezPay application to send a payment will require 1
+line of code and one additional confirmation while it runs.&lt;/p&gt;
+&lt;p&gt;To run TezPay, run the code:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay pay&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The system will initiate the TezPay application at this point and present a payout
+table, similar to the table(s) from step 1.&lt;/p&gt;
+&lt;p&gt;Once the table is displayed, the prompt will ask you to confirm the payout, and you need to confirm &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;n&lt;/em&gt; (see below):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage19.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol&gt;
+&lt;li&gt;You will be asked to confirm, type &amp;lsquo;&lt;em&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/em&gt;&amp;rsquo; for yes or &amp;lsquo;&lt;em&gt;&lt;strong&gt;n&lt;/strong&gt;&lt;/em&gt;&amp;rsquo;
+for no&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you confirm the transaction, the payouts will proceed and your
+delegates will be paid out, as well as your Baker wallet. Remember, if
+you are using a separate wallet to payout from your Baker wallet you
+will need to add funds to cover the payments.&lt;/p&gt;
+&lt;p&gt;At this point you have successfully ran the TezPay application and paid out your
+delegates. Be sure to check the confirmations and any errors that may
+have been broadcasted in the terminal (ie, the example above did not
+send notifications because that was not set up).&lt;/p&gt;
+&lt;h3 id=&#34;using-tezpay-step-4---running-a-continual-payout&#34;&gt;Using TezPay: Step 4 - Running a Continual Payout&lt;/h3&gt;
+&lt;p&gt;To use the TezPay application to send a payment will require 1
+line of code and one additional confirmation while it runs.&lt;/p&gt;
+&lt;p&gt;To run TezPay in continual mode, run the command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay continual&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage20Continual.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;Running in continual mode will start its first payment a little bit after the current cycle (one during which you launched it) finishes and the next one begins (usually around 30-60 minutes after the beginning of the new cycle).&lt;/p&gt;
+&lt;p&gt;If you would like to start in continual mode but still need to pay your delegators for last cycle, run the command from Step 3. first and then launch TezPay in continual mode.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary-tezpay&#34;&gt;Summary: TezPay&lt;/h2&gt;
+&lt;p&gt;TezPay is an application that allows for easy payouts for public
+bakers on the Tezos Blockchain. This allows for significant
+customizations and flexibility with respect to the payout system and
+empowers bakers to further take control of their Bakery and aid in
+decentralizing the Tezos Blockchain.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: How to Setup Notifications</title>
+      <link>/tezpay/tutorials/how-to-notify/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-notify/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;notification-setup-in-configuration-file&#34;&gt;Notification setup in Configuration File&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Notifications can be automatically sent out when payouts are generated using TezPay. The text are configured in the config.json file, however there are preliminary steps needed inorder to be able to utilize these features. This section will review the necessary steps and information needed from platforms that allow for auto-notifications sent via TezPay. **This tutorial is meant for individuals that have zero experience with interacting with these systems - feel free to skip sections if you are an advanced user.**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;twitter&#34;&gt;Twitter&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;A Baker can use TezPay to automatically send notifications that payments have been made. This allows for ease of communications for the public baker to the delegates and we will walk through steps to allow for this here. There will be two sections:
+
+1. Twitter Setup
+2. TezPay config.json file setup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;twitter-setup&#34;&gt;Twitter Setup&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;In order to setup twitter, be sure you are signed in on a browser window to your twitter account. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;While being signed into Twitter in a seperate browser, navigate to &lt;a href=&#34;https://developer.twitter.com/&#34;&gt;https://developer.twitter.com/&lt;/a&gt; and select &amp;lsquo;Developer Portal&amp;rsquo; in the top menu- the developer portal site where you will set up your development account and get the required information for the config.json file and set up permissions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage0.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;You will then need to fill in some basic information in order to enable the Development Portal profile to be active. be sure that all of the information is correct (if you use multiple twitter accounts be sure the one you want to enable for notifications is the correct one).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage1.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Once you submit the information for your development profile - you will need to accept the Terms and Conditions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage2.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;After accepting Terms and Conditions - you will need to verify your e-mail address that you provided by clicking the link in the e-mail sent from Twitter.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage3.png&#34; alt=&#34;&amp;lt;Verify the e-mail used for your twitter account - you may need to set this up in Twitter before hand if not done&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Once you verify your email - this will automatically link you back to your Developer Portal Site and prompt you for an &amp;lsquo;App Name&amp;rsquo; (see TezPay Notif in screen capture).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage4.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Once you name your App - you will be given 3 seperate Keys. These will be used to inorder to call the Twitter profile that you are looking to send Notifcations to - and sign for the permissions. Be sure to have these saved in a secure place - they will be used later. Once you have the keys secured, click &amp;lsquo;Dashboard&amp;rsquo; button in lower right.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage5.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;You will now be in your Twitter Development Dashboard and see the App you created (for this example TezPayNotifs). Click the &amp;lsquo;gear&amp;rsquo; icon to continue set-up.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage6.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Navigate to &amp;lsquo;User Authentication Settings&amp;rsquo; section and click &amp;lsquo;Set-up&amp;rsquo; to continue.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage7.png&#34; alt=&#34;&amp;lt;Navigate to User authentication setting and click &amp;amp;lsquo;Set up&amp;amp;rsquo;&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;We will fill out the required items for the form under User Authentication settings as follows: &lt;br&gt;
+i. App Permissions: Select &amp;lsquo;Read and write&amp;rsquo; &lt;br&gt;
+ii. Type of App: Select &amp;lsquo;Web App, Automated App or Bot&amp;rsquo;&lt;br&gt;
+iii. App Info: &lt;br&gt;
+a. Callback URI/Redirect URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#39;&#34;&gt;https://www.TezPayisthebest.com/&#39;&lt;/a&gt;&lt;br&gt;
+b. Website URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#39;&#34;&gt;https://www.TezPayisthebest.com/&#39;&lt;/a&gt;&lt;br&gt;
+iv. Click &amp;lsquo;save&amp;rsquo; when finished. &lt;br&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage8.png&#34; alt=&#34;&amp;lt;Select the outlined toggles under App Permissions &amp;amp; Type of App, then fill in a website for App Info&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You will then get your Client ID and Client Secret - copy and save both of these with your other Keys attained earlier. Click &amp;lsquo;Done&amp;rsquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage9.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;This will bring you back to the main screen of the App - navigate to the &amp;lsquo;Keys and Tokens&amp;rsquo; toggle at the top of the page. Now, &amp;lsquo;Generate&amp;rsquo; an Access Token and secret - write these down and then once you have confirmed you will be ready to edit the config.json in TezPay. Note - be sure the Access Token and Secret has &amp;lsquo;read and write&amp;rsquo; permission (see image below). For the Next step - setting up the config.json - you will need four items:&lt;br&gt;
+a. API Key and Secret (also known as Consumer Key/Secret)&lt;br&gt;
+b. Access Token and Secret&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage10.png&#34; alt=&#34;&amp;lt;Generate your Acces Token and Access Token Secret - and then verify the information.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tezpay-configjson-setup-for-twitter-notifications&#34;&gt;TezPay config.json Setup for Twitter Notifications&lt;/h2&gt;
+&lt;p&gt;We will use the API Key and Secret as well as the Access Token and Secret to edit the Config file to allow for permissions and calls to push notifcations upon each successful payout.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;You will add the following code block at the base of the config.json file to enable the notifications for TezPay. Note that the message_template can be anything and you can use the &lt;Cyle&gt;, &lt;Delegators&gt;, &lt;DistributedRewards&gt; terms to automatically fill in these terms for each cycle. &lt;br&gt;
+&lt;code&gt;notifications: [&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;{&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;access_token: Your_Acces_Token&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;access_token_secret: Your_Access_Token_Secret&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;consumer_key: Your_Consumer_Key&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;consumer_secret: Your_Consumer_Key_Secret&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;message_template: Rewards for &amp;lt;Cycle&amp;gt; have been paid to &amp;lt;Delegators&amp;gt; delegates in amount of &amp;lt;DistributedRewards&amp;gt; using #TezPay.👀 XTZ baked with bakebuddy.xyz! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;type: twitter&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;}&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;]&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage11.png&#34; alt=&#34;&amp;lt;Fill in the information for the config.json file with you information!&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Once you have filled in the necessary information - you have setup Notifications for Twitter! Test the notification by using command: &lt;br&gt;
+a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: How to Update</title>
+      <link>/tezpay/tutorials/how-to-update/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-update/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;keeping-tezpay-up-to-date&#34;&gt;Keeping TezPay Up-to-Date&lt;/h2&gt;
+&lt;p&gt;For access to future releases via Linux CLI, run the following command from within the folder where tezpay is located:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd tezpay
+wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
