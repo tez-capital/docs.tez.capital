@@ -115,7 +115,7 @@ sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
 sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
 # you may be prompted for sudo password; execute 1 line at a time
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-bb-cli-dependencies&#34;&gt;Setup Tezos node, signer and install bb-cli dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup -a
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.&lt;/p&gt;
