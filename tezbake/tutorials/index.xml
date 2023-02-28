@@ -75,6 +75,9 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker. For all other operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of actively baking.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -145,6 +148,59 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker. For all other operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of actively baking.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezbake: How to Monitor</title>
+      <link>/tezbake/tutorials/how-to-monitor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/how-to-monitor/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h2&gt;
+&lt;p&gt;TezBake gives you the option to monitor all Tezos node and baking services. TezBake utilizes the journalctl utility included in most Linux distribution to store and manage its logging.  You can extract all logs for a node easily to diagnose any issues. This tutorial will walk you through the process of monitoring your TezBake node.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;monitor-overall-tezbake-status&#34;&gt;Monitor overall TezBake status&lt;/h2&gt;
+&lt;p&gt;Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the BakeBuddy community as there is something that probably needs tweaking.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli info
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeInfo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;monitor-tezbake-logs&#34;&gt;Monitor TezBake logs&lt;/h2&gt;
+&lt;h3 id=&#34;monitor-full-tezbake-node-and-baker-logs-in-real-time&#34;&gt;Monitor full TezBake node and baker logs in real time&lt;/h3&gt;
+&lt;p&gt;Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNodeLogF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;monitor-limited-tezbake-node-or-baker-logs-in-real-time&#34;&gt;Monitor limited TezBake node or baker logs in real time&lt;/h3&gt;
+&lt;p&gt;Using these commands you can focus on just the node, just the baking/endorsing process or just the accusation (of double baking) processes&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log node -f
+bb-cli node log baker -f
+bb-cli node log accuser -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Monitoring just the &lt;code&gt;node&lt;/code&gt; process shows blocks being synchronized in real time by your node.&lt;/p&gt;
+&lt;p&gt;Monitoring just the &lt;code&gt;baker&lt;/code&gt; process shows all attempts to endorse and bake blocks. The baker process works along with the node process to inject blocks and endorsements into the Tezos network.&lt;/p&gt;
+&lt;p&gt;Monitoring just the &lt;code&gt;accuser&lt;/code&gt; process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.&lt;/p&gt;
+&lt;h3 id=&#34;monitor-tezbake-baker-logs-for-the-next-protocol&#34;&gt;Monitor TezBake baker logs for the next protocol&lt;/h3&gt;
+&lt;p&gt;During times when Tezos protocol are being switched out you will notice that there is a &lt;code&gt;baker&lt;/code&gt; process as well as a &lt;code&gt;baker-next&lt;/code&gt; process. The same is true about the &lt;code&gt;accuser&lt;/code&gt; process. The &lt;code&gt;baker-next&lt;/code&gt; process is the baker process that will be used when the next protocol is activated. The &lt;code&gt;baker&lt;/code&gt; process will be used until the next protocol is activated. The &lt;code&gt;accuser-next&lt;/code&gt; process is the accuser process that will be used when the next protocol is activated. The &lt;code&gt;accuser&lt;/code&gt; process will be used until the next protocol is activated.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNext.png&#34; alt=&#34;&amp;lt;TezBake -next protocol services&amp;gt;&#34;&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log baker-next -f
+bb-cli node log accuser-next -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;baker-next&lt;/code&gt; process will show one of two things.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Protocol is waiting to start. This means everyone is waiting for the new proposal to be activated on mainnet. Nothing needs to be done until the new protocol is activated&lt;/li&gt;
+&lt;li&gt;The baker process is running like normally. This means the new proposal has already activated and the TezBake needs to be updated to reflect it. There is no penalty for not updating unless you do not update in time for the next proposal. In other words, updating is only necessary when a proposal switch is about to happen. We still recomment that all Tezos bakers update their TezBake to the latest production version as soon as possible to get the latest Octez improvements.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;monitor-full-tezbake-signer-logs-in-real-time&#34;&gt;Monitor full TezBake signer logs in real time&lt;/h3&gt;
+&lt;p&gt;Using the command below shows everything your Ledger is signing or trying to sign. If there is a hardware wallet issue, this log will confirm it.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli signer log -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeSignerLogF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
+&lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
