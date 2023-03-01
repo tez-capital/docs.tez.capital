@@ -30,7 +30,7 @@
 <meta itemprop="name" content="How to Vote">
 <meta itemprop="description" content="TezGov Proposal Voting Tutorial">
 
-<meta itemprop="wordCount" content="595">
+<meta itemprop="wordCount" content="707">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Vote"/>
 <meta name="twitter:description" content="TezGov Proposal Voting Tutorial"/>
@@ -207,6 +207,7 @@
     <li><a href="#proposal-voting-with-tezgov">Proposal voting with TezGov</a></li>
     <li><a href="#tezgov-web-portal">TezGov Web Portal</a>
       <ul>
+        <li><a href="#exploration-and-promotion-periods">Exploration and Promotion Periods</a></li>
         <li><a href="#cooldown-period">Cooldown Period</a></li>
       </ul>
     </li>
@@ -285,13 +286,23 @@
 <li>You can also briefly unplug your primary Ledger baking device and use it on a different computer just for voting purposes (use the wallet app to vote), then immediately plugging it back into the primary device, opening the baking app and resuming baking only.</li>
 <li>If your baking computer itself has a graphical interface, you can briefly switch to the wallet app on your Ledger device and vote, then switch back to the baking app and resume baking only.</li>
 </ul>
+<p><strong>In order to vote using your Ledger device, you must have the Tezos wallet app installed and open on your Ledger device. If you have the baking app open, you will not be able to vote</strong></p>
 <hr>
 <h2 id="tezgov-web-portal">TezGov Web Portal</h2>
 <p>Log into the TezGov portal by using the most secure method available to you. We highly recommend using the direct Ledger login at the top. This method allows you to see the specific details of your vote on your Ledger screen. Use the Remote (signer) method if you have a signer somewhere on your LAN or local computer. This is an option for advanced users. Use the Beacon method if you are using a Beacon enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method and the Remote (signer) method.</p>
 <p><img src="/tezgov/tutorial/tezgovHome.png" alt=""></p>
 <p>Once logged in you&rsquo;ll see the TezGov home screen. You can see the current cycle, the current proposal, the current voting period, and the current voting period progress. You can also see the current proposal status and the current proposal details.</p>
+<h3 id="exploration-and-promotion-periods">Exploration and Promotion Periods</h3>
+<p>During the exploration and promotion periods you will see the period name <code>Exploration</code> or <code>Promotion</code> in the middle of the page. You can vote for the current proposal by clicking the <code>NAY</code>, <code>PASS</code> or <code>YAY</code> buttons.</p>
+<p><img src="/tezgov/tutorial/tezgovPromotion.png" alt=""></p>
+<p>You will be asked to confirm the vote on your Ledger device.</p>
+<p><img src="/tezgov/tutorial/tezgovPromotionConfirm.png" alt=""></p>
+<p>Once confirmed, the page will refresh within 30 seconds.</p>
+<p><img src="/tezgov/tutorial/tezgovPromotionConfirm2.png" alt=""></p>
+<p>After finished, you&rsquo;ll be able to click on the confirmation link for your vote.</p>
+<p><img src="/tezgov/tutorial/tezgovPromotionConfirm3.png" alt=""></p>
 <h3 id="cooldown-period">Cooldown Period</h3>
-<p>During the cooldown period you will period name in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.</p>
+<p>During the cooldown period you will period name <code>Cooldown</code> in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.</p>
 <p><img src="/tezgov/tutorial/tezgovCooldown.png" alt="&lt;TezGov Cooldown period"></p>
 <hr>
 <p>Any questions/comments/concerns please contact the Tez.Capital team on
