@@ -50,9 +50,13 @@
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_generate-payouts/</loc>
   </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_import-configuration/</loc>
+  </url><url>
     <loc>/tezpay/reference/cmd/tezpay_pay/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_statistics/</loc>
+  </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_test-extension/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_test-notify/</loc>
   </url><url>
