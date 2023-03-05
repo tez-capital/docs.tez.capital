@@ -19,12 +19,12 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Hooks | docs.tez.capital</title>
-<meta name="description" content="Available Hooks NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
+<meta name="description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
 after_candidates_generated This hook is capable of mutating data.
 [ { &amp;#34;source&amp;#34;: &amp;#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&amp;#34;, &amp;#34;recipient&amp;#34;: &amp;#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&amp;#34;, &amp;#34;fee_rate&amp;#34;: 5, &amp;#34;balance&amp;#34;: &amp;#34;1000000000&amp;#34;, &amp;#34;is_invalid&amp;#34;: true, &amp;#34;is_emptied&amp;#34;: true, &amp;#34;is_baker_paying_tx_fee&amp;#34;: true, &amp;#34;is_baker_paying_allocation_tx_fee&amp;#34;: true, &amp;#34;invalid_because&amp;#34;: &amp;#34;reason&amp;#34; } ] after_bonds_distributed This hook is capable of mutating data.
 [ { &amp;#34;source&amp;#34;: &amp;#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&amp;#34;, &amp;#34;recipient&amp;#34;: &amp;#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&amp;#34;, &amp;#34;fee_rate&amp;#34;: 5, &amp;#34;balance&amp;#34;: &amp;#34;1000000000&amp;#34;, &amp;#34;is_invalid&amp;#34;: true, &amp;#34;is_emptied&amp;#34;: true, &amp;#34;is_baker_paying_tx_fee&amp;#34;: true, &amp;#34;is_baker_paying_allocation_tx_fee&amp;#34;: true, &amp;#34;invalid_because&amp;#34;: &amp;#34;reason&amp;#34;, &amp;#34;bonds_amount&amp;#34;: &amp;#34;1000000000&amp;#34;, &amp;#34;tx_kind&amp;#34;: &amp;#34;fa1&amp;#34;, &amp;#34;fa_token_id&amp;#34;: &amp;#34;10&amp;#34;, &amp;#34;fa_contract&amp;#34;: &amp;#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&amp;#34; } ] check_balance This hook is NOT capable of mutating data.">
 <meta property="og:title" content="Hooks" />
-<meta property="og:description" content="Available Hooks NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
+<meta property="og:description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
 after_candidates_generated This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34; } ] after_bonds_distributed This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34;, &#34;bonds_amount&#34;: &#34;1000000000&#34;, &#34;tx_kind&#34;: &#34;fa1&#34;, &#34;fa_token_id&#34;: &#34;10&#34;, &#34;fa_contract&#34;: &#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&#34; } ] check_balance This hook is NOT capable of mutating data." />
@@ -34,15 +34,15 @@ after_candidates_generated This hook is capable of mutating data.
 
 
 <meta itemprop="name" content="Hooks">
-<meta itemprop="description" content="Available Hooks NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
+<meta itemprop="description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
 after_candidates_generated This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34; } ] after_bonds_distributed This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34;, &#34;bonds_amount&#34;: &#34;1000000000&#34;, &#34;tx_kind&#34;: &#34;fa1&#34;, &#34;fa_token_id&#34;: &#34;10&#34;, &#34;fa_contract&#34;: &#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&#34; } ] check_balance This hook is NOT capable of mutating data.">
 
-<meta itemprop="wordCount" content="271">
+<meta itemprop="wordCount" content="269">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hooks"/>
-<meta name="twitter:description" content="Available Hooks NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
+<meta name="twitter:description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
 after_candidates_generated This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34; } ] after_bonds_distributed This hook is capable of mutating data.
 [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34;, &#34;bonds_amount&#34;: &#34;1000000000&#34;, &#34;tx_kind&#34;: &#34;fa1&#34;, &#34;fa_token_id&#34;: &#34;10&#34;, &#34;fa_contract&#34;: &#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&#34; } ] check_balance This hook is NOT capable of mutating data."/>
@@ -299,8 +299,7 @@ after_candidates_generated This hook is capable of mutating data.
 
 		
 	</header>    
-	<h1 id="available-hooks">Available Hooks</h1>
-<p>NOTE: <em>all bellow examples are just sample data to showcase fields used in data passed to hooks.</em></p>
+	<p>NOTE: <em>all bellow examples are just sample data to showcase fields used in data passed to hooks.</em></p>
 <h2 id="after_candidates_generated">after_candidates_generated</h2>
 <p>This hook is capable of mutating data.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>
@@ -419,7 +418,7 @@ after_candidates_generated This hook is capable of mutating data.
 </span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;donated_bonds&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1000000000&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;donated_fees&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1000000000&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;donated_total&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;1000000000&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;timestamp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2023-03-05T12:43:28.458458777Z&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;timestamp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2023-01-01T00:00:00Z&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div>
