@@ -38,6 +38,8 @@
   </url><url>
     <loc>/tezpay/configuration/</loc>
   </url><url>
+    <loc>/tezpay/extensions/</loc>
+  </url><url>
     <loc>/tezpay/configuration/examples/default/</loc>
   </url><url>
     <loc>/tezpay/reference/</loc>
