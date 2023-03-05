@@ -42,6 +42,8 @@
   </url><url>
     <loc>/tezpay/configuration/examples/default/</loc>
   </url><url>
+    <loc>/tezpay/extensions/reference/hooks/</loc>
+  </url><url>
     <loc>/tezpay/reference/</loc>
   </url><url>
     <loc>/tezpay/configuration/examples/sample/</loc>
