@@ -310,6 +310,10 @@ sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli upgrade -a
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;what-should-i-do-after-updating&#34;&gt;What should I do after updating?&lt;/h2&gt;
 &lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://TzStats.com&#34;&gt;https://TzStats.com&lt;/a&gt; and &lt;a href=&#34;https://TzKT.io&#34;&gt;https://TzKT.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Check your TezBake stack versions to ensure they are up to date:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli version --all
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see the expected Octez version along with the release date of the binaries.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeVersionAll.png&#34; alt=&#34;&amp;lt;bb-cli version, Octez versions&amp;gt;&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns please contact the Tez.Capital team on
 &lt;a href=&#34;https://discord.gg/vykxNSnvQY&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/bakebuddy&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
