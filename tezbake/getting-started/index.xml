@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Getting Started with Tezos Baking</title>
+    <title>docs.tez.capital – Getting Started</title>
     <link>/tezbake/getting-started/</link>
-    <description>Recent content in Getting Started with Tezos Baking on docs.tez.capital</description>
+    <description>Recent content in Getting Started on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezbake: Tezos Baking Best Practices</title>
+      <title>Tezbake: Baking Best Practices</title>
       <link>/tezbake/getting-started/best-practices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
