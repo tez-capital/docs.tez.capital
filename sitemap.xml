@@ -10,6 +10,8 @@
   </url><url>
     <loc>/</loc>
   </url><url>
+    <loc>/tezbake/getting-started/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/how-to-bake-ghostnet/</loc>
   </url><url>
     <loc>/tezbake/tutorials/how-to-bootstrap/</loc>
@@ -31,6 +33,8 @@
     <loc>/tezbake/</loc>
   </url><url>
     <loc>/tezgov/</loc>
+  </url><url>
+    <loc>/tezbake/getting-started/best-practices/</loc>
   </url><url>
     <loc>/tezpay/</loc>
   </url><url>
