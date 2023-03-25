@@ -326,7 +326,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;h3 id=&#34;which-tezbake-upgrade-method-should-i-use&#34;&gt;Which TezBake upgrade method should I use?&lt;/h3&gt;
 &lt;p&gt;We will sometimes specify which upgrade method to use by referencing its number.  If a number is not specified, use the guidelines below to determine which method to use:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;If you&amp;rsquo;d like to be as thorouh as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new bb-cli version.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;d like to be as thorough as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new bb-cli version.&lt;/li&gt;
 &lt;li&gt;If you want to get most improvements and fixes from the TezBake side as well as from the Tezos core dev side, use the #2 method.  This is the recommended option for most circumstances.&lt;/li&gt;
 &lt;li&gt;If you just want to keep baking on Tezos or get the latest Octez improvements without modifying any other components, use the #1 method&lt;/li&gt;
 &lt;/ul&gt;
