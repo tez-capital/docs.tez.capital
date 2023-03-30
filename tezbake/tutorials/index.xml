@@ -122,7 +122,7 @@ sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node --tarball
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node --tarball https://ghostnet.xtz-shots.io/rolling-tarball
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;start-tezos-node&#34;&gt;Start Tezos node&lt;/h3&gt;
 &lt;p&gt;After importing the snapshot, you need to start your node and wait until it&amp;rsquo;s fully synchronized before importing your Ledger key.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli start

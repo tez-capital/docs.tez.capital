@@ -30,7 +30,7 @@
 <meta itemprop="name" content="How to Bake on Ghostnet">
 <meta itemprop="description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet">
 
-<meta itemprop="wordCount" content="952">
+<meta itemprop="wordCount" content="953">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake on Ghostnet"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet"/>
@@ -339,7 +339,7 @@ sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
 # you may be prompted for sudo password
 </code></pre><h3 id="bootstrap-tezos-node">Bootstrap Tezos node</h3>
 <p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.</p>
-<pre tabindex="0"><code>bb-cli bootstrap-node --tarball
+<pre tabindex="0"><code>bb-cli bootstrap-node --tarball https://ghostnet.xtz-shots.io/rolling-tarball
 </code></pre><h3 id="start-tezos-node">Start Tezos node</h3>
 <p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
 <pre tabindex="0"><code>bb-cli start
