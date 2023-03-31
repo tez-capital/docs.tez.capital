@@ -207,7 +207,7 @@ we will review:&lt;/p&gt;
 &lt;h3 id=&#34;setup-step-1a-configuration-file-simple&#34;&gt;Setup: Step 1a: Configuration File (simple)&lt;/h3&gt;
 &lt;p&gt;This section will review how to setup the configuration file
 (simple-version) to be used by the TezPay application.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensative&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;*Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensitive *&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -241,7 +241,7 @@ custom file as well - but should be done by experienced users.&lt;/p&gt;
 &lt;h3 id=&#34;setup-step-1b-configuration-file-advanced&#34;&gt;Setup: Step 1b: Configuration File (advanced)&lt;/h3&gt;
 &lt;p&gt;This section will review how to setup the configuration file
 (advanced-version) to be used by the TezPay application.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensative&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;*Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensitive *&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
