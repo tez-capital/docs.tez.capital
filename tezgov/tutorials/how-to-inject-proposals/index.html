@@ -30,7 +30,7 @@
 <meta itemprop="name" content="How to Inject Proposals">
 <meta itemprop="description" content="TezGov Portal Proposal Injection Tutorial">
 
-<meta itemprop="wordCount" content="149">
+<meta itemprop="wordCount" content="356">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Inject Proposals"/>
 <meta name="twitter:description" content="TezGov Portal Proposal Injection Tutorial"/>
@@ -236,7 +236,12 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#tezgov-portal-proposal-injection-tutorial">TezGov Portal Proposal Injection Tutorial</a></li>
+    <li><a href="#tezgov-portal-proposal-injection-tutorial">TezGov Portal Proposal Injection Tutorial</a>
+      <ul>
+        <li><a href="#1-you-can-submit-a-proposal-published-by-the-tezos-core-developers-by-pasting-its-hash">(1) You can submit a proposal published by the Tezos core developers by pasting its hash</a></li>
+        <li><a href="#2-you-can-submit-a-message-to-the-tezos-bakers-and-community-in-the-form-of-a-tezos-proposal-hash">(2) You can submit a message to the Tezos bakers and community in the form of a Tezos proposal hash</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -301,14 +306,23 @@
 	<h2 id="tezgov-portal-proposal-injection-tutorial">TezGov Portal Proposal Injection Tutorial</h2>
 <p>TezGov Web Portal: <a href="https://gov.tez.capital" title="TezGov Web Portal">https://gov.tez.capital</a></p>
 <p>Log into the TezGov portal by using the most secure method available to you.</p>
+<p><img src="/tezgov/tutorial/tezgovHome.png" alt=""></p>
 <ul>
 <li><strong>We highly recommend using the direct Ledger login at the top. This method allows you to see the specific details of your vote on your Ledger screen.</strong></li>
 <li>Use the Remote (signer) method if you have a signer somewhere on your LAN or local computer. This is an option for advanced users.</li>
-<li>Use the Beacon method if you are using a Beacon enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method</li>
+<li>Use the Beacon method if you are using a Beacon enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method.</li>
 </ul>
-<p><img src="/tezgov/tutorial/tezgovHome.png" alt=""></p>
 <p>Click New Proposal</p>
 <p><img src="/tezgov/tutorial/tezgovNewProposal.png" alt=""></p>
+<p>You have 2 options when submitting a proposal via the TezGov portal.</p>
+<h3 id="1-you-can-submit-a-proposal-published-by-the-tezos-core-developers-by-pasting-its-hash">(1) You can submit a proposal published by the Tezos core developers by pasting its hash</h3>
+<p>The true names of the proposals crafted by the collective Tezos core developer teams are posted in <a href="https://research-development.nomadic-labs.com/blog.html">https://research-development.nomadic-labs.com/blog.html</a>. Any Tezos baker can submit these proposals to the Tezos blockchain by pasting their hash as shown below. In the example given, the baker is submitting the Nairobi proposal.</p>
+<p><img src="/tezgov/tutorial/tezgovNewProposalCore.png" alt=""></p>
+<h3 id="2-you-can-submit-a-message-to-the-tezos-bakers-and-community-in-the-form-of-a-tezos-proposal-hash">(2) You can submit a message to the Tezos bakers and community in the form of a Tezos proposal hash</h3>
+<p>Vanity names are names crafted for the sole purpose to sent a message to all ecosystem participatings. They are not meant to be voted on. They are meant to be used as a way to communicate with the Tezos community. In the example given, the baker is submitting the signal that on-chain funding is something desirable.</p>
+<p>Vanity proposals can be used for other reasons as well but they are never meant to be pursued all the way through. The scope of vanity proposals does not extend past the proposal round. It does not extend past the proposal stage.</p>
+<p><img src="/tezgov/tutorial/tezgovNewProposalVanity.png" alt=""></p>
+<p>We encourage all bakers to use this system only for serious ecosystem governance issues</p>
 <hr>
 <p>Any questions/comments/concerns please contact the Tez.Capital team on
 <a href="https://discord.gg/vykxNSnvQY">Discord</a> or <a href="https://t.me/bakebuddy">Telegram</a></p>
