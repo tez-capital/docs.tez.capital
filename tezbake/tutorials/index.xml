@@ -295,33 +295,54 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
         
         &lt;h2 id=&#34;tezbake-updating&#34;&gt;TezBake Updating&lt;/h2&gt;
 &lt;p&gt;The TezBake software consists of four components:&lt;/p&gt;
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;ami - &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt; &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;eli -  Lua Interpreter &amp;amp; Essential libraries for simple cross platform scripting - &lt;a href=&#34;https://github.com/alis-is/eli&#34;&gt;https://github.com/alis-is/eli&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;bb-cli - Command line interface for setting and monitoring your baker, using the help of the 2 tools above&lt;/li&gt;
 &lt;li&gt;Octez binaries - Tezos node binaries published by the Tezos core developers - &lt;a href=&#34;https://gitlab.com/tezos/tezos/-/releases&#34;&gt;https://gitlab.com/tezos/tezos/-/releases&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;We regularly update all parts of the TezBake stack and the Tezos core developments regularly publish new Octez versions and protocols.  All mandatory (to keep baking) and optional updates are posted across Tez.Capital social media channels.  Updates must be performed manually at this time, to ensure the Tezos node operator is the only person able to control their baking operation.&lt;/p&gt;
-&lt;p&gt;There are three upgrade method that are supported depending on what the Tezos node operator wants to do:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Update Octez binaries only (#4 only)&lt;/li&gt;
-&lt;li&gt;Update ami &amp;amp; eli and Octez binaries (#1, #2, #4)&lt;/li&gt;
-&lt;li&gt;Update the entire TezBake software stack (#1, #2, #3, #4)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;what-is-the-difference-between-the-three-upgrade-methods&#34;&gt;What is the difference between the three upgrade methods?&lt;/h3&gt;
-&lt;p&gt;Using the first upgrade method is recommended when one only wants to change or update the Tezos binaries, in cases such as:&lt;/p&gt;
+&lt;p&gt;There are a few upgrade methods that are supported depending on what the Tezos node operator wants to do:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Update Octez binaries only (#4 only)
+&lt;ul&gt;
+&lt;li&gt;Using this upgrade method is recommended when one only wants to change or update the Tezos binaries, in cases such as:
 &lt;ul&gt;
 &lt;li&gt;Tezos protocol forkless update preparation&lt;/li&gt;
 &lt;li&gt;Removal of stale protocol after forkless update&lt;/li&gt;
 &lt;li&gt;Updating from old Octez version to new Octez version, while continuing to run the same Tezos protocol&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Using the second upgrade method is recommended for the same reasons as above, as well as:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Update ami &amp;amp; eli and Octez binaries (#1, #2, #4)
+&lt;ul&gt;
+&lt;li&gt;Using this upgrade method is recommended for the same reasons as above, as well as:
 &lt;ul&gt;
 &lt;li&gt;Getting the latest ami &amp;amp; eli fixes and improvements&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Using the third upgrade method is recommended for all the same reasons listes so far, as well as:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Update the entire TezBake software stack (#1, #2, #3, #4)
+&lt;ul&gt;
+&lt;li&gt;Using this upgrade method is recommended for all the same reasons listes so far, as well as:
 &lt;ul&gt;
 &lt;li&gt;Getting the latest bb-cli improvements and fixes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Update only bb-cli to the latest ALPHA version to receive the latest bb-cli improvements and proposed test fixes (#3 only)
+&lt;ul&gt;
+&lt;li&gt;Using this upgrade method is recommended when one only wants to change or update the bb-cli utility, in cases such as:
+&lt;ul&gt;
+&lt;li&gt;bb-cli is testing improvements and fixes such as new formatting or output options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Updating just bb-cli without running any setup commands does not change the Tezos node or baking process in any way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;which-tezbake-upgrade-method-should-i-use&#34;&gt;Which TezBake upgrade method should I use?&lt;/h3&gt;
 &lt;p&gt;We will sometimes specify which upgrade method to use by referencing its number.  If a number is not specified, use the guidelines below to determine which method to use:&lt;/p&gt;
@@ -339,11 +360,24 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
 cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-amd64
 sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
+# you may be prompted for sudo password
+
 # If you have an ARM based computer such as a Raspberry Pi:
 cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-arm64
 sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
+# you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli upgrade -a
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;update-bb-cli-to-the-alpha-testing-version--4&#34;&gt;Update bb-cli to the ALPHA testing version  (#4)&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
+cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x ALPHA-bb-cli-linux-amd64
+sudo mv ALPHA-bb-cli-linux-amd64 /usr/sbin/bb-cli
+# you may be prompted for sudo password
+
+# If you have an ARM based computer such as a Raspberry Pi:
+cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-arm64 &amp;amp;&amp;amp; ALPHA-bb-cli-linux-arm64
+sudo mv ALPHA-bb-cli-linux-arm64 /usr/sbin/bb-cli
+# you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;what-should-i-do-after-updating&#34;&gt;What should I do after updating?&lt;/h2&gt;
 &lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://TzStats.com&#34;&gt;https://TzStats.com&lt;/a&gt; and &lt;a href=&#34;https://TzKT.io&#34;&gt;https://TzKT.io&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Check your TezBake stack versions to ensure they are up to date:&lt;/p&gt;
