@@ -8,8 +8,6 @@
   </url><url>
     <loc>/tezgov/tutorials/how-to-vote/</loc>
   </url><url>
-    <loc>/</loc>
-  </url><url>
     <loc>/getting-started/</loc>
   </url><url>
     <loc>/tezbake/tutorials/how-to-bake-ghostnet/</loc>
@@ -31,6 +29,8 @@
     <loc>/tezbake/tutorials/how-to-update/</loc>
   </url><url>
     <loc>/tezpay/tutorials/how-to-update/</loc>
+  </url><url>
+    <loc>/</loc>
   </url><url>
     <loc>/tezbake/</loc>
   </url><url>
