@@ -38,7 +38,7 @@ after_candidates_generated This hook is capable of mutating data.
 { &#34;cycle&#34;: 580, &#34;candidates&#34;: [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34; } ] } after_bonds_distributed This hook is capable of mutating data.
 { &#34;cycle&#34;: 580, &#34;candidates&#34;: [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34;, &#34;bonds_amount&#34;: &#34;1000000000&#34;, &#34;tx_kind&#34;: &#34;fa1&#34;, &#34;fa_token_id&#34;: &#34;10&#34;, &#34;fa_contract&#34;: &#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&#34; } ] } check_balance This hook is NOT capable of mutating data.">
 
-<meta itemprop="wordCount" content="284">
+<meta itemprop="wordCount" content="286">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hooks"/>
 <meta name="twitter:description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
@@ -424,7 +424,8 @@ after_candidates_generated This hook is capable of mutating data.
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;op_limits&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;transaction_fee&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;storage_limit&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;gas_limit&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;gas_limit&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;serialization_fee&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">},</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;note&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;reason&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
