@@ -35,7 +35,7 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
 Synopsis runs manual payout
 tezpay pay [flags] Options --confirm automatically confirms generated payouts -c, --cycle int cycle to generate payouts for --from-file string loads payouts from file instead of generating on the fly -h, --help help for pay --no-separate-fa disables fa transfers separation (mixes txs and fa transfers within batches) --no-separate-sc disables smart contract separation (mixes txs and smart contract calls within batches) --notificator string Notify through specific notificator --report-to-stdout prints them to stdout (wont write to file) -s, --silent suppresses notifications --skip-balance-check skips payout wallet balance check Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
 
-<meta itemprop="wordCount" content="149">
+<meta itemprop="wordCount" content="176">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezpay_pay"/>
 <meta name="twitter:description" content="tezpay pay manual payout
@@ -331,12 +331,13 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
   -s, --silent               suppresses notifications
       --skip-balance-check   skips payout wallet balance check
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
-<pre tabindex="0"><code>      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &#34;auto&#34;)
-  -p, --path string               path to working directory (default &#34;.&#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+<pre tabindex="0"><code>      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &#34;auto&#34;)
+  -p, --path string                      path to working directory (default &#34;.&#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 </code></pre><h3 id="see-also">SEE ALSO</h3>
 <ul>
 <li><a href="tezpay.md">tezpay</a>	 - TEZPAY</li>

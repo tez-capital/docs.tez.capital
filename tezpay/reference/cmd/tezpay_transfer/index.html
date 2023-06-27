@@ -35,7 +35,7 @@ tezpay transfer &lt;destination&gt; &lt;amount tez&gt; [flags] Options --confirm
 Synopsis transfers tez to specified address from payout wallet
 tezpay transfer &lt;destination&gt; &lt;amount tez&gt; [flags] Options --confirm automatically confirms transfer -h, --help help for transfer --mutez amount in mutez Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
 
-<meta itemprop="wordCount" content="93">
+<meta itemprop="wordCount" content="120">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezpay_transfer"/>
 <meta name="twitter:description" content="tezpay transfer transfers tez to specified address
@@ -324,12 +324,13 @@ tezpay transfer &lt;destination&gt; &lt;amount tez&gt; [flags] Options --confirm
   -h, --help      help for transfer
       --mutez     amount in mutez
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
-<pre tabindex="0"><code>      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &#34;auto&#34;)
-  -p, --path string               path to working directory (default &#34;.&#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+<pre tabindex="0"><code>      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &#34;auto&#34;)
+  -p, --path string                      path to working directory (default &#34;.&#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 </code></pre><h3 id="see-also">SEE ALSO</h3>
 <ul>
 <li><a href="tezpay.md">tezpay</a>	 - TEZPAY</li>

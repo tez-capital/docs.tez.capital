@@ -27,16 +27,17 @@
         &lt;h2 id=&#34;tezpay&#34;&gt;tezpay&lt;/h2&gt;
 &lt;p&gt;TEZPAY&lt;/p&gt;
 &lt;h3 id=&#34;synopsis&#34;&gt;Synopsis&lt;/h3&gt;
-&lt;p&gt;TEZPAY 0.1.22-alpha - the tezos reward distributor
+&lt;p&gt;TEZPAY 0.1.23-alpha - the tezos reward distributor
 Copyright © 2023 alis.is&lt;/p&gt;
 &lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -h, --help                      help for tezpay
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -h, --help                             help for tezpay
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay_continual.md&#34;&gt;tezpay continual&lt;/a&gt;	 - continual payout&lt;/li&gt;
@@ -76,12 +77,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
       --no-separate-fa              disables fa transfers separation (mixes txs and fa transfers within batches)
       --no-separate-sc              disables smart contract separation (mixes txs and smart contract calls within batches)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -111,12 +113,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
       --skip-balance-check   skips payout wallet balance check
       --to-file string       saves generated payouts to specified file
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -143,12 +146,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help   help for import-configuration
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -184,12 +188,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
   -s, --silent               suppresses notifications
       --skip-balance-check   skips payout wallet balance check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -218,12 +223,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
   -h, --help             help for statistics
       --last-cycle int   last cycle to collect statistics from (has priority over --cycles)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -250,12 +256,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help   help for test-extension
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -283,12 +290,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help                 help for test-notify
       --notificator string   Notify through specific notificator
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -317,12 +325,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
   -h, --help      help for transfer
       --mutez     amount in mutez
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
@@ -349,12 +358,13 @@ Copyright © 2023 alis.is&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help   help for version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt   Disable donation prompt
-  -l, --log-level string          Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
-  -o, --output-format string      Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
-  -p, --path string               path to working directory (default &amp;#34;.&amp;#34;)
-      --signer string             Override signer
-      --skip-version-check        Skip version check
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
+  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;)
+  -o, --output-format string             Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
+  -p, --path string                      path to working directory (default &amp;#34;.&amp;#34;)
+      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
+      --signer string                    Override signer
+      --skip-version-check               Skip version check
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;tezpay.md&#34;&gt;tezpay&lt;/a&gt;	 - TEZPAY&lt;/li&gt;
