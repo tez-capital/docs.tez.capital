@@ -27,7 +27,7 @@
         &lt;h2 id=&#34;tezpay&#34;&gt;tezpay&lt;/h2&gt;
 &lt;p&gt;TEZPAY&lt;/p&gt;
 &lt;h3 id=&#34;synopsis&#34;&gt;Synopsis&lt;/h3&gt;
-&lt;p&gt;TEZPAY 0.1.23-alpha - the tezos reward distributor
+&lt;p&gt;TEZPAY 0.1.24-alpha - the tezos reward distributor
 Copyright © 2023 alis.is&lt;/p&gt;
 &lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --disable-donation-prompt          Disable donation prompt
