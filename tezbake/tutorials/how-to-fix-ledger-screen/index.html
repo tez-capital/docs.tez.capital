@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Fix Ledger Screen (WIP)">
 <meta itemprop="description" content="Ledger Screen Blanking Fix for Nano S Plus and Nano X">
 
-<meta itemprop="wordCount" content="697">
+<meta itemprop="wordCount" content="721">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Fix Ledger Screen (WIP)"/>
 <meta name="twitter:description" content="Ledger Screen Blanking Fix for Nano S Plus and Nano X"/>
@@ -315,9 +315,9 @@
 <li>When baking with a Ledger Nano S Plus or Nano X, the device&rsquo;s screen is never blanked out, which can cause the screen to burn out or burn in over time.</li>
 </ul>
 <p>Since the Tezos protocol block time has been reduced to 15 seconds, bakers have had to migrate from the Ledger Nano S, to the faster Nano S Plus devices and even the Nano X&rsquo;s. Unfortunately, this means their Ledger devices are now susceptible to screen burn in and burn out, before an official Ledger Live patch for this issue is released.</p>
-<p>We have developed an internal fix to the screen blanking issue which we eventually made public, so that other bakers can benefit from it as well. We are now recommending side loading our fix in order to preserve our baker Ledger screens while we try to convince the Ledger organization to include our fix in their official Ledger Live release. There is currently no way of knowing how long this will take.</p>
+<p>We have developed an internal fix to the screen blanking issue which we eventually made public, so that other bakers can benefit from it as well. We are now recommending side loading our fix on all Ledger Nano S Plus devices in order to preserve our baker Ledger screens while we try to convince the Ledger organization to include our fix in their official Ledger Live release. There is currently no way of knowing how long this will take.</p>
 <p><strong>The patch described below is a temporary fix for this issue, until Ledger Live releases an official patch. We do not recommend side loading Ledger apps in general, but this is a necessary evil for the time being if bakers want to preserve their device screens. We need everyone&rsquo;s help to gently encourage Ledger to include the fix in their official Ledger Live release. The patch has been reviewed by several highly skilled engineers and has been used by a few bakers over the period of a few months without any issues.</strong></p>
-<p><strong>Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&rsquo;t allow app side loading. This patch is also not to be used on the regular Ledger Nano because the official firmware properly handles the screen blanking.</strong></p>
+<p><strong>Unfortunately, the patch is not currently loadable on the Ledger Nano X because it doesn&rsquo;t allow app side loading. This patch is also not to be used on the regular Ledger Nano S because the official firmware properly handles the screen blanking. Once Ledger officially releases our patch, it will work seamlessly on all Ledger Nano devices.</strong></p>
 <p>The source code can be found here: <a href="https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection">https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection</a></p>
 <h2 id="patch-side-loading-instructions">Patch Side Loading Instructions</h2>
 <h3 id="install-prerequisites">Install Prerequisites</h3>
