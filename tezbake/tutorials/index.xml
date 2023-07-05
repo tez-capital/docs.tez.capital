@@ -192,6 +192,40 @@ bb-cli bootstrap-node https://mainnet-v15.xtz-shots.io/mainnet-3185135.rolling B
     </item>
     
     <item>
+      <title>Tezbake: How to Fix Ledger Screen (WIP)</title>
+      <link>/tezbake/tutorials/how-to-fix-ledger-screen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/how-to-fix-ledger-screen/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;ledger-screen-blanking-issue&#34;&gt;Ledger Screen Blanking Issue&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;When baking with a Ledger Nano S, the device&amp;rsquo;s screen is blanked out to preserve it, upon the first attestation (i.e. endorsement) of a block.&lt;/li&gt;
+&lt;li&gt;When baking with a Ledger Nano S Plus or Nano X, the device&amp;rsquo;s screen is never blanked out, which can cause the screen to burn out or burn in over time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Since the Tezos protocol block time has been reduced to 15 seconds, bakers have had to migrate from the Ledger Nano S, to the faster Nano S Plus devices and even the Nano X&amp;rsquo;s. Unfortunately, this means their Ledger devices are now susceptible to screen burn in and burn out, before an official Ledger Live patch for this issue is released.&lt;/p&gt;
+&lt;p&gt;We have developed an internal fix to the screen blanking issue which we eventually made public, so that other bakers can benefit from it as well. We are now recommending side loading our fix in order to preserve our baker Ledger screens while we try to convince the Ledger organization to include our fix in their official Ledger Live release. There is currently no way of knowing how long this will take.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The patch described below is a temporary fix for this issue, until Ledger Live releases an official patch. We do not recommend side loading Ledger apps in general, but this is a necessary evil for the time being if bakers want to preserve their device screens. We need everyone&amp;rsquo;s help to gently encourage Ledger to include the fix in their official Ledger Live release. The patch has been reviewed by several highly skilled engineers and has been used by a few bakers over the period of a few months without any issues.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&amp;rsquo;t allow app side loading&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The source code can be found here: &lt;a href=&#34;https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection&#34;&gt;https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;patch-side-loading-instructions&#34;&gt;Patch Side Loading Instructions&lt;/h2&gt;
+&lt;p&gt;Side loading the patch is a simple process, but it does require a few steps. Please follow the instructions below carefully.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd ~
+git clone https://github.com/alis-is/app-tezos.git
+cd app-tezos
+git checkout baking-burn-in-protection
+sudo docker run --privileged --rm -ti -v &amp;#34;$(realpath .):/app&amp;#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
+APP=tezos_baking TARGET_NAME=nanos make load
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: How to Monitor</title>
       <link>/tezbake/tutorials/how-to-monitor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
