@@ -208,17 +208,40 @@ bb-cli bootstrap-node https://mainnet-v15.xtz-shots.io/mainnet-3185135.rolling B
 &lt;p&gt;Since the Tezos protocol block time has been reduced to 15 seconds, bakers have had to migrate from the Ledger Nano S, to the faster Nano S Plus devices and even the Nano X&amp;rsquo;s. Unfortunately, this means their Ledger devices are now susceptible to screen burn in and burn out, before an official Ledger Live patch for this issue is released.&lt;/p&gt;
 &lt;p&gt;We have developed an internal fix to the screen blanking issue which we eventually made public, so that other bakers can benefit from it as well. We are now recommending side loading our fix in order to preserve our baker Ledger screens while we try to convince the Ledger organization to include our fix in their official Ledger Live release. There is currently no way of knowing how long this will take.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The patch described below is a temporary fix for this issue, until Ledger Live releases an official patch. We do not recommend side loading Ledger apps in general, but this is a necessary evil for the time being if bakers want to preserve their device screens. We need everyone&amp;rsquo;s help to gently encourage Ledger to include the fix in their official Ledger Live release. The patch has been reviewed by several highly skilled engineers and has been used by a few bakers over the period of a few months without any issues.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&amp;rsquo;t allow app side loading&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&amp;rsquo;t allow app side loading. This patch is also not to be used on the regular Ledger Nano because the official firmware properly handles the screen blanking.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The source code can be found here: &lt;a href=&#34;https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection&#34;&gt;https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;patch-side-loading-instructions&#34;&gt;Patch Side Loading Instructions&lt;/h2&gt;
+&lt;h3 id=&#34;install-prerequisites&#34;&gt;Install Prerequisites&lt;/h3&gt;
+&lt;p&gt;You&amp;rsquo;ll need to manually delete your old Tezos Baking app using Ledger Live, before you can side load the patched app. You&amp;rsquo;ll also need to install docker and add your current user to the docker group.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo install docker.io -y
+sudo usermod -aG docker $USER
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Reboot after this step.&lt;/p&gt;
+&lt;h3 id=&#34;install-patched-app-version-233-on-ledger-nano-plus&#34;&gt;Install Patched App (version 2.3.3) on Ledger Nano Plus&lt;/h3&gt;
 &lt;p&gt;Side loading the patch is a simple process, but it does require a few steps. Please follow the instructions below carefully.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd ~
 git clone https://github.com/alis-is/app-tezos.git
 cd app-tezos
 git checkout baking-burn-in-protection
-sudo docker run --privileged --rm -ti -v &amp;#34;$(realpath .):/app&amp;#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
-APP=tezos_baking TARGET_NAME=nanos make load
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+docker run --privileged --rm -ti -v &amp;#34;$(realpath .):/app&amp;#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
+BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make load
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After running the &lt;code&gt;BOLOS_SDK&lt;/code&gt; command, your Ledger Nano Plus will display a message asking you to confirm the installation of the app. Press both buttons to confirm the installation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;When starting the app for the first time, you will be asked to confirm the execution of the app. Press both buttons to confirm. This is because the app is not published by Ledger.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;setup-baker-again&#34;&gt;Setup baker again&lt;/h3&gt;
+&lt;p&gt;After uninstallin the old app and installing the new one (2.3.3), you will need to setup your Ledger Nano S Plus for baking again.&lt;/p&gt;
+&lt;p&gt;Plug in Ledger, input pin, open patched Tezos Baking app, and then run the following command:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup-ledger --main-hwm 3826854
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Replace &lt;code&gt;3826854&lt;/code&gt; with the latest current head block height. You can find this information on &lt;a href=&#34;https://tzstats.com/&#34;&gt;tzstats.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Confirm the operation on your Ledger device and you&amp;rsquo;re done!&lt;/p&gt;
+&lt;h3 id=&#34;blanking-out-ledger-nano-s-plus-screen&#34;&gt;Blanking out Ledger Nano S Plus Screen&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Plug in Ledger Nano S Plus&lt;/li&gt;
+&lt;li&gt;Input pin&lt;/li&gt;
+&lt;li&gt;Open patched Tezos Baking app (accept warning)&lt;/li&gt;
+&lt;li&gt;Hit the left button until you see &lt;code&gt;Application is ready&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Hit both buttons to blank out screen&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The screen will also blank out when you perform your first attestation (i.e. endorsement) of a block.&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 

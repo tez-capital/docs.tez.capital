@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Fix Ledger Screen (WIP)">
 <meta itemprop="description" content="Ledger Screen Blanking Fix for Nano S Plus and Nano X">
 
-<meta itemprop="wordCount" content="372">
+<meta itemprop="wordCount" content="650">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Fix Ledger Screen (WIP)"/>
 <meta name="twitter:description" content="Ledger Screen Blanking Fix for Nano S Plus and Nano X"/>
@@ -240,7 +240,14 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#ledger-screen-blanking-issue">Ledger Screen Blanking Issue</a></li>
-    <li><a href="#patch-side-loading-instructions">Patch Side Loading Instructions</a></li>
+    <li><a href="#patch-side-loading-instructions">Patch Side Loading Instructions</a>
+      <ul>
+        <li><a href="#install-prerequisites">Install Prerequisites</a></li>
+        <li><a href="#install-patched-app-version-233-on-ledger-nano-plus">Install Patched App (version 2.3.3) on Ledger Nano Plus</a></li>
+        <li><a href="#setup-baker-again">Setup baker again</a></li>
+        <li><a href="#blanking-out-ledger-nano-s-plus-screen">Blanking out Ledger Nano S Plus Screen</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -310,17 +317,40 @@
 <p>Since the Tezos protocol block time has been reduced to 15 seconds, bakers have had to migrate from the Ledger Nano S, to the faster Nano S Plus devices and even the Nano X&rsquo;s. Unfortunately, this means their Ledger devices are now susceptible to screen burn in and burn out, before an official Ledger Live patch for this issue is released.</p>
 <p>We have developed an internal fix to the screen blanking issue which we eventually made public, so that other bakers can benefit from it as well. We are now recommending side loading our fix in order to preserve our baker Ledger screens while we try to convince the Ledger organization to include our fix in their official Ledger Live release. There is currently no way of knowing how long this will take.</p>
 <p><strong>The patch described below is a temporary fix for this issue, until Ledger Live releases an official patch. We do not recommend side loading Ledger apps in general, but this is a necessary evil for the time being if bakers want to preserve their device screens. We need everyone&rsquo;s help to gently encourage Ledger to include the fix in their official Ledger Live release. The patch has been reviewed by several highly skilled engineers and has been used by a few bakers over the period of a few months without any issues.</strong></p>
-<p><strong>Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&rsquo;t allow app side loading</strong></p>
+<p><strong>Unfortunately, the patch is not compatible with the Ledger Nano X because it doesn&rsquo;t allow app side loading. This patch is also not to be used on the regular Ledger Nano because the official firmware properly handles the screen blanking.</strong></p>
 <p>The source code can be found here: <a href="https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection">https://github.com/alis-is/app-tezos/tree/baking-burn-in-protection</a></p>
 <h2 id="patch-side-loading-instructions">Patch Side Loading Instructions</h2>
+<h3 id="install-prerequisites">Install Prerequisites</h3>
+<p>You&rsquo;ll need to manually delete your old Tezos Baking app using Ledger Live, before you can side load the patched app. You&rsquo;ll also need to install docker and add your current user to the docker group.</p>
+<pre tabindex="0"><code>sudo apt update &amp;&amp; sudo install docker.io -y
+sudo usermod -aG docker $USER
+</code></pre><p>Reboot after this step.</p>
+<h3 id="install-patched-app-version-233-on-ledger-nano-plus">Install Patched App (version 2.3.3) on Ledger Nano Plus</h3>
 <p>Side loading the patch is a simple process, but it does require a few steps. Please follow the instructions below carefully.</p>
 <pre tabindex="0"><code>cd ~
 git clone https://github.com/alis-is/app-tezos.git
 cd app-tezos
 git checkout baking-burn-in-protection
-sudo docker run --privileged --rm -ti -v &#34;$(realpath .):/app&#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
-APP=tezos_baking TARGET_NAME=nanos make load
-</code></pre><hr>
+docker run --privileged --rm -ti -v &#34;$(realpath .):/app&#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
+BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make load
+</code></pre><p>After running the <code>BOLOS_SDK</code> command, your Ledger Nano Plus will display a message asking you to confirm the installation of the app. Press both buttons to confirm the installation.</p>
+<p><strong>When starting the app for the first time, you will be asked to confirm the execution of the app. Press both buttons to confirm. This is because the app is not published by Ledger.</strong></p>
+<h3 id="setup-baker-again">Setup baker again</h3>
+<p>After uninstallin the old app and installing the new one (2.3.3), you will need to setup your Ledger Nano S Plus for baking again.</p>
+<p>Plug in Ledger, input pin, open patched Tezos Baking app, and then run the following command:</p>
+<pre tabindex="0"><code>bb-cli setup-ledger --main-hwm 3826854
+</code></pre><p>Replace <code>3826854</code> with the latest current head block height. You can find this information on <a href="https://tzstats.com/">tzstats.com</a>.</p>
+<p>Confirm the operation on your Ledger device and you&rsquo;re done!</p>
+<h3 id="blanking-out-ledger-nano-s-plus-screen">Blanking out Ledger Nano S Plus Screen</h3>
+<ol>
+<li>Plug in Ledger Nano S Plus</li>
+<li>Input pin</li>
+<li>Open patched Tezos Baking app (accept warning)</li>
+<li>Hit the left button until you see <code>Application is ready</code></li>
+<li>Hit both buttons to blank out screen</li>
+</ol>
+<p>The screen will also blank out when you perform your first attestation (i.e. endorsement) of a block.</p>
+<hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
