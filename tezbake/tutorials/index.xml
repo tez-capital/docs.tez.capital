@@ -215,7 +215,7 @@ bb-cli bootstrap-node https://mainnet-v15.xtz-shots.io/mainnet-3185135.rolling B
 &lt;h2 id=&#34;patch-side-loading-instructions&#34;&gt;Patch Side Loading Instructions&lt;/h2&gt;
 &lt;h3 id=&#34;install-prerequisites&#34;&gt;Install Prerequisites&lt;/h3&gt;
 &lt;p&gt;You&amp;rsquo;ll need to manually delete your old Tezos Baking app using Ledger Live, before you can side load the patched app. You&amp;rsquo;ll also need to install docker and add your current user to the docker group.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo install docker.io -y
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt install docker.io -y
 sudo usermod -aG docker $USER
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Reboot after this step.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;To use the patched app, you will need to update your Ledger Nano S Plus to Ledger firmware version 1.1.0+&lt;/strong&gt;
