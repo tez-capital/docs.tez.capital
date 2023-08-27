@@ -60,9 +60,51 @@
   </url><url>
     <loc>/tezpay/extensions/reference/hooks/</loc>
   </url><url>
+    <loc>/tezbake/reference/</loc>
+  </url><url>
     <loc>/tezpay/reference/</loc>
   </url><url>
     <loc>/tezpay/configuration/examples/sample/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_bootstrap-node/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_erase-ami-cache/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_get-rights/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_import-key/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_info/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_list-ledgers/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_modules/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_node/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_register-key/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_remove/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_setup/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_setup-ami/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_setup-ledger/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_signer/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_start/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_stop/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_upgrade/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_version/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_vote/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay/</loc>
   </url><url>
