@@ -38,7 +38,7 @@ Setups BB.
 Synopsis Installs and configures BB instance.
 tezbake setup [flags] Options --branch string Select package release branch you want to setup (addets node and signer module only). (default &#34;main&#34;) --force Force setup - potentially overwriting existing installation. -h, --help help for setup -i, --id string Id of BB instance. (default &#34;bb-default&#34;) --node Setups node. --node-branch string Sets node configuration. --node-configuration string Sets node configuration. (default &#34;{}&#34;) --node-version string Sets node configuration.">
 
-<meta itemprop="wordCount" content="221">
+<meta itemprop="wordCount" content="226">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezbake_setup"/>
 <meta name="twitter:description" content="docs/cmd/tezbake_setup.md## tezbake setup
@@ -384,7 +384,7 @@ tezbake setup [flags] Options --branch string Select package release branch you 
       --remote-node string            username:&lt;ssh key file&gt;@address (experimental)
       --remote-path string            where on remote install node - defaults to &#39;/bake-buddy/node&#39; (experimental) (default &#34;/bake-buddy&#34;)
       --remote-reset                  Resets and reconfigures remote node locator. (experimental)
-      --remote-user string            Sets user remote node will be operated under. (experimental) (default &#34;bb&#34;)
+      --remote-user string            Sets user remote node will be operated under. (experimental, ignored if remote uses elevation) (default &#34;bb&#34;)
   -a, --setup-ami                     Install latest ami during the BB setup.
       --signer                        Setups signer.
       --signer-branch string          Sets signer configuration.
