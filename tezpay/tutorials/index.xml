@@ -26,8 +26,7 @@
         
         &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;There is minimal preparation needed to utilize TezPay, assuming that
-you have a functioning public baker running. To get help with setting up
-a baker see &lt;em&gt;YourBakeBuddy - Setting up a public Baker&lt;/em&gt;.&lt;/p&gt;
+you have a functioning public baker running.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Preparation Summary&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Create a directory (folder) on your desktop (or appropriate
@@ -633,7 +632,7 @@ b. Access Token and Secret&lt;/li&gt;
 &lt;code&gt;access_token_secret: Your_Access_Token_Secret&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;consumer_key: Your_Consumer_Key&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;consumer_secret: Your_Consumer_Key_Secret&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;message_template: Rewards for &amp;lt;Cycle&amp;gt; have been paid to &amp;lt;Delegators&amp;gt; delegates in amount of &amp;lt;DistributedRewards&amp;gt; using #TezPay.👀 XTZ baked with bakebuddy.xyz! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;message_template: Rewards for &amp;lt;Cycle&amp;gt; have been paid to &amp;lt;Delegators&amp;gt; delegates in amount of &amp;lt;DistributedRewards&amp;gt; using #TezPay.👀 XTZ baked with #TezBake! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;type: twitter&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;}&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;]&lt;/code&gt;&lt;/li&gt;

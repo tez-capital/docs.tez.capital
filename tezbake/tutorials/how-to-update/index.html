@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Update">
 <meta itemprop="description" content="TezBake Updating Tutorial">
 
-<meta itemprop="wordCount" content="729">
+<meta itemprop="wordCount" content="584">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Update"/>
 <meta name="twitter:description" content="TezBake Updating Tutorial"/>
@@ -292,7 +292,6 @@
     <li><a href="#update-octez-binaries-only-1">Update Octez binaries only (#1)</a></li>
     <li><a href="#update-ami--eli-and-octez-binaries-2">Update ami &amp; eli and Octez binaries (#2)</a></li>
     <li><a href="#update-the-entire-tezbake-software-stack-3">Update the entire TezBake software stack (#3)</a></li>
-    <li><a href="#update-bb-cli-to-the-alpha-testing-version--4">Update bb-cli to the ALPHA testing version  (#4)</a></li>
     <li><a href="#what-should-i-do-after-updating">What should I do after updating?</a></li>
   </ul>
 </nav>
@@ -358,10 +357,10 @@
 	<h2 id="tezbake-updating">TezBake Updating</h2>
 <p>The TezBake software consists of four components:</p>
 <ul>
-<li>ami - <a href="https://github.com/alis-is/ami">https://github.com/alis-is/ami</a> <a href="https://github.com/alis-is/ami">https://github.com/alis-is/ami</a></li>
-<li>eli -  Lua Interpreter &amp; Essential libraries for simple cross platform scripting - <a href="https://github.com/alis-is/eli">https://github.com/alis-is/eli</a></li>
-<li>bb-cli - Command line interface for setting and monitoring your baker, using the help of the 2 tools above</li>
-<li>Octez binaries - Tezos node binaries published by the Tezos core developers - <a href="https://gitlab.com/tezos/tezos/-/releases">https://gitlab.com/tezos/tezos/-/releases</a></li>
+<li>(1) ami - <a href="https://github.com/alis-is/ami">https://github.com/alis-is/ami</a> <a href="https://github.com/alis-is/ami">https://github.com/alis-is/ami</a></li>
+<li>(2) eli -  Lua Interpreter &amp; Essential libraries for simple cross platform scripting - <a href="https://github.com/alis-is/eli">https://github.com/alis-is/eli</a></li>
+<li>(3) tezbake - Command line interface for setting and monitoring your baker, using the help of the 2 tools above</li>
+<li>(4) Octez binaries - Tezos node binaries published by the Tezos core developers - <a href="https://gitlab.com/tezos/tezos/-/releases">https://gitlab.com/tezos/tezos/-/releases</a></li>
 </ul>
 <p>We regularly update all parts of the TezBake stack and the Tezos core developments regularly publish new Octez versions and protocols.  All mandatory (to keep baking) and optional updates are posted across Tez.Capital social media channels.  Updates must be performed manually at this time, to ensure the Tezos node operator is the only person able to control their baking operation.</p>
 <p>There are a few upgrade methods that are supported depending on what the Tezos node operator wants to do:</p>
@@ -390,62 +389,42 @@
 <ul>
 <li>Using this upgrade method is recommended for all the same reasons listes so far, as well as:
 <ul>
-<li>Getting the latest bb-cli improvements and fixes</li>
+<li>Getting the latest tezbake improvements and fixes</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>Update only bb-cli to the latest ALPHA version to receive the latest bb-cli improvements and proposed test fixes (#3 only)
-<ul>
-<li>Using this upgrade method is recommended when one only wants to change or update the bb-cli utility, in cases such as:
-<ul>
-<li>bb-cli is testing improvements and fixes such as new formatting or output options</li>
-</ul>
-</li>
-<li>Updating just bb-cli without running any setup commands does not change the Tezos node or baking process in any way</li>
 </ul>
 </li>
 </ul>
 <h3 id="which-tezbake-upgrade-method-should-i-use">Which TezBake upgrade method should I use?</h3>
 <p>We will sometimes specify which upgrade method to use by referencing its number.  If a number is not specified, use the guidelines below to determine which method to use:</p>
 <ul>
-<li>If you&rsquo;d like to be as thorough as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new bb-cli version.</li>
+<li>If you&rsquo;d like to be as thorough as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new tezbake version.</li>
 <li>If you want to get most improvements and fixes from the TezBake side as well as from the Tezos core dev side, use the #2 method.  This is the recommended option for most circumstances.</li>
 <li>If you just want to keep baking on Tezos or get the latest Octez improvements without modifying any other components, use the #1 method</li>
 </ul>
 <h2 id="update-octez-binaries-only-1">Update Octez binaries only (#1)</h2>
-<pre tabindex="0"><code>bb-cli upgrade
+<pre tabindex="0"><code>tezbake upgrade
 </code></pre><h2 id="update-ami--eli-and-octez-binaries-2">Update ami &amp; eli and Octez binaries (#2)</h2>
-<pre tabindex="0"><code>bb-cli upgrade -a
+<pre tabindex="0"><code>tezbake upgrade -a
 </code></pre><h2 id="update-the-entire-tezbake-software-stack-3">Update the entire TezBake software stack (#3)</h2>
-<p>First update your bb-cli binary to the latest version:</p>
+<p>First update your tezbake binary to the latest version:</p>
 <pre tabindex="0"><code># If you have a regular Intel or AMD computer that&#39;s not &#34;ARM&#34; based:
-cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;&amp; chmod +x bb-cli-linux-amd64
-sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
+cd /tmp &amp;&amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;&amp; chmod +x tezbake-linux-amd64
+sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
 # you may be prompted for sudo password
 
 # If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;&amp; chmod +x bb-cli-linux-arm64
-sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
+cd /tmp &amp;&amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;&amp; chmod +x tezbake-linux-arm64
+sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
 # you may be prompted for sudo password
 </code></pre><p>Then update the rest of the TezBake software stack:</p>
-<pre tabindex="0"><code>bb-cli upgrade -a
-</code></pre><h2 id="update-bb-cli-to-the-alpha-testing-version--4">Update bb-cli to the ALPHA testing version  (#4)</h2>
-<pre tabindex="0"><code># If you have a regular Intel or AMD computer that&#39;s not &#34;ARM&#34; based:
-cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-amd64 &amp;&amp; chmod +x ALPHA-bb-cli-linux-amd64
-sudo mv ALPHA-bb-cli-linux-amd64 /usr/sbin/bb-cli
-# you may be prompted for sudo password
-
-# If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;&amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-arm64 &amp;&amp; ALPHA-bb-cli-linux-arm64
-sudo mv ALPHA-bb-cli-linux-arm64 /usr/sbin/bb-cli
-# you may be prompted for sudo password
+<pre tabindex="0"><code>tezbake upgrade -a
 </code></pre><h2 id="what-should-i-do-after-updating">What should I do after updating?</h2>
 <p>After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on <a href="https://TzStats.com">https://TzStats.com</a> and <a href="https://TzKT.io">https://TzKT.io</a>.</p>
 <p>Check your TezBake stack versions to ensure they are up to date:</p>
-<pre tabindex="0"><code>bb-cli version --all
+<pre tabindex="0"><code>tezbake version --all
 </code></pre><p>You should see the expected Octez version along with the release date of the binaries.</p>
-<p><img src="/tezbake/tutorial/tezbakeVersionAll.png" alt="&lt;bb-cli version, Octez versions&gt;"></p>
+<p><img src="/tezbake/tutorial/tezbakeVersionAll.png" alt="&lt;tezbake version, Octez versions&gt;"></p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>

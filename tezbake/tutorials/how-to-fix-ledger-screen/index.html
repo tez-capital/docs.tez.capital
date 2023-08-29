@@ -388,7 +388,7 @@ BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make loa
 <h3 id="setup-baker-again">Setup baker again</h3>
 <p>After uninstallin the old app and installing the new one (2.3.3), you will need to setup your Ledger Nano S Plus for baking again.</p>
 <p>Plug in Ledger, input pin, open patched Tezos Baking app, and then run the following command:</p>
-<pre tabindex="0"><code>bb-cli setup-ledger --main-hwm 3826854
+<pre tabindex="0"><code>tezbake setup-ledger --main-hwm 3826854
 </code></pre><p>Replace <code>3826854</code> with the latest current head block height. You can find this information on <a href="https://tzstats.com/">tzstats.com</a>.</p>
 <p>Confirm the operation on your Ledger device and you&rsquo;re done!</p>
 <h3 id="blanking-out-ledger-nano-s-plus-screen">Blanking out Ledger Nano S Plus Screen</h3>

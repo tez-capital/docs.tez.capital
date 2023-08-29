@@ -352,16 +352,16 @@
 		
 	</header>    
 	<h2 id="troubleshooting">Troubleshooting</h2>
-<p>Troubleshooting BakeBuddy mostly comes in during the installation phase, when an error is encountered during the setup process.</p>
+<p>Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.</p>
 <h3 id="installation-errors">Installation errors</h3>
 <p>If you encounter an installation issue, run the setup command again with the <code>--log-level=trace</code> option, for example:</p>
-<pre tabindex="0"><code>bb-cli setup -a --log-level=trace
+<pre tabindex="0"><code>tezbake setup -a --log-level=trace
 </code></pre><p>You can add <code>--log-level=trace</code> regardless of the setup type that&rsquo;s being attempted, whether it&rsquo;s on Ghostnet or some other testnet.</p>
 <h3 id="blockchain-errors">Blockchain errors</h3>
-<p>Sometimes, you will notice that <code>bb-cli info</code> never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:</p>
-<pre tabindex="0"><code>bb-cli restart
+<p>Sometimes, you will notice that <code>tezbake info</code> never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:</p>
+<pre tabindex="0"><code>tezbake restart
 </code></pre><p>You may see an error like the one below, which indicates your node needs to be bootstrapped with a fresh copy of the Tezos blockchain.</p>
-<pre tabindex="0"><code>baker@baker-VirtualBox:~$ bb-cli node log node -f
+<pre tabindex="0"><code>baker@baker-VirtualBox:~$ tezbake node log node -f
 -- Logs begin at Wed 2022-05-18 14:16:28 CEST. --
 mai 20 08:51:31 baker-VirtualBox systemd[1]: Stopped bb-default-node node service.
 mai 20 08:51:31 baker-VirtualBox systemd[1]: Started bb-default-node node service.

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Monitor">
 <meta itemprop="description" content="TezBake Monitoring Tutorial">
 
-<meta itemprop="wordCount" content="586">
+<meta itemprop="wordCount" content="587">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Monitor"/>
 <meta name="twitter:description" content="TezBake Monitoring Tutorial"/>
@@ -359,27 +359,27 @@
 <p>TezBake gives you the option to monitor all Tezos node and baking services. TezBake utilizes the journalctl utility included in most Linux distribution to store and manage its logging.  You can extract all logs for a node easily to diagnose any issues. This tutorial will walk you through the process of monitoring your TezBake node.</p>
 <hr>
 <h2 id="monitor-overall-tezbake-status">Monitor overall TezBake status</h2>
-<p>Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the BakeBuddy community as there is something that probably needs tweaking.</p>
-<pre tabindex="0"><code>bb-cli info
+<p>Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the Tez Capital community as there is something that probably needs tweaking.</p>
+<pre tabindex="0"><code>tezbake info
 </code></pre><p><img src="/tezbake/tutorial/tezbakeInfo.png" alt=""></p>
 <h2 id="monitor-tezbake-logs">Monitor TezBake logs</h2>
 <h3 id="monitor-full-tezbake-node-and-baker-logs-in-real-time">Monitor full TezBake node and baker logs in real time</h3>
 <p>Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.</p>
-<pre tabindex="0"><code>bb-cli node log -f
+<pre tabindex="0"><code>tezbake node log -f
 </code></pre><p><img src="/tezbake/tutorial/tezbakeNodeLogF.png" alt=""></p>
 <h3 id="monitor-limited-tezbake-node-or-baker-logs-in-real-time">Monitor limited TezBake node or baker logs in real time</h3>
 <p>Using these commands you can focus on just the node, just the baking/endorsing process or just the accusation (of double baking) processes</p>
-<pre tabindex="0"><code>bb-cli node log node -f
-bb-cli node log baker -f
-bb-cli node log accuser -f
+<pre tabindex="0"><code>tezbake node log node -f
+tezbake node log baker -f
+tezbake node log accuser -f
 </code></pre><p>Monitoring just the <code>node</code> process shows blocks being synchronized in real time by your node.</p>
 <p>Monitoring just the <code>baker</code> process shows all attempts to endorse and bake blocks. The baker process works along with the node process to inject blocks and endorsements into the Tezos network.</p>
 <p>Monitoring just the <code>accuser</code> process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.</p>
 <h3 id="monitor-tezbake-baker-logs-for-the-next-protocol">Monitor TezBake baker logs for the next protocol</h3>
 <p>During times when Tezos protocol are being switched out you will notice that there is a <code>baker</code> process as well as a <code>baker-next</code> process. The same is true about the <code>accuser</code> process. The <code>baker-next</code> process is the baker process that will be used when the next protocol is activated. The <code>baker</code> process will be used until the next protocol is activated. The <code>accuser-next</code> process is the accuser process that will be used when the next protocol is activated. The <code>accuser</code> process will be used until the next protocol is activated.</p>
 <p><img src="/tezbake/tutorial/tezbakeNext.png" alt="&lt;TezBake -next protocol services&gt;"></p>
-<pre tabindex="0"><code>bb-cli node log baker-next -f
-bb-cli node log accuser-next -f
+<pre tabindex="0"><code>tezbake node log baker-next -f
+tezbake node log accuser-next -f
 </code></pre><p>The <code>baker-next</code> process will show one of two things.</p>
 <ol>
 <li>Protocol is waiting to start. This means everyone is waiting for the new proposal to be activated on mainnet. Nothing needs to be done until the new protocol is activated</li>
@@ -387,7 +387,7 @@ bb-cli node log accuser-next -f
 </ol>
 <h3 id="monitor-full-tezbake-signer-logs-in-real-time">Monitor full TezBake signer logs in real time</h3>
 <p>Using the command below shows everything your Ledger is signing or trying to sign. If there is a hardware wallet issue, this log will confirm it.</p>
-<pre tabindex="0"><code>bb-cli signer log -f
+<pre tabindex="0"><code>tezbake signer log -f
 </code></pre><p><img src="/tezbake/tutorial/tezbakeSignerLogF.png" alt=""></p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on

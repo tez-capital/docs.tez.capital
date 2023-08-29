@@ -25,7 +25,7 @@
         
         
         &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;p&gt;Installing BakeBuddy CLI (bb-cli) and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
+&lt;p&gt;Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Spare computer or existing computer with Linux installed. We recommend Ubuntu Linux.
 (note: you must have an SSD drive or better &amp;amp; at least 8GB RAM)&lt;/li&gt;
@@ -34,38 +34,38 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-&lt;h3 id=&#34;download-and-copy-bb-cli&#34;&gt;Download and copy bb-cli&lt;/h3&gt;
-&lt;p&gt;To begin, download the latest bb-cli version for your Linux desktop and copy it to a universally available location so you can execute BB-CLI command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
+&lt;h3 id=&#34;download-and-copy-tezbake&#34;&gt;Download and copy tezbake&lt;/h3&gt;
+&lt;p&gt;To begin, download the latest tezbake version for your Linux desktop and copy it to a universally available location so you can execute tezbake command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
 If you have a regular Intel or AMD computer that&amp;rsquo;s not &amp;ldquo;ARM&amp;rdquo; based.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-amd64
-sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
+sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
 # you may be prompted for sudo password; execute 1 line at a time
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you have a Raspberry Pi or you&amp;rsquo;re running Linux on macOS M1 architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-arm64
-sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
+sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
 # you may be prompted for sudo password; execute 1 line at a time
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-bb-cli-dependencies&#34;&gt;Setup Tezos node, signer and install bb-cli dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup -a
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node --tarball
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake bootstrap-node --tarball
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;start-tezos-node&#34;&gt;Start Tezos node&lt;/h3&gt;
 &lt;p&gt;After importing the snapshot, you need to start your node and wait until it&amp;rsquo;s fully synchronized before importing your Ledger key.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli start
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake start
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After starting the node, run the following command over and over every few minutes and monitor the &amp;ldquo;level&amp;rdquo; displayed.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli info
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake info
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.&lt;/p&gt;
 &lt;h3 id=&#34;import-ledger-key&#34;&gt;Import Ledger key&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can import your Ledger key. You will need to connect your Ledger and enter your Ledger PIN. Then open the Tezos Baking app.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli import-key --derivation-path=&amp;#34;ed25519/0h/0h&amp;#34;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake import-key --derivation-path=&amp;#34;ed25519/0h/0h&amp;#34;
 # If you have a custom derivation path, you can change ed to bip as shown (--derivation-path=&amp;#34;bip25519/3h/6h/9h&amp;#34;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://kukai.app&#34;&gt;https://kukai.app&lt;/a&gt; and login with ledger, accepting the default derivation path.&lt;/p&gt;
 &lt;p&gt;bip is supposed to be more strong in the long term than ed25519, which is the default one. Including it in the command above as shown does not change the default behavior but it shows which path is default so it can be customized for preference and security.&lt;/p&gt;
 &lt;p&gt;Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.&lt;/p&gt;
 &lt;h3 id=&#34;authorize-ledger-to-bake-for-key&#34;&gt;Authorize Ledger to bake for key&lt;/h3&gt;
 &lt;p&gt;Having imported your Ledger key to your signer, it&amp;rsquo;s time to authorize your Ledger to bake for this key.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup-ledger --main-hwm 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --main-hwm 1
 # Pay careful attention to the value of --main-hwm
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
 If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current Tezos block, which can be found at.&lt;/p&gt;
@@ -73,7 +73,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;Always make sure you&amp;rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&amp;rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures.&lt;/p&gt;
 &lt;h3 id=&#34;register-ledger-key-as-baker-on-the-blockchain&#34;&gt;Register Ledger key as baker on the blockchain&lt;/h3&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker. For all other operations, you must use the Tezos Baking app.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli register-key
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of actively baking.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -98,7 +98,7 @@ learn how to properly bake and pay using TezBake and TezPay. It&amp;rsquo;s high
 recommended for all serious bakers to have a Ghostnet setup running, to
 help test protocol migrations.&lt;/p&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;p&gt;Installing BakeBuddy CLI (bb-cli) and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
+&lt;p&gt;Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Spare computer or existing computer with Linux installed. We recommend Ubuntu Linux.
 (note: you must have an SSD drive or better &amp;amp; at least 8GB RAM)&lt;/li&gt;
@@ -107,38 +107,38 @@ help test protocol migrations.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-&lt;h3 id=&#34;download-and-copy-bb-cli&#34;&gt;Download and copy bb-cli&lt;/h3&gt;
-&lt;p&gt;To begin, download the latest bb-cli version for your Linux desktop and copy it to a universally available location so you can execute BB-CLI command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
+&lt;h3 id=&#34;download-and-copy-tezbake&#34;&gt;Download and copy tezbake&lt;/h3&gt;
+&lt;p&gt;To begin, download the latest tezbake version for your Linux desktop and copy it to a universally available location so you can execute tezbake command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
 If you have a regular Intel or AMD computer that&amp;rsquo;s not &amp;ldquo;ARM&amp;rdquo; based.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-amd64
-sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
+sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
 # you may be prompted for sudo password; execute 1 line at a time
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you have a Raspberry Pi or you&amp;rsquo;re running Linux on macOS M1 architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-arm64
-sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
+sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
 # you may be prompted for sudo password; execute 1 line at a time
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-bb-cli-dependencies&#34;&gt;Setup Tezos node, signer and install bb-cli dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node --tarball https://ghostnet.xtz-shots.io/rolling-tarball
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake bootstrap-node --tarball https://ghostnet.xtz-shots.io/rolling-tarball
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;start-tezos-node&#34;&gt;Start Tezos node&lt;/h3&gt;
 &lt;p&gt;After importing the snapshot, you need to start your node and wait until it&amp;rsquo;s fully synchronized before importing your Ledger key.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli start
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake start
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After starting the node, run the following command over and over every few minutes and monitor the &amp;ldquo;level&amp;rdquo; displayed.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli info
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake info
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.&lt;/p&gt;
 &lt;h3 id=&#34;import-ledger-key&#34;&gt;Import Ledger key&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can import your Ledger key. You will need to connect your Ledger and enter your Ledger PIN. Then open the Tezos Baking app.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli import-key --derivation-path=&amp;#34;ed25519/0h/0h&amp;#34;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake import-key --derivation-path=&amp;#34;ed25519/0h/0h&amp;#34;
 # If you have a custom derivation path, you can change ed to bip as shown (--derivation-path=&amp;#34;bip25519/3h/6h/9h&amp;#34;)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://kukai.app&#34;&gt;https://kukai.app&lt;/a&gt; and login with ledger, accepting the default derivation path.&lt;/p&gt;
 &lt;p&gt;bip is supposed to be more strong in the long term than ed25519, which is the default one. Including it in the command above as shown does not change the default behavior but it shows which path is default so it can be customized for preference and security.&lt;/p&gt;
 &lt;p&gt;Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.&lt;/p&gt;
 &lt;h3 id=&#34;authorize-ledger-to-bake-for-key&#34;&gt;Authorize Ledger to bake for key&lt;/h3&gt;
 &lt;p&gt;Having imported your Ledger key to your signer, it&amp;rsquo;s time to authorize your Ledger to bake for this key.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup-ledger --main-hwm 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --main-hwm 1
 # Pay careful attention to the value of --main-hwm
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
 If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current Tezos block, which can be found at.&lt;/p&gt;
@@ -146,7 +146,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;Always make sure you&amp;rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&amp;rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures.&lt;/p&gt;
 &lt;h3 id=&#34;register-ledger-key-as-baker-on-the-blockchain&#34;&gt;Register Ledger key as baker on the blockchain&lt;/h3&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker. For all other operations, you must use the Tezos Baking app.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli register-key
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of actively baking.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -169,12 +169,12 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;&lt;strong&gt;Please be aware that bootstrapping your node could result in your nonce revelation to fail and for you to forfit your endorsement rights for the cycle.&lt;/strong&gt; This is because by default we&amp;rsquo;re using rolling snapshots which don&amp;rsquo;t export full blocks for past cycles by default. If your node baked a special kind of block during the lack cycle, it may be asked to provide its nonce to the network. To do so, it needs to have the &lt;code&gt;.tezos-client&lt;/code&gt; data intact from the last cycle and it needs to have the full blocks for the last cycle.&lt;/p&gt;
 &lt;p&gt;To remedy this situation and to never risk forfitting your endorsement rights for a whole cycle, you can simply always use a snapshot that&amp;rsquo;s at least 4 days (from today) old, when bootstrapping a node. This way you&amp;rsquo;ll always have at least 1 cycle+ of full blocks in your node&amp;rsquo;s database from the very beginning. The downside of this method is that it will slow down your bootstrap process by the amount of time it takes to download the full blocks for the past 1 cycle+, which can be up to 2 hours on some slow home networks.&lt;/p&gt;
 &lt;h3 id=&#34;bootstrap-using-a-tarball-fast&#34;&gt;Bootstrap using a tarball (fast)&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node --tarball
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake bootstrap-node --tarball
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;--tarball&lt;/code&gt; method uses the latest snapshot from &lt;a href=&#34;https://xtz-shots.io/mainnet/&#34;&gt;https://xtz-shots.io/mainnet/&lt;/a&gt; and downloads it to your node. This is the fastest method, but it&amp;rsquo;s not as secure as the snapshot method below.&lt;/p&gt;
 &lt;h3 id=&#34;bootstrap-using-a-snapshot-slow-but-more-rebust-and-secure&#34;&gt;Bootstrap using a snapshot (slow, but more rebust and secure)&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
 # example:
-bb-cli bootstrap-node https://mainnet-v15.xtz-shots.io/mainnet-3185135.rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+tezbake bootstrap-node https://mainnet-v15.xtz-shots.io/mainnet-3185135.rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can get snapshots in the following places:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://xtz-shots.io/mainnet/&#34;&gt;https://xtz-shots.io/mainnet/&lt;/a&gt;&lt;/li&gt;
@@ -234,7 +234,7 @@ BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make loa
 &lt;h3 id=&#34;setup-baker-again&#34;&gt;Setup baker again&lt;/h3&gt;
 &lt;p&gt;After uninstallin the old app and installing the new one (2.3.3), you will need to setup your Ledger Nano S Plus for baking again.&lt;/p&gt;
 &lt;p&gt;Plug in Ledger, input pin, open patched Tezos Baking app, and then run the following command:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup-ledger --main-hwm 3826854
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --main-hwm 3826854
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Replace &lt;code&gt;3826854&lt;/code&gt; with the latest current head block height. You can find this information on &lt;a href=&#34;https://tzstats.com/&#34;&gt;tzstats.com&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Confirm the operation on your Ledger device and you&amp;rsquo;re done!&lt;/p&gt;
 &lt;h3 id=&#34;blanking-out-ledger-nano-s-plus-screen&#34;&gt;Blanking out Ledger Nano S Plus Screen&lt;/h3&gt;
@@ -266,27 +266,27 @@ BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make loa
 &lt;p&gt;TezBake gives you the option to monitor all Tezos node and baking services. TezBake utilizes the journalctl utility included in most Linux distribution to store and manage its logging.  You can extract all logs for a node easily to diagnose any issues. This tutorial will walk you through the process of monitoring your TezBake node.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;monitor-overall-tezbake-status&#34;&gt;Monitor overall TezBake status&lt;/h2&gt;
-&lt;p&gt;Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the BakeBuddy community as there is something that probably needs tweaking.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli info
+&lt;p&gt;Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the Tez Capital community as there is something that probably needs tweaking.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake info
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeInfo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;monitor-tezbake-logs&#34;&gt;Monitor TezBake logs&lt;/h2&gt;
 &lt;h3 id=&#34;monitor-full-tezbake-node-and-baker-logs-in-real-time&#34;&gt;Monitor full TezBake node and baker logs in real time&lt;/h3&gt;
 &lt;p&gt;Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log -f
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node log -f
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNodeLogF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;monitor-limited-tezbake-node-or-baker-logs-in-real-time&#34;&gt;Monitor limited TezBake node or baker logs in real time&lt;/h3&gt;
 &lt;p&gt;Using these commands you can focus on just the node, just the baking/endorsing process or just the accusation (of double baking) processes&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log node -f
-bb-cli node log baker -f
-bb-cli node log accuser -f
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node log node -f
+tezbake node log baker -f
+tezbake node log accuser -f
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Monitoring just the &lt;code&gt;node&lt;/code&gt; process shows blocks being synchronized in real time by your node.&lt;/p&gt;
 &lt;p&gt;Monitoring just the &lt;code&gt;baker&lt;/code&gt; process shows all attempts to endorse and bake blocks. The baker process works along with the node process to inject blocks and endorsements into the Tezos network.&lt;/p&gt;
 &lt;p&gt;Monitoring just the &lt;code&gt;accuser&lt;/code&gt; process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.&lt;/p&gt;
 &lt;h3 id=&#34;monitor-tezbake-baker-logs-for-the-next-protocol&#34;&gt;Monitor TezBake baker logs for the next protocol&lt;/h3&gt;
 &lt;p&gt;During times when Tezos protocol are being switched out you will notice that there is a &lt;code&gt;baker&lt;/code&gt; process as well as a &lt;code&gt;baker-next&lt;/code&gt; process. The same is true about the &lt;code&gt;accuser&lt;/code&gt; process. The &lt;code&gt;baker-next&lt;/code&gt; process is the baker process that will be used when the next protocol is activated. The &lt;code&gt;baker&lt;/code&gt; process will be used until the next protocol is activated. The &lt;code&gt;accuser-next&lt;/code&gt; process is the accuser process that will be used when the next protocol is activated. The &lt;code&gt;accuser&lt;/code&gt; process will be used until the next protocol is activated.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNext.png&#34; alt=&#34;&amp;lt;TezBake -next protocol services&amp;gt;&#34;&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli node log baker-next -f
-bb-cli node log accuser-next -f
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node log baker-next -f
+tezbake node log accuser-next -f
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The &lt;code&gt;baker-next&lt;/code&gt; process will show one of two things.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Protocol is waiting to start. This means everyone is waiting for the new proposal to be activated on mainnet. Nothing needs to be done until the new protocol is activated&lt;/li&gt;
@@ -294,7 +294,7 @@ bb-cli node log accuser-next -f
 &lt;/ol&gt;
 &lt;h3 id=&#34;monitor-full-tezbake-signer-logs-in-real-time&#34;&gt;Monitor full TezBake signer logs in real time&lt;/h3&gt;
 &lt;p&gt;Using the command below shows everything your Ledger is signing or trying to sign. If there is a hardware wallet issue, this log will confirm it.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli signer log -f
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake signer log -f
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeSignerLogF.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -313,16 +313,16 @@ bb-cli node log accuser-next -f
         
         
         &lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
-&lt;p&gt;Troubleshooting BakeBuddy mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
+&lt;p&gt;Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
 &lt;h3 id=&#34;installation-errors&#34;&gt;Installation errors&lt;/h3&gt;
 &lt;p&gt;If you encounter an installation issue, run the setup command again with the &lt;code&gt;--log-level=trace&lt;/code&gt; option, for example:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli setup -a --log-level=trace
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --log-level=trace
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can add &lt;code&gt;--log-level=trace&lt;/code&gt; regardless of the setup type that&amp;rsquo;s being attempted, whether it&amp;rsquo;s on Ghostnet or some other testnet.&lt;/p&gt;
 &lt;h3 id=&#34;blockchain-errors&#34;&gt;Blockchain errors&lt;/h3&gt;
-&lt;p&gt;Sometimes, you will notice that &lt;code&gt;bb-cli info&lt;/code&gt; never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli restart
+&lt;p&gt;Sometimes, you will notice that &lt;code&gt;tezbake info&lt;/code&gt; never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake restart
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You may see an error like the one below, which indicates your node needs to be bootstrapped with a fresh copy of the Tezos blockchain.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;baker@baker-VirtualBox:~$ bb-cli node log node -f
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;baker@baker-VirtualBox:~$ tezbake node log node -f
 -- Logs begin at Wed 2022-05-18 14:16:28 CEST. --
 mai 20 08:51:31 baker-VirtualBox systemd[1]: Stopped bb-default-node node service.
 mai 20 08:51:31 baker-VirtualBox systemd[1]: Started bb-default-node node service.
@@ -358,10 +358,10 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
         &lt;h2 id=&#34;tezbake-updating&#34;&gt;TezBake Updating&lt;/h2&gt;
 &lt;p&gt;The TezBake software consists of four components:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;ami - &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt; &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;eli -  Lua Interpreter &amp;amp; Essential libraries for simple cross platform scripting - &lt;a href=&#34;https://github.com/alis-is/eli&#34;&gt;https://github.com/alis-is/eli&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;bb-cli - Command line interface for setting and monitoring your baker, using the help of the 2 tools above&lt;/li&gt;
-&lt;li&gt;Octez binaries - Tezos node binaries published by the Tezos core developers - &lt;a href=&#34;https://gitlab.com/tezos/tezos/-/releases&#34;&gt;https://gitlab.com/tezos/tezos/-/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;(1) ami - &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt; &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;(2) eli -  Lua Interpreter &amp;amp; Essential libraries for simple cross platform scripting - &lt;a href=&#34;https://github.com/alis-is/eli&#34;&gt;https://github.com/alis-is/eli&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;(3) tezbake - Command line interface for setting and monitoring your baker, using the help of the 2 tools above&lt;/li&gt;
+&lt;li&gt;(4) Octez binaries - Tezos node binaries published by the Tezos core developers - &lt;a href=&#34;https://gitlab.com/tezos/tezos/-/releases&#34;&gt;https://gitlab.com/tezos/tezos/-/releases&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We regularly update all parts of the TezBake stack and the Tezos core developments regularly publish new Octez versions and protocols.  All mandatory (to keep baking) and optional updates are posted across Tez.Capital social media channels.  Updates must be performed manually at this time, to ensure the Tezos node operator is the only person able to control their baking operation.&lt;/p&gt;
 &lt;p&gt;There are a few upgrade methods that are supported depending on what the Tezos node operator wants to do:&lt;/p&gt;
@@ -390,62 +390,42 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;ul&gt;
 &lt;li&gt;Using this upgrade method is recommended for all the same reasons listes so far, as well as:
 &lt;ul&gt;
-&lt;li&gt;Getting the latest bb-cli improvements and fixes&lt;/li&gt;
+&lt;li&gt;Getting the latest tezbake improvements and fixes&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Update only bb-cli to the latest ALPHA version to receive the latest bb-cli improvements and proposed test fixes (#3 only)
-&lt;ul&gt;
-&lt;li&gt;Using this upgrade method is recommended when one only wants to change or update the bb-cli utility, in cases such as:
-&lt;ul&gt;
-&lt;li&gt;bb-cli is testing improvements and fixes such as new formatting or output options&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Updating just bb-cli without running any setup commands does not change the Tezos node or baking process in any way&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;which-tezbake-upgrade-method-should-i-use&#34;&gt;Which TezBake upgrade method should I use?&lt;/h3&gt;
 &lt;p&gt;We will sometimes specify which upgrade method to use by referencing its number.  If a number is not specified, use the guidelines below to determine which method to use:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;If you&amp;rsquo;d like to be as thorough as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new bb-cli version.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;d like to be as thorough as possible and ensure you have the latest of everything, use the #3 method.  Using this method is not necessary if there has not been a new tezbake version.&lt;/li&gt;
 &lt;li&gt;If you want to get most improvements and fixes from the TezBake side as well as from the Tezos core dev side, use the #2 method.  This is the recommended option for most circumstances.&lt;/li&gt;
 &lt;li&gt;If you just want to keep baking on Tezos or get the latest Octez improvements without modifying any other components, use the #1 method&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;update-octez-binaries-only-1&#34;&gt;Update Octez binaries only (#1)&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli upgrade
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;update-ami--eli-and-octez-binaries-2&#34;&gt;Update ami &amp;amp; eli and Octez binaries (#2)&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli upgrade -a
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;update-the-entire-tezbake-software-stack-3&#34;&gt;Update the entire TezBake software stack (#3)&lt;/h2&gt;
-&lt;p&gt;First update your bb-cli binary to the latest version:&lt;/p&gt;
+&lt;p&gt;First update your tezbake binary to the latest version:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
-cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-amd64
-sudo mv bb-cli-linux-amd64 /usr/sbin/bb-cli
+cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
+sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
 # you may be prompted for sudo password
 
 # If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/bb-cli-linux-arm64 &amp;amp;&amp;amp; chmod +x bb-cli-linux-arm64
-sudo mv bb-cli-linux-arm64 /usr/sbin/bb-cli
+cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
+sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli upgrade -a
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;update-bb-cli-to-the-alpha-testing-version--4&#34;&gt;Update bb-cli to the ALPHA testing version  (#4)&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
-cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-amd64 &amp;amp;&amp;amp; chmod +x ALPHA-bb-cli-linux-amd64
-sudo mv ALPHA-bb-cli-linux-amd64 /usr/sbin/bb-cli
-# you may be prompted for sudo password
-
-# If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;amp;&amp;amp; wget https://gitlab.com/groktech/bakebuddy-cli/-/raw/main/ALPHA-bb-cli-linux-arm64 &amp;amp;&amp;amp; ALPHA-bb-cli-linux-arm64
-sudo mv ALPHA-bb-cli-linux-arm64 /usr/sbin/bb-cli
-# you may be prompted for sudo password
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;what-should-i-do-after-updating&#34;&gt;What should I do after updating?&lt;/h2&gt;
 &lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://TzStats.com&#34;&gt;https://TzStats.com&lt;/a&gt; and &lt;a href=&#34;https://TzKT.io&#34;&gt;https://TzKT.io&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Check your TezBake stack versions to ensure they are up to date:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bb-cli version --all
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake version --all
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should see the expected Octez version along with the release date of the binaries.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeVersionAll.png&#34; alt=&#34;&amp;lt;bb-cli version, Octez versions&amp;gt;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeVersionAll.png&#34; alt=&#34;&amp;lt;tezbake version, Octez versions&amp;gt;&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
