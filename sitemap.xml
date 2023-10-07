@@ -6,6 +6,8 @@
   </url><url>
     <loc>/tezpay/tutorials/how-to-setup/</loc>
   </url><url>
+    <loc>/tezwatch/tutorials/how-to-setup/</loc>
+  </url><url>
     <loc>/tezgov/tutorials/how-to-vote/</loc>
   </url><url>
     <loc>/getting-started/</loc>
@@ -44,11 +46,15 @@
   </url><url>
     <loc>/tezpay/</loc>
   </url><url>
+    <loc>/tezwatch/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/</loc>
   </url><url>
     <loc>/tezgov/tutorials/</loc>
   </url><url>
     <loc>/tezpay/tutorials/</loc>
+  </url><url>
+    <loc>/tezwatch/tutorials/</loc>
   </url><url>
     <loc>/getting-started/what-is-baking/</loc>
   </url><url>
