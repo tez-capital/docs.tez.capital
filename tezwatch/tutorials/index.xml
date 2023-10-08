@@ -40,10 +40,32 @@
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;p&gt;Here are the descriptions of all the key variables you will need to configure:&lt;/p&gt;
-&lt;p&gt;| Variable | Available Options | Description |
-| &lt;code&gt;source&lt;/code&gt; | &lt;code&gt;staking&lt;/code&gt; or &lt;code&gt;chain&lt;/code&gt; | The general area of interest. &lt;code&gt;staking&lt;/code&gt; is related to activities that validate on the chain and &lt;code&gt;chain&lt;/code&gt; is related to general chain progression |
-| &lt;code&gt;event&lt;/code&gt; | &lt;code&gt;attested-block&lt;/code&gt;, &lt;code&gt;baked-block&lt;/code&gt;, &lt;code&gt;missed-block&lt;/code&gt;, &lt;code&gt;missed-attestation&lt;/code&gt;, &lt;code&gt;new-block&lt;/code&gt; | These are the specific staking events that you&amp;rsquo;re interested in being notified for. Each event has its own unique subscription tier. All &lt;code&gt;missed*&lt;/code&gt; ones are TIER 0 or FREE |
-| &lt;code&gt;conditions&lt;/code&gt; | &lt;code&gt;tz1X,tz1Y,tz1Z&lt;/code&gt; | This is a comma-separated list of Tezos addresses that you want to be notified for |&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Available Options&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;staking&lt;/code&gt; or &lt;code&gt;chain&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The general area of interest. &lt;code&gt;staking&lt;/code&gt; is related to activities that validate on the chain and &lt;code&gt;chain&lt;/code&gt; is related to general chain progression&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;attested-block&lt;/code&gt;, &lt;code&gt;baked-block&lt;/code&gt;, &lt;code&gt;missed-block&lt;/code&gt;, &lt;code&gt;missed-attestation&lt;/code&gt;, &lt;code&gt;new-block&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;These are the specific staking events that you&amp;rsquo;re interested in being notified for. Each event has its own unique subscription tier. All &lt;code&gt;missed*&lt;/code&gt; ones are TIER 0 or FREE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;conditions&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tz1X,tz1Y,tz1Z&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;This is a comma-separated list of Tezos addresses that you want to be notified for&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Please note that some TezWatch features are considered premium and will in the future require a subscription. The freemium features indicated as TIER 0 will always be available for free to the Tezos ecosystem.&lt;/p&gt;
 &lt;/blockquote&gt;

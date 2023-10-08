@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; How to Setup">
 <meta itemprop="description" content="TezWatch Setup Tutorial">
 
-<meta itemprop="wordCount" content="394">
+<meta itemprop="wordCount" content="378">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; How to Setup"/>
 <meta name="twitter:description" content="TezWatch Setup Tutorial"/>
@@ -375,10 +375,32 @@
 </thead>
 </table>
 <p>Here are the descriptions of all the key variables you will need to configure:</p>
-<p>| Variable | Available Options | Description |
-| <code>source</code> | <code>staking</code> or <code>chain</code> | The general area of interest. <code>staking</code> is related to activities that validate on the chain and <code>chain</code> is related to general chain progression |
-| <code>event</code> | <code>attested-block</code>, <code>baked-block</code>, <code>missed-block</code>, <code>missed-attestation</code>, <code>new-block</code> | These are the specific staking events that you&rsquo;re interested in being notified for. Each event has its own unique subscription tier. All <code>missed*</code> ones are TIER 0 or FREE |
-| <code>conditions</code> | <code>tz1X,tz1Y,tz1Z</code> | This is a comma-separated list of Tezos addresses that you want to be notified for |</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Available Options</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source</code></td>
+<td><code>staking</code> or <code>chain</code></td>
+<td>The general area of interest. <code>staking</code> is related to activities that validate on the chain and <code>chain</code> is related to general chain progression</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td><code>attested-block</code>, <code>baked-block</code>, <code>missed-block</code>, <code>missed-attestation</code>, <code>new-block</code></td>
+<td>These are the specific staking events that you&rsquo;re interested in being notified for. Each event has its own unique subscription tier. All <code>missed*</code> ones are TIER 0 or FREE</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td><code>tz1X,tz1Y,tz1Z</code></td>
+<td>This is a comma-separated list of Tezos addresses that you want to be notified for</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>Please note that some TezWatch features are considered premium and will in the future require a subscription. The freemium features indicated as TIER 0 will always be available for free to the Tezos ecosystem.</p>
 </blockquote>
