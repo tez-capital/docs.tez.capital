@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; How to Setup">
 <meta itemprop="description" content="TezWatch Setup Tutorial">
 
-<meta itemprop="wordCount" content="434">
+<meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; How to Setup"/>
 <meta name="twitter:description" content="TezWatch Setup Tutorial"/>
@@ -270,6 +270,8 @@
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezwatchtutorialshow-to-setup-li">
   <a href="/tezwatch/tutorials/how-to-setup/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezwatchtutorialshow-to-setup"><span class="td-sidebar-nav-active-item">&gt; How to Setup</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezwatchtutorialshow-to-monitor-balances-and-transactions-li">
+  <a href="/tezwatch/tutorials/how-to-monitor-balances-and-transactions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezwatchtutorialshow-to-monitor-balances-and-transactions"><span class="">How to Monitor Tezos Balances and Transactions</span></a>
 </li>
   </ul>
 </li>
@@ -297,7 +299,11 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#preparation">Preparation</a></li>
-    <li><a href="#setup-and-configuration">Setup and configuration</a></li>
+    <li><a href="#setup-and-configuration-of-baker-performance-monitoring">Setup and configuration of baker performance monitoring</a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -362,12 +368,14 @@
 	<h2 id="preparation">Preparation</h2>
 <p>Setting up TezWatch currently requires you to have a <a href="https://Discord.com">https://Discord.com</a> account. If you don&rsquo;t have one, please create one before proceeding.</p>
 <p>You will also need to join our <a href="https://discord.gg/cVGMA4MaNM">Discord</a>. This is where you will configure TezWatch. You can also ask questions and get support from the Tez Capital team and other Tezos bakers, stakers and delegators. After you join, make sure to self-select the &ldquo;TezBake&rdquo; role in order to get access to the <a href="https://discord.gg/94dnM2AcRw">#tezwatch</a> channel.</p>
+<p>The idea here is to have the Discord mobile app on your phone and/or the Discord desktop app on your computer. You will need to be logged in to your Discord account on the device you want to receive notifications on. TezWatch will use Discord to tag you in a DM (Direct Message) based on your configuration. For example, you may not care if you miss a single attestation but you care if you miss 10 attestation in a row or a block.</p>
+<blockquote>
 <p>If you want to remain anonymous, you can create a new Discord account and join our Discord server using that account. Then you can DM the TezWatch bot from that account and what with it in private.</p>
-<p>The idea here is to have the Discord mobile app on your phone and/or the Discord desktop app on your computer. You will need to be logged in to your Discord account on the device you want to receive notifications on. TezWatch will use Discord to tag you in a DM (Direct Message) based on your configuration. For example, you may not care if you miss a single attestation but you care if you miss 10 attestatio in a row or a block.</p>
+</blockquote>
 <hr>
-<h2 id="setup-and-configuration">Setup and configuration</h2>
+<h2 id="setup-and-configuration-of-baker-performance-monitoring">Setup and configuration of baker performance monitoring</h2>
 <p>The whole setup and configuration process currently takes very little time as the features are limited. We are working on adding more features and more platforms. If you have any suggestions, please let us know on <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a>.</p>
-<p>The setup is done using slash commands, which means just type the &ldquo;/&rdquo; character in the chat in the #tezwatch channel and you will see a list of available commands for the TezWatch bot.</p>
+<p>The setup is done using slash commands, which means just type the <code>/</code> character in the chat in the #tezwatch channel and you will see a list of available commands for the TezWatch bot.</p>
 <table>
 <thead>
 <tr>
@@ -375,7 +383,15 @@
 </tr>
 </thead>
 </table>
-<p>Here are the descriptions of all the key variables you will need to configure:</p>
+<p>To get all &ldquo;sources&rdquo; and &ldquo;events&rdquo; use the <code>/events</code> command</p>
+<table>
+<thead>
+<tr>
+<th><img src="/tezwatch/tutorial/tezwatchSlashEvents.png" alt=""></th>
+</tr>
+</thead>
+</table>
+<p>Here are the descriptions of all the key variables you will need to configure to monitor baker performance:</p>
 <table>
 <thead>
 <tr>
@@ -397,7 +413,7 @@
 </tr>
 <tr>
 <td><code>conditions</code></td>
-<td><code>tz1X,tz1Y,tz1Z</code></td>
+<td><code>tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv,tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur</code></td>
 <td>This is a comma-separated list of Tezos addresses that you want to be notified for</td>
 </tr>
 </tbody>
@@ -405,6 +421,7 @@
 <blockquote>
 <p>Please note that some TezWatch features are considered premium and will in the future require a subscription. The freemium features indicated as TIER 0 will always be available for free to the Tezos ecosystem.</p>
 </blockquote>
+<h3 id="example">Example</h3>
 <p>Here&rsquo;s an example command to subscribe to notifications for a missed attestation or missed block for a specific baker:</p>
 <table>
 <thead>
