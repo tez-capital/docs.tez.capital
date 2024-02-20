@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bake with Peak GUI">
 <meta itemprop="description" content="TezBake Baking Tutorial for GUI Users">
 
-<meta itemprop="wordCount" content="409">
+<meta itemprop="wordCount" content="454">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake with Peak GUI"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for GUI Users"/>
@@ -309,6 +309,7 @@
       <ul>
         <li><a href="#download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</a></li>
         <li><a href="#setup-peak-configuration">Setup Peak Configuration</a></li>
+        <li><a href="#start-peak-and-connect-to-it">Start Peak and connect to it</a></li>
       </ul>
     </li>
   </ul>
@@ -462,9 +463,15 @@ cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
     block_window: 50
 }
 ```
-
----
 </code></pre>
+<h3 id="start-peak-and-connect-to-it">Start Peak and connect to it</h3>
+<pre><code>```
+tezbake start --peak
+```
+</code></pre>
+<p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
+<p>If you&rsquo;re connecting from the same computer, you can use <code>http://127.0.0.1:8733</code> or <code>http://localhost:8733</code>.</p>
+<hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 

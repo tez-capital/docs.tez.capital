@@ -282,9 +282,15 @@ cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
     block_window: 50
 }
 ```
-
----
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;start-peak-and-connect-to-it&#34;&gt;Start Peak and connect to it&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;```
+tezbake start --peak
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re connecting from the same computer, you can use &lt;code&gt;http://127.0.0.1:8733&lt;/code&gt; or &lt;code&gt;http://localhost:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
