@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bake with Peak GUI">
 <meta itemprop="description" content="TezBake Baking Tutorial for GUI Users">
 
-<meta itemprop="wordCount" content="468">
+<meta itemprop="wordCount" content="454">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake with Peak GUI"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for GUI Users"/>
@@ -385,94 +385,76 @@
 <h3 id="download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</h3>
 <pre tabindex="0"><code>tezbake setup --peak
 </code></pre><h3 id="setup-tezpeak-configuration">Setup TezPeak configuration</h3>
-<pre><code>```
-cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
-```
-</code></pre>
-<p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
-<h4 id="sample-tezpeak-configuration-with-1-baker">Sample TezPeak configuration with 1 baker</h4>
+<pre tabindex="0"><code>cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
+</code></pre><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
+<h4 id="sample-tezpeak-configuration-with">Sample TezPeak configuration with</h4>
 <p>Here&rsquo;s an example of a <code>config.hjson</code> file:</p>
-<pre><code>```
-{
+<pre tabindex="0"><code>{
     id: BakingBenjamins
-    listen: &quot;0.0.0.0:8733&quot;
+    listen: &#34;0.0.0.0:8733&#34;
     bakers: [
     	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
     ]
 }
-```
-</code></pre>
-<p>This configuration file names the baker &ldquo;BakingBenjamins&rdquo;, listens to anyone trying to connect to the TezPeak GUI web interface on port 8733, and specifies the baker&rsquo;s address.</p>
+</code></pre><p>This configuration file names the baker &ldquo;BakingBenjamins&rdquo;, listens to anyone trying to connect to the TezPeak GUI web interface on port 8733, and specifies the baker&rsquo;s address.</p>
 <blockquote>
 <p>Change <code>id:</code> to have your baker&rsquo;s name and <code>bakers:</code> to have your baker&rsquo;s address.</p>
 </blockquote>
 <p>You can also make TezPeak GUI only available on the local computer if you have an all-in-one setup (i.e. the baker and the GUI are on the same computer which has a graphical user interface):</p>
-<pre><code>```
-{
+<pre tabindex="0"><code>{
     id: BakingBenjamins
-    listen: &quot;127.0.0.1:8733&quot;
+    listen: &#34;127.0.0.1:8733&#34;
     bakers: [
     	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
     ]
 }
-```
-</code></pre>
-<h4 id="minimal-tezpeak-configuration-example">Minimal TezPeak configuration example</h4>
+</code></pre><h4 id="minimal-tezpeak-configuration-example">Minimal TezPeak configuration example</h4>
 <p>Here&rsquo;s the TezPeak minimal configuration, showing you can also have multiple bakers:</p>
-<pre><code>```
-{
-    listen: &quot;0.0.0.0:8733&quot;
-    bakers: [
-        tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
-        tz1hZvgjekGo7DmQjWh7XnY5eLQD8wNYPczE
-    ]
+<pre tabindex="0"><code>{
+   listen: &#34;0.0.0.0:8733&#34;
+   bakers: [
+      tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
+      tz1hZvgjekGo7DmQjWh7XnY5eLQD8wNYPczE
+   ]
 }
-```
-</code></pre>
-<h4 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h4>
+</code></pre><h4 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h4>
 <p>Here&rsquo;s the TezPeak configuration with all available options:</p>
-<pre><code>```
-{
-    # Id to show in the header
-    id: &quot;&quot;
-    # Address to listen on
-    listen: 127.0.0.1:8733
-    # List of bakers to monitor
-    bakers: [
-    ]
-    # Baker's node to connect to
-    node: http://localhost:8732
-    # List of reference nodes to connect to
-    # The reference nodes are used to get the rights and blocks if the baker's node is not available
-    reference_nodes: {
-        &quot;Tezos Foundation&quot;: {
-            address: https://rpc.tzbeta.net/
-            is_rights_provider: true
-            is_block_provider: false
-        },
-        &quot;tzkt&quot;: {
-            address: https://rpc.tzkt.io/mainnet/
-            is_rights_provider: false
-            is_block_provider: true
-        }
-    }
-    # The mode tezpeak should operate in
-    # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
-    # public - assumes public environment, only readonly operations are allowed
-    # private - assumes private environment, all operations are allowed
-    mode: auto
-    # The number of blocks to look for the rights
-    # 50 means 25 blocks in the past and 25 blocks in the future
-    block_window: 50
+<pre tabindex="0"><code>{
+   # Id to show in the header
+   id: &#34;&#34;
+   # Address to listen on
+   listen: 127.0.0.1:8733
+   # List of bakers to monitor
+   bakers: [
+   ]
+   # Baker&#39;s node to connect to
+   node: http://localhost:8732
+   # List of reference nodes to connect to
+   # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
+   reference_nodes: {
+      &#34;Tezos Foundation&#34;: {
+         address: https://rpc.tzbeta.net/
+         is_rights_provider: true
+         is_block_provider: false
+      },
+      &#34;tzkt&#34;: {
+         address: https://rpc.tzkt.io/mainnet/
+         is_rights_provider: false
+         is_block_provider: true
+      }
+   }
+   # The mode tezpeak should operate in
+   # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
+   # public - assumes public environment, only readonly operations are allowed
+   # private - assumes private environment, all operations are allowed
+   mode: auto
+   # The number of blocks to look for the rights
+   # 50 means 25 blocks in the past and 25 blocks in the future
+   block_window: 50
 }
-```
-</code></pre>
-<h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
-<pre><code>```
-tezbake start --peak
-```
-</code></pre>
-<p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
+</code></pre><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
+<pre tabindex="0"><code>tezbake start --peak
+</code></pre><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
 <p>If you&rsquo;re connecting from the same computer, you can use <code>http://127.0.0.1:8733</code> or <code>http://localhost:8733</code>.</p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
