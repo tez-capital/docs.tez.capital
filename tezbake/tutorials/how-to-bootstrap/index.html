@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bootstrap">
 <meta itemprop="description" content="TezBake Bootstrapping Tutorial">
 
-<meta itemprop="wordCount" content="573">
+<meta itemprop="wordCount" content="586">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bootstrap"/>
 <meta name="twitter:description" content="TezBake Bootstrapping Tutorial"/>
@@ -388,13 +388,15 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX
 </code></pre><blockquote>
 <p>You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
 </blockquote>
+<p>Get the block hash and block level from the snapshot provider&rsquo;s website:
+<a href="https://snapshots.eu.tzinit.org/mainnet/rolling.html">https://snapshots.eu.tzinit.org/mainnet/rolling.html</a></p>
 <blockquote>
 <p>The <code>&lt;block_hash&gt;</code> argument is optional but encouraged. If you don&rsquo;t want to borther with this protection, use the second method below which will also be faster.</p>
 </blockquote>
 <p>Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 <a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a>
 <a href="https://tzstats.com/">https://tzstats.com/</a></p>
-<p>Simply search for the block number in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
+<p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <p>Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&rsquo;t have a choice and must make such trade-offs when time is of the essence.</p>
 <pre tabindex="0"><code>tezbake stop
 tezbake bootstrap-node --no-check &lt;url&gt;

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bake on Ghostnet">
 <meta itemprop="description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet">
 
-<meta itemprop="wordCount" content="953">
+<meta itemprop="wordCount" content="1060">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake on Ghostnet"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet"/>
@@ -406,9 +406,23 @@ sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
 <pre tabindex="0"><code>tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
 </code></pre><h3 id="bootstrap-tezos-node">Bootstrap Tezos node</h3>
-<p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best. With the import method shown below, bootstrapping could take as little as 5 minutes.</p>
-<pre tabindex="0"><code>tezbake bootstrap-node --tarball https://ghostnet.xtz-shots.io/rolling-tarball
-</code></pre><h3 id="start-tezos-node">Start Tezos node</h3>
+<p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best.</p>
+<pre tabindex="0"><code>tezbake bootstrap-node &lt;url&gt; &lt;block_hash&gt;
+# example:
+tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+</code></pre><blockquote>
+<p>You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
+</blockquote>
+<p>Get the block hash and block level from the snapshot provider&rsquo;s website:
+<a href="https://snapshots.eu.tzinit.org/ghostnet/rolling.html">https://snapshots.eu.tzinit.org/ghostnet/rolling.html</a></p>
+<blockquote>
+<p>The <code>&lt;block_hash&gt;</code> argument is optional but encouraged. If you don&rsquo;t want to borther with this protection, use the second method below which will also be faster.</p>
+</blockquote>
+<p>Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
+<a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a>
+<a href="https://tzstats.com/">https://tzstats.com/</a></p>
+<p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
+<h3 id="start-tezos-node">Start Tezos node</h3>
 <p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
 <pre tabindex="0"><code>tezbake start
 </code></pre><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
