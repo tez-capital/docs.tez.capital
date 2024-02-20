@@ -203,7 +203,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --peak
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-peak-configuration&#34;&gt;Setup Peak Configuration&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezpeak-configuration&#34;&gt;Setup TezPeak configuration&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;```
 cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
 ```
@@ -283,7 +283,7 @@ cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
 }
 ```
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;start-peak-and-connect-to-it&#34;&gt;Start Peak and connect to it&lt;/h3&gt;
+&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;```
 tezbake start --peak
 ```
