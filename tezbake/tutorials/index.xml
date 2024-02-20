@@ -97,6 +97,114 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
+      <title>Tezbake: &gt; How to Bake with Peak GUI</title>
+      <link>/tezbake/tutorials/how-to-bake-gui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/how-to-bake-gui/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed one of the following tutorials:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The TezPeak GUI is a graphical user interface for TezBake, which is a command-line tool for baking and endorsing Tezos blocks. It&amp;rsquo;s a great way to get started with baking and endorsing without having to use the command line on a day-to-day basis.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --peak
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-peak-configuration&#34;&gt;Setup Peak Configuration&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;```
+cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an example of a &lt;code&gt;config.hjson&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```hjson
+{
+    id: BakingBenjamins
+    listen: &amp;quot;0.0.0.0:8733&amp;quot;
+    bakers: [
+    	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+    ]
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This configuration file names the baker &amp;ldquo;BakingBenjamins&amp;rdquo;, listens to anyone trying to connect to the TezPeak GUI web interface on port 8733, and specifies the baker&amp;rsquo;s address.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Change &lt;code&gt;id:&lt;/code&gt; to have your baker&amp;rsquo;s name and &lt;code&gt;bakers:&lt;/code&gt; to have your baker&amp;rsquo;s address.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can also make TezPeak GUI only available on the local computer if you have an all-in-one setup (i.e. the baker and the GUI are on the same computer which has a graphical user interface):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```hjson
+{
+    id: BakingBenjamins
+    listen: &amp;quot;127.0.0.1:8733&amp;quot;
+    bakers: [
+    	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+    ]
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s the TezPeak minimal configuration, showing you can also have multiple bakers:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```hjson
+{
+    listen: &amp;quot;0.0.0.0:8733&amp;quot;
+    bakers: [
+        tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
+        tz1hZvgjekGo7DmQjWh7XnY5eLQD8wNYPczE
+    ]
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&amp;rsquo;s the TezPeak configuration with all available options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```hjson
+{
+    # Id to show in the header
+    id: &amp;quot;&amp;quot;
+    # Address to listen on
+    listen: 127.0.0.1:8733
+    # List of bakers to monitor
+    bakers: [
+    ]
+    # Baker&#39;s node to connect to
+    node: http://localhost:8732
+    # List of reference nodes to connect to
+    # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
+    reference_nodes: {
+        &amp;quot;Tezos Foundation&amp;quot;: {
+            address: https://rpc.tzbeta.net/
+            is_rights_provider: true
+            is_block_provider: false
+        },
+        &amp;quot;tzkt&amp;quot;: {
+            address: https://rpc.tzkt.io/mainnet/
+            is_rights_provider: false
+            is_block_provider: true
+        }
+    }
+    # The mode tezpeak should operate in
+    # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
+    # public - assumes public environment, only readonly operations are allowed
+    # private - assumes private environment, all operations are allowed
+    mode: auto
+    # The number of blocks to look for the rights
+    # 50 means 25 blocks in the past and 25 blocks in the future
+    block_window: 50
+}
+```
+
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: How to Bake on Ghostnet</title>
       <link>/tezbake/tutorials/how-to-bake-ghostnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
