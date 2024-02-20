@@ -209,6 +209,7 @@ cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
 ```
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
+&lt;h4 id=&#34;sample-tezpeak-configuration-with-1-baker&#34;&gt;Sample TezPeak configuration with 1 baker&lt;/h4&gt;
 &lt;p&gt;Here&amp;rsquo;s an example of a &lt;code&gt;config.hjson&lt;/code&gt; file:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;```
 {
@@ -235,6 +236,7 @@ cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
 }
 ```
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;minimal-tezpeak-configuration-example&#34;&gt;Minimal TezPeak configuration example&lt;/h4&gt;
 &lt;p&gt;Here&amp;rsquo;s the TezPeak minimal configuration, showing you can also have multiple bakers:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;```
 {
@@ -246,6 +248,7 @@ cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
 }
 ```
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;full-tezpeak-configuration-examples&#34;&gt;Full TezPeak configuration examples&lt;/h4&gt;
 &lt;p&gt;Here&amp;rsquo;s the TezPeak configuration with all available options:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;```
 {
