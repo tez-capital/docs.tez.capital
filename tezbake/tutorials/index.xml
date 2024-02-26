@@ -516,28 +516,14 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;c-update-the-entire-tezbake-stack&#34;&gt;(C) Update the entire TezBake stack&lt;/h2&gt;
 &lt;p&gt;(updates components: #1, #2, #3, #4)&lt;/p&gt;
 &lt;p&gt;First update your tezbake binary to the latest version, depending on your computer architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
-cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
-sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
-# you may be prompted for sudo password
-
-# If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
-sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;d-update-tezbake-only&#34;&gt;(D) Update tezbake only&lt;/h2&gt;
 &lt;p&gt;(updates components: #3)&lt;/p&gt;
 &lt;p&gt;Update your tezbake binary to the latest version, depending on your computer architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# If you have a regular Intel or AMD computer that&amp;#39;s not &amp;#34;ARM&amp;#34; based:
-cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
-sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
-# you may be prompted for sudo password
-
-# If you have an ARM based computer such as a Raspberry Pi:
-cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
-sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;what-should-i-do-after-updating&#34;&gt;What should I do after updating?&lt;/h2&gt;
 &lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://TzStats.com&#34;&gt;https://TzStats.com&lt;/a&gt; and &lt;a href=&#34;https://TzKT.io&#34;&gt;https://TzKT.io&lt;/a&gt;.&lt;/p&gt;
