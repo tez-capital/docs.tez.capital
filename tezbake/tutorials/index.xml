@@ -187,6 +187,9 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The TezPeak GUI is a graphical user interface for TezBake, which is a command-line tool for baking and endorsing Tezos blocks. It&amp;rsquo;s a great way to get started with baking and endorsing without having to use the command line on a day-to-day basis.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please note that tezbake version 0.13.0-beta minimum is required to use TezPeak.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
