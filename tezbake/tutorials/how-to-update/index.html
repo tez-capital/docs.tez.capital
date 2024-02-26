@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Update">
 <meta itemprop="description" content="TezBake Updating Tutorial">
 
-<meta itemprop="wordCount" content="480">
+<meta itemprop="wordCount" content="490">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Update"/>
 <meta name="twitter:description" content="TezBake Updating Tutorial"/>
@@ -401,14 +401,14 @@
 </code></pre><h2 id="c-update-the-entire-tezbake-stack">(C) Update the entire TezBake stack</h2>
 <p>(updates components: #1, #2, #3, #4)</p>
 <p>First update your tezbake binary to the latest version, depending on your computer architecture:</p>
-<pre tabindex="0"><code>tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
+<pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 </code></pre><p>Then update the rest of the TezBake software stack:</p>
 <pre tabindex="0"><code>tezbake upgrade -a
 </code></pre><h2 id="d-update-tezbake-only">(D) Update tezbake only</h2>
 <p>(updates components: #3)</p>
 <p>Update your tezbake binary to the latest version, depending on your computer architecture:</p>
-<pre tabindex="0"><code>tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
+<pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 </code></pre><h2 id="what-should-i-do-after-updating">What should I do after updating?</h2>
 <p>After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on <a href="https://TzStats.com">https://TzStats.com</a> and <a href="https://TzKT.io">https://TzKT.io</a>.</p>
