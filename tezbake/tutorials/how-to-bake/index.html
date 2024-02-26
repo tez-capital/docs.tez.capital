@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; How to Bake">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1007">
+<meta itemprop="wordCount" content="931">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; How to Bake"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -388,15 +388,9 @@
 <hr>
 <h2 id="installation">Installation</h2>
 <h3 id="download-and-copy-tezbake">Download and copy tezbake</h3>
-<p>To begin, download the latest tezbake version for your Linux desktop and copy it to a universally available location so you can execute tezbake command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
-If you have a regular Intel or AMD computer that&rsquo;s not &ldquo;ARM&rdquo; based.</p>
-<pre tabindex="0"><code>cd /tmp &amp;&amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;&amp; chmod +x tezbake-linux-amd64
-sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
-</code></pre><p>If you have a Raspberry Pi or you&rsquo;re running Linux on macOS M1 architecture:</p>
-<pre tabindex="0"><code>cd /tmp &amp;&amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;&amp; chmod +x tezbake-linux-arm64
-sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
+<p>To begin, run the script below, which will download the latest version of TezBake and copy it to your <code>/usr/sbin</code> directory. This script works with both x86_64 and arm64 architectures.</p>
+<pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
+# you may be prompted for sudo password
 </code></pre><h3 id="setup-tezos-node-signer-and-install-tezbake-dependencies">Setup Tezos node, signer and install tezbake dependencies</h3>
 <pre tabindex="0"><code>tezbake setup -a
 # you may be prompted for sudo password

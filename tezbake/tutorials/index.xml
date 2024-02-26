@@ -35,15 +35,9 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-copy-tezbake&#34;&gt;Download and copy tezbake&lt;/h3&gt;
-&lt;p&gt;To begin, download the latest tezbake version for your Linux desktop and copy it to a universally available location so you can execute tezbake command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
-If you have a regular Intel or AMD computer that&amp;rsquo;s not &amp;ldquo;ARM&amp;rdquo; based.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
-sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you have a Raspberry Pi or you&amp;rsquo;re running Linux on macOS M1 architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
-sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
+&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
+# you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a
 # you may be prompted for sudo password
@@ -122,15 +116,9 @@ help test protocol migrations.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-copy-tezbake&#34;&gt;Download and copy tezbake&lt;/h3&gt;
-&lt;p&gt;To begin, download the latest tezbake version for your Linux desktop and copy it to a universally available location so you can execute tezbake command from any location. Using the commands below, typed or pasted one-by-one is the intended order of operations.
-If you have a regular Intel or AMD computer that&amp;rsquo;s not &amp;ldquo;ARM&amp;rdquo; based.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-amd64 &amp;amp;&amp;amp; chmod +x tezbake-linux-amd64
-sudo mv tezbake-linux-amd64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you have a Raspberry Pi or you&amp;rsquo;re running Linux on macOS M1 architecture:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /tmp &amp;amp;&amp;amp; wget https://github.com/tez-capital/tezbake-releases/raw/main/tezbake-linux-arm64 &amp;amp;&amp;amp; chmod +x tezbake-linux-arm64
-sudo mv tezbake-linux-arm64 /usr/sbin/tezbake
-# you may be prompted for sudo password; execute 1 line at a time
+&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
+# you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
 # you may be prompted for sudo password
