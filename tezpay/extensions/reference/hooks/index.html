@@ -38,7 +38,7 @@ after_candidates_generated This hook is capable of mutating data.
 { &#34;cycle&#34;: 580, &#34;candidates&#34;: [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;delegated_balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34; } ] } after_bonds_distributed This hook is capable of mutating data.
 { &#34;cycle&#34;: 580, &#34;candidates&#34;: [ { &#34;source&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;recipient&#34;: &#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;, &#34;fee_rate&#34;: 5, &#34;balance&#34;: &#34;1000000000&#34;, &#34;delegated_balance&#34;: &#34;1000000000&#34;, &#34;is_invalid&#34;: true, &#34;is_emptied&#34;: true, &#34;is_baker_paying_tx_fee&#34;: true, &#34;is_baker_paying_allocation_tx_fee&#34;: true, &#34;invalid_because&#34;: &#34;reason&#34;, &#34;bonds_amount&#34;: &#34;1000000000&#34;, &#34;tx_kind&#34;: &#34;fa1&#34;, &#34;fa_token_id&#34;: &#34;10&#34;, &#34;fa_contract&#34;: &#34;KT18amZmM5W7qDWVt2pH6uj7sCEd3kbzLrHT&#34; } ] } check_balance This hook is NOT capable of mutating data.">
 
-<meta itemprop="wordCount" content="388">
+<meta itemprop="wordCount" content="392">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hooks"/>
 <meta name="twitter:description" content="NOTE: all bellow examples are just sample data to showcase fields used in data passed to hooks.
@@ -266,6 +266,8 @@ after_candidates_generated This hook is capable of mutating data.
   <a href="/tezpay/reference/cmd/tezpay_import-configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_import-configuration"><span class="">tezpay_import-configuration</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_pay-li">
   <a href="/tezpay/reference/cmd/tezpay_pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay"><span class="">tezpay_pay</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_pay-date-range-li">
+  <a href="/tezpay/reference/cmd/tezpay_pay-date-range/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay-date-range"><span class="">tezpay_pay-date-range</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_statistics-li">
   <a href="/tezpay/reference/cmd/tezpay_statistics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_statistics"><span class="">tezpay_statistics</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_test-extension-li">
@@ -478,7 +480,7 @@ after_candidates_generated This hook is capable of mutating data.
 </span></span></code></pre></div><h2 id="after_payouts_blueprint_generated">after_payouts_blueprint_generated</h2>
 <p>This hook is NOT capable of mutating data <em>currently</em>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;cycle&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;cycles&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;payouts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;baker&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
@@ -546,10 +548,12 @@ after_candidates_generated This hook is capable of mutating data.
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;note&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;reason&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;invalid_payouts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">null</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;reports_of_past_succesful_payouts&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fd8d0230c9d704585b0a8b6c5262afcbdb25e21319a6e5320674067c579823c3&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;baker&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;tz1Ke2h7sDdakHJQh8WX4Z372du1KChsksyU&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;timestamp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2024-03-01T18:13:13.750063374Z&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;timestamp&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2024-03-04T19:35:37.862614129Z&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;cycle&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;kind&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;invalid&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;tx_kind&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;fa1&#34;</span><span style="color:#000;font-weight:bold">,</span>

@@ -130,6 +130,8 @@
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_pay/</loc>
   </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_pay-date-range/</loc>
+  </url><url>
     <loc>/tezpay/reference/cmd/tezpay_statistics/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_test-extension/</loc>
