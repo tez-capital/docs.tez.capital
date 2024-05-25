@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Fix Ledger Screen">
 <meta itemprop="description" content="Ledger Screen Blanking Fix for Nano S Plus">
 
-<meta itemprop="wordCount" content="731">
+<meta itemprop="wordCount" content="734">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Fix Ledger Screen"/>
 <meta name="twitter:description" content="Ledger Screen Blanking Fix for Nano S Plus"/>
@@ -406,6 +406,8 @@ git clone https://github.com/alis-is/app-tezos.git
 cd app-tezos
 git checkout baking-burn-in-protection
 docker run --privileged --rm -ti -v &#34;$(realpath .):/app&#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
+cd tools
+./gen-delegates.sh
 BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make load
 </code></pre><p>After running the <code>BOLOS_SDK</code> command, your Ledger Nano Plus will display a message asking you to confirm the installation of the app. Press both buttons to confirm the installation.</p>
 <p><strong>When starting the app for the first time, you will be asked to confirm the execution of the app. Press both buttons to confirm. This is because the app is not published by Ledger.</strong></p>

@@ -416,6 +416,8 @@ git clone https://github.com/alis-is/app-tezos.git
 cd app-tezos
 git checkout baking-burn-in-protection
 docker run --privileged --rm -ti -v &amp;#34;$(realpath .):/app&amp;#34; ghcr.io/ledgerhq/ledger-app-builder/ledger-app-builder-lite:latest
+cd tools
+./gen-delegates.sh
 BOLOS_SDK=/opt/nanosplus-secure-sdk APP=tezos_baking TARGET_NAME=nanos2 make load
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After running the &lt;code&gt;BOLOS_SDK&lt;/code&gt; command, your Ledger Nano Plus will display a message asking you to confirm the installation of the app. Press both buttons to confirm the installation.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;When starting the app for the first time, you will be asked to confirm the execution of the app. Press both buttons to confirm. This is because the app is not published by Ledger.&lt;/strong&gt;&lt;/p&gt;
