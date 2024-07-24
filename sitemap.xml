@@ -138,6 +138,8 @@
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_test-extension/</loc>
   </url><url>
+    <loc>/tezpay/reference/cmd/tezpay_test-extensions/</loc>
+  </url><url>
     <loc>/tezpay/reference/cmd/tezpay_test-notify/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_transfer/</loc>
