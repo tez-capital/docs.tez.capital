@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; How to Bake">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1156">
+<meta itemprop="wordCount" content="1347">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; How to Bake"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -128,6 +128,8 @@
   <a href="/tezbake/tutorials/how-to-bake/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialshow-to-bake"><span class="td-sidebar-nav-active-item">&gt; How to Bake</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialshow-to-bake-ghostnet-li">
   <a href="/tezbake/tutorials/how-to-bake-ghostnet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialshow-to-bake-ghostnet"><span class="">How to Bake on Ghostnet</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialshow-to-bake-docker-li">
+  <a href="/tezbake/tutorials/how-to-bake-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialshow-to-bake-docker"><span class="">How to Bake with Docker</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialshow-to-bake-gui-li">
   <a href="/tezbake/tutorials/how-to-bake-gui/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialshow-to-bake-gui"><span class="">How to Bake with Peak GUI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialshow-to-bootstrap-li">
@@ -315,7 +317,7 @@
         <li><a href="#setup-tezos-node-signer-and-install-tezbake-dependencies">Setup Tezos node, signer and install tezbake dependencies</a></li>
         <li><a href="#bootstrap-tezos-node">Bootstrap Tezos node</a></li>
         <li><a href="#start-tezos-node">Start Tezos node</a></li>
-        <li><a href="#import-ledger-key-and-register-as-baker">Import Ledger key and register as baker</a></li>
+        <li><a href="#import-ledger-key-or-soft-key-and-register-as-baker">Import Ledger key or soft key and register as baker</a></li>
       </ul>
     </li>
   </ul>
@@ -424,15 +426,20 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX
 <blockquote>
 <p>Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> provide Ghostnet and Testnet block explorers as well. Make sure you&rsquo;re looking at the right explorer.</p>
 </blockquote>
-<h3 id="import-ledger-key-and-register-as-baker">Import Ledger key and register as baker</h3>
-<p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) your baker registration on the blockchain.</p>
-<h4 id="import-ledger-key-to-signer-locally">Import Ledger key to signer locally</h4>
+<h3 id="import-ledger-key-or-soft-key-and-register-as-baker">Import Ledger key or soft key and register as baker</h3>
+<p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
+<p>You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.</p>
+<p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
+<h4 id="option-1---recommended-import-ledger-key-to-tezbake-signer">(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer</h4>
 <pre tabindex="0"><code>tezbake setup-ledger --platform --import-key --authorize --hwm 1
 
 # If you have a custom derivation path, you can specify it as shown: (`--import-key=&#34;ed25519/0h/0h&#34;`; change ed to bip as needed for your individual needs; the default is ed25519/0h/0h which works just fine)
 # `--hwm 1` works great if you&#39;re setting up for the first time. If you&#39;re setting up a device that&#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.
 # If you&#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.
 </code></pre><blockquote>
+<p>Once imported, you can see your baker address by running <code>tezbake info</code></p>
+</blockquote>
+<blockquote>
 <p>The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&rsquo;t have this information yet, don&rsquo;t worry. To get the address of the ledger that&rsquo;s used by default simply go to <a href="https://kukai.app">https://kukai.app</a> and login with ledger, accepting the default derivation path.</p>
 </blockquote>
 <blockquote>
@@ -453,6 +460,19 @@ If you used to bake on mainnet with the same ledger as you&rsquo;re trying to us
 </blockquote>
 <blockquote>
 <p>To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&rsquo;re not accidentally double baking or attesting.</p>
+</blockquote>
+<h4 id="option-2---insecure-import-soft-key-to-tezbake-signer">(Option 2 - INSECURE) Import Soft key to TezBake signer</h4>
+<p>First, generate the baker key for TezBake signer:</p>
+<pre tabindex="0"><code>tezbake signer - gen keys baker
+</code></pre><p>Make sure to backup your key in a secure location. You can get the key by running the following command:</p>
+<pre tabindex="0"><code>cat /bake-buddy/signer/data/.tezos-signer/secret_keys
+</code></pre><p>Then, import the baker public key hash to TezBake node:</p>
+<p>Get the tz1-tz3 address which is the hashed public key of the baker key:</p>
+<pre tabindex="0"><code>cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
+</code></pre><p>Import the hashed key to the TezBake node:</p>
+<pre tabindex="0"><code>tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
+</code></pre><blockquote>
+<p>Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.</p>
 </blockquote>
 <h4 id="register-ledger-key-as-baker-on-the-blockchain">Register Ledger key as baker on the blockchain</h4>
 <p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (<strong>note</strong>: as well as when voting). For all other baker operations, you must use the Tezos Baking app.</p>
