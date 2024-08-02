@@ -18,33 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>tezpay_pay | docs.tez.capital</title>
-<meta name="description" content="docs/cmd/tezpay_pay.md## tezpay pay
-manual payout
-Synopsis runs manual payout
-tezpay pay [flags] Options --confirm automatically confirms generated payouts -c, --cycle int cycle to generate payouts for --dry-run skips payout wallet balance check --from-file string loads payouts from file instead of generating on the fly --from-stdin loads payouts from stdin instead of generating on the fly -h, --help help for pay --no-separate-fa disables fa transfers separation (mixes txs and fa transfers within batches) --no-separate-sc disables smart contract separation (mixes txs and smart contract calls within batches) --notificator string Notify through specific notificator --report-to-stdout prints them to stdout (wont write to file) -s, --silent suppresses notifications --skip-balance-check skips payout wallet balance check Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
-<meta property="og:title" content="tezpay_pay" />
-<meta property="og:description" content="docs/cmd/tezpay_pay.md## tezpay pay
-manual payout
-Synopsis runs manual payout
-tezpay pay [flags] Options --confirm automatically confirms generated payouts -c, --cycle int cycle to generate payouts for --dry-run skips payout wallet balance check --from-file string loads payouts from file instead of generating on the fly --from-stdin loads payouts from stdin instead of generating on the fly -h, --help help for pay --no-separate-fa disables fa transfers separation (mixes txs and fa transfers within batches) --no-separate-sc disables smart contract separation (mixes txs and smart contract calls within batches) --notificator string Notify through specific notificator --report-to-stdout prints them to stdout (wont write to file) -s, --silent suppresses notifications --skip-balance-check skips payout wallet balance check Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
+<title>How to Pay with Peak GUI | docs.tez.capital</title>
+<meta name="description" content="How to Pay Delegators Using TezPay with the TezPeak GUI">
+<meta property="og:title" content="How to Pay with Peak GUI" />
+<meta property="og:description" content="How to Pay Delegators Using TezPay with the TezPeak GUI" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tezpay/reference/cmd/tezpay_pay/" /><meta property="article:section" content="tezpay" />
+<meta property="og:url" content="/tezpay/tutorials/how-to-setup-gui/" /><meta property="article:section" content="tezpay" />
 
 
-<meta itemprop="name" content="tezpay_pay">
-<meta itemprop="description" content="docs/cmd/tezpay_pay.md## tezpay pay
-manual payout
-Synopsis runs manual payout
-tezpay pay [flags] Options --confirm automatically confirms generated payouts -c, --cycle int cycle to generate payouts for --dry-run skips payout wallet balance check --from-file string loads payouts from file instead of generating on the fly --from-stdin loads payouts from stdin instead of generating on the fly -h, --help help for pay --no-separate-fa disables fa transfers separation (mixes txs and fa transfers within batches) --no-separate-sc disables smart contract separation (mixes txs and smart contract calls within batches) --notificator string Notify through specific notificator --report-to-stdout prints them to stdout (wont write to file) -s, --silent suppresses notifications --skip-balance-check skips payout wallet balance check Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
+<meta itemprop="name" content="How to Pay with Peak GUI">
+<meta itemprop="description" content="How to Pay Delegators Using TezPay with the TezPeak GUI">
 
-<meta itemprop="wordCount" content="202">
+<meta itemprop="wordCount" content="419">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="tezpay_pay"/>
-<meta name="twitter:description" content="docs/cmd/tezpay_pay.md## tezpay pay
-manual payout
-Synopsis runs manual payout
-tezpay pay [flags] Options --confirm automatically confirms generated payouts -c, --cycle int cycle to generate payouts for --dry-run skips payout wallet balance check --from-file string loads payouts from file instead of generating on the fly --from-stdin loads payouts from stdin instead of generating on the fly -h, --help help for pay --no-separate-fa disables fa transfers separation (mixes txs and fa transfers within batches) --no-separate-sc disables smart contract separation (mixes txs and smart contract calls within batches) --notificator string Notify through specific notificator --report-to-stdout prints them to stdout (wont write to file) -s, --silent suppresses notifications --skip-balance-check skips payout wallet balance check Options inherited from parent commands --disable-donation-prompt Disable donation prompt -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
+<meta name="twitter:title" content="How to Pay with Peak GUI"/>
+<meta name="twitter:description" content="How to Pay Delegators Using TezPay with the TezPeak GUI"/>
 
 
 
@@ -224,15 +212,15 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpay-li">
   <a href="/tezpay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpay"><span class="">TezPay</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpaytutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpaytutorials-li">
   <a href="/tezpay/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpaytutorials"><span class="">Tutorials</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-setup-li">
   <a href="/tezpay/tutorials/how-to-setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-setup"><span class="">&gt; How to Setup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-pay-li">
   <a href="/tezpay/tutorials/how-to-pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-pay"><span class="">How to Pay Delegators</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-setup-gui-li">
-  <a href="/tezpay/tutorials/how-to-setup-gui/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-setup-gui"><span class="">How to Pay with Peak GUI</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezpaytutorialshow-to-setup-gui-li">
+  <a href="/tezpay/tutorials/how-to-setup-gui/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-setup-gui"><span class="td-sidebar-nav-active-item">How to Pay with Peak GUI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-notify-li">
   <a href="/tezpay/tutorials/how-to-notify/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-notify"><span class="">How to Setup Notifications</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-update-li">
@@ -257,7 +245,7 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
   <a href="/tezpay/extensions/reference/hooks/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayextensionsreferencehooks"><span class="">Hooks</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpayreference-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayreference-li">
   <a href="/tezpay/reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpayreference"><span class="">Reference</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay-li">
@@ -268,8 +256,8 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
   <a href="/tezpay/reference/cmd/tezpay_generate-payouts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_generate-payouts"><span class="">tezpay_generate-payouts</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_import-configuration-li">
   <a href="/tezpay/reference/cmd/tezpay_import-configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_import-configuration"><span class="">tezpay_import-configuration</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezpayreferencecmdtezpay_pay-li">
-  <a href="/tezpay/reference/cmd/tezpay_pay/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay"><span class="td-sidebar-nav-active-item">tezpay_pay</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_pay-li">
+  <a href="/tezpay/reference/cmd/tezpay_pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay"><span class="">tezpay_pay</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_pay-date-range-li">
   <a href="/tezpay/reference/cmd/tezpay_pay-date-range/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay-date-range"><span class="">tezpay_pay-date-range</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_statistics-li">
@@ -313,10 +301,10 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezpay/reference/cmd/tezpay_pay.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezpay/reference/cmd/tezpay_pay.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezpay/reference/cmd/tezpay_pay.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=tezpay_pay" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezpay/tutorials/how-to-setup-gui.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezpay/tutorials/how-to-setup-gui.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezpay/tutorials/how-to-setup-gui.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=How%20to%20Pay%20with%20Peak%20GUI" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/tez-capital/docs.tez.capital/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -324,14 +312,15 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#preparation">Preparation</a></li>
+    <li><a href="#installation">Installation</a>
       <ul>
-        <li><a href="#synopsis">Synopsis</a></li>
-        <li><a href="#options">Options</a></li>
-        <li><a href="#options-inherited-from-parent-commands">Options inherited from parent commands</a></li>
-        <li><a href="#see-also">SEE ALSO</a></li>
+        <li><a href="#download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</a></li>
+        <li><a href="#setup-tezpeak-configuration">Setup TezPeak configuration</a></li>
       </ul>
     </li>
+    <li><a href="#start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</a></li>
+    <li><a href="#tezpeak-example-screenshot">TezPeak example screenshot</a></li>
   </ul>
 </nav>
       </div>
@@ -367,16 +356,16 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
     <a href="/tezpay/">TezPay</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/tezpay/reference/">Reference</a>
+    <a href="/tezpay/tutorials/">Tutorials</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/tezpay/reference/cmd/tezpay_pay/" aria-disabled="true" class="btn-link disabled">tezpay_pay</a>
+    <a href="/tezpay/tutorials/how-to-setup-gui/" aria-disabled="true" class="btn-link disabled">How to Pay with Peak GUI</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>tezpay_pay</h1>
+	<h1>How to Pay with Peak GUI</h1>
 	
 	<header class="article-meta">
 		
@@ -393,38 +382,99 @@ tezpay pay [flags] Options --confirm automatically confirms generated payouts -c
 
 		
 	</header>    
-	<p>docs/cmd/tezpay_pay.md## tezpay pay</p>
-<p>manual payout</p>
-<h3 id="synopsis">Synopsis</h3>
-<p>runs manual payout</p>
-<pre tabindex="0"><code>tezpay pay [flags]
-</code></pre><h3 id="options">Options</h3>
-<pre tabindex="0"><code>      --confirm              automatically confirms generated payouts
-  -c, --cycle int            cycle to generate payouts for
-      --dry-run              skips payout wallet balance check
-      --from-file string     loads payouts from file instead of generating on the fly
-      --from-stdin           loads payouts from stdin instead of generating on the fly
-  -h, --help                 help for pay
-      --no-separate-fa       disables fa transfers separation (mixes txs and fa transfers within batches)
-      --no-separate-sc       disables smart contract separation (mixes txs and smart contract calls within batches)
-      --notificator string   Notify through specific notificator
-      --report-to-stdout     prints them to stdout (wont write to file)
-  -s, --silent               suppresses notifications
-      --skip-balance-check   skips payout wallet balance check
-</code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
-<pre tabindex="0"><code>      --disable-donation-prompt          Disable donation prompt
-  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
-      --log-server string                launches log server at specified address
-  -o, --output-format string             Sets output log format (json/text/auto) (default &#34;auto&#34;)
-  -p, --path string                      path to working directory (default &#34;.&#34;)
-      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
-      --signer string                    Override signer
-      --skip-version-check               Skip version check
-</code></pre><h3 id="see-also">SEE ALSO</h3>
+	<h2 id="preparation">Preparation</h2>
+<p>For this tutorial, you&rsquo;ll need to have already followed the following tutorials:</p>
 <ul>
-<li><a href="/tezpay/reference/cmd/tezpay">tezpay</a>	 - TEZPAY</li>
+<li><a href="/tezpay/tutorials/how-to-setup/#preparation-step-3---payout-wallet-optional">Generate payout soft wallet</a></li>
+<li><a href="https://docs.tez.capital/tezpay/tutorials/how-to-setup/#setup-step-1a-configuration-file-simple">Create TezPay configuration file</a>
+<ul>
+<li><a href="https://docs.tez.capital/tezpay/configuration/examples/default/">Default configuration</a></li>
+<li><a href="https://docs.tez.capital/tezpay/configuration/examples/starter/">Starter/Minimal configuration</a></li>
+<li><a href="https://docs.tez.capital/tezpay/configuration/examples/sample/">All configuration options</a></li>
 </ul>
-<h6 id="auto-generated-by-spf13cobra-on-24-jul-2024">Auto generated by spf13/cobra on 24-Jul-2024</h6>
+</li>
+<li><a href="/tezbake/tutorials/how-to-bake/#download-and-copy-tezbake">Download TezBake</a> <em>(note: Installing node/baking services not necessary for this tutorial)</em></li>
+<li><a href="https://github.com/tez-capital/ami-tezpay">Install ami-tezpay service</a></li>
+</ul>
+<p>Following the guides above will ensure you have the necessary tools and configurations to proceed with this tutorial.</p>
+<hr>
+<h2 id="installation">Installation</h2>
+<p>TezPeak GUI supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time simply combine both configurations in the same file as shown here: <a href="https://github.com/tez-capital/tezpeak">https://github.com/tez-capital/tezpeak</a></p>
+<h3 id="download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</h3>
+<pre tabindex="0"><code>tezbake setup --peak
+</code></pre><blockquote>
+<p>You don&rsquo;t need to install the TezBake node or baker services to use TezPay.</p>
+</blockquote>
+<h3 id="setup-tezpeak-configuration">Setup TezPeak configuration</h3>
+<pre tabindex="0"><code>cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
+</code></pre><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
+<h5 id="sample-tezpeak-configuration">Sample TezPeak configuration</h5>
+<p>Here&rsquo;s an example of a minimal TezPeak <code>config.hjson</code> file with just TezPay configured:</p>
+<pre tabindex="0"><code>{
+ listen: 0.0.0.0:8733
+ app_root: /bake-buddy
+ modules: {
+     tezpay: {
+         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
+     }
+ }
+}
+</code></pre><h5 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h5>
+<p>Here&rsquo;s the TezPeak configuration with all available TezPay options:</p>
+<pre tabindex="0"><code>{
+ # Id to show in the header
+ id: &#34;&#34;
+ # Address to listen on
+ listen: 127.0.0.1:8733
+ app_root: /bake-buddy
+ modules: {
+     tezpay: {
+ 		# can be null to disable tezpay package monitoring
+         applications: {
+ 			# path to tezpay ami package, either absolute or relative to parent directory peak
+             tezpay: tezpay
+         }
+         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
+         payout_wallet_preferences: {
+             balance_warning_threshold: 100
+             balance_error_threshold: 50
+         }
+ 		# forces all operations to be dry run
+         force_dry_run: true
+     }
+ }
+ 
+ # List of reference nodes to connect to
+ # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
+ nodes: {
+     &#34;Tezos Foundation&#34;: {
+         address: https://rpc.tzbeta.net/
+         is_rights_provider: true
+         is_block_provider: false
+     }
+     tzkt: {
+         address: https://rpc.tzkt.io/mainnet/
+         is_rights_provider: false
+         is_block_provider: true
+         # reports error if node not available, use for baker&#39;s node
+         is_essential: false
+     }
+ }
+ # The mode tezpeak should operate in
+ # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
+ # public - assumes public environment, only readonly operations are allowed
+ # private - assumes private environment, all operations are allowed
+ mode: auto
+}
+</code></pre><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
+<pre tabindex="0"><code>tezbake start --peak
+</code></pre><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
+<p>If you&rsquo;re connecting from the same computer, you can use <code>http://127.0.0.1:8733</code> or <code>http://localhost:8733</code>.</p>
+<h2 id="tezpeak-example-screenshot">TezPeak example screenshot</h2>
+<p><img src="/tezbake/tutorial/tezpeakexample.png" alt=""></p>
+<hr>
+<p>Any questions/comments/concerns? Please contact the Tez Capital team on
+<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
 	
 	

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bake with Peak GUI">
 <meta itemprop="description" content="TezBake Baking Tutorial for GUI Users">
 
-<meta itemprop="wordCount" content="471">
+<meta itemprop="wordCount" content="457">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake with Peak GUI"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for GUI Users"/>
@@ -218,7 +218,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-setup-li">
   <a href="/tezpay/tutorials/how-to-setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-setup"><span class="">&gt; How to Setup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-pay-li">
-  <a href="/tezpay/tutorials/how-to-pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-pay"><span class="">How to Pay Stakers</span></a>
+  <a href="/tezpay/tutorials/how-to-pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-pay"><span class="">How to Pay Delegators</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-setup-gui-li">
+  <a href="/tezpay/tutorials/how-to-setup-gui/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-setup-gui"><span class="">How to Pay with Peak GUI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-notify-li">
   <a href="/tezpay/tutorials/how-to-notify/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialshow-to-notify"><span class="">How to Setup Notifications</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialshow-to-update-li">
@@ -392,75 +394,75 @@
 </blockquote>
 <hr>
 <h2 id="installation">Installation</h2>
+<p>TezPeak GUI supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time simply combine both configurations in the same file as shown here: <a href="https://github.com/tez-capital/tezpeak">https://github.com/tez-capital/tezpeak</a></p>
 <h3 id="download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</h3>
 <pre tabindex="0"><code>tezbake setup --peak
 </code></pre><h3 id="setup-tezpeak-configuration">Setup TezPeak configuration</h3>
 <pre tabindex="0"><code>cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
 </code></pre><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
 <h5 id="sample-tezpeak-configuration-with-1-baker">Sample TezPeak configuration with 1 baker</h5>
-<p>Here&rsquo;s an example of a <code>config.hjson</code> file:</p>
+<p>Here&rsquo;s an example of a <code>config.hjson</code> file with minimal TezBake configuration for one baker:</p>
 <pre tabindex="0"><code>{
-    id: BakingBenjamins
-    listen: &#34;0.0.0.0:8733&#34;
-    bakers: [
-    	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
-    ]
+ listen: 0.0.0.0:8733
+ app_root: /bake-buddy
+ modules: {
+     tezbake: {
+         bakers: [
+             tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+         ]
+     }
+ }
 }
-</code></pre><p>This configuration file names the baker &ldquo;BakingBenjamins&rdquo;, listens to anyone trying to connect to the TezPeak GUI web interface on port 8733, and specifies the baker&rsquo;s address.</p>
-<blockquote>
-<p>Change <code>id:</code> to have your baker&rsquo;s name and <code>bakers:</code> to have your baker&rsquo;s address.</p>
-</blockquote>
-<p>You can also make TezPeak GUI only available on the local computer if you have an all-in-one setup (i.e. the baker and the GUI are on the same computer which has a graphical user interface):</p>
+</code></pre><p>You can also make TezPeak GUI only available on the local computer if you have an all-in-one setup (i.e. the baker and the GUI are on the same computer which has a graphical user interface):</p>
 <pre tabindex="0"><code>{
-    id: BakingBenjamins
-    listen: &#34;127.0.0.1:8733&#34;
-    bakers: [
-    	tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
-    ]
-}
-</code></pre><h5 id="minimal-tezpeak-configuration-example">Minimal TezPeak configuration example</h5>
-<p>Here&rsquo;s the TezPeak minimal configuration, showing you can also have multiple bakers:</p>
-<pre tabindex="0"><code>{
-   listen: &#34;0.0.0.0:8733&#34;
-   bakers: [
-      tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
-      tz1hZvgjekGo7DmQjWh7XnY5eLQD8wNYPczE
-   ]
+ listen: 127.0.0.1:8733
+ app_root: /bake-buddy
+ modules: {
+     tezbake: {
+         bakers: [
+             tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+         ]
+     }
+ }
 }
 </code></pre><h5 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h5>
-<p>Here&rsquo;s the TezPeak configuration with all available options:</p>
+<p>Here&rsquo;s the TezPeak configuration with all TezBake available options:</p>
 <pre tabindex="0"><code>{
-   # Id to show in the header
-   id: &#34;&#34;
-   # Address to listen on
-   listen: 127.0.0.1:8733
-   # List of bakers to monitor
-   bakers: [
-   ]
-   # Baker&#39;s node to connect to
-   node: http://localhost:8732
-   # List of reference nodes to connect to
-   # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
-   reference_nodes: {
-      &#34;Tezos Foundation&#34;: {
+ # Id to show in the header
+ id: &#34;&#34;
+ # Address to listen on
+ listen: 127.0.0.1:8733
+ app_root: /bake-buddy
+ modules: {
+     tezbake: {
+ 		# uncomment bellow to disable tezbake package monitoring
+         # applications: null
+         bakers: [
+ 			# list of bakers to monitor for balances and rights
+             tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
+         ]
+     }
+ # List of reference nodes to connect to
+ # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
+ nodes: {
+     &#34;Tezos Foundation&#34;: {
          address: https://rpc.tzbeta.net/
          is_rights_provider: true
          is_block_provider: false
-      },
-      &#34;tzkt&#34;: {
+     }
+     tzkt: {
          address: https://rpc.tzkt.io/mainnet/
          is_rights_provider: false
          is_block_provider: true
-      }
-   }
-   # The mode tezpeak should operate in
-   # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
-   # public - assumes public environment, only readonly operations are allowed
-   # private - assumes private environment, all operations are allowed
-   mode: auto
-   # The number of blocks to look for the rights
-   # 50 means 25 blocks in the past and 25 blocks in the future
-   block_window: 50
+         # reports error if node not available, use for baker&#39;s node
+         is_essential: false
+     }
+ }
+ # The mode tezpeak should operate in
+ # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
+ # public - assumes public environment, only readonly operations are allowed
+ # private - assumes private environment, all operations are allowed
+ mode: auto
 }
 </code></pre><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
 <pre tabindex="0"><code>tezbake start --peak
