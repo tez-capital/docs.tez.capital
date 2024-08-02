@@ -478,112 +478,6 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Pay with Peak GUI</title>
-      <link>/tezpay/tutorials/how-to-setup-gui/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tezpay/tutorials/how-to-setup-gui/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
-&lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed the following tutorials:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/how-to-setup/#preparation-step-3---payout-wallet-optional&#34;&gt;Generate payout soft wallet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/tutorials/how-to-setup/#setup-step-1a-configuration-file-simple&#34;&gt;Create TezPay configuration file&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/default/&#34;&gt;Default configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;Starter/Minimal configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/sample/&#34;&gt;All configuration options&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake/#download-and-copy-tezbake&#34;&gt;Download TezBake&lt;/a&gt; &lt;em&gt;(note: Installing node/baking services not necessary for this tutorial)&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tez-capital/ami-tezpay&#34;&gt;Install ami-tezpay service&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Following the guides above will ensure you have the necessary tools and configurations to proceed with this tutorial.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-&lt;p&gt;TezPeak GUI supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time simply combine both configurations in the same file as shown here: &lt;a href=&#34;https://github.com/tez-capital/tezpeak&#34;&gt;https://github.com/tez-capital/tezpeak&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --peak
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;You don&amp;rsquo;t need to install the TezBake node or baker services to use TezPay.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;setup-tezpeak-configuration&#34;&gt;Setup TezPeak configuration&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
-&lt;h5 id=&#34;sample-tezpeak-configuration&#34;&gt;Sample TezPeak configuration&lt;/h5&gt;
-&lt;p&gt;Here&amp;rsquo;s an example of a minimal TezPeak &lt;code&gt;config.hjson&lt;/code&gt; file with just TezPay configured:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
- listen: 0.0.0.0:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-     }
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;full-tezpeak-configuration-examples&#34;&gt;Full TezPeak configuration examples&lt;/h5&gt;
-&lt;p&gt;Here&amp;rsquo;s the TezPeak configuration with all available TezPay options:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
- # Id to show in the header
- id: &amp;#34;&amp;#34;
- # Address to listen on
- listen: 127.0.0.1:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
- 		# can be null to disable tezpay package monitoring
-         applications: {
- 			# path to tezpay ami package, either absolute or relative to parent directory peak
-             tezpay: tezpay
-         }
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-         payout_wallet_preferences: {
-             balance_warning_threshold: 100
-             balance_error_threshold: 50
-         }
- 		# forces all operations to be dry run
-         force_dry_run: true
-     }
- }
- 
- # List of reference nodes to connect to
- # The reference nodes are used to get the rights and blocks if the baker&amp;#39;s node is not available
- nodes: {
-     &amp;#34;Tezos Foundation&amp;#34;: {
-         address: https://rpc.tzbeta.net/
-         is_rights_provider: true
-         is_block_provider: false
-     }
-     tzkt: {
-         address: https://rpc.tzkt.io/mainnet/
-         is_rights_provider: false
-         is_block_provider: true
-         # reports error if node not available, use for baker&amp;#39;s node
-         is_essential: false
-     }
- }
- # The mode tezpeak should operate in
- # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
- # public - assumes public environment, only readonly operations are allowed
- # private - assumes private environment, all operations are allowed
- mode: auto
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake start --peak
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;If you&amp;rsquo;re connecting from the same computer, you can use &lt;code&gt;http://127.0.0.1:8733&lt;/code&gt; or &lt;code&gt;http://localhost:8733&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;tezpeak-example-screenshot&#34;&gt;TezPeak example screenshot&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezpeakexample.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
-&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>Tezpay: How to Setup Notifications</title>
       <link>/tezpay/tutorials/how-to-notify/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -754,6 +648,112 @@ b. Access Token and Secret&lt;/li&gt;
 &lt;li&gt;Once you have filled in the necessary information - you have setup Notifications for Twitter! Test the notification by using command: &lt;br&gt;
 a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: How to Setup with Peak GUI</title>
+      <link>/tezpay/tutorials/how-to-setup-gui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-setup-gui/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed the following tutorials:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/how-to-setup/#preparation-step-3---payout-wallet-optional&#34;&gt;Generate payout soft wallet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/tutorials/how-to-setup/#setup-step-1a-configuration-file-simple&#34;&gt;Create TezPay configuration file&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/default/&#34;&gt;Default configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;Starter/Minimal configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/sample/&#34;&gt;All configuration options&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake/#download-and-copy-tezbake&#34;&gt;Download TezBake&lt;/a&gt; &lt;em&gt;(note: Installing node/baking services not necessary for this tutorial)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tez-capital/ami-tezpay&#34;&gt;Install ami-tezpay service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Following the guides above will ensure you have the necessary tools and configurations to proceed with this tutorial.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;TezPeak GUI supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time simply combine both configurations in the same file as shown here: &lt;a href=&#34;https://github.com/tez-capital/tezpeak&#34;&gt;https://github.com/tez-capital/tezpeak&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --peak
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;You don&amp;rsquo;t need to install the TezBake node or baker services to use TezPay.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;setup-tezpeak-configuration&#34;&gt;Setup TezPeak configuration&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
+&lt;h5 id=&#34;sample-tezpeak-configuration&#34;&gt;Sample TezPeak configuration&lt;/h5&gt;
+&lt;p&gt;Here&amp;rsquo;s an example of a minimal TezPeak &lt;code&gt;config.hjson&lt;/code&gt; file with just TezPay configured:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+ listen: 0.0.0.0:8733
+ app_root: /bake-buddy
+ modules: {
+     tezpay: {
+         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
+     }
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;full-tezpeak-configuration-examples&#34;&gt;Full TezPeak configuration examples&lt;/h5&gt;
+&lt;p&gt;Here&amp;rsquo;s the TezPeak configuration with all available TezPay options:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+ # Id to show in the header
+ id: &amp;#34;&amp;#34;
+ # Address to listen on
+ listen: 127.0.0.1:8733
+ app_root: /bake-buddy
+ modules: {
+     tezpay: {
+ 		# can be null to disable tezpay package monitoring
+         applications: {
+ 			# path to tezpay ami package, either absolute or relative to parent directory peak
+             tezpay: tezpay
+         }
+         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
+         payout_wallet_preferences: {
+             balance_warning_threshold: 100
+             balance_error_threshold: 50
+         }
+ 		# forces all operations to be dry run
+         force_dry_run: true
+     }
+ }
+ 
+ # List of reference nodes to connect to
+ # The reference nodes are used to get the rights and blocks if the baker&amp;#39;s node is not available
+ nodes: {
+     &amp;#34;Tezos Foundation&amp;#34;: {
+         address: https://rpc.tzbeta.net/
+         is_rights_provider: true
+         is_block_provider: false
+     }
+     tzkt: {
+         address: https://rpc.tzkt.io/mainnet/
+         is_rights_provider: false
+         is_block_provider: true
+         # reports error if node not available, use for baker&amp;#39;s node
+         is_essential: false
+     }
+ }
+ # The mode tezpeak should operate in
+ # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
+ # public - assumes public environment, only readonly operations are allowed
+ # private - assumes private environment, all operations are allowed
+ mode: auto
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake start --peak
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re connecting from the same computer, you can use &lt;code&gt;http://127.0.0.1:8733&lt;/code&gt; or &lt;code&gt;http://localhost:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;tezpeak-example-screenshot&#34;&gt;TezPeak example screenshot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezpeakexample.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
