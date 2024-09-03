@@ -169,7 +169,7 @@ help test protocol migrations.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://gitlab.com/groktech/xtz.configs/-/raw/main/ghostnet.json
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
