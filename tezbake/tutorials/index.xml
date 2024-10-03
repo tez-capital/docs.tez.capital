@@ -639,8 +639,11 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;/ul&gt;
 &lt;h2 id=&#34;a-update-ami--eli-and-octez-binaries&#34;&gt;(A) Update ami &amp;amp; eli and Octez binaries&lt;/h2&gt;
 &lt;p&gt;(updates components: #1, #2, #4)&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;b-update-octez-binaries-only&#34;&gt;(B) Update Octez binaries only&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a -s
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;-s&lt;/code&gt; flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&amp;rsquo;t have an impact on your baker.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;b-update-octez-binaries-only&#34;&gt;(B) Update Octez binaries only&lt;/h2&gt;
 &lt;p&gt;(updates components: #4)&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;c-update-the-entire-tezbake-stack&#34;&gt;(C) Update the entire TezBake stack&lt;/h2&gt;
@@ -649,8 +652,11 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;d-update-tezbake-only&#34;&gt;(D) Update tezbake only&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a -s
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;The &lt;code&gt;-s&lt;/code&gt; flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&amp;rsquo;t have an impact on your baker.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;d-update-tezbake-only&#34;&gt;(D) Update tezbake only&lt;/h2&gt;
 &lt;p&gt;(updates components: #3)&lt;/p&gt;
 &lt;p&gt;Update your tezbake binary to the latest version, depending on your computer architecture:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
