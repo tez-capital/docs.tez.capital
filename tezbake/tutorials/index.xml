@@ -37,10 +37,10 @@
 &lt;/li&gt;
 &lt;li&gt;Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet &amp;amp; Baker apps installed.
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings
-Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
-&lt;img src=&#34;/tezbake/tutorial/tezbakeLedgerLock.png&#34; alt=&#34;&amp;lt;Ledger locking settings&#34;&gt;
-Remove the Ledger wallet app from your baking device after you&amp;rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings&lt;/p&gt;
+&lt;p&gt;Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
+&lt;img src=&#34;/tezbake/tutorial/tezbakeLedgerLock.png&#34; alt=&#34;&amp;lt;Ledger locking settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Remove the Ledger wallet app from your baking device after you&amp;rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -170,10 +170,10 @@ help test protocol migrations.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Ledger Nano S hardware wallet with Tezos Wallet &amp;amp; Baker apps installed.
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings
-Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
-&lt;img src=&#34;/tezbake/tutorial/tezbakeLedgerLock.png&#34; alt=&#34;&amp;lt;Ledger locking settings&#34;&gt;
-Remove the Ledger wallet app from your baking device after you&amp;rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings&lt;/p&gt;
+&lt;p&gt;Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
+&lt;img src=&#34;/tezbake/tutorial/tezbakeLedgerLock.png&#34; alt=&#34;&amp;lt;Ledger locking settings&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Remove the Ledger wallet app from your baking device after you&amp;rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
