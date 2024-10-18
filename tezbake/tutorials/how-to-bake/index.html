@@ -388,7 +388,8 @@
 	<h2 id="preparation">Preparation</h2>
 <p>Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:</p>
 <ol>
-<li>Spare computer or existing computer with Linux installed. The recommended requirements are provided by <a href="https://research-development.nomadic-labs.com/paris-announcement.html#10s-block-times-bring-lower-latency-and-faster-finality">Nomadic Labs</a>
+<li>
+<p>Spare computer or existing computer with Linux installed. The recommended requirements are provided by <a href="https://research-development.nomadic-labs.com/paris-announcement.html#10s-block-times-bring-lower-latency-and-faster-finality">Nomadic Labs</a></p>
 <ul>
 <li>3 CPU cores (arm64 or amd64/x86-64 architectures) – 2 are needed by the Octez node and 1 is needed by the Octez baker;</li>
 <li>8GB RAM + 8GB swap (or 16GB RAM);</li>
@@ -396,11 +397,16 @@
 <li>a low-latency, reliable broadband internet connection.</li>
 </ul>
 </li>
-<li>Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet &amp; Baker apps installed.
+<li>
+<p>Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet &amp; Baker apps installed.</p>
 <blockquote>
 <p>It&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings</p>
+</blockquote>
+<blockquote>
 <p>Absolutely ensure you have properly configured the Ledger device settings so the device doesn&rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
 <img src="/tezbake/tutorial/tezbakeLedgerLock.png" alt="&lt;Ledger locking settings"></p>
+</blockquote>
+<blockquote>
 <p>Remove the Ledger wallet app from your baking device after you&rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.</p>
 </blockquote>
 </li>
