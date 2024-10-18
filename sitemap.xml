@@ -112,6 +112,8 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_setup-ledger/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_setup-soft-wallet/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_signer/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_start/</loc>

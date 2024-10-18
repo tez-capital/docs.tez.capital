@@ -29,7 +29,7 @@
 <meta itemprop="name" content="How to Bake on Ghostnet">
 <meta itemprop="description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet">
 
-<meta itemprop="wordCount" content="1400">
+<meta itemprop="wordCount" content="1476">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Bake on Ghostnet"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet"/>
@@ -177,6 +177,8 @@
   <a href="/tezbake/reference/cmd/tezbake_setup-ami/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbakereferencecmdtezbake_setup-ami"><span class="">tezbake_setup-ami</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbakereferencecmdtezbake_setup-ledger-li">
   <a href="/tezbake/reference/cmd/tezbake_setup-ledger/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbakereferencecmdtezbake_setup-ledger"><span class="">tezbake_setup-ledger</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbakereferencecmdtezbake_setup-soft-wallet-li">
+  <a href="/tezbake/reference/cmd/tezbake_setup-soft-wallet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbakereferencecmdtezbake_setup-soft-wallet"><span class="">tezbake_setup-soft-wallet</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbakereferencecmdtezbake_signer-li">
   <a href="/tezbake/reference/cmd/tezbake_signer/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbakereferencecmdtezbake_signer"><span class="">tezbake_signer</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbakereferencecmdtezbake_start-li">
@@ -394,9 +396,18 @@ help test protocol migrations.</p>
 <p>Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:</p>
 <ol>
 <li>Spare computer or existing computer with Linux installed. We recommend Ubuntu Linux.
-(note: you must have an SSD drive or better &amp; at least 8GB RAM)</li>
+<blockquote>
+<p>You must have an SSD drive or better &amp; at least 8GB RAM</p>
+</blockquote>
+</li>
 <li>Ledger Nano S hardware wallet with Tezos Wallet &amp; Baker apps installed.
-(note: it&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings)</li>
+<blockquote>
+<p>It&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings
+Absolutely ensure you have properly configured the Ledger device settings so the device doesn&rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.
+<img src="/tezbake/tutorial/tezbakeLedgerLock.png" alt="&lt;Ledger locking settings">
+Remove the Ledger wallet app from your baking device after you&rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.</p>
+</blockquote>
+</li>
 </ol>
 <hr>
 <h2 id="installation">Installation</h2>
