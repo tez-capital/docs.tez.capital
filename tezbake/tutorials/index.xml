@@ -304,7 +304,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;hr&gt;
 &lt;h2 id=&#34;pull-and-execute-the-tezbake-docker-image&#34;&gt;Pull and Execute the TezBake Docker Image&lt;/h2&gt;
 &lt;h3 id=&#34;pull-the-tezbake-docker-image&#34;&gt;Pull the TezBake Docker Image&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker pull ghcr.io/tez-capital/tezbake:latest-alpinetezbake setup --peak
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker pull ghcr.io/tez-capital/tezbake:latest-alpine
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezbake-container&#34;&gt;Setup TezBake Container&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker run --name tezbake-container --privileged -d ghcr.io/tez-capital/tezbake:latest-alpine
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;

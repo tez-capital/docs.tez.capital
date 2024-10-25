@@ -62,8 +62,8 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;source&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;staking&lt;/code&gt; or &lt;code&gt;chain&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;The general area of interest. &lt;code&gt;staking&lt;/code&gt; is related to activities that validate on the chain and &lt;code&gt;chain&lt;/code&gt; is related to general chain progression&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;baking&lt;/code&gt; or &lt;code&gt;chain&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;The general area of interest. &lt;code&gt;baking&lt;/code&gt; is related to activities that validate on the chain and &lt;code&gt;chain&lt;/code&gt; is related to general chain progression&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;event&lt;/code&gt;&lt;/td&gt;
