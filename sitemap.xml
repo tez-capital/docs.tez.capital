@@ -4,6 +4,8 @@
   <url>
     <loc>/tezbake/tutorials/how-to-bake/</loc>
   </url><url>
+    <loc>/tezbox/tutorials/how-to-setup/</loc>
+  </url><url>
     <loc>/tezpay/tutorials/how-to-setup/</loc>
   </url><url>
     <loc>/tezwatch/tutorials/how-to-setup/</loc>
@@ -44,6 +46,8 @@
   </url><url>
     <loc>/tezbake/</loc>
   </url><url>
+    <loc>/tezbox/</loc>
+  </url><url>
     <loc>/tezgov/</loc>
   </url><url>
     <loc>/getting-started/best-practices/</loc>
@@ -55,6 +59,8 @@
     <loc>/tezwatch/</loc>
   </url><url>
     <loc>/tezbake/tutorials/</loc>
+  </url><url>
+    <loc>/tezbox/tutorials/</loc>
   </url><url>
     <loc>/tezgov/tutorials/</loc>
   </url><url>
