@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; How to Setup">
 <meta itemprop="description" content="TezBox Setup Tutorial">
 
-<meta itemprop="wordCount" content="962">
+<meta itemprop="wordCount" content="996">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; How to Setup"/>
 <meta name="twitter:description" content="TezBox Setup Tutorial"/>
@@ -413,25 +413,27 @@
 <p>To get started with Podman, you can follow the instructions on the <a href="https://podman.io/getting-started/installation">official Podman website</a>.</p>
 <h2 id="setup-tezbox-to-test-with-mainnet">Setup TezBox to test with Mainnet</h2>
 <p>To run the TezBox container with the Paris protocol</p>
-<pre tabindex="0"><code>docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </code></pre><blockquote>
 <p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
-<pre tabindex="0"><code>docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+</code></pre><p>To verify that the container is running successfully, you can use <code>octez-client</code> to query the node</p>
+<pre tabindex="0"><code>octez-client -E http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
 </code></pre><p>To view all available protocols available in the TezBox container, you can run the following command</p>
-<pre tabindex="0"><code>docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 list-protocols
+<pre tabindex="0"><code>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 list-protocols
 </code></pre><h2 id="setup-tezbox-to-test-release-candidate-rc-protocols">Setup TezBox to test Release Candidate (RC) protocols</h2>
 <h3 id="qena42">Qena42</h3>
 <p>To run the TezBox container with the Qena42 protocol</p>
-<pre tabindex="0"><code>docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
+<pre tabindex="0"><code>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
 </code></pre><blockquote>
 <p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
-<pre tabindex="0"><code>docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
+<pre tabindex="0"><code>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
 </code></pre><p>To view all available protocols available in the TezBox container, you can run the following command</p>
-<pre tabindex="0"><code>docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
+<pre tabindex="0"><code>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
 </code></pre><h2 id="tezbox-configuration-options">TezBox Configuration Options</h2>
 <h3 id="general-information">General Information</h3>
 <ul>
@@ -461,12 +463,12 @@ Supported units: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</co
 <p>For example if you want to adjust block times, you can create <code>sandbox-override-parameters.hjson</code> file with the following content:</p>
 <pre tabindex="0"><code>minimal_block_delay: &#34;1&#34; // minimal block delay in seconds, has to be quoted
 </code></pre><p>Run the container with the following command:</p>
-<pre tabindex="0"><code># docker run -it -v &lt;path-to-your-file&gt;:/tezbox/overrides/protocols/&lt;case sensitive protocol id&gt;/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code># sudo docker run -it -v &lt;path-to-your-file&gt;:/tezbox/overrides/protocols/&lt;case sensitive protocol id&gt;/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 
-docker run -it -v $(pwd)/sandbox-override-parameters.hjson:/tezbox/overrides/protocols/Proxford/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+sudo docker run -it -v $(pwd)/sandbox-override-parameters.hjson:/tezbox/overrides/protocols/Proxford/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </code></pre><p>You can determine path based on folder structure in <a href="https://github.com/tez-capital/tezbox/tree/main/configuration">https://github.com/tez-capital/tezbox/tree/main/configuration</a></p>
 <p>Optionally you can mount entire overrides/configuration directory to <code>/tezbox/overrides</code> or <code>/tezbox/configuration</code> to replace the whole configuration.</p>
-<pre tabindex="0"><code>docker run -it -v &lt;path-to-your-configuration-overrides&gt;:/tezbox/overrides ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code>sudo docker run -it -v &lt;path-to-your-configuration-overrides&gt;:/tezbox/overrides ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </code></pre><blockquote>
 <p>Do not edit or mount configuration files in the <code>/tezbox/context</code> directory. They are generated automatically and should not be modified manually.</p>
 </blockquote>
@@ -493,10 +495,10 @@ docker run -it -v $(pwd)/sandbox-override-parameters.hjson:/tezbox/overrides/pro
 <p>For example to disable baker service you would crease <code>baker.hjson</code> file:</p>
 <pre tabindex="0"><code>autostart: false
 </code></pre><p>Mount it into overrides directory:</p>
-<pre tabindex="0"><code>docker run -it -v $(pwd)/baker.hjson:/tezbox/overrides/services/baker.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code>sudo docker run -it -v $(pwd)/baker.hjson:/tezbox/overrides/services/baker.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </code></pre><h3 id="chain-context">Chain Context</h3>
 <p>Chain and protocol is automatically initialized only once during the first run. The chain and all runtime data are stored in <code>/tezbox/context/data</code> directory. If you want to persist your sandbox state just run it with mounted volume to <code>/tezbox/context/data</code> directory.</p>
-<pre tabindex="0"><code>docker run -it -v $(pwd)/sandbox-data:/tezbox -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+<pre tabindex="0"><code>sudo docker run -it -v $(pwd)/sandbox-data:/tezbox -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </code></pre><blockquote>
 <p>To reset the state you can remove the <code>/tezbox/context/data/tezbox-initialized</code> file. After its removal all chain and client data will be removed and the chain will be reinitialized on the next run.</p>
 </blockquote>
@@ -512,7 +514,7 @@ docker run -it -v $(pwd)/sandbox-override-parameters.hjson:/tezbox/overrides/pro
 <li>build lua sources (you can get eli from <a href="https://github.com/alis-is/eli/releases">https://github.com/alis-is/eli/releases</a>)
 <code>eli build/build.lua</code></li>
 <li>build the image
-<code>docker build --build-arg=&quot;PROTOCOLS=PsParisC&quot; --build-arg=&quot;IMAGE_TAG=octez-v20.3&quot; -t tezbox . -f containers/tezos/Containerfile --no-cache</code></li>
+<code>sudo docker build --build-arg=&quot;PROTOCOLS=PsParisC&quot; --build-arg=&quot;IMAGE_TAG=octez-v20.3&quot; -t tezbox . -f containers/tezos/Containerfile --no-cache</code></li>
 </ol>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
