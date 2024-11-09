@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezbake: &gt; How to Bake with TezBake</title>
+      <title>Tezbake: &gt; Baking on Mainnet</title>
       <link>/tezbake/tutorials/how-to-bake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -152,7 +152,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: How to Bake on Ghostnet</title>
+      <title>Tezbake: Baking on Ghostnet</title>
       <link>/tezbake/tutorials/how-to-bake-ghostnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -291,7 +291,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: How to Bake with Docker</title>
+      <title>Tezbake: Baking with Docker</title>
       <link>/tezbake/tutorials/how-to-bake-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -382,7 +382,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: How to Bake with Peak GUI</title>
+      <title>Tezbake: Baking with Peak GUI</title>
       <link>/tezbake/tutorials/how-to-bake-gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -489,7 +489,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: How to Bootstrap with TezBake</title>
+      <title>Tezbake: Bootstrap Node</title>
       <link>/tezbake/tutorials/how-to-bootstrap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -542,7 +542,7 @@ tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rollin
     </item>
     
     <item>
-      <title>Tezbake: How to Monitor with TezBake</title>
+      <title>Tezbake: Monitoring Logs and Status</title>
       <link>/tezbake/tutorials/how-to-monitor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -596,7 +596,7 @@ tezbake node log accuser-next -f
     </item>
     
     <item>
-      <title>Tezbake: How to Troubleshoot with TezBake</title>
+      <title>Tezbake: Troubleshooting</title>
       <link>/tezbake/tutorials/how-to-troubleshoot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -639,7 +639,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
     </item>
     
     <item>
-      <title>Tezbake: How to Update TezBake</title>
+      <title>Tezbake: Updating</title>
       <link>/tezbake/tutorials/how-to-update/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

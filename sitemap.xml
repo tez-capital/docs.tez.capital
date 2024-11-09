@@ -12,8 +12,6 @@
   </url><url>
     <loc>/tezgov/tutorials/how-to-vote/</loc>
   </url><url>
-    <loc>/getting-started/</loc>
-  </url><url>
     <loc>/tezbake/tutorials/how-to-bake-ghostnet/</loc>
   </url><url>
     <loc>/tezbake/tutorials/how-to-bake-docker/</loc>
@@ -24,25 +22,19 @@
   </url><url>
     <loc>/tezbox/tutorials/how-to-configure/</loc>
   </url><url>
-    <loc>/tezgov/tutorials/how-to-inject-proposals/</loc>
+    <loc>/getting-started/</loc>
   </url><url>
-    <loc>/tezwatch/tutorials/how-to-monitor-balances-and-transactions/</loc>
+    <loc>/tezgov/tutorials/how-to-inject-proposals/</loc>
   </url><url>
     <loc>/tezbake/tutorials/how-to-monitor/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-pay/</loc>
-  </url><url>
-    <loc>/tezgov/tutorials/how-to-set-deposits-limit/</loc>
+    <loc>/tezwatch/tutorials/how-to-monitor-balances-and-transactions/</loc>
   </url><url>
     <loc>/tezpay/tutorials/how-to-notify/</loc>
   </url><url>
+    <loc>/tezpay/tutorials/how-to-pay/</loc>
+  </url><url>
     <loc>/tezpay/tutorials/how-to-setup-gui/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/how-to-troubleshoot/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/how-to-update/</loc>
-  </url><url>
-    <loc>/tezpay/tutorials/how-to-update/</loc>
   </url><url>
     <loc>/</loc>
   </url><url>
@@ -69,6 +61,12 @@
     <loc>/tezwatch/</loc>
   </url><url>
     <loc>/tezwatch/tutorials/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/how-to-troubleshoot/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/how-to-update/</loc>
+  </url><url>
+    <loc>/tezpay/tutorials/how-to-update/</loc>
   </url><url>
     <loc>/getting-started/what-is-baking/</loc>
   </url><url>

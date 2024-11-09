@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezgov: &gt; How to Vote with TezGov</title>
+      <title>Tezgov: &gt; Voting on Proposals</title>
       <link>/tezgov/tutorials/how-to-vote/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -73,7 +73,7 @@
     </item>
     
     <item>
-      <title>Tezgov: How to Inject Proposals with TezGov</title>
+      <title>Tezgov: Injecting Proposals</title>
       <link>/tezgov/tutorials/how-to-inject-proposals/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -101,39 +101,6 @@
 &lt;p&gt;Vanity proposals can be used for other reasons as well but they are never meant to be pursued all the way through. The scope of vanity proposals does not extend past the proposal round. All bakers must take great care not to vote on these proposals once the governance process enters the exploration phase.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovNewProposalVanity.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We encourage all bakers to use this system only for serious ecosystem governance issues. The governance portal functionality is a two way street. The ability to speak does not absolve a baker from the consequences of the baker&amp;rsquo;s speech.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
-&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Tezgov: How to Set Deposits Limit with TezGov</title>
-      <link>/tezgov/tutorials/how-to-set-deposits-limit/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tezgov/tutorials/how-to-set-deposits-limit/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;tezgov-portal-set-deposits-limit-tutorial&#34;&gt;TezGov Portal Set Deposits Limit Tutorial&lt;/h2&gt;
-&lt;p&gt;TezGov Web Portal: &lt;a href=&#34;https://gov.tez.capital&#34; title=&#34;TezGov Web Portal&#34;&gt;https://gov.tez.capital&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Log into the TezGov portal by using the most secure method available to you.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;We highly recommend using the direct Ledger login at the top. This method allows you to see the specific details of your vote on your Ledger screen.&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Use the Remote (signer) method if you have a signer somewhere on your LAN or local computer. This is an option for advanced users.&lt;/li&gt;
-&lt;li&gt;Use the Beacon method if you are using a Beacon enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovHome.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Expand the &lt;code&gt;Tools&lt;/code&gt; pane and select &lt;code&gt;Set Deposits Limit&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovSetDepositsLimit.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Fill in the amount, in tez, you want to set as your deposits limit and submit&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovSetDepositsLimit2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;You will be asked to confirm the deposits limit on your Ledger device.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Once confirmed, the page will refresh within 30 seconds.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;

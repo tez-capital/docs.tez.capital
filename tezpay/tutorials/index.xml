@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezpay: &gt; How to Setup TezPay</title>
+      <title>Tezpay: &gt; Setup</title>
       <link>/tezpay/tutorials/how-to-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -341,150 +341,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Pay Delegators with TezPay</title>
-      <link>/tezpay/tutorials/how-to-pay/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tezpay/tutorials/how-to-pay/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;using-tezpay&#34;&gt;Using TezPay&lt;/h2&gt;
-&lt;h3 id=&#34;summary-of-using-tezpay&#34;&gt;Summary of Using Tezpay&lt;/h3&gt;
-&lt;p&gt;Using the TezPay application is through CLI for now and will be
-carried out through a few commands.&lt;/p&gt;
-&lt;p&gt;This section will review:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Generating a payout table for all delegates&lt;/li&gt;
-&lt;li&gt;Generating a test notification (&lt;em&gt;Testing the
-&lt;strong&gt;Twitter&lt;/strong&gt;/&lt;strong&gt;Discord&lt;/strong&gt;/&lt;strong&gt;E-mail&lt;/strong&gt; notifications from the advanced
-configuration file&lt;/em&gt;)&lt;/li&gt;
-&lt;li&gt;Generating an actual payout&lt;/li&gt;
-&lt;li&gt;Running a continual payout&lt;/li&gt;
-&lt;li&gt;Keeping TezPay up-to-date&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Before using a command in TezPay, you will need to run
-&lt;em&gt;&lt;strong&gt;two additional commands&lt;/span&gt;&lt;/strong&gt;&lt;/em&gt; that will
-allow you to call the application via commands and set permissions
-While in the TezPay directory in the terminal, run the following
-commands (&lt;em&gt;see code and examples below&lt;/em&gt;):&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;mv tezpay-linux-amd64 tezpay&lt;/code&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage16.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;code&gt;chmod +x tezpay&lt;/code&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage17.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;using-tezpay-step-1---generating-a-payout-table&#34;&gt;Using TezPay: Step 1 - Generating a payout Table&lt;/h3&gt;
-&lt;p&gt;Generating a payout table is a tool that is useful for Public
-Bakers because it allows the baker to see the incoming rewards from
-baking (both block rewards &amp;amp; fees from delegates), review payout per
-delegator from their stake, and other data (see below).&lt;/p&gt;
-&lt;p&gt;The command to generate a payout table is as follows (always remember to be in the
-&lt;em&gt;tezpay&lt;/em&gt; directory:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This will generate a payout table, as exampled below:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage18.png&#34; alt=&#34;&amp;lt;Description of output for ./tezpay generate-payout command.&amp;gt;&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note: the Delegator &amp;amp; Recipient columns have been hidden&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Represents the table of &lt;em&gt;invalid&lt;/em&gt; delegators that will &lt;strong&gt;not&lt;/strong&gt; be
-paid out due to not meeting specific thresholds (ie minimum payout
-threshold/minimum balance)&lt;/li&gt;
-&lt;li&gt;Represents the table of &lt;em&gt;valid&lt;/em&gt; delegators that will be paid out&lt;/li&gt;
-&lt;li&gt;The list of Delegators first 4 and last 4 characters of their
-wallet&lt;/li&gt;
-&lt;li&gt;The list of Recipients of payment first 4 and last 4 characters of
-their wallet (often the same as Delegator)&lt;/li&gt;
-&lt;li&gt;The delegated balance for each Delegator for that particular cycle&lt;/li&gt;
-&lt;li&gt;Represents the kind of reward given (ie delegator reward, baker
-reward, and fee income)&lt;/li&gt;
-&lt;li&gt;The amount of the specific reward to be paid out&lt;/li&gt;
-&lt;li&gt;The fee rate for each delegator, will reflect those delegators who
-have custom fees per the configuration file&lt;/li&gt;
-&lt;li&gt;The fee collected by the baker from each delegator for hosting their
-delegation&lt;/li&gt;
-&lt;li&gt;The transaction fee to pay out each reward&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;using-tezpay-step-2---testing-notifications&#34;&gt;Using TezPay: Step 2 - Testing Notifications&lt;/h3&gt;
-&lt;p&gt;This step will be used to test the notification system for your
-TezPay application. This step will NOT need to be completed every
-payout, but only when you changes messages to test that it was
-successful.&lt;/p&gt;
-&lt;p&gt;while in the &lt;em&gt;tezpay&lt;/em&gt; directory, use the command:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./tezpay test-notify&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;using-tezpay-step-3---initiating-a-payout&#34;&gt;Using TezPay: Step 3 - Initiating a Payout&lt;/h3&gt;
-&lt;p&gt;To use the TezPay application to send a payment will require 1
-line of code and one additional confirmation while it runs.&lt;/p&gt;
-&lt;p&gt;To run TezPay, run the code:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./tezpay pay&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The system will initiate the TezPay application at this point and present a payout
-table, similar to the table(s) from step 1.&lt;/p&gt;
-&lt;p&gt;Once the table is displayed, the prompt will ask you to confirm the payout, and you need to confirm &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;n&lt;/em&gt; (see below):&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage19.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;ol&gt;
-&lt;li&gt;You will be asked to confirm, type &amp;lsquo;&lt;em&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/em&gt;&amp;rsquo; for yes or &amp;lsquo;&lt;em&gt;&lt;strong&gt;n&lt;/strong&gt;&lt;/em&gt;&amp;rsquo;
-for no&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If you confirm the transaction, the payouts will proceed and your
-delegates will be paid out, as well as your Baker wallet. Remember, if
-you are using a separate wallet to payout from your Baker wallet you
-will need to add funds to cover the payments.&lt;/p&gt;
-&lt;p&gt;At this point you have successfully ran the TezPay application and paid out your
-delegates. Be sure to check the confirmations and any errors that may
-have been broadcasted in the terminal (ie, the example above did not
-send notifications because that was not set up).&lt;/p&gt;
-&lt;h3 id=&#34;using-tezpay-step-4---running-a-continual-payout&#34;&gt;Using TezPay: Step 4 - Running a Continual Payout&lt;/h3&gt;
-&lt;p&gt;To use the TezPay application to send a payment will require 1
-line of code and one additional confirmation while it runs.&lt;/p&gt;
-&lt;p&gt;To run TezPay in continual mode, run the command:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./tezpay continual&lt;/code&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage20Continual.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
-&lt;p&gt;Running in continual mode will start its first payment a little bit after the current cycle (one during which you launched it) finishes and the next one begins (usually around 30-60 minutes after the beginning of the new cycle).&lt;/p&gt;
-&lt;p&gt;If you would like to start in continual mode but still need to pay your delegators for last cycle, run the command from Step 3. first and then launch TezPay in continual mode.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;summary-tezpay&#34;&gt;Summary: TezPay&lt;/h2&gt;
-&lt;p&gt;TezPay is an application that allows for easy payouts for public
-bakers on the Tezos Blockchain. This allows for significant
-customizations and flexibility with respect to the payout system and
-empowers bakers to further take control of their Bakery and aid in
-decentralizing the Tezos Blockchain.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
-&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Tezpay: How to Setup Notifications with TezPay</title>
+      <title>Tezpay: Notifications</title>
       <link>/tezpay/tutorials/how-to-notify/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -658,7 +515,150 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Setup with Peak GUI</title>
+      <title>Tezpay: Paying Delegators</title>
+      <link>/tezpay/tutorials/how-to-pay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/how-to-pay/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;using-tezpay&#34;&gt;Using TezPay&lt;/h2&gt;
+&lt;h3 id=&#34;summary-of-using-tezpay&#34;&gt;Summary of Using Tezpay&lt;/h3&gt;
+&lt;p&gt;Using the TezPay application is through CLI for now and will be
+carried out through a few commands.&lt;/p&gt;
+&lt;p&gt;This section will review:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Generating a payout table for all delegates&lt;/li&gt;
+&lt;li&gt;Generating a test notification (&lt;em&gt;Testing the
+&lt;strong&gt;Twitter&lt;/strong&gt;/&lt;strong&gt;Discord&lt;/strong&gt;/&lt;strong&gt;E-mail&lt;/strong&gt; notifications from the advanced
+configuration file&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;Generating an actual payout&lt;/li&gt;
+&lt;li&gt;Running a continual payout&lt;/li&gt;
+&lt;li&gt;Keeping TezPay up-to-date&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before using a command in TezPay, you will need to run
+&lt;em&gt;&lt;strong&gt;two additional commands&lt;/span&gt;&lt;/strong&gt;&lt;/em&gt; that will
+allow you to call the application via commands and set permissions
+While in the TezPay directory in the terminal, run the following
+commands (&lt;em&gt;see code and examples below&lt;/em&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mv tezpay-linux-amd64 tezpay&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage16.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;chmod +x tezpay&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage17.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;using-tezpay-step-1---generating-a-payout-table&#34;&gt;Using TezPay: Step 1 - Generating a payout Table&lt;/h3&gt;
+&lt;p&gt;Generating a payout table is a tool that is useful for Public
+Bakers because it allows the baker to see the incoming rewards from
+baking (both block rewards &amp;amp; fees from delegates), review payout per
+delegator from their stake, and other data (see below).&lt;/p&gt;
+&lt;p&gt;The command to generate a payout table is as follows (always remember to be in the
+&lt;em&gt;tezpay&lt;/em&gt; directory:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will generate a payout table, as exampled below:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage18.png&#34; alt=&#34;&amp;lt;Description of output for ./tezpay generate-payout command.&amp;gt;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note: the Delegator &amp;amp; Recipient columns have been hidden&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Represents the table of &lt;em&gt;invalid&lt;/em&gt; delegators that will &lt;strong&gt;not&lt;/strong&gt; be
+paid out due to not meeting specific thresholds (ie minimum payout
+threshold/minimum balance)&lt;/li&gt;
+&lt;li&gt;Represents the table of &lt;em&gt;valid&lt;/em&gt; delegators that will be paid out&lt;/li&gt;
+&lt;li&gt;The list of Delegators first 4 and last 4 characters of their
+wallet&lt;/li&gt;
+&lt;li&gt;The list of Recipients of payment first 4 and last 4 characters of
+their wallet (often the same as Delegator)&lt;/li&gt;
+&lt;li&gt;The delegated balance for each Delegator for that particular cycle&lt;/li&gt;
+&lt;li&gt;Represents the kind of reward given (ie delegator reward, baker
+reward, and fee income)&lt;/li&gt;
+&lt;li&gt;The amount of the specific reward to be paid out&lt;/li&gt;
+&lt;li&gt;The fee rate for each delegator, will reflect those delegators who
+have custom fees per the configuration file&lt;/li&gt;
+&lt;li&gt;The fee collected by the baker from each delegator for hosting their
+delegation&lt;/li&gt;
+&lt;li&gt;The transaction fee to pay out each reward&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;using-tezpay-step-2---testing-notifications&#34;&gt;Using TezPay: Step 2 - Testing Notifications&lt;/h3&gt;
+&lt;p&gt;This step will be used to test the notification system for your
+TezPay application. This step will NOT need to be completed every
+payout, but only when you changes messages to test that it was
+successful.&lt;/p&gt;
+&lt;p&gt;while in the &lt;em&gt;tezpay&lt;/em&gt; directory, use the command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay test-notify&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;using-tezpay-step-3---initiating-a-payout&#34;&gt;Using TezPay: Step 3 - Initiating a Payout&lt;/h3&gt;
+&lt;p&gt;To use the TezPay application to send a payment will require 1
+line of code and one additional confirmation while it runs.&lt;/p&gt;
+&lt;p&gt;To run TezPay, run the code:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay pay&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The system will initiate the TezPay application at this point and present a payout
+table, similar to the table(s) from step 1.&lt;/p&gt;
+&lt;p&gt;Once the table is displayed, the prompt will ask you to confirm the payout, and you need to confirm &lt;em&gt;y&lt;/em&gt; or &lt;em&gt;n&lt;/em&gt; (see below):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage19.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;ol&gt;
+&lt;li&gt;You will be asked to confirm, type &amp;lsquo;&lt;em&gt;&lt;strong&gt;y&lt;/strong&gt;&lt;/em&gt;&amp;rsquo; for yes or &amp;lsquo;&lt;em&gt;&lt;strong&gt;n&lt;/strong&gt;&lt;/em&gt;&amp;rsquo;
+for no&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you confirm the transaction, the payouts will proceed and your
+delegates will be paid out, as well as your Baker wallet. Remember, if
+you are using a separate wallet to payout from your Baker wallet you
+will need to add funds to cover the payments.&lt;/p&gt;
+&lt;p&gt;At this point you have successfully ran the TezPay application and paid out your
+delegates. Be sure to check the confirmations and any errors that may
+have been broadcasted in the terminal (ie, the example above did not
+send notifications because that was not set up).&lt;/p&gt;
+&lt;h3 id=&#34;using-tezpay-step-4---running-a-continual-payout&#34;&gt;Using TezPay: Step 4 - Running a Continual Payout&lt;/h3&gt;
+&lt;p&gt;To use the TezPay application to send a payment will require 1
+line of code and one additional confirmation while it runs.&lt;/p&gt;
+&lt;p&gt;To run TezPay in continual mode, run the command:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay continual&lt;/code&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage20Continual.png&#34; alt=&#34;&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;/table&gt;
+&lt;p&gt;Running in continual mode will start its first payment a little bit after the current cycle (one during which you launched it) finishes and the next one begins (usually around 30-60 minutes after the beginning of the new cycle).&lt;/p&gt;
+&lt;p&gt;If you would like to start in continual mode but still need to pay your delegators for last cycle, run the command from Step 3. first and then launch TezPay in continual mode.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary-tezpay&#34;&gt;Summary: TezPay&lt;/h2&gt;
+&lt;p&gt;TezPay is an application that allows for easy payouts for public
+bakers on the Tezos Blockchain. This allows for significant
+customizations and flexibility with respect to the payout system and
+empowers bakers to further take control of their Bakery and aid in
+decentralizing the Tezos Blockchain.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: Setup Peak GUI</title>
       <link>/tezpay/tutorials/how-to-setup-gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -767,7 +767,7 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Update TezPay</title>
+      <title>Tezpay: Updating</title>
       <link>/tezpay/tutorials/how-to-update/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
