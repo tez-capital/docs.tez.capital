@@ -17,10 +17,10 @@
     
     <item>
       <title>Tezbox: &gt; Setup</title>
-      <link>/tezbox/tutorials/how-to-setup/</link>
+      <link>/tezbox/tutorials/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbox/tutorials/how-to-setup/</guid>
+      <guid>/tezbox/tutorials/setup/</guid>
       <description>
         
         
@@ -67,10 +67,10 @@ To get started with Podman, you can follow the instructions on the &lt;a href=&#
     
     <item>
       <title>Tezbox: Configuration</title>
-      <link>/tezbox/tutorials/how-to-configure/</link>
+      <link>/tezbox/tutorials/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbox/tutorials/how-to-configure/</guid>
+      <guid>/tezbox/tutorials/configuration/</guid>
       <description>
         
         

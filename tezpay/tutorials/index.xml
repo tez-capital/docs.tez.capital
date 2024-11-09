@@ -17,10 +17,10 @@
     
     <item>
       <title>Tezpay: &gt; Setup</title>
-      <link>/tezpay/tutorials/how-to-setup/</link>
+      <link>/tezpay/tutorials/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezpay/tutorials/how-to-setup/</guid>
+      <guid>/tezpay/tutorials/setup/</guid>
       <description>
         
         
@@ -342,10 +342,10 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
     
     <item>
       <title>Tezpay: Notifications</title>
-      <link>/tezpay/tutorials/how-to-notify/</link>
+      <link>/tezpay/tutorials/notifications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezpay/tutorials/how-to-notify/</guid>
+      <guid>/tezpay/tutorials/notifications/</guid>
       <description>
         
         
@@ -516,10 +516,10 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
     
     <item>
       <title>Tezpay: Paying Delegators</title>
-      <link>/tezpay/tutorials/how-to-pay/</link>
+      <link>/tezpay/tutorials/paying-delegators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezpay/tutorials/how-to-pay/</guid>
+      <guid>/tezpay/tutorials/paying-delegators/</guid>
       <description>
         
         
@@ -659,10 +659,10 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
     
     <item>
       <title>Tezpay: Setup Peak GUI</title>
-      <link>/tezpay/tutorials/how-to-setup-gui/</link>
+      <link>/tezpay/tutorials/setup-peak-gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezpay/tutorials/how-to-setup-gui/</guid>
+      <guid>/tezpay/tutorials/setup-peak-gui/</guid>
       <description>
         
         
@@ -768,10 +768,10 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
     
     <item>
       <title>Tezpay: Updating</title>
-      <link>/tezpay/tutorials/how-to-update/</link>
+      <link>/tezpay/tutorials/updating/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezpay/tutorials/how-to-update/</guid>
+      <guid>/tezpay/tutorials/updating/</guid>
       <description>
         
         

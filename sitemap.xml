@@ -2,39 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tezbake/tutorials/how-to-bake/</loc>
+    <loc>/tezbake/tutorials/baking-on-mainnet/</loc>
   </url><url>
-    <loc>/tezbox/tutorials/how-to-setup/</loc>
+    <loc>/tezbox/tutorials/setup/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-setup/</loc>
+    <loc>/tezpay/tutorials/setup/</loc>
   </url><url>
-    <loc>/tezwatch/tutorials/how-to-setup/</loc>
+    <loc>/tezwatch/tutorials/setup/</loc>
   </url><url>
-    <loc>/tezgov/tutorials/how-to-vote/</loc>
+    <loc>/tezgov/tutorials/voting-on-proposals/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-bake-ghostnet/</loc>
+    <loc>/tezbake/tutorials/baking-on-ghostnet/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-bake-docker/</loc>
+    <loc>/tezbake/tutorials/baking-with-docker/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-bake-gui/</loc>
+    <loc>/tezbake/tutorials/baking-with-peak-gui/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-bootstrap/</loc>
+    <loc>/tezbake/tutorials/bootstrap-node/</loc>
   </url><url>
-    <loc>/tezbox/tutorials/how-to-configure/</loc>
+    <loc>/tezbox/tutorials/configuration/</loc>
   </url><url>
     <loc>/getting-started/</loc>
   </url><url>
-    <loc>/tezgov/tutorials/how-to-inject-proposals/</loc>
+    <loc>/tezgov/tutorials/injecting-proposals/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-monitor/</loc>
+    <loc>/tezbake/tutorials/monitoring-logs-and-status/</loc>
   </url><url>
-    <loc>/tezwatch/tutorials/how-to-monitor-balances-and-transactions/</loc>
+    <loc>/tezwatch/tutorials/monitoring-transactions/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-notify/</loc>
+    <loc>/tezpay/tutorials/notifications/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-pay/</loc>
+    <loc>/tezpay/tutorials/paying-delegators/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-setup-gui/</loc>
+    <loc>/tezpay/tutorials/setup-peak-gui/</loc>
   </url><url>
     <loc>/</loc>
   </url><url>
@@ -62,11 +62,11 @@
   </url><url>
     <loc>/tezwatch/tutorials/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-troubleshoot/</loc>
+    <loc>/tezbake/tutorials/troubleshooting/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-update/</loc>
+    <loc>/tezbake/tutorials/updating/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/how-to-update/</loc>
+    <loc>/tezpay/tutorials/updating/</loc>
   </url><url>
     <loc>/getting-started/what-is-baking/</loc>
   </url><url>

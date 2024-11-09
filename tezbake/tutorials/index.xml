@@ -17,10 +17,10 @@
     
     <item>
       <title>Tezbake: &gt; Baking on Mainnet</title>
-      <link>/tezbake/tutorials/how-to-bake/</link>
+      <link>/tezbake/tutorials/baking-on-mainnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-bake/</guid>
+      <guid>/tezbake/tutorials/baking-on-mainnet/</guid>
       <description>
         
         
@@ -153,10 +153,10 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     
     <item>
       <title>Tezbake: Baking on Ghostnet</title>
-      <link>/tezbake/tutorials/how-to-bake-ghostnet/</link>
+      <link>/tezbake/tutorials/baking-on-ghostnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-bake-ghostnet/</guid>
+      <guid>/tezbake/tutorials/baking-on-ghostnet/</guid>
       <description>
         
         
@@ -292,10 +292,10 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     
     <item>
       <title>Tezbake: Baking with Docker</title>
-      <link>/tezbake/tutorials/how-to-bake-docker/</link>
+      <link>/tezbake/tutorials/baking-with-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-bake-docker/</guid>
+      <guid>/tezbake/tutorials/baking-with-docker/</guid>
       <description>
         
         
@@ -383,10 +383,10 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     
     <item>
       <title>Tezbake: Baking with Peak GUI</title>
-      <link>/tezbake/tutorials/how-to-bake-gui/</link>
+      <link>/tezbake/tutorials/baking-with-peak-gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-bake-gui/</guid>
+      <guid>/tezbake/tutorials/baking-with-peak-gui/</guid>
       <description>
         
         
@@ -490,10 +490,10 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     
     <item>
       <title>Tezbake: Bootstrap Node</title>
-      <link>/tezbake/tutorials/how-to-bootstrap/</link>
+      <link>/tezbake/tutorials/bootstrap-node/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-bootstrap/</guid>
+      <guid>/tezbake/tutorials/bootstrap-node/</guid>
       <description>
         
         
@@ -543,10 +543,10 @@ tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rollin
     
     <item>
       <title>Tezbake: Monitoring Logs and Status</title>
-      <link>/tezbake/tutorials/how-to-monitor/</link>
+      <link>/tezbake/tutorials/monitoring-logs-and-status/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-monitor/</guid>
+      <guid>/tezbake/tutorials/monitoring-logs-and-status/</guid>
       <description>
         
         
@@ -597,10 +597,10 @@ tezbake node log accuser-next -f
     
     <item>
       <title>Tezbake: Troubleshooting</title>
-      <link>/tezbake/tutorials/how-to-troubleshoot/</link>
+      <link>/tezbake/tutorials/troubleshooting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-troubleshoot/</guid>
+      <guid>/tezbake/tutorials/troubleshooting/</guid>
       <description>
         
         
@@ -640,10 +640,10 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
     
     <item>
       <title>Tezbake: Updating</title>
-      <link>/tezbake/tutorials/how-to-update/</link>
+      <link>/tezbake/tutorials/updating/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/how-to-update/</guid>
+      <guid>/tezbake/tutorials/updating/</guid>
       <description>
         
         
