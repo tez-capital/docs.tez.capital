@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorials</title>
+    <title>docs.tez.capital – TezWatch Tutorials</title>
     <link>/tezwatch/tutorials/</link>
-    <description>Recent content in Tutorials on docs.tez.capital</description>
+    <description>Recent content in TezWatch Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezwatch: &gt; How to Setup</title>
+      <title>Tezwatch: &gt; How to Setup TezWatch</title>
       <link>/tezwatch/tutorials/how-to-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -97,7 +97,7 @@
     </item>
     
     <item>
-      <title>Tezwatch: How to Monitor Tezos Balances and Transactions</title>
+      <title>Tezwatch: How to Monitor Tezos Balances and Transactions with TezWatch</title>
       <link>/tezwatch/tutorials/how-to-monitor-balances-and-transactions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

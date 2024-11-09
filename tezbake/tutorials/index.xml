@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorials</title>
+    <title>docs.tez.capital – TezBake Tutorials</title>
     <link>/tezbake/tutorials/</link>
-    <description>Recent content in Tutorials on docs.tez.capital</description>
+    <description>Recent content in TezBake Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezbake: &gt; How to Bake</title>
+      <title>Tezbake: &gt; How to Bake with TezBake</title>
       <link>/tezbake/tutorials/how-to-bake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -489,7 +489,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: How to Bootstrap</title>
+      <title>Tezbake: How to Bootstrap with TezBake</title>
       <link>/tezbake/tutorials/how-to-bootstrap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -542,7 +542,7 @@ tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rollin
     </item>
     
     <item>
-      <title>Tezbake: How to Monitor</title>
+      <title>Tezbake: How to Monitor with TezBake</title>
       <link>/tezbake/tutorials/how-to-monitor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -596,7 +596,7 @@ tezbake node log accuser-next -f
     </item>
     
     <item>
-      <title>Tezbake: How to Troubleshoot</title>
+      <title>Tezbake: How to Troubleshoot with TezBake</title>
       <link>/tezbake/tutorials/how-to-troubleshoot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -639,7 +639,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
     </item>
     
     <item>
-      <title>Tezbake: How to Update</title>
+      <title>Tezbake: How to Update TezBake</title>
       <link>/tezbake/tutorials/how-to-update/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

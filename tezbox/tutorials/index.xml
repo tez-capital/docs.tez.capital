@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorials</title>
+    <title>docs.tez.capital – TezBox Tutorials</title>
     <link>/tezbox/tutorials/</link>
-    <description>Recent content in Tutorials on docs.tez.capital</description>
+    <description>Recent content in TezBox Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezbox: &gt; How to Setup</title>
+      <title>Tezbox: &gt; How to Setup TezBox</title>
       <link>/tezbox/tutorials/how-to-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -26,8 +26,15 @@
         
         &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;To use TezBox, you need to have an OCI compatible container runtime installed on your machine (e.g. Docker, Podman, etc.)&lt;/p&gt;
-&lt;p&gt;To get started with Docker, you can follow the instructions on the &lt;a href=&#34;https://docs.docker.com/get-docker/&#34;&gt;official Docker website&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Podman, you can follow the instructions on the &lt;a href=&#34;https://podman.io/getting-started/installation&#34;&gt;official Podman website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To get started with Docker, you can follow the instructions on the &lt;a href=&#34;https://docs.docker.com/get-docker/&#34;&gt;official Docker website&lt;/a&gt;.
+To get started with Podman, you can follow the instructions on the &lt;a href=&#34;https://podman.io/getting-started/installation&#34;&gt;official Podman website&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;general-information&#34;&gt;General Information&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;code&gt;HOME&lt;/code&gt; directory is set to &lt;code&gt;/home/tezos.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Running &lt;code&gt;octez-client&lt;/code&gt; and other applications in the container (excluding services) will use this &lt;code&gt;HOME&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;All services use &lt;code&gt;TEZBOX_HOME&lt;/code&gt; as the &lt;code&gt;HOME&lt;/code&gt; directory, with a default path of &lt;code&gt;/tezbox/context/data.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Keys imported during bootstrap are accessible from both HOME directories.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;setup-tezbox-to-test-with-mainnet&#34;&gt;Setup TezBox to test with Mainnet&lt;/h2&gt;
 &lt;p&gt;To run the TezBox container with the Paris protocol&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
@@ -51,14 +58,23 @@
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To view all available protocols available in the TezBox container, you can run the following command&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;tezbox-configuration-options&#34;&gt;TezBox Configuration Options&lt;/h2&gt;
-&lt;h3 id=&#34;general-information&#34;&gt;General Information&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;HOME&lt;/code&gt; directory is set to &lt;code&gt;/home/tezos.&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Running &lt;code&gt;octez-client&lt;/code&gt; and other applications in the container (excluding services) will use this &lt;code&gt;HOME&lt;/code&gt; directory.&lt;/li&gt;
-&lt;li&gt;All services use &lt;code&gt;TEZBOX_HOME&lt;/code&gt; as the &lt;code&gt;HOME&lt;/code&gt; directory, with a default path of &lt;code&gt;/tezbox/context/data.&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Keys imported during bootstrap are accessible from both HOME directories.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezbox: How to Configure TezBox</title>
+      <link>/tezbox/tutorials/how-to-configure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbox/tutorials/how-to-configure/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;tezbox-configuration-options&#34;&gt;TezBox Configuration Options&lt;/h2&gt;
 &lt;h3 id=&#34;cicd-pipelines&#34;&gt;CI/CD Pipelines&lt;/h3&gt;
 &lt;p&gt;TezBox is commonly used in CI pipelines. If you can estimate the expected duration of a specific test and want to prevent CI from getting stuck, you can use the &lt;code&gt;--timeout=&amp;lt;duration&amp;gt;&lt;/code&gt; option to limit how long the instance runs.
 Supported units: &lt;code&gt;s&lt;/code&gt; (seconds), &lt;code&gt;m&lt;/code&gt; (minutes), &lt;code&gt;h&lt;/code&gt; (hours). In case of a timeout, the container exits with an exit code of &lt;code&gt;2&lt;/code&gt;.&lt;/p&gt;

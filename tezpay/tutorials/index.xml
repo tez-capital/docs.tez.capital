@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorials</title>
+    <title>docs.tez.capital – TezPay Tutorials</title>
     <link>/tezpay/tutorials/</link>
-    <description>Recent content in Tutorials on docs.tez.capital</description>
+    <description>Recent content in TezPay Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezpay: &gt; How to Setup</title>
+      <title>Tezpay: &gt; How to Setup TezPay</title>
       <link>/tezpay/tutorials/how-to-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -341,7 +341,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Pay Delegators</title>
+      <title>Tezpay: How to Pay Delegators with TezPay</title>
       <link>/tezpay/tutorials/how-to-pay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -484,7 +484,7 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Setup Notifications</title>
+      <title>Tezpay: How to Setup Notifications with TezPay</title>
       <link>/tezpay/tutorials/how-to-notify/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -767,7 +767,7 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/li&gt;
     </item>
     
     <item>
-      <title>Tezpay: How to Update</title>
+      <title>Tezpay: How to Update TezPay</title>
       <link>/tezpay/tutorials/how-to-update/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

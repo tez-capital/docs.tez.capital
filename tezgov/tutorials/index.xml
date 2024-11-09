@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docs.tez.capital – Tutorials</title>
+    <title>docs.tez.capital – TezGov Tutorials</title>
     <link>/tezgov/tutorials/</link>
-    <description>Recent content in Tutorials on docs.tez.capital</description>
+    <description>Recent content in TezGov Tutorials on docs.tez.capital</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>tez.capital</copyright>
@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezgov: &gt; How to Vote</title>
+      <title>Tezgov: &gt; How to Vote with TezGov</title>
       <link>/tezgov/tutorials/how-to-vote/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -73,7 +73,7 @@
     </item>
     
     <item>
-      <title>Tezgov: How to Inject Proposals</title>
+      <title>Tezgov: How to Inject Proposals with TezGov</title>
       <link>/tezgov/tutorials/how-to-inject-proposals/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -109,7 +109,7 @@
     </item>
     
     <item>
-      <title>Tezgov: How to Set Deposits Limit</title>
+      <title>Tezgov: How to Set Deposits Limit with TezGov</title>
       <link>/tezgov/tutorials/how-to-set-deposits-limit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

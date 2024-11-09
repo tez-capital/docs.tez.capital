@@ -22,11 +22,13 @@
   </url><url>
     <loc>/tezbake/tutorials/how-to-bootstrap/</loc>
   </url><url>
+    <loc>/tezbox/tutorials/how-to-configure/</loc>
+  </url><url>
     <loc>/tezgov/tutorials/how-to-inject-proposals/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/how-to-monitor/</loc>
-  </url><url>
     <loc>/tezwatch/tutorials/how-to-monitor-balances-and-transactions/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/how-to-monitor/</loc>
   </url><url>
     <loc>/tezpay/tutorials/how-to-pay/</loc>
   </url><url>
@@ -46,9 +48,15 @@
   </url><url>
     <loc>/tezbake/</loc>
   </url><url>
+    <loc>/tezbake/tutorials/</loc>
+  </url><url>
     <loc>/tezbox/</loc>
   </url><url>
+    <loc>/tezbox/tutorials/</loc>
+  </url><url>
     <loc>/tezgov/</loc>
+  </url><url>
+    <loc>/tezgov/tutorials/</loc>
   </url><url>
     <loc>/getting-started/best-practices/</loc>
   </url><url>
@@ -56,15 +64,9 @@
   </url><url>
     <loc>/tezpay/</loc>
   </url><url>
-    <loc>/tezwatch/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/</loc>
-  </url><url>
-    <loc>/tezbox/tutorials/</loc>
-  </url><url>
-    <loc>/tezgov/tutorials/</loc>
-  </url><url>
     <loc>/tezpay/tutorials/</loc>
+  </url><url>
+    <loc>/tezwatch/</loc>
   </url><url>
     <loc>/tezwatch/tutorials/</loc>
   </url><url>
