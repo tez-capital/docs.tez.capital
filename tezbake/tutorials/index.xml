@@ -124,18 +124,13 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---insecure-import-soft-key-to-tezbake-signer&#34;&gt;(Option 2 - INSECURE) Import Soft key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;First, generate the baker key for TezBake signer:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake signer - gen keys baker
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Make sure to backup your key in a secure location. You can get the key by running the following command:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /bake-buddy/signer/data/.tezos-signer/secret_keys
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then, import the baker public key hash to TezBake node:&lt;/p&gt;
-&lt;p&gt;Get the tz1-tz3 address which is the hashed public key of the baker key:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Import the hashed key to the TezBake node:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-soft-wallet
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.&lt;/p&gt;
+&lt;p&gt;Make sure to backup your key in a secure location and never share it.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;register-ledger-key-as-baker-on-the-blockchain&#34;&gt;Register Ledger key as baker on the blockchain&lt;/h4&gt;
+&lt;p&gt;You can get the secret/private key by running the following command:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake signer client show address baker --show-secret
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;register-as-baker-on-the-tezos-blockchain-mainnet&#34;&gt;Register as baker on the Tezos blockchain Mainnet&lt;/h4&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
@@ -263,18 +258,13 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---insecure-import-soft-key-to-tezbake-signer&#34;&gt;(Option 2 - INSECURE) Import Soft key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;First, generate the baker key for TezBake signer:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake signer - gen keys baker
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Make sure to backup your key in a secure location. You can get the key by running the following command:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /bake-buddy/signer/data/.tezos-signer/secret_keys
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then, import the baker public key hash to TezBake node:&lt;/p&gt;
-&lt;p&gt;Get the tz1-tz3 address which is the hashed public key of the baker key:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Import the hashed key to the TezBake node:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-soft-wallet
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.&lt;/p&gt;
+&lt;p&gt;Make sure to backup your key in a secure location and never share it.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;register-ledger-key-as-baker-on-the-blockchain&#34;&gt;Register Ledger key as baker on the blockchain&lt;/h4&gt;
+&lt;p&gt;You can get the secret/private key by running the following command:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake signer client show address baker --show-secret
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;register-as-baker-on-the-tezos-blockchain-ghostnet&#34;&gt;Register as baker on the Tezos blockchain Ghostnet&lt;/h4&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake register-key
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;

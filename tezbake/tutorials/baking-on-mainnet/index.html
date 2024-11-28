@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1462">
+<meta itemprop="wordCount" content="1413">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -497,18 +497,13 @@ If you used to bake on mainnet with the same ledger as you&rsquo;re trying to us
 </blockquote>
 <h4 id="option-2---insecure-import-soft-key-to-tezbake-signer">(Option 2 - INSECURE) Import Soft key to TezBake signer</h4>
 <p>First, generate the baker key for TezBake signer:</p>
-<pre tabindex="0"><code>tezbake signer - gen keys baker
-</code></pre><p>Make sure to backup your key in a secure location. You can get the key by running the following command:</p>
-<pre tabindex="0"><code>cat /bake-buddy/signer/data/.tezos-signer/secret_keys
-</code></pre><p>Then, import the baker public key hash to TezBake node:</p>
-<p>Get the tz1-tz3 address which is the hashed public key of the baker key:</p>
-<pre tabindex="0"><code>cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
-</code></pre><p>Import the hashed key to the TezBake node:</p>
-<pre tabindex="0"><code>tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
+<pre tabindex="0"><code>tezbake setup-soft-wallet
 </code></pre><blockquote>
-<p>Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.</p>
+<p>Make sure to backup your key in a secure location and never share it.</p>
 </blockquote>
-<h4 id="register-ledger-key-as-baker-on-the-blockchain">Register Ledger key as baker on the blockchain</h4>
+<p>You can get the secret/private key by running the following command:</p>
+<pre tabindex="0"><code>tezbake signer client show address baker --show-secret
+</code></pre><h4 id="register-as-baker-on-the-tezos-blockchain-mainnet">Register as baker on the Tezos blockchain Mainnet</h4>
 <p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (<strong>note</strong>: as well as when voting). For all other baker operations, you must use the Tezos Baking app.</p>
 <pre tabindex="0"><code>tezbake register-key
 </code></pre><blockquote>
