@@ -361,117 +361,87 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
      },
      &amp;#34;user&amp;#34;: &amp;#34;bb&amp;#34;
  }
- ```
-
-&amp;gt; Note that the rest of the config above has been provided for reference. You should only add the 3 lines under `BAKER_STARTUP_ARGS`. This config in question is for a TezBake node running on Ghostnet.
-
-### Run TezBake setup to modify the configuration
-
-You have to run a TezBake setup operation on top of the existing setup to include the DAL process in your baker&amp;#39;s service configuration.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;tezbake stop
-tezbake setup -a&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-When asked by the setup process, choose to merge your current configuration with the new one.
-
-### Download and execute the DAL prerequisite script
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;wget &lt;a href=&#34;https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh&#34;&gt;https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh&lt;/a&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that the rest of the config above has been provided for reference. You should only add the 3 lines under &lt;code&gt;BAKER_STARTUP_ARGS&lt;/code&gt;. This config in question is for a TezBake node running on Ghostnet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;run-tezbake-setup-to-modify-the-configuration&#34;&gt;Run TezBake setup to modify the configuration&lt;/h3&gt;
+&lt;p&gt;You have to run a TezBake setup operation on top of the existing setup to include the DAL process in your baker&amp;rsquo;s service configuration.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake stop
+tezbake setup -a
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When asked by the setup process, choose to merge your current configuration with the new one.&lt;/p&gt;
+&lt;h3 id=&#34;download-and-execute-the-dal-prerequisite-script&#34;&gt;Download and execute the DAL prerequisite script&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh
 chmod +x install_dal_trusted_setup.sh
-./install_dal_trusted_setup.sh&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-### Download the DAL binary
+./install_dal_trusted_setup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;download-the-dal-binary&#34;&gt;Download the DAL binary&lt;/h3&gt;
+&lt;p&gt;The DAL binaries can be found in the the Tezos Gitlab repository: &lt;a href=&#34;https://gitlab.com/tezos/tezos/-/releases&#34;&gt;https://gitlab.com/tezos/tezos/-/releases&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Make sure to download the correct version of the DAL binary for your system, whether it&amp;rsquo;s x86_64 or arm64.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget https://gitlab.com/tezos/tezos/-/package_files/159438046/download -O octez-dal-node
+chmod +x octez-dal-node
+sudo cp octez-dal-node /usr/sbin/octez-dal-node
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;initialize-the-dal-configuration&#34;&gt;Initialize the DAL configuration&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;octez-dal-node config init --endpoint http://127.0.0.1:8732 --attester-profiles=&amp;#34;tz1xxxxxxxxxxxxxxxxxxxxxx&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Replace &lt;code&gt;tz1xxxxxxxxxxxxxxxxxxxxxx&lt;/code&gt; with your baker&amp;rsquo;s address.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are several other options you can set in the DAL configuration. You can find more information about them by running visiting the DAL documentation &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;https://tezos.gitlab.io/shell/dal_overview.html&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;start-the-dal-process&#34;&gt;Start the DAL process&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;octez-dal-node run
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;how-to-run-the-dal-process-in-the-background-with-screen&#34;&gt;How to run the DAL process in the background with &lt;code&gt;screen&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;To run the DAL process in the background, you can use the &lt;code&gt;screen&lt;/code&gt; command.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -S dal
+octez-dal-node run
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To detach from the screen session, press &lt;code&gt;Ctrl + A&lt;/code&gt; followed by &lt;code&gt;D&lt;/code&gt;. To reattach to the screen session, run:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;screen -r dal
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;how-to-run-the-dal-process-as-a-service&#34;&gt;How to run the DAL process as a service&lt;/h3&gt;
+&lt;p&gt;To run the DAL process as a service, you can use &lt;code&gt;systemd&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Create a new service file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo nano /etc/systemd/system/octez-dal-node.service
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Add the following content to the file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; [Unit]
+ Description=Octez DAL Node Service
+ After=network.target
 
-The DAL binaries can be found in the the Tezos Gitlab repository: [https://gitlab.com/tezos/tezos/-/releases](https://gitlab.com/tezos/tezos/-/releases).
+ [Service]
+ Type=simple
+ ExecStart=/usr/sbin/octez-dal-node run
+ Restart=on-failure
+ User=octez
+ Group=octez
+ Environment=HOME=/home/octez
 
-Make sure to download the correct version of the DAL binary for your system, whether it&amp;#39;s x86_64 or arm64.
-
-For example:   
-
- ```
- wget https://gitlab.com/tezos/tezos/-/package_files/159438046/download -O octez-dal-node
- chmod +x octez-dal-node
- sudo cp octez-dal-node /usr/sbin/octez-dal-node
- ```
-
-### Initialize the DAL configuration
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;octez-dal-node config init &amp;ndash;endpoint http://127.0.0.1:8732 &amp;ndash;attester-profiles=&amp;ldquo;tz1xxxxxxxxxxxxxxxxxxxxxx&amp;rdquo;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt; Replace `tz1xxxxxxxxxxxxxxxxxxxxxx` with your baker&amp;#39;s address.
-
-&amp;gt; There are several other options you can set in the DAL configuration. You can find more information about them by running visiting the DAL documentation [https://tezos.gitlab.io/shell/dal_overview.html](https://tezos.gitlab.io/shell/dal_overview.html).
-
-### Start the DAL process
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;octez-dal-node run&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-### How to run the DAL process in the background with `screen`
-
-To run the DAL process in the background, you can use the `screen` command.
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;screen -S dal
-octez-dal-node run&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-To detach from the screen session, press `Ctrl + A` followed by `D`. To reattach to the screen session, run:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;screen -r dal&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;### How to run the DAL process as a service
-
-To run the DAL process as a service, you can use `systemd`.
-
-Create a new service file:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;sudo nano /etc/systemd/system/octez-dal-node.service&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Add the following content to the file:
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;[Unit]
-Description=Octez DAL Node Service
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/sbin/octez-dal-node run
-Restart=on-failure
-User=octez
-Group=octez
-Environment=HOME=/home/octez
-
-[Install]
-WantedBy=multi-user.target
+ [Install]
+ WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Replace &lt;code&gt;octez&lt;/code&gt; with the user you&amp;rsquo;re running the DAL process as on the &lt;code&gt;User,&lt;/code&gt; &lt;code&gt;Group&lt;/code&gt; and &lt;code&gt;Environment&lt;/code&gt; lines.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Reload system to read the new service file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Enable the service on boot:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl enable octez-dal-node
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start the service:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl start octez-dal-node
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;verify-the-dal-process-is-operational&#34;&gt;Verify the DAL process is operational&lt;/h3&gt;
+&lt;p&gt;Once running the DAL process should indicate that it&amp;rsquo;s communicating with the baker process by displaying the level of the last block it received.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakedalrun.png&#34; alt=&#34;DAL running&#34;&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;ve chosen to run the DAL as a systemd service, you can check the logs with:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;journalctl -u octez-dal-node -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After confirming that the DAL process is able to observe the baker&amp;rsquo;s level, confirm that TezBake&amp;rsquo;s baker process is properly configured and not complaining about the DAL process.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /etc/systemd/system/bb-default-node-xtz-baker.service
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Verify that &lt;code&gt;--dal-node&lt;/code&gt; is in the configuration file on the &lt;code&gt;ExecStart&lt;/code&gt; line.&lt;/p&gt;
+&lt;p&gt;Check that the TezBake baker process logs do not complain about the DAL process.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```
+tebake node log baker -f
+```
 &lt;/code&gt;&lt;/pre&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-&amp;gt; Replace `octez` with the user you&amp;#39;re running the DAL process as on the `User,` `Group` and `Environment` lines.
+&lt;p&gt;The Nomadic Labs team has provided a &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;DAL tutorial&lt;/a&gt; that explains how to further check the DAL process and its logs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
-Reload system to read the new service file:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;sudo systemctl daemon-reload&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-Enable the service on boot:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;sudo systemctl enable octez-dal-node&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-Start the service:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;sudo systemctl start octez-dal-node&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-### Verify the DAL process is operational
-
-Once running the DAL process should indicate that it&amp;#39;s communicating with the baker process by displaying the level of the last block it received.
-
-![DAL running](/tezbake/tutorial/tezbakedalrun.png)
-
-If you&amp;#39;ve chosen to run the DAL as a systemd service, you can check the logs with:
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;journalctl -u octez-dal-node -f&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
-After confirming that the DAL process is able to observe the baker&amp;#39;s level, confirm that TezBake&amp;#39;s baker process is properly configured and not complaining about the DAL process.
-
- ```
- cat /etc/systemd/system/bb-default-node-xtz-baker.service
- ```
-
-Verify that `--dal-node` is in the configuration file on the `ExecStart` line.
-
-Check that the TezBake baker process logs do not complain about the DAL process.
-
- ```
- tebake node log baker -f
- ```
-The Nomadic Labs team has provided a [DAL tutorial](https://tezos.gitlab.io/shell/dal_overview.html) that explains how to further check the DAL process and its logs.
-
----
-
-Any questions/comments/concerns? Please contact the Tez Capital team on
-[Discord](https://discord.gg/cVGMA4MaNM) or [Telegram](https://t.me/tezcapital) 
-&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     
