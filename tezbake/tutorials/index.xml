@@ -424,7 +424,7 @@ octez-dal-node run
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl enable octez-dal-node
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start the service:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo systemctl start octez-dal-node
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;verify-the-dal-process-is-operational&#34;&gt;Verify the DAL process is operational&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;verify-the-dal-process-is-operational&#34;&gt;Verify the DAL process is operational&lt;/h2&gt;
 &lt;p&gt;Once running the DAL process should indicate that it&amp;rsquo;s communicating with the baker process by displaying the level of the last block it received.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakedalrun.png&#34; alt=&#34;DAL running&#34;&gt;&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;ve chosen to run the DAL as a systemd service, you can check the logs with:&lt;/p&gt;
