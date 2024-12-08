@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="836">
+<meta itemprop="wordCount" content="834">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -547,11 +547,8 @@ octez-dal-node run
 <pre tabindex="0"><code>cat /etc/systemd/system/bb-default-node-xtz-baker.service
 </code></pre><p>Verify that <code>--dal-node</code> is in the configuration file on the <code>ExecStart</code> line.</p>
 <p>Check that the TezBake baker process logs do not complain about the DAL process.</p>
-<pre><code>```
-tebake node log baker -f
-```
-</code></pre>
-<p>The Nomadic Labs team has provided a <a href="https://tezos.gitlab.io/shell/dal_overview.html">DAL tutorial</a> that explains how to further check the DAL process and its logs.</p>
+<pre tabindex="0"><code>tebake node log baker -f
+</code></pre><p>The Nomadic Labs team has provided a <a href="https://tezos.gitlab.io/shell/dal_overview.html">DAL tutorial</a> that explains how to further check the DAL process and its logs.</p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>

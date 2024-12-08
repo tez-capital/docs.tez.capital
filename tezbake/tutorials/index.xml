@@ -433,11 +433,8 @@ octez-dal-node run
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat /etc/systemd/system/bb-default-node-xtz-baker.service
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Verify that &lt;code&gt;--dal-node&lt;/code&gt; is in the configuration file on the &lt;code&gt;ExecStart&lt;/code&gt; line.&lt;/p&gt;
 &lt;p&gt;Check that the TezBake baker process logs do not complain about the DAL process.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;```
-tebake node log baker -f
-```
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The Nomadic Labs team has provided a &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;DAL tutorial&lt;/a&gt; that explains how to further check the DAL process and its logs.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tebake node log baker -f
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The Nomadic Labs team has provided a &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;DAL tutorial&lt;/a&gt; that explains how to further check the DAL process and its logs.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
