@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="TezBake Baking Tutorial for using a Consensus Key">
 
-<meta itemprop="wordCount" content="751">
+<meta itemprop="wordCount" content="745">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for using a Consensus Key"/>
@@ -481,28 +481,19 @@
 </span></span><span style="display:flex;"><span>         <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;bb&#34;</span>
 </span></span><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><p>Re-run the TezBake setup and merge your configuration when asked:</p>
-<pre><code>```
-tezbake stop
+<pre tabindex="0"><code>tezbake stop
 tezbake setup -a
 tezbake start
-```
-</code></pre>
-<h3 id="register-the-consensus-key">Register the consensus key</h3>
+</code></pre><h3 id="register-the-consensus-key">Register the consensus key</h3>
 <p>Get your consensus key public key hash:</p>
-<pre><code>```
-cat /bake-buddy/node/data/.tezos-client/public_keys
-```
-</code></pre>
-<p>The public key is the one in the <code>key</code> field.</p>
+<pre tabindex="0"><code>cat /bake-buddy/node/data/.tezos-client/public_keys
+</code></pre><p>The public key is the one in the <code>key</code> field.</p>
 <blockquote>
 <p>An example of a public key for a tz3 address is <code>p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY</code></p>
 </blockquote>
 <p>To register the consensus key, run the following command:</p>
-<pre><code>```
-tezbake signer client set consensus key for baker to consensus
-```
-</code></pre>
-<p>You can also set your consensus key on TezGov via <a href="https://gov.tez.capital">https://gov.tez.capital</a>.</p>
+<pre tabindex="0"><code>tezbake signer client set consensus key for baker to consensus
+</code></pre><p>You can also set your consensus key on TezGov via <a href="https://gov.tez.capital">https://gov.tez.capital</a>.</p>
 <p>The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.</p>
 <p>Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&rsquo;s no longer needed for baking.</p>
 <h3 id="confirm-the-consensus-key-is-working">Confirm the consensus key is working</h3>
