@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="TezBake Baking Tutorial for using a Consensus Key">
 
-<meta itemprop="wordCount" content="676">
+<meta itemprop="wordCount" content="751">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for using a Consensus Key"/>
@@ -408,7 +408,7 @@
 </ul>
 <p>A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.</p>
 <p>This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&rsquo;s main account.</p>
-<p>If an attacker gains control of the consensus key, they can only sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker fund that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.</p>
+<p>If an attacker gains control of the consensus key, they can sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker funds that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.</p>
 <hr>
 <h2 id="consensus-key-setup">Consensus key setup</h2>
 <h3 id="import-the-consensus-key">Import the consensus key</h3>
@@ -420,6 +420,9 @@
 <pre tabindex="0"><code>tezbake setup-ledger --platform --import-key=&#34;P-256/0h/0h&#34; --authorize --ledger-id &#34;apple-banana-coconut-date&#34; --hwm 1 --key-alias=consensus
 </code></pre><blockquote>
 <p>Replace the <code>--ledger-id</code> value with the 4 word ID of the Ledger you want to use for the consensus key.</p>
+</blockquote>
+<blockquote>
+<p>We are using the P-256 (tz3) curve for the consensus key because it&rsquo;s the fastest on Ledger hardware and most portable option with both on premise and cloud hardware security modules (HSMs). The consensus key is only used for signing blocks and endorsements, so it doesn&rsquo;t need to be the same curve as the baker key. In fact, many bakers move from a tz1 key to a tz3 key for the consensus key to improve performance.</p>
 </blockquote>
 <p>This will import your consensus key Ledger device and authorize it for baking. Leave the baking app running on the Ledger device.</p>
 <h3 id="modify-the-baking-configuration">Modify the baking configuration</h3>
@@ -512,7 +515,7 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 <pre tabindex="0"><code>tezbake node log baker -f
 </code></pre><hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
-<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a>i</p>
+<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
 	
 	
