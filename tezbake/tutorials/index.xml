@@ -92,9 +92,9 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX
 &lt;p&gt;You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.&lt;/p&gt;
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;option-1---recommended-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer&lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --platform --import-key=&amp;#34;secp256k1/0h/0h&amp;#34; --authorize --hwm 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --platform --import-key=&amp;#34;P-256/0h/0h&amp;#34; --authorize --hwm 1
 
-# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as secp256k1.
+# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.
 # `--hwm 1` works great if you&amp;#39;re setting up for the first time. If you&amp;#39;re setting up a device that&amp;#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.
 # If you&amp;#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
@@ -233,9 +233,9 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12H
 &lt;p&gt;You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.&lt;/p&gt;
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;option-1---recommended-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer&lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --platform --import-key=&amp;#34;secp256k1/0h/0h&amp;#34; --authorize --hwm 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --platform --import-key=&amp;#34;P-256/0h/0h&amp;#34; --authorize --hwm 1
 
-# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as secp256k1.
+# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.
 # `--hwm 1` works great if you&amp;#39;re setting up for the first time. If you&amp;#39;re setting up a device that&amp;#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.
 # If you&amp;#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.
 
@@ -289,6 +289,132 @@ You can stake your security deposit by running the following command, after open
 Any questions/comments/concerns? Please contact the Tez Capital team on
 [Discord](https://discord.gg/cVGMA4MaNM) or [Telegram](https://t.me/tezcapital) 
 &lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezbake: Baking with Consensus Key</title>
+      <link>/tezbake/tutorials/baking-with-consensus-key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/baking-with-consensus-key/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed one of the following tutorials:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.&lt;/p&gt;
+&lt;p&gt;This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&amp;rsquo;s main account.&lt;/p&gt;
+&lt;p&gt;If an attacker gains control of the consensus key, they can only sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker fund that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&amp;rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;consensus-key-setup&#34;&gt;Consensus key setup&lt;/h2&gt;
+&lt;h3 id=&#34;import-the-consensus-key&#34;&gt;Import the consensus key&lt;/h3&gt;
+&lt;p&gt;Plug in your consensus key Ledger device and open the Tezos Baking app.&lt;/p&gt;
+&lt;p&gt;Run the following command to list the available Ledgers:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake list-ledgers
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note the 4 word ID of the Ledger you want to use for the consensus key.&lt;/p&gt;
+&lt;p&gt;Run the following command to import the consensus key:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ledger --platform --import-key=&amp;#34;P-256/0h/0h&amp;#34; --authorize --ledger-id &amp;#34;apple-banana-coconut-date&amp;#34; --hwm 1 --key-alias=consensus
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Replace the &lt;code&gt;--ledger-id&lt;/code&gt; value with the 4 word ID of the Ledger you want to use for the consensus key.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This will import your consensus key Ledger device and authorize it for baking. Leave the baking app running on the Ledger device.&lt;/p&gt;
+&lt;h3 id=&#34;modify-the-baking-configuration&#34;&gt;Modify the baking configuration&lt;/h3&gt;
+&lt;p&gt;Open the TezBake node configuration file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nano /bake-buddy/node/app.json
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Inside the &lt;code&gt;&amp;quot;configuration&amp;quot;&lt;/code&gt; object, add the following key-value pair:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;consensus_key_alias&amp;#34;: [ &amp;#34;consensus&amp;#34; ]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Here an example of a file with the consensus key alias added:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;BAKER_STARTUP_ARGS&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;--dal-node&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://127.0.0.1:10732/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;CONFIG_FILE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;p2p&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;bootstrap-peers&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;boot.tzbeta.net&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;limits&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;connection-timeout&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;expected-connections&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;40&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;max-connections&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;50&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;max_known_peer_ids&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;320&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;240&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;max_known_points&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;320&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;240&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;min-connections&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;listen-addr&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;[::]:9732&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;shell&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;chain_validator&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;synchronisation_threshold&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;NODE_TYPE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;baker&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;VOTE_FILE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;adaptive_issuance_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;liquidity_baking_toggle_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;additional_key_aliases&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;consensus&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;bb-default-node&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xtz.node&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;latest&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;bb&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Re-run the TezBake setup and merge your configuration when asked:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```
+tezbake stop
+tezbake setup -a
+tezbake start
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;register-the-consensus-key&#34;&gt;Register the consensus key&lt;/h3&gt;
+&lt;p&gt;Get your consensus key public key hash:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```
+cat /bake-buddy/node/data/.tezos-client/public_keys
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The public key is the one in the &lt;code&gt;key&lt;/code&gt; field.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An example of a public key for a tz3 address is &lt;code&gt;p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To register the consensus key, run the following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```
+tezbake signer client set consensus key for baker to consensus
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can also set your consensus key on TezGov via &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.&lt;/p&gt;
+&lt;p&gt;Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&amp;rsquo;s no longer needed for baking.&lt;/p&gt;
+&lt;h3 id=&#34;confirm-the-consensus-key-is-working&#34;&gt;Confirm the consensus key is working&lt;/h3&gt;
+&lt;p&gt;Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and endorsements on behalf of the baker key.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449: injected attestation op5RtCGypnrri9FyYHy91haPWB6CpouxNABcgM7BSUmr81p27G4 for
+Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   consensus (tz3P9WvzULMuss5iDk4tjNQYWkwSrLAjUuh7)
+Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   on behalf of tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur for level 7403648, round
+Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To view your baker logs, run the following command:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake node log baker -f
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;i&lt;/p&gt;
+
       </description>
     </item>
     

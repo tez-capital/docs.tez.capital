@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Ghostnet">
 <meta itemprop="description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet">
 
-<meta itemprop="wordCount" content="1670">
+<meta itemprop="wordCount" content="1672">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Ghostnet"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet"/>
@@ -128,6 +128,8 @@
   <a href="/tezbake/tutorials/baking-on-mainnet/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-on-mainnet"><span class="">&gt; Baking on Mainnet</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialsbaking-on-ghostnet-li">
   <a href="/tezbake/tutorials/baking-on-ghostnet/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-on-ghostnet"><span class="td-sidebar-nav-active-item">Baking on Ghostnet</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-consensus-key-li">
+  <a href="/tezbake/tutorials/baking-with-consensus-key/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-consensus-key"><span class="">Baking with Consensus Key</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
   <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
@@ -471,9 +473,9 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12H
 <p>You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.</p>
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
 <h4 id="option-1---recommended-import-ledger-key-to-tezbake-signer">(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer</h4>
-<pre tabindex="0"><code>tezbake setup-ledger --platform --import-key=&#34;secp256k1/0h/0h&#34; --authorize --hwm 1
+<pre tabindex="0"><code>tezbake setup-ledger --platform --import-key=&#34;P-256/0h/0h&#34; --authorize --hwm 1
 
-# If you have a custom derivation path, you can specify it as shown: (`--import-key=&#34;ed25519/0h/0h&#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as secp256k1.
+# If you have a custom derivation path, you can specify it as shown: (`--import-key=&#34;ed25519/0h/0h&#34;`; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.
 # `--hwm 1` works great if you&#39;re setting up for the first time. If you&#39;re setting up a device that&#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.
 # If you&#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.
 
