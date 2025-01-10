@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="834">
+<meta itemprop="wordCount" content="824">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -414,10 +414,10 @@
 <p>The Tezos Data Availability Layer (DAL) enhances the network&rsquo;s scalability by providing a decentralized and efficient way to manage large volumes of data off-chain while maintaining security guarantees. It allows rollups and other layer-2 solutions to offload data availability requirements, improving transaction throughput without congesting the main blockchain. This mechanism ensures data remains accessible and verifiable, enabling Tezos to support more complex and higher-volume applications.</p>
 <p>Read more about the DAL <a href="https://tezos.gitlab.io/shell/dal_overview.html">https://tezos.gitlab.io/shell/dal_overview.html</a>.</p>
 <blockquote>
-<p>Setting up TezBake natively with the DAL is being worked on and will be available soon. For now, this guide explains how to run an all-in-one TezBake setup with the DAL process running separately from the TezBake processes, on the same machine or on a different machine within your network.</p>
+<p>Setting up TezBake natively with the DAL is being worked on and will be available soon. For now, this guide explains how to run an all-in-one TezBake setup with the DAL process running separately from the TezBake processes, on the same machine or on a different machine, on your local network or in the cloud.</p>
 </blockquote>
 <blockquote>
-<p>Please be advised that running the DAL on the same machine as your baker may reveal your baker&rsquo;s IP address to the public. If you&rsquo;re concerned about this, you can run the DAL on a separate machine.</p>
+<p>Please be advised that running the DAL on the same machine as your baker may possibly reveal your baker&rsquo;s IP address to the public. If you&rsquo;re concerned about this, you can run the DAL on a separate machine.</p>
 </blockquote>
 <blockquote>
 <p>If you&rsquo;re running your baker behind a NAT or have a restrictive firewall, you may need to open the necessary ports for the DAL to communicate with other nodes on the network. You will need to open and/or map port tcp/11732 to the machine running the DAL.</p>
@@ -433,43 +433,8 @@
          &#34;BAKER_STARTUP_ARGS&#34;: [
              &#34;--dal-node&#34;,
              &#34;http://127.0.0.1:10732/&#34;
-         ],
-         &#34;CONFIG_FILE&#34;: {
-             &#34;p2p&#34;: {
-                 &#34;bootstrap-peers&#34;: [
-                     &#34;boot.tzbeta.net&#34;
-                 ],
-                 &#34;limits&#34;: {
-                     &#34;connection-timeout&#34;: 10,
-                     &#34;expected-connections&#34;: 40,
-                     &#34;max-connections&#34;: 50,
-                     &#34;max_known_peer_ids&#34;: [
-                         320,
-                         240
-                     ],
-                     &#34;max_known_points&#34;: [
-                         320,
-                         240
-                     ],
-                     &#34;min-connections&#34;: 20
-                 },
-                 &#34;listen-addr&#34;: &#34;[::]:9732&#34;
-             },
-             &#34;shell&#34;: {
-                 &#34;chain_validator&#34;: {
-                     &#34;synchronisation_threshold&#34;: 6
-                 }
-             }
-         },
-         &#34;NODE_TYPE&#34;: &#34;baker&#34;,
-         &#34;VOTE_FILE&#34;: {
-             &#34;adaptive_issuance_vote&#34;: &#34;on&#34;,
-             &#34;liquidity_baking_toggle_vote&#34;: &#34;on&#34;
-         },
-         &#34;additional_key_aliases&#34;: [
-             &#34;consensus&#34;
          ]
-     },
+      },
      &#34;id&#34;: &#34;bb-default-node&#34;,
      &#34;type&#34;: {
          &#34;id&#34;: &#34;xtz.node&#34;,
@@ -477,8 +442,9 @@
      },
      &#34;user&#34;: &#34;bb&#34;
  }
-</code></pre><blockquote>
-<p>Note that the rest of the config above has been provided for reference. You should only add the 3 lines under <code>BAKER_STARTUP_ARGS</code>. This config in question is for a TezBake node running on Ghostnet.</p>
+</code></pre><p>You can change <code>http://127.0.0.1:10732/</code> to the IP address of the machine running the DAL process if it&rsquo;s running on a different machine. For example <code>http://39.63.25.22:10732/</code>.</p>
+<blockquote>
+<p>Note that the rest of the config above has been provided for reference. You should only add the 3 lines under <code>BAKER_STARTUP_ARGS</code>.</p>
 </blockquote>
 <h3 id="run-tezbake-setup-to-modify-the-configuration">Run TezBake setup to modify the configuration</h3>
 <p>You have to run a TezBake setup operation on top of the existing setup to include the DAL process in your baker&rsquo;s service configuration.</p>
@@ -487,7 +453,9 @@ tezbake setup -a
 </code></pre><p>When asked by the setup process, choose to merge your current configuration with the new one.</p>
 <h3 id="download-and-execute-the-dal-prerequisite-script">Download and execute the DAL prerequisite script</h3>
 <pre tabindex="0"><code>wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh
-chmod +x install_dal_trusted_setup.sh
+wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/version.sh
+chmod +x install_dal_trusted_setup.sh version..sh
+./version.sh
 ./install_dal_trusted_setup.sh
 </code></pre><h3 id="download-the-dal-binary">Download the DAL binary</h3>
 <p>The DAL binaries can be found in the the Tezos Gitlab repository: <a href="https://gitlab.com/tezos/tezos/-/releases">https://gitlab.com/tezos/tezos/-/releases</a>.</p>
@@ -498,9 +466,8 @@ chmod +x octez-dal-node
 sudo cp octez-dal-node /usr/sbin/octez-dal-node
 </code></pre><h3 id="initialize-the-dal-configuration">Initialize the DAL configuration</h3>
 <pre tabindex="0"><code>octez-dal-node config init --endpoint http://127.0.0.1:8732 --attester-profiles=&#34;tz1xxxxxxxxxxxxxxxxxxxxxx&#34;
-</code></pre><blockquote>
-<p>Replace <code>tz1xxxxxxxxxxxxxxxxxxxxxx</code> with your baker&rsquo;s address.</p>
-</blockquote>
+</code></pre><p>Replace <code>tz1xxxxxxxxxxxxxxxxxxxxxx</code> with your baker&rsquo;s address.</p>
+<p>Replace <code>--endpoint http://127.0.0.1:8732</code> with the endpoint of your baker&rsquo;s node if it&rsquo;s running on a different machine. For example <code>--endpoint http://11.30.28.11:8732</code>.</p>
 <blockquote>
 <p>There are several other options you can set in the DAL configuration. You can find more information about them by running visiting the DAL documentation <a href="https://tezos.gitlab.io/shell/dal_overview.html">https://tezos.gitlab.io/shell/dal_overview.html</a>.</p>
 </blockquote>
