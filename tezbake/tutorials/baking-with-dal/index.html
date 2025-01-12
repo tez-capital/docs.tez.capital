@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="824">
+<meta itemprop="wordCount" content="880">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -428,20 +428,20 @@
 <h3 id="edit-appjson">Edit app.json</h3>
 <pre tabindex="0"><code>nano /bake-buddy/node/app.json
 </code></pre><p>Add the following 3 lines to the <code>app.json</code> file, under the <code>configuration</code> section within the `BAKER:</p>
-<pre tabindex="0"><code> {
-     &#34;configuration&#34;: {
-         &#34;BAKER_STARTUP_ARGS&#34;: [
-             &#34;--dal-node&#34;,
-             &#34;http://127.0.0.1:10732/&#34;
-         ]
-      },
-     &#34;id&#34;: &#34;bb-default-node&#34;,
-     &#34;type&#34;: {
-         &#34;id&#34;: &#34;xtz.node&#34;,
-         &#34;version&#34;: &#34;latest&#34;
-     },
-     &#34;user&#34;: &#34;bb&#34;
- }
+<pre tabindex="0"><code>{
+   &#34;configuration&#34;: {
+      &#34;BAKER_STARTUP_ARGS&#34;: [
+            &#34;--dal-node&#34;,
+            &#34;http://127.0.0.1:10732/&#34;
+      ]
+   },
+   &#34;id&#34;: &#34;bb-default-node&#34;,
+   &#34;type&#34;: {
+      &#34;id&#34;: &#34;xtz.node&#34;,
+      &#34;version&#34;: &#34;latest&#34;
+   },
+   &#34;user&#34;: &#34;bb&#34;
+}
 </code></pre><p>You can change <code>http://127.0.0.1:10732/</code> to the IP address of the machine running the DAL process if it&rsquo;s running on a different machine. For example <code>http://39.63.25.22:10732/</code>.</p>
 <blockquote>
 <p>Note that the rest of the config above has been provided for reference. You should only add the 3 lines under <code>BAKER_STARTUP_ARGS</code>.</p>
@@ -452,6 +452,12 @@
 tezbake setup -a
 </code></pre><p>When asked by the setup process, choose to merge your current configuration with the new one.</p>
 <h3 id="download-and-execute-the-dal-prerequisite-script">Download and execute the DAL prerequisite script</h3>
+<p>The scripts below need to be run on the machine where the DAL process will be running.</p>
+<p>If you&rsquo;re running the DAL on a separate machine, you need to run an additional script to install the zcash parameters.</p>
+<pre tabindex="0"><code>wget https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
+chmod +x fetch-params.sh
+./fetch-params.sh
+</code></pre><p>All setups require the following scripts to install the DAL trusted setup:</p>
 <pre tabindex="0"><code>wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh
 wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/version.sh
 chmod +x install_dal_trusted_setup.sh version..sh

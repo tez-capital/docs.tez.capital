@@ -457,20 +457,20 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 &lt;h3 id=&#34;edit-appjson&#34;&gt;Edit app.json&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;nano /bake-buddy/node/app.json
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Add the following 3 lines to the &lt;code&gt;app.json&lt;/code&gt; file, under the &lt;code&gt;configuration&lt;/code&gt; section within the `BAKER:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt; {
-     &amp;#34;configuration&amp;#34;: {
-         &amp;#34;BAKER_STARTUP_ARGS&amp;#34;: [
-             &amp;#34;--dal-node&amp;#34;,
-             &amp;#34;http://127.0.0.1:10732/&amp;#34;
-         ]
-      },
-     &amp;#34;id&amp;#34;: &amp;#34;bb-default-node&amp;#34;,
-     &amp;#34;type&amp;#34;: {
-         &amp;#34;id&amp;#34;: &amp;#34;xtz.node&amp;#34;,
-         &amp;#34;version&amp;#34;: &amp;#34;latest&amp;#34;
-     },
-     &amp;#34;user&amp;#34;: &amp;#34;bb&amp;#34;
- }
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+   &amp;#34;configuration&amp;#34;: {
+      &amp;#34;BAKER_STARTUP_ARGS&amp;#34;: [
+            &amp;#34;--dal-node&amp;#34;,
+            &amp;#34;http://127.0.0.1:10732/&amp;#34;
+      ]
+   },
+   &amp;#34;id&amp;#34;: &amp;#34;bb-default-node&amp;#34;,
+   &amp;#34;type&amp;#34;: {
+      &amp;#34;id&amp;#34;: &amp;#34;xtz.node&amp;#34;,
+      &amp;#34;version&amp;#34;: &amp;#34;latest&amp;#34;
+   },
+   &amp;#34;user&amp;#34;: &amp;#34;bb&amp;#34;
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can change &lt;code&gt;http://127.0.0.1:10732/&lt;/code&gt; to the IP address of the machine running the DAL process if it&amp;rsquo;s running on a different machine. For example &lt;code&gt;http://39.63.25.22:10732/&lt;/code&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Note that the rest of the config above has been provided for reference. You should only add the 3 lines under &lt;code&gt;BAKER_STARTUP_ARGS&lt;/code&gt;.&lt;/p&gt;
@@ -481,6 +481,12 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 tezbake setup -a
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When asked by the setup process, choose to merge your current configuration with the new one.&lt;/p&gt;
 &lt;h3 id=&#34;download-and-execute-the-dal-prerequisite-script&#34;&gt;Download and execute the DAL prerequisite script&lt;/h3&gt;
+&lt;p&gt;The scripts below need to be run on the machine where the DAL process will be running.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re running the DAL on a separate machine, you need to run an additional script to install the zcash parameters.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
+chmod +x fetch-params.sh
+./fetch-params.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All setups require the following scripts to install the DAL trusted setup:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh
 wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/version.sh
 chmod +x install_dal_trusted_setup.sh version..sh
