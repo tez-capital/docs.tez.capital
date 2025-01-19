@@ -70,7 +70,7 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX
 &lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/mainnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/mainnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged. If you don&amp;rsquo;t want to borther with this protection, use the second method below which will also be faster.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged. If you don&amp;rsquo;t want to bother with this protection, use the second method below which will also be faster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 &lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
