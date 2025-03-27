@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Ghostnet">
 <meta itemprop="description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet">
 
-<meta itemprop="wordCount" content="1761">
+<meta itemprop="wordCount" content="1853">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Ghostnet"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Ghostnet Tezos perpetual testnet"/>
@@ -420,7 +420,7 @@ help test protocol migrations.</p>
 </blockquote>
 </li>
 <li>
-<p>Ledger Nano S hardware wallet with Tezos Wallet &amp; Baker apps installed.</p>
+<p>Ledger Nano S Plus or Ledger Nano X hardware wallet with Tezos Wallet &amp; Baker apps installed.</p>
 <blockquote>
 <p>It&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings</p>
 </blockquote>
@@ -434,6 +434,12 @@ help test protocol migrations.</p>
 </li>
 </ol>
 <hr>
+<blockquote>
+<p>🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a> to complete the setup. The DAL will be integrated directly into TezBake setup and upgrade processes soon.</p>
+</blockquote>
+<blockquote>
+<p>What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.</p>
+</blockquote>
 <h2 id="installation">Installation</h2>
 <h3 id="download-and-copy-tezbake">Download and copy tezbake</h3>
 <p>To begin, run the script below, which will download the latest version of TezBake and copy it to your <code>/usr/sbin</code> directory. This script works with both x86_64 and arm64 architectures.</p>
@@ -446,11 +452,8 @@ help test protocol migrations.</p>
 <p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best.</p>
 <pre tabindex="0"><code>tezbake bootstrap-node &lt;url&gt; &lt;block_hash&gt;
 # example:
-tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
-</code></pre><blockquote>
-<p>You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
-</blockquote>
-<p>Get the block hash and block level from the snapshot provider&rsquo;s website:
+tezbake bootstrap-node https://snapshots.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+</code></pre><p>Get the block hash and block level from the snapshot provider&rsquo;s website:
 <a href="https://snapshots.eu.tzinit.org/ghostnet/rolling.html">https://snapshots.eu.tzinit.org/ghostnet/rolling.html</a></p>
 <blockquote>
 <p>The <code>&lt;block_hash&gt;</code> argument is optional but encouraged. If you don&rsquo;t want to borther with this protection, use the second method below which will also be faster.</p>
