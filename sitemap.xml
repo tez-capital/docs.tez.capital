@@ -96,6 +96,8 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_bootstrap-node/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_dal/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_erase-ami-cache/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_get-rights/</loc>
@@ -109,6 +111,8 @@
     <loc>/tezbake/reference/cmd/tezbake_modules/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_node/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_pay/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_peak/</loc>
   </url><url>
