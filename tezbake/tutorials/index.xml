@@ -323,8 +323,8 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
         &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed one of the following tutorials:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.&lt;/p&gt;
 &lt;p&gt;This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&amp;rsquo;s main account.&lt;/p&gt;
