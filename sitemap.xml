@@ -134,6 +134,8 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_stop/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_update-dal-profiles/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_upgrade/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_version/</loc>
