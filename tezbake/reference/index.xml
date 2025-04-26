@@ -40,7 +40,6 @@ Copyright © 2025 tez.capital&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_apps&#34;&gt;tezbake apps&lt;/a&gt;	 - Prints BB CLI apps.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_bootstrap-node&#34;&gt;tezbake bootstrap-node&lt;/a&gt;	 - Bootstraps Bake Buddy&amp;rsquo;s Tezos node.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_dal&#34;&gt;tezbake dal&lt;/a&gt;	 - Passes args through to dal node app.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_erase-ami-cache&#34;&gt;tezbake erase-ami-cache&lt;/a&gt;	 - Erases ami cache.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_info&#34;&gt;tezbake info&lt;/a&gt;	 - Prints runtime information about BB.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_list-ledgers&#34;&gt;tezbake list-ledgers&lt;/a&gt;	 - Prints list of available ledgers.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_node&#34;&gt;tezbake node&lt;/a&gt;	 - Passes args through to node app.&lt;/li&gt;
