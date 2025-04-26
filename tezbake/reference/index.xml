@@ -28,12 +28,13 @@
 &lt;p&gt;tezbake CLI&lt;/p&gt;
 &lt;h3 id=&#34;synopsis&#34;&gt;Synopsis&lt;/h3&gt;
 &lt;p&gt;tezbake CLI
-Copyright © 2023 tez.capital&lt;/p&gt;
+Copyright © 2025 tez.capital&lt;/p&gt;
 &lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help                   help for tezbake
   -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake_apps&#34;&gt;tezbake apps&lt;/a&gt;	 - Prints BB CLI apps.&lt;/li&gt;
@@ -84,6 +85,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -114,6 +116,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -143,6 +146,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -172,6 +176,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -283,6 +288,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -312,6 +318,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -370,6 +377,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -399,6 +407,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -428,6 +437,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -457,6 +467,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -492,6 +503,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -544,17 +556,18 @@ Copyright © 2023 tez.capital&lt;/p&gt;
       --peak-configuration string     Sets peak configuration. (default &amp;#34;{}&amp;#34;)
       --peak-version string           Sets peak configuration. (default &amp;#34;latest&amp;#34;)
       --remote-reset                  Resets and reconfigures remote node locator. (experimental)
-  -a, --setup-ami                     Install latest ami during the BB setup.
       --signer                        Setups signer.
       --signer-branch string          Sets signer configuration.
       --signer-configuration string   Sets signer configuration. (default &amp;#34;{}&amp;#34;)
       --signer-version string         Sets signer configuration. (default &amp;#34;latest&amp;#34;)
+      --skip-ami-setup                Skip ami setup.
   -u, --user string                   User you want to operate BB under. (default &amp;#34;runner&amp;#34;)
       --with-dal                      Setup dal node. (experimental)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -579,12 +592,13 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;p&gt;Install latest ami and eli.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup-ami [flags]
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help                 help for setup-ami
-      --remote-node string   (Not available).
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -h, --help     help for setup-ami
+      --silent   Do not print any output.
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -627,6 +641,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -663,6 +678,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -692,6 +708,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -726,6 +743,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -760,6 +778,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -791,6 +810,7 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -820,13 +840,14 @@ Copyright © 2023 tez.capital&lt;/p&gt;
       --node              Upgrade node.
       --pay               Upgrade pay.
       --peak              Upgrade peak.
-  -a, --setup-ami         Install latest ami during the BB upgrade.
       --signer            Upgrade signer.
+      --skip-ami-setup    Skip ami upgrade
   -s, --upgrade-storage   Upgrade storage during the upgrade.
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -851,19 +872,18 @@ Copyright © 2023 tez.capital&lt;/p&gt;
 &lt;p&gt;Prints BakeBuddy CLI version.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake version [flags]
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -a, --all        Prints version of all BB instance packages/binaries.
-  -b, --binaries   Prints versions of binaries.
-      --dal        Prints versions of dal.
-  -h, --help       help for version
-      --node       Prints versions of node.
-      --packages   Prints versions packages.
-      --pay        Prints versions of pay.
-      --peak       Prints versions of peak.
-      --signer     Prints versions of signer.
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -a, --all      Prints version of all BB instance packages/binaries.
+      --dal      Prints versions of dal.
+  -h, --help     help for version
+      --node     Prints versions of node.
+      --pay      Prints versions of pay.
+      --peak     Prints versions of peak.
+      --signer   Prints versions of signer.
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
@@ -903,6 +923,7 @@ Promotion:
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
   -o, --output-format string   Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;)
   -p, --path string            Path to bake buddy instance (default &amp;#34;/bake-buddy&amp;#34;)
+      --version                Prints tezbake version
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;see-also&#34;&gt;SEE ALSO&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/reference/cmd/tezbake&#34;&gt;tezbake&lt;/a&gt;	 - tezbake CLI&lt;/li&gt;
