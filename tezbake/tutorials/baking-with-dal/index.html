@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="880">
+<meta itemprop="wordCount" content="429">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -336,20 +336,13 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#preparation">Preparation</a></li>
-    <li><a href="#dal-installation">DAL Installation</a>
-      <ul>
-        <li><a href="#edit-appjson">Edit app.json</a></li>
-        <li><a href="#run-tezbake-setup-to-modify-the-configuration">Run TezBake setup to modify the configuration</a></li>
-        <li><a href="#download-and-execute-the-dal-prerequisite-script">Download and execute the DAL prerequisite script</a></li>
-        <li><a href="#download-the-dal-binary">Download the DAL binary</a></li>
-        <li><a href="#initialize-the-dal-configuration">Initialize the DAL configuration</a></li>
-        <li><a href="#start-the-dal-process">Start the DAL process</a></li>
-        <li><a href="#how-to-run-the-dal-process-in-the-background-with-screen">How to run the DAL process in the background with <code>screen</code></a></li>
-        <li><a href="#how-to-run-the-dal-process-as-a-service">How to run the DAL process as a service</a></li>
-      </ul>
-    </li>
-    <li><a href="#verify-the-dal-process-is-operational">Verify the DAL process is operational</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#if-you-previously-installed-dal-manually">If You Previously Installed DAL Manually</a></li>
+    <li><a href="#new-tezbake-setup-with-dal">New TezBake Setup with DAL</a></li>
+    <li><a href="#existing-tezbake-setup">Existing TezBake Setup</a></li>
+    <li><a href="#after-setup">After Setup</a></li>
+    <li><a href="#quick-troubleshooting">Quick Troubleshooting</a></li>
+    <li><a href="#verify-dal-operation">Verify DAL Operation</a></li>
   </ul>
 </nav>
       </div>
@@ -411,128 +404,97 @@
 
 		
 	</header>    
-	<h2 id="preparation">Preparation</h2>
-<p>For this tutorial, you&rsquo;ll need to have already followed one of the following tutorials:</p>
+	<h2 id="introduction">Introduction</h2>
+<p>The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.</p>
+<p>For more details on DAL, see <a href="https://tezos.gitlab.io/shell/dal_overview.html">Tezos DAL Overview</a>.</p>
+<blockquote>
+<p><strong>Note:</strong> This feature is experimental and not extensively tested yet. Remote/distributed setups will be available before the Rio activation.</p>
+</blockquote>
+<hr>
+<h2 id="if-you-previously-installed-dal-manually">If You Previously Installed DAL Manually</h2>
+<p>If you previously set up DAL manually using the older method, first remove it by running:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl stop octez-dal-node
+</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">DAL_USER</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;</span><span style="color:#204a87;font-weight:bold">$(</span>grep -i <span style="color:#4e9a06">&#39;^User=&#39;</span> /etc/systemd/system/octez-dal-node.service <span style="color:#000;font-weight:bold">|</span> cut -d<span style="color:#ce5c00;font-weight:bold">=</span> -f2<span style="color:#204a87;font-weight:bold">)</span><span style="color:#4e9a06">&#34;</span>
+</span></span><span style="display:flex;"><span>sudo rm -r <span style="color:#4e9a06">&#34;/home/</span><span style="color:#000">$DAL_USER</span><span style="color:#4e9a06">/.zcash-params&#34;</span>
+</span></span><span style="display:flex;"><span>sudo rm -r <span style="color:#4e9a06">&#34;/home/</span><span style="color:#000">$DAL_USER</span><span style="color:#4e9a06">/.tezos-dal-node&#34;</span>
+</span></span><span style="display:flex;"><span>sudo rm /usr/sbin/octez-dal-node
+</span></span><span style="display:flex;"><span>sudo rm /etc/systemd/system/octez-dal-node.service
+</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span></code></pre></div><p>Additionally, remove any DAL configurations manually added to your <code>app.json</code>, particularly the <code>BAKER_STARTUP_ARGS</code> referencing DAL.</p>
+<hr>
+<h2 id="new-tezbake-setup-with-dal">New TezBake Setup with DAL</h2>
+<p>Follow these steps if you&rsquo;re setting up a new TezBake baker with DAL:</p>
+<ol>
+<li><strong>Install latest TezBake prerelease:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh --prerelease
+</span></span></code></pre></div><ol start="2">
+<li><strong>Run setup with DAL integration:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --with-dal
+</span></span></code></pre></div><ol start="3">
+<li>
+<p>Proceed with your usual setup steps (ledger integration, baker registration, etc.).</p>
+</li>
+<li>
+<p>Continue to the <a href="#after-setup">After Setup</a> section.</p>
+</li>
+</ol>
+<hr>
+<h2 id="existing-tezbake-setup">Existing TezBake Setup</h2>
+<p>If you already have TezBake running without DAL or if you&rsquo;ve previously added DAL manually, follow these steps:</p>
+<ol>
+<li><strong>Ensure no manual DAL references exist in your <code>app.json</code></strong> (remove if present):</li>
+</ol>
 <ul>
-<li><a href="/tezbake/tutorials/how-to-bake">How to Bake</a></li>
-<li><a href="/tezbake/tutorials/how-to-bake-ghostnet">How to Bake on Ghostnet</a></li>
+<li>Specifically, remove any <code>BAKER_STARTUP_ARGS</code> referencing DAL.</li>
 </ul>
-<p>The Tezos Data Availability Layer (DAL) enhances the network&rsquo;s scalability by providing a decentralized and efficient way to manage large volumes of data off-chain while maintaining security guarantees. It allows rollups and other layer-2 solutions to offload data availability requirements, improving transaction throughput without congesting the main blockchain. This mechanism ensures data remains accessible and verifiable, enabling Tezos to support more complex and higher-volume applications.</p>
-<p>Read more about the DAL <a href="https://tezos.gitlab.io/shell/dal_overview.html">https://tezos.gitlab.io/shell/dal_overview.html</a>.</p>
-<blockquote>
-<p>Setting up TezBake natively with the DAL is being worked on and will be available soon. For now, this guide explains how to run an all-in-one TezBake setup with the DAL process running separately from the TezBake processes, on the same machine or on a different machine, on your local network or in the cloud.</p>
+<ol start="2">
+<li><strong>Install latest TezBake prerelease:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh --prerelease
+</span></span></code></pre></div><ol start="3">
+<li><strong>Upgrade TezBake components:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><blockquote>
+<p><strong>Important (rare case):</strong> If your node runs on a non-default RPC address, ensure your <code>RPC_ADDR</code> includes the full address (e.g., <code>http://</code>).</p>
 </blockquote>
-<blockquote>
-<p>Please be advised that running the DAL on the same machine as your baker may possibly reveal your baker&rsquo;s IP address to the public. If you&rsquo;re concerned about this, you can run the DAL on a separate machine.</p>
-</blockquote>
-<blockquote>
-<p>If you&rsquo;re running your baker behind a NAT or have a restrictive firewall, you may need to open the necessary ports for the DAL to communicate with other nodes on the network. You will need to open and/or map port tcp/11732 to the machine running the DAL.</p>
-</blockquote>
+<ol start="4">
+<li><strong>Install DAL:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --dal
+</span></span></code></pre></div><ol start="5">
+<li>Continue to <a href="#after-setup">After Setup</a>.</li>
+</ol>
 <hr>
-<h2 id="dal-installation">DAL Installation</h2>
-<p>Before downloading the DAL binary, you need to slightly modify the TezBake configuration to include the DAL process.</p>
-<h3 id="edit-appjson">Edit app.json</h3>
-<pre tabindex="0"><code>nano /bake-buddy/node/app.json
-</code></pre><p>Add the following 3 lines to the <code>app.json</code> file, under the <code>configuration</code> section within the `BAKER:</p>
-<pre tabindex="0"><code>{
-   &#34;configuration&#34;: {
-      &#34;BAKER_STARTUP_ARGS&#34;: [
-            &#34;--dal-node&#34;,
-            &#34;http://127.0.0.1:10732/&#34;
-      ]
-   },
-   &#34;id&#34;: &#34;bb-default-node&#34;,
-   &#34;type&#34;: {
-      &#34;id&#34;: &#34;xtz.node&#34;,
-      &#34;version&#34;: &#34;latest&#34;
-   },
-   &#34;user&#34;: &#34;bb&#34;
-}
-</code></pre><p>You can change <code>http://127.0.0.1:10732/</code> to the IP address of the machine running the DAL process if it&rsquo;s running on a different machine. For example <code>http://39.63.25.22:10732/</code>.</p>
-<blockquote>
-<p>Note that the rest of the config above has been provided for reference. You should only add the 3 lines under <code>BAKER_STARTUP_ARGS</code>.</p>
-</blockquote>
-<h3 id="run-tezbake-setup-to-modify-the-configuration">Run TezBake setup to modify the configuration</h3>
-<p>You have to run a TezBake setup operation on top of the existing setup to include the DAL process in your baker&rsquo;s service configuration.</p>
-<pre tabindex="0"><code>tezbake stop
-tezbake setup -a
-</code></pre><p>When asked by the setup process, choose to merge your current configuration with the new one.</p>
-<h3 id="download-and-execute-the-dal-prerequisite-script">Download and execute the DAL prerequisite script</h3>
-<p>The scripts below need to be run on the machine where the DAL process will be running.</p>
-<p>If you&rsquo;re running the DAL on a separate machine, you need to run an additional script to install the zcash parameters.</p>
-<pre tabindex="0"><code>wget https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
-chmod +x fetch-params.sh
-./fetch-params.sh
-</code></pre><p>All setups require the following scripts to install the DAL trusted setup:</p>
-<pre tabindex="0"><code>wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/install_dal_trusted_setup.sh
-wget https://gitlab.com/tezos/tezos/-/raw/master/scripts/version.sh
-chmod +x install_dal_trusted_setup.sh version..sh
-./version.sh
-./install_dal_trusted_setup.sh
-</code></pre><h3 id="download-the-dal-binary">Download the DAL binary</h3>
-<p>The DAL binaries can be found in the the Tezos Gitlab repository: <a href="https://gitlab.com/tezos/tezos/-/releases">https://gitlab.com/tezos/tezos/-/releases</a>.</p>
-<p>Make sure to download the correct version of the DAL binary for your system, whether it&rsquo;s x86_64 or arm64.</p>
-<p>For example:</p>
-<pre tabindex="0"><code>wget https://gitlab.com/tezos/tezos/-/package_files/159438046/download -O octez-dal-node
-chmod +x octez-dal-node
-sudo cp octez-dal-node /usr/sbin/octez-dal-node
-</code></pre><h3 id="initialize-the-dal-configuration">Initialize the DAL configuration</h3>
-<pre tabindex="0"><code>octez-dal-node config init --endpoint http://127.0.0.1:8732 --attester-profiles=&#34;tz1xxxxxxxxxxxxxxxxxxxxxx&#34;
-</code></pre><p>Replace <code>tz1xxxxxxxxxxxxxxxxxxxxxx</code> with your baker&rsquo;s address.</p>
-<p>Replace <code>--endpoint http://127.0.0.1:8732</code> with the endpoint of your baker&rsquo;s node if it&rsquo;s running on a different machine. For example <code>--endpoint http://11.30.28.11:8732</code>.</p>
-<blockquote>
-<p>There are several other options you can set in the DAL configuration. You can find more information about them by running visiting the DAL documentation <a href="https://tezos.gitlab.io/shell/dal_overview.html">https://tezos.gitlab.io/shell/dal_overview.html</a>.</p>
-</blockquote>
-<h3 id="start-the-dal-process">Start the DAL process</h3>
-<pre tabindex="0"><code>octez-dal-node run
-</code></pre><h3 id="how-to-run-the-dal-process-in-the-background-with-screen">How to run the DAL process in the background with <code>screen</code></h3>
-<p>To run the DAL process in the background, you can use the <code>screen</code> command.</p>
-<pre tabindex="0"><code>screen -S dal
-octez-dal-node run
-</code></pre><p>To detach from the screen session, press <code>Ctrl + A</code> followed by <code>D</code>. To reattach to the screen session, run:</p>
-<pre tabindex="0"><code>screen -r dal
-</code></pre><h3 id="how-to-run-the-dal-process-as-a-service">How to run the DAL process as a service</h3>
-<p>To run the DAL process as a service, you can use <code>systemd</code>.</p>
-<p>Create a new service file:</p>
-<pre tabindex="0"><code>sudo nano /etc/systemd/system/octez-dal-node.service
-</code></pre><p>Add the following content to the file:</p>
-<pre tabindex="0"><code> [Unit]
- Description=Octez DAL Node Service
- After=network.target
-
- [Service]
- Type=simple
- ExecStart=/usr/sbin/octez-dal-node run
- Restart=on-failure
- User=octez
- Group=octez
- Environment=HOME=/home/octez
-
- [Install]
- WantedBy=multi-user.target
-</code></pre><blockquote>
-<p>Replace <code>octez</code> with the user you&rsquo;re running the DAL process as on the <code>User,</code> <code>Group</code> and <code>Environment</code> lines.</p>
-</blockquote>
-<p>Reload system to read the new service file:</p>
-<pre tabindex="0"><code>sudo systemctl daemon-reload
-</code></pre><p>Enable the service on boot:</p>
-<pre tabindex="0"><code>sudo systemctl enable octez-dal-node
-</code></pre><p>Start the service:</p>
-<pre tabindex="0"><code>sudo systemctl start octez-dal-node
-</code></pre><h2 id="verify-the-dal-process-is-operational">Verify the DAL process is operational</h2>
-<p>Once running the DAL process should indicate that it&rsquo;s communicating with the baker process by displaying the level of the last block it received.</p>
-<p><img src="/tezbake/tutorial/tezbakedalrun.png" alt="DAL running"></p>
-<p>If you&rsquo;ve chosen to run the DAL as a systemd service, you can check the logs with:</p>
-<pre tabindex="0"><code>journalctl -u octez-dal-node -f
-</code></pre><p>After confirming that the DAL process is able to observe the baker&rsquo;s level, confirm that TezBake&rsquo;s baker process is properly configured and not complaining about the DAL process.</p>
-<pre tabindex="0"><code>cat /etc/systemd/system/bb-default-node-xtz-baker.service
-</code></pre><p>Verify that <code>--dal-node</code> is in the configuration file on the <code>ExecStart</code> line.</p>
-<p>Check that the TezBake baker process logs do not complain about the DAL process.</p>
-<pre tabindex="0"><code>tebake node log baker -f
-</code></pre><p>The Nomadic Labs team has provided a <a href="https://tezos.gitlab.io/shell/dal_overview.html">DAL tutorial</a> that explains how to further check the DAL process and its logs.</p>
+<h2 id="after-setup">After Setup</h2>
+<ol>
+<li><strong>Inject attester profiles:</strong></li>
+</ol>
+<p>This step does not require interaction with your Ledger:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles --auto
+</span></span></code></pre></div><p>If the above command fails, specify your <strong>baker key</strong> (not consensus key):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-key&gt;
+</span></span></code></pre></div><ol start="2">
+<li><strong>Restart TezBake to apply changes:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><hr>
+<h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
+<p>If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --dal
+</span></span><span style="display:flex;"><span>tezbake setup --node  <span style="color:#8f5902;font-style:italic"># choose &#39;yes&#39; to merge config when prompted</span>
+</span></span><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><hr>
+<h2 id="verify-dal-operation">Verify DAL Operation</h2>
+<p>Ensure your DAL process is correctly running by checking logs:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log dal -f
+</span></span></code></pre></div><p>Your logs should indicate the DAL is receiving block levels. Also, verify the TezBake baker logs are error-free regarding DAL integration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log baker -f
+</span></span></code></pre></div><p>For additional DAL checks, refer to the <a href="https://tezos.gitlab.io/shell/dal_overview.html">Nomadic Labs DAL Tutorial</a>.</p>
 <hr>
-<p>Any questions/comments/concerns? Please contact the Tez Capital team on
-<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
+<p>Any further questions or support requests? Contact the Tez Capital team on <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a>.</p>
 
 	
 	
