@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="TezBake Updating Tutorial">
 
-<meta itemprop="wordCount" content="606">
+<meta itemprop="wordCount" content="604">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="TezBake Updating Tutorial"/>
@@ -426,7 +426,7 @@
 </ul>
 <h2 id="a-update-ami--eli-and-octez-binaries">(A) Update ami &amp; eli and Octez binaries</h2>
 <p>(updates components: #1, #2, #4)</p>
-<pre tabindex="0"><code>tezbake upgrade -a -s
+<pre tabindex="0"><code>tezbake upgrade -s
 </code></pre><blockquote>
 <p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>
@@ -439,7 +439,7 @@
 <pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 </code></pre><p>Then update the rest of the TezBake software stack:</p>
-<pre tabindex="0"><code>tezbake upgrade -a -s
+<pre tabindex="0"><code>tezbake upgrade -s
 </code></pre><blockquote>
 <p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>

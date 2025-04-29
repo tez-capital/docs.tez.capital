@@ -63,7 +63,7 @@
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
@@ -212,7 +212,7 @@ help test protocol migrations.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --node-configuration=https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --node-configuration=https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
@@ -402,7 +402,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Re-run the TezBake setup and merge your configuration when asked:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake stop
-tezbake setup -a
+tezbake setup
 tezbake start
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;register-the-consensus-key&#34;&gt;Register the consensus key&lt;/h3&gt;
 &lt;p&gt;Get your consensus key public key hash:&lt;/p&gt;
@@ -853,7 +853,7 @@ tezbake node log accuser-next -f
 &lt;p&gt;Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
 &lt;h3 id=&#34;installation-errors&#34;&gt;Installation errors&lt;/h3&gt;
 &lt;p&gt;If you encounter an installation issue, run the setup command again with the &lt;code&gt;--log-level=trace&lt;/code&gt; option, for example:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup -a --log-level=trace
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --log-level=trace
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can add &lt;code&gt;--log-level=trace&lt;/code&gt; regardless of the setup type that&amp;rsquo;s being attempted, whether it&amp;rsquo;s on Ghostnet or some other testnet.&lt;/p&gt;
 &lt;h3 id=&#34;blockchain-errors&#34;&gt;Blockchain errors&lt;/h3&gt;
 &lt;p&gt;Sometimes, you will notice that &lt;code&gt;tezbake info&lt;/code&gt; never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:&lt;/p&gt;
@@ -911,7 +911,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;/ul&gt;
 &lt;h2 id=&#34;a-update-ami--eli-and-octez-binaries&#34;&gt;(A) Update ami &amp;amp; eli and Octez binaries&lt;/h2&gt;
 &lt;p&gt;(updates components: #1, #2, #4)&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a -s
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -s
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;The &lt;code&gt;-s&lt;/code&gt; flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&amp;rsquo;t have an impact on your baker.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -924,7 +924,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sudo sh /tmp/install.sh
 # you may be prompted for sudo password
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -a -s
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade -s
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;The &lt;code&gt;-s&lt;/code&gt; flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&amp;rsquo;t have an impact on your baker.&lt;/p&gt;
 &lt;/blockquote&gt;

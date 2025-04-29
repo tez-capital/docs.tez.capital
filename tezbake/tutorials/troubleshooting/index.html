@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="TezBake Troubleshooting Tutorial">
 
-<meta itemprop="wordCount" content="407">
+<meta itemprop="wordCount" content="406">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="TezBake Troubleshooting Tutorial"/>
@@ -407,7 +407,7 @@
 <p>Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.</p>
 <h3 id="installation-errors">Installation errors</h3>
 <p>If you encounter an installation issue, run the setup command again with the <code>--log-level=trace</code> option, for example:</p>
-<pre tabindex="0"><code>tezbake setup -a --log-level=trace
+<pre tabindex="0"><code>tezbake setup --log-level=trace
 </code></pre><p>You can add <code>--log-level=trace</code> regardless of the setup type that&rsquo;s being attempted, whether it&rsquo;s on Ghostnet or some other testnet.</p>
 <h3 id="blockchain-errors">Blockchain errors</h3>
 <p>Sometimes, you will notice that <code>tezbake info</code> never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:</p>
