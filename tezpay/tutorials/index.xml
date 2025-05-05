@@ -475,7 +475,10 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;starting--stopping-tezpay&#34;&gt;Starting &amp;amp; Stopping TezPay&lt;/h2&gt;
+&lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Start TezPay:&lt;/strong&gt;&lt;/p&gt;
@@ -493,7 +496,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;tezpay-information&#34;&gt;TezPay Information&lt;/h2&gt;
+&lt;h2 id=&#34;tezpay-information-continual-service&#34;&gt;TezPay Information (continual service)&lt;/h2&gt;
 &lt;p&gt;View detailed information:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;tezbake info --pay&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
