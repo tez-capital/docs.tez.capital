@@ -970,5 +970,138 @@ wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp
       </description>
     </item>
     
+    <item>
+      <title>Tezpay: &gt; TRD to TezPay Migration</title>
+      <link>/tezpay/tutorials/trd-migration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/trd-migration/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;command-cheatsheet&#34;&gt;Command Cheatsheet&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Task&lt;/th&gt;
+&lt;th&gt;Command Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Import TRD config&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;./tezpay import-configuration trd ./trd.yaml&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Test configuration (no payout)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manual payout&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;./tezpay pay&lt;/code&gt; or &lt;code&gt;./tezpay pay -c &amp;lt;cycle&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Start continual payouts&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;./tezpay continual&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;If you&amp;rsquo;re switching from TRD (Tezos Reward Distributor) to TezPay, here&amp;rsquo;s what you need to know:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TezPay is folder-scoped.&lt;/strong&gt; Each TezPay instance lives in its own directory and serves one baker address.&lt;/li&gt;
+&lt;li&gt;The folder holds the binary, configuration (&lt;code&gt;config.hjson&lt;/code&gt;), and reports.&lt;/li&gt;
+&lt;li&gt;TezPay has an import tool that can convert a standard &lt;code&gt;trd.yaml&lt;/code&gt; into a working &lt;code&gt;config.hjson&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+This is just a quick start guide. For more comprehensive and detailed information about TezPay, you may want to check other guides and the command reference.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;migration-steps&#34;&gt;Migration Steps&lt;/h2&gt;
+&lt;h3 id=&#34;step-1-create-a-tezpay-instance-directory&#34;&gt;Step 1: Create a TezPay Instance Directory&lt;/h3&gt;
+&lt;p&gt;Choose a directory to store your TezPay instance.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;br&gt;
+Use one folder per baker address, e.g., &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This directory will contain:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tezpay&lt;/code&gt; binary&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;config.hjson&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;(optional) &lt;code&gt;reports/&lt;/code&gt; directory with payout history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-2-download-tezpay-binary&#34;&gt;Step 2: Download TezPay Binary&lt;/h3&gt;
+&lt;p&gt;Download the latest binary for your platform from the &lt;a href=&#34;https://github.com/tez-capital/tezpay/releases&#34;&gt;Releases&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Rename it to &lt;code&gt;tezpay&lt;/code&gt; and make it executable (on linux):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod +x ./tezpay
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For Windows, the binary will be named &lt;code&gt;tezpay.exe&lt;/code&gt;. To make it executable, no additional steps are required on Windows.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+Replacing the binary with the latest version is how you upgrade TezPay.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-3-choose-configuration-method&#34;&gt;Step 3: Choose Configuration Method&lt;/h3&gt;
+&lt;p&gt;You have &lt;strong&gt;two options&lt;/strong&gt;:&lt;/p&gt;
+&lt;h4 id=&#34;option-a-migrate-from-trd&#34;&gt;Option A: Migrate from TRD&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Copy your &lt;code&gt;trd.yaml&lt;/code&gt; into the instance folder.&lt;/li&gt;
+&lt;li&gt;Run:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay import-configuration trd ./trd.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This creates &lt;code&gt;config.hjson&lt;/code&gt; based on your TRD settings.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+Most standard TRD configs work out of the box. Edge cases might need adjustments.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;option-b-start-fresh&#34;&gt;Option B: Start Fresh&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a file &lt;code&gt;config.hjson&lt;/code&gt; in the instance folder.&lt;/li&gt;
+&lt;li&gt;Use this starter template:&lt;br&gt;
+&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter Config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For advanced options, refer to:&lt;br&gt;
+&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;Sample Config&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-4-test-the-configuration&#34;&gt;Step 4: Test the Configuration&lt;/h3&gt;
+&lt;p&gt;Run a dry run of the payouts:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay generate-payouts
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;This does not execute payouts.&lt;/strong&gt;&lt;br&gt;
+It only shows what TezPay would distribute.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-5-execute-payouts&#34;&gt;Step 5: Execute Payouts&lt;/h3&gt;
+&lt;h4 id=&#34;manual-payout&#34;&gt;Manual Payout&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Default (last completed cycle):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay pay
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Specific cycle:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay pay -c &amp;lt;cycle number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/h4&gt;
+&lt;p&gt;To run payouts continuously:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay continual
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Folder Location Tip:&lt;/strong&gt;&lt;br&gt;
+If you run TezPay as a service, place your payout folder &lt;strong&gt;outside of &lt;code&gt;/home&lt;/code&gt;&lt;/strong&gt; for reliable service access.&lt;br&gt;
+Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
+&lt;p&gt;Reach out anytime:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

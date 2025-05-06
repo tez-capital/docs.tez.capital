@@ -18,33 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>tezpay_statistics | docs.tez.capital</title>
-<meta name="description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
-prints earning stats
-Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
-<meta property="og:title" content="tezpay_statistics" />
-<meta property="og:description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
-prints earning stats
-Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
+<title>&gt; TRD to TezPay Migration | docs.tez.capital</title>
+<meta name="description" content="Migrating from TzKT Reward Distributor to TezPay">
+<meta property="og:title" content="&gt; TRD to TezPay Migration" />
+<meta property="og:description" content="Migrating from TzKT Reward Distributor to TezPay" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tezpay/reference/cmd/tezpay_statistics/" /><meta property="article:section" content="tezpay" />
+<meta property="og:url" content="/tezpay/tutorials/trd-migration/" /><meta property="article:section" content="tezpay" />
 
 
-<meta itemprop="name" content="tezpay_statistics">
-<meta itemprop="description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
-prints earning stats
-Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
+<meta itemprop="name" content="&gt; TRD to TezPay Migration">
+<meta itemprop="description" content="Migrating from TzKT Reward Distributor to TezPay">
 
-<meta itemprop="wordCount" content="140">
+<meta itemprop="wordCount" content="373">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="tezpay_statistics"/>
-<meta name="twitter:description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
-prints earning stats
-Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
+<meta name="twitter:title" content="&gt; TRD to TezPay Migration"/>
+<meta name="twitter:description" content="Migrating from TzKT Reward Distributor to TezPay"/>
 
 
 
@@ -248,7 +236,7 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpay-li">
   <a href="/tezpay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpay"><span class="">TezPay</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpaytutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpaytutorials-li">
   <a href="/tezpay/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpaytutorials"><span class="">TezPay Tutorials</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialssetup-li">
@@ -263,8 +251,8 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
   <a href="/tezpay/tutorials/setup-peak-gui/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialssetup-peak-gui"><span class="">Setup Peak GUI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialsupdating-li">
   <a href="/tezpay/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialsupdating"><span class="">Updating</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialstrd-migration-li">
-  <a href="/tezpay/tutorials/trd-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialstrd-migration"><span class="">&gt; TRD to TezPay Migration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezpaytutorialstrd-migration-li">
+  <a href="/tezpay/tutorials/trd-migration/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialstrd-migration"><span class="td-sidebar-nav-active-item">&gt; TRD to TezPay Migration</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayconfiguration-li">
@@ -285,7 +273,7 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
   <a href="/tezpay/extensions/reference/hooks/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayextensionsreferencehooks"><span class="">Hooks</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezpayreference-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayreference-li">
   <a href="/tezpay/reference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpayreference"><span class="">Reference</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay-li">
@@ -300,8 +288,8 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
   <a href="/tezpay/reference/cmd/tezpay_pay/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay"><span class="">tezpay_pay</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_pay-date-range-li">
   <a href="/tezpay/reference/cmd/tezpay_pay-date-range/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_pay-date-range"><span class="">tezpay_pay-date-range</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezpayreferencecmdtezpay_statistics-li">
-  <a href="/tezpay/reference/cmd/tezpay_statistics/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_statistics"><span class="td-sidebar-nav-active-item">tezpay_statistics</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_statistics-li">
+  <a href="/tezpay/reference/cmd/tezpay_statistics/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_statistics"><span class="">tezpay_statistics</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_test-extension-li">
   <a href="/tezpay/reference/cmd/tezpay_test-extension/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayreferencecmdtezpay_test-extension"><span class="">tezpay_test-extension</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayreferencecmdtezpay_test-extensions-li">
@@ -341,10 +329,10 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezpay/reference/cmd/tezpay_statistics.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezpay/reference/cmd/tezpay_statistics.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezpay/reference/cmd/tezpay_statistics.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=tezpay_statistics" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezpay/tutorials/trd-migration.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezpay/tutorials/trd-migration.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezpay/tutorials/trd-migration.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=%3e%20TRD%20to%20TezPay%20Migration" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/tez-capital/docs.tez.capital/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -352,14 +340,18 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#command-cheatsheet">Command Cheatsheet</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#migration-steps">Migration Steps</a>
       <ul>
-        <li><a href="#synopsis">Synopsis</a></li>
-        <li><a href="#options">Options</a></li>
-        <li><a href="#options-inherited-from-parent-commands">Options inherited from parent commands</a></li>
-        <li><a href="#see-also">SEE ALSO</a></li>
+        <li><a href="#step-1-create-a-tezpay-instance-directory">Step 1: Create a TezPay Instance Directory</a></li>
+        <li><a href="#step-2-download-tezpay-binary">Step 2: Download TezPay Binary</a></li>
+        <li><a href="#step-3-choose-configuration-method">Step 3: Choose Configuration Method</a></li>
+        <li><a href="#step-4-test-the-configuration">Step 4: Test the Configuration</a></li>
+        <li><a href="#step-5-execute-payouts">Step 5: Execute Payouts</a></li>
       </ul>
     </li>
+    <li><a href="#need-help">Need Help?</a></li>
   </ul>
 </nav>
       </div>
@@ -395,16 +387,16 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
     <a href="/tezpay/">TezPay</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/tezpay/reference/">Reference</a>
+    <a href="/tezpay/tutorials/">TezPay Tutorials</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/tezpay/reference/cmd/tezpay_statistics/" aria-disabled="true" class="btn-link disabled">tezpay_statistics</a>
+    <a href="/tezpay/tutorials/trd-migration/" aria-disabled="true" class="btn-link disabled">&gt; TRD to TezPay Migration</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>tezpay_statistics</h1>
+	<h1>&gt; TRD to TezPay Migration</h1>
 	
 	<header class="article-meta">
 		
@@ -421,30 +413,126 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
 
 		
 	</header>    
-	<p>docs/cmd/tezpay_statistics.md## tezpay statistics</p>
-<p>prints earning stats</p>
-<h3 id="synopsis">Synopsis</h3>
-<p>prints out earning statiscs</p>
-<pre tabindex="0"><code>tezpay statistics [flags]
-</code></pre><h3 id="options">Options</h3>
-<pre tabindex="0"><code>      --cycles int       number of cycles to collect statistics from (default 10)
-  -h, --help             help for statistics
-      --last-cycle int   last cycle to collect statistics from (has priority over --cycles)
-</code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
-<pre tabindex="0"><code>      --disable-donation-prompt          Disable donation prompt
-      --log-file string                  Logs to file
-  -l, --log-level string                 Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;)
-      --log-server string                launches log server at specified address
-  -o, --output-format string             Sets output log format (json/text/auto) (default &#34;auto&#34;)
-  -p, --path string                      path to working directory (default &#34;.&#34;)
-      --pay-only-address-prefix string   Pays only to addresses starting with the prefix (e.g. KT, usually you do not want to use this, just for recovering in case of issues)
-      --signer string                    Override signer
-      --skip-version-check               Skip version check
-</code></pre><h3 id="see-also">SEE ALSO</h3>
+	<h2 id="command-cheatsheet">Command Cheatsheet</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import TRD config</td>
+<td><code>./tezpay import-configuration trd ./trd.yaml</code></td>
+</tr>
+<tr>
+<td>Test configuration (no payout)</td>
+<td><code>./tezpay generate-payouts</code></td>
+</tr>
+<tr>
+<td>Manual payout</td>
+<td><code>./tezpay pay</code> or <code>./tezpay pay -c &lt;cycle&gt;</code></td>
+</tr>
+<tr>
+<td>Start continual payouts</td>
+<td><code>./tezpay continual</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>If you&rsquo;re switching from TRD (Tezos Reward Distributor) to TezPay, here&rsquo;s what you need to know:</p>
 <ul>
-<li><a href="/tezpay/reference/cmd/tezpay">tezpay</a>	 - TEZPAY</li>
+<li><strong>TezPay is folder-scoped.</strong> Each TezPay instance lives in its own directory and serves one baker address.</li>
+<li>The folder holds the binary, configuration (<code>config.hjson</code>), and reports.</li>
+<li>TezPay has an import tool that can convert a standard <code>trd.yaml</code> into a working <code>config.hjson</code>.</li>
 </ul>
-<h6 id="auto-generated-by-spf13cobra-on-2-may-2025">Auto generated by spf13/cobra on 2-May-2025</h6>
+<blockquote>
+<p><strong>Note:</strong><br>
+This is just a quick start guide. For more comprehensive and detailed information about TezPay, you may want to check other guides and the command reference.</p>
+</blockquote>
+<hr>
+<h2 id="migration-steps">Migration Steps</h2>
+<h3 id="step-1-create-a-tezpay-instance-directory">Step 1: Create a TezPay Instance Directory</h3>
+<p>Choose a directory to store your TezPay instance.</p>
+<blockquote>
+<p><strong>Tip:</strong><br>
+Use one folder per baker address, e.g., <code>/tezos/payouts/my-baker</code>.</p>
+</blockquote>
+<p>This directory will contain:</p>
+<ul>
+<li><code>tezpay</code> binary</li>
+<li><code>config.hjson</code></li>
+<li>(optional) <code>reports/</code> directory with payout history</li>
+</ul>
+<hr>
+<h3 id="step-2-download-tezpay-binary">Step 2: Download TezPay Binary</h3>
+<p>Download the latest binary for your platform from the <a href="https://github.com/tez-capital/tezpay/releases">Releases</a>.</p>
+<p>Rename it to <code>tezpay</code> and make it executable (on linux):</p>
+<pre tabindex="0"><code>chmod +x ./tezpay
+</code></pre><p>For Windows, the binary will be named <code>tezpay.exe</code>. To make it executable, no additional steps are required on Windows.</p>
+<blockquote>
+<p><strong>Note:</strong><br>
+Replacing the binary with the latest version is how you upgrade TezPay.</p>
+</blockquote>
+<hr>
+<h3 id="step-3-choose-configuration-method">Step 3: Choose Configuration Method</h3>
+<p>You have <strong>two options</strong>:</p>
+<h4 id="option-a-migrate-from-trd">Option A: Migrate from TRD</h4>
+<ol>
+<li>Copy your <code>trd.yaml</code> into the instance folder.</li>
+<li>Run:</li>
+</ol>
+<pre tabindex="0"><code>./tezpay import-configuration trd ./trd.yaml
+</code></pre><p>This creates <code>config.hjson</code> based on your TRD settings.</p>
+<blockquote>
+<p><strong>Note:</strong><br>
+Most standard TRD configs work out of the box. Edge cases might need adjustments.</p>
+</blockquote>
+<h4 id="option-b-start-fresh">Option B: Start Fresh</h4>
+<ol>
+<li>Create a file <code>config.hjson</code> in the instance folder.</li>
+<li>Use this starter template:<br>
+<a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson">Starter Config</a></li>
+<li>For advanced options, refer to:<br>
+<a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">Sample Config</a></li>
+</ol>
+<hr>
+<h3 id="step-4-test-the-configuration">Step 4: Test the Configuration</h3>
+<p>Run a dry run of the payouts:</p>
+<pre tabindex="0"><code>./tezpay generate-payouts
+</code></pre><blockquote>
+<p><strong>This does not execute payouts.</strong><br>
+It only shows what TezPay would distribute.</p>
+</blockquote>
+<hr>
+<h3 id="step-5-execute-payouts">Step 5: Execute Payouts</h3>
+<h4 id="manual-payout">Manual Payout</h4>
+<ul>
+<li>Default (last completed cycle):</li>
+</ul>
+<pre tabindex="0"><code>./tezpay pay
+</code></pre><ul>
+<li>Specific cycle:</li>
+</ul>
+<pre tabindex="0"><code>./tezpay pay -c &lt;cycle number&gt;
+</code></pre><h4 id="automatic-continual-payouts">Automatic (Continual) Payouts</h4>
+<p>To run payouts continuously:</p>
+<pre tabindex="0"><code>./tezpay continual
+</code></pre><blockquote>
+<p><strong>Folder Location Tip:</strong><br>
+If you run TezPay as a service, place your payout folder <strong>outside of <code>/home</code></strong> for reliable service access.<br>
+Example: <code>/tezos/payouts/my-baker</code></p>
+</blockquote>
+<hr>
+<h2 id="need-help">Need Help?</h2>
+<p>Reach out anytime:</p>
+<ul>
+<li><a href="https://discord.gg/cVGMA4MaNM">Discord</a></li>
+<li><a href="https://t.me/tezcapital">Telegram</a></li>
+</ul>
+<hr>
 
 	
 	
