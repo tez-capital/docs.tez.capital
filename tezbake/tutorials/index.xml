@@ -974,7 +974,7 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Remove Local Node/DAL&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake remove --node&lt;/code&gt;, &lt;code&gt;tezbake remove --dal&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake remove --node --all&lt;/code&gt;, &lt;code&gt;tezbake remove --dal --all&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Generate CA&lt;/td&gt;
@@ -1066,8 +1066,8 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; You can combine both in a single command.&lt;br&gt;
 If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --node
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --node --all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal --all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).&lt;/p&gt;
 &lt;/blockquote&gt;

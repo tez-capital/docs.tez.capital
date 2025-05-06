@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Prism Tunneling Setup">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="670">
+<meta itemprop="wordCount" content="674">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Prism Tunneling Setup"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -441,7 +441,7 @@
 </tr>
 <tr>
 <td>Remove Local Node/DAL</td>
-<td><code>tezbake remove --node</code>, <code>tezbake remove --dal</code></td>
+<td><code>tezbake remove --node --all</code>, <code>tezbake remove --dal --all</code></td>
 </tr>
 <tr>
 <td>Generate CA</td>
@@ -533,8 +533,8 @@
 <p><strong>Tip:</strong> You can combine both in a single command.<br>
 If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --node
-</span></span><span style="display:flex;"><span>tezbake remove --dal
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --node --all
+</span></span><span style="display:flex;"><span>tezbake remove --dal --all
 </span></span></code></pre></div><blockquote>
 <p><strong>Note:</strong> During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).</p>
 </blockquote>
