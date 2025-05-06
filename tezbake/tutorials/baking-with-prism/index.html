@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Prism Tunneling Setup">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="656">
+<meta itemprop="wordCount" content="670">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Prism Tunneling Setup"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -616,6 +616,9 @@ If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 <hr>
 <h2 id="step-5-generate-and-distribute-prism-keys">Step 5: Generate and Distribute Prism Keys</h2>
 <p>To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.</p>
+<blockquote>
+<p><strong>Note:</strong> Only applications with a <code>PRISM</code> configuration in their <code>app.json</code> file can generate keys.</p>
+</blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /bake-buddy/&lt;app&gt;/prism/keys/
 </span></span></code></pre></div><p>Generate the Certificate Authority:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake &lt;app&gt; prism generate-ca <span style="color:#4e9a06">\
