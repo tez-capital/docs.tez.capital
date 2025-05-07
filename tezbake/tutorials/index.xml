@@ -1219,5 +1219,91 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
       </description>
     </item>
     
+    <item>
+      <title>Tezbake: Missing Attestations in Baking</title>
+      <link>/tezbake/tutorials/missing-attestations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/missing-attestations/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Sometimes, you’ll notice that an attestation (also known as an endorsement) didn’t make it into a block — even though your setup appears to be working fine. This is usually &lt;strong&gt;not a problem&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Points:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tezos is a distributed network; messages can arrive late or out of sync.&lt;/li&gt;
+&lt;li&gt;Block producers are not obligated to include all attestations.&lt;/li&gt;
+&lt;li&gt;If your attestations succeed &lt;em&gt;most of the time&lt;/em&gt;, your setup is likely healthy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;why-it-happens&#34;&gt;Why It Happens&lt;/h2&gt;
+&lt;p&gt;Attestations have a tight timing window. If your signer’s message arrives just after the block producer includes attestations, it won’t make the cut.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Think of it like catching a departing elevator — if you’re a second late, the doors close and you&amp;rsquo;re left behind, even if you were just steps away.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;when-to-worry&#34;&gt;When to Worry&lt;/h2&gt;
+&lt;p&gt;Occasional missed attestations are expected. But you should investigate if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You miss &lt;strong&gt;frequently&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;You miss &lt;strong&gt;multiple in a row&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Possible causes include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your setup isn&amp;rsquo;t powerful enough to produce attestations in time&lt;/li&gt;
+&lt;li&gt;Your network connection is unstable (latency spikes or downtime)&lt;/li&gt;
+&lt;li&gt;Your system clock is out of sync&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;what-to-check&#34;&gt;What to Check&lt;/h2&gt;
+&lt;p&gt;Before assuming something is broken, check the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Was it a broader issue?&lt;/strong&gt;&lt;br&gt;
+Look up the block in &lt;a href=&#34;https://tzkt.io/&#34;&gt;TzKT&lt;/a&gt; and see how many attestations were included.&lt;br&gt;
+If the block was missing a significant portion of attestations (e.g., 1/3), this is more likely a network or block producer issue than a problem with your setup.
+Example: &lt;a href=&#34;https://tzkt.io/8830884/operations&#34;&gt;https://tzkt.io/8830884/operations&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Is your clock synced?&lt;/strong&gt;&lt;br&gt;
+Run &lt;code&gt;timedatectl status&lt;/code&gt; to check your system clock&amp;rsquo;s synchronization status.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The command may vary depending on your Linux distribution. Here are some examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For systems using &lt;code&gt;timedatectl&lt;/code&gt;:&lt;br&gt;
+&lt;code&gt;timedatectl status&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For systems using &lt;code&gt;chronyc&lt;/code&gt;:&lt;br&gt;
+&lt;code&gt;chronyc tracking&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For systems using &lt;code&gt;ntpq&lt;/code&gt;:&lt;br&gt;
+&lt;code&gt;ntpq -p&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Is your setup healthy?&lt;/strong&gt;&lt;br&gt;
+Use:&lt;br&gt;
+&lt;code&gt;tezbake info&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;tezbake node logs -f&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;tezbake signer logs -f&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Look for signs of delay, network errors, or system load.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Occasional missed attestations are a normal and expected part of Tezos baking. Unless it becomes a trend, there’s no reason to worry.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Like traffic lights turning red just as you arrive — frustrating, but part of the flow.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
