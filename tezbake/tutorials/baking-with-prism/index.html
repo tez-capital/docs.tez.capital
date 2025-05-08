@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Prism Tunneling Setup">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="674">
+<meta itemprop="wordCount" content="754">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Prism Tunneling Setup"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -600,7 +600,7 @@ If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># ...</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">&#34;PRISM&#34;: </span>{<span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">&#34;dal_remote&#34;: </span><span style="color:#4e9a06">&#34;&lt;dal-ip&gt;:20080&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">&#34;node&#34;: </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">&#34;dal&#34;: </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>}<span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># ...</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span>}<span style="color:#f8f8f8;text-decoration:underline">
@@ -644,7 +644,13 @@ If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 <p><strong>You can validate the keys with:</strong></p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake &lt;app&gt; prism key-info --path<span style="color:#ce5c00;font-weight:bold">=</span>&lt;key&gt;.prism
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><p>You should see output similar to the following:</p>
+<pre tabindex="0"><code>Common Name: tezos-&lt;app&gt;
+DNS Names: [tezos-&lt;app&gt;]
+Extended Key Usage:
+  - Server Authentication
+  - Client Authentication
+</code></pre><hr>
 <h3 id="key-distribution">Key Distribution</h3>
 <p>Manually copy the generated <code>.prism</code> keys to the correct app directories:</p>
 <table>
@@ -673,7 +679,14 @@ If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 <p>⚠️ <strong>Do not copy or expose the CA file.</strong><br>
 If compromised, regenerate all keys with a new CA.</p>
 </blockquote>
-<hr>
+<p>After distributing the keys to their respective locations, you can verify each application&rsquo;s key information using the following commands:</p>
+<p>For the Node key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node prism key-info --path<span style="color:#ce5c00;font-weight:bold">=</span>/bake-buddy/node/prism/keys/node.prism
+</span></span></code></pre></div><p>For the DAL key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake dal prism key-info --path<span style="color:#ce5c00;font-weight:bold">=</span>/bake-buddy/node/prism/keys/dal.prism
+</span></span></code></pre></div><p>If the Node is the public Prism endpoint, use this command for the Signer key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer prism key-info --path<span style="color:#ce5c00;font-weight:bold">=</span>/bake-buddy/node/prism/keys/signer.prism
+</span></span></code></pre></div><hr>
 <h2 id="final-step-start-everything">Final Step: Start Everything</h2>
 <p>Once all keys and configs are in place, run:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
