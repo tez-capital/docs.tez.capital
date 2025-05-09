@@ -22,12 +22,12 @@
 <meta name="description" content="docs/cmd/tezpay_test-notify.md## tezpay test-notify
 notification test
 Synopsis sends test notification
-tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
+tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator --payout-summary Send payout-summary notification with dummy data Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
 <meta property="og:title" content="tezpay_test-notify" />
 <meta property="og:description" content="docs/cmd/tezpay_test-notify.md## tezpay test-notify
 notification test
 Synopsis sends test notification
-tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
+tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator --payout-summary Send payout-summary notification with dummy data Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tezpay/reference/cmd/tezpay_test-notify/" /><meta property="article:section" content="tezpay" />
 
@@ -36,15 +36,15 @@ tezpay test-notify [flags] Options --admin Notify through admin notificators -h,
 <meta itemprop="description" content="docs/cmd/tezpay_test-notify.md## tezpay test-notify
 notification test
 Synopsis sends test notification
-tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
+tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator --payout-summary Send payout-summary notification with dummy data Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
 
-<meta itemprop="wordCount" content="126">
+<meta itemprop="wordCount" content="133">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezpay_test-notify"/>
 <meta name="twitter:description" content="docs/cmd/tezpay_test-notify.md## tezpay test-notify
 notification test
 Synopsis sends test notification
-tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
+tezpay test-notify [flags] Options --admin Notify through admin notificators -h, --help help for test-notify --notificator string Notify through specific notificator --payout-summary Send payout-summary notification with dummy data Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (trace/debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
 
 
 
@@ -434,6 +434,7 @@ tezpay test-notify [flags] Options --admin Notify through admin notificators -h,
 <pre tabindex="0"><code>      --admin                Notify through admin notificators
   -h, --help                 help for test-notify
       --notificator string   Notify through specific notificator
+      --payout-summary       Send payout-summary notification with dummy data
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
 <pre tabindex="0"><code>      --disable-donation-prompt          Disable donation prompt
       --log-file string                  Logs to file
@@ -448,7 +449,7 @@ tezpay test-notify [flags] Options --admin Notify through admin notificators -h,
 <ul>
 <li><a href="/tezpay/reference/cmd/tezpay">tezpay</a>	 - TEZPAY</li>
 </ul>
-<h6 id="auto-generated-by-spf13cobra-on-8-may-2025">Auto generated by spf13/cobra on 8-May-2025</h6>
+<h6 id="auto-generated-by-spf13cobra-on-9-may-2025">Auto generated by spf13/cobra on 9-May-2025</h6>
 
 	
 	
