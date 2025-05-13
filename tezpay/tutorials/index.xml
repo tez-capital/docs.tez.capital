@@ -65,7 +65,7 @@ wallet that contains only enough Tezos to pay out delegates.&lt;/strong&gt;&lt;/
 &lt;hr&gt;
 &lt;h3 id=&#34;preparation-step-2-download-files&#34;&gt;Preparation: Step 2 &lt;em&gt;Download Files&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Download the software from Github using the link:
-&lt;a href=&#34;https://github.com/alis-is/tezpay/releases&#34;&gt;https://github.com/alis-is/tezpay/releases&lt;/a&gt;. In this repository,
+&lt;a href=&#34;https://github.com/tez-capital/tezpay/releases&#34;&gt;https://github.com/tez-capital/tezpay/releases&lt;/a&gt;. In this repository,
 select the correct operating system and system architecture (arm64 or
 amd64). For this example we will be using &lt;em&gt;arm64&lt;/em&gt;&lt;/p&gt;
 &lt;table&gt;
@@ -88,7 +88,7 @@ return the system architecture&lt;code&gt;arm64&lt;/code&gt; or &lt;code&gt;amd6
 &lt;/table&gt;
 &lt;p&gt;If you would rather utilize CLI to download the application you will need
 to change directory (cd) to the TezPay directory created in step 1 in
-the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh&lt;/code&gt;&lt;/p&gt;
+the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;See example code below (&lt;em&gt;note: input begins after last &amp;lsquo;%&amp;rsquo; character&lt;/em&gt;):&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -101,7 +101,7 @@ the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q 
 repository&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Next&lt;/strong&gt;, you will download the sample configuration
 file &amp;amp; &lt;em&gt;payout_wallet_private.sample.key&lt;/em&gt; file from :
-&lt;a href=&#34;https://github.com/alis-is/tezpay/blob/main/docs/configuration/&#34;&gt;https://github.com/alis-is/tezpay/blob/main/docs/configuration/&lt;/a&gt; - &lt;em&gt;or
+&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/&#34;&gt;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/&lt;/a&gt; - &lt;em&gt;or
 you can open file in GitHub and copy text to a text editor&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note, there are two choices for the configuration files&lt;/em&gt;:&lt;/p&gt;
 &lt;ol&gt;
@@ -962,7 +962,7 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
         &lt;h2 id=&#34;keeping-tezpay-up-to-date&#34;&gt;Keeping TezPay Up-to-Date&lt;/h2&gt;
 &lt;p&gt;For access to future releases via Linux CLI, run the following command from within the folder where tezpay is located:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd tezpay
-wget -q https://raw.githubusercontent.com/alis-is/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh
+wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
