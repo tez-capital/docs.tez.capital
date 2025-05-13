@@ -1230,6 +1230,14 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TezBake will initialize all services and Prism tunnels. You should now have a secure, low-latency connection across your baking infrastructure.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;tezbake info&lt;/code&gt; and &lt;code&gt;tezbake &amp;lt;app&amp;gt; log -f prism&lt;/code&gt; to diagnose issues. These commands provide valuable insights into the system&amp;rsquo;s state.&lt;/li&gt;
+&lt;li&gt;If Prism cannot establish a connection, verify that the firewall is not blocking the required port. Ensure that the UDP port (&lt;code&gt;20080&lt;/code&gt; in this guide) is open on the &lt;code&gt;public endpoint&lt;/code&gt; — the machine configured with the &lt;code&gt;listen&lt;/code&gt; directive under the &lt;code&gt;PRISM&lt;/code&gt; section in &lt;code&gt;app.json&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you see the log message &lt;code&gt;failed to verify certificate&lt;/code&gt;, it indicates that the certificates are not from the same CA. Use the &lt;code&gt;key-info&lt;/code&gt; commands mentioned in the &lt;strong&gt;Key Distribution&lt;/strong&gt; section to verify the keys and ensure they share the same &lt;code&gt;CA&lt;/code&gt; field.&lt;/li&gt;
+&lt;li&gt;If everything appears to be working but baking is still not happening, review the certificate&amp;rsquo;s CN field. Ensure it matches the respective &lt;code&gt;tezos-&amp;lt;app&amp;gt;&lt;/code&gt;. For example, for the signer, the CN field should display &lt;code&gt;tezos-signer&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;

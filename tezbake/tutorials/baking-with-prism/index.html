@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Prism Tunneling Setup">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="817">
+<meta itemprop="wordCount" content="961">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Prism Tunneling Setup"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -362,6 +362,7 @@
       </ul>
     </li>
     <li><a href="#final-step-start-everything">Final Step: Start Everything</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
     <li><a href="#need-help">Need Help?</a></li>
   </ul>
 </nav>
@@ -698,6 +699,14 @@ If compromised, regenerate all keys with a new CA.</p>
 <p>Once all keys and configs are in place, run:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><p>TezBake will initialize all services and Prism tunnels. You should now have a secure, low-latency connection across your baking infrastructure.</p>
+<hr>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>Use <code>tezbake info</code> and <code>tezbake &lt;app&gt; log -f prism</code> to diagnose issues. These commands provide valuable insights into the system&rsquo;s state.</li>
+<li>If Prism cannot establish a connection, verify that the firewall is not blocking the required port. Ensure that the UDP port (<code>20080</code> in this guide) is open on the <code>public endpoint</code> — the machine configured with the <code>listen</code> directive under the <code>PRISM</code> section in <code>app.json</code>.</li>
+<li>If you see the log message <code>failed to verify certificate</code>, it indicates that the certificates are not from the same CA. Use the <code>key-info</code> commands mentioned in the <strong>Key Distribution</strong> section to verify the keys and ensure they share the same <code>CA</code> field.</li>
+<li>If everything appears to be working but baking is still not happening, review the certificate&rsquo;s CN field. Ensure it matches the respective <code>tezos-&lt;app&gt;</code>. For example, for the signer, the CN field should display <code>tezos-signer</code>.</li>
+</ul>
 <hr>
 <h2 id="need-help">Need Help?</h2>
 <ul>
