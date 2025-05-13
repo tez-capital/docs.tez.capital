@@ -998,6 +998,10 @@ mai 20 08:51:43 baker-VirtualBox node[5868]: May 20 08:51:43.267 - node.store: a
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important Note:&lt;/strong&gt;
+All &lt;code&gt;tezbake&lt;/code&gt; commands should be executed on the controller machine (usually the machine hosting the signer). Configuration edits (&lt;code&gt;app.json&lt;/code&gt;) should be performed on their respective machines (Node, DAL, or Signer).&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;Prism is Tez Capital&amp;rsquo;s in-house tunneling system for TezBake. Built on QUIC, Prism provides low-latency, resilient connections with seamless client IP migration.&lt;/p&gt;

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Prism Tunneling Setup">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="785">
+<meta itemprop="wordCount" content="817">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Prism Tunneling Setup"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -467,6 +467,10 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Important Note:</strong>
+All <code>tezbake</code> commands should be executed on the controller machine (usually the machine hosting the signer). Configuration edits (<code>app.json</code>) should be performed on their respective machines (Node, DAL, or Signer).</p>
+</blockquote>
 <hr>
 <h2 id="overview">Overview</h2>
 <p>Prism is Tez Capital&rsquo;s in-house tunneling system for TezBake. Built on QUIC, Prism provides low-latency, resilient connections with seamless client IP migration.</p>
