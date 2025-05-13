@@ -619,8 +619,10 @@ If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 <h2 id="step-5-generate-and-distribute-prism-keys">Step 5: Generate and Distribute Prism Keys</h2>
 <p>To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.</p>
 <blockquote>
-<p><strong>Note:</strong> Only applications with a <code>PRISM</code> configuration in their <code>app.json</code> file can generate keys.
-<strong>Note:</strong> You must generate all <code>.prism</code> keys from the same <code>&lt;app&gt;</code> to ensure compatibility and proper authentication across components. Using different <code>&lt;app&gt;</code> values for key generation can lead to connection failures.</p>
+<p><strong>Note:</strong> Only applications with a <code>PRISM</code> configuration in their <code>app.json</code> file can generate keys.</p>
+</blockquote>
+<blockquote>
+<p><strong>Note:</strong> You must generate all <code>.prism</code> keys from the same <code>&lt;app&gt;</code> to ensure compatibility and proper authentication across components. Using different <code>&lt;app&gt;</code> values for key generation can lead to connection failures.</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p /bake-buddy/&lt;app&gt;/prism/keys/
 </span></span></code></pre></div><p>Generate the Certificate Authority:</p>
@@ -668,11 +670,11 @@ Extended Key Usage:
 </tr>
 <tr>
 <td><code>node.prism</code></td>
-<td><code>/bake-buddy/signer/prism/keys/node.prism</code></td>
+<td><code>/bake-buddy/node/prism/keys/node.prism</code></td>
 </tr>
 <tr>
 <td><code>dal.prism</code></td>
-<td><code>/bake-buddy/signer/prism/keys/dal.prism</code></td>
+<td><code>/bake-buddy/dal/prism/keys/dal.prism</code></td>
 </tr>
 </tbody>
 </table>

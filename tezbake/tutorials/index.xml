@@ -1150,8 +1150,10 @@ If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&l
 &lt;h2 id=&#34;step-5-generate-and-distribute-prism-keys&#34;&gt;Step 5: Generate and Distribute Prism Keys&lt;/h2&gt;
 &lt;p&gt;To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only applications with a &lt;code&gt;PRISM&lt;/code&gt; configuration in their &lt;code&gt;app.json&lt;/code&gt; file can generate keys.
-&lt;strong&gt;Note:&lt;/strong&gt; You must generate all &lt;code&gt;.prism&lt;/code&gt; keys from the same &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; to ensure compatibility and proper authentication across components. Using different &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; values for key generation can lead to connection failures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only applications with a &lt;code&gt;PRISM&lt;/code&gt; configuration in their &lt;code&gt;app.json&lt;/code&gt; file can generate keys.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You must generate all &lt;code&gt;.prism&lt;/code&gt; keys from the same &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; to ensure compatibility and proper authentication across components. Using different &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; values for key generation can lead to connection failures.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p /bake-buddy/&amp;lt;app&amp;gt;/prism/keys/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Generate the Certificate Authority:&lt;/p&gt;
@@ -1199,11 +1201,11 @@ Extended Key Usage:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;node.prism&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/bake-buddy/signer/prism/keys/node.prism&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/bake-buddy/node/prism/keys/node.prism&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;dal.prism&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/bake-buddy/signer/prism/keys/dal.prism&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/bake-buddy/dal/prism/keys/dal.prism&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
