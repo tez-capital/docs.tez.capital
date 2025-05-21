@@ -446,6 +446,12 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This feature is experimental and not extensively tested yet. Remote/distributed setups will be available before the Rio activation.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Warning&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The security implications for bakers in the DAL network are highlighted in the &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_overview.html&#34;&gt;official Octez documentation&lt;/a&gt;. Since a baker’s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.&lt;/p&gt;
+&lt;p&gt;To mitigate this risk, the core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node’s identity.&lt;/p&gt;
+&lt;p&gt;If you wish to run TezBake with DAL on a separate machine, consider using &lt;a href=&#34;https://docs.tez.capital/tezbake/tutorials/baking-with-prism/&#34;&gt;TezBake Prism Tunneling&lt;/a&gt;, which is designed for setups across multiple hosts.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;if-you-previously-installed-dal-manually&#34;&gt;If You Previously Installed DAL Manually&lt;/h2&gt;
 &lt;p&gt;If you previously set up DAL manually using the older method, first remove it by running:&lt;/p&gt;
