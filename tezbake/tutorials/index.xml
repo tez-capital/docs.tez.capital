@@ -52,7 +52,7 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup. The DAL will be integrated directly into TezBake setup and upgrade processes soon.&lt;/p&gt;
+&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
@@ -201,7 +201,7 @@ help test protocol migrations.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup. The DAL will be integrated directly into TezBake setup and upgrade processes soon.&lt;/p&gt;
+&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
@@ -444,37 +444,18 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 &lt;p&gt;The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.&lt;/p&gt;
 &lt;p&gt;For more details on DAL, see &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Tezos DAL Overview&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This feature is experimental and not extensively tested yet. Remote/distributed setups will be available before the Rio activation.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;⚠️ &lt;strong&gt;Warning&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The security implications for bakers in the DAL network are highlighted in the &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_overview.html&#34;&gt;official Octez documentation&lt;/a&gt;. Since a baker’s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.&lt;/p&gt;
 &lt;p&gt;To mitigate this risk, the core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node’s identity.&lt;/p&gt;
 &lt;p&gt;If you wish to run TezBake with DAL on a separate machine, consider using &lt;a href=&#34;https://docs.tez.capital/tezbake/tutorials/baking-with-prism/&#34;&gt;TezBake Prism Tunneling&lt;/a&gt;, which is designed for setups across multiple hosts.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;if-you-previously-installed-dal-manually&#34;&gt;If You Previously Installed DAL Manually&lt;/h2&gt;
-&lt;p&gt;If you previously set up DAL manually using the older method, first remove it by running:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop octez-dal-node
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DAL_USER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;grep -i &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;^User=&amp;#39;&lt;/span&gt; /etc/systemd/system/octez-dal-node.service &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; cut -d&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; -f2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -r &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$DAL_USER&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/.zcash-params&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -r &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$DAL_USER&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/.tezos-dal-node&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm /usr/sbin/octez-dal-node
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm /etc/systemd/system/octez-dal-node.service
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl daemon-reload
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Additionally, remove any DAL configurations manually added to your &lt;code&gt;app.json&lt;/code&gt;, particularly the &lt;code&gt;BAKER_STARTUP_ARGS&lt;/code&gt; referencing DAL.&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;new-tezbake-setup-with-dal&#34;&gt;New TezBake Setup with DAL&lt;/h2&gt;
-&lt;p&gt;Follow these steps if you&amp;rsquo;re setting up a new TezBake baker with DAL:&lt;/p&gt;
+&lt;p&gt;You can set up TezBake with DAL integration from scratch. Follow these steps:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Install latest TezBake prerelease:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh --prerelease
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Run setup with DAL integration:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;Proceed with your usual setup steps (ledger integration, baker registration, etc.).&lt;/p&gt;
 &lt;/li&gt;
@@ -484,33 +465,12 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;existing-tezbake-setup&#34;&gt;Existing TezBake Setup&lt;/h2&gt;
-&lt;p&gt;If you already have TezBake running without DAL or if you&amp;rsquo;ve previously added DAL manually, follow these steps:&lt;/p&gt;
+&lt;p&gt;If you already have TezBake running without DAL, follow these steps:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Ensure no manual DAL references exist in your &lt;code&gt;app.json&lt;/code&gt;&lt;/strong&gt; (remove if present):&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;Specifically, remove any &lt;code&gt;BAKER_STARTUP_ARGS&lt;/code&gt; referencing DAL.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Install latest TezBake prerelease:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh --prerelease
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Upgrade TezBake components:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Important (rare case):&lt;/strong&gt; If your node runs on a non-default RPC address, ensure your &lt;code&gt;RPC_ADDR&lt;/code&gt; includes the full address (e.g., &lt;code&gt;http://&lt;/code&gt;).&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Install DAL:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;Continue to &lt;a href=&#34;#after-setup&#34;&gt;After Setup&lt;/a&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;after-setup&#34;&gt;After Setup&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;after-dal-setup&#34;&gt;After DAL Setup&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Inject attester profiles:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -522,14 +482,12 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
 &lt;li&gt;&lt;strong&gt;Restart TezBake to apply changes:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;quick-troubleshooting&#34;&gt;Quick Troubleshooting&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;quick-troubleshooting&#34;&gt;Quick Troubleshooting&lt;/h2&gt;
 &lt;p&gt;If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# choose &amp;#39;yes&amp;#39; to merge config when prompted&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;verify-dal-operation&#34;&gt;Verify DAL Operation&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;verify-dal-operation&#34;&gt;Verify DAL Operation&lt;/h2&gt;
 &lt;p&gt;Ensure your DAL process is correctly running by checking logs:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log dal -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Your logs should indicate the DAL is receiving block levels. Also, verify the TezBake baker logs are error-free regarding DAL integration:&lt;/p&gt;
