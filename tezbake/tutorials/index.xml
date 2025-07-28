@@ -24,7 +24,12 @@
       <description>
         
         
-        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+        
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/t85LjgpRtvc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -440,7 +445,13 @@ Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
       <description>
         
         
-        &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+        &lt;p&gt;Follow along on Youtube!
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/0EEgEHFl40Y&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.&lt;/p&gt;
 &lt;p&gt;For more details on DAL, see &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Tezos DAL Overview&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -706,7 +717,13 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
       <description>
         
         
-        &lt;h2 id=&#34;tezbake-bootstrapping&#34;&gt;TezBake Bootstrapping&lt;/h2&gt;
+        &lt;p&gt;Follow along on Youtube!
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/2BQZ1SY3PD4&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;tezbake-bootstrapping&#34;&gt;TezBake Bootstrapping&lt;/h2&gt;
 &lt;p&gt;To bootstrap your TezBake node means to download someone else&amp;rsquo;s snapshot of the blockchain and import it into your node. This is much faster than synchronizing the blockchain from scratch. There is a way to quickly bootstrap your node using a snapshot and a way to bootstrap your node using a snapshot and a block hash. The latter is the most reliable and robust method but it is also the slowest. The former is faster but it assumes you trust the source of the snapshot.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Please be aware that bootstrapping your node could result in your nonce revelation to fail and for you to forfit your endorsement rights for the cycle.&lt;/strong&gt; This is because by default we&amp;rsquo;re using rolling snapshots which don&amp;rsquo;t export full blocks for past cycles by default. If your node baked a special kind of block during the last cycle, it may be asked to provide its nonce to the network. To do so, it needs to have the &lt;code&gt;.tezos-client&lt;/code&gt; data intact from the last cycle and it needs to have the full blocks for the last cycle.&lt;/p&gt;
 &lt;p&gt;To remedy this situation and to never risk forfitting your endorsement rights for a whole cycle, you have to use a snapshot that&amp;rsquo;s at least 5-6 days old (from today), when bootstrapping a node. You also have to not wipe out or to move your &lt;code&gt;.tezos-client&lt;/code&gt; directory. This way you&amp;rsquo;ll always have at least 1 cycle+ of full blocks in your node&amp;rsquo;s database as well as the nonce file on disk. The downside of this method is that it will slow down your bootstrap process by the amount of time it takes to download the full blocks for the past 1 cycle+, which can be up to 2 hours on some slow home networks.&lt;/p&gt;
@@ -759,7 +776,13 @@ tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rollin
       <description>
         
         
-        &lt;h2 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h2&gt;
+        &lt;p&gt;Follow along on Youtube!
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/tqqLNBo1OeE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h2&gt;
 &lt;p&gt;TezBake gives you the option to monitor all Tezos node and baking services. TezBake utilizes the journalctl utility included in most Linux distribution to store and manage its logging.  You can extract all logs for a node easily to diagnose any issues. This tutorial will walk you through the process of monitoring your TezBake node.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;monitor-overall-tezbake-status&#34;&gt;Monitor overall TezBake status&lt;/h2&gt;
