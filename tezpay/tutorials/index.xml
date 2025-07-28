@@ -24,7 +24,13 @@
       <description>
         
         
-        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+        &lt;p&gt;Follow along on Youtube!
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/1SUPwKBWgTU&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;There is minimal preparation needed to utilize TezPay, assuming that
 you have a functioning public baker running.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Preparation Summary&lt;/strong&gt;&lt;/p&gt;
