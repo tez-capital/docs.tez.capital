@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="TezBake Baking Tutorial for using a Consensus Key">
 
-<meta itemprop="wordCount" content="750">
+<meta itemprop="wordCount" content="749">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for using a Consensus Key"/>
@@ -414,7 +414,13 @@
 
 		
 	</header>    
-	<h2 id="preparation">Preparation</h2>
+	<p>Follow along on Youtube!
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/5m_GKFRIflk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+<h2 id="preparation">Preparation</h2>
 <p>For this tutorial, you&rsquo;ll need to have already followed one of the following tutorials:</p>
 <ul>
 <li><a href="/tezbake/tutorials/baking-on-mainnet">How to Bake</a></li>
@@ -422,7 +428,10 @@
 </ul>
 <p>A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.</p>
 <p>This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&rsquo;s main account.</p>
-<p>{{/<em>&lt; alert_box role=&ldquo;danger&rdquo; title=&ldquo;Danger alert&rdquo; content=&ldquo;If an attacker gains control of the consensus key, they can sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker funds that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.&rdquo; &gt;</em>/}}</p>
+<blockquote>
+<p>If an attacker gains control of the consensus key, they can sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker funds that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.
+{.danger}</p>
+</blockquote>
 <hr>
 <h2 id="consensus-key-setup">Consensus key setup</h2>
 <h3 id="import-the-consensus-key">Import the consensus key</h3>
