@@ -462,8 +462,8 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;p&gt;Pay:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;tezbake pay pay&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Reports are stored in:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/bake-buddy/pay/reports
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/bake-buddy/pay/reports
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/h2&gt;
 &lt;p&gt;Continual payouts are initially disabled.&lt;/p&gt;
 &lt;ul&gt;
@@ -878,74 +878,74 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
 &lt;p&gt;Scroll down to the bottom of the page for the full configuration example.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;download-and-install-tezpeak-via-tezbake&#34;&gt;Download and install TezPeak via TezBake&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake setup --peak
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --peak
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;You don&amp;rsquo;t need to install the TezBake node or baker services to use TezPay.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;setup-tezpeak-configuration&#34;&gt;Setup TezPeak configuration&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd /bake-buddy/peak/ &amp;amp;&amp;amp; touch config.hjson
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /bake-buddy/peak/ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; touch config.hjson
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
 &lt;h5 id=&#34;sample-tezpeak-configuration&#34;&gt;Sample TezPeak configuration&lt;/h5&gt;
 &lt;p&gt;Here&amp;rsquo;s an example of a minimal TezPeak &lt;code&gt;config.hjson&lt;/code&gt; file with just TezPay configured:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
- listen: 0.0.0.0:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-     }
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;full-tezpeak-configuration-examples&#34;&gt;Full TezPeak configuration examples&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;listen:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;0.0.0.0:8733&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;app_root:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;/bake-buddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;modules:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#a40000&#34;&gt;tezpay:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;payout_wallet:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;full-tezpeak-configuration-examples&#34;&gt;Full TezPeak configuration examples&lt;/h5&gt;
 &lt;p&gt;Here&amp;rsquo;s the TezPeak configuration with all available TezPay options:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
- # Id to show in the header
- id: &amp;#34;&amp;#34;
- # Address to listen on
- listen: 127.0.0.1:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
- 		# can be null to disable tezpay package monitoring
-         applications: {
- 			# path to tezpay ami package, either absolute or relative to parent directory peak
-             tezpay: tezpay
-         }
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-         payout_wallet_preferences: {
-             balance_warning_threshold: 100
-             balance_error_threshold: 50
-         }
- 		# forces all operations to be dry run
-         force_dry_run: true
-     }
- }
- 
- # List of reference nodes to connect to
- # The reference nodes are used to get the rights and blocks if the baker&amp;#39;s node is not available
- nodes: {
-     &amp;#34;Tezos Foundation&amp;#34;: {
-         address: https://rpc.tzbeta.net/
-         is_rights_provider: true
-         is_block_provider: false
-     }
-     tzkt: {
-         address: https://rpc.tzkt.io/mainnet/
-         is_rights_provider: false
-         is_block_provider: true
-         # reports error if node not available, use for baker&amp;#39;s node
-         is_essential: false
-     }
- }
- # The mode tezpeak should operate in
- # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
- # public - assumes public environment, only readonly operations are allowed
- # private - assumes private environment, all operations are allowed
- mode: auto
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake start --peak
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;Id&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;show&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;header&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;id:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;Address&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;listen&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;on&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;listen&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;127.0&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0.1&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8733&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;app_root&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;/bake-buddy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;modules&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#a40000&#34;&gt;tezpay:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 		&lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;can&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;be&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;disable&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tezpay&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;monitoring&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;applications:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 			&lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;path&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tezpay&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;ami&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;package,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;either&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;absolute&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;relative&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;parent&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;directory&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;peak&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#a40000&#34;&gt;tezpay:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tezpay&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;payout_wallet&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tz&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;X&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;U&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;XxVz&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;NDxL&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;DSZhijME&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;61&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;PW&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;45&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;bYUJE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;payout_wallet_preferences&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#a40000&#34;&gt;balance_warning_threshold:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#a40000&#34;&gt;balance_error_threshold:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;50&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 		&lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;forces&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;all&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operations&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;be&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;dry&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;run&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;force_dry_run&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;List&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;of&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;reference&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;nodes&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;connect&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;The&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;reference&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;nodes&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;are&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;used&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;get&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;rights&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;blocks&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;the&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;baker&amp;#39;s&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;node&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;available&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;nodes:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;Tezos Foundation&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;address:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//rpc.tzbeta.net/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;is_rights_provider:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;is_block_provider:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#a40000&#34;&gt;tzkt&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;address:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;https:&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;//rpc.tzkt.io/mainnet/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;is_rights_provider:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;is_block_provider:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;reports&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;node&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;available,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;baker&amp;#39;s&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a40000&#34;&gt;is_essential:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;The&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;mode&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;tezpeak&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;should&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operate&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;auto&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;bound&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;to&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;localhost,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;it&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;will&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operate&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;mode&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;not,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;it&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;will&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operate&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;mode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;assumes&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;environment,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;only&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;readonly&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operations&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;are&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;allowed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;#&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;assumes&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;environment,&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;all&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;operations&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;are&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;allowed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;mode:&lt;/span&gt; &lt;span style=&#34;color:#a40000&#34;&gt;auto&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --peak
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re connecting from the same computer, you can use &lt;code&gt;http://127.0.0.1:8733&lt;/code&gt; or &lt;code&gt;http://localhost:8733&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;tezpeak-example-screenshot&#34;&gt;TezPeak example screenshot&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezpeakexample.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -967,9 +967,9 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
         
         &lt;h2 id=&#34;keeping-tezpay-up-to-date&#34;&gt;Keeping TezPay Up-to-Date&lt;/h2&gt;
 &lt;p&gt;For access to future releases via Linux CLI, run the following command from within the folder where tezpay is located:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd tezpay
-wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; tezpay
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -1042,8 +1042,8 @@ Use one folder per baker address, e.g., &lt;code&gt;/tezos/payouts/my-baker&lt;/
 &lt;h3 id=&#34;step-2-download-tezpay-binary&#34;&gt;Step 2: Download TezPay Binary&lt;/h3&gt;
 &lt;p&gt;Download the latest binary for your platform from the &lt;a href=&#34;https://github.com/tez-capital/tezpay/releases&#34;&gt;Releases&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Rename it to &lt;code&gt;tezpay&lt;/code&gt; and make it executable (on linux):&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;chmod +x ./tezpay
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For Windows, the binary will be named &lt;code&gt;tezpay.exe&lt;/code&gt;. To make it executable, no additional steps are required on Windows.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod +x ./tezpay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For Windows, the binary will be named &lt;code&gt;tezpay.exe&lt;/code&gt;. To make it executable, no additional steps are required on Windows.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
 Replacing the binary with the latest version is how you upgrade TezPay.&lt;/p&gt;
@@ -1056,8 +1056,8 @@ Replacing the binary with the latest version is how you upgrade TezPay.&lt;/p&gt
 &lt;li&gt;Copy your &lt;code&gt;trd.yaml&lt;/code&gt; into the instance folder.&lt;/li&gt;
 &lt;li&gt;Run:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay import-configuration trd ./trd.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This creates &lt;code&gt;config.hjson&lt;/code&gt; based on your TRD settings.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay import-configuration trd ./trd.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This creates &lt;code&gt;config.hjson&lt;/code&gt; based on your TRD settings.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
 Most standard TRD configs work out of the box. Edge cases might need adjustments.&lt;/p&gt;
@@ -1073,8 +1073,8 @@ Most standard TRD configs work out of the box. Edge cases might need adjustments
 &lt;hr&gt;
 &lt;h3 id=&#34;step-4-test-the-configuration&#34;&gt;Step 4: Test the Configuration&lt;/h3&gt;
 &lt;p&gt;Run a dry run of the payouts:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay generate-payouts
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay generate-payouts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;This does not execute payouts.&lt;/strong&gt;&lt;br&gt;
 It only shows what TezPay would distribute.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1084,15 +1084,15 @@ It only shows what TezPay would distribute.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Default (last completed cycle):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay pay
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Specific cycle:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay pay -c &amp;lt;cycle number&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay pay -c &amp;lt;cycle number&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/h4&gt;
 &lt;p&gt;To run payouts continuously:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;./tezpay continual
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay continual
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Folder Location Tip:&lt;/strong&gt;&lt;br&gt;
 If you run TezPay as a service, place your payout folder &lt;strong&gt;outside of &lt;code&gt;/home&lt;/code&gt;&lt;/strong&gt; for reliable service access.&lt;br&gt;
 Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;

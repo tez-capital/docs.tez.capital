@@ -434,33 +434,33 @@
 </ul>
 <h2 id="a-update-ami--eli-and-octez-binaries">(A) Update ami &amp; eli and Octez binaries</h2>
 <p>(updates components: #1, #2, #4)</p>
-<pre tabindex="0"><code>tezbake upgrade -s
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade -s
+</span></span></code></pre></div><blockquote>
 <p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>
 <h2 id="b-update-octez-binaries-only">(B) Update Octez binaries only</h2>
 <p>(updates components: #4)</p>
-<pre tabindex="0"><code>tezbake upgrade
-</code></pre><h2 id="c-update-the-entire-tezbake-stack">(C) Update the entire TezBake stack</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><h2 id="c-update-the-entire-tezbake-stack">(C) Update the entire TezBake stack</h2>
 <p>(updates components: #1, #2, #3, #4)</p>
 <p>First update your tezbake binary to the latest version, depending on your computer architecture:</p>
-<pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
-# you may be prompted for sudo password
-</code></pre><p>Then update the rest of the TezBake software stack:</p>
-<pre tabindex="0"><code>tezbake upgrade -s
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you may be prompted for sudo password</span>
+</span></span></code></pre></div><p>Then update the rest of the TezBake software stack:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade -s
+</span></span></code></pre></div><blockquote>
 <p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>
 <h2 id="d-update-tezbake-only">(D) Update tezbake only</h2>
 <p>(updates components: #3)</p>
 <p>Update your tezbake binary to the latest version, depending on your computer architecture:</p>
-<pre tabindex="0"><code>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &amp;&amp; sudo sh /tmp/install.sh
-# you may be prompted for sudo password
-</code></pre><h2 id="what-should-i-do-after-updating">What should I do after updating?</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you may be prompted for sudo password</span>
+</span></span></code></pre></div><h2 id="what-should-i-do-after-updating">What should I do after updating?</h2>
 <p>After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on <a href="https://TzStats.com">https://TzStats.com</a> and <a href="https://TzKT.io">https://TzKT.io</a>.</p>
 <p>Check your TezBake stack versions to ensure they are up to date:</p>
-<pre tabindex="0"><code>tezbake version --all
-</code></pre><p>You should see the expected Octez version along with the release date of the binaries.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake version --all
+</span></span></code></pre></div><p>You should see the expected Octez version along with the release date of the binaries.</p>
 <p><img src="/tezbake/tutorial/tezbakeVersionAll.png" alt="&lt;tezbake version, Octez versions&gt;"></p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on

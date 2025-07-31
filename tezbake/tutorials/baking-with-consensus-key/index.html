@@ -436,11 +436,11 @@
 <h3 id="import-the-consensus-key">Import the consensus key</h3>
 <p>Plug in your consensus key Ledger device and open the Tezos Baking app.</p>
 <p>Run the following command to list the available Ledgers:</p>
-<pre tabindex="0"><code>tezbake list-ledgers
-</code></pre><p>Note the 4 word ID of the Ledger you want to use for the consensus key.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake list-ledgers
+</span></span></code></pre></div><p>Note the 4 word ID of the Ledger you want to use for the consensus key.</p>
 <p>Run the following command to import the consensus key:</p>
-<pre tabindex="0"><code>tezbake setup-ledger --platform --import-key=&#34;P-256/0h/0h&#34; --authorize --ledger-id &#34;apple-banana-coconut-date&#34; --hwm 1 --key-alias=consensus
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --ledger-id <span style="color:#4e9a06">&#34;apple-banana-coconut-date&#34;</span> --hwm <span style="color:#0000cf;font-weight:bold">1</span> --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
+</span></span></code></pre></div><blockquote>
 <p>Replace the <code>--ledger-id</code> value with the 4 word ID of the Ledger you want to use for the consensus key.</p>
 </blockquote>
 <blockquote>
@@ -449,10 +449,10 @@
 <p>This will import your consensus key Ledger device and authorize it for baking. Leave the baking app running on the Ledger device.</p>
 <h3 id="modify-the-baking-configuration">Modify the baking configuration</h3>
 <p>Open the TezBake node configuration file:</p>
-<pre tabindex="0"><code>nano /bake-buddy/node/app.json
-</code></pre><p>Inside the <code>&quot;configuration&quot;</code> object, add the following key-value pair:</p>
-<pre tabindex="0"><code>&#34;additional_key_aliases&#34;: [ &#34;consensus&#34; ]
-</code></pre><p>Here an example of a file with the consensus key alias added:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/app.json
+</span></span></code></pre></div><p>Inside the <code>&quot;configuration&quot;</code> object, add the following key-value pair:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;additional_key_aliases&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#4e9a06">&#34;consensus&#34;</span> <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span></code></pre></div><p>Here an example of a file with the consensus key alias added:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#204a87;font-weight:bold">&#34;configuration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&#34;BAKER_STARTUP_ARGS&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
@@ -503,30 +503,30 @@
 </span></span><span style="display:flex;"><span>         <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;bb&#34;</span>
 </span></span><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><p>Re-run the TezBake setup and merge your configuration when asked:</p>
-<pre tabindex="0"><code>tezbake stop
-tezbake setup
-tezbake start
-</code></pre><h3 id="register-the-consensus-key">Register the consensus key</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>tezbake setup
+</span></span><span style="display:flex;"><span>tezbake start
+</span></span></code></pre></div><h3 id="register-the-consensus-key">Register the consensus key</h3>
 <p>Get your consensus key public key hash:</p>
-<pre tabindex="0"><code>cat /bake-buddy/node/data/.tezos-client/public_keys
-</code></pre><p>The public key is the one in the <code>key</code> field.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /bake-buddy/node/data/.tezos-client/public_keys
+</span></span></code></pre></div><p>The public key is the one in the <code>key</code> field.</p>
 <blockquote>
 <p>An example of a public key for a tz3 address is <code>p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY</code></p>
 </blockquote>
 <p>To register the consensus key, run the following command:</p>
-<pre tabindex="0"><code>tezbake signer client set consensus key for baker to consensus
-</code></pre><p>You can also set your consensus key on TezGov via <a href="https://gov.tez.capital">https://gov.tez.capital</a>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> consensus key <span style="color:#204a87;font-weight:bold">for</span> baker to consensus
+</span></span></code></pre></div><p>You can also set your consensus key on TezGov via <a href="https://gov.tez.capital">https://gov.tez.capital</a>.</p>
 <p>The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.</p>
 <p>Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&rsquo;s no longer needed for baking.</p>
 <h3 id="confirm-the-consensus-key-is-working">Confirm the consensus key is working</h3>
 <p>Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and endorsements on behalf of the baker key.</p>
-<pre tabindex="0"><code>Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449: injected attestation op5RtCGypnrri9FyYHy91haPWB6CpouxNABcgM7BSUmr81p27G4 for
-Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   consensus (tz3P9WvzULMuss5iDk4tjNQYWkwSrLAjUuh7)
-Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   on behalf of tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur for level 7403648, round
-Dec 18 05:14:26 bb baker[2428547]: Dec 18 05:14:26.449:   0
-</code></pre><p>To view your baker logs, run the following command:</p>
-<pre tabindex="0"><code>tezbake node log baker -f
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449: injected attestation op5RtCGypnrri9FyYHy91haPWB6CpouxNABcgM7BSUmr81p27G4 <span style="color:#204a87;font-weight:bold">for</span>
+</span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   consensus <span style="color:#ce5c00;font-weight:bold">(</span>tz3P9WvzULMuss5iDk4tjNQYWkwSrLAjUuh7<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   on behalf of tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur <span style="color:#204a87;font-weight:bold">for</span> level 7403648, round
+</span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span></code></pre></div><p>To view your baker logs, run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log baker -f
+</span></span></code></pre></div><hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 

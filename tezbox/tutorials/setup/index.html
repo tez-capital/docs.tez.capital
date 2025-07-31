@@ -434,28 +434,28 @@ To get started with Podman, you can follow the instructions on the <a href="http
 </ul>
 <h2 id="setup-tezbox-to-test-with-mainnet">Setup TezBox to test with Mainnet</h2>
 <p>To run the TezBox container with the Paris protocol</p>
-<pre tabindex="0"><code>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+</span></span></code></pre></div><blockquote>
 <p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
-<pre tabindex="0"><code>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
-</code></pre><p>To verify that the container is running successfully, you can use <code>octez-client</code> to query the node</p>
-<pre tabindex="0"><code>octez-client -E http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
-</code></pre><p>To view all available protocols available in the TezBox container, you can run the following command</p>
-<pre tabindex="0"><code>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 list-protocols
-</code></pre><h2 id="setup-tezbox-to-test-release-candidate-rc-protocols">Setup TezBox to test Release Candidate (RC) protocols</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
+</span></span></code></pre></div><p>To verify that the container is running successfully, you can use <code>octez-client</code> to query the node</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>octez-client -E http://127.0.0.1:8732 rpc get /chains/main/blocks/head/header
+</span></span></code></pre></div><p>To view all available protocols available in the TezBox container, you can run the following command</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 list-protocols
+</span></span></code></pre></div><h2 id="setup-tezbox-to-test-release-candidate-rc-protocols">Setup TezBox to test Release Candidate (RC) protocols</h2>
 <h3 id="qena42">Qena42</h3>
 <p>To run the TezBox container with the Qena42 protocol</p>
-<pre tabindex="0"><code>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
+</span></span></code></pre></div><blockquote>
 <p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
-<pre tabindex="0"><code>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
-</code></pre><p>To view all available protocols available in the TezBox container, you can run the following command</p>
-<pre tabindex="0"><code>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
+</span></span></code></pre></div><p>To view all available protocols available in the TezBox container, you can run the following command</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
+</span></span></code></pre></div><hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 

@@ -474,8 +474,8 @@ Use one folder per baker address, e.g., <code>/tezos/payouts/my-baker</code>.</p
 <h3 id="step-2-download-tezpay-binary">Step 2: Download TezPay Binary</h3>
 <p>Download the latest binary for your platform from the <a href="https://github.com/tez-capital/tezpay/releases">Releases</a>.</p>
 <p>Rename it to <code>tezpay</code> and make it executable (on linux):</p>
-<pre tabindex="0"><code>chmod +x ./tezpay
-</code></pre><p>For Windows, the binary will be named <code>tezpay.exe</code>. To make it executable, no additional steps are required on Windows.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ./tezpay
+</span></span></code></pre></div><p>For Windows, the binary will be named <code>tezpay.exe</code>. To make it executable, no additional steps are required on Windows.</p>
 <blockquote>
 <p><strong>Note:</strong><br>
 Replacing the binary with the latest version is how you upgrade TezPay.</p>
@@ -488,8 +488,8 @@ Replacing the binary with the latest version is how you upgrade TezPay.</p>
 <li>Copy your <code>trd.yaml</code> into the instance folder.</li>
 <li>Run:</li>
 </ol>
-<pre tabindex="0"><code>./tezpay import-configuration trd ./trd.yaml
-</code></pre><p>This creates <code>config.hjson</code> based on your TRD settings.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay import-configuration trd ./trd.yaml
+</span></span></code></pre></div><p>This creates <code>config.hjson</code> based on your TRD settings.</p>
 <blockquote>
 <p><strong>Note:</strong><br>
 Most standard TRD configs work out of the box. Edge cases might need adjustments.</p>
@@ -505,8 +505,8 @@ Most standard TRD configs work out of the box. Edge cases might need adjustments
 <hr>
 <h3 id="step-4-test-the-configuration">Step 4: Test the Configuration</h3>
 <p>Run a dry run of the payouts:</p>
-<pre tabindex="0"><code>./tezpay generate-payouts
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay generate-payouts
+</span></span></code></pre></div><blockquote>
 <p><strong>This does not execute payouts.</strong><br>
 It only shows what TezPay would distribute.</p>
 </blockquote>
@@ -516,15 +516,15 @@ It only shows what TezPay would distribute.</p>
 <ul>
 <li>Default (last completed cycle):</li>
 </ul>
-<pre tabindex="0"><code>./tezpay pay
-</code></pre><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay pay
+</span></span></code></pre></div><ul>
 <li>Specific cycle:</li>
 </ul>
-<pre tabindex="0"><code>./tezpay pay -c &lt;cycle number&gt;
-</code></pre><h4 id="automatic-continual-payouts">Automatic (Continual) Payouts</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay pay -c &lt;cycle number&gt;
+</span></span></code></pre></div><h4 id="automatic-continual-payouts">Automatic (Continual) Payouts</h4>
 <p>To run payouts continuously:</p>
-<pre tabindex="0"><code>./tezpay continual
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay continual
+</span></span></code></pre></div><blockquote>
 <p><strong>Folder Location Tip:</strong><br>
 If you run TezPay as a service, place your payout folder <strong>outside of <code>/home</code></strong> for reliable service access.<br>
 Example: <code>/tezos/payouts/my-baker</code></p>

@@ -427,12 +427,12 @@
 </ul>
 <p><em>Before bootstrapping your node, made sure to stop your node as shown below.</em></p>
 <p>Using the first bootstrap method below ensures that the snapshot is checked for consistency both programmatically and by your checking the blockchain explorer(s) to confirm the block hash. This is the most reliable and robust method but it it also the slowest.</p>
-<pre tabindex="0"><code>tezbake stop
-tezbake bootstrap-node &lt;url&gt; &lt;block_hash&gt;
-tezbake start
-# example:
-tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node &lt;url&gt; &lt;block_hash&gt;
+</span></span><span style="display:flex;"><span>tezbake start
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># example:</span>
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+</span></span></code></pre></div><blockquote>
 <p>You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
 </blockquote>
 <p>Get the block hash and block level from the snapshot provider&rsquo;s website:
@@ -445,12 +445,12 @@ tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX
 <a href="https://tzstats.com/">https://tzstats.com/</a></p>
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <p>Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&rsquo;t have a choice and must make such trade-offs when time is of the essence.</p>
-<pre tabindex="0"><code>tezbake stop
-tezbake bootstrap-node --no-check &lt;url&gt;
-tezbake start
-# example:
-tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rolling
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node --no-check &lt;url&gt;
+</span></span><span style="display:flex;"><span>tezbake start
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># example:</span>
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rolling
+</span></span></code></pre></div><blockquote>
 <p>You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
 </blockquote>
 <hr>

@@ -436,74 +436,74 @@
 <p>Scroll down to the bottom of the page for the full configuration example.</p>
 </blockquote>
 <h3 id="download-and-install-tezpeak-via-tezbake">Download and install TezPeak via TezBake</h3>
-<pre tabindex="0"><code>tezbake setup --peak
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --peak
+</span></span></code></pre></div><blockquote>
 <p>You don&rsquo;t need to install the TezBake node or baker services to use TezPay.</p>
 </blockquote>
 <h3 id="setup-tezpeak-configuration">Setup TezPeak configuration</h3>
-<pre tabindex="0"><code>cd /bake-buddy/peak/ &amp;&amp; touch config.hjson
-</code></pre><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">cd</span> /bake-buddy/peak/ <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> touch config.hjson
+</span></span></code></pre></div><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
 <h5 id="sample-tezpeak-configuration">Sample TezPeak configuration</h5>
 <p>Here&rsquo;s an example of a minimal TezPeak <code>config.hjson</code> file with just TezPay configured:</p>
-<pre tabindex="0"><code>{
- listen: 0.0.0.0:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-     }
- }
-}
-</code></pre><h5 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h5>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">listen:</span> <span style="color:#a40000">0.0.0.0:8733</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">app_root:</span> <span style="color:#a40000">/bake-buddy</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">modules:</span> <span style="color:#a40000">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a40000">tezpay:</span> <span style="color:#a40000">{</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">payout_wallet:</span> <span style="color:#a40000">tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a40000">}</span>
+</span></span></code></pre></div><h5 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h5>
 <p>Here&rsquo;s the TezPeak configuration with all available TezPay options:</p>
-<pre tabindex="0"><code>{
- # Id to show in the header
- id: &#34;&#34;
- # Address to listen on
- listen: 127.0.0.1:8733
- app_root: /bake-buddy
- modules: {
-     tezpay: {
- 		# can be null to disable tezpay package monitoring
-         applications: {
- 			# path to tezpay ami package, either absolute or relative to parent directory peak
-             tezpay: tezpay
-         }
-         payout_wallet: tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE
-         payout_wallet_preferences: {
-             balance_warning_threshold: 100
-             balance_error_threshold: 50
-         }
- 		# forces all operations to be dry run
-         force_dry_run: true
-     }
- }
- 
- # List of reference nodes to connect to
- # The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available
- nodes: {
-     &#34;Tezos Foundation&#34;: {
-         address: https://rpc.tzbeta.net/
-         is_rights_provider: true
-         is_block_provider: false
-     }
-     tzkt: {
-         address: https://rpc.tzkt.io/mainnet/
-         is_rights_provider: false
-         is_block_provider: true
-         # reports error if node not available, use for baker&#39;s node
-         is_essential: false
-     }
- }
- # The mode tezpeak should operate in
- # auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode
- # public - assumes public environment, only readonly operations are allowed
- # private - assumes private environment, all operations are allowed
- mode: auto
-}
-</code></pre><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
-<pre tabindex="0"><code>tezbake start --peak
-</code></pre><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">Id</span> <span style="color:#a40000">to</span> <span style="color:#a40000">show</span> <span style="color:#a40000">in</span> <span style="color:#a40000">the</span> <span style="color:#a40000">header</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">id:</span> <span style="color:#204a87;font-weight:bold">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">Address</span> <span style="color:#a40000">to</span> <span style="color:#a40000">listen</span> <span style="color:#a40000">on</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">listen</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">127.0</span><span style="color:#a40000">.</span><span style="color:#0000cf;font-weight:bold">0.1</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">8733</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">app_root</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">/bake-buddy</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">modules</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a40000">tezpay:</span> <span style="color:#a40000">{</span>
+</span></span><span style="display:flex;"><span> 		<span style="color:#a40000">#</span> <span style="color:#a40000">can</span> <span style="color:#a40000">be</span> <span style="color:#a40000">null</span> <span style="color:#a40000">to</span> <span style="color:#a40000">disable</span> <span style="color:#a40000">tezpay</span> <span style="color:#a40000">package</span> <span style="color:#a40000">monitoring</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">applications:</span> <span style="color:#a40000">{</span>
+</span></span><span style="display:flex;"><span> 			<span style="color:#a40000">#</span> <span style="color:#a40000">path</span> <span style="color:#a40000">to</span> <span style="color:#a40000">tezpay</span> <span style="color:#a40000">ami</span> <span style="color:#a40000">package,</span> <span style="color:#a40000">either</span> <span style="color:#a40000">absolute</span> <span style="color:#a40000">or</span> <span style="color:#a40000">relative</span> <span style="color:#a40000">to</span> <span style="color:#a40000">parent</span> <span style="color:#a40000">directory</span> <span style="color:#a40000">peak</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#a40000">tezpay:</span> <span style="color:#a40000">tezpay</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">payout_wallet</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#a40000">tz</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#a40000">X</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#a40000">U</span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#a40000">XxVz</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#a40000">NDxL</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#a40000">DSZhijME</span><span style="color:#0000cf;font-weight:bold">61</span><span style="color:#a40000">PW</span><span style="color:#0000cf;font-weight:bold">45</span><span style="color:#a40000">bYUJE</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">payout_wallet_preferences</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#a40000">balance_warning_threshold:</span> <span style="color:#a40000">100</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#a40000">balance_error_threshold:</span> <span style="color:#a40000">50</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span> 		<span style="color:#a40000">#</span> <span style="color:#a40000">forces</span> <span style="color:#a40000">all</span> <span style="color:#a40000">operations</span> <span style="color:#a40000">to</span> <span style="color:#a40000">be</span> <span style="color:#a40000">dry</span> <span style="color:#a40000">run</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">force_dry_run</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">}</span>
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">List</span> <span style="color:#a40000">of</span> <span style="color:#a40000">reference</span> <span style="color:#a40000">nodes</span> <span style="color:#a40000">to</span> <span style="color:#a40000">connect</span> <span style="color:#a40000">to</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">The</span> <span style="color:#a40000">reference</span> <span style="color:#a40000">nodes</span> <span style="color:#a40000">are</span> <span style="color:#a40000">used</span> <span style="color:#a40000">to</span> <span style="color:#a40000">get</span> <span style="color:#a40000">the</span> <span style="color:#a40000">rights</span> <span style="color:#a40000">and</span> <span style="color:#a40000">blocks</span> <span style="color:#a40000">if</span> <span style="color:#a40000">the</span> <span style="color:#a40000">baker&#39;s</span> <span style="color:#a40000">node</span> <span style="color:#a40000">is</span> <span style="color:#a40000">not</span> <span style="color:#a40000">available</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">nodes:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#204a87;font-weight:bold">&#34;Tezos Foundation&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">address:</span> <span style="color:#a40000">https:</span><span style="color:#8f5902;font-style:italic">//rpc.tzbeta.net/
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>         <span style="color:#a40000">is_rights_provider:</span> <span style="color:#a40000">true</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">is_block_provider:</span> <span style="color:#a40000">false</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#a40000">tzkt</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">address:</span> <span style="color:#a40000">https:</span><span style="color:#8f5902;font-style:italic">//rpc.tzkt.io/mainnet/
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>         <span style="color:#a40000">is_rights_provider:</span> <span style="color:#a40000">false</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">is_block_provider:</span> <span style="color:#a40000">true</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">#</span> <span style="color:#a40000">reports</span> <span style="color:#a40000">error</span> <span style="color:#a40000">if</span> <span style="color:#a40000">node</span> <span style="color:#a40000">not</span> <span style="color:#a40000">available,</span> <span style="color:#a40000">use</span> <span style="color:#a40000">for</span> <span style="color:#a40000">baker&#39;s</span> <span style="color:#a40000">node</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a40000">is_essential:</span> <span style="color:#a40000">false</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span> <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">The</span> <span style="color:#a40000">mode</span> <span style="color:#a40000">tezpeak</span> <span style="color:#a40000">should</span> <span style="color:#a40000">operate</span> <span style="color:#a40000">in</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">auto</span> <span style="color:#a40000">-</span> <span style="color:#a40000">if</span> <span style="color:#a40000">bound</span> <span style="color:#a40000">to</span> <span style="color:#a40000">localhost,</span> <span style="color:#a40000">it</span> <span style="color:#a40000">will</span> <span style="color:#a40000">operate</span> <span style="color:#a40000">in</span> <span style="color:#a40000">private</span> <span style="color:#a40000">mode</span> <span style="color:#a40000">if</span> <span style="color:#a40000">not,</span> <span style="color:#a40000">it</span> <span style="color:#a40000">will</span> <span style="color:#a40000">operate</span> <span style="color:#a40000">in</span> <span style="color:#a40000">public</span> <span style="color:#a40000">mode</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">public</span> <span style="color:#a40000">-</span> <span style="color:#a40000">assumes</span> <span style="color:#a40000">public</span> <span style="color:#a40000">environment,</span> <span style="color:#a40000">only</span> <span style="color:#a40000">readonly</span> <span style="color:#a40000">operations</span> <span style="color:#a40000">are</span> <span style="color:#a40000">allowed</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">#</span> <span style="color:#a40000">private</span> <span style="color:#a40000">-</span> <span style="color:#a40000">assumes</span> <span style="color:#a40000">private</span> <span style="color:#a40000">environment,</span> <span style="color:#a40000">all</span> <span style="color:#a40000">operations</span> <span style="color:#a40000">are</span> <span style="color:#a40000">allowed</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a40000">mode:</span> <span style="color:#a40000">auto</span>
+</span></span><span style="display:flex;"><span><span style="color:#a40000">}</span>
+</span></span></code></pre></div><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start --peak
+</span></span></code></pre></div><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
 <p>If you&rsquo;re connecting from the same computer, you can use <code>http://127.0.0.1:8733</code> or <code>http://localhost:8733</code>.</p>
 <h2 id="tezpeak-example-screenshot">TezPeak example screenshot</h2>
 <p><img src="/tezbake/tutorial/tezpeakexample.png" alt=""></p>
