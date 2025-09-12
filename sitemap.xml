@@ -106,17 +106,9 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_dal/</loc>
   </url><url>
-    <loc>/tezbake/reference/cmd/tezbake_erase-ami-cache/</loc>
-  </url><url>
-    <loc>/tezbake/reference/cmd/tezbake_get-rights/</loc>
-  </url><url>
-    <loc>/tezbake/reference/cmd/tezbake_import-key/</loc>
-  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_info/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_list-ledgers/</loc>
-  </url><url>
-    <loc>/tezbake/reference/cmd/tezbake_modules/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_node/</loc>
   </url><url>
@@ -163,8 +155,6 @@
     <loc>/tezpay/reference/cmd/tezpay_pay-date-range/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_statistics/</loc>
-  </url><url>
-    <loc>/tezpay/reference/cmd/tezpay_test-extension/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay_test-extensions/</loc>
   </url><url>
