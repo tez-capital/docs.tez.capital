@@ -22,12 +22,12 @@
 <meta name="description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
 prints earning stats
 Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
+tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) --dry-run Performs all actions except sending transactions. Reports are stored in &amp;#39;reports/dry&amp;#39; folder -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
 <meta property="og:title" content="tezpay_statistics" />
 <meta property="og:description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
 prints earning stats
 Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
+tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tezpay/reference/cmd/tezpay_statistics/" /><meta property="article:section" content="tezpay" />
 
@@ -36,15 +36,15 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
 <meta itemprop="description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
 prints earning stats
 Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
+tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
 
-<meta itemprop="wordCount" content="144">
+<meta itemprop="wordCount" content="157">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezpay_statistics"/>
 <meta name="twitter:description" content="docs/cmd/tezpay_statistics.md## tezpay statistics
 prints earning stats
 Synopsis prints out earning statiscs
-tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
+tezpay statistics [flags] Options --cycles int number of cycles to collect statistics from (default 10) --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for statistics --last-cycle int last cycle to collect statistics from (has priority over --cycles) Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
 
 
 
@@ -422,6 +422,7 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
 <pre tabindex="0"><code>tezpay statistics [flags]
 </code></pre><h3 id="options">Options</h3>
 <pre tabindex="0"><code>      --cycles int       number of cycles to collect statistics from (default 10)
+      --dry-run          Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder
   -h, --help             help for statistics
       --last-cycle int   last cycle to collect statistics from (has priority over --cycles)
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
@@ -439,7 +440,7 @@ tezpay statistics [flags] Options --cycles int number of cycles to collect stati
 <ul>
 <li><a href="/tezpay/reference/cmd/tezpay">tezpay</a>	 - TEZPAY</li>
 </ul>
-<h6 id="auto-generated-by-spf13cobra-on-12-sep-2025">Auto generated by spf13/cobra on 12-Sep-2025</h6>
+<h6 id="auto-generated-by-spf13cobra-on-14-oct-2025">Auto generated by spf13/cobra on 14-Oct-2025</h6>
 
 	
 	
