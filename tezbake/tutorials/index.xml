@@ -167,7 +167,7 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
     </item>
     
     <item>
-      <title>Tezbake: Baking on Ghostnet</title>
+      <title>Tezbake: Baking on Testnets</title>
       <link>/tezbake/tutorials/baking-on-ghostnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -175,12 +175,12 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
       <description>
         
         
-        &lt;h2 id=&#34;ghostnet&#34;&gt;Ghostnet&lt;/h2&gt;
-&lt;p&gt;Ghostnet is Tezos&amp;rsquo; perpetual testnet. In the context of TezBake, Ghostnet is
-intended to provide a no-consequences testing environment where you can
-learn how to properly bake and pay using TezBake and TezPay. It&amp;rsquo;s highly
-recommended for all serious bakers to have a Ghostnet setup running, to
-help test protocol migrations.&lt;/p&gt;
+        &lt;h2 id=&#34;tezos-testnets&#34;&gt;Tezos Testnets&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Seoulnet is a simple and fast testnet with 20 minute cycles. It&amp;rsquo;s a great way to quickly test your baker setup and get familiar with the Tezos baking process. Seoulnet will be removed once the Tallinn upgrade is activated on mainnet. Each protocol upgrade on mainnet usually comes with a new testnet that has the same features and really fast cycles.&lt;/li&gt;
+&lt;li&gt;Ghostnet is the original Tezos testnet. It is a public testnet that is used by developers and users to test new features and applications before they are deployed on the mainnet. Ghostnet is a great way to get familiar with the Tezos ecosystem and to test your applications in a safe environment where the chain conditions are similar to mainnet.&lt;/li&gt;
+&lt;li&gt;Shadownet is similar to Ghostnet but it is a private testnet that is used by developers to test new features and applications before they are deployed on the mainnet. Shadownet is not open to the public and is only accessible to developers who are working on Tezos projects. Shadownet bakers are centrally selected by the core Tezos development team. Setting up a testnet bakery here is possible but not encouraged.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
 &lt;ol&gt;
@@ -217,13 +217,18 @@ help test protocol migrations.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setup-tezos-node-signer-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer and install tezbake dependencies&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Seoulnet setup:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://raw.githubusercontent.com/tez-capital/xtz.configs/main/seoulnet.json
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Ghostnet setup:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Seoulnet example:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/seoulnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Ghostnet example:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
