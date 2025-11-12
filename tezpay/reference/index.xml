@@ -81,9 +81,9 @@ Copyright © 2025 alis.is&lt;/p&gt;
   -e, --end-cycle int                 end cycle
   -a, --force-confirmation-prompt     ask for confirmation on each payout
   -h, --help                          help for continual
-      --include-previous-cycles int   number of previous cycles to reevaluate for missed or failed payouts
-      --interval int                  number of cycles between consecutive payouts (default 1)
-      --interval-trigger-offset int   offset (in cycles) to trigger payouts within the interval
+      --include-previous-cycles int   Number of previous cycles to scan for missed payouts. A value of &amp;#39;0&amp;#39; (default) only processes the cycles in current interval. A value of &amp;#39;5&amp;#39; would re-check the last 5 cycles in addition to the current interval.
+      --interval int                  Specifies the payout frequency in cycles. For example, &amp;#39;1&amp;#39; (default) attempts a payout every cycle. &amp;#39;10&amp;#39; attempts a payout every 10th cycle. See --interval-trigger-offset to adjust the start. (default 1)
+      --interval-trigger-offset int   An offset (in cycles) to adjust *when* the payout interval triggers. Example: With an interval of &amp;#39;10&amp;#39;, an offset of &amp;#39;0&amp;#39; (default) triggers on cycles 10, 20, 30. An offset of &amp;#39;3&amp;#39; triggers on cycles 13, 23, 33.
       --no-separate-fa                disables fa transfers separation (mixes txs and fa transfers within batches)
       --no-separate-sc                disables smart contract separation (mixes txs and smart contract calls within batches)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
@@ -124,9 +124,9 @@ Copyright © 2025 alis.is&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -c, --cycle int                     cycle to generate payouts for
       --dry-run                       Performs all actions except sending transactions. Reports are stored in &amp;#39;reports/dry&amp;#39; folder
   -h, --help                          help for generate-payouts
-      --include-previous-cycles int   number of previous cycles to reevaluate for missed or failed payouts
-      --interval int                  number of cycles between consecutive payouts (default 1)
-      --interval-trigger-offset int   offset (in cycles) to trigger payouts within the interval
+      --include-previous-cycles int   Number of previous cycles to scan for missed payouts. A value of &amp;#39;0&amp;#39; (default) only processes the cycles in current interval. A value of &amp;#39;5&amp;#39; would re-check the last 5 cycles in addition to the current interval.
+      --interval int                  Specifies the payout frequency in cycles. For example, &amp;#39;1&amp;#39; (default) attempts a payout every cycle. &amp;#39;10&amp;#39; attempts a payout every 10th cycle. See --interval-trigger-offset to adjust the start. (default 1)
+      --interval-trigger-offset int   An offset (in cycles) to adjust *when* the payout interval triggers. Example: With an interval of &amp;#39;10&amp;#39;, an offset of &amp;#39;0&amp;#39; (default) triggers on cycles 10, 20, 30. An offset of &amp;#39;3&amp;#39; triggers on cycles 13, 23, 33.
       --skip-balance-check            skips payout wallet balance check
       --to-file string                saves generated payouts to specified file
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
@@ -214,9 +214,9 @@ Example:
       --from-file string              loads payouts from file instead of generating on the fly
       --from-stdin                    loads payouts from stdin instead of generating on the fly
   -h, --help                          help for pay
-      --include-previous-cycles int   number of previous cycles to reevaluate for missed or failed payouts
-      --interval int                  number of cycles between consecutive payouts (default 1)
-      --interval-trigger-offset int   offset (in cycles) to trigger payouts within the interval
+      --include-previous-cycles int   Number of previous cycles to scan for missed payouts. A value of &amp;#39;0&amp;#39; (default) only processes the cycles in current interval. A value of &amp;#39;5&amp;#39; would re-check the last 5 cycles in addition to the current interval.
+      --interval int                  Specifies the payout frequency in cycles. For example, &amp;#39;1&amp;#39; (default) attempts a payout every cycle. &amp;#39;10&amp;#39; attempts a payout every 10th cycle. See --interval-trigger-offset to adjust the start. (default 1)
+      --interval-trigger-offset int   An offset (in cycles) to adjust *when* the payout interval triggers. Example: With an interval of &amp;#39;10&amp;#39;, an offset of &amp;#39;0&amp;#39; (default) triggers on cycles 10, 20, 30. An offset of &amp;#39;3&amp;#39; triggers on cycles 13, 23, 33.
       --no-separate-fa                disables fa transfers separation (mixes txs and fa transfers within batches)
       --no-separate-sc                disables smart contract separation (mixes txs and smart contract calls within batches)
       --notificator string            Notify through specific notificator

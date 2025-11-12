@@ -22,12 +22,12 @@
 <meta name="description" content="docs/cmd/tezpay_generate-payouts.md## tezpay generate-payouts
 generate payouts
 Synopsis generates payouts without further processing
-tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &amp;#39;reports/dry&amp;#39; folder -h, --help help for generate-payouts --include-previous-cycles int number of previous cycles to reevaluate for missed or failed payouts --interval int number of cycles between consecutive payouts (default 1) --interval-trigger-offset int offset (in cycles) to trigger payouts within the interval --skip-balance-check skips payout wallet balance check --to-file string saves generated payouts to specified file Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &amp;#34;info&amp;#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &amp;#34;auto&amp;#34;) -p, --path string path to working directory (default &amp;#34;.">
+tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &amp;#39;reports/dry&amp;#39; folder -h, --help help for generate-payouts --include-previous-cycles int Number of previous cycles to scan for missed payouts. A value of &amp;#39;0&amp;#39; (default) only processes the cycles in current interval. A value of &amp;#39;5&amp;#39; would re-check the last 5 cycles in addition to the current interval.">
 <meta property="og:title" content="tezpay_generate-payouts" />
 <meta property="og:description" content="docs/cmd/tezpay_generate-payouts.md## tezpay generate-payouts
 generate payouts
 Synopsis generates payouts without further processing
-tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int number of previous cycles to reevaluate for missed or failed payouts --interval int number of cycles between consecutive payouts (default 1) --interval-trigger-offset int offset (in cycles) to trigger payouts within the interval --skip-balance-check skips payout wallet balance check --to-file string saves generated payouts to specified file Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;." />
+tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int Number of previous cycles to scan for missed payouts. A value of &#39;0&#39; (default) only processes the cycles in current interval. A value of &#39;5&#39; would re-check the last 5 cycles in addition to the current interval." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tezpay/reference/cmd/tezpay_generate-payouts/" /><meta property="article:section" content="tezpay" />
 
@@ -36,15 +36,15 @@ tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payout
 <meta itemprop="description" content="docs/cmd/tezpay_generate-payouts.md## tezpay generate-payouts
 generate payouts
 Synopsis generates payouts without further processing
-tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int number of previous cycles to reevaluate for missed or failed payouts --interval int number of cycles between consecutive payouts (default 1) --interval-trigger-offset int offset (in cycles) to trigger payouts within the interval --skip-balance-check skips payout wallet balance check --to-file string saves generated payouts to specified file Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;.">
+tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int Number of previous cycles to scan for missed payouts. A value of &#39;0&#39; (default) only processes the cycles in current interval. A value of &#39;5&#39; would re-check the last 5 cycles in addition to the current interval.">
 
-<meta itemprop="wordCount" content="190">
+<meta itemprop="wordCount" content="267">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="tezpay_generate-payouts"/>
 <meta name="twitter:description" content="docs/cmd/tezpay_generate-payouts.md## tezpay generate-payouts
 generate payouts
 Synopsis generates payouts without further processing
-tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int number of previous cycles to reevaluate for missed or failed payouts --interval int number of cycles between consecutive payouts (default 1) --interval-trigger-offset int offset (in cycles) to trigger payouts within the interval --skip-balance-check skips payout wallet balance check --to-file string saves generated payouts to specified file Options inherited from parent commands --disable-donation-prompt Disable donation prompt --log-file string Logs to file -l, --log-level string Sets log level format (debug/info/warn/error) (default &#34;info&#34;) --log-server string launches log server at specified address --no-color Disable color output -o, --output-format string Sets output log format (json/text/auto) (default &#34;auto&#34;) -p, --path string path to working directory (default &#34;."/>
+tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payouts for --dry-run Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder -h, --help help for generate-payouts --include-previous-cycles int Number of previous cycles to scan for missed payouts. A value of &#39;0&#39; (default) only processes the cycles in current interval. A value of &#39;5&#39; would re-check the last 5 cycles in addition to the current interval."/>
 
 
 
@@ -424,9 +424,9 @@ tezpay generate-payouts [flags] Options -c, --cycle int cycle to generate payout
 <pre tabindex="0"><code>  -c, --cycle int                     cycle to generate payouts for
       --dry-run                       Performs all actions except sending transactions. Reports are stored in &#39;reports/dry&#39; folder
   -h, --help                          help for generate-payouts
-      --include-previous-cycles int   number of previous cycles to reevaluate for missed or failed payouts
-      --interval int                  number of cycles between consecutive payouts (default 1)
-      --interval-trigger-offset int   offset (in cycles) to trigger payouts within the interval
+      --include-previous-cycles int   Number of previous cycles to scan for missed payouts. A value of &#39;0&#39; (default) only processes the cycles in current interval. A value of &#39;5&#39; would re-check the last 5 cycles in addition to the current interval.
+      --interval int                  Specifies the payout frequency in cycles. For example, &#39;1&#39; (default) attempts a payout every cycle. &#39;10&#39; attempts a payout every 10th cycle. See --interval-trigger-offset to adjust the start. (default 1)
+      --interval-trigger-offset int   An offset (in cycles) to adjust *when* the payout interval triggers. Example: With an interval of &#39;10&#39;, an offset of &#39;0&#39; (default) triggers on cycles 10, 20, 30. An offset of &#39;3&#39; triggers on cycles 13, 23, 33.
       --skip-balance-check            skips payout wallet balance check
       --to-file string                saves generated payouts to specified file
 </code></pre><h3 id="options-inherited-from-parent-commands">Options inherited from parent commands</h3>
