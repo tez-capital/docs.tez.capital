@@ -18,21 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Tezos Public Baking | docs.tez.capital</title>
-<meta name="description" content="How to Setup a Public Baker on Tezos">
-<meta property="og:title" content="Tezos Public Baking" />
-<meta property="og:description" content="How to Setup a Public Baker on Tezos" />
+<title>Tezbake &#43; TezSign Setup | docs.tez.capital</title>
+<meta name="description" content="Integrating the TezSign hardware signer with your Tezbake setup">
+<meta property="og:title" content="Tezbake &#43; TezSign Setup" />
+<meta property="og:description" content="Integrating the TezSign hardware signer with your Tezbake setup" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/getting-started/public-baking/" /><meta property="article:section" content="getting-started" />
+<meta property="og:url" content="/tezbake/tutorials/baking-with-tezsign/" /><meta property="article:section" content="tezbake" />
 
 
-<meta itemprop="name" content="Tezos Public Baking">
-<meta itemprop="description" content="How to Setup a Public Baker on Tezos">
+<meta itemprop="name" content="Tezbake &#43; TezSign Setup">
+<meta itemprop="description" content="Integrating the TezSign hardware signer with your Tezbake setup">
 
-<meta itemprop="wordCount" content="403">
+<meta itemprop="wordCount" content="506">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tezos Public Baking"/>
-<meta name="twitter:description" content="How to Setup a Public Baker on Tezos"/>
+<meta name="twitter:title" content="Tezbake &#43; TezSign Setup"/>
+<meta name="twitter:description" content="Integrating the TezSign hardware signer with your Tezbake setup"/>
 
 
 
@@ -107,21 +107,21 @@
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m--li">
   <a href="/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-"><span class="">Tez Capital Docs</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-getting-started-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-getting-started-li">
   <a href="/getting-started/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-getting-started"><span class="">Getting Started with Baking</span></a>
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedwhat-is-baking-li">
   <a href="/getting-started/what-is-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedwhat-is-baking"><span class="">&gt; What is Tezos Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-getting-startedpublic-baking-li">
-  <a href="/getting-started/public-baking/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="td-sidebar-nav-active-item">Tezos Public Baking</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedpublic-baking-li">
+  <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbake-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
   <a href="/tezbake/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezbake"><span class="">TezBake</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbaketutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbaketutorials-li">
   <a href="/tezbake/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezbaketutorials"><span class="">TezBake Tutorials</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-on-mainnet-li">
@@ -148,8 +148,8 @@
   <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake Prism Tunneling Setup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsmissing-attestations-li">
   <a href="/tezbake/tutorials/missing-attestations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsmissing-attestations"><span class="">Missing Attestations in Baking</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-tezsign-li">
-  <a href="/tezbake/tutorials/baking-with-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-tezsign"><span class="">Tezbake &#43; TezSign Setup</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialsbaking-with-tezsign-li">
+  <a href="/tezbake/tutorials/baking-with-tezsign/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-tezsign"><span class="td-sidebar-nav-active-item">Tezbake &#43; TezSign Setup</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbakereference-li">
@@ -331,10 +331,10 @@
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/getting-started/public-baking.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/getting-started/public-baking.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/getting-started/public-baking.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Tezos%20Public%20Baking" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezbake/tutorials/baking-with-tezsign.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezbake/tutorials/baking-with-tezsign.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezbake/tutorials/baking-with-tezsign.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Tezbake%20&#43;%20TezSign%20Setup" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/tez-capital/docs.tez.capital/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -342,7 +342,20 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#pubic-baking">Pubic Baking</a></li>
+    <li><a href="#command-cheatsheet">Command Cheatsheet</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#setup-steps">Setup Steps</a>
+      <ul>
+        <li><a href="#step-1-install-tezbake-prerelease">Step 1: Install Tezbake Prerelease</a></li>
+        <li><a href="#step-2-configure-tezsign-platform">Step 2: Configure TezSign Platform</a></li>
+        <li><a href="#step-3-initialize-the-device">Step 3: Initialize the Device</a></li>
+        <li><a href="#step-4-generate-keys">Step 4: Generate Keys</a></li>
+        <li><a href="#step-5-import-keys">Step 5: Import Keys</a></li>
+        <li><a href="#step-6-verify-and-bake">Step 6: Verify and Bake</a></li>
+        <li><a href="#advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</a></li>
+      </ul>
+    </li>
+    <li><a href="#support--questions">Support &amp; Questions</a></li>
   </ul>
 </nav>
       </div>
@@ -375,16 +388,19 @@
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="/getting-started/">Getting Started with Baking</a>
+    <a href="/tezbake/">TezBake</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/tezbake/tutorials/">TezBake Tutorials</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/getting-started/public-baking/" aria-disabled="true" class="btn-link disabled">Tezos Public Baking</a>
+    <a href="/tezbake/tutorials/baking-with-tezsign/" aria-disabled="true" class="btn-link disabled">Tezbake &#43; TezSign Setup</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Tezos Public Baking</h1>
+	<h1>Tezbake &#43; TezSign Setup</h1>
 	
 	<header class="article-meta">
 		
@@ -401,32 +417,130 @@
 
 		
 	</header>    
-	<h2 id="pubic-baking">Pubic Baking</h2>
-<p>Public baking and private baking are the same thing from the perspective of the blockchain. The only difference is that a public baker has announced themselves to the Tezos community and is willing to accept delegations. A private baker is not willing to accept delegations from delegators. A private baker cannot stop these delegations from occuring but a private baker is not expected to pay out rewards to delegators.</p>
-<p>On Tezos, bakers (a.k.a. delegates) are paid directly by the blockchain for themselves as well as for their delegators. It&rsquo;s up to each and every baker to determine their own fee structure and payment policies. It&rsquo;s also up to each baker as to which payment software they will use to distribute rewards to delegators. There are several different payment software options available to bakers. Some bakers use their own custom software, some bakers use a third party payment software, and some bakers use a combination of both. We recommend using our TezPay payment software. TezPay allows you to fully automate the distribution of rewards to delegators.</p>
-<p>With the recent introduction of <a href="https://research-development.nomadic-labs.com/adaptive-issuance-paris.html#the-new-staker-role">Adaptive Issuance</a> on the Tezos protocol, bakers are now able to accept stakers. Stakers are different from delegators in that:</p>
-<ul>
-<li>Staker tez is frozen for up to 12 days.</li>
-<li>Stakers are liable for any losses incurred by the baker due to double baking or double endorsing. While rare, this is a risk that stakers take on when they stake their tez with a baker.</li>
-<li>Stakers are paid directly by the protocol without any need for the baker to pay them, unlike with delegators</li>
-</ul>
-<p>A public baker has to contact two entities within the Tezos ecosystem to be added to the list of public bakers within each of their ecosystems. The entities in question all have their own methods to determine your public baker details, such as your fee and payment policies, via self-reporting. You will be asked to self-report your details to each of the following entities:</p>
-<ul>
-<li><a href="https://tzstats.com">https://tzstats.com</a> (Trilitech)
-<ul>
-<li>The best place to contact them is: <a href="mailto:tzstats@trili.tech">tzstats@trili.tech</a></li>
-</ul>
-</li>
-<li><a href="https://tzkt.io">https://tzkt.io</a> / <a href="https://baking-bad.org">https://baking-bad.org</a> (Baking Bad)
-<ul>
-<li>The best places to contact them are: <a href="https://t.me/baking_bad_chat">https://t.me/baking_bad_chat</a> and <a href="https://discord.gg/aG8XKuwsQd">https://discord.gg/aG8XKuwsQd</a></li>
-</ul>
-</li>
-</ul>
-<p>Most wallets and services on Tezos pull their baker information from one of these sources, mostly from TzKT. If you are not listed on TzKT, you will not be listed on most wallets and services on Tezos.</p>
+	<h2 id="command-cheatsheet">Command Cheatsheet</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initialize TezSign Platform</td>
+<td><code>tezbake setup-tezsign --init --platform</code></td>
+</tr>
+<tr>
+<td>Initialize Device</td>
+<td><code>tezbake tezsign init</code></td>
+</tr>
+<tr>
+<td>Generate New Keys</td>
+<td><code>tezbake tezsign new &lt;key-name-1&gt; &lt;key-name-2&gt;</code></td>
+</tr>
+<tr>
+<td>Import Key to Tezbake</td>
+<td><code>tezbake setup-tezsign --import-key=&lt;tezsign-alias&gt; --key-alias=&lt;alias&gt;</code></td>
+</tr>
+<tr>
+<td>Verify Keys</td>
+<td><code>tezbake info</code></td>
+</tr>
+</tbody>
+</table>
 <hr>
-<p>Any questions/comments/concerns? Please contact the Tez Capital team on
-<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
+<h2 id="overview">Overview</h2>
+<blockquote>
+<p><strong>⚠️ This guide is a work in progress and may be subject to change. ⚠️</strong></p>
+</blockquote>
+<p>This guide covers how to configure <strong>TezSign</strong> (hardware signer) to work seamlessly with <strong>Tezbake</strong>.</p>
+<ul>
+<li><strong>Security First:</strong> TezSign ensures your baking keys remain secure on hardware.</li>
+<li><strong>Prerequisites:</strong> You must have a supported device ready.</li>
+</ul>
+<p><strong>TezSign is provided without any guarantee; use it at your own risk.</strong></p>
+<blockquote>
+<p><strong>Recommendation:</strong> &gt; It is recommended to prepare your device on a different machine than your baker. Follow the <a href="https://github.com/tez-capital/tezsign">TezSign Guide</a> for initial device preparation before proceeding below.</p>
+</blockquote>
+<hr>
+<h2 id="setup-steps">Setup Steps</h2>
+<h3 id="step-1-install-tezbake-prerelease">Step 1: Install Tezbake Prerelease</h3>
+<p>To use TezSign features, you currently need the prerelease version of Tezbake.</p>
+<ol>
+<li><strong>Download and install the prerelease:</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   wget -q <span style="color:#ce5c00;font-weight:bold">[</span>https://github.com/tez-capital/tezbake/raw/main/install.sh<span style="color:#ce5c00;font-weight:bold">](</span>https://github.com/tez-capital/tezbake/raw/main/install.sh<span style="color:#ce5c00;font-weight:bold">)</span> -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh --prerelease
+</span></span></code></pre></div><ol start="2">
+<li>Upgrade the instance: Ensure all packages are up to date.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><h3 id="step-2-configure-tezsign-platform">Step 2: Configure TezSign Platform</h3>
+<p>Initialize the signer configuration on your baker.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
+</span></span></code></pre></div><p>This creates the configuration file at <code>/bake-buddy/signer/tezsign.config.hjson</code>.</p>
+<blockquote>
+<p><strong>Configuration Note</strong> &gt; You generally do not need to edit this file.
+However, you may want to modify it if you need to automatically unlock TezSign after a reboot or if you are managing multiple devices.</p>
+</blockquote>
+<h3 id="step-3-initialize-the-device">Step 3: Initialize the Device</h3>
+<p>If you haven&rsquo;t initialized the device on a separate machine yet, connect it and run:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign init
+</span></span></code></pre></div><blockquote>
+<p><strong>Critical Warning</strong>: &gt; You will be prompted to set a Master Password. Choose this carefully. It CANNOT be changed later.</p>
+</blockquote>
+<h3 id="step-4-generate-keys">Step 4: Generate Keys</h3>
+<p>Generate your baking keys directly on the device.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign new consensus dal
+</span></span></code></pre></div><p>In this example, we generate two keys named &ldquo;consensus&rdquo; and &ldquo;dal&rdquo;. You can create as many as you need.</p>
+<blockquote>
+<p><strong>Why two keys?</strong> &gt; For baking with DAL (Data Availability Layer), you need two tz4 keys.</p>
+</blockquote>
+<h3 id="step-5-import-keys">Step 5: Import Keys</h3>
+<p>Now, link the keys on your TezSign device to your Tezbake configuration.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>&lt;tezsign key alias&gt; --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>&lt;octez key alias&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span></code></pre></div><p><strong>Example (Importing the Consensus Key):</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
+</span></span></code></pre></div><blockquote>
+<p><strong>Caution</strong>: &gt; Be careful not to accidentally overwrite existing keys that you still need. Use unique aliases or back up your current configuration.</p>
+</blockquote>
+<h3 id="step-6-verify-and-bake">Step 6: Verify and Bake</h3>
+<ol>
+<li>Restart your setup to apply changes.</li>
+<li>Check that Tezbake sees your new keys:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
+</span></span></code></pre></div><p>If your keys appear in the info output, you are ready to bake!</p>
+<h3 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h3>
+<p>You can configure Tezbake to bake directly through TezSign, bypassing the standard octez-signer.</p>
+<p>Pros: Faster execution, lower latency.
+Cons: Less flexible (relies solely on TezSign tz4 keys)</p>
+<p><strong>How to Enable</strong></p>
+<ol>
+<li>Open the signer configuration file: <code>/bake-buddy/signer/app.json</code></li>
+<li>Add <code>BACKEND: tezsign</code> inside the <code>configuration</code> block:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">&#34;configuration&#34;: </span>{<span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">&#34;BACKEND&#34;: </span><span style="color:#4e9a06">&#34;tezsign&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>}<span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><ol start="3">
+<li>Apply the changes:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><ol start="4">
+<li>Restart the service.</li>
+</ol>
+<blockquote>
+<p><strong>Reverting:</strong>: To switch back, simply remove the <code>BACKEND</code> line from <code>app.json</code>, run tezbake upgrade, and restart.</p>
+</blockquote>
+<h2 id="support--questions">Support &amp; Questions</h2>
+<p>Need help or have questions?</p>
+<ul>
+<li><a href="https://discord.gg/cVGMA4MaNM">Discord</a></li>
+<li><a href="https://t.me/tezcapital">Telegram</a></li>
+</ul>
 
 	
 	
