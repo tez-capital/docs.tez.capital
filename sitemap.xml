@@ -112,6 +112,8 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_node/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_octez-signer/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_pay/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_peak/</loc>
@@ -128,11 +130,15 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_setup-soft-wallet/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_setup-tezsign/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_signer/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_start/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_stop/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_tezsign/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_update-dal-profiles/</loc>
   </url><url>
