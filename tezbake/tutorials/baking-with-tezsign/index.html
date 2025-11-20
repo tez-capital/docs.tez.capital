@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezbake &#43; TezSign Setup">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your Tezbake setup.">
 
-<meta itemprop="wordCount" content="713">
+<meta itemprop="wordCount" content="712">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezbake &#43; TezSign Setup"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your Tezbake setup."/>
@@ -344,23 +344,23 @@
   <ul>
     <li><a href="#command-cheatsheet">Command Cheatsheet</a></li>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="#phase-1-device-preparation">Phase 1: Device Preparation</a>
-      <ul>
-        <li><a href="#1-initialize-device">1. Initialize device</a></li>
-        <li><a href="#2-generate-your-baking-keys-directly-on-the-device">2. Generate your baking keys directly on the device.</a></li>
-        <li><a href="#3-retrieve-public-keys--proofs">3. Retrieve Public Keys &amp; Proofs</a></li>
-      </ul>
-    </li>
-    <li><a href="#phase-2-baker-configuration">Phase 2: Baker Configuration</a>
+    <li><a href="#phase-1-baker-configuration">Phase 1: Baker Configuration</a>
       <ul>
         <li><a href="#1-install-latest-tezbake">1. Install Latest TezBake</a></li>
         <li><a href="#2-initialize-the-tezsign-setup">2. Initialize the TezSign setup.</a></li>
-        <li><a href="#3-import-keys-to-tezbake">3. Import Keys to TezBake</a></li>
+      </ul>
+    </li>
+    <li><a href="#phase-2-device-preparation">Phase 2: Device Preparation</a>
+      <ul>
+        <li><a href="#1-initialize-device">1. Initialize device</a></li>
+        <li><a href="#2-generate-your-baking-keys-directly-on-the-device">2. Generate your baking keys directly on the device.</a></li>
       </ul>
     </li>
     <li><a href="#phase-3-node-configuration">Phase 3: Node Configuration</a>
       <ul>
-        <li><a href="#1-register-additional-keys">1. Register Additional Keys</a></li>
+        <li><a href="#1-import-keys-to-tezbake">1. Import Keys to TezBake</a></li>
+        <li><a href="#2-retrieve-public-keys--proofs">2. Retrieve Public Keys &amp; Proofs</a></li>
+        <li><a href="#3-register-additional-keys">3. Register Additional Keys</a></li>
         <li><a href="#2-reconfigure">2. Reconfigure</a></li>
       </ul>
     </li>
@@ -476,7 +476,20 @@
 <p>⚠️ <strong>Disclaimer</strong>: TezSign is provided without any guarantee; use it at your own risk.</p>
 </blockquote>
 <hr>
-<h2 id="phase-1-device-preparation">Phase 1: Device Preparation</h2>
+<h2 id="phase-1-baker-configuration">Phase 1: Baker Configuration</h2>
+<p>Environment: Your Tezbake server.</p>
+<h3 id="1-install-latest-tezbake">1. Install Latest TezBake</h3>
+<p>TezSign support is now available in the latest version of TezBake.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
+</span></span></code></pre></div><p>Upgrade the instance to ensure all packages are up to date:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><h3 id="2-initialize-the-tezsign-setup">2. Initialize the TezSign setup.</h3>
+<p>Initialize the signer configuration. This creates the <code>/bake-buddy/signer/tezsign.config.hjson</code> file and runs TezBake&rsquo;s side TezSign setup.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
+</span></span></code></pre></div><blockquote>
+<p><strong>Configuration Note</strong> You generally do not need to edit the generated config file unless you require auto-unlocking functionality or manage multiple devices.</p>
+</blockquote>
+<h2 id="phase-2-device-preparation">Phase 2: Device Preparation</h2>
 <p>Recommended Environment: A separate, secure workstation (not your baking server).</p>
 <h3 id="1-initialize-device">1. Initialize device</h3>
 <p>Connect your TezSign device to your workstation and run:</p>
@@ -491,24 +504,8 @@
 <blockquote>
 <p><strong>Note:</strong>  For baking with the Data Availability Layer (DAL), distinct tz4 keys are required - the consensus and companion key.</p>
 </blockquote>
-<h3 id="3-retrieve-public-keys--proofs">3. Retrieve Public Keys &amp; Proofs</h3>
-<p>To register your keys on-chain (via <a href="https://gov.tez.capital/">tezgov</a> or <code>octez-client</code>), you need the Public Key (BLpk) and the Proof of Possession (PoP)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
-</span></span></code></pre></div><p>Once you have recorded your key information, <strong>move the TezSign device to your Baker machine</strong>.</p>
-<h2 id="phase-2-baker-configuration">Phase 2: Baker Configuration</h2>
-<p>Environment: Your Tezbake server.</p>
-<h3 id="1-install-latest-tezbake">1. Install Latest TezBake</h3>
-<p>TezSign support is now available in the latest version of TezBake.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
-</span></span></code></pre></div><p>Upgrade the instance to ensure all packages are up to date:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
-</span></span></code></pre></div><h3 id="2-initialize-the-tezsign-setup">2. Initialize the TezSign setup.</h3>
-<p>Initialize the signer configuration. This creates the <code>/bake-buddy/signer/tezsign.config.hjson</code> file and runs TezBake&rsquo;s side TezSign setup.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
-</span></span></code></pre></div><blockquote>
-<p><strong>Configuration Note</strong> You generally do not need to edit the generated config file unless you require auto-unlocking functionality or manage multiple devices.</p>
-</blockquote>
-<h3 id="3-import-keys-to-tezbake">3. Import Keys to TezBake</h3>
+<h2 id="phase-3-node-configuration">Phase 3: Node Configuration</h2>
+<h3 id="1-import-keys-to-tezbake">1. Import Keys to TezBake</h3>
 <p>Link the keys stored on your TezSign device to TezBake&rsquo;s configuration using local aliases.</p>
 <p><strong>Syntax:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>&lt;tezsign key alias&gt; --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>&lt;octez key alias&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -518,8 +515,11 @@
 </span></span></code></pre></div><blockquote>
 <p><strong>Caution</strong>: Ensure your <code>--key-alias</code> does not conflict with existing keys you wish to keep. Use the &ndash;force flag only if you intend to overwrite an alias.</p>
 </blockquote>
-<h2 id="phase-3-node-configuration">Phase 3: Node Configuration</h2>
-<h3 id="1-register-additional-keys">1. Register Additional Keys</h3>
+<h3 id="2-retrieve-public-keys--proofs">2. Retrieve Public Keys &amp; Proofs</h3>
+<p>To register your keys on-chain (via <a href="https://gov.tez.capital/">tezgov</a> or <code>octez-client</code>), you need the Public Key (BLpk) and the Proof of Possession (PoP)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
+</span></span></code></pre></div><p>Once you have recorded your key information, <strong>move the TezSign device to your Baker machine</strong>.</p>
+<h3 id="3-register-additional-keys">3. Register Additional Keys</h3>
 <p>To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them in the node configuration.</p>
 <p>Create or edit the following file: <code>/bake-buddy/node/additional_key_aliases.list</code>.
 Add the key aliases you used in the <code>Import Keys to TezBake</code> step.</p>
@@ -530,7 +530,7 @@ Add the key aliases you used in the <code>Import Keys to TezBake</code> step.</p
 <p>NOTE: Later on when your <code>consensus</code> key activates you can reimport it under <code>baker</code> alias (the default one) with <code>--force</code>. Then you can remove consensus from additional keys.</p>
 </blockquote>
 <blockquote>
-<p>NOTE: : Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is relevant. The internal tezsign alias can differ.</p>
+<p>NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is relevant. The internal tezsign alias can differ.</p>
 </blockquote>
 <h3 id="2-reconfigure">2. Reconfigure</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
