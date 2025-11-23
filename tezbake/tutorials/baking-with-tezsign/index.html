@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezbake &#43; TezSign Setup">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your Tezbake setup.">
 
-<meta itemprop="wordCount" content="712">
+<meta itemprop="wordCount" content="791">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezbake &#43; TezSign Setup"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your Tezbake setup."/>
@@ -371,6 +371,11 @@
       </ul>
     </li>
     <li><a href="#advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</a></li>
+    <li><a href="#advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</a>
+      <ul>
+        <li><a href="#steps-to-enable-automatic-unlock">Steps to Enable Automatic Unlock</a></li>
+      </ul>
+    </li>
     <li><a href="#support--questions">Support &amp; Questions</a></li>
   </ul>
 </nav>
@@ -470,7 +475,7 @@
 <p>This guide covers how to configure <strong>TezSign</strong> (hardware signer) to work seamlessly with <strong>Tezbake</strong>.</p>
 <ul>
 <li><strong>Security First:</strong> TezSign ensures your baking keys remain secure on hardware and never leave the device.</li>
-<li><strong>Prerequisites:</strong> You must have a supported TezSign device ready..</li>
+<li><strong>Prerequisites:</strong> You must have a supported TezSign device ready.</li>
 </ul>
 <blockquote>
 <p>⚠️ <strong>Disclaimer</strong>: TezSign is provided without any guarantee; use it at your own risk.</p>
@@ -487,7 +492,7 @@
 <p>Initialize the signer configuration. This creates the <code>/bake-buddy/signer/tezsign.config.hjson</code> file and runs TezBake&rsquo;s side TezSign setup.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
 </span></span></code></pre></div><blockquote>
-<p><strong>Configuration Note</strong> You generally do not need to edit the generated config file unless you require auto-unlocking functionality or manage multiple devices.</p>
+<p><strong>Configuration Note:</strong> You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.</p>
 </blockquote>
 <h2 id="phase-2-device-preparation">Phase 2: Device Preparation</h2>
 <p>Recommended Environment: A separate, secure workstation (not your baking server).</p>
@@ -568,7 +573,24 @@ Add the key aliases you used in the <code>Import Keys to TezBake</code> step.</p
 <p><strong>To Revert:</strong>: Remove the <code>BACKEND</code> line from <code>app.json</code>, upgrade, and restart.</p>
 </li>
 </ol>
-<h2 id="support--questions">Support &amp; Questions</h2>
+<h2 id="advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</h2>
+<p>You can configure TezSign to unlock automatically by securely storing the device password.</p>
+<h3 id="steps-to-enable-automatic-unlock">Steps to Enable Automatic Unlock</h3>
+<ol>
+<li>Run the following command to set and store the password:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --password
+</span></span></code></pre></div><p>This will prompt you to enter the password for your TezSign device.</p>
+<p><em>To unset the automatic unlock, simply set an empty password when prompted.</em></p>
+<ol start="2">
+<li>Apply the changes by upgrading the configuration:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><ol start="3">
+<li>Restart if Required</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><h2 id="support--questions">Support &amp; Questions</h2>
 <p>Need help or have questions?</p>
 <ul>
 <li><a href="https://discord.gg/cVGMA4MaNM">Discord</a></li>
