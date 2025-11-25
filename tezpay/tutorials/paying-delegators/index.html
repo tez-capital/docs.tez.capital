@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Paying Delegators">
 <meta itemprop="description" content="How to Pay Delegators Using TezPay">
 
-<meta itemprop="wordCount" content="757">
+<meta itemprop="wordCount" content="1011">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Paying Delegators"/>
 <meta name="twitter:description" content="How to Pay Delegators Using TezPay"/>
@@ -348,7 +348,8 @@
         <li><a href="#using-tezpay-step-1---generating-a-payout-table">Using TezPay: Step 1 - Generating a payout Table</a></li>
         <li><a href="#using-tezpay-step-2---testing-notifications">Using TezPay: Step 2 - Testing Notifications</a></li>
         <li><a href="#using-tezpay-step-3---initiating-a-payout">Using TezPay: Step 3 - Initiating a Payout</a></li>
-        <li><a href="#using-tezpay-step-4---running-a-continual-payout">Using TezPay: Step 4 - Running a Continual Payout</a></li>
+        <li><a href="#using-tezpay-paying-multiple-cycles-at-a-time">Using TezPay: Paying multiple cycles at a time</a></li>
+        <li><a href="#using-tezpay-running-a-continual-payout">Using TezPay: Running a Continual Payout</a></li>
       </ul>
     </li>
     <li><a href="#summary-tezpay">Summary: TezPay</a></li>
@@ -519,7 +520,19 @@ will need to add funds to cover the payments.</p>
 delegates. Be sure to check the confirmations and any errors that may
 have been broadcasted in the terminal (ie, the example above did not
 send notifications because that was not set up).</p>
-<h3 id="using-tezpay-step-4---running-a-continual-payout">Using TezPay: Step 4 - Running a Continual Payout</h3>
+<h3 id="using-tezpay-paying-multiple-cycles-at-a-time">Using TezPay: Paying multiple cycles at a time</h3>
+<p>TezPay provides bakers a way to aggregate multiple cycles and pay delegators in a lumpsum fashion.</p>
+<p>Using the <code>--interval</code> argument you can specify how many cycles you want to include in each payment. Let&rsquo;s say you want to use an interval of 7 days. The start of every interval is cycle 1. This means that if it&rsquo;s currently cycle 65, you can pay for cycles 56-62 by default.</p>
+<p>If it&rsquo;s currently cycle 65 and you would like to pay for cycles 58-64 and the continue paying for cycles 65-71, 72-78, 79-85 etc. you can use the <code>--interval-trigger-offset</code> argument with the value of 2. This shifts the interval start to cycles 65, 72 and 79 instead the original blocks 1,</p>
+<p>Here&rsquo;s a sample for an aggregated payment every 7 cycles with offset 2:</p>
+<p><code>./tezpay pay --interval 7 --interval-trigger-offset 2</code></p>
+<p>Instead of using the <code>--interval-trigger-offset</code> argument, you can also simply just specify your payment cycle manually and the inteval will be counted from there.</p>
+<p>Again, it&rsquo;s cycle 65 and you&rsquo;d like ot pay cycles 56-62.</p>
+<p><code>./tezpay pay --interval 7 --cycle 63</code></p>
+<p>If you&rsquo;re worried about failed or partially successful payments, you can utilize the <code>--include-previous-cycles</code> argument. This checks X cycle in the past, before the first cycle of your interval, for any failed payments and includes them in the current payment batch.</p>
+<p><code>./tezpay pay --interval 7 --include-previous-cycles 7</code></p>
+<p>Let&rsquo;s say it&rsquo;s currently cycle 63. In the example above, you will pay cycles 56-62 and check cycles 49-55 for any missed payments.</p>
+<h3 id="using-tezpay-running-a-continual-payout">Using TezPay: Running a Continual Payout</h3>
 <p>To use the TezPay application to send a payment will require 1
 line of code and one additional confirmation while it runs.</p>
 <p>To run TezPay in continual mode, run the command:</p>
