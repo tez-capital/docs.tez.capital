@@ -1254,6 +1254,193 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Tezbake: Baking with TezSign</title>
+      <link>/tezbake/tutorials/baking-with-tezsign/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/baking-with-tezsign/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This guide covers how to configure &lt;strong&gt;TezSign&lt;/strong&gt; (hardware signer) to work seamlessly with &lt;strong&gt;TezBake&lt;/strong&gt;. It assumes you&amp;rsquo;re setting up your hardware signer on the same machine as your baking machine, as part of an all-in-one setup. You do not have to use TezBake to setup TezSign; instead you can use the helper app.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Security First:&lt;/strong&gt; TezSign ensures your baking keys remain secure on hardware and never leave the device.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt; You must have a supported TezSign device ready.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Disclaimer&lt;/strong&gt;: TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/h2&gt;
+&lt;p&gt;Generally speaking, the Radxa Zero 3 (the lowest available configuration) as well as the Raspberry Pi Zero 2W are great choices for your TezSign setup. Purchase 2 devices if you worry about the possibility of downtime if your SBC fails. Also purchase multiple SD cards. It&amp;rsquo;s good to have at least 3 SD cards: one for baking, one for backup of your baking SD card and one spare to replace a failed card. 8GB SD cards will do just fine. Ensure you are getting the &amp;ldquo;enterprise&amp;rdquo; or &amp;ldquo;endurance&amp;rdquo; versions if possible.&lt;/p&gt;
+&lt;h3 id=&#34;1-download-gadget-image-and-flash-sd-card&#34;&gt;1. Download gadget image and flash SD card&lt;/h3&gt;
+&lt;p&gt;Navitate to the release page and download the latest image for your RPI or Radxa device: (TezSign Releases)[https://github.com/tez-capital/tezsign/releases]&lt;/p&gt;
+&lt;p&gt;Once downloaded, extract the image. The image will be around 1.5GB - 2GB once it&amp;rsquo;s been extracted.&lt;/p&gt;
+&lt;p&gt;Use (Balena Etcher)[https://etcher.balena.io/] (or a tool you are familiar with) to flash the gadget image to your SD card.&lt;/p&gt;
+&lt;p&gt;Once done, plug in the SD card into your gadget and connect it to your baking computer with just a single USB cable. A separate power source is not required. Use the data connection USB port, not the power connection USB port.&lt;/p&gt;
+&lt;h2 id=&#34;phase-1-baker-configuration&#34;&gt;Phase 1: Baker Configuration&lt;/h2&gt;
+&lt;h3 id=&#34;1-install-latest-tezbake&#34;&gt;1. Install Latest TezBake&lt;/h3&gt;
+&lt;p&gt;TezSign support is now available in the latest version of TezBake.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/TezBake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Upgrade the instance to ensure all packages are up to date:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-initialize-the-tezsign-setup&#34;&gt;2. Initialize the TezSign setup.&lt;/h3&gt;
+&lt;p&gt;Initialize the signer configuration. This creates the &lt;code&gt;/bake-buddy/signer/tezsign.config.hjson&lt;/code&gt; file and runs TezBake&amp;rsquo;s side TezSign setup.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Configuration Note:&lt;/strong&gt; You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;phase-2-device-preparation&#34;&gt;Phase 2: Device Preparation&lt;/h2&gt;
+&lt;p&gt;Please note that it&amp;rsquo;s highly recommended to complete this step on a machine separate from your TezBake baking machine. This ensures the highest level of security.&lt;/p&gt;
+&lt;p&gt;Use the companion app to complete the setup, available here: (TezSign Releases)[https://github.com/tez-capital/tezsign/releases]&lt;/p&gt;
+&lt;p&gt;Command examples are provided for using the companion app and TezBake, if you go for the ease of setup.&lt;/p&gt;
+&lt;h3 id=&#34;1-initialize-device&#34;&gt;1. Initialize device&lt;/h3&gt;
+&lt;p&gt;Connect your TezSign device to your workstation and run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using companion app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezsign-host init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using TezBake&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Critical Warning&lt;/strong&gt;: &amp;gt; You will be prompted to set a Master Password. Choose this carefully. It CANNOT be changed later.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-generate-your-baking-keys-directly-on-the-device&#34;&gt;2. Generate your baking keys directly on the device.&lt;/h3&gt;
+&lt;p&gt;Generate your baking keys directly on the hardware. In this example, we will generate keys for Consensus and DAL (i.e., companion key).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using companion app&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezsign-host new consensus companion
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using TezBake&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign new consensus companion
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this example, we generate two keys named &amp;ldquo;consensus&amp;rdquo; and &amp;ldquo;companion&amp;rdquo;. You can create as many as you need.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  For baking with the Data Availability Layer (DAL), distinct tz4 keys are required - the consensus and companion key.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Backup:&lt;/strong&gt; Now that you have your keys on the TezSign device, it&amp;rsquo;s a good idea to use Balena Etcher or a similar tool to clone the SD card such that you have a backup in case your original SD card fails.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;phase-3-node-configuration&#34;&gt;Phase 3: Node Configuration&lt;/h2&gt;
+&lt;h3 id=&#34;1-import-keys-to-tezbake&#34;&gt;1. Import Keys to TezBake&lt;/h3&gt;
+&lt;p&gt;Link the keys stored on your TezSign device to TezBake&amp;rsquo;s configuration using local aliases.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;tezsign key alias&amp;gt; --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;octez key alias&amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;--force&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example (Importing the Consensus and Companion Keys):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Caution&lt;/strong&gt;: Ensure your &lt;code&gt;--key-alias&lt;/code&gt; does not conflict with existing keys you wish to keep. Use the &amp;ndash;force flag only if you intend to overwrite an alias.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-retrieve-public-keys--proofs&#34;&gt;2. Retrieve Public Keys &amp;amp; Proofs&lt;/h3&gt;
+&lt;p&gt;To register your keys on-chain (via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;tezgov&lt;/a&gt; or &lt;code&gt;octez-client&lt;/code&gt;), you need the Public Key (BLpk) and the Proof of Possession (PoP)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status --full
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-register-additional-keys&#34;&gt;3. Register Additional Keys&lt;/h3&gt;
+&lt;p&gt;To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them in the node configuration.&lt;/p&gt;
+&lt;p&gt;Create or edit the following file: &lt;code&gt;/bake-buddy/node/additional_key_aliases.list&lt;/code&gt;.
+Add the key aliases you used in the &lt;code&gt;Import Keys to TezBake&lt;/code&gt; step.&lt;/p&gt;
+&lt;p&gt;As per example we used consensus and companion so our file would look as follows:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;consensus&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;companion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;NOTE: Later on when your &lt;code&gt;consensus&lt;/code&gt; key activates you can reimport it under &lt;code&gt;baker&lt;/code&gt; alias (the default one) with &lt;code&gt;--force&lt;/code&gt;. Then you can remove consensus from additional keys.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;gt;&lt;/code&gt; is relevant. The internal tezsign alias can differ.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2-reconfigure&#34;&gt;2. Reconfigure&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;phase-4-verify-and-bake&#34;&gt;Phase 4: Verify and Bake&lt;/h2&gt;
+&lt;h3 id=&#34;1-restart-services&#34;&gt;1. Restart Services&lt;/h3&gt;
+&lt;p&gt;Restart your setup to apply changes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-check-status&#34;&gt;2. Check Status&lt;/h3&gt;
+&lt;p&gt;Check that TezBake sees your new keys:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your keys appear in the info output, you are ready to bake!&lt;/p&gt;
+&lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; Avoid switching to the TezSign backend during the transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can configure TezBake to bake directly through the TezSign backend, bypassing the standard &lt;code&gt;octez-signer&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This setup offers slightly faster execution and lower latency by directly utilizing TezSign&amp;rsquo;s hardware capabilities.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How to Enable&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the signer configuration file: &lt;code&gt;/bake-buddy/signer/app.json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;BACKEND: tezsign&lt;/code&gt; inside the &lt;code&gt;configuration&lt;/code&gt; block:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;// ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;BACKEND&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;tezsign&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;}&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;// ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Apply the changes:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Restart the service.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To Revert:&lt;/strong&gt;: Remove the &lt;code&gt;BACKEND&lt;/code&gt; line from &lt;code&gt;app.json&lt;/code&gt;, upgrade, and restart.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;advanced-automatic-unlock-for-tezsign&#34;&gt;Advanced: Automatic Unlock for TezSign&lt;/h2&gt;
+&lt;p&gt;You can configure TezSign to unlock automatically by securely storing the device password.&lt;/p&gt;
+&lt;h3 id=&#34;steps-to-enable-automatic-unlock&#34;&gt;Steps to Enable Automatic Unlock&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Run the following command to set and store the password:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --password
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will prompt you to enter the password for your TezSign device.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;To unset the automatic unlock, simply set an empty password when prompted.&lt;/em&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Apply the changes by upgrading the configuration:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Restart if Required&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;command-cheatsheet&#34;&gt;Command Cheatsheet&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Task&lt;/th&gt;
+&lt;th&gt;Command Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Initialize TezSign Platform&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;TezBake setup-tezsign --init --platform&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Initialize Device&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;TezBake tezsign init&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Generate New Keys&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;TezBake tezsign new &amp;lt;key-name-1&amp;gt; &amp;lt;key-name-2&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Import Key to TezBake&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;TezBake setup-tezsign --import-key=&amp;lt;tezsign-alias&amp;gt; --key-alias=&amp;lt;alias&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Verify Keys&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;TezBake info&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;support--questions&#34;&gt;Support &amp;amp; Questions&lt;/h2&gt;
+&lt;p&gt;Need help or have questions?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: Missing Attestations in Baking</title>
       <link>/tezbake/tutorials/missing-attestations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1331,177 +1518,6 @@ Use:&lt;br&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Tezbake: Tezbake &#43; TezSign Setup</title>
-      <link>/tezbake/tutorials/baking-with-tezsign/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tezbake/tutorials/baking-with-tezsign/</guid>
-      <description>
-        
-        
-        &lt;h2 id=&#34;command-cheatsheet&#34;&gt;Command Cheatsheet&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Task&lt;/th&gt;
-&lt;th&gt;Command Example&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Initialize TezSign Platform&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake setup-tezsign --init --platform&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Initialize Device&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake tezsign init&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Generate New Keys&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake tezsign new &amp;lt;key-name-1&amp;gt; &amp;lt;key-name-2&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Import Key to Tezbake&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake setup-tezsign --import-key=&amp;lt;tezsign-alias&amp;gt; --key-alias=&amp;lt;alias&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Verify Keys&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake info&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;This guide covers how to configure &lt;strong&gt;TezSign&lt;/strong&gt; (hardware signer) to work seamlessly with &lt;strong&gt;Tezbake&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;This guide covers how to configure &lt;strong&gt;TezSign&lt;/strong&gt; (hardware signer) to work seamlessly with &lt;strong&gt;Tezbake&lt;/strong&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Security First:&lt;/strong&gt; TezSign ensures your baking keys remain secure on hardware and never leave the device.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt; You must have a supported TezSign device ready.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;⚠️ &lt;strong&gt;Disclaimer&lt;/strong&gt;: TezSign is provided without any guarantee; use it at your own risk.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;phase-1-baker-configuration&#34;&gt;Phase 1: Baker Configuration&lt;/h2&gt;
-&lt;p&gt;Environment: Your Tezbake server.&lt;/p&gt;
-&lt;h3 id=&#34;1-install-latest-tezbake&#34;&gt;1. Install Latest TezBake&lt;/h3&gt;
-&lt;p&gt;TezSign support is now available in the latest version of TezBake.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Upgrade the instance to ensure all packages are up to date:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-initialize-the-tezsign-setup&#34;&gt;2. Initialize the TezSign setup.&lt;/h3&gt;
-&lt;p&gt;Initialize the signer configuration. This creates the &lt;code&gt;/bake-buddy/signer/tezsign.config.hjson&lt;/code&gt; file and runs TezBake&amp;rsquo;s side TezSign setup.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Configuration Note:&lt;/strong&gt; You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;phase-2-device-preparation&#34;&gt;Phase 2: Device Preparation&lt;/h2&gt;
-&lt;p&gt;Recommended Environment: A separate, secure workstation (not your baking server).&lt;/p&gt;
-&lt;h3 id=&#34;1-initialize-device&#34;&gt;1. Initialize device&lt;/h3&gt;
-&lt;p&gt;Connect your TezSign device to your workstation and run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign init
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Critical Warning&lt;/strong&gt;: &amp;gt; You will be prompted to set a Master Password. Choose this carefully. It CANNOT be changed later.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2-generate-your-baking-keys-directly-on-the-device&#34;&gt;2. Generate your baking keys directly on the device.&lt;/h3&gt;
-&lt;p&gt;Generate your baking keys directly on the hardware. In this example, we will generate keys for Consensus and DAL.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign new consensus dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this example, we generate two keys named &amp;ldquo;consensus&amp;rdquo; and &amp;ldquo;dal&amp;rdquo;. You can create as many as you need.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  For baking with the Data Availability Layer (DAL), distinct tz4 keys are required - the consensus and companion key.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;phase-3-node-configuration&#34;&gt;Phase 3: Node Configuration&lt;/h2&gt;
-&lt;h3 id=&#34;1-import-keys-to-tezbake&#34;&gt;1. Import Keys to TezBake&lt;/h3&gt;
-&lt;p&gt;Link the keys stored on your TezSign device to TezBake&amp;rsquo;s configuration using local aliases.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;tezsign key alias&amp;gt; --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;octez key alias&amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;--force&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example (Importing the Consensus Key):&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;dal --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Caution&lt;/strong&gt;: Ensure your &lt;code&gt;--key-alias&lt;/code&gt; does not conflict with existing keys you wish to keep. Use the &amp;ndash;force flag only if you intend to overwrite an alias.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2-retrieve-public-keys--proofs&#34;&gt;2. Retrieve Public Keys &amp;amp; Proofs&lt;/h3&gt;
-&lt;p&gt;To register your keys on-chain (via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;tezgov&lt;/a&gt; or &lt;code&gt;octez-client&lt;/code&gt;), you need the Public Key (BLpk) and the Proof of Possession (PoP)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status --full
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you have recorded your key information, &lt;strong&gt;move the TezSign device to your Baker machine&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;3-register-additional-keys&#34;&gt;3. Register Additional Keys&lt;/h3&gt;
-&lt;p&gt;To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them in the node configuration.&lt;/p&gt;
-&lt;p&gt;Create or edit the following file: &lt;code&gt;/bake-buddy/node/additional_key_aliases.list&lt;/code&gt;.
-Add the key aliases you used in the &lt;code&gt;Import Keys to TezBake&lt;/code&gt; step.&lt;/p&gt;
-&lt;p&gt;As per example we used consensus and dal so our file would look as follows:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;consensus&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;dal&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;NOTE: Later on when your &lt;code&gt;consensus&lt;/code&gt; key activates you can reimport it under &lt;code&gt;baker&lt;/code&gt; alias (the default one) with &lt;code&gt;--force&lt;/code&gt;. Then you can remove consensus from additional keys.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;gt;&lt;/code&gt; is relevant. The internal tezsign alias can differ.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;2-reconfigure&#34;&gt;2. Reconfigure&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;phase-4-verify-and-bake&#34;&gt;Phase 4: Verify and Bake&lt;/h2&gt;
-&lt;h3 id=&#34;1-restart-services&#34;&gt;1. Restart Services&lt;/h3&gt;
-&lt;p&gt;Restart your setup to apply changes.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-check-status&#34;&gt;2. Check Status&lt;/h3&gt;
-&lt;p&gt;Check that Tezbake sees your new keys:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your keys appear in the info output, you are ready to bake!&lt;/p&gt;
-&lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; Avoid switching to the TezSign backend during the transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;You can configure Tezbake to bake directly through the TezSign backend, bypassing the standard &lt;code&gt;octez-signer&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;This setup offers faster execution and lower latency by directly utilizing TezSign&amp;rsquo;s hardware capabilities.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;How to Enable&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Open the signer configuration file: &lt;code&gt;/bake-buddy/signer/app.json&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Add &lt;code&gt;BACKEND: tezsign&lt;/code&gt; inside the &lt;code&gt;configuration&lt;/code&gt; block:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;// ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;BACKEND&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;tezsign&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;}&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;// ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;Apply the changes:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;Restart the service.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;To Revert:&lt;/strong&gt;: Remove the &lt;code&gt;BACKEND&lt;/code&gt; line from &lt;code&gt;app.json&lt;/code&gt;, upgrade, and restart.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;advanced-automatic-unlock-for-tezsign&#34;&gt;Advanced: Automatic Unlock for TezSign&lt;/h2&gt;
-&lt;p&gt;You can configure TezSign to unlock automatically by securely storing the device password.&lt;/p&gt;
-&lt;h3 id=&#34;steps-to-enable-automatic-unlock&#34;&gt;Steps to Enable Automatic Unlock&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;Run the following command to set and store the password:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --password
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will prompt you to enter the password for your TezSign device.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;To unset the automatic unlock, simply set an empty password when prompted.&lt;/em&gt;&lt;/p&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;Apply the changes by upgrading the configuration:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;Restart if Required&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;support--questions&#34;&gt;Support &amp;amp; Questions&lt;/h2&gt;
-&lt;p&gt;Need help or have questions?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;

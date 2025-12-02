@@ -66,6 +66,8 @@
   </url><url>
     <loc>/tezpay/tutorials/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/</loc>
+  </url><url>
     <loc>/tezwatch/</loc>
   </url><url>
     <loc>/tezwatch/tutorials/</loc>
@@ -76,6 +78,8 @@
   </url><url>
     <loc>/tezpay/tutorials/updating/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/updating/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/baking-with-prism/</loc>
   </url><url>
     <loc>/tezpay/tutorials/trd-migration/</loc>
@@ -83,6 +87,8 @@
     <loc>/tezpay/configuration/</loc>
   </url><url>
     <loc>/tezpay/extensions/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/baking-with-tezsign/</loc>
   </url><url>
     <loc>/tezpay/configuration/examples/default/</loc>
   </url><url>
@@ -99,8 +105,6 @@
     <loc>/tezpay/configuration/examples/starter/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/baking-with-tezsign/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_apps/</loc>
   </url><url>
@@ -175,5 +179,7 @@
     <loc>/categories/</loc>
   </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/tezsign/</loc>
   </url>
 </urlset>

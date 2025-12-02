@@ -1,0 +1,92 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docs.tez.capital – TezSign Tutorials</title>
+    <link>/tezsign/tutorials/</link>
+    <description>Recent content in TezSign Tutorials on docs.tez.capital</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>tez.capital</copyright>
+    
+	  <atom:link href="/tezsign/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Tezsign: Updating</title>
+      <link>/tezsign/tutorials/updating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/updating/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;keeping-tezsign-up-to-date&#34;&gt;Keeping TezSign Up-to-Date&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Experimental Updater&lt;/strong&gt;
+The &lt;code&gt;tezsign_updater&lt;/code&gt; is currently experimental. &lt;strong&gt;Please backup all files from your data partition before proceeding.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT: Image Compatibility Note&lt;/strong&gt;
+This update process &lt;strong&gt;only works if you are using an image from 21.11.2025 or newer&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you are using an older image:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Backup your data partition.&lt;/li&gt;
+&lt;li&gt;Re-flash the SD card with the latest full image.&lt;/li&gt;
+&lt;li&gt;Copy your backed-up files into the dedicated &lt;code&gt;tezsign&lt;/code&gt; folder on the new data partition. (This is required due to a one-time layout change).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;update-procedure&#34;&gt;Update Procedure&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Stop the device:&lt;/strong&gt; Disconnect the TezSign device from the baker machine. If you use external power, power it off.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Remove SD Card:&lt;/strong&gt; Eject the SD card from the device.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Connect to Manager:&lt;/strong&gt; Insert the SD card into the reader on your manager machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download Updater:&lt;/strong&gt;
+If you do not have it already, download the &lt;code&gt;tezsign_updater&lt;/code&gt; from the &lt;a href=&#34;https://github.com/tez-capital/tezsign/releases&#34;&gt;GitHub Releases page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Example command to download and make executable:&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022128/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;](&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022128/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; -O tezsign_updater &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x tezsign_updater
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Run the Updater:&lt;/strong&gt;
+Execute the updater tool. It will automatically scan for viable SD cards, check partition layouts, and verify the existence of TezSign files.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezsign_updater
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can run &lt;code&gt;./tezsign_updater -h&lt;/code&gt; to see all available options.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Select SD Card:&lt;/strong&gt;
+Choose the SD card you wish to flash from the available list. The tool will indicate &lt;strong&gt;OK&lt;/strong&gt; for devices that match the TezSign layout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose Update Type:&lt;/strong&gt;
+Select the kind of update you wish to perform:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Full:&lt;/strong&gt; Updates all partitions except the data partition. &lt;em&gt;(Slower)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;App:&lt;/strong&gt; Updates only the TezSign application. &lt;em&gt;(Fast)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Finish:&lt;/strong&gt;
+Once the update is complete, remove the SD card from your manager machine, insert it back into your TezSign device, and reconnect it to the baker machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
