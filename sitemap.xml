@@ -66,6 +66,8 @@
   </url><url>
     <loc>/tezpay/tutorials/</loc>
   </url><url>
+    <loc>/tezsign/</loc>
+  </url><url>
     <loc>/tezsign/tutorials/</loc>
   </url><url>
     <loc>/tezwatch/</loc>
@@ -179,7 +181,5 @@
     <loc>/categories/</loc>
   </url><url>
     <loc>/tags/</loc>
-  </url><url>
-    <loc>/tezsign/</loc>
   </url>
 </urlset>
