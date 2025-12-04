@@ -145,7 +145,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsupdating-li">
   <a href="/tezbake/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsupdating"><span class="">Updating</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-prism-li">
-  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake with Prism Tunneling</span></a>
+  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">TezBake with Prism Tunneling</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-tezsign-li">
   <a href="/tezbake/tutorials/baking-with-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-tezsign"><span class="">Baking with TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsmissing-attestations-li">
@@ -495,15 +495,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 <p>Verify the installation:</p>
 <p><code>tezbake apps</code></p>
 <p>Ensure the output includes:</p>
-<pre tabindex="0"><code>pay    │ true
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pay    │ <span style="color:#204a87">true</span>
+</span></span></code></pre></div><hr>
 <h2 id="migration-for-existing-tezpay-users">Migration for Existing TezPay Users</h2>
 <p>Migrating from standalone TezPay is straightforward:</p>
 <ul>
 <li>Copy your existing configuration (<code>config.hjson</code>), your private key (<code>payout_wallet_private.key</code>) or remote signer (<code>remote_signer.hjson</code>) files and <code>reports</code> directory into:</li>
 </ul>
-<pre tabindex="0"><code>/bake-buddy/pay
-</code></pre><h2 id="setup-guide-for-new-users">Setup Guide for New Users</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bake-buddy/pay
+</span></span></code></pre></div><h2 id="setup-guide-for-new-users">Setup Guide for New Users</h2>
 <p>New users should follow these steps for proper setup:</p>
 <h3 id="step-1-creating-the-configuration-file-confighjson">Step 1: Creating the Configuration File (<code>config.hjson</code>)</h3>
 <p>Inside <code>/bake-buddy/pay</code>, create a new file called exactly <code>config.hjson</code>.</p>
@@ -524,8 +524,8 @@ Please follow the steps below to create your configuration and wallet or remote 
 <p><strong>Option A: Private Key (<code>payout_wallet_private.key</code>):</strong></p>
 <p>Create file named exactly <code>payout_wallet_private.key</code> inside <code>/bake-buddy/pay</code>.</p>
 <p>Insert your <strong>unencrypted</strong> private key:</p>
-<pre tabindex="0"><code>edsk...yourprivatekeyhere...
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>edsk...yourprivatekeyhere...
+</span></span></code></pre></div><blockquote>
 <p><strong>Important:</strong><br>
 <strong>Use a dedicated wallet with minimal funds for payouts only, never your main baker wallet.</strong></p>
 </blockquote>

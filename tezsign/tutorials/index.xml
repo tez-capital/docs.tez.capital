@@ -27,10 +27,8 @@
         &lt;h2 id=&#34;keeping-tezsign-up-to-date&#34;&gt;Keeping TezSign Up-to-Date&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ WARNING: Experimental Updater&lt;/strong&gt;
-The &lt;code&gt;tezsign_updater&lt;/code&gt; is currently experimental. &lt;strong&gt;Please backup all files from your data partition before proceeding.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;IMPORTANT: Image Compatibility Note&lt;/strong&gt;
+The &lt;code&gt;tezsign_updater&lt;/code&gt; is currently experimental. &lt;strong&gt;Please backup all files from your data partition before proceeding.&lt;/strong&gt;
+&lt;strong&gt;IMPORTANT: Image Compatibility Note&lt;/strong&gt;
 This update process &lt;strong&gt;only works if you are using an image from 21.11.2025 or newer&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;If you are using an older image:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
