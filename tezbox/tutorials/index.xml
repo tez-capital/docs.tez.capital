@@ -99,8 +99,8 @@ Supported units: &lt;code&gt;s&lt;/code&gt; (seconds), &lt;code&gt;m&lt;/code&gt
 &lt;p&gt;Array values are always replaced, not concatenated.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;For example if you want to adjust block times, you can create &lt;code&gt;sandbox-override-parameters.hjson&lt;/code&gt; file with the following content:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;minimal_block_delay: &amp;#34;1&amp;#34; // minimal block delay in seconds, has to be quoted
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Run the container with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;minimal_block_delay: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt; // minimal block delay in seconds, has to be quoted
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run the container with the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# sudo docker run -it -v &amp;lt;path-to-your-file&amp;gt;:/tezbox/overrides/protocols/&amp;lt;case sensitive protocol id&amp;gt;/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker run -it -v &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;pwd&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;/sandbox-override-parameters.hjson:/tezbox/overrides/protocols/Proxford/sandbox-parameters.hjson ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
@@ -144,7 +144,7 @@ Supported units: &lt;code&gt;s&lt;/code&gt; (seconds), &lt;code&gt;m&lt;/code&gt
 &lt;p&gt;To maintain some level of compatibility with Flextesa, the &lt;code&gt;alice&lt;/code&gt; and &lt;code&gt;bob&lt;/code&gt; accounts are the same. The RPC port is exposed on ports 8732 and 20000. In addition, TezBox uses similar protocol aliases like &lt;code&gt;oxfordbox&lt;/code&gt; and &lt;code&gt;parisbox&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Unlike Flextesa, TezBox won&amp;rsquo;t expose configuration through command line arguments. Instead you can edit the configuration directly in the configuration files or use overrides.&lt;/p&gt;
 &lt;h2 id=&#34;building-tezbox&#34;&gt;Building TezBox&lt;/h2&gt;
-&lt;h1 id=&#34;to-build-tezbox-follow-these-steps&#34;&gt;To build TezBox follow these steps:&lt;/h1&gt;
+&lt;h2 id=&#34;to-build-tezbox-follow-these-steps&#34;&gt;To build TezBox follow these steps&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;clone the repository
 &lt;code&gt;git clone https://github.com/tez-capital/tezbox &amp;amp;&amp;amp; cd tezbox&lt;/code&gt;&lt;/li&gt;

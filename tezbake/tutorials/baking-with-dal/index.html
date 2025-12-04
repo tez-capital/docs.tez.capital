@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="370">
+<meta itemprop="wordCount" content="371">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -145,7 +145,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsupdating-li">
   <a href="/tezbake/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsupdating"><span class="">Updating</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-prism-li">
-  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake Prism Tunneling Setup</span></a>
+  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake with Prism Tunneling</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-tezsign-li">
   <a href="/tezbake/tutorials/baking-with-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-tezsign"><span class="">Baking with TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsmissing-attestations-li">
@@ -439,15 +439,15 @@
 <h2 id="new-tezbake-setup-with-dal">New TezBake Setup with DAL</h2>
 <p>You can set up TezBake with DAL integration from scratch. Follow these steps:</p>
 <ol>
-<li><strong>Run setup with DAL integration:</strong></li>
-</ol>
+<li>
+<p><strong>Run setup with DAL integration:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --with-dal
-</span></span></code></pre></div><ol start="2">
+</span></span></code></pre></div></li>
 <li>
 <p>Proceed with your usual setup steps (ledger integration, baker registration, etc.).</p>
 </li>
 <li>
-<p>Continue to the <a href="#after-setup">After Setup</a> section.</p>
+<p>Continue to the <a href="#after-dal-setup">After DAL Setup</a> section.</p>
 </li>
 </ol>
 <hr>
@@ -466,10 +466,12 @@
 </span></span></code></pre></div><p>If the above command fails, specify your <strong>baker key</strong> (not consensus key):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-key&gt;
 </span></span></code></pre></div><ol start="2">
-<li><strong>Restart TezBake to apply changes:</strong></li>
-</ol>
+<li>
+<p><strong>Restart TezBake to apply changes:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
 <p>If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --dal
 </span></span><span style="display:flex;"><span>tezbake setup --node  <span style="color:#8f5902;font-style:italic"># choose &#39;yes&#39; to merge config when prompted</span>

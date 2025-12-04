@@ -636,8 +636,8 @@ Please follow the steps below to create your configuration and wallet or remote 
 i. App Permissions: Select &amp;lsquo;Read and write&amp;rsquo; &lt;br&gt;
 ii. Type of App: Select &amp;lsquo;Web App, Automated App or Bot&amp;rsquo;&lt;br&gt;
 iii. App Info: &lt;br&gt;
-a. Callback URI/Redirect URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#39;&#34;&gt;https://www.TezPayisthebest.com/&#39;&lt;/a&gt;&lt;br&gt;
-b. Website URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#39;&#34;&gt;https://www.TezPayisthebest.com/&#39;&lt;/a&gt;&lt;br&gt;
+a. Callback URI/Redirect URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#34;&gt;https://www.TezPayisthebest.com/&lt;/a&gt;&amp;rsquo;&lt;br&gt;
+b. Website URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#34;&gt;https://www.TezPayisthebest.com/&lt;/a&gt;&amp;rsquo;&lt;br&gt;
 iv. Click &amp;lsquo;save&amp;rsquo; when finished. &lt;br&gt;&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;

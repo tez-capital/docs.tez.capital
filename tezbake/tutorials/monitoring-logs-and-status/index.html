@@ -145,7 +145,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsupdating-li">
   <a href="/tezbake/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsupdating"><span class="">Updating</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-prism-li">
-  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake Prism Tunneling Setup</span></a>
+  <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">&gt; TezBake with Prism Tunneling</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-tezsign-li">
   <a href="/tezbake/tutorials/baking-with-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-tezsign"><span class="">Baking with TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsmissing-attestations-li">
@@ -438,12 +438,12 @@
 <h2 id="monitor-overall-tezbake-status">Monitor overall TezBake status</h2>
 <p>Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the Tez Capital community as there is something that probably needs tweaking.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
-</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeInfo.png" alt=""></p>
+</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeInfo.png" alt="Info screen showing status of node services and Ledger"></p>
 <h2 id="monitor-tezbake-logs">Monitor TezBake logs</h2>
 <h3 id="monitor-full-tezbake-node-and-baker-logs-in-real-time">Monitor full TezBake node and baker logs in real time</h3>
 <p>Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log -f
-</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeNodeLogF.png" alt=""></p>
+</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeNodeLogF.png" alt="TezBake node log with all blocks synchronized and all attempted baking and endorsing work"></p>
 <h3 id="monitor-limited-tezbake-node-or-baker-logs-in-real-time">Monitor limited TezBake node or baker logs in real time</h3>
 <p>Using these commands you can focus on just the node, just the baking/endorsing process or just the accusation (of double baking) processes</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log node -f
@@ -465,7 +465,7 @@
 <h3 id="monitor-full-tezbake-signer-logs-in-real-time">Monitor full TezBake signer logs in real time</h3>
 <p>Using the command below shows everything your Ledger is signing or trying to sign. If there is a hardware wallet issue, this log will confirm it.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer log -f
-</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeSignerLogF.png" alt=""></p>
+</span></span></code></pre></div><p><img src="/tezbake/tutorial/tezbakeSignerLogF.png" alt="TezBake signer log with all work that node is attempting to have signed by the Ledger"></p>
 <h2 id="general-linux-monitoring">General Linux monitoring</h2>
 <p>All TezBake logs are stored in the <code>/var/log/syslog</code> file. You can view the logs by running the commands below. You can also use tezbake itself to view the logs in real time.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /var/log/syslog <span style="color:#000;font-weight:bold">|</span> grep tezbake
