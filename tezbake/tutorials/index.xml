@@ -44,10 +44,8 @@
 &lt;li&gt;
 &lt;p&gt;Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet &amp;amp; Baker apps installed.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp;amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings
+Absolutely ensure you have properly configured the Ledger device settings so the device doesn&amp;rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeLedgerLock.png&#34; alt=&#34;&amp;lt;Ledger locking settings&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -57,10 +55,8 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
+&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt; to complete the setup.
+What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-copy-tezbake&#34;&gt;Download and copy tezbake&lt;/h3&gt;
@@ -90,10 +86,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After starting the node, run the following command over and over every few minutes and monitor the &amp;ldquo;level&amp;rdquo; displayed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; provide Ghostnet and Testnet block explorers as well. Make sure you&amp;rsquo;re looking at the right explorer.&lt;/p&gt;
+&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.
+Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; provide Ghostnet and Testnet block explorers as well. Make sure you&amp;rsquo;re looking at the right explorer.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-ledger-key-or-soft-key-and-register-as-baker&#34;&gt;Import Ledger key or soft key and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
@@ -105,35 +99,17 @@
 &lt;p&gt;You can import your Ledger key by running the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;If you have a custom derivation path, you can specify it as shown: (&lt;code&gt;--import-key=&amp;quot;ed25519/0h/0h&amp;quot;&lt;/code&gt;; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;--hwm 1&lt;/code&gt; works great if you&amp;rsquo;re setting up for the first time. If you&amp;rsquo;re setting up a device that&amp;rsquo;s been used to bake before, you want to change this (&lt;code&gt;1&lt;/code&gt;) to the current block height on the blockchain for your safety.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;If you&amp;rsquo;re importing for the second time after already trying again but failing, you can use &lt;code&gt;--force&lt;/code&gt; to force the import.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and login with ledger, accepting the default derivation path.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&amp;rsquo;re setting up a brand new device that&amp;rsquo;s not been used for baking before, there is no need to alter the default command above.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Always make sure you&amp;rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&amp;rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures, the documentation you keep, and the care you take when setting up your baker.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&amp;rsquo;re not accidentally double baking or attesting.&lt;/p&gt;
+&lt;p&gt;If you have a custom derivation path, you can specify it as shown: (&lt;code&gt;--import-key=&amp;quot;ed25519/0h/0h&amp;quot;&lt;/code&gt;; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.
+&lt;code&gt;--hwm 1&lt;/code&gt; works great if you&amp;rsquo;re setting up for the first time. If you&amp;rsquo;re setting up a device that&amp;rsquo;s been used to bake before, you want to change this (&lt;code&gt;1&lt;/code&gt;) to the current block height on the blockchain for your safety.
+If you&amp;rsquo;re importing for the second time after already trying again but failing, you can use &lt;code&gt;--force&lt;/code&gt; to force the import.
+Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;
+The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and login with ledger, accepting the default derivation path.
+Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.
+If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
+If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
+The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&amp;rsquo;re setting up a brand new device that&amp;rsquo;s not been used for baking before, there is no need to alter the default command above.
+Always make sure you&amp;rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&amp;rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures, the documentation you keep, and the care you take when setting up your baker.
+To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&amp;rsquo;re not accidentally double baking or attesting.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---insecure-import-soft-key-to-tezbake-signer&#34;&gt;(Option 2 - INSECURE) Import Soft key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;First, generate the baker key for TezBake signer:&lt;/p&gt;
@@ -147,10 +123,8 @@ If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying t
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of baking inactivity.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re setting up a new baker, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for over 2 weeks, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for less than 2 weeks, you don&amp;rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.&lt;/p&gt;
+&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of baking inactivity.
+Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re setting up a new baker, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for over 2 weeks, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for less than 2 weeks, you don&amp;rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
