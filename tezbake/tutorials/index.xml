@@ -52,7 +52,7 @@
 &lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&amp;rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
 &lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
@@ -142,6 +142,10 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The tz4 key iported above is your manager key, not your consensus key or companion key.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
+&lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
+&lt;p&gt;Follow the steps in &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
@@ -179,7 +183,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&amp;rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
 &lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
@@ -243,7 +247,11 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-your-dal-attester-profile&#34;&gt;Import your DAL attester profile&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
+&lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
+&lt;p&gt;Follow the steps in &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -448,6 +456,8 @@ We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;remote-dal-setup&#34;&gt;Remote DAL Setup&lt;/h2&gt;
+&lt;p&gt;Follow the Prism setup steps here: &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;quick-troubleshooting&#34;&gt;Quick Troubleshooting&lt;/h2&gt;
 &lt;p&gt;If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1246">
+<meta itemprop="wordCount" content="1304">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -356,7 +356,7 @@
   <ul>
     <li><a href="#tezos-testnets">Tezos Testnets</a></li>
     <li><a href="#preparation">Preparation</a></li>
-    <li><a href="#installation">Installation</a>
+    <li><a href="#installation-all-in-one">Installation (All-in-one)</a>
       <ul>
         <li><a href="#download-and-install-tezbake">Download and install tezbake</a></li>
         <li><a href="#setup-tezos-node-signer-dal-and-install-tezbake-dependencies">Setup Tezos node, signer, DAL and install tezbake dependencies</a></li>
@@ -368,6 +368,7 @@
         <li><a href="#import-your-dal-attester-profile">Import your DAL attester profile</a></li>
       </ul>
     </li>
+    <li><a href="#installation-advanced">Installation (Advanced)</a></li>
   </ul>
 </nav>
       </div>
@@ -450,7 +451,7 @@
 <p>🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
 <p>What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.</p>
 </blockquote>
-<h2 id="installation">Installation</h2>
+<h2 id="installation-all-in-one">Installation (All-in-one)</h2>
 <h3 id="download-and-install-tezbake">Download and install tezbake</h3>
 <p>To begin, run the script below, which will download the latest version of TezBake and copy it to your <code>/usr/sbin</code> directory. This script works with both x86_64 and arm64 architectures.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
@@ -514,7 +515,11 @@ Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.c
 </blockquote>
 <h3 id="import-your-dal-attester-profile">Import your DAL attester profile</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-tz4-key&gt; --force
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><h2 id="installation-advanced">Installation (Advanced)</h2>
+<p>You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.</p>
+<p>Follow the steps in <a href="/en/tezbake/tutorials/baking-with-prism.md">Baking with Prism</a></p>
+<p>As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.</p>
+<hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
