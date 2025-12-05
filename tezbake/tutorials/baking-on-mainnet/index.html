@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1798">
+<meta itemprop="wordCount" content="1816">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -541,6 +541,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client stake <span style="color:#0000cf;font-weight:bold">6000</span> <span style="color:#204a87;font-weight:bold">for</span> baker 
 </span></span></code></pre></div><h3 id="import-your-dal-attester-profile">Import your DAL attester profile</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles --auto
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If for some reason the auto method is not working, use the command below to bypass it.</span>
 </span></span><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-tz4-key&gt; --force
 </span></span></code></pre></div><blockquote>
 <p><strong>Note:</strong> The tz4 key iported above is your manager key, not your consensus key or companion key.</p>
