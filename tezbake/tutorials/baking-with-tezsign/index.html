@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="1116">
+<meta itemprop="wordCount" content="1550">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -374,10 +374,10 @@
     </li>
     <li><a href="#phase-3-node-configuration">Phase 3: Node Configuration</a>
       <ul>
-        <li><a href="#1-import-keys-to-tezbake">1. Import Keys to TezBake</a></li>
-        <li><a href="#2-retrieve-public-keys--proofs">2. Retrieve Public Keys &amp; Proofs</a></li>
-        <li><a href="#3-register-additional-keys">3. Register Additional Keys</a></li>
-        <li><a href="#2-reconfigure">2. Reconfigure</a></li>
+        <li><a href="#1-import-keys-to-tezbake-client">1. Import Keys to TezBake client</a></li>
+        <li><a href="#2-import-keys-to-tezbake-node-and-signer">2. Import Keys to TezBake node and signer</a></li>
+        <li><a href="#3-retrieve-public-keys--proofs--register-them-on-the-chain">3. Retrieve Public Keys &amp; Proofs &amp; Register them on the chain</a></li>
+        <li><a href="#4-reconfigure">4. Reconfigure</a></li>
       </ul>
     </li>
     <li><a href="#phase-4-verify-and-bake">Phase 4: Verify and Bake</a>
@@ -509,31 +509,50 @@
 <strong>Backup:</strong> Now that you have your keys on the TezSign device, it&rsquo;s a good idea to use Balena Etcher or a similar tool to clone the SD card such that you have a backup in case your original SD card fails.</p>
 </blockquote>
 <h2 id="phase-3-node-configuration">Phase 3: Node Configuration</h2>
-<h3 id="1-import-keys-to-tezbake">1. Import Keys to TezBake</h3>
+<h3 id="1-import-keys-to-tezbake-client">1. Import Keys to TezBake client</h3>
 <p>Link the keys stored on your TezSign device to TezBake&rsquo;s configuration using local aliases.</p>
+<p>Depending on the context of your setup, you will determine how to name your TezSign wallet aliases within TezBake itself.</p>
+<p>When you&rsquo;re first switching to a new consensus key or to tz4 baking, you will already have a key called <code>baker</code>. This is the default key that always gets used in TezBake. In addition to this key, you will also import your consensus and companion keys, from TezSign. Once you are actively using your TezSign keys, you can then import the <code>consensus</code> key as the <code>baker</code> key as described below.</p>
+<p>If you&rsquo;re aleady baking using tz4 keys, it&rsquo;s recommended to alias your <code>consensus</code> key on the TezSign signer to the <code>baker</code> key.</p>
+<p>The desired end stake of your TezBake signing experience is to use <code>baker</code> for <code>consensus</code> and to use the TezSign backend directly (see below). This way there are no missing keys reported by <code>tezbake info</code>. You need to ensure the migration to this desired state is performed one step at a time, respecting the in-between states.</p>
 <p><strong>Syntax:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>&lt;tezsign key alias&gt; --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>&lt;octez key alias&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span></code></pre></div><p><strong>Example (Importing the Consensus and Companion Keys):</strong></p>
+</span></span></code></pre></div><p><strong>Example (Importing the Consensus and Companion Keys) &ndash; IF MIGRATING TO BLS/tz4:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
+</span></span><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>companion --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>companion
+</span></span></code></pre></div><p><strong>Example (Importing the Consensus and Companion Keys &ndash; IF ALREADY ON BLS/tz4:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>baker
 </span></span><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>companion --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>companion
 </span></span></code></pre></div><blockquote>
 <p><strong>Caution</strong>: Ensure your <code>--key-alias</code> does not conflict with existing keys you wish to keep. Use the &ndash;force flag only if you intend to overwrite an alias.</p>
 </blockquote>
-<h3 id="2-retrieve-public-keys--proofs">2. Retrieve Public Keys &amp; Proofs</h3>
-<p>To register your keys on-chain (via <a href="https://gov.tez.capital/">tezgov</a> or <code>octez-client</code>), you need the Public Key (BLpk) and the Proof of Possession (PoP)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
-</span></span></code></pre></div><h3 id="3-register-additional-keys">3. Register Additional Keys</h3>
+<h3 id="2-import-keys-to-tezbake-node-and-signer">2. Import Keys to TezBake node and signer</h3>
 <p>To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them in the node configuration.</p>
 <p>Create or edit the following file: <code>/bake-buddy/node/additional_key_aliases.list</code>.
 Add the key aliases you used in the <code>Import Keys to TezBake</code> step.</p>
-<p>As per example we used consensus and companion so our file would look as follows:</p>
+<p><strong>IF MIGRATING TO BLS/tz4:</strong>*
+As per the example we used consensus and companion so our file would look as follows:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#000">consensus</span>
 </span></span><span style="display:flex;"><span><span style="color:#000">companion</span>
 </span></span></code></pre></div><blockquote>
-<p>NOTE: Later on when your <code>consensus</code> key activates you can reimport it under <code>baker</code> alias (the default one) with <code>--force</code>. Then you can remove consensus from additional keys.
+<p>NOTE: Later on when your <code>consensus</code> key activates you can reimport it under <code>baker</code> alias (the default one) with <code>--force</code>. Then you can remove consensus from additional keys and run <code>tezbake upgrade</code> again.
 NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is relevant. The internal tezsign alias can differ.</p>
 </blockquote>
-<h3 id="2-reconfigure">2. Reconfigure</h3>
+<p><strong>IF ALREADY ON BLS/TZ4:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#000">companion</span>
+</span></span></code></pre></div><blockquote>
+<p>The consensus keys is not listed because it&rsquo;s the default assumed baking key by TezBake</p>
+</blockquote>
+<h3 id="3-retrieve-public-keys--proofs--register-them-on-the-chain">3. Retrieve Public Keys &amp; Proofs &amp; Register them on the chain</h3>
+<p>To register your keys on-chain (via <a href="https://gov.tez.capital/">TezGov</a> or <code>octez-client</code>), you need the Public Key (BLpk) and the Proof of Possession (PoP)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
+</span></span></code></pre></div><p>The easiest way to activate your newly generated keys is by using the <a href="https://gov.tez.capital/">TezGov</a> web portal. Connect with your manager Ledger or similar and within the <code>Baker Management</code> area, set your consensus and companion key details. You will need your BLpk&rsquo;s, first, and after filling them out, the prompt will ask you for your PoP&rsquo;s.</p>
+<p>Bakers must now set their new consensus and companion keys together when changing to tz4 signing at first. Later down the road, you will be able to only rotate your consensus key if so desired. The companion key is a <strong>must</strong> for tz4 BLS signing, to perform the DAL-related duties. When you see &ldquo;companion,&rdquo; think &ldquo;DAL.&rdquo; <strong>Consensus and companion always go together.</strong></p>
+<p>Registering using the CLI is somewhat more challenging and no longer recommended but possible.</p>
+<p>Here&rsquo;s an example to fill in your own details, assuming you have your baker manager wallet imported as <code>baker</code> (this is no longer recommended, you should have your consensus key imported as <code>baker</code> and manage your baker parameters with &lt;gov.tez.capital&gt;):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> consensus key <span style="color:#204a87;font-weight:bold">for</span> baker to consensus --consensus-key-pop BLsig9xyDJ29WjExJgRAvPXrD5u46aTn1uEmrhz12VKXtrUSzP34FCqgUF56L3otpzB1kLuzUCaLk2tzT2309GKLDgj209jeslkjes3mr43590jfgLKDJd09j3092jLKDFJnlksjodijF3
+</span></span><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> companion key <span style="color:#204a87;font-weight:bold">for</span> baker to companion --companion-key-pop BLsig9xyDJ29WjExJgRAvPXrD5u46aTn1uEmrhz12VKXtrUSzP34FCqgUF56L3otpzB1kLuzUCaLk2tzT2309GKLDgj209jeslkjes3mr43590jfgLKDJd09j3092jLKDFJnlksjodijF3
+</span></span></code></pre></div><h3 id="4-reconfigure">4. Reconfigure</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
 </span></span></code></pre></div><h2 id="phase-4-verify-and-bake">Phase 4: Verify and Bake</h2>
 <h3 id="1-restart-services">1. Restart Services</h3>
@@ -545,11 +564,13 @@ NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is 
 </span></span></code></pre></div><p>If your keys appear in the info output, you are ready to bake!</p>
 <h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
 <blockquote>
-<p><strong>Caution:</strong> Avoid switching to the TezSign backend during the transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.</p>
+<p><strong>Caution:</strong> Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.</p>
 </blockquote>
 <p>You can configure TezBake to bake directly through the TezSign backend, bypassing the standard <code>octez-signer</code>.</p>
+<p>Before: <code>&lt;octez-node&gt;&lt;octez-signer&gt;&lt;tezsign&gt;</code>
+After: <code>&lt;octez-node&gt;&lt;tezsign&gt;</code></p>
 <p>This setup offers slightly faster execution and lower latency by directly utilizing TezSign&rsquo;s hardware capabilities.</p>
-<p><strong>How to Enable</strong></p>
+<p><strong>How to Enable:</strong></p>
 <ol>
 <li>
 <p>Open the signer configuration file: <code>/bake-buddy/signer/app.json</code></p>

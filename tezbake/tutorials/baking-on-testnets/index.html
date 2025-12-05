@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1997">
+<meta itemprop="wordCount" content="1237">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -358,12 +358,12 @@
     <li><a href="#preparation">Preparation</a></li>
     <li><a href="#installation">Installation</a>
       <ul>
-        <li><a href="#download-and-copy-tezbake">Download and copy tezbake</a></li>
-        <li><a href="#setup-tezos-node-signer-and-install-tezbake-dependencies">Setup Tezos node, signer and install tezbake dependencies</a></li>
+        <li><a href="#download-and-install-tezbake">Download and install tezbake</a></li>
+        <li><a href="#setup-tezos-node-signer-dal-and-install-tezbake-dependencies">Setup Tezos node, signer, DAL and install tezbake dependencies</a></li>
         <li><a href="#bootstrap-tezos-node">Bootstrap Tezos node</a></li>
         <li><a href="#start-tezos-node">Start Tezos node</a></li>
-        <li><a href="#import-ledger-key-or-soft-key-and-register-as-baker">Import Ledger key or soft key and register as baker</a></li>
-        <li><a href="#register-as-baker-on-the-tezos-blockchain-ghostnet">Register as baker on the Tezos blockchain Ghostnet</a></li>
+        <li><a href="#import-baking-keys-and-register-as-baker">Import baking keys and register as baker</a></li>
+        <li><a href="#register-as-baker-on-the-tezos-blockchain-testnet">Register as baker on the Tezos blockchain Testnet</a></li>
         <li><a href="#stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</a></li>
       </ul>
     </li>
@@ -435,41 +435,30 @@
 <li>Shadownet is similar to Ghostnet but it is a private testnet that is used by developers to test new features and applications before they are deployed on the mainnet. Shadownet is not open to the public and is only accessible to developers who are working on Tezos projects. Shadownet bakers are centrally selected by the core Tezos development team. Setting up a testnet bakery here is possible but not encouraged.</li>
 </ul>
 <h2 id="preparation">Preparation</h2>
-<p>Installing TezBake CLI and using it to setup your Tezos baker is very simple. You will need the following tools:</p>
+<p>Installing TezBake and using it to setup your Tezos baker is very simple. You will need the following tools:</p>
 <ol>
-<li>
-<p>Spare computer or existing computer with Linux installed. We recommend Ubuntu Linux.</p>
+<li>Spare computer or existing computer or VM with Linux installed. We recommend Ubuntu Linux.
 <blockquote>
 <p>You must have an SSD drive or better &amp; at least 8GB RAM</p>
 </blockquote>
 </li>
-<li>
-<p>Ledger Nano S Plus or Ledger Nano X hardware wallet with Tezos Wallet &amp; Baker apps installed.</p>
-<blockquote>
-<p>It&rsquo;s necessary to use Ledger Live to install the Tezos Wallet &amp; Baking applications; to install the latter you must enable developer mode in Ledger Live settings
-Absolutely ensure you have properly configured the Ledger device settings so the device doesn&rsquo;t lock 10 minutes after inactivity. This is a common issue that can cause your baker to stop baking.</p>
-</blockquote>
-<p><img src="/tezbake/tutorial/tezbakeLedgerLock.png" alt="&lt;Ledger locking settings"></p>
-<blockquote>
-<p>Remove the Ledger wallet app from your baking device after you&rsquo;ve finished setting up your baker. This is a security measure to prevent unauthorized access to your baker. You can always reinstall the app when you need to use the Ledger for baking or other purposes.</p>
-</blockquote>
-</li>
 </ol>
+<p>All advanced TezBake configurations, including TezSign block signing apply here as well.</p>
 <hr>
 <blockquote>
-<p>🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network. After completing the instructions here, head over to <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a> to complete the setup.
-What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.</p>
+<p>🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
+<p>What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.</p>
 </blockquote>
 <h2 id="installation">Installation</h2>
-<h3 id="download-and-copy-tezbake">Download and copy tezbake</h3>
+<h3 id="download-and-install-tezbake">Download and install tezbake</h3>
 <p>To begin, run the script below, which will download the latest version of TezBake and copy it to your <code>/usr/sbin</code> directory. This script works with both x86_64 and arm64 architectures.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you may be prompted for sudo password</span>
-</span></span></code></pre></div><h3 id="setup-tezos-node-signer-and-install-tezbake-dependencies">Setup Tezos node, signer and install tezbake dependencies</h3>
+</span></span></code></pre></div><h3 id="setup-tezos-node-signer-dal-and-install-tezbake-dependencies">Setup Tezos node, signer, DAL and install tezbake dependencies</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Seoulnet setup:</span>
-</span></span><span style="display:flex;"><span>tezbake setup --node-configuration<span style="color:#ce5c00;font-weight:bold">=</span>https://raw.githubusercontent.com/tez-capital/xtz.configs/main/seoulnet.json
+</span></span><span style="display:flex;"><span>tezbake setup --with-dal --node-configuration<span style="color:#ce5c00;font-weight:bold">=</span>https://raw.githubusercontent.com/tez-capital/xtz.configs/main/seoulnet.json
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Ghostnet setup:</span>
-</span></span><span style="display:flex;"><span>tezbake setup --node-configuration<span style="color:#ce5c00;font-weight:bold">=</span>https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
+</span></span><span style="display:flex;"><span>tezbake setup --with-dal --node-configuration<span style="color:#ce5c00;font-weight:bold">=</span>https://raw.githubusercontent.com/tez-capital/xtz.configs/main/ghostnet.json
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you may be prompted for sudo password</span>
 </span></span></code></pre></div><h3 id="bootstrap-tezos-node">Bootstrap Tezos node</h3>
 <p>At this stage, it&rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&rsquo;t have to synchronize block-by-block, which takes hours at best.</p>
@@ -496,43 +485,24 @@ What is the DAL anyway? The DAL acts like an overflow area for data, where large
 <p>Level refers to the latest block number on mainnet. Navigate to <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.
 Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> provide Ghostnet and Testnet block explorers as well. Make sure you&rsquo;re looking at the right explorer.</p>
 </blockquote>
-<h3 id="import-ledger-key-or-soft-key-and-register-as-baker">Import Ledger key or soft key and register as baker</h3>
+<h3 id="import-baking-keys-and-register-as-baker">Import baking keys and register as baker</h3>
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
-<p>You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.</p>
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
-<h4 id="option-1---recommended-import-ledger-key-to-tezbake-signer">(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer</h4>
-<p>Using a Ledger hardware wallet is a secure and cost effective way to bake on the Tezos network. The Ledger device is a secure element that stores your private key and signs transactions on the device itself. This means your private key never leaves the device and is never exposed to the internet.</p>
-<p>In order to get the most out of your Ledger, it&rsquo;s now recommended to use the P-256 curve (tz3) for baking. This curve is faster than the default ed25519 curve (tz1). If you&rsquo;re setting up a baker that already exists on the network, you can use the same curve as before. If you&rsquo;re setting up a new baker, it&rsquo;s recommended to use the P-256 curve.</p>
-<p>You can import your Ledger key by running the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
-</span></span></code></pre></div><blockquote>
-<p>If you have a custom derivation path, you can specify it as shown: (<code>--import-key=&quot;ed25519/0h/0h&quot;</code>; the default is ed25519/0h/0h which works just fine but is not as fast as P-256 or secp256k1.
-<code>--hwm 1</code> works great if you&rsquo;re setting up for the first time. If you&rsquo;re setting up a device that&rsquo;s been used to bake before, you want to change this (<code>1</code>) to the current block height on the blockchain for your safety.
-If you&rsquo;re importing for the second time after already trying again but failing, you can use <code>--force</code> to force the import.
-Once imported, you can see your baker address by running <code>tezbake info</code>
-The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&rsquo;t have this information yet, don&rsquo;t worry. To get the address of the ledger that&rsquo;s used by default simply go to <a href="https://gov.tez.capital">https://gov.tez.capital</a> and login with ledger, accepting the default derivation path.
-Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.
-If your device was used to bake before it might have a &ldquo;high watermark&rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&rsquo;re trying to use now but it&rsquo;s been a while, it&rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
-The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&rsquo;re setting up a brand new device that&rsquo;s not been used for baking before, there is no need to alter the default command above.
-Always make sure you&rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures, the documentation you keep, and the care you take when setting up your baker.
-To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&rsquo;re not accidentally double baking or attesting.</p>
-</blockquote>
-<h4 id="option-2---insecure-import-soft-key-to-tezbake-signer">(Option 2 - INSECURE) Import Soft key to TezBake signer</h4>
+<h4 id="import-soft-key-to-tezbake">Import Soft key to TezBake</h4>
 <p>First, generate the baker key for TezBake signer:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker --node
 </span></span></code></pre></div><blockquote>
 <p>Make sure to backup your key in a secure location and never share it.</p>
 </blockquote>
 <p>You can get the secret/private key by running the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client show address baker --show-secret
-</span></span></code></pre></div><h3 id="register-as-baker-on-the-tezos-blockchain-ghostnet">Register as baker on the Tezos blockchain Ghostnet</h3>
+</span></span></code></pre></div><h3 id="register-as-baker-on-the-tezos-blockchain-testnet">Register as baker on the Tezos blockchain Testnet</h3>
 <p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (<strong>note</strong>: as well as when voting). For all other baker operations, you must use the Tezos Baking app.</p>
 <p>To secure your XTZ security deposit on Ghostnet you can use the faucet to get some free XTZ. You can find the faucet at <a href="https://faucet.ghostnet.teztnets.com/">https://faucet.ghostnet.teztnets.com/</a></p>
+<p>Each Tezos testnet has a faucet over at <a href="https://teztnets.com">https://teztnets.com</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><blockquote>
-<p>Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of baking inactivity.
-Registering applies to new bakers and to inactive bakers. If you&rsquo;re setting up a new baker, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for over 2 weeks, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for less than 2 weeks, you don&rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.</p>
+<p>Registering applies to new bakers and to inactive bakers. If you&rsquo;re setting up a new baker, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for over 2 weeks, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for less than 2 weeks, you don&rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.</p>
 </blockquote>
 <h3 id="stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</h3>
 <p>To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.</p>
