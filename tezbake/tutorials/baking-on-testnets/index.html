@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1237">
+<meta itemprop="wordCount" content="1246">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -365,6 +365,7 @@
         <li><a href="#import-baking-keys-and-register-as-baker">Import baking keys and register as baker</a></li>
         <li><a href="#register-as-baker-on-the-tezos-blockchain-testnet">Register as baker on the Tezos blockchain Testnet</a></li>
         <li><a href="#stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</a></li>
+        <li><a href="#import-your-dal-attester-profile">Import your DAL attester profile</a></li>
       </ul>
     </li>
   </ul>
@@ -511,7 +512,9 @@ Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.c
 </span></span></code></pre></div><blockquote>
 <p>Change 6000 to the amount you want to stake. The minimum is 6000 XTZ. You may start baking with as little as 1000 XTZ but you will need to set your baking over staking multiplier to 5X and secure 5000 XTZ that will stake to your baker to cover the security deposit requirement. You can also secure delegators&rsquo; XTZ to your baker to cover the security deposit requirement. Each XTZ delegated to your baker will be counted 0.5 towards the security deposit requirement. For example you can start baking with 1000 XTZ + 5000 XTZ secured from stakers, or you can start baking with 1000 XTZ + 10000 XTZ secured from delegators. You can also start baking with 1000 XTZ + 2000 XTZ secured from stakers + 6000 XTZ secured from delegators.</p>
 </blockquote>
-<hr>
+<h3 id="import-your-dal-attester-profile">Import your DAL attester profile</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-tz4-key&gt; --force
+</span></span></code></pre></div><hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
