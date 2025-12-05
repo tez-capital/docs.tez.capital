@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1874">
+<meta itemprop="wordCount" content="1872">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -516,8 +516,8 @@ Always make sure you&rsquo;re not accidentally going to double bake by using you
 To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&rsquo;re not accidentally double baking or attesting.</p>
 </blockquote>
 <h4 id="option-3---insecure-import-soft-key-to-tezbake-node">(Option 3 - INSECURE) Import Soft key to TezBake node</h4>
-<p>First, generate the baker key for TezBake signer:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker --node
+<p>First, generate the baker key for TezBake:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker
 </span></span></code></pre></div><blockquote>
 <p>Make sure to backup your key in a secure location and never share it.</p>
 </blockquote>
