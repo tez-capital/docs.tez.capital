@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="1660">
+<meta itemprop="wordCount" content="1691">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -384,6 +384,7 @@
       <ul>
         <li><a href="#1-restart-services">1. Restart Services</a></li>
         <li><a href="#2-check-status">2. Check Status</a></li>
+        <li><a href="#3-unlock">3. Unlock</a></li>
       </ul>
     </li>
     <li><a href="#advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</a></li>
@@ -572,7 +573,12 @@ NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is 
 <p>Check that TezBake sees your new keys:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span></code></pre></div><p>If your keys appear in the info output, you are ready to bake!</p>
-<h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
+<h3 id="3-unlock">3. Unlock</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign unlock
+</span></span></code></pre></div><p>Select both keys and input the passphrase you chose when initializing the device.</p>
+<p>You can check the lock/unlock status of your TezSign keys</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status
+</span></span></code></pre></div><h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
 <blockquote>
 <p><strong>Caution:</strong> Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.</p>
 </blockquote>
