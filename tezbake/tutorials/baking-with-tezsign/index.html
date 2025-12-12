@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="1710">
+<meta itemprop="wordCount" content="1759">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -581,13 +581,16 @@ NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is 
 </span></span></code></pre></div><p>Select both keys and input the passphrase you chose when initializing the device.</p>
 <p>You can check the lock/unlock status of your TezSign keys</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status
-</span></span></code></pre></div><h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
+</span></span></code></pre></div><blockquote>
+<p>🚨🚨🚨 Ensure your TezSign device is in the unlocked status before baking with your new keys. <code>tezbake info</code> can only detect a locked TezSign device if it&rsquo;s running in (#advanced-direct-tezsign-backend) mode. Until then, always run <code>tezbake tezsign status</code> along with <code>tezbake info</code></p>
+</blockquote>
+<h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
 <blockquote>
 <p><strong>Caution:</strong> Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.</p>
 </blockquote>
 <p>You can configure TezBake to bake directly through the TezSign backend, bypassing the standard <code>octez-signer</code>.</p>
-<p>Before: <code>&lt;octez-node&gt;&lt;octez-signer&gt;&lt;tezsign&gt;</code>
-After: <code>&lt;octez-node&gt;&lt;tezsign&gt;</code></p>
+<p>Before: <code>&lt;octez-node&gt;&lt;octez-signer&gt;&lt;tezsign&gt;</code></p>
+<p>After: <code>&lt;octez-node&gt;&lt;tezsign&gt;</code></p>
 <p>This setup offers slightly faster execution and lower latency by directly utilizing TezSign&rsquo;s hardware capabilities.</p>
 <p><strong>How to Enable:</strong></p>
 <ol>
@@ -607,10 +610,11 @@ After: <code>&lt;octez-node&gt;&lt;tezsign&gt;</code></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --signer
 </span></span></code></pre></div></li>
 <li>
-<p>Restart the service.</p>
-<p><strong>To Revert:</strong>: Remove the <code>BACKEND</code> line from <code>app.json</code>, upgrade, and restart.</p>
-</li>
+<p>Restart the service:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop --signer <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start --signer
+</span></span></code></pre></div></li>
 </ol>
+<p><strong>To Revert:</strong>: Remove the <code>BACKEND</code> line from <code>app.json</code>, upgrade, and restart.</p>
 <h2 id="advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</h2>
 <p>You can configure TezSign to unlock automatically by securely storing the device password.</p>
 <h3 id="steps-to-enable-automatic-unlock">Steps to Enable Automatic Unlock</h3>

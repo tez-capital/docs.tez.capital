@@ -1321,13 +1321,16 @@ NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Select both keys and input the passphrase you chose when initializing the device.&lt;/p&gt;
 &lt;p&gt;You can check the lock/unlock status of your TezSign keys&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;🚨🚨🚨 Ensure your TezSign device is in the unlocked status before baking with your new keys. &lt;code&gt;tezbake info&lt;/code&gt; can only detect a locked TezSign device if it&amp;rsquo;s running in (#advanced-direct-tezsign-backend) mode. Until then, always run &lt;code&gt;tezbake tezsign status&lt;/code&gt; along with &lt;code&gt;tezbake info&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;You can configure TezBake to bake directly through the TezSign backend, bypassing the standard &lt;code&gt;octez-signer&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Before: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;octez-signer&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt;
-After: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Before: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;octez-signer&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;After: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This setup offers slightly faster execution and lower latency by directly utilizing TezSign&amp;rsquo;s hardware capabilities.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;How to Enable:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -1347,10 +1350,11 @@ After: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Restart the service.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;To Revert:&lt;/strong&gt;: Remove the &lt;code&gt;BACKEND&lt;/code&gt; line from &lt;code&gt;app.json&lt;/code&gt;, upgrade, and restart.&lt;/p&gt;
-&lt;/li&gt;
+&lt;p&gt;Restart the service:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop --signer &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;To Revert:&lt;/strong&gt;: Remove the &lt;code&gt;BACKEND&lt;/code&gt; line from &lt;code&gt;app.json&lt;/code&gt;, upgrade, and restart.&lt;/p&gt;
 &lt;h2 id=&#34;advanced-automatic-unlock-for-tezsign&#34;&gt;Advanced: Automatic Unlock for TezSign&lt;/h2&gt;
 &lt;p&gt;You can configure TezSign to unlock automatically by securely storing the device password.&lt;/p&gt;
 &lt;h3 id=&#34;steps-to-enable-automatic-unlock&#34;&gt;Steps to Enable Automatic Unlock&lt;/h3&gt;
