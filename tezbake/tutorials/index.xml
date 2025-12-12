@@ -1247,8 +1247,6 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign init
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Critical Warning&lt;/strong&gt;: &amp;gt; You will be prompted to set a Master Password. Choose this carefully. It CANNOT be changed later.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;🚨🚨🚨 Save your Master Password somewhere safe. This is the ONLY way to get access to your TezSign keys.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;2-generate-your-baking-keys-directly-on-the-device&#34;&gt;2. Generate your baking keys directly on the device&lt;/h3&gt;
@@ -1322,7 +1320,7 @@ NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;
 &lt;p&gt;You can check the lock/unlock status of your TezSign keys&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;🚨🚨🚨 Ensure your TezSign device is in the unlocked status before baking with your new keys. &lt;code&gt;tezbake info&lt;/code&gt; can only detect a locked TezSign device if it&amp;rsquo;s running in (#advanced-direct-tezsign-backend) mode. Until then, always run &lt;code&gt;tezbake tezsign status&lt;/code&gt; along with &lt;code&gt;tezbake info&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;🚨🚨🚨 Ensure your TezSign device is in the unlocked status before baking with your new keys. &lt;code&gt;tezbake info&lt;/code&gt; can only detect a locked TezSign device if it&amp;rsquo;s running in &lt;a href=&#34;#advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/a&gt; mode. Until then, always run &lt;code&gt;tezbake tezsign status&lt;/code&gt; along with &lt;code&gt;tezbake info&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
 &lt;blockquote&gt;
