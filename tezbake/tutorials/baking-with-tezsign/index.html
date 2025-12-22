@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="1762">
+<meta itemprop="wordCount" content="1823">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -359,7 +359,8 @@
     <li><a href="#overview">Overview</a></li>
     <li><a href="#phase-0-purchase-sbc-and-image-sd-card">Phase 0: Purchase SBC and image SD card</a>
       <ul>
-        <li><a href="#1-download-gadget-image-and-flash-sd-card">1. Download gadget image and flash SD card</a></li>
+        <li><a href="#sample-shopping-lists">Sample shopping lists</a></li>
+        <li><a href="#download-gadget-image-and-flash-sd-card">Download gadget image and flash SD card</a></li>
       </ul>
     </li>
     <li><a href="#phase-1-baker-configuration">Phase 1: Baker Configuration</a>
@@ -470,7 +471,7 @@
 <hr>
 <h2 id="phase-0-purchase-sbc-and-image-sd-card">Phase 0: Purchase SBC and image SD card</h2>
 <p>Generally speaking, the Radxa Zero 3 (the lowest available configuration) as well as the Raspberry Pi Zero 2W are great choices for your TezSign setup. Purchase 2 devices if you worry about the possibility of downtime if your SBC fails. Also purchase multiple SD cards. It&rsquo;s good to have at least 3 SD cards: one for baking, one for backup of your baking SD card and one spare to replace a failed card. 8GB SD cards will do just fine. Ensure you are getting the &ldquo;enterprise&rdquo; or &ldquo;endurance&rdquo; versions if possible.</p>
-<p>Sample shopping lists</p>
+<h3 id="sample-shopping-lists">Sample shopping lists</h3>
 <ul>
 <li>Radxa Zero 3
 1. Radxa ZERO 3W RK3566 4-core CPU SBC, GPU, NPU, HDMI with 1080P Output, and WiFi 6 &amp; BT 5.4, Single Board Computer <a href="https://www.aliexpress.us/item/3256807428419499.html?gatewayAdapt=glo2usa4itemAdapt">https://www.aliexpress.us/item/3256807428419499.html?gatewayAdapt=glo2usa4itemAdapt</a>
@@ -480,7 +481,7 @@
 1. Raspberry Pi Zero 2 W (add case &amp; heatsink) <a href="https://www.pishop.us/product/raspberry-pi-zero-2-w/">https://www.pishop.us/product/raspberry-pi-zero-2-w/</a>
 2. CableCreation Short Micro USB Cable, USB to Micro USB 24 AWG Triple Shielded Fast Charger Cable, Compatible with PS5/PS4, Raspberry Pi Zero, Chromecast, Phone, 0.5FT/6 inch Black <a href="https://www.amazon.com/CableCreation-Charger-Compatible-Chromecast-Android/dp/B013G4EAEI">https://www.amazon.com/CableCreation-Charger-Compatible-Chromecast-Android/dp/B013G4EAEI</a></li>
 </ul>
-<h3 id="1-download-gadget-image-and-flash-sd-card">1. Download gadget image and flash SD card</h3>
+<h3 id="download-gadget-image-and-flash-sd-card">Download gadget image and flash SD card</h3>
 <p>Navitate to the release page and download the latest image for your RPI or Radxa device: <a href="https://github.com/tez-capital/tezsign/releases">TezSign Releases</a></p>
 <p>Once downloaded, extract the image. The image will be around 1.5GB - 2GB once it&rsquo;s been extracted.</p>
 <p>Use <a href="https://etcher.balena.io/">Balena Etcher</a> (or a tool you are familiar with) to flash the gadget image to your SD card.</p>
@@ -502,6 +503,10 @@
 <p>Use the companion app to complete the setup, available here: <a href="https://github.com/tez-capital/tezsign/releases">TezSign Releases</a></p>
 <p>Command examples are provided for using the companion app and TezBake, if you go for the ease of setup.</p>
 <h3 id="1-initialize-device">1. Initialize device</h3>
+<p>Before being able to initialize the device you must enable your computer to see the device via USB. Download the udev rules and install them. Then add your user to the right group to access the device.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/tez-capital/tezsign/refs/heads/main/tools/add_udev_rules.sh <span style="color:#000;font-weight:bold">|</span> sudo bash
+</span></span><span style="display:flex;"><span>sudo usermod -aG plugdev <span style="color:#000">$USER</span>
+</span></span></code></pre></div><p>Log out and log back in to make sure the new settings are effective.</p>
 <p>Connect your TezSign device to your workstation and run:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using companion app</span>
 </span></span><span style="display:flex;"><span>./tezsign-host init
