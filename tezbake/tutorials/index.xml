@@ -297,7 +297,7 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;hr&gt;
 &lt;h2 id=&#34;blstz4-consensus-and-companion-key-setup&#34;&gt;BLS/tz4 Consensus and Companion key setup&lt;/h2&gt;
 &lt;p&gt;Simply follow the TezSign instructions to generate, verify and activate your TezSign keys.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/en/tezbake/tutorials/baking-with-tezsign.md&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;pre-bls-deprecated-ledger-consensus-key-setup&#34;&gt;PRE-BLS (DEPRECATED) Ledger Consensus key setup&lt;/h2&gt;
 &lt;h3 id=&#34;import-the-consensus-key-from-a-ledger&#34;&gt;Import the consensus key from a Ledger&lt;/h3&gt;
 &lt;p&gt;Plug in your consensus key Ledger device and open the Tezos Baking app.&lt;/p&gt;
