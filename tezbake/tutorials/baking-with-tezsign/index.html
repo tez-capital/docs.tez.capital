@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="1823">
+<meta itemprop="wordCount" content="1854">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -485,7 +485,17 @@
 <p>Navitate to the release page and download the latest image for your RPI or Radxa device: <a href="https://github.com/tez-capital/tezsign/releases">TezSign Releases</a></p>
 <p>Once downloaded, extract the image. The image will be around 1.5GB - 2GB once it&rsquo;s been extracted.</p>
 <p>Use <a href="https://etcher.balena.io/">Balena Etcher</a> (or a tool you are familiar with) to flash the gadget image to your SD card.</p>
-<p>Once done, plug in the SD card into your gadget and connect it to your baking computer with just a single USB cable. A separate power source is not required. Use the data connection USB port, not the power connection USB port.</p>
+<p>Once done, plug in the SD card into your gadget and connect it to your baking computer with just a single USB cable. A separate power source is not required. Use the data connection USB port (OTG port), not the power connection USB port.</p>
+<ul>
+<li>
+<p>On the Radxa, connect to the farthest USB port
+<img src="/tezbake/tutorial/tezbaketezsignRadxaOTG.png" alt="Radxa Zero 3W"></p>
+</li>
+<li>
+<p>On the Rasberry Pi Zero, connect to the USB port between the power USB port and the mini HDMI port.
+<img src="/tezbake/tutorial/tezbaketezsignPiZeroOTG.png" alt="Raspberry Pi Zero 2W"></p>
+</li>
+</ul>
 <h2 id="phase-1-baker-configuration">Phase 1: Baker Configuration</h2>
 <h3 id="1-install-latest-tezbake">1. Install Latest TezBake</h3>
 <p>TezSign support is now available in the latest version of TezBake.</p>
