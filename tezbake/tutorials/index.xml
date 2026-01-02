@@ -89,7 +89,7 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;option-1---recommended-import-tezsign-consensus-and-companion-keys&#34;&gt;(Option 1 - RECOMMENDED) Import TezSign consensus and companion keys&lt;/h4&gt;
 &lt;p&gt;Follow the following guide and then proceed directly to &lt;a href=&#34;#stake-your-baking-xtz-security-deposit&#34;&gt;stake your XTZ&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;/en/tezbake/tutorials/baking-with-tezsign.md&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;PLEASE NOTE:&lt;/strong&gt; Instead of using the alias &lt;code&gt;consensus&lt;/code&gt;, use &lt;code&gt;baker&lt;/code&gt;. For &lt;code&gt;companion&lt;/code&gt;, leave &lt;code&gt;companion&lt;/code&gt;. You&amp;rsquo;re using the &lt;code&gt;baker&lt;/code&gt; alias here because it&amp;rsquo;s assumed you&amp;rsquo;re managing your baker operations from a Ledger device using the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; interface.&lt;/p&gt;
 &lt;/blockquote&gt;
