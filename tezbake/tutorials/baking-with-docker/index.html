@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="TezBake Baking Tutorial for Docker Users">
 
-<meta itemprop="wordCount" content="1065">
+<meta itemprop="wordCount" content="917">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for Docker Users"/>
@@ -435,7 +435,7 @@
 </span></span></code></pre></div><h3 id="setup-tezbake-container">Setup TezBake Container</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --name tezbake-container --privileged -d ghcr.io/tez-capital/tezbake:latest-alpine
 </span></span></code></pre></div><blockquote>
-<p>After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.</p>
+<p><strong>ℹ️ NOTE:</strong> After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.</p>
 </blockquote>
 <p>You can monitor the progress of the Tezos node bootstrapping by running the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker logs -f tezbake-container
@@ -453,15 +453,31 @@
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># `--hwm 1` works great if you&#39;re setting up for the first time. If you&#39;re setting up a device that&#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If you&#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.</span>
 </span></span></code></pre></div><blockquote>
-<p>Once imported, you can see your baker address by running <code>tezbake info</code>
-The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&rsquo;t have this information yet, don&rsquo;t worry. To get the address of the ledger that&rsquo;s used by default simply go to <a href="https://kukai.app">https://kukai.app</a> and login with ledger, accepting the default derivation path.
-BLS (i.e. bip) signatures are designed to offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.
-Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.
-If your device was used to bake before it might have a &ldquo;high watermark&rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&rsquo;re trying to use now but it&rsquo;s been a while, it&rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
-The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&rsquo;re setting up a brand new device that&rsquo;s not been used for baking before, there is no need to alter the default command above.
-Always make sure you&rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures, the documentation you keep, and the care you take when setting up your baker.
-To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&rsquo;re not accidentally double baking or attesting.</p>
+<p><strong>ℹ️ Verification &amp; Setup Notes:</strong></p>
+<ul>
+<li>Once imported, you can see your baker address by running <code>tezbake info</code></li>
+<li>The ledger will ask you twice to confirm this operation - ensure the baker address matches the one you want to use</li>
+<li>To get the default ledger address, go to <a href="https://kukai.app">https://kukai.app</a> and login with ledger, accepting the default derivation path</li>
+</ul>
+<p><strong>ℹ️ BLS Signatures:</strong>
+BLS (i.e. bip) signatures offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.</p>
+<p><strong>💡 TIP - Security:</strong>
+Putting the baker on a non-default derivation path provides an additional layer of security at the cost of extra complexity. Make sure your setup is clearly documented for your own records.</p>
+<p><strong>⚠️ High Watermark (HWM) Important Notes:</strong></p>
+<ul>
+<li>If your device was used to bake before, it has a &ldquo;high watermark&rdquo; (HWM)</li>
+<li>If you try to use this device on a testnet, it will not work because testnet block heights usually start with 1 while mainnet is in the millions</li>
+<li>If you used to bake on mainnet with the same ledger but it&rsquo;s been a while, change the HWM (<code>1</code>) to the current block height on the network</li>
+<li>The watermark is a record of the last block number your ledger helped to bake or attest</li>
+<li>If setting up a brand new device not used for baking before, no need to alter the default command</li>
+</ul>
+<p><strong>🚨 CRITICAL WARNING: Prevent Double Baking:</strong></p>
+<ul>
+<li>Always ensure you&rsquo;re not accidentally going to double bake by using your production ledger/setup to bake on a testnet</li>
+<li>Double baking/attesting means having 2 different bakers with the same key on the same network</li>
+<li>This is a serious offense and can lead to loss of bond and other penalties</li>
+<li>Always double-check your setup before proceeding</li>
+</ul>
 </blockquote>
 <h4 id="option-2---insecure-import-soft-key-to-tezbake-signer">(Option 2 - INSECURE) Import Soft key to TezBake signer</h4>
 <p>First, generate the baker key for TezBake signer:</p>
@@ -474,7 +490,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 </span></span></code></pre></div><p>Import the hashed key to the TezBake node:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
 </span></span></code></pre></div><blockquote>
-<p>Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.</p>
+<p><strong>ℹ️ NOTE:</strong> Change the <code>tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF</code> to the hashed key you got from the previous command.</p>
 </blockquote>
 <p>Finally, change the permissions of the newly generated keys to be readable by the ascend user and group which runs the TezBake node:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R ascend:ascend /bake-buddy/
@@ -482,8 +498,19 @@ To double bake or attest due to baker setup error means having 2 different baker
 <p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (<strong>note</strong>: as well as when voting). For all other baker operations, you must use the Tezos Baking app.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><blockquote>
-<p>Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of baking inactivity.
-Registering applies to new bakers and to inactive bakers. If you&rsquo;re setting up a new baker, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for over 2 weeks, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for less than 2 weeks, you don&rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.</p>
+<p><strong>ℹ️ When Registration is Required:</strong></p>
+<p>Registration is NOT necessary if:</p>
+<ul>
+<li>This is already an active baker ledger being set up on a failover machine</li>
+<li>The baker has not been inactive for over 2 weeks</li>
+</ul>
+<p>You MUST register your baker if:</p>
+<ul>
+<li>You&rsquo;re setting up a new baker (first time)</li>
+<li>Your baker has been inactive for over 2 weeks</li>
+<li>Your baking rights have stopped appearing in the schedule</li>
+</ul>
+<p>Check your baking rights schedule to confirm if re-registration is needed.</p>
 </blockquote>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on

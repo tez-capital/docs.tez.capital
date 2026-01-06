@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1302">
+<meta itemprop="wordCount" content="1229">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -443,15 +443,17 @@
 <ol>
 <li>Spare computer or existing computer or VM with Linux installed. We recommend Ubuntu Linux.
 <blockquote>
-<p>You must have an SSD drive or better &amp; at least 8GB RAM</p>
+<p><strong>ℹ️ NOTE:</strong> You must have an SSD drive (or better) and at least 8GB RAM</p>
 </blockquote>
 </li>
 </ol>
 <p>All advanced TezBake configurations, including TezSign block signing apply here as well.</p>
 <hr>
 <blockquote>
-<p>🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
-<p>What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.</p>
+<p><strong>🚨 CRITICAL REQUIREMENT: DAL Node Mandatory</strong></p>
+<p>Running a DAL (Data Availability Layer) node is now <strong>mandatory</strong> for baking on the Tezos network. It&rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
+<p><strong>What is the DAL?</strong>
+The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.</p>
 </blockquote>
 <h2 id="installation-all-in-one">Installation (All-in-one)</h2>
 <h3 id="download-and-install-tezbake">Download and install tezbake</h3>
@@ -474,7 +476,7 @@
 </span></span></code></pre></div><p>Get the block hash and block level from the snapshot provider&rsquo;s website:
 <a href="https://snapshots.eu.tzinit.org/ghostnet/rolling.html">https://snapshots.eu.tzinit.org/ghostnet/rolling.html</a></p>
 <blockquote>
-<p>The <code>&lt;block_hash&gt;</code> argument is optional but encouraged. If you don&rsquo;t want to borther with this protection, use the second method below which will also be faster.</p>
+<p><strong>ℹ️ INFO:</strong> The <code>&lt;block_hash&gt;</code> argument is optional but encouraged for security verification. If you don&rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.</p>
 </blockquote>
 <p>Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 <a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a>
@@ -486,8 +488,14 @@
 </span></span></code></pre></div><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span></code></pre></div><blockquote>
-<p>Level refers to the latest block number on mainnet. Navigate to <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.
-Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a> provide Ghostnet and Testnet block explorers as well. Make sure you&rsquo;re looking at the right explorer.</p>
+<p><strong>Understanding &ldquo;Level&rdquo;</strong></p>
+<p>The level is the current block height (block number) on the blockchain. To verify your node is synchronized:</p>
+<ol>
+<li>Check the level shown by <code>tezbake info</code></li>
+<li>Compare it to the latest block on <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a></li>
+<li>Once they match, your node is fully synced and you can proceed</li>
+</ol>
+<p><strong>ℹ️ NOTE:</strong> Both blockchain explorers also provide Ghostnet and testnet views. Make sure you&rsquo;re looking at the correct network.</p>
 </blockquote>
 <h3 id="import-baking-keys-and-register-as-baker">Import baking keys and register as baker</h3>
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
@@ -496,7 +504,7 @@ Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.c
 <p>First, generate the baker key for TezBake:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker
 </span></span></code></pre></div><blockquote>
-<p>Make sure to backup your key in a secure location and never share it.</p>
+<p><strong>⚠️ SECURITY:</strong> Make sure to backup your key in a secure location and never share it.</p>
 </blockquote>
 <p>You can get the secret/private key by running the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client show address baker --show-secret
@@ -506,14 +514,29 @@ Both <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.c
 <p>Each Tezos testnet has a faucet over at <a href="https://teztnets.com">https://teztnets.com</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><blockquote>
-<p>Registering applies to new bakers and to inactive bakers. If you&rsquo;re setting up a new baker, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for over 2 weeks, you must register it. If you&rsquo;re setting up a baker that&rsquo;s been inactive for less than 2 weeks, you don&rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.</p>
+<p><strong>ℹ️ When Registration is Required:</strong></p>
+<p>You must register your baker if:</p>
+<ul>
+<li>You&rsquo;re setting up a new baker (first time)</li>
+<li>Your baker has been inactive for over 2 weeks</li>
+<li>Your baking rights have stopped appearing in the schedule</li>
+</ul>
+<p>You do NOT need to register if your baker has been inactive for less than 2 weeks. Check your baking rights schedule to confirm if re-registration is needed.</p>
 </blockquote>
 <h3 id="stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</h3>
 <p>To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.</p>
 <p>You can stake your security deposit by running the following command, after opening your Ledger Tezos Wallet app:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client stake <span style="color:#0000cf;font-weight:bold">6000</span> <span style="color:#204a87;font-weight:bold">for</span> baker
 </span></span></code></pre></div><blockquote>
-<p>Change 6000 to the amount you want to stake. The minimum is 6000 XTZ. You may start baking with as little as 1000 XTZ but you will need to set your baking over staking multiplier to 5X and secure 5000 XTZ that will stake to your baker to cover the security deposit requirement. You can also secure delegators&rsquo; XTZ to your baker to cover the security deposit requirement. Each XTZ delegated to your baker will be counted 0.5 towards the security deposit requirement. For example you can start baking with 1000 XTZ + 5000 XTZ secured from stakers, or you can start baking with 1000 XTZ + 10000 XTZ secured from delegators. You can also start baking with 1000 XTZ + 2000 XTZ secured from stakers + 6000 XTZ secured from delegators.</p>
+<p><strong>ℹ️ Staking Options:</strong></p>
+<p>Change 6000 to the amount you want to stake. The minimum security deposit is 6000 XTZ.</p>
+<p><strong>Alternative Configurations:</strong>
+You may start baking with as little as 1000 XTZ if you configure additional sources:</p>
+<ul>
+<li>Set baking over staking multiplier to 5X + secure 5000 XTZ from stakers, OR</li>
+<li>Secure 10000 XTZ from delegators (each delegated XTZ counts as 0.5 towards the security deposit), OR</li>
+<li>Combine: 1000 XTZ + 2000 XTZ from stakers + 6000 XTZ from delegators</li>
+</ul>
 </blockquote>
 <h3 id="import-your-dal-attester-profile">Import your DAL attester profile</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-tz4-key&gt; --force

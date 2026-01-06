@@ -64,10 +64,11 @@ TezPay, the &lt;em&gt;Configuration File&lt;/em&gt; will essentially tell the ap
 file how to run and will be edited by the baker (we will cover this
 later), and the &lt;em&gt;Private-Key File&lt;/em&gt; will contain the private key for a
 wallet you have designated to pay your delegators (we will explain an
-easy way to get this later as well).
-&lt;em&gt;&lt;strong&gt;A note on the Private-key file - it is not recommended to use an existing wallet that may house
-important assets (including NFT&amp;rsquo;s or crypto tokens) but to create a new
-wallet that contains only enough Tezos to pay out delegates.&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+easy way to get this later as well).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ SECURITY WARNING: Private Key File&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Do NOT use an existing wallet that contains important assets (NFTs, tokens, etc.). Create a new dedicated wallet that contains only enough Tezos to pay out delegates.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;preparation-step-2-download-files&#34;&gt;Preparation: Step 2 &lt;em&gt;Download Files&lt;/em&gt;&lt;/h3&gt;
 &lt;p&gt;Download the software from Github using the link:
@@ -221,7 +222,7 @@ we will review:&lt;/p&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you&amp;rsquo;ve used json before but now hjson, you can read more about it here: &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; If you&amp;rsquo;re familiar with JSON but new to HJSON (Human JSON), you can learn more at &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;. HJSON is more forgiving than JSON and supports comments.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Yellow is areas you will input data/edit fields&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
@@ -260,7 +261,8 @@ custom file as well - but should be done by experienced users.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Yellow is areas you will input data/edit fields&lt;/em&gt;
 &lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The example below is a more advanced configuration file that showcases several of the features that can be used to customize the TezPay application. To get a simple configuration file, you can remove the sections that are not needed. Here is a sample configuration that will work for 90% of bakers: &lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;TezPay Starter Configuration&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Start Simple&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The example below is a more advanced configuration file showcasing several customization features. For most bakers, a simpler configuration is recommended. See &lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;TezPay Starter Configuration&lt;/a&gt; which works for 90% of bakers.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Paste your &lt;strong&gt;Baker&lt;/strong&gt; wallet in between the quotes&lt;/li&gt;
@@ -449,8 +451,8 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;p&gt;Insert your &lt;strong&gt;unencrypted&lt;/strong&gt; private key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;edsk...yourprivatekeyhere...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;Use a dedicated wallet with minimal funds for payouts only, never your main baker wallet.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ CRITICAL SECURITY WARNING:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Use a dedicated wallet with minimal funds for payouts only. NEVER use your main baker wallet.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Option B: Remote Signer (&lt;code&gt;remote_signer.hjson&lt;/code&gt;):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Create file named exactly &lt;code&gt;remote_signer.hjson&lt;/code&gt; inside &lt;code&gt;/bake-buddy/pay&lt;/code&gt;.&lt;/p&gt;
@@ -483,7 +485,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;hr&gt;
 &lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;

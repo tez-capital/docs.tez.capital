@@ -42,15 +42,17 @@
 &lt;/li&gt;
 &lt;li&gt;Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet app installed. This will be used for storing your funds, voting and changing your baking parameters.
 &lt;blockquote&gt;
-&lt;p&gt;It&amp;rsquo;s necessary to use Ledger Live to install the Tezos Wallet app&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; You must use Ledger Live to install the Tezos Wallet app on your device.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;TezSign remote signer device. This will be used to validate blocks securely. It is no longer recommended to bake with a Ledger Nano device itself.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&amp;rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL REQUIREMENT: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. It&amp;rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is the DAL?&lt;/strong&gt;
+The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
@@ -68,7 +70,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/mainnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/mainnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged. If you don&amp;rsquo;t want to borther with this protection, use the second method below which will also be faster.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 &lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
@@ -80,8 +82,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After starting the node, run the following command over and over every few minutes and monitor the &amp;ldquo;level&amp;rdquo; displayed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.
-Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; provide Ghostnet and Testnet block explorers as well. Make sure you&amp;rsquo;re looking at the right explorer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Understanding &amp;ldquo;Level&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The level is the current block height (block number) on the blockchain. To verify your node is synchronized:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check the level shown by &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Once they match, your node is fully synced and you can proceed&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; Both blockchain explorers also provide Ghostnet and Testnet views. Make sure you&amp;rsquo;re looking at the correct network (mainnet).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-baking-keys-and-register-as-baker&#34;&gt;Import baking keys and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
@@ -91,7 +99,13 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;Follow the following guide and then proceed directly to &lt;a href=&#34;#stake-your-baking-xtz-security-deposit&#34;&gt;stake your XTZ&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;PLEASE NOTE:&lt;/strong&gt; Instead of using the alias &lt;code&gt;consensus&lt;/code&gt;, use &lt;code&gt;baker&lt;/code&gt;. For &lt;code&gt;companion&lt;/code&gt;, leave &lt;code&gt;companion&lt;/code&gt;. You&amp;rsquo;re using the &lt;code&gt;baker&lt;/code&gt; alias here because it&amp;rsquo;s assumed you&amp;rsquo;re managing your baker operations from a Ledger device using the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; interface.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT - Key Alias Naming:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When following the TezSign guide, use these alias names:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;baker&lt;/code&gt; instead of &lt;code&gt;consensus&lt;/code&gt; (for your consensus key)&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;companion&lt;/code&gt; as-is (for your companion key)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This naming convention is required because you&amp;rsquo;re managing your baker operations from a Ledger device using the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; interface.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---deprecated-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 2 - DEPRECATED) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;In order to get the most out of your Ledger, it&amp;rsquo;s now recommended to use the P-256 curve (tz3) for baking. This curve is faster than the default ed25519 curve (tz1). If you&amp;rsquo;re setting up a baker that already exists on the network, you can use the same curve as before. If you&amp;rsquo;re setting up a new baker, it&amp;rsquo;s recommended to use the P-256 curve.&lt;/p&gt;
@@ -125,7 +139,14 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;h4 id=&#34;using-cli-not-recommended&#34;&gt;Using CLI (not recommended)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re setting up a new baker, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for over 3 days, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for less than 3 days, you don&amp;rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ When Registration is Required:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You must register your baker if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 3 days&lt;/li&gt;
+&lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You do NOT need to register if your baker has been inactive for less than 3 days. Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
@@ -140,7 +161,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If for some reason the auto method is not working, use the command below to bypass it.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The tz4 key iported above is your manager key, not your consensus key or companion key.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; The tz4 key imported above is your manager key, not your consensus key or companion key.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
@@ -173,15 +194,17 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;ol&gt;
 &lt;li&gt;Spare computer or existing computer or VM with Linux installed. We recommend Ubuntu Linux.
 &lt;blockquote&gt;
-&lt;p&gt;You must have an SSD drive or better &amp;amp; at least 8GB RAM&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; You must have an SSD drive (or better) and at least 8GB RAM&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;All advanced TezBake configurations, including TezSign block signing apply here as well.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;🚨 Please note that running a DAL node is now a mandatory requirement for baking on the Tezos network.It&amp;rsquo;s not currently mandatory to run the DAL on the same node as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;What is the DAL anyway? The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify​.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL REQUIREMENT: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. It&amp;rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is the DAL?&lt;/strong&gt;
+The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
@@ -204,7 +227,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged. If you don&amp;rsquo;t want to borther with this protection, use the second method below which will also be faster.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 &lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
@@ -216,8 +239,14 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After starting the node, run the following command over and over every few minutes and monitor the &amp;ldquo;level&amp;rdquo; displayed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Level refers to the latest block number on mainnet. Navigate to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; and observe the latest block. Once the level in your command matches the latest block on your blockchain explorer, your node is in full sync and you can keep following the steps below.
-Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt; provide Ghostnet and Testnet block explorers as well. Make sure you&amp;rsquo;re looking at the right explorer.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Understanding &amp;ldquo;Level&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The level is the current block height (block number) on the blockchain. To verify your node is synchronized:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check the level shown by &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Once they match, your node is fully synced and you can proceed&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; Both blockchain explorers also provide Ghostnet and testnet views. Make sure you&amp;rsquo;re looking at the correct network.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-baking-keys-and-register-as-baker&#34;&gt;Import baking keys and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
@@ -226,7 +255,7 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;First, generate the baker key for TezBake:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-soft-wallet --generate bls --key-alias baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Make sure to backup your key in a secure location and never share it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ SECURITY:&lt;/strong&gt; Make sure to backup your key in a secure location and never share it.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;You can get the secret/private key by running the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address baker --show-secret
@@ -236,14 +265,29 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;Each Tezos testnet has a faucet over at &lt;a href=&#34;https://teztnets.com&#34;&gt;https://teztnets.com&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re setting up a new baker, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for over 2 weeks, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for less than 2 weeks, you don&amp;rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ When Registration is Required:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You must register your baker if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 2 weeks&lt;/li&gt;
+&lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You do NOT need to register if your baker has been inactive for less than 2 weeks. Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
 &lt;p&gt;You can stake your security deposit by running the following command, after opening your Ledger Tezos Wallet app:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client stake &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6000&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Change 6000 to the amount you want to stake. The minimum is 6000 XTZ. You may start baking with as little as 1000 XTZ but you will need to set your baking over staking multiplier to 5X and secure 5000 XTZ that will stake to your baker to cover the security deposit requirement. You can also secure delegators&amp;rsquo; XTZ to your baker to cover the security deposit requirement. Each XTZ delegated to your baker will be counted 0.5 towards the security deposit requirement. For example you can start baking with 1000 XTZ + 5000 XTZ secured from stakers, or you can start baking with 1000 XTZ + 10000 XTZ secured from delegators. You can also start baking with 1000 XTZ + 2000 XTZ secured from stakers + 6000 XTZ secured from delegators.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Staking Options:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Change 6000 to the amount you want to stake. The minimum security deposit is 6000 XTZ.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alternative Configurations:&lt;/strong&gt;
+You may start baking with as little as 1000 XTZ if you configure additional sources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set baking over staking multiplier to 5X + secure 5000 XTZ from stakers, OR&lt;/li&gt;
+&lt;li&gt;Secure 10000 XTZ from delegators (each delegated XTZ counts as 0.5 towards the security deposit), OR&lt;/li&gt;
+&lt;li&gt;Combine: 1000 XTZ + 2000 XTZ from stakers + 6000 XTZ from delegators&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-your-dal-attester-profile&#34;&gt;Import your DAL attester profile&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
@@ -268,12 +312,22 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
         
         
         &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;PLEASE NOTE&lt;/strong&gt;: tz4/BLS signing migration now requires us to use a Companion Key along with a Consensus Key.&lt;/p&gt;
-&lt;p&gt;Bakers must now set their new consensus and companion keys together when changing to tz4 signing at first. Later down the road, you will be able to only rotate your consensus key if so desired. The companion key is a &lt;strong&gt;must&lt;/strong&gt; for tz4 BLS signing, to perform the DAL-related duties. When you see &amp;ldquo;companion,&amp;rdquo; think &amp;ldquo;DAL.&amp;rdquo; &lt;strong&gt;Consensus and companion always go together.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;In practical terms, this means, when activating a Consensus Key, a baker must now ensure they also have a Companion Key activated. Both keys are used together for baking at the same time.&lt;/p&gt;
-&lt;p&gt;The steps in the KB below have been updated but the video does not include the &amp;ldquo;Companion Key&amp;rdquo; step which is now mandatory. Make sure to follow setting your consensus key with also setting (or validating/updating) your companion key.&lt;/p&gt;
-&lt;p&gt;IF YOU ARE BAKING WITH A tz1-3 KEY, YOU DO NOT NEED TO HAVE A COMPANION KEY&lt;/p&gt;
-&lt;p&gt;All instructions have been updated as if tz4 consensus + companion is the only way things are handled. If you&amp;rsquo;re using an old tz1-3 key, simply omit the companion key steps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT: tz4/BLS Signing Requirements&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;tz4/BLS signing migration now requires both a Consensus Key AND a Companion Key.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Points:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bakers must set their new consensus and companion keys together when first changing to tz4 signing&lt;/li&gt;
+&lt;li&gt;Later, you can rotate just your consensus key if desired&lt;/li&gt;
+&lt;li&gt;The companion key is &lt;strong&gt;mandatory&lt;/strong&gt; for tz4 BLS signing (handles DAL-related duties)&lt;/li&gt;
+&lt;li&gt;When you see &amp;ldquo;companion,&amp;rdquo; think &amp;ldquo;DAL&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consensus and companion always go together&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;In Practice:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When activating a Consensus Key, you must also have a Companion Key activated. Both keys are used together for baking simultaneously.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE - Video Outdated:&lt;/strong&gt;
+The steps below have been updated, but the video does not include the &amp;ldquo;Companion Key&amp;rdquo; step which is now mandatory. Follow the written instructions to set both your consensus key and companion key.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE - tz1-3 Users:&lt;/strong&gt;
+If you are baking with a tz1-3 key, you do NOT need a companion key. All instructions below assume tz4 consensus + companion. If using an old tz1-3 key, simply omit the companion key steps.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Follow along on Youtube!
 
@@ -291,8 +345,22 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;A Tezos companion key was not necessary to use in the tz1-tz3 address era. With the introduction of tz4 or BLS consensus signing (aggregating signatures), it is now necessary to use a separate companion key, in addition to the separate consensus key to validate blocks in the tz4 era. Both the consensus key and the companion key bake together at the same time. The consensus key works with the consensus and the companion key works with the DAL.&lt;/p&gt;
 &lt;p&gt;This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&amp;rsquo;s main account.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If an attacker gains control of the consensus key, they can sign blocks and endorse operations. They can maliciously double-bake or double-attest on your behalf, slashing your funds. They can also transfer all baker funds that are not locked/staked in the security deposit by using the drain operation. To eliminate the risk of fund draining by the consensus key, it is recommended to lock/stake all baking funds in the security deposit. It&amp;rsquo;s further recommended to rotate the consensus key before stopping the baking operations and unstaking the security deposit.&lt;/p&gt;
-&lt;p&gt;If an attacker gains control of your companion key, they can cost you 10% of your baking income due to DAL penalties.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 SECURITY WARNING: Key Compromise Risks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If Consensus Key is Compromised:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attacker can sign blocks and endorse operations&lt;/li&gt;
+&lt;li&gt;Attacker can maliciously double-bake or double-attest on your behalf, &lt;strong&gt;slashing your funds&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Attacker can transfer all baker funds NOT locked/staked in the security deposit using the drain operation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Protection Measures:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lock/stake ALL baking funds in the security deposit to eliminate drain risk&lt;/li&gt;
+&lt;li&gt;Rotate the consensus key before stopping baking operations and unstaking the security deposit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;If Companion Key is Compromised:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Attacker can cost you 10% of your baking income due to DAL penalties&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;blstz4-consensus-and-companion-key-setup&#34;&gt;BLS/tz4 Consensus and Companion key setup&lt;/h2&gt;
@@ -307,8 +375,13 @@ Both &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a 
 &lt;p&gt;Run the following command to import the consensus key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --ledger-id &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;apple-banana-coconut-date&amp;#34;&lt;/span&gt; --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Replace the &lt;code&gt;--ledger-id&lt;/code&gt; value with the 4 word ID of the Ledger you want to use for the consensus key.
-We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s the fastest on Ledger hardware and most portable option with both on premise and cloud hardware security modules (HSMs). The consensus key is only used for signing blocks and endorsements, so it doesn&amp;rsquo;t need to be the same curve as the baker key. In fact, many bakers move from a tz1 key to a tz3 key for the consensus key to improve performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Configuration Notes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Replace the &lt;code&gt;--ledger-id&lt;/code&gt; value with the 4-word ID of the Ledger you want to use for the consensus key&lt;/li&gt;
+&lt;li&gt;We use the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s the fastest on Ledger hardware and the most portable option for both on-premise and cloud hardware security modules (HSMs)&lt;/li&gt;
+&lt;li&gt;The consensus key is only used for signing blocks and endorsements, so it doesn&amp;rsquo;t need to be the same curve as the baker key&lt;/li&gt;
+&lt;li&gt;Many bakers move from a tz1 key to a tz3 key for the consensus key to improve performance&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This will import your consensus key Ledger device and authorize it for baking. Leave the baking app running on the Ledger device.&lt;/p&gt;
 &lt;h3 id=&#34;modify-the-baking-configuration&#34;&gt;Modify the baking configuration&lt;/h3&gt;
@@ -375,7 +448,7 @@ We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /bake-buddy/node/data/.tezos-client/public_keys
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The public key is the one in the &lt;code&gt;key&lt;/code&gt; field.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;An example of a public key for a tz3 address is &lt;code&gt;p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Example:&lt;/strong&gt; A public key for a tz3 address looks like: &lt;code&gt;p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;To register the consensus key, run the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; consensus key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to consensus
@@ -416,10 +489,14 @@ We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s 
 &lt;p&gt;The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.&lt;/p&gt;
 &lt;p&gt;For more details on DAL, see &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Tezos DAL Overview&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;⚠️ &lt;strong&gt;Warning&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The security implications for bakers in the DAL network are highlighted in the &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_overview.html&#34;&gt;official Octez documentation&lt;/a&gt;. Since a baker’s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.&lt;/p&gt;
-&lt;p&gt;To mitigate this risk, the core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node’s identity.&lt;/p&gt;
-&lt;p&gt;If you wish to run TezBake with DAL on a separate machine, consider using &lt;a href=&#34;https://docs.tez.capital/tezbake/tutorials/baking-with-prism/&#34;&gt;TezBake Prism Tunneling&lt;/a&gt;, which is designed for setups across multiple hosts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ SECURITY WARNING: IP Address Exposure Risk&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The security implications for bakers in the DAL network are highlighted in the &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_overview.html&#34;&gt;official Octez documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Risk:&lt;/strong&gt;
+Since a baker&amp;rsquo;s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt;
+The core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node&amp;rsquo;s identity.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution for Separate Machines:&lt;/strong&gt;
+If you wish to run TezBake with DAL on a separate machine, consider using &lt;a href=&#34;https://docs.tez.capital/tezbake/tutorials/baking-with-prism/&#34;&gt;TezBake Prism Tunneling&lt;/a&gt;, which is designed for setups across multiple hosts.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;new-tezbake-setup-with-dal&#34;&gt;New TezBake Setup with DAL&lt;/h2&gt;
 &lt;p&gt;You can set up TezBake with DAL integration from scratch. Follow these steps:&lt;/p&gt;
@@ -493,7 +570,7 @@ We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setup-tezbake-container&#34;&gt;Setup TezBake Container&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker run --name tezbake-container --privileged -d ghcr.io/tez-capital/tezbake:latest-alpine
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;You can monitor the progress of the Tezos node bootstrapping by running the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker logs -f tezbake-container
@@ -511,15 +588,31 @@ We are using the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# `--hwm 1` works great if you&amp;#39;re setting up for the first time. If you&amp;#39;re setting up a device that&amp;#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you&amp;#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;
-The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://kukai.app&#34;&gt;https://kukai.app&lt;/a&gt; and login with ledger, accepting the default derivation path.
-BLS (i.e. bip) signatures are designed to offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.
-Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.
-If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
-The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&amp;rsquo;re setting up a brand new device that&amp;rsquo;s not been used for baking before, there is no need to alter the default command above.
-Always make sure you&amp;rsquo;re not accidentally going to double bake by using your production ledger and/or setup to bake on a testnet. It&amp;rsquo;s really easy to make this mistake and the only thing preventing it are your personal standard operating procedures, the documentation you keep, and the care you take when setting up your baker.
-To double bake or attest due to baker setup error means having 2 different bakers with the same key on the same network. This is a serious offense and can lead to loss of bond and other penalties. Always double-check your setup and make sure you&amp;rsquo;re not accidentally double baking or attesting.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Verification &amp;amp; Setup Notes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The ledger will ask you twice to confirm this operation - ensure the baker address matches the one you want to use&lt;/li&gt;
+&lt;li&gt;To get the default ledger address, go to &lt;a href=&#34;https://kukai.app&#34;&gt;https://kukai.app&lt;/a&gt; and login with ledger, accepting the default derivation path&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ BLS Signatures:&lt;/strong&gt;
+BLS (i.e. bip) signatures offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP - Security:&lt;/strong&gt;
+Putting the baker on a non-default derivation path provides an additional layer of security at the cost of extra complexity. Make sure your setup is clearly documented for your own records.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ High Watermark (HWM) Important Notes:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If your device was used to bake before, it has a &amp;ldquo;high watermark&amp;rdquo; (HWM)&lt;/li&gt;
+&lt;li&gt;If you try to use this device on a testnet, it will not work because testnet block heights usually start with 1 while mainnet is in the millions&lt;/li&gt;
+&lt;li&gt;If you used to bake on mainnet with the same ledger but it&amp;rsquo;s been a while, change the HWM (&lt;code&gt;1&lt;/code&gt;) to the current block height on the network&lt;/li&gt;
+&lt;li&gt;The watermark is a record of the last block number your ledger helped to bake or attest&lt;/li&gt;
+&lt;li&gt;If setting up a brand new device not used for baking before, no need to alter the default command&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL WARNING: Prevent Double Baking:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Always ensure you&amp;rsquo;re not accidentally going to double bake by using your production ledger/setup to bake on a testnet&lt;/li&gt;
+&lt;li&gt;Double baking/attesting means having 2 different bakers with the same key on the same network&lt;/li&gt;
+&lt;li&gt;This is a serious offense and can lead to loss of bond and other penalties&lt;/li&gt;
+&lt;li&gt;Always double-check your setup before proceeding&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---insecure-import-soft-key-to-tezbake-signer&#34;&gt;(Option 2 - INSECURE) Import Soft key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;First, generate the baker key for TezBake signer:&lt;/p&gt;
@@ -532,7 +625,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Import the hashed key to the TezBake node:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Change the tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF to the hashed key you got from the previous command.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; Change the &lt;code&gt;tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF&lt;/code&gt; to the hashed key you got from the previous command.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Finally, change the permissions of the newly generated keys to be readable by the ascend user and group which runs the TezBake node:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chown -R ascend:ascend /bake-buddy/
@@ -540,8 +633,19 @@ To double bake or attest due to baker setup error means having 2 different baker
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Registering is not necessary if this is already an active baker ledger which is being setup on some kind of failover machine or in a situation where it has not been over 2 weeks of baking inactivity.
-Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re setting up a new baker, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for over 2 weeks, you must register it. If you&amp;rsquo;re setting up a baker that&amp;rsquo;s been inactive for less than 2 weeks, you don&amp;rsquo;t need to register it. The best way to find out if you need to register your baker again is to look into your baking rights schedule and see if they stopped coming in. If they did, you need to register your baker again.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ When Registration is Required:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Registration is NOT necessary if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This is already an active baker ledger being set up on a failover machine&lt;/li&gt;
+&lt;li&gt;The baker has not been inactive for over 2 weeks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You MUST register your baker if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 2 weeks&lt;/li&gt;
+&lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -695,12 +799,12 @@ Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re se
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# example:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/mainnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/mainnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged. If you don&amp;rsquo;t want to borther with this protection, use the second method below which will also be faster.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, use the second method below which will also be faster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
 &lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
@@ -713,7 +817,7 @@ Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re se
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# example:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rolling
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -941,8 +1045,11 @@ Registering applies to new bakers and to inactive bakers. If you&amp;rsquo;re se
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Important Note:&lt;/strong&gt;
-All &lt;code&gt;tezbake&lt;/code&gt; commands should be executed on the controller machine (usually the machine hosting the signer). Configuration edits (&lt;code&gt;app.json&lt;/code&gt;) should be performed on their respective machines (Node, DAL, or Signer).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT - Command Execution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All &lt;code&gt;tezbake&lt;/code&gt; commands should be executed on the controller machine (usually the machine hosting the signer)&lt;/li&gt;
+&lt;li&gt;Configuration edits (&lt;code&gt;app.json&lt;/code&gt;) should be performed on their respective machines (Node, DAL, or Signer)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
@@ -1009,13 +1116,13 @@ All &lt;code&gt;tezbake&lt;/code&gt; commands should be executed on the controll
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote user@192.168.1.60:22 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote-auth key:/path/to/ssh/key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; You can combine both in a single command.&lt;br&gt;
-If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can combine both in a single command.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --node --all
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal --all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;step-3-edit-application-configurations&#34;&gt;Step 3: Edit Application Configurations&lt;/h2&gt;
@@ -1084,7 +1191,7 @@ If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&l
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Signer does not require a Prism section in this layout.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; Signer does not require a Prism section in this layout.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;step-4-activate-configurations&#34;&gt;Step 4: Activate Configurations&lt;/h2&gt;
@@ -1096,8 +1203,12 @@ If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&l
 &lt;h2 id=&#34;step-5-generate-and-distribute-prism-keys&#34;&gt;Step 5: Generate and Distribute Prism Keys&lt;/h2&gt;
 &lt;p&gt;To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Only applications with a &lt;code&gt;PRISM&lt;/code&gt; configuration in their &lt;code&gt;app.json&lt;/code&gt; file can generate keys.
-&lt;strong&gt;Note:&lt;/strong&gt; You must generate all &lt;code&gt;.prism&lt;/code&gt; keys from the same &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; to ensure compatibility and proper authentication across components. Using different &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; values for key generation can lead to connection failures.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ IMPORTANT - Key Generation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Only applications with a &lt;code&gt;PRISM&lt;/code&gt; configuration in their &lt;code&gt;app.json&lt;/code&gt; file can generate keys&lt;/li&gt;
+&lt;li&gt;You must generate ALL &lt;code&gt;.prism&lt;/code&gt; keys from the same &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; to ensure compatibility and proper authentication across components&lt;/li&gt;
+&lt;li&gt;Using different &lt;code&gt;&amp;lt;app&amp;gt;&lt;/code&gt; values for key generation can lead to connection failures&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p /bake-buddy/&amp;lt;app&amp;gt;/prism/keys/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Generate the Certificate Authority:&lt;/p&gt;
@@ -1154,8 +1265,11 @@ If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&l
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;⚠️ &lt;strong&gt;Do not copy or expose the CA file.&lt;/strong&gt;&lt;br&gt;
-If compromised, regenerate all keys with a new CA.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ CRITICAL SECURITY WARNING:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Do NOT copy or expose the CA file&lt;/li&gt;
+&lt;li&gt;If the CA is compromised, regenerate ALL keys with a new CA immediately&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;After distributing the keys to their respective locations, you can verify each application&amp;rsquo;s key information using the following commands:&lt;/p&gt;
 &lt;p&gt;For the Node key:&lt;/p&gt;
@@ -1203,7 +1317,8 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt; You must have a supported TezSign device ready.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;⚠️ &lt;strong&gt;Disclaimer&lt;/strong&gt;: TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ DISCLAIMER&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/h2&gt;
@@ -1249,7 +1364,7 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;p&gt;Initialize the signer configuration. This creates the &lt;code&gt;/bake-buddy/signer/tezsign.config.hjson&lt;/code&gt; file and runs TezBake&amp;rsquo;s side TezSign setup.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Configuration Note:&lt;/strong&gt; You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;phase-2-device-preparation&#34;&gt;Phase 2: Device Preparation&lt;/h2&gt;
 &lt;p&gt;Please note that it&amp;rsquo;s highly recommended to complete this step on a machine separate from your TezBake baking machine. This ensures the highest level of security.&lt;/p&gt;
@@ -1266,8 +1381,15 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using TezBake&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign init
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Critical Warning&lt;/strong&gt;: &amp;gt; You will be prompted to set a Master Password. Choose this carefully. It CANNOT be changed later.&lt;/p&gt;
-&lt;p&gt;🚨🚨🚨 Save your Master Password somewhere safe. This is the ONLY way to get access to your TezSign keys.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL WARNING: Master Password&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You will be prompted to set a Master Password. Choose this carefully.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Master Password CANNOT be changed later&lt;/li&gt;
+&lt;li&gt;Save your Master Password somewhere safe&lt;/li&gt;
+&lt;li&gt;This is the ONLY way to access your TezSign keys&lt;/li&gt;
+&lt;li&gt;Loss of this password means permanent loss of access to your keys&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;2-generate-your-baking-keys-directly-on-the-device&#34;&gt;2. Generate your baking keys directly on the device&lt;/h3&gt;
 &lt;p&gt;Generate your baking keys directly on the hardware. In this example, we will generate keys for Consensus and DAL (i.e., companion key).&lt;/p&gt;
@@ -1277,8 +1399,14 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign new consensus companion
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this example, we generate two keys named &amp;ldquo;consensus&amp;rdquo; and &amp;ldquo;companion&amp;rdquo;. You can create as many as you need.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;  For baking with the Data Availability Layer (DAL), distinct tz4 keys are required - the consensus and companion key.
-&lt;strong&gt;Backup:&lt;/strong&gt; Now that you have your keys on the TezSign device, it&amp;rsquo;s a good idea to use Balena Etcher or a similar tool to clone the SD card such that you have a backup in case your original SD card fails.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Understanding DAL Keys:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For baking with the Data Availability Layer (DAL), two distinct tz4 keys are required:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Consensus key&lt;/strong&gt; - Used for block validation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Companion key&lt;/strong&gt; - Used for DAL operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Backup Your SD Card&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now that your keys are on the TezSign device, use Balena Etcher or similar tool to clone the SD card. This backup will allow you to quickly recover if your original SD card fails.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;phase-3-node-configuration&#34;&gt;Phase 3: Node Configuration&lt;/h2&gt;
 &lt;h3 id=&#34;1-import-keys-to-tezbake-client&#34;&gt;1. Import Keys to TezBake client&lt;/h3&gt;
@@ -1296,7 +1424,11 @@ If compromised, regenerate all keys with a new CA.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Caution&lt;/strong&gt;: Ensure your &lt;code&gt;--key-alias&lt;/code&gt; does not conflict with existing keys you wish to keep. Use the &amp;ndash;force flag only if you intend to overwrite an alias.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ CAUTION:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure your &lt;code&gt;--key-alias&lt;/code&gt; does not conflict with existing keys you wish to keep&lt;/li&gt;
+&lt;li&gt;Use the &lt;code&gt;--force&lt;/code&gt; flag only if you intend to overwrite an existing alias&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;2-import-keys-to-tezbake-node-and-signer&#34;&gt;2. Import Keys to TezBake node and signer&lt;/h3&gt;
 &lt;p&gt;To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them in the node configuration.&lt;/p&gt;
@@ -1317,16 +1449,24 @@ NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;3-retrieve-public-keys--proofs--register-them-on-the-chain&#34;&gt;3. Retrieve Public Keys &amp;amp; Proofs &amp;amp; Register them on the chain&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Please note: It&amp;rsquo;s highly recommended to setup TezSign to the point where you active it on the blockchain and wait 2-3 cycles to ensure that it is stable in your use insance.&lt;/p&gt;
-&lt;p&gt;In some cases, connecting the TezSign gadget only using the OTG USB power port does not provide consistent power to the gadget and the device goes offline. Sometimes turning off USB power savings in the BIOS resolves this edge case issue. Using the dedicated power port on your gadget to provide independent power or using a powered USB hub on the sole OTG USB port usually resolves the issue.&lt;/p&gt;
-&lt;p&gt;Here are USB settings you should check on the computer that&amp;rsquo;s powering the TezSign gadget via its OTG USB port:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT: Testing &amp;amp; Power Considerations&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Testing Period:&lt;/strong&gt;
+It&amp;rsquo;s highly recommended to setup TezSign, activate it on the blockchain, and wait 2-3 cycles to ensure stability before relying on it for production baking.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Power Issues:&lt;/strong&gt;
+In some cases, connecting the TezSign gadget only via the OTG USB port may not provide consistent power, causing the device to go offline. Solutions:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;USB power delivery in Soft Off state (S5): Enabled&lt;/li&gt;
-&lt;li&gt;ErP Ready / EuP Ready / ErP Compliance: Disabled&lt;/li&gt;
-&lt;li&gt;Deep S4/S5 / Deep Power Saving / Pseudo G3: Disabled&lt;/li&gt;
-&lt;li&gt;Resume by USB Device / Power On by USB: Enabled&lt;/li&gt;
+&lt;li&gt;Use the dedicated power port on your gadget for independent power (most reliable)&lt;/li&gt;
+&lt;li&gt;Use a powered USB hub on the OTG USB port&lt;/li&gt;
+&lt;li&gt;Configure BIOS USB power settings (see below)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;These settings should ensure your USB port never attempts to go into a power savings mode and shuts down the TezSign gadget. As previously mentioned, providing independent power to your gadget is the most reliable way to not run into this issue.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BIOS USB Settings to Check:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;USB power delivery in Soft Off state (S5): &lt;strong&gt;Enabled&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;ErP Ready / EuP Ready / ErP Compliance: &lt;strong&gt;Disabled&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Deep S4/S5 / Deep Power Saving / Pseudo G3: &lt;strong&gt;Disabled&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Resume by USB Device / Power On by USB: &lt;strong&gt;Enabled&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These settings prevent your USB port from entering power-saving mode and shutting down the TezSign gadget.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;To register your keys on-chain (via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; or &lt;code&gt;octez-client&lt;/code&gt;), you need the Public Key (BLpk) and the Proof of Possession (PoP)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status --full
@@ -1352,11 +1492,23 @@ NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;
 &lt;p&gt;You can check the lock/unlock status of your TezSign keys&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;🚨🚨🚨 Ensure your TezSign device is in the unlocked status before baking with your new keys. &lt;code&gt;tezbake info&lt;/code&gt; can only detect a locked TezSign device if it&amp;rsquo;s running in &lt;a href=&#34;#advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/a&gt; mode. Until then, always run &lt;code&gt;tezbake tezsign status&lt;/code&gt; along with &lt;code&gt;tezbake info&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: Unlock Before Baking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ensure your TezSign device is unlocked before baking with your new keys.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT:&lt;/strong&gt; &lt;code&gt;tezbake info&lt;/code&gt; can only detect a locked TezSign device if you&amp;rsquo;re running in &lt;a href=&#34;#advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/a&gt; mode. Until you switch to that mode, always run both commands:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tezbake tezsign status&lt;/code&gt; - Check lock/unlock status&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tezbake info&lt;/code&gt; - Check general baker status&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Caution:&lt;/strong&gt; Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition, continue using the default backend. Once you fully rely on tz4 TezSign keys, you can safely switch to the TezSign backend.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ CAUTION: Timing Matters&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Continue using the default backend initially&lt;/li&gt;
+&lt;li&gt;Wait until you fully rely on tz4 TezSign keys&lt;/li&gt;
+&lt;li&gt;Then safely switch to the TezSign backend&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;You can configure TezBake to bake directly through the TezSign backend, bypassing the standard &lt;code&gt;octez-signer&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Before: &lt;code&gt;&amp;lt;octez-node&amp;gt;&amp;lt;octez-signer&amp;gt;&amp;lt;tezsign&amp;gt;&lt;/code&gt;&lt;/p&gt;

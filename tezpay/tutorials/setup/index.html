@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Setup">
 <meta itemprop="description" content="How to setup TezPay">
 
-<meta itemprop="wordCount" content="1385">
+<meta itemprop="wordCount" content="1370">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Setup"/>
 <meta name="twitter:description" content="How to setup TezPay"/>
@@ -472,10 +472,11 @@ TezPay, the <em>Configuration File</em> will essentially tell the application
 file how to run and will be edited by the baker (we will cover this
 later), and the <em>Private-Key File</em> will contain the private key for a
 wallet you have designated to pay your delegators (we will explain an
-easy way to get this later as well).
-<em><strong>A note on the Private-key file - it is not recommended to use an existing wallet that may house
-important assets (including NFT&rsquo;s or crypto tokens) but to create a new
-wallet that contains only enough Tezos to pay out delegates.</strong></em></p>
+easy way to get this later as well).</p>
+<blockquote>
+<p><strong>⚠️ SECURITY WARNING: Private Key File</strong></p>
+<p>Do NOT use an existing wallet that contains important assets (NFTs, tokens, etc.). Create a new dedicated wallet that contains only enough Tezos to pay out delegates.</p>
+</blockquote>
 <hr>
 <h3 id="preparation-step-2-download-files">Preparation: Step 2 <em>Download Files</em></h3>
 <p>Download the software from Github using the link:
@@ -629,7 +630,7 @@ we will review:</p>
 </thead>
 </table>
 <blockquote>
-<p>If you&rsquo;ve used json before but now hjson, you can read more about it here: <a href="https://hjson.github.io/">https://hjson.github.io/</a></p>
+<p><strong>ℹ️ NOTE:</strong> If you&rsquo;re familiar with JSON but new to HJSON (Human JSON), you can learn more at <a href="https://hjson.github.io/">https://hjson.github.io/</a>. HJSON is more forgiving than JSON and supports comments.</p>
 </blockquote>
 <p><em>Yellow is areas you will input data/edit fields</em><br>
 <em>Blue are comments about Configuration File objects</em></p>
@@ -668,7 +669,8 @@ custom file as well - but should be done by experienced users.</p>
 <p><em>Yellow is areas you will input data/edit fields</em>
 <em>Blue are comments about Configuration File objects</em></p>
 <blockquote>
-<p>The example below is a more advanced configuration file that showcases several of the features that can be used to customize the TezPay application. To get a simple configuration file, you can remove the sections that are not needed. Here is a sample configuration that will work for 90% of bakers: <a href="https://docs.tez.capital/tezpay/configuration/examples/starter/">TezPay Starter Configuration</a></p>
+<p><strong>💡 TIP: Start Simple</strong></p>
+<p>The example below is a more advanced configuration file showcasing several customization features. For most bakers, a simpler configuration is recommended. See <a href="https://docs.tez.capital/tezpay/configuration/examples/starter/">TezPay Starter Configuration</a> which works for 90% of bakers.</p>
 </blockquote>
 <ol>
 <li>Paste your <strong>Baker</strong> wallet in between the quotes</li>
