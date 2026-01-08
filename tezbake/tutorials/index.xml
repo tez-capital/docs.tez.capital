@@ -29,6 +29,25 @@
   &lt;iframe src=&#34;https://www.youtube.com/embed/t85LjgpRtvc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-tezos-node-signer-dal-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer, DAL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#start-tezos-node&#34;&gt;Start Tezos node&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-baking-keys-and-register-as-baker&#34;&gt;Import baking keys and register&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#register-as-baker-on-the-tezos-mainnet&#34;&gt;Register as baker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#stake-your-baking-xtz-security-deposit&#34;&gt;Stake your XTZ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#import-your-dal-attester-profile&#34;&gt;Import DAL attester profile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installation-advanced&#34;&gt;Installation (Advanced)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#related-guides&#34;&gt;Related Guides&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Installing TezBake and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
 &lt;ol&gt;
