@@ -342,6 +342,23 @@ instance (see below)&lt;/li&gt;
 &lt;p&gt;At this point there should be 3 files in the directory &lt;em&gt;tezpay&lt;/em&gt;.
 These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Next Steps:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run your first payout&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;TezBake Integration&lt;/a&gt; - Automate payouts with TezBake&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up Discord/Twitter/email alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Configuration:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/configuration/examples/&#34;&gt;Configuration Examples&lt;/a&gt; - Sample configs for common scenarios&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/extensions/&#34;&gt;Extensions&lt;/a&gt; - Customize TezPay behavior&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Getting Started with Baking:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Set up your baker first&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -521,6 +538,19 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;li&gt;&lt;strong&gt;Advanced Sample:&lt;/strong&gt; &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;config.sample.hjson&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Detailed configuration guide: &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/&#34;&gt;TezPay Configuration Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;TezPay:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Initial TezPay setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Manual payout guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up payout alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/configuration/examples/&#34;&gt;Configuration Examples&lt;/a&gt; - Sample configs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;TezBake:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Baker setup guide&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;support--questions&#34;&gt;Support &amp;amp; Questions&lt;/h2&gt;
 &lt;p&gt;Need help or have questions?&lt;/p&gt;
@@ -783,6 +813,19 @@ bakers on the Tezos Blockchain. This allows for significant
 customizations and flexibility with respect to the payout system and
 empowers bakers to further take control of their Bakery and aid in
 decentralizing the Tezos Blockchain.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Configuration &amp;amp; Automation:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;TezBake Integration&lt;/a&gt; - Automate payouts with your baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up payout alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/configuration/examples/&#34;&gt;Configuration Examples&lt;/a&gt; - Sample configs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Initial setup guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Set up your baker&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
