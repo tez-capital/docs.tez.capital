@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="TezBake Baking Tutorial for Docker Users">
 
-<meta itemprop="wordCount" content="917">
+<meta itemprop="wordCount" content="915">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for Docker Users"/>
@@ -435,7 +435,7 @@
 </span></span></code></pre></div><h3 id="setup-tezbake-container">Setup TezBake Container</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --name tezbake-container --privileged -d ghcr.io/tez-capital/tezbake:latest-alpine
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.</p>
+<p><strong>ℹ️ INFO:</strong> After this step, you will need to wait a while for the container to start up and bootstrap the Tezos node.</p>
 </blockquote>
 <p>You can monitor the progress of the Tezos node bootstrapping by running the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker logs -f tezbake-container
@@ -461,7 +461,7 @@
 </ul>
 <p><strong>ℹ️ BLS Signatures:</strong>
 BLS (i.e. bip) signatures offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.</p>
-<p><strong>💡 TIP - Security:</strong>
+<p><strong>💡 TIP: Security:</strong>
 Putting the baker on a non-default derivation path provides an additional layer of security at the cost of extra complexity. Make sure your setup is clearly documented for your own records.</p>
 <p><strong>⚠️ High Watermark (HWM) Important Notes:</strong></p>
 <ul>
@@ -471,7 +471,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 <li>The watermark is a record of the last block number your ledger helped to bake or attest</li>
 <li>If setting up a brand new device not used for baking before, no need to alter the default command</li>
 </ul>
-<p><strong>🚨 CRITICAL WARNING: Prevent Double Baking:</strong></p>
+<p><strong>🚨 CRITICAL: Prevent Double Baking:</strong></p>
 <ul>
 <li>Always ensure you&rsquo;re not accidentally going to double bake by using your production ledger/setup to bake on a testnet</li>
 <li>Double baking/attesting means having 2 different bakers with the same key on the same network</li>
@@ -490,7 +490,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 </span></span></code></pre></div><p>Import the hashed key to the TezBake node:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> Change the <code>tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF</code> to the hashed key you got from the previous command.</p>
+<p><strong>ℹ️ INFO:</strong> Change the <code>tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF</code> to the hashed key you got from the previous command.</p>
 </blockquote>
 <p>Finally, change the permissions of the newly generated keys to be readable by the ascend user and group which runs the TezBake node:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R ascend:ascend /bake-buddy/

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Prism Tunneling">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="979">
+<meta itemprop="wordCount" content="976">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Prism Tunneling"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -481,7 +481,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>⚠️ IMPORTANT - Command Execution:</strong></p>
+<p><strong>⚠️ WARNING - Command Execution:</strong></p>
 <ul>
 <li>All <code>tezbake</code> commands should be executed on the controller machine (usually the machine hosting the signer)</li>
 <li>Configuration edits (<code>app.json</code>) should be performed on their respective machines (Node, DAL, or Signer)</li>
@@ -553,12 +553,12 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --node-remote-auth key:/path/to/ssh/key
 </span></span></code></pre></div><blockquote>
 <p><strong>💡 TIP:</strong> You can combine both in a single command.</p>
-<p><strong>ℹ️ NOTE:</strong> If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
+<p><strong>ℹ️ INFO:</strong> If you&rsquo;ve previously installed node or dal locally, remove it first:</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --node --all
 </span></span><span style="display:flex;"><span>tezbake remove --dal --all
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).</p>
+<p><strong>ℹ️ INFO:</strong> During remote setup, TezBake injects its own SSH keys into the remote machine for secure automation (setup, upgrade, info, etc.).</p>
 </blockquote>
 <hr>
 <h2 id="step-3-edit-application-configurations">Step 3: Edit Application Configurations</h2>
@@ -627,7 +627,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># ...</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>}<span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> Signer does not require a Prism section in this layout.</p>
+<p><strong>ℹ️ INFO:</strong> Signer does not require a Prism section in this layout.</p>
 </blockquote>
 <hr>
 <h2 id="step-4-activate-configurations">Step 4: Activate Configurations</h2>
@@ -639,7 +639,7 @@
 <h2 id="step-5-generate-and-distribute-prism-keys">Step 5: Generate and Distribute Prism Keys</h2>
 <p>To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.</p>
 <blockquote>
-<p><strong>ℹ️ IMPORTANT - Key Generation:</strong></p>
+<p><strong>ℹ️ INFO: Key Generation:</strong></p>
 <ul>
 <li>Only applications with a <code>PRISM</code> configuration in their <code>app.json</code> file can generate keys</li>
 <li>You must generate ALL <code>.prism</code> keys from the same <code>&lt;app&gt;</code> to ensure compatibility and proper authentication across components</li>
@@ -701,7 +701,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>⚠️ CRITICAL SECURITY WARNING:</strong></p>
+<p><strong>🚨 CRITICAL:</strong></p>
 <ul>
 <li>Do NOT copy or expose the CA file</li>
 <li>If the CA is compromised, regenerate ALL keys with a new CA immediately</li>

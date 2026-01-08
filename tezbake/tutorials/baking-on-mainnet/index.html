@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="TezBake Baking Tutorial">
 
-<meta itemprop="wordCount" content="1868">
+<meta itemprop="wordCount" content="1857">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial"/>
@@ -449,14 +449,14 @@
 </li>
 <li>Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet app installed. This will be used for storing your funds, voting and changing your baking parameters.
 <blockquote>
-<p><strong>ℹ️ NOTE:</strong> You must use Ledger Live to install the Tezos Wallet app on your device.</p>
+<p><strong>ℹ️ INFO:</strong> You must use Ledger Live to install the Tezos Wallet app on your device.</p>
 </blockquote>
 </li>
 <li>TezSign remote signer device. This will be used to validate blocks securely. It is no longer recommended to bake with a Ledger Nano device itself.</li>
 </ol>
 <hr>
 <blockquote>
-<p><strong>🚨 CRITICAL REQUIREMENT: DAL Node Mandatory</strong></p>
+<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong></p>
 <p>Running a DAL (Data Availability Layer) node is now <strong>mandatory</strong> for baking on the Tezos network. It&rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
 <p><strong>What is the DAL?</strong>
 The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.</p>
@@ -496,7 +496,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <li>Compare it to the latest block on <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a></li>
 <li>Once they match, your node is fully synced and you can proceed</li>
 </ol>
-<p><strong>ℹ️ NOTE:</strong> Both blockchain explorers also provide Ghostnet and Testnet views. Make sure you&rsquo;re looking at the correct network (mainnet).</p>
+<p><strong>ℹ️ INFO:</strong> Both blockchain explorers also provide Ghostnet and Testnet views. Make sure you&rsquo;re looking at the correct network (mainnet).</p>
 </blockquote>
 <h3 id="import-baking-keys-and-register-as-baker">Import baking keys and register as baker</h3>
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
@@ -506,7 +506,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>Follow the following guide and then proceed directly to <a href="#stake-your-baking-xtz-security-deposit">stake your XTZ</a>:</p>
 <p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
 <blockquote>
-<p><strong>⚠️ IMPORTANT - Key Alias Naming:</strong></p>
+<p><strong>⚠️ WARNING: Key Alias Naming</strong></p>
 <p>When following the TezSign guide, use these alias names:</p>
 <ul>
 <li>Use <code>baker</code> instead of <code>consensus</code> (for your consensus key)</li>
@@ -556,8 +556,57 @@ To double bake or attest due to baker setup error means having 2 different baker
 <p>You do NOT need to register if your baker has been inactive for less than 3 days. Check your baking rights schedule to confirm if re-registration is needed.</p>
 </blockquote>
 <h3 id="stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</h3>
-<p>To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.</p>
-<p>Change 6000 to the amount you want to stake. The minimum is 6000 XTZ. You may start baking with as little as 1000 XTZ but you will need to set your baking over staking multiplier to 5X and secure 5000 XTZ that will stake to your baker to cover the security deposit requirement. You can also secure delegators&rsquo; XTZ to your baker to cover the security deposit requirement. Each XTZ delegated to your baker will be counted 0.5 towards the security deposit requirement. For example you can start baking with 1000 XTZ + 5000 XTZ secured from stakers, or you can start baking with 1000 XTZ + 10000 XTZ secured from delegators. You can also start baking with 1000 XTZ + 2000 XTZ secured from stakers + 6000 XTZ secured from delegators.</p>
+<p>To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking.</p>
+<p><strong>Staking Requirements:</strong></p>
+<p>The minimum bond to get baking rights is <strong>6000 XTZ</strong>. However, you have several options to meet this requirement:</p>
+<table>
+<thead>
+<tr>
+<th>Your XTZ</th>
+<th>From Stakers</th>
+<th>From Delegators</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6000+</td>
+<td>0</td>
+<td>0</td>
+<td>Simplest - full self-stake</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>5000</td>
+<td>0</td>
+<td>Requires 5X multiplier</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>0</td>
+<td>15,000</td>
+<td>Pure delegation model</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>2000</td>
+<td>9000</td>
+<td>Mixed approach</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How delegation weight works (Paris protocol):</strong></p>
+<ul>
+<li><strong>Your stake + Stakers:</strong> Each XTZ counts as <strong>1.0</strong> toward the requirement</li>
+<li><strong>Delegators:</strong> Each XTZ counts as <strong>≈0.33</strong> (1/3) toward the requirement</li>
+<li><strong>Formula:</strong> (Your XTZ + Staker XTZ) + (Delegator XTZ × 0.33) ≥ 6000</li>
+</ul>
+<p><strong>Example calculations:</strong></p>
+<ul>
+<li>1000 (self) + 5000 (stakers) = 6000 ✓</li>
+<li>1000 (self) + (15,000 delegators × 0.33) = 1000 + 5000 = 6000 ✓</li>
+<li>1000 (self) + 2000 (stakers) + (9000 delegators × 0.33) = 1000 + 2000 + 3000 = 6000 ✓</li>
+</ul>
 <h4 id="using-tezgov-to-stake">Using TezGov to stake</h4>
 <p>Use the <code>Stake</code> button on the <a href="https://gov.tez.capital">https://gov.tez.capital</a> portal.</p>
 <h4 id="using-cli-to-stake-not-recommended">Using CLI to stake (not recommended)</h4>
@@ -568,7 +617,7 @@ To double bake or attest due to baker setup error means having 2 different baker
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If for some reason the auto method is not working, use the command below to bypass it.</span>
 </span></span><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-tz4-key&gt; --force
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> The tz4 key imported above is your manager key, not your consensus key or companion key.</p>
+<p><strong>ℹ️ INFO:</strong> The tz4 key imported above is your manager key, not your consensus key or companion key.</p>
 </blockquote>
 <h2 id="installation-advanced">Installation (Advanced)</h2>
 <p>You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.</p>

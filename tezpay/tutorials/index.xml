@@ -66,7 +66,7 @@ later), and the &lt;em&gt;Private-Key File&lt;/em&gt; will contain the private k
 wallet you have designated to pay your delegators (we will explain an
 easy way to get this later as well).&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ SECURITY WARNING: Private Key File&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Private Key File&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Do NOT use an existing wallet that contains important assets (NFTs, tokens, etc.). Create a new dedicated wallet that contains only enough Tezos to pay out delegates.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -222,7 +222,7 @@ we will review:&lt;/p&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; If you&amp;rsquo;re familiar with JSON but new to HJSON (Human JSON), you can learn more at &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;. HJSON is more forgiving than JSON and supports comments.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; If you&amp;rsquo;re familiar with JSON but new to HJSON (Human JSON), you can learn more at &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;. HJSON is more forgiving than JSON and supports comments.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Yellow is areas you will input data/edit fields&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
@@ -451,7 +451,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;p&gt;Insert your &lt;strong&gt;unencrypted&lt;/strong&gt; private key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;edsk...yourprivatekeyhere...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ CRITICAL SECURITY WARNING:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Use a dedicated wallet with minimal funds for payouts only. NEVER use your main baker wallet.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Option B: Remote Signer (&lt;code&gt;remote_signer.hjson&lt;/code&gt;):&lt;/strong&gt;&lt;/p&gt;
@@ -485,7 +485,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;hr&gt;
 &lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;ℹ️ NOTE:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;

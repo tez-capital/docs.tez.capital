@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1229">
+<meta itemprop="wordCount" content="1231">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -443,14 +443,14 @@
 <ol>
 <li>Spare computer or existing computer or VM with Linux installed. We recommend Ubuntu Linux.
 <blockquote>
-<p><strong>ℹ️ NOTE:</strong> You must have an SSD drive (or better) and at least 8GB RAM</p>
+<p><strong>ℹ️ INFO:</strong> You must have an SSD drive (or better) and at least 8GB RAM</p>
 </blockquote>
 </li>
 </ol>
 <p>All advanced TezBake configurations, including TezSign block signing apply here as well.</p>
 <hr>
 <blockquote>
-<p><strong>🚨 CRITICAL REQUIREMENT: DAL Node Mandatory</strong></p>
+<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong></p>
 <p>Running a DAL (Data Availability Layer) node is now <strong>mandatory</strong> for baking on the Tezos network. It&rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
 <p><strong>What is the DAL?</strong>
 The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.</p>
@@ -495,7 +495,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <li>Compare it to the latest block on <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a></li>
 <li>Once they match, your node is fully synced and you can proceed</li>
 </ol>
-<p><strong>ℹ️ NOTE:</strong> Both blockchain explorers also provide Ghostnet and testnet views. Make sure you&rsquo;re looking at the correct network.</p>
+<p><strong>ℹ️ INFO:</strong> Both blockchain explorers also provide Ghostnet and testnet views. Make sure you&rsquo;re looking at the correct network.</p>
 </blockquote>
 <h3 id="import-baking-keys-and-register-as-baker">Import baking keys and register as baker</h3>
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
@@ -504,7 +504,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>First, generate the baker key for TezBake:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker
 </span></span></code></pre></div><blockquote>
-<p><strong>⚠️ SECURITY:</strong> Make sure to backup your key in a secure location and never share it.</p>
+<p><strong>⚠️ WARNING:</strong> Make sure to backup your key in a secure location and never share it.</p>
 </blockquote>
 <p>You can get the secret/private key by running the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client show address baker --show-secret
@@ -534,8 +534,8 @@ The DAL acts like an overflow area for data, where large amounts of information 
 You may start baking with as little as 1000 XTZ if you configure additional sources:</p>
 <ul>
 <li>Set baking over staking multiplier to 5X + secure 5000 XTZ from stakers, OR</li>
-<li>Secure 10000 XTZ from delegators (each delegated XTZ counts as 0.5 towards the security deposit), OR</li>
-<li>Combine: 1000 XTZ + 2000 XTZ from stakers + 6000 XTZ from delegators</li>
+<li>Secure 15,000 XTZ from delegators (each delegated XTZ counts as ≈0.33 towards the security deposit per Paris protocol), OR</li>
+<li>Combine: 1000 XTZ + 2000 XTZ from stakers + 9000 XTZ from delegators</li>
 </ul>
 </blockquote>
 <h3 id="import-your-dal-attester-profile">Import your DAL attester profile</h3>

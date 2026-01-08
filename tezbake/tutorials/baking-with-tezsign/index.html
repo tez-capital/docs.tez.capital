@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="2202">
+<meta itemprop="wordCount" content="2201">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -466,7 +466,7 @@
 <li><strong>Prerequisites:</strong> You must have a supported TezSign device ready.</li>
 </ul>
 <blockquote>
-<p><strong>⚠️ DISCLAIMER</strong></p>
+<p><strong>ℹ️ INFO</strong></p>
 <p>TezSign is provided without any guarantee. Use it at your own risk.</p>
 </blockquote>
 <hr>
@@ -513,7 +513,7 @@
 <p>Initialize the signer configuration. This creates the <code>/bake-buddy/signer/tezsign.config.hjson</code> file and runs TezBake&rsquo;s side TezSign setup.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ NOTE:</strong> You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.</p>
+<p><strong>ℹ️ INFO:</strong> You typically do not need to modify the generated configuration file unless you are managing multiple devices or have specific advanced requirements.</p>
 </blockquote>
 <h2 id="phase-2-device-preparation">Phase 2: Device Preparation</h2>
 <p>Please note that it&rsquo;s highly recommended to complete this step on a machine separate from your TezBake baking machine. This ensures the highest level of security.</p>
@@ -530,7 +530,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using TezBake</span>
 </span></span><span style="display:flex;"><span>tezbake tezsign init
 </span></span></code></pre></div><blockquote>
-<p><strong>🚨 CRITICAL WARNING: Master Password</strong></p>
+<p><strong>🚨 CRITICAL: Master Password</strong></p>
 <p>You will be prompted to set a Master Password. Choose this carefully.</p>
 <p><strong>IMPORTANT:</strong></p>
 <ul>
@@ -573,7 +573,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>baker
 </span></span><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>companion --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>companion
 </span></span></code></pre></div><blockquote>
-<p><strong>⚠️ CAUTION:</strong></p>
+<p><strong>⚠️ WARNING:</strong></p>
 <ul>
 <li>Ensure your <code>--key-alias</code> does not conflict with existing keys you wish to keep</li>
 <li>Use the <code>--force</code> flag only if you intend to overwrite an existing alias</li>
@@ -598,7 +598,7 @@ NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is 
 </blockquote>
 <h3 id="3-retrieve-public-keys--proofs--register-them-on-the-chain">3. Retrieve Public Keys &amp; Proofs &amp; Register them on the chain</h3>
 <blockquote>
-<p><strong>⚠️ IMPORTANT: Testing &amp; Power Considerations</strong></p>
+<p><strong>⚠️ WARNING: Testing &amp; Power Considerations</strong></p>
 <p><strong>Testing Period:</strong>
 It&rsquo;s highly recommended to setup TezSign, activate it on the blockchain, and wait 2-3 cycles to ensure stability before relying on it for production baking.</p>
 <p><strong>Power Issues:</strong>
@@ -651,7 +651,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 </blockquote>
 <h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
 <blockquote>
-<p><strong>⚠️ CAUTION: Timing Matters</strong></p>
+<p><strong>⚠️ WARNING: Timing Matters</strong></p>
 <p>Avoid switching to the TezSign backend during the initial transition phase. To ensure a seamless transition:</p>
 <ul>
 <li>Continue using the default backend initially</li>
