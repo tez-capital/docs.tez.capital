@@ -456,66 +456,66 @@
 <h4 id="sample-tezpeak-configuration-with-1-baker">Sample TezPeak configuration with 1 baker</h4>
 <p>Here&rsquo;s an example of a <code>config.hjson</code> file with minimal TezBake configuration for one baker:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span> listen: 0.0.0.0:8733
-</span></span><span style="display:flex;"><span> app_root: /bake-buddy
-</span></span><span style="display:flex;"><span> modules: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>         bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>             tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
-</span></span><span style="display:flex;"><span>         <span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>listen: 0.0.0.0:8733
+</span></span><span style="display:flex;"><span>app_root: /bake-buddy
+</span></span><span style="display:flex;"><span>modules: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>            tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><p>You can also make TezPeak GUI only available on the local computer if you have an all-in-one setup (i.e. the baker and the GUI are on the same computer which has a graphical user interface):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span> listen: 127.0.0.1:8733
-</span></span><span style="display:flex;"><span> app_root: /bake-buddy
-</span></span><span style="display:flex;"><span> modules: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>         bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>             tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
-</span></span><span style="display:flex;"><span>         <span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>listen: 127.0.0.1:8733
+</span></span><span style="display:flex;"><span>app_root: /bake-buddy
+</span></span><span style="display:flex;"><span>modules: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>            tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur
+</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><h5 id="full-tezpeak-configuration-examples">Full TezPeak configuration examples</h5>
 <p>Here&rsquo;s the TezPeak configuration with all TezBake available options:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># Id to show in the header</span>
-</span></span><span style="display:flex;"><span> id: <span style="color:#4e9a06">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># Address to listen on</span>
-</span></span><span style="display:flex;"><span> listen: 127.0.0.1:8733
-</span></span><span style="display:flex;"><span> app_root: /bake-buddy
-</span></span><span style="display:flex;"><span> modules: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#8f5902;font-style:italic"># uncomment bellow to disable tezbake package monitoring</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#8f5902;font-style:italic"># applications: null</span>
-</span></span><span style="display:flex;"><span>         bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>             <span style="color:#8f5902;font-style:italic"># list of bakers to monitor for balances and rights</span>
-</span></span><span style="display:flex;"><span>             tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
-</span></span><span style="display:flex;"><span>         <span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># List of reference nodes to connect to</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available</span>
-</span></span><span style="display:flex;"><span> nodes: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#4e9a06">&#34;Tezos Foundation&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>         address: https://rpc.tzbeta.net/
-</span></span><span style="display:flex;"><span>         is_rights_provider: <span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span>         is_block_provider: <span style="color:#204a87">false</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>     tzkt: <span style="color:#ce5c00;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>         address: https://rpc.tzkt.io/mainnet/
-</span></span><span style="display:flex;"><span>         is_rights_provider: <span style="color:#204a87">false</span>
-</span></span><span style="display:flex;"><span>         is_block_provider: <span style="color:#204a87">true</span>
-</span></span><span style="display:flex;"><span>         <span style="color:#8f5902;font-style:italic"># reports error if node not available, use for baker&#39;s node</span>
-</span></span><span style="display:flex;"><span>         is_essential: <span style="color:#204a87">false</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># The mode tezpeak should operate in</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># public - assumes public environment, only readonly operations are allowed</span>
-</span></span><span style="display:flex;"><span> <span style="color:#8f5902;font-style:italic"># private - assumes private environment, all operations are allowed</span>
-</span></span><span style="display:flex;"><span> mode: auto
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Id to show in the header</span>
+</span></span><span style="display:flex;"><span>id: <span style="color:#4e9a06">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Address to listen on</span>
+</span></span><span style="display:flex;"><span>listen: 127.0.0.1:8733
+</span></span><span style="display:flex;"><span>app_root: /bake-buddy
+</span></span><span style="display:flex;"><span>modules: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    tezbake: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># uncomment bellow to disable tezbake package monitoring</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># applications: null</span>
+</span></span><span style="display:flex;"><span>        bakers: <span style="color:#ce5c00;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8f5902;font-style:italic"># list of bakers to monitor for balances and rights</span>
+</span></span><span style="display:flex;"><span>            tz1P6WKJu2rcbxKiKRZHKQKmKrpC9TfW1AwM
+</span></span><span style="display:flex;"><span>        <span style="color:#ce5c00;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># List of reference nodes to connect to</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The reference nodes are used to get the rights and blocks if the baker&#39;s node is not available</span>
+</span></span><span style="display:flex;"><span>nodes: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;Tezos Foundation&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        address: https://rpc.tzbeta.net/
+</span></span><span style="display:flex;"><span>        is_rights_provider: <span style="color:#204a87">true</span>
+</span></span><span style="display:flex;"><span>        is_block_provider: <span style="color:#204a87">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    tzkt: <span style="color:#ce5c00;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        address: https://rpc.tzkt.io/mainnet/
+</span></span><span style="display:flex;"><span>        is_rights_provider: <span style="color:#204a87">false</span>
+</span></span><span style="display:flex;"><span>        is_block_provider: <span style="color:#204a87">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># reports error if node not available, use for baker&#39;s node</span>
+</span></span><span style="display:flex;"><span>        is_essential: <span style="color:#204a87">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The mode tezpeak should operate in</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># auto - if bound to localhost, it will operate in private mode if not, it will operate in public mode</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># public - assumes public environment, only readonly operations are allowed</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># private - assumes private environment, all operations are allowed</span>
+</span></span><span style="display:flex;"><span>mode: auto
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
 </span></span></code></pre></div><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start --peak

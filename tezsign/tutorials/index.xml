@@ -52,16 +52,17 @@ This update process &lt;strong&gt;only works if you are using an image from 21.1
 &lt;p&gt;&lt;strong&gt;Download Updater:&lt;/strong&gt;
 If you do not have it already, download the &lt;code&gt;tezsign_updater&lt;/code&gt; from the &lt;a href=&#34;https://github.com/tez-capital/tezsign/releases&#34;&gt;GitHub Releases page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Example command to download and make executable:&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;](&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; -O tezsign_updater &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x tezsign_updater
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Run the Updater:&lt;/strong&gt;
-Execute the updater tool. It will automatically scan for viable SD cards, check partition layouts, and verify the existence of TezSign files.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ./tezsign_updater
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can run &lt;code&gt;./tezsign_updater -h&lt;/code&gt; to see all available options.&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;](&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; -O tezsign_updater &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x tezsign_updater
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Run the Updater:&lt;/strong&gt;
+Execute the updater tool. It will automatically scan for viable SD cards, check partition layouts, and verify the existence of TezSign files.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ./tezsign_updater
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; **Note:** You can run `./tezsign_updater -h` to see all available options.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Select SD Card:&lt;/strong&gt;
 Choose the SD card you wish to flash from the available list. The tool will indicate &lt;strong&gt;OK&lt;/strong&gt; for devices that match the TezSign layout.&lt;/p&gt;

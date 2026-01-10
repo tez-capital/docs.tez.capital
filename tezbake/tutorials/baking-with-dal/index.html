@@ -446,10 +446,10 @@ If you wish to run TezBake with DAL on a separate machine, consider using <a hre
 <h2 id="new-tezbake-setup-with-dal">New TezBake Setup with DAL</h2>
 <p>You can set up TezBake with DAL integration from scratch. Follow these steps:</p>
 <ol>
-<li>
-<p><strong>Run setup with DAL integration:</strong></p>
+<li><strong>Run setup with DAL integration:</strong></li>
+</ol>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --with-dal
-</span></span></code></pre></div></li>
+</span></span></code></pre></div><ol start="2">
 <li>
 <p>Proceed with your usual setup steps (ledger integration, baker registration, etc.).</p>
 </li>
@@ -473,12 +473,10 @@ If you wish to run TezBake with DAL on a separate machine, consider using <a hre
 </span></span></code></pre></div><p>If the above command fails, specify your <strong>baker key</strong> (not consensus key):</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-key&gt;
 </span></span></code></pre></div><ol start="2">
-<li>
-<p><strong>Restart TezBake to apply changes:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div></li>
+<li><strong>Restart TezBake to apply changes:</strong></li>
 </ol>
-<h2 id="remote-dal-setup">Remote DAL Setup</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><h2 id="remote-dal-setup">Remote DAL Setup</h2>
 <p>Follow the Prism setup steps here: <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
 <h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
 <p>If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:</p>
