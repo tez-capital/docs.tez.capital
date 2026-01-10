@@ -64,7 +64,11 @@
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; You must use Ledger Live to install the Tezos Wallet app on your device.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TezSign remote signer device&lt;/strong&gt; - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Learn more: Baking with TezSign&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezSign remote signer device&lt;/strong&gt; - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Learn more: Baking with TezSign&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Baking with a Ledger is no longer recommended for new bakers. It&amp;rsquo;s still possible to bake with the Ledger but we recommend you implement TezSign right away.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
@@ -287,13 +291,13 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;/ul&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Installing TezBake and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
-&lt;ol&gt;
+&lt;ul&gt;
 &lt;li&gt;Spare computer or existing computer or VM with Linux installed. We recommend Ubuntu Linux.
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; You must have an SSD drive (or better) and at least 8GB RAM&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;p&gt;All advanced TezBake configurations, including TezSign block signing apply here as well.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
