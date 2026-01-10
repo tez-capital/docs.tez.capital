@@ -241,7 +241,7 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
-&lt;p&gt;Follow the steps in &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Follow the steps in &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
@@ -389,7 +389,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
-&lt;p&gt;Follow the steps in &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Follow the steps in &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
@@ -642,7 +642,7 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;remote-dal-setup&#34;&gt;Remote DAL Setup&lt;/h2&gt;
-&lt;p&gt;Follow the Prism setup steps here: &lt;a href=&#34;/en/tezbake/tutorials/baking-with-prism.md&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Follow the Prism setup steps here: &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;quick-troubleshooting&#34;&gt;Quick Troubleshooting&lt;/h2&gt;
 &lt;p&gt;If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal
@@ -655,7 +655,8 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For additional DAL checks, refer to the &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Nomadic Labs DAL Tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Any further questions or support requests? Contact the Tez Capital team on &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1413,11 +1414,8 @@ Putting the baker on a non-default derivation path provides an additional layer 
 &lt;li&gt;If everything appears to be working but baking is still not happening, review the certificate&amp;rsquo;s CN field. Ensure it matches the respective &lt;code&gt;tezos-&amp;lt;app&amp;gt;&lt;/code&gt;. For example, for the signer, the CN field should display &lt;code&gt;tezos-signer&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1723,12 +1721,8 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;support--questions&#34;&gt;Support &amp;amp; Questions&lt;/h2&gt;
-&lt;p&gt;Need help or have questions?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1810,11 +1804,8 @@ Use:&lt;br&gt;
 &lt;p&gt;Like traffic lights turning red just as you arrive — frustrating, but part of the flow.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>

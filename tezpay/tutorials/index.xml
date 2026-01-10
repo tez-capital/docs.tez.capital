@@ -552,12 +552,8 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Baker setup guide&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;support--questions&#34;&gt;Support &amp;amp; Questions&lt;/h2&gt;
-&lt;p&gt;Need help or have questions?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -1085,13 +1081,8 @@ If you run TezPay as a service, place your payout folder &lt;strong&gt;outside o
 Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;need-help&#34;&gt;Need Help?&lt;/h2&gt;
-&lt;p&gt;Reach out anytime:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
