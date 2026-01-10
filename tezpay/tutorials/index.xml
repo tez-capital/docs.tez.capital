@@ -662,6 +662,13 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;h2 id=&#34;tezpeak-example-screenshot&#34;&gt;TezPeak example screenshot&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezpeakexample.png&#34; alt=&#34;TezPeak example screenshot&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - CLI-based setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-peak-gui/&#34;&gt;Baking with Peak GUI&lt;/a&gt; - TezBake GUI setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run payouts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -933,6 +940,13 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Initial TezPay configuration&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run payouts manually or continuously&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Discord/Telegram baker alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -953,6 +967,13 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; tezpay
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Initial configuration&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;TezBake Integration&lt;/a&gt; - Use TezPay with TezBake&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run payouts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -1076,10 +1097,17 @@ It only shows what TezPay would distribute.&lt;/p&gt;
 &lt;p&gt;To run payouts continuously:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay continual
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Folder Location Tip:&lt;/strong&gt;&lt;br&gt;
-If you run TezPay as a service, place your payout folder &lt;strong&gt;outside of &lt;code&gt;/home&lt;/code&gt;&lt;/strong&gt; for reliable service access.&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Folder Location Tip:&lt;/strong&gt;
+If you run TezPay as a service, place your payout folder &lt;strong&gt;outside of &lt;code&gt;/home&lt;/code&gt;&lt;/strong&gt; for reliable service access.
 Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Full setup guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Payout commands and options&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up payout alerts&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;

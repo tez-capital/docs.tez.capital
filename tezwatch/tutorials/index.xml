@@ -92,6 +92,13 @@
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/monitoring-transactions/&#34;&gt;Monitoring Transactions&lt;/a&gt; - Track balances and transfers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - CLI-based monitoring&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed endorsements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -194,6 +201,13 @@
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Initial bot configuration&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;TezPay Notifications&lt;/a&gt; - Payout alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - CLI monitoring&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Prism Tunneling">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="984">
+<meta itemprop="wordCount" content="1005">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Prism Tunneling"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -375,6 +375,7 @@
     </li>
     <li><a href="#final-step-start-everything">Final Step: Start Everything</a></li>
     <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
       </div>
@@ -725,6 +726,13 @@
 <li>If Prism cannot establish a connection, verify that the firewall is not blocking the required port. Ensure that the UDP port (<code>20080</code> in this guide) is open on the <code>public endpoint</code> — the machine configured with the <code>listen</code> directive under the <code>PRISM</code> section in <code>app.json</code>.</li>
 <li>If you see the log message <code>failed to verify certificate</code>, it indicates that the certificates are not from the same CA. Use the <code>key-info</code> commands mentioned in the <strong>Key Distribution</strong> section to verify the keys and ensure they share the same <code>CA</code> field.</li>
 <li>If everything appears to be working but baking is still not happening, review the certificate&rsquo;s CN field. Ensure it matches the respective <code>tezos-&lt;app&gt;</code>. For example, for the signer, the CN field should display <code>tezos-signer</code>.</li>
+</ul>
+<hr>
+<h2 id="related-guides">Related Guides</h2>
+<ul>
+<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Hardware signer setup</li>
+<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard single-machine setup</li>
+<li><a href="/tezbake/tutorials/troubleshooting/">Troubleshooting</a> - Fix common issues</li>
 </ul>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on

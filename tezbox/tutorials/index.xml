@@ -64,6 +64,13 @@ To get started with Podman, you can follow the instructions on the &lt;a href=&#
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To view all available protocols available in the TezBox container, you can run the following command&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 list-protocols
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbox/tutorials/configuration/&#34;&gt;TezBox Configuration&lt;/a&gt; - Customize sandbox settings&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-testnets/&#34;&gt;Baking on Testnets&lt;/a&gt; - Test on public testnets&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-docker/&#34;&gt;Baking with Docker&lt;/a&gt; - Docker-based baking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -154,6 +161,13 @@ Supported units: &lt;code&gt;s&lt;/code&gt; (seconds), &lt;code&gt;m&lt;/code&gt
 &lt;li&gt;build the image
 &lt;code&gt;sudo docker build --build-arg=&amp;quot;PROTOCOLS=PsParisC&amp;quot; --build-arg=&amp;quot;IMAGE_TAG=octez-v20.3&amp;quot; -t tezbox . -f containers/tezos/Containerfile --no-cache&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbox/tutorials/setup/&#34;&gt;TezBox Setup&lt;/a&gt; - Basic sandbox setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-testnets/&#34;&gt;Baking on Testnets&lt;/a&gt; - Test on public testnets&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-docker/&#34;&gt;Baking with Docker&lt;/a&gt; - Docker-based baking&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;

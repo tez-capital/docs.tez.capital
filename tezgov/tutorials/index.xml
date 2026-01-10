@@ -72,6 +72,13 @@
 &lt;p&gt;During the cooldown period you will period name &lt;code&gt;Cooldown&lt;/code&gt; in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovCooldown.png&#34; alt=&#34;TezGov Cooldown period&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/injecting-proposals/&#34;&gt;Injecting Proposals&lt;/a&gt; - Submit new proposals&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Set up your baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/what-is-baking/&#34;&gt;What is Baking?&lt;/a&gt; - Understand Tezos consensus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
@@ -107,6 +114,13 @@
 &lt;p&gt;Vanity proposals can be used for other reasons as well but they are never meant to be pursued all the way through. The scope of vanity proposals does not extend past the proposal round. All bakers must take great care not to vote on these proposals once the governance process enters the exploration phase.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovNewProposalVanity.png&#34; alt=&#34;TezGov new core proposal&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We encourage all bakers to use this system only for serious ecosystem governance issues. The governance portal functionality is a two way street. The ability to speak does not absolve a baker from the consequences of the baker&amp;rsquo;s speech.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;Voting on Proposals&lt;/a&gt; - Vote on existing proposals&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Set up your baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/public-baking/&#34;&gt;Public Baking&lt;/a&gt; - Baker responsibilities&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
