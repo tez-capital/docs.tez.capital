@@ -30,6 +30,24 @@
   &lt;iframe src=&#34;https://www.youtube.com/embed/1SUPwKBWgTU&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/p&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation-step-1-create-tezpay-directory&#34;&gt;Step 1: Create TezPay Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation-step-2-download-files&#34;&gt;Step 2: Download Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#preparation-step-3---payout-wallet-optional&#34;&gt;Step 3: Payout Wallet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-step-1a-configuration-file-simple&#34;&gt;Step 1a: Configuration File (simple)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-step-1b-configuration-file-advanced&#34;&gt;Step 1b: Configuration File (advanced)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-step-2-private-key-file&#34;&gt;Step 2: Private-Key File&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;There is minimal preparation needed to utilize TezPay, assuming that
 you have a functioning public baker running.&lt;/p&gt;
@@ -428,8 +446,18 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;TezPay is integrated directly into TezBake as the &lt;code&gt;pay&lt;/code&gt; module, simplifying your payout process.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;New Users:&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;New Users:&lt;/strong&gt;
 Please follow the steps below to create your configuration and wallet or remote signer files. Refer to the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/&#34;&gt;TezPay Configuration Documentation&lt;/a&gt; for detailed setup instructions.&lt;/p&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#migration-for-existing-tezpay-users&#34;&gt;Migration for Existing TezPay Users&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-guide-for-new-users&#34;&gt;Setup Guide for New Users&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#managing-payouts&#34;&gt;Managing Payouts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#removing-the-pay-module&#34;&gt;Removing the Pay Module&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;Install the TezPay module:&lt;/p&gt;
@@ -684,7 +712,16 @@ Please follow the steps below to create your configuration and wallet or remote 
       <description>
         
         
-        &lt;h2 id=&#34;using-tezpay&#34;&gt;Using TezPay&lt;/h2&gt;
+        &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#using-tezpay-step-1---generating-a-payout-table&#34;&gt;Step 1: Generating a Payout Table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-tezpay-step-2---testing-notifications&#34;&gt;Step 2: Testing Notifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-tezpay-step-3---initiating-a-payout&#34;&gt;Step 3: Initiating a Payout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-tezpay-paying-multiple-cycles-at-a-time&#34;&gt;Paying Multiple Cycles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#using-tezpay-running-a-continual-payout&#34;&gt;Running Continual Payouts&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;using-tezpay&#34;&gt;Using TezPay&lt;/h2&gt;
 &lt;h3 id=&#34;summary-of-using-tezpay&#34;&gt;Summary of Using Tezpay&lt;/h3&gt;
 &lt;p&gt;Using the TezPay application is through CLI for now and will be
 carried out through a few commands.&lt;/p&gt;
