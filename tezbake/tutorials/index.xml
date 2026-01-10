@@ -811,14 +811,14 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;h3 id=&#34;monitor-full-tezbake-node-and-baker-logs-in-real-time&#34;&gt;Monitor full TezBake node and baker logs in real time&lt;/h3&gt;
 &lt;p&gt;Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log -f
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNodeLogF.png&#34; alt=&#34;TezBake node log with all blocks synchronized and all attempted baking and endorsing work&#34;&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNodeLogF.png&#34; alt=&#34;TezBake node log with all blocks synchronized and all attempted baking and attesting work&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;monitor-limited-tezbake-node-or-baker-logs-in-real-time&#34;&gt;Monitor limited TezBake node or baker logs in real time&lt;/h3&gt;
-&lt;p&gt;Using these commands you can focus on just the node, just the baking/endorsing process or just the accusation (of double baking) processes&lt;/p&gt;
+&lt;p&gt;Using these commands you can focus on just the node, just the baking/attesting process or just the accusation (of double baking) processes&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log node -f
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log accuser -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Monitoring just the &lt;code&gt;node&lt;/code&gt; process shows blocks being synchronized in real time by your node.&lt;/p&gt;
-&lt;p&gt;Monitoring just the &lt;code&gt;baker&lt;/code&gt; process shows all attempts to endorse and bake blocks. The baker process works along with the node process to inject blocks and endorsements into the Tezos network.&lt;/p&gt;
+&lt;p&gt;Monitoring just the &lt;code&gt;baker&lt;/code&gt; process shows all attempts to attest and bake blocks. The baker process works along with the node process to inject blocks and attestations into the Tezos network.&lt;/p&gt;
 &lt;p&gt;Monitoring just the &lt;code&gt;accuser&lt;/code&gt; process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.&lt;/p&gt;
 &lt;h3 id=&#34;monitor-tezbake-baker-logs-for-the-next-protocol&#34;&gt;Monitor TezBake baker logs for the next protocol&lt;/h3&gt;
 &lt;p&gt;During times when Tezos protocol are being switched out you will notice that there is a &lt;code&gt;baker&lt;/code&gt; process as well as a &lt;code&gt;baker-next&lt;/code&gt; process. The same is true about the &lt;code&gt;accuser&lt;/code&gt; process. The &lt;code&gt;baker-next&lt;/code&gt; process is the baker process that will be used when the next protocol is activated. The &lt;code&gt;baker&lt;/code&gt; process will be used until the next protocol is activated. The &lt;code&gt;accuser-next&lt;/code&gt; process is the accuser process that will be used when the next protocol is activated. The &lt;code&gt;accuser&lt;/code&gt; process will be used until the next protocol is activated.&lt;/p&gt;
@@ -842,7 +842,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Fix common issues&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed endorsements&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed attestations&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Set up Discord/Telegram alerts&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -925,8 +925,8 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/p&gt;
 &lt;h2 id=&#34;tezbake-bootstrapping&#34;&gt;TezBake Bootstrapping&lt;/h2&gt;
 &lt;p&gt;To bootstrap your TezBake node means to download someone else&amp;rsquo;s snapshot of the blockchain and import it into your node. This is much faster than synchronizing the blockchain from scratch. There is a way to quickly bootstrap your node using a snapshot and a way to bootstrap your node using a snapshot and a block hash. The latter is the most reliable and robust method but it is also the slowest. The former is faster but it assumes you trust the source of the snapshot.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Please be aware that bootstrapping your node could result in your nonce revelation to fail and for you to forfit your endorsement rights for the cycle.&lt;/strong&gt; This is because by default we&amp;rsquo;re using rolling snapshots which don&amp;rsquo;t export full blocks for past cycles by default. If your node baked a special kind of block during the last cycle, it may be asked to provide its nonce to the network. To do so, it needs to have the &lt;code&gt;.tezos-client&lt;/code&gt; data intact from the last cycle and it needs to have the full blocks for the last cycle.&lt;/p&gt;
-&lt;p&gt;To remedy this situation and to never risk forfitting your endorsement rights for a whole cycle, you have to use a snapshot that&amp;rsquo;s at least 5-6 days old (from today), when bootstrapping a node. You also have to not wipe out or to move your &lt;code&gt;.tezos-client&lt;/code&gt; directory. This way you&amp;rsquo;ll always have at least 1 cycle+ of full blocks in your node&amp;rsquo;s database as well as the nonce file on disk. The downside of this method is that it will slow down your bootstrap process by the amount of time it takes to download the full blocks for the past 1 cycle+, which can be up to 2 hours on some slow home networks.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Please be aware that bootstrapping your node could result in your nonce revelation to fail and for you to forfeit your attestation rights for the cycle.&lt;/strong&gt; This is because by default we&amp;rsquo;re using rolling snapshots which don&amp;rsquo;t export full blocks for past cycles by default. If your node baked a special kind of block during the last cycle, it may be asked to provide its nonce to the network. To do so, it needs to have the &lt;code&gt;.tezos-client&lt;/code&gt; data intact from the last cycle and it needs to have the full blocks for the last cycle.&lt;/p&gt;
+&lt;p&gt;To remedy this situation and to never risk forfeiting your attestation rights for a whole cycle, you have to use a snapshot that&amp;rsquo;s at least 5-6 days old (from today), when bootstrapping a node. You also have to not wipe out or to move your &lt;code&gt;.tezos-client&lt;/code&gt; directory. This way you&amp;rsquo;ll always have at least 1 cycle+ of full blocks in your node&amp;rsquo;s database as well as the nonce file on disk. The downside of this method is that it will slow down your bootstrap process by the amount of time it takes to download the full blocks for the past 1 cycle+, which can be up to 2 hours on some slow home networks.&lt;/p&gt;
 &lt;h3 id=&#34;bootstrap-using-a-snapshot&#34;&gt;Bootstrap using a snapshot&lt;/h3&gt;
 &lt;p&gt;You can get Tezos node snapshots in the following place run by the Tezos Foundation&lt;/p&gt;
 &lt;ul&gt;
@@ -1083,7 +1083,7 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/how-to-bake-ghostnet&#34;&gt;How to Bake on Ghostnet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The TezPeak GUI is a graphical user interface for TezBake, which is a command-line tool for baking and endorsing Tezos blocks. It&amp;rsquo;s a great way to get started with baking and endorsing without having to use the command line on a day-to-day basis.&lt;/p&gt;
+&lt;p&gt;The TezPeak GUI is a graphical user interface for TezBake, which is a command-line tool for baking and attesting Tezos blocks. It&amp;rsquo;s a great way to get started with baking and attesting without having to use the command line on a day-to-day basis.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Please note that tezbake version 0.18.0-beta minimum is required to use TezPeak.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1193,6 +1193,10 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
         
         &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already have installed Docker as shown here: &lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;https://docs.docker.com/engine/install&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. The Docker container includes DAL support, but you must ensure it&amp;rsquo;s properly configured. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;pull-and-execute-the-tezbake-docker-image&#34;&gt;Pull and Execute the TezBake Docker Image&lt;/h2&gt;
 &lt;h3 id=&#34;pull-the-tezbake-docker-image&#34;&gt;Pull the TezBake Docker Image&lt;/h3&gt;
@@ -1209,9 +1213,9 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo docker &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; -it tezbake-container /bin/sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;import-ledger-key-or-soft-key-and-register-as-baker&#34;&gt;Import Ledger key or soft key and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
-&lt;p&gt;You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.&lt;/p&gt;
+&lt;p&gt;You have the option to use a TezSign device, a Ledger hardware wallet, or a local unencrypted software key (soft key). TezSign is recommended for new bakers. Ledger remains a valid option for existing setups. See &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; for the recommended approach.&lt;/p&gt;
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
-&lt;h4 id=&#34;option-1---recommended-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer&lt;/h4&gt;
+&lt;h4 id=&#34;option-1-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; change ed to bip as needed for your individual needs; the default is ed25519/0h/0h which works just fine)&lt;/span&gt;
@@ -1330,7 +1334,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet&#34;&gt;How to Bake&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-testnets&#34;&gt;How to Bake on Testnets&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.&lt;/p&gt;
+&lt;p&gt;A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (attesting blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.&lt;/p&gt;
 &lt;p&gt;A Tezos companion key was not necessary to use in the tz1-tz3 address era. With the introduction of tz4 or BLS consensus signing (aggregating signatures), it is now necessary to use a separate companion key, in addition to the separate consensus key to validate blocks in the tz4 era. Both the consensus key and the companion key bake together at the same time. The consensus key works with the consensus and the companion key works with the DAL.&lt;/p&gt;
 &lt;p&gt;This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&amp;rsquo;s main account.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1368,7 +1372,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;ul&gt;
 &lt;li&gt;Replace the &lt;code&gt;--ledger-id&lt;/code&gt; value with the 4-word ID of the Ledger you want to use for the consensus key&lt;/li&gt;
 &lt;li&gt;We use the P-256 (tz3) curve for the consensus key because it&amp;rsquo;s the fastest on Ledger hardware and the most portable option for both on-premise and cloud hardware security modules (HSMs)&lt;/li&gt;
-&lt;li&gt;The consensus key is only used for signing blocks and endorsements, so it doesn&amp;rsquo;t need to be the same curve as the baker key&lt;/li&gt;
+&lt;li&gt;The consensus key is only used for signing blocks and attestations, so it doesn&amp;rsquo;t need to be the same curve as the baker key&lt;/li&gt;
 &lt;li&gt;Many bakers move from a tz1 key to a tz3 key for the consensus key to improve performance&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
@@ -1445,7 +1449,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;p&gt;The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.&lt;/p&gt;
 &lt;p&gt;Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&amp;rsquo;s no longer needed for baking.&lt;/p&gt;
 &lt;h3 id=&#34;confirm-the-consensus-key-is-working&#34;&gt;Confirm the consensus key is working&lt;/h3&gt;
-&lt;p&gt;Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and endorsements on behalf of the baker key.&lt;/p&gt;
+&lt;p&gt;Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and attestations on behalf of the baker key.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26 bb baker&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2428547&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26.449: injected attestation op5RtCGypnrri9FyYHy91haPWB6CpouxNABcgM7BSUmr81p27G4 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26 bb baker&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2428547&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26.449:   consensus &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;tz3P9WvzULMuss5iDk4tjNQYWkwSrLAjUuh7&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26 bb baker&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2428547&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Dec &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; 05:14:26.449:   on behalf of tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; level 7403648, round

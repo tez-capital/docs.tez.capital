@@ -458,7 +458,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <li><a href="/tezbake/tutorials/baking-on-mainnet">How to Bake</a></li>
 <li><a href="/tezbake/tutorials/baking-on-testnets">How to Bake on Testnets</a></li>
 </ul>
-<p>A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (endorsing blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.</p>
+<p>A Tezos consensus key is a cryptographic key specifically used for signing blocks and consensus operations (attesting blocks) in the Tezos blockchain. Introduced to improve security and operational flexibility, it allows bakers (validators) to delegate block-signing responsibilities to a different key than the one associated with their primary baking account.</p>
 <p>A Tezos companion key was not necessary to use in the tz1-tz3 address era. With the introduction of tz4 or BLS consensus signing (aggregating signatures), it is now necessary to use a separate companion key, in addition to the separate consensus key to validate blocks in the tz4 era. Both the consensus key and the companion key bake together at the same time. The consensus key works with the consensus and the companion key works with the DAL.</p>
 <p>This separation of roles is useful for reducing the exposure of the primary baker key (which holds funds and has broader permissions) by isolating consensus-related tasks to a different key. If compromised, only the consensus operations are affected, not the funds held by the baker&rsquo;s main account.</p>
 <blockquote>
@@ -496,7 +496,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <ul>
 <li>Replace the <code>--ledger-id</code> value with the 4-word ID of the Ledger you want to use for the consensus key</li>
 <li>We use the P-256 (tz3) curve for the consensus key because it&rsquo;s the fastest on Ledger hardware and the most portable option for both on-premise and cloud hardware security modules (HSMs)</li>
-<li>The consensus key is only used for signing blocks and endorsements, so it doesn&rsquo;t need to be the same curve as the baker key</li>
+<li>The consensus key is only used for signing blocks and attestations, so it doesn&rsquo;t need to be the same curve as the baker key</li>
 <li>Many bakers move from a tz1 key to a tz3 key for the consensus key to improve performance</li>
 </ul>
 </blockquote>
@@ -573,7 +573,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p>The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.</p>
 <p>Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&rsquo;s no longer needed for baking.</p>
 <h3 id="confirm-the-consensus-key-is-working">Confirm the consensus key is working</h3>
-<p>Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and endorsements on behalf of the baker key.</p>
+<p>Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and attestations on behalf of the baker key.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449: injected attestation op5RtCGypnrri9FyYHy91haPWB6CpouxNABcgM7BSUmr81p27G4 <span style="color:#204a87;font-weight:bold">for</span>
 </span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   consensus <span style="color:#ce5c00;font-weight:bold">(</span>tz3P9WvzULMuss5iDk4tjNQYWkwSrLAjUuh7<span style="color:#ce5c00;font-weight:bold">)</span>
 </span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   on behalf of tz1S5WxdZR5f9NzsPXhr7L9L1vrEb5spZFur <span style="color:#204a87;font-weight:bold">for</span> level 7403648, round

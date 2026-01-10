@@ -96,7 +96,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/monitoring-transactions/&#34;&gt;Monitoring Transactions&lt;/a&gt; - Track balances and transfers&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - CLI-based monitoring&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed endorsements&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed attestations&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on

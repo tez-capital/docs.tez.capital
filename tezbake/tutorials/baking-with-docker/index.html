@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="Run TezBake in a Docker container for isolated and portable Tezos baking">
 
-<meta itemprop="wordCount" content="939">
+<meta itemprop="wordCount" content="986">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="Run TezBake in a Docker container for isolated and portable Tezos baking"/>
@@ -429,6 +429,10 @@
 	</header>    
 	<h2 id="preparation">Preparation</h2>
 <p>For this tutorial, you&rsquo;ll need to have already have installed Docker as shown here: <a href="https://docs.docker.com/engine/install">https://docs.docker.com/engine/install</a></p>
+<blockquote>
+<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong></p>
+<p>Running a DAL (Data Availability Layer) node is now <strong>mandatory</strong> for baking on the Tezos network. The Docker container includes DAL support, but you must ensure it&rsquo;s properly configured. See <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> for details.</p>
+</blockquote>
 <hr>
 <h2 id="pull-and-execute-the-tezbake-docker-image">Pull and Execute the TezBake Docker Image</h2>
 <h3 id="pull-the-tezbake-docker-image">Pull the TezBake Docker Image</h3>
@@ -445,9 +449,9 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker <span style="color:#204a87">exec</span> -it tezbake-container /bin/sh
 </span></span></code></pre></div><h3 id="import-ledger-key-or-soft-key-and-register-as-baker">Import Ledger key or soft key and register as baker</h3>
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
-<p>You have the option to use the secure Ledger hardware wallet or simply use a local, unencrypted software key (a.k.a. soft key). The secure Ledger hardware wallet is the recommended option for mainnet baking.</p>
+<p>You have the option to use a TezSign device, a Ledger hardware wallet, or a local unencrypted software key (soft key). TezSign is recommended for new bakers. Ledger remains a valid option for existing setups. See <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> for the recommended approach.</p>
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
-<h4 id="option-1---recommended-import-ledger-key-to-tezbake-signer">(Option 1 - RECOMMENDED) Import Ledger key to TezBake signer</h4>
+<h4 id="option-1-import-ledger-key-to-tezbake-signer">(Option 1) Import Ledger key to TezBake signer</h4>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If you have a custom derivation path, you can specify it as shown: (`--import-key=&#34;ed25519/0h/0h&#34;`; change ed to bip as needed for your individual needs; the default is ed25519/0h/0h which works just fine)</span>
