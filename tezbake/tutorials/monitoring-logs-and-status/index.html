@@ -456,7 +456,7 @@
 <p>Monitoring just the <code>accuser</code> process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.</p>
 <h3 id="monitor-tezbake-baker-logs-for-the-next-protocol">Monitor TezBake baker logs for the next protocol</h3>
 <p>During times when Tezos protocol are being switched out you will notice that there is a <code>baker</code> process as well as a <code>baker-next</code> process. The same is true about the <code>accuser</code> process. The <code>baker-next</code> process is the baker process that will be used when the next protocol is activated. The <code>baker</code> process will be used until the next protocol is activated. The <code>accuser-next</code> process is the accuser process that will be used when the next protocol is activated. The <code>accuser</code> process will be used until the next protocol is activated.</p>
-<p><img src="/tezbake/tutorial/tezbakeNext.png" alt="&lt;TezBake -next protocol services&gt;"></p>
+<p><img src="/tezbake/tutorial/tezbakeNext.png" alt="TezBake next protocol services"></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log baker-next -f
 </span></span><span style="display:flex;"><span>tezbake node log accuser-next -f
 </span></span></code></pre></div><p>The <code>baker-next</code> process will show one of two things.</p>

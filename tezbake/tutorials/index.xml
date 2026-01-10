@@ -770,7 +770,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;Check your TezBake stack versions to ensure they are up to date:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version --all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the expected Octez version along with the release date of the binaries.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeVersionAll.png&#34; alt=&#34;&amp;lt;tezbake version, Octez versions&amp;gt;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeVersionAll.png&#34; alt=&#34;TezBake version and Octez versions&#34;&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
@@ -815,7 +815,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;Monitoring just the &lt;code&gt;accuser&lt;/code&gt; process shows the attempts of your node to call our double baking events on the Tezos network. Normally you should not see anything in this log.&lt;/p&gt;
 &lt;h3 id=&#34;monitor-tezbake-baker-logs-for-the-next-protocol&#34;&gt;Monitor TezBake baker logs for the next protocol&lt;/h3&gt;
 &lt;p&gt;During times when Tezos protocol are being switched out you will notice that there is a &lt;code&gt;baker&lt;/code&gt; process as well as a &lt;code&gt;baker-next&lt;/code&gt; process. The same is true about the &lt;code&gt;accuser&lt;/code&gt; process. The &lt;code&gt;baker-next&lt;/code&gt; process is the baker process that will be used when the next protocol is activated. The &lt;code&gt;baker&lt;/code&gt; process will be used until the next protocol is activated. The &lt;code&gt;accuser-next&lt;/code&gt; process is the accuser process that will be used when the next protocol is activated. The &lt;code&gt;accuser&lt;/code&gt; process will be used until the next protocol is activated.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNext.png&#34; alt=&#34;&amp;lt;TezBake -next protocol services&amp;gt;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeNext.png&#34; alt=&#34;TezBake next protocol services&#34;&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker-next -f
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log accuser-next -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;baker-next&lt;/code&gt; process will show one of two things.&lt;/p&gt;
