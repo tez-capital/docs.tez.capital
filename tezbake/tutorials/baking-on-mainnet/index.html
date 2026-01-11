@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL">
 
-<meta itemprop="wordCount" content="2140">
+<meta itemprop="wordCount" content="2278">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
@@ -368,6 +370,7 @@
         <li><a href="#register-as-baker-on-the-tezos-mainnet">Register as baker on the Tezos Mainnet</a></li>
         <li><a href="#stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</a></li>
         <li><a href="#import-your-dal-attester-profile">Import your DAL attester profile</a></li>
+        <li><a href="#baker-per-block-votes">Baker Per-Block Votes</a></li>
       </ul>
     </li>
     <li><a href="#installation-advanced">Installation (Advanced)</a></li>
@@ -553,7 +556,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 If your device was used to bake before it might have a &ldquo;high watermark&rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
 If you used to bake on mainnet with the same ledger as you&rsquo;re trying to use now but it&rsquo;s been a while, it&rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
 The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&rsquo;re setting up a brand new device that&rsquo;s not been used for baking before, there is no need to alter the default command above.
-<strong>What is Double Baking?</strong> Running two bakers with the same key on the same network simultaneously. This means your key signs conflicting blocks or attestations, which is considered a malicious attack on the network. The protocol detects this and slashes (confiscates) your staked tez as punishment.</p>
+<strong>What is Double Baking?</strong> Running two bakers with the same key on the same network simultaneously. This means your key signs conflicting blocks or attestations, which is considered a malicious attack on the network. The protocol detects this and slashes (confiscates) your staked tez as punishment. See <a href="/getting-started/slashing-explained/">Slashing Explained</a> for penalty details.</p>
 <p><strong>Prevention - Critical Rules:</strong></p>
 <ul>
 <li><strong>Never use bakers with the same seed on any network</strong> - even different networks (mainnet vs testnet)</li>
@@ -627,7 +630,7 @@ The watermark is simply a record of the lack block number your ledger helped to 
 </tr>
 </tbody>
 </table>
-<p><strong>How delegation weight works (Paris protocol):</strong></p>
+<p><strong>How delegation weight works:</strong></p>
 <ul>
 <li><strong>Your stake + Stakers:</strong> Each XTZ counts as <strong>1.0</strong> toward the requirement</li>
 <li><strong>Delegators:</strong> Each XTZ counts as <strong>≈0.33</strong> (1/3) toward the requirement</li>
@@ -652,7 +655,29 @@ The watermark is simply a record of the lack block number your ledger helped to 
 </span></span></code></pre></div><blockquote>
 <p><strong>ℹ️ INFO:</strong> The tz4 key referenced here is your baker&rsquo;s public key address (starts with tz4), not your consensus key or companion key.</p>
 </blockquote>
-<h2 id="installation-advanced">Installation (Advanced)</h2>
+<h3 id="baker-per-block-votes">Baker Per-Block Votes</h3>
+<p>Bakers cast two types of votes with every block they produce. TezBake configures sensible defaults, but you should understand what you&rsquo;re voting for:</p>
+<p><strong>Liquidity Baking Toggle Vote:</strong></p>
+<ul>
+<li>Controls a protocol feature that mints ~5 tez per minute into a tez/tzBTC liquidity pool</li>
+<li>Options: <code>on</code> (continue subsidy), <code>off</code> (end subsidy), <code>pass</code> (abstain)</li>
+<li>If enough bakers vote <code>off</code> over ~2000 blocks, the subsidy pauses</li>
+<li>Default in TezBake: <code>on</code></li>
+</ul>
+<p><strong>Adaptive Issuance Vote:</strong></p>
+<ul>
+<li>Controls whether the protocol adjusts reward rates based on the network&rsquo;s staked ratio</li>
+<li>The protocol targets 50% of tez staked; rewards increase when staking is low, decrease when high</li>
+<li>Options: <code>on</code>, <code>off</code>, <code>pass</code></li>
+<li>Default in TezBake: <code>on</code></li>
+</ul>
+<p>To view or modify your votes, edit the vote file:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/data/vote-file.json
+</span></span></code></pre></div><p>Example contents:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span><span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>After changes, restart your baker:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><h2 id="installation-advanced">Installation (Advanced)</h2>
 <p>You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.</p>
 <p>Follow the steps in <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
 <p>As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.</p>

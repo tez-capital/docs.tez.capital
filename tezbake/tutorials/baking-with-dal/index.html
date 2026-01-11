@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="TezBake Baking Tutorial for DAL">
 
-<meta itemprop="wordCount" content="412">
+<meta itemprop="wordCount" content="598">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
@@ -357,6 +359,7 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#dal-rewards-and-penalties">DAL Rewards and Penalties</a></li>
     <li><a href="#new-tezbake-setup-with-dal">New TezBake Setup with DAL</a></li>
     <li><a href="#existing-tezbake-setup">Existing TezBake Setup</a></li>
     <li><a href="#after-dal-setup">After DAL Setup</a></li>
@@ -434,6 +437,25 @@
 <h2 id="introduction">Introduction</h2>
 <p>The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.</p>
 <p>For more details on DAL, see <a href="https://tezos.gitlab.io/shell/dal_overview.html">Tezos DAL Overview</a>.</p>
+<h2 id="dal-rewards-and-penalties">DAL Rewards and Penalties</h2>
+<p>Running a DAL node directly impacts your baking income:</p>
+<p><strong>Reward Impact:</strong></p>
+<ul>
+<li>DAL attestations account for approximately <strong>10% of total block rewards</strong> (2,275 out of 22,757 reward weight units)</li>
+<li>Successfully attesting to DAL shards earns you this portion of rewards</li>
+<li>Missing DAL attestations means losing ~10% of your potential baking income</li>
+</ul>
+<p><strong>How It Works:</strong></p>
+<ol>
+<li>When data is published to the DAL, it&rsquo;s split into &ldquo;shards&rdquo; distributed across bakers</li>
+<li>Your baker must download and verify shards assigned to you within the attestation lag period</li>
+<li>Your baker then declares whether it successfully obtained the shards (via the attestation operation)</li>
+<li>If enough bakers attest to availability, the data blob is marked as available</li>
+</ol>
+<p><strong>Attestation Lag:</strong>
+The protocol defines an attestation lag period during which bakers must download and verify their assigned shards. Your DAL node must be online and synchronized to meet this deadline. The lag gives bakers time to fetch data before they must attest.</p>
+<p><strong>No Slashing for DAL Failures:</strong>
+Unlike double baking/attestation, failing to run DAL does not result in slashing of your stake. You simply miss out on the DAL portion of rewards.</p>
 <blockquote>
 <p><strong>⚠️ WARNING: IP Address Exposure Risk</strong></p>
 <p>The security implications for bakers in the DAL network are highlighted in the <a href="https://octez.tezos.com/docs/shell/dal_overview.html">official Octez documentation</a>.</p>

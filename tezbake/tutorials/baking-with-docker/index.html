@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="Run TezBake in a Docker container for isolated and portable Tezos baking">
 
-<meta itemprop="wordCount" content="1008">
+<meta itemprop="wordCount" content="1013">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="Run TezBake in a Docker container for isolated and portable Tezos baking"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
@@ -488,7 +490,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 <ul>
 <li>Always ensure you&rsquo;re not accidentally going to double bake by using your production ledger/setup to bake on a testnet</li>
 <li>Double baking/attesting means having 2 different bakers with the same key on the same network</li>
-<li>This is a serious offense and can lead to loss of bond and other penalties</li>
+<li>This is a serious offense and can lead to loss of bond and other penalties. See <a href="/getting-started/slashing-explained/">Slashing Explained</a> for details</li>
 <li>Always double-check your setup before proceeding</li>
 </ul>
 </blockquote>

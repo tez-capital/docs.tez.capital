@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Voting on Proposals">
 <meta itemprop="description" content="How to vote on Tezos protocol proposals using the TezGov portal">
 
-<meta itemprop="wordCount" content="734">
+<meta itemprop="wordCount" content="799">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Voting on Proposals"/>
 <meta name="twitter:description" content="How to vote on Tezos protocol proposals using the TezGov portal"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbake-li">
@@ -356,7 +358,11 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#tezos-proposal-voting">Tezos proposal voting</a></li>
+    <li><a href="#tezos-proposal-voting">Tezos proposal voting</a>
+      <ul>
+        <li><a href="#understanding-quorum">Understanding Quorum</a></li>
+      </ul>
+    </li>
     <li><a href="#proposal-voting-with-tezgov">Proposal voting with TezGov</a></li>
     <li><a href="#tezgov-web-portal">TezGov Web Portal</a>
       <ul>
@@ -436,11 +442,20 @@
 <p>The Tezos proposal process consists of 5 stages, each of which lasts for 14 cycles (~14 days). Briefly, the proposal process is as follows:</p>
 <ol>
 <li><em>Proposal.</em> If no proposal gets more than 5% of the state to vote for it, the proposal process repeats indefinitely. As soon as a proposal gets 5% of the state to vote for it, the proposal process moves to the next stage. In cases where there are multiple 5%+ proposals on the table, the proposal with the most votes wins.</li>
-<li><em>Exploration</em> Proposal needs to hit quorum (around 50% of all stake voting in some way) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
+<li><em>Exploration</em> Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
 <li><em>Cooldown</em> The proposal is tested on a dedicated test network to make sure it migrates and runs. Dapp developers make sure this proposal doesn&rsquo;t break their dapps.</li>
-<li><em>Promotion</em> Proposal needs to hit quorum (around 50% of all stake voting in some way) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
+<li><em>Promotion</em> Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
 <li><em>Adoption</em> The proposal is officially accepted and goes into effect at the end of the <em>Adoption</em> stage. The Ghostnet test network is upgraded as a final test before Mainnet adoption. Dapp developers make sure this proposal doesn&rsquo;t break their dapps and make any necessary changes to their dapps.</li>
 </ol>
+<h3 id="understanding-quorum">Understanding Quorum</h3>
+<p>The quorum requirement ensures sufficient participation before accepting proposals:</p>
+<ul>
+<li><strong>Dynamic adjustment</strong>: Quorum adjusts after each vote based on historical participation using an exponential moving average (EMA)</li>
+<li><strong>Range</strong>: Minimum 20%, maximum 70%</li>
+<li><strong>Supermajority</strong>: Requires 80% of non-Pass votes to be Yay votes</li>
+<li><strong>Pass votes</strong>: Count toward quorum participation but don&rsquo;t affect supermajority calculation</li>
+</ul>
+<p>This design ensures governance can continue even if some bakers stop participating, while still requiring meaningful consensus.</p>
 <p>We recommend you read more about the Tezos Voting process here: <a href="https://tezos.gitlab.io/active/voting.html">https://tezos.gitlab.io/active/voting.html</a></p>
 <h2 id="proposal-voting-with-tezgov">Proposal voting with TezGov</h2>
 <p>TezGov allows you to participate in Tezos proposal voting with your Ledger hardware wallet.</p>

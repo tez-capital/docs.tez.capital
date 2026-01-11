@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezos Public Baking">
 <meta itemprop="description" content="How to Setup a Public Baker on Tezos">
 
-<meta itemprop="wordCount" content="416">
+<meta itemprop="wordCount" content="563">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezos Public Baking"/>
 <meta name="twitter:description" content="How to Setup a Public Baker on Tezos"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="td-sidebar-nav-active-item">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbake-li">
@@ -360,6 +362,7 @@
       <ul>
         <li><a href="#what-is-delegation">What is Delegation?</a></li>
         <li><a href="#what-is-staking">What is Staking?</a></li>
+        <li><a href="#configuring-staker-acceptance">Configuring Staker Acceptance</a></li>
       </ul>
     </li>
   </ul>
@@ -427,12 +430,29 @@
 <h3 id="what-is-staking">What is Staking?</h3>
 <p>With the <a href="https://research-development.nomadic-labs.com/adaptive-issuance-paris.html#the-new-staker-role">Adaptive Issuance</a> protocol upgrade, bakers can now accept stakers in addition to delegators. Staking differs from delegation in several important ways:</p>
 <ul>
-<li><strong>Funds are locked</strong> - Staked tez is frozen for 3 cycles (~3 days) and cannot be moved during this period</li>
+<li><strong>Funds are locked</strong> - Staked tez is frozen and cannot be moved. Unstaking takes up to 4 days (3 cycles plus the remainder of the current cycle)</li>
 <li><strong>Higher rewards</strong> - Stakers earn approximately 3x the rewards of delegators due to the additional commitment and risk</li>
-<li><strong>Slashing risk</strong> - Stakers are liable for losses if the baker double bakes or double attests (though this is rare)</li>
+<li><strong>Slashing risk</strong> - Stakers share in slashing penalties proportionally if the baker double bakes or double attests. See <a href="/getting-started/slashing-explained/">Slashing Explained</a> for details</li>
 <li><strong>Direct protocol payment</strong> - Stakers are paid directly by the protocol without baker intervention, unlike delegators who rely on the baker to distribute rewards</li>
 <li><strong>Greater baking power</strong> - Staked tez counts as 1.0 toward the baker&rsquo;s capacity, while delegated tez counts as ≈0.33</li>
 </ul>
+<h3 id="configuring-staker-acceptance">Configuring Staker Acceptance</h3>
+<p>Bakers control whether and how much external stake they accept via two parameters:</p>
+<p><strong><code>limit_of_staking_over_baking</code></strong> (default: 0, max: 9)</p>
+<ul>
+<li>Defines how much external stake you accept relative to your own stake</li>
+<li>Default of 0 means you reject all external stakers</li>
+<li>Setting to 5 means you accept up to 5x your own stake from stakers</li>
+<li>Example: If you stake 10,000 XTZ with limit=5, you can accept up to 50,000 XTZ from stakers</li>
+</ul>
+<p><strong><code>edge_of_baking_over_staking</code></strong> (default: 1, range: 0-1)</p>
+<ul>
+<li>Controls how staking rewards are split between you and your stakers</li>
+<li>Value of 1 (100%): You keep all rewards from your own stake (stakers get their proportional share)</li>
+<li>Value of 0: You share all rewards proportionally with stakers</li>
+<li>Most public bakers use the default of 1</li>
+</ul>
+<p>Configure these via <a href="https://gov.tez.capital">TezGov</a> or CLI. Changes take effect after 5 cycles (~5 days).</p>
 <p>A public baker has to contact two entities within the Tezos ecosystem to be added to the list of public bakers within each of their ecosystems. The entities in question all have their own methods to determine your public baker details, such as your fee and payment policies, via self-reporting. You will be asked to self-report your details to each of the following entities:</p>
 <ul>
 <li><a href="https://tzstats.com">https://tzstats.com</a> (Trilitech)

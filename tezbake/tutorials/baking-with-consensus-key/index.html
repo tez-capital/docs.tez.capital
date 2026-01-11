@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="TezBake Baking Tutorial for using a Consensus Key">
 
-<meta itemprop="wordCount" content="1065">
+<meta itemprop="wordCount" content="1070">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for using a Consensus Key"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
+  <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
@@ -474,7 +476,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p><strong>If Consensus Key is Compromised:</strong></p>
 <ul>
 <li>Attacker can sign blocks and endorse operations</li>
-<li>Attacker can maliciously double-bake or double-attest on your behalf, <strong>slashing your funds</strong></li>
+<li>Attacker can maliciously double-bake or double-attest on your behalf, <strong>slashing your funds</strong>. See <a href="/getting-started/slashing-explained/">Slashing Explained</a></li>
 <li>Attacker can transfer all baker funds NOT locked/staked in the security deposit using the drain operation</li>
 </ul>
 <p><strong>Protection Measures:</strong></p>
@@ -578,7 +580,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p>To register the consensus key, run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> consensus key <span style="color:#204a87;font-weight:bold">for</span> baker to consensus
 </span></span></code></pre></div><p>You can also set your consensus key on TezGov via <a href="https://gov.tez.capital">https://gov.tez.capital</a>.</p>
-<p>The new consensus key will become effective after 3 cycles. For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.</p>
+<p>The new consensus key will become effective after 3 cycles (~3 days). For example if you set your consensus key in cycle 1000, it will be effective in cycle 1003.</p>
 <p>Once the consensus Ledger becomes effective, you can unplug your original Ledger device as it&rsquo;s no longer needed for baking.</p>
 <h3 id="confirm-the-consensus-key-is-working">Confirm the consensus key is working</h3>
 <p>Once the consensus key becomes effective, you will see a change in the baking logs by showing the consensus key operating on blocks and attestations on behalf of the baker key.</p>
