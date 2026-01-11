@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1273">
+<meta itemprop="wordCount" content="1272">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -140,6 +140,8 @@
   <a href="/tezbake/tutorials/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialstroubleshooting"><span class="">Troubleshooting</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbootstrap-node-li">
   <a href="/tezbake/tutorials/bootstrap-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbootstrap-node"><span class="">Bootstrap Node</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsfailover-procedure-li">
+  <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
   <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-peak-gui-li">
@@ -529,10 +531,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>You must register your baker if:</p>
 <ul>
 <li>You&rsquo;re setting up a new baker (first time)</li>
-<li>Your baker has been inactive for over 2 weeks</li>
+<li>Your baker has been inactive beyond the inactivity period (3 cycles - about 1 hour on fast testnets like Seoulnet, or 3 days on Ghostnet)</li>
 <li>Your baking rights have stopped appearing in the schedule</li>
 </ul>
-<p>You do NOT need to register if your baker has been inactive for less than 2 weeks. Check your baking rights schedule to confirm if re-registration is needed.</p>
+<p>Check your baking rights schedule to confirm if re-registration is needed.</p>
 </blockquote>
 <h3 id="stake-your-baking-xtz-security-deposit">Stake your baking XTZ security deposit</h3>
 <p>To bake on the Tezos network, you need to stake your XTZ security deposit. This is a <a href="/getting-started/slashing-explained/">slashable</a> security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.</p>

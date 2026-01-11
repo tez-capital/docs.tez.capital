@@ -398,10 +398,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;You must register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive for over 2 weeks&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive beyond the inactivity period (3 cycles - about 1 hour on fast testnets like Seoulnet, or 3 days on Ghostnet)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;You do NOT need to register if your baker has been inactive for less than 2 weeks. Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
+&lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a &lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;slashable&lt;/a&gt; security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
@@ -1014,6 +1014,166 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
     </item>
     
     <item>
+      <title>Tezbake: Failover Procedure</title>
+      <link>/tezbake/tutorials/failover-procedure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/failover-procedure/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;safe-failover-procedure&#34;&gt;Safe Failover Procedure&lt;/h2&gt;
+&lt;p&gt;When your primary baking setup fails, you need to switch to your backup quickly but safely. Rushing this process risks double baking, which results in slashing. This guide walks you through a safe failover.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: Never Run Two Bakers Simultaneously&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Double baking occurs when two signers with the same key sign blocks at the same level. This results in slashing of your stake. Always ensure your primary is completely stopped before activating your backup.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;before-you-need-failover&#34;&gt;Before You Need Failover&lt;/h2&gt;
+&lt;p&gt;Prepare these items in advance:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup computer with TezBake installed (but not started)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup TezSign device or Ledger (not authorized for baking)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Document your baker&amp;rsquo;s public key hash (tz1/tz2/tz3/tz4 address)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Know your current block level (check &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;TzStats&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;failover-steps&#34;&gt;Failover Steps&lt;/h2&gt;
+&lt;h3 id=&#34;step-1-confirm-primary-is-down&#34;&gt;Step 1: Confirm Primary is Down&lt;/h3&gt;
+&lt;p&gt;Before doing anything, verify your primary baker is truly unreachable:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Try to connect to primary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh your-primary-baker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you can connect, check status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the primary responds, troubleshoot it rather than failing over.&lt;/p&gt;
+&lt;h3 id=&#34;step-2-stop-primary-if-accessible&#34;&gt;Step 2: Stop Primary (If Accessible)&lt;/h3&gt;
+&lt;p&gt;If you can still access your primary:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# On primary machine&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify it&amp;#39;s stopped&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Should show services as stopped&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-3-disconnect-primary-signer&#34;&gt;Step 3: Disconnect Primary Signer&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Critical step&lt;/strong&gt; - physically ensure the primary cannot sign:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TezSign&lt;/strong&gt;: Unplug the USB cable from the primary computer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ledger&lt;/strong&gt;: Unplug from primary and close the Baking app&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you cannot access the primary machine physically, wait at least 2-3 blocks (~20-30 seconds) after the last known signing before proceeding.&lt;/p&gt;
+&lt;h3 id=&#34;step-4-note-current-block-level&#34;&gt;Step 4: Note Current Block Level&lt;/h3&gt;
+&lt;p&gt;Check the current block level on a block explorer:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or use your backup node if synced&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Record this level - you&amp;rsquo;ll use it for the High Watermark (HWM).&lt;/p&gt;
+&lt;h3 id=&#34;step-5-setup-backup-signer&#34;&gt;Step 5: Setup Backup Signer&lt;/h3&gt;
+&lt;p&gt;Connect your backup signer to the backup computer:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For TezSign:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Initialize if not already done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# The device should already have keys from initial setup&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify it&amp;#39;s detected&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For Ledger:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Import with HWM set to current block level + 10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &amp;lt;current_level+10&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ HWM Safety Margin&lt;/strong&gt;: Setting HWM slightly above current level ensures your backup won&amp;rsquo;t sign any block the primary might have signed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;step-6-start-backup-baker&#34;&gt;Step 6: Start Backup Baker&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify it&amp;#39;s running&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Watch the logs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-7-verify-baking-resumes&#34;&gt;Step 7: Verify Baking Resumes&lt;/h3&gt;
+&lt;p&gt;Monitor your baker for the next few blocks:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see attestation and baking activity. Check block explorers to confirm your baker is producing blocks and attestations.&lt;/p&gt;
+&lt;h2 id=&#34;after-failover&#34;&gt;After Failover&lt;/h2&gt;
+&lt;h3 id=&#34;investigate-primary-failure&#34;&gt;Investigate Primary Failure&lt;/h3&gt;
+&lt;p&gt;Once stable on backup, investigate what happened:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hardware failure?&lt;/li&gt;
+&lt;li&gt;Network issues?&lt;/li&gt;
+&lt;li&gt;Software crash?&lt;/li&gt;
+&lt;li&gt;Power outage?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;repair-primary&#34;&gt;Repair Primary&lt;/h3&gt;
+&lt;p&gt;Fix the primary issue but &lt;strong&gt;do not start baking&lt;/strong&gt; on it. Keep it as your new backup:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stop all baking services: &lt;code&gt;tezbake stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Do not authorize the signer&lt;/li&gt;
+&lt;li&gt;Keep it ready for the next failover&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;update-hwm-on-repaired-primary&#34;&gt;Update HWM on Repaired Primary&lt;/h3&gt;
+&lt;p&gt;When the repaired machine becomes your backup:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Set HWM to current level when you eventually need to use it&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Don&amp;#39;t pre-authorize - wait until needed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;emergency-cannot-access-primary&#34;&gt;Emergency: Cannot Access Primary&lt;/h2&gt;
+&lt;p&gt;If your primary is completely unreachable (fire, theft, hardware death):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Wait 2-3 minutes&lt;/strong&gt; - Ensure any queued signatures complete&lt;/li&gt;
+&lt;li&gt;Check block explorer - Note the last block your baker signed&lt;/li&gt;
+&lt;li&gt;Set backup HWM to that level + 10&lt;/li&gt;
+&lt;li&gt;Proceed with failover steps 5-7&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;common-mistakes-to-avoid&#34;&gt;Common Mistakes to Avoid&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Mistake&lt;/th&gt;
+&lt;th&gt;Consequence&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Starting backup before stopping primary&lt;/td&gt;
+&lt;td&gt;Double baking → Slashing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Not updating HWM&lt;/td&gt;
+&lt;td&gt;Potentially signing at same level → Slashing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pre-authorizing backup signer&lt;/td&gt;
+&lt;td&gt;Risk of accidental double baking&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rushing the process&lt;/td&gt;
+&lt;td&gt;Errors lead to slashing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;failover-checklist&#34;&gt;Failover Checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Primary confirmed down or stopped&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Primary signer physically disconnected&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Current block level noted&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup signer connected&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; HWM set appropriately&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup baker started&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Attestations/blocks appearing in logs&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Block explorer confirms activity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/best-practices/&#34;&gt;Best Practices&lt;/a&gt; - Backup hardware recommendations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; - Why double baking is dangerous&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Monitor your baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - TezSign setup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: Baking with DAL</title>
       <link>/tezbake/tutorials/baking-with-dal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1336,12 +1496,12 @@ Putting the baker on a non-default derivation path provides an additional layer 
 &lt;p&gt;Registration is NOT necessary if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;This is already an active baker ledger being set up on a failover machine&lt;/li&gt;
-&lt;li&gt;The baker has not been inactive for over 2 weeks&lt;/li&gt;
+&lt;li&gt;The baker has not been inactive for over 3 days&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You MUST register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive for over 2 weeks&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 3 days&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
