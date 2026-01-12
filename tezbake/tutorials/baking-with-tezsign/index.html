@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="2281">
+<meta itemprop="wordCount" content="2476">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -474,6 +474,15 @@
 <p><strong>ℹ️ INFO</strong></p>
 <p>TezSign is provided without any guarantee. Use it at your own risk.</p>
 </blockquote>
+<blockquote>
+<p><strong>⚠️ KNOWN ISSUE: Multiple Bakers on One Device</strong></p>
+<p>Running multiple bakers (e.g., mainnet + testnet) on a single TezSign device can cause occasional missed attestations (1-2 per few hours). If you bake for multiple networks:</p>
+<ul>
+<li>Use a <strong>dedicated TezSign device</strong> for each network</li>
+<li>Or accept occasional misses on the less critical network</li>
+</ul>
+<p>Single-baker setups (one baker with consensus + companion keys) are <strong>not affected</strong>.</p>
+</blockquote>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#phase-0-purchase-sbc-and-image-sd-card">Phase 0: Purchase SBC and image SD card</a></li>
@@ -538,7 +547,12 @@
 <p>Before being able to initialize the device you must enable your computer to see the device via USB. Download the udev rules and install them. Then add your user to the right group to access the device.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/tez-capital/tezsign/refs/heads/main/tools/add_udev_rules.sh <span style="color:#000;font-weight:bold">|</span> sudo bash
 </span></span><span style="display:flex;"><span>sudo usermod -aG plugdev <span style="color:#000">$USER</span>
-</span></span></code></pre></div><p>Log out and log back in to make sure the new settings are effective.</p>
+</span></span></code></pre></div><blockquote>
+<p><strong>⚠️ Ubuntu Username Issue</strong></p>
+<p>Ubuntu does not allow capital letters in usernames. If you encounter an error creating the <code>TDU_tezsign</code> service user, run:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo useradd -r -s /usr/sbin/nologin TDU_tezsign --force-badname
+</span></span></code></pre></div></blockquote>
+<p>Log out and log back in to make sure the new settings are effective.</p>
 <p>Connect your TezSign device to your workstation and run:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using companion app</span>
 </span></span><span style="display:flex;"><span>./tezsign-host init
@@ -631,10 +645,21 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <li>Resume by USB Device / Power On by USB: <strong>Enabled</strong></li>
 </ul>
 <p>These settings prevent your USB port from entering power-saving mode and shutting down the TezSign gadget.</p>
+<p><strong>💡 TIP: USB 2.0 vs USB 3.0</strong></p>
+<p>If you experience intermittent connection issues, try using a <strong>USB 2.0 port</strong> instead of USB 3.0. Some USB 3.0 controllers have compatibility issues with certain devices. USB 2.0 ports are often more reliable for TezSign communication.</p>
 </blockquote>
 <p>To register your keys on-chain (via <a href="https://gov.tez.capital/">TezGov</a> or <code>octez-client</code>), you need the Public Key (BLpk) and the Proof of Possession (PoP)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
 </span></span></code></pre></div><p>The easiest way to activate your newly generated keys is by using the <a href="https://gov.tez.capital/">TezGov</a> web portal. Connect with your manager Ledger or similar and within the <code>Baker Management</code> area, set your consensus and companion key details. You will need your BLpk&rsquo;s, first, and after filling them out, the prompt will ask you for your PoP&rsquo;s.</p>
+<blockquote>
+<p><strong>⏱️ Key Activation Timeline</strong></p>
+<p>After registering your keys on-chain, they will activate in <strong>2-3 cycles (~2-3 days)</strong>. You can verify the activation status:</p>
+<ul>
+<li>On TzKT: <code>https://tzkt.io/&lt;your_tz1_address&gt;/secondary-keys</code></li>
+<li>Via CLI: <code>tezbake info --signer</code></li>
+</ul>
+<p>Your old keys remain active until the new ones take over. Do not remove or change your old signing setup until the new keys are confirmed active.</p>
+</blockquote>
 <p>Bakers must now set their new consensus and companion keys together when changing to tz4 signing at first. Later down the road, you will be able to only rotate your consensus key if so desired. The companion key is a <strong>must</strong> for tz4 BLS signing, to perform the DAL-related duties. When you see &ldquo;companion,&rdquo; think &ldquo;DAL.&rdquo; <strong>Consensus and companion always go together.</strong></p>
 <p>Registering using the CLI is somewhat more challenging and no longer recommended but possible.</p>
 <p>Here&rsquo;s an example to fill in your own details, assuming you have your baker manager wallet imported as <code>baker</code> (this is no longer recommended, you should have your consensus key imported as <code>baker</code> and manage your baker parameters with &lt;gov.tez.capital&gt;):</p>

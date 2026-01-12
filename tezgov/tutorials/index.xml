@@ -57,6 +57,17 @@
 &lt;li&gt;If your baking computer itself has a graphical interface, you can briefly switch to the wallet app on your Ledger device and vote, then switch back to the baking app and resume baking only.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;In order to vote using your Ledger device, you must have the Tezos wallet app installed and open on your Ledger device. If you have the baking app open, you will not be able to vote&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: &amp;ldquo;Transaction Not Trusted&amp;rdquo; Error&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re voting from your baking machine while your baker is running, you may see a &amp;ldquo;Transaction Not Trusted&amp;rdquo; warning. This occurs because the new Ledger Wallet app cannot share the device with a running baker process.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Stop your baker: &lt;code&gt;tezbake stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Vote via TezGov&lt;/li&gt;
+&lt;li&gt;Restart your baker: &lt;code&gt;tezbake start&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Alternatively, use a secondary Ledger with the same seed on a different machine to avoid stopping your baker.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;tezgov-web-portal&#34;&gt;TezGov Web Portal&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://gov.tez.capital&#34; title=&#34;TezGov Web Portal&#34;&gt;TezGov Web Portal: https://gov.tez.capital&lt;/a&gt;&lt;/p&gt;

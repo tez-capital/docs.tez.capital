@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezBake issues and solutions for installation errors and runtime problems">
 
-<meta itemprop="wordCount" content="446">
+<meta itemprop="wordCount" content="672">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezBake issues and solutions for installation errors and runtime problems"/>
@@ -366,6 +366,16 @@
         <li><a href="#blockchain-errors">Blockchain errors</a></li>
       </ul>
     </li>
+    <li><a href="#common-fixes">Common Fixes</a>
+      <ul>
+        <li><a href="#clear-cache">Clear Cache</a></li>
+        <li><a href="#corrupted-node-storage">Corrupted Node Storage</a></li>
+        <li><a href="#full-disk">Full Disk</a></li>
+        <li><a href="#update-eli-lua-interpreter">Update eli (Lua Interpreter)</a></li>
+        <li><a href="#shell-path-issues-after-update">Shell Path Issues After Update</a></li>
+        <li><a href="#tezsign-usb-issues">TezSign USB Issues</a></li>
+      </ul>
+    </li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
@@ -456,6 +466,48 @@
 </span></span><span style="display:flex;"><span>mai <span style="color:#0000cf;font-weight:bold">20</span> 08:51:43 baker-VirtualBox node<span style="color:#ce5c00;font-weight:bold">[</span>5868<span style="color:#ce5c00;font-weight:bold">]</span>: May <span style="color:#0000cf;font-weight:bold">20</span> 08:51:43.267 - node.store:
 </span></span><span style="display:flex;"><span>mai <span style="color:#0000cf;font-weight:bold">20</span> 08:51:43 baker-VirtualBox node<span style="color:#ce5c00;font-weight:bold">[</span>5868<span style="color:#ce5c00;font-weight:bold">]</span>: May <span style="color:#0000cf;font-weight:bold">20</span> 08:51:43.267 - node.store: attempting to restore the store<span style="color:#a40000">&#39;</span>s consistency...
 </span></span></code></pre></div><hr>
+<h2 id="common-fixes">Common Fixes</h2>
+<h3 id="clear-cache">Clear Cache</h3>
+<p>If you encounter plugin or installation issues, clear the AMI cache:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ami --erase-cache <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo ami --erase-cache
+</span></span></code></pre></div><h3 id="corrupted-node-storage">Corrupted Node Storage</h3>
+<p>If your node won&rsquo;t sync or shows storage errors, you may need to clear the storage and rebootstrap:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Stop the node first</span>
+</span></span><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Remove corrupted storage files</span>
+</span></span><span style="display:flex;"><span>rm -rf /bake-buddy/node/data/.tezos-node/daily_logs <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>       /bake-buddy/node/data/.tezos-node/context <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>       /bake-buddy/node/data/.tezos-node/lock <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>       /bake-buddy/node/data/.tezos-node/store
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Rebootstrap with a rolling snapshot</span>
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
+</span></span></code></pre></div><h3 id="full-disk">Full Disk</h3>
+<p>Check disk usage and identify large directories:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check overall disk space</span>
+</span></span><span style="display:flex;"><span>df -hT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check TezBake directory sizes</span>
+</span></span><span style="display:flex;"><span>du -sh /bake-buddy/node/data/.*
+</span></span></code></pre></div><p>A rolling node should typically be under 100GB. If significantly larger, clear the storage and rebootstrap with a rolling snapshot as shown above.</p>
+<h3 id="update-eli-lua-interpreter">Update eli (Lua Interpreter)</h3>
+<p>If you encounter &ldquo;illegal instruction&rdquo; or other low-level errors, update eli:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check current version</span>
+</span></span><span style="display:flex;"><span>eli -v
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Update to latest</span>
+</span></span><span style="display:flex;"><span>wget -q https://raw.githubusercontent.com/alis-is/eli/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
+</span></span></code></pre></div><p>eli version should be <code>0.36.3</code> or higher.</p>
+<h3 id="shell-path-issues-after-update">Shell Path Issues After Update</h3>
+<p>If <code>tezbake</code> commands fail after an update, refresh your shell&rsquo;s path cache:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">hash</span> -r
+</span></span></code></pre></div><p>This is needed because tezbake moved to <code>/usr/local/bin/tezbake</code>.</p>
+<h3 id="tezsign-usb-issues">TezSign USB Issues</h3>
+<p>If your TezSign device becomes unresponsive or you see timeout errors, try resetting the USB port before rebooting the machine:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced usb-port-reset
+</span></span></code></pre></div><p>This often recovers the device without requiring a full system restart.</p>
+<hr>
 <h2 id="related-guides">Related Guides</h2>
 <p><strong>Setup &amp; Operations:</strong></p>
 <ul>

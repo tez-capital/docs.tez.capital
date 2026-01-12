@@ -462,6 +462,15 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ KNOWN ISSUE: Multiple Bakers on One Device&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Running multiple bakers (e.g., mainnet + testnet) on a single TezSign device can cause occasional missed attestations (1-2 per few hours). If you bake for multiple networks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a &lt;strong&gt;dedicated TezSign device&lt;/strong&gt; for each network&lt;/li&gt;
+&lt;li&gt;Or accept occasional misses on the less critical network&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Single-baker setups (one baker with consensus + companion keys) are &lt;strong&gt;not affected&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/a&gt;&lt;/li&gt;
@@ -526,7 +535,12 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;p&gt;Before being able to initialize the device you must enable your computer to see the device via USB. Download the udev rules and install them. Then add your user to the right group to access the device.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -fsSL https://raw.githubusercontent.com/tez-capital/tezsign/refs/heads/main/tools/add_udev_rules.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; sudo bash
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo usermod -aG plugdev &lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Log out and log back in to make sure the new settings are effective.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Ubuntu Username Issue&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Ubuntu does not allow capital letters in usernames. If you encounter an error creating the &lt;code&gt;TDU_tezsign&lt;/code&gt; service user, run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo useradd -r -s /usr/sbin/nologin TDU_tezsign --force-badname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;Log out and log back in to make sure the new settings are effective.&lt;/p&gt;
 &lt;p&gt;Connect your TezSign device to your workstation and run:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using companion app&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezsign-host init
@@ -619,10 +633,21 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;li&gt;Resume by USB Device / Power On by USB: &lt;strong&gt;Enabled&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These settings prevent your USB port from entering power-saving mode and shutting down the TezSign gadget.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: USB 2.0 vs USB 3.0&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you experience intermittent connection issues, try using a &lt;strong&gt;USB 2.0 port&lt;/strong&gt; instead of USB 3.0. Some USB 3.0 controllers have compatibility issues with certain devices. USB 2.0 ports are often more reliable for TezSign communication.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;To register your keys on-chain (via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; or &lt;code&gt;octez-client&lt;/code&gt;), you need the Public Key (BLpk) and the Proof of Possession (PoP)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status --full
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The easiest way to activate your newly generated keys is by using the &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; web portal. Connect with your manager Ledger or similar and within the &lt;code&gt;Baker Management&lt;/code&gt; area, set your consensus and companion key details. You will need your BLpk&amp;rsquo;s, first, and after filling them out, the prompt will ask you for your PoP&amp;rsquo;s.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⏱️ Key Activation Timeline&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After registering your keys on-chain, they will activate in &lt;strong&gt;2-3 cycles (~2-3 days)&lt;/strong&gt;. You can verify the activation status:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;On TzKT: &lt;code&gt;https://tzkt.io/&amp;lt;your_tz1_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Via CLI: &lt;code&gt;tezbake info --signer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Your old keys remain active until the new ones take over. Do not remove or change your old signing setup until the new keys are confirmed active.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Bakers must now set their new consensus and companion keys together when changing to tz4 signing at first. Later down the road, you will be able to only rotate your consensus key if so desired. The companion key is a &lt;strong&gt;must&lt;/strong&gt; for tz4 BLS signing, to perform the DAL-related duties. When you see &amp;ldquo;companion,&amp;rdquo; think &amp;ldquo;DAL.&amp;rdquo; &lt;strong&gt;Consensus and companion always go together.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Registering using the CLI is somewhat more challenging and no longer recommended but possible.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s an example to fill in your own details, assuming you have your baker manager wallet imported as &lt;code&gt;baker&lt;/code&gt; (this is no longer recommended, you should have your consensus key imported as &lt;code&gt;baker&lt;/code&gt; and manage your baker parameters with &amp;lt;gov.tez.capital&amp;gt;):&lt;/p&gt;
@@ -794,7 +819,11 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;First update your tezbake binary to the latest version, depending on your computer architecture:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Refresh Your Shell Path&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After updating the tezbake binary, run &lt;code&gt;hash -r&lt;/code&gt; to refresh your shell&amp;rsquo;s command path cache. This ensures your shell uses the newly installed version immediately.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then update the rest of the TezBake software stack:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade -s
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;The &lt;code&gt;-s&lt;/code&gt; flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&amp;rsquo;t have an impact on your baker.&lt;/p&gt;
@@ -928,6 +957,48 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store: attempting to restore the store&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s consistency...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;common-fixes&#34;&gt;Common Fixes&lt;/h2&gt;
+&lt;h3 id=&#34;clear-cache&#34;&gt;Clear Cache&lt;/h3&gt;
+&lt;p&gt;If you encounter plugin or installation issues, clear the AMI cache:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ami --erase-cache &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ami --erase-cache
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/h3&gt;
+&lt;p&gt;If your node won&amp;rsquo;t sync or shows storage errors, you may need to clear the storage and rebootstrap:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Stop the node first&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Remove corrupted storage files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf /bake-buddy/node/data/.tezos-node/daily_logs &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/context &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/lock &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/store
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Rebootstrap with a rolling snapshot&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;full-disk&#34;&gt;Full Disk&lt;/h3&gt;
+&lt;p&gt;Check disk usage and identify large directories:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check overall disk space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;df -hT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check TezBake directory sizes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;du -sh /bake-buddy/node/data/.*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A rolling node should typically be under 100GB. If significantly larger, clear the storage and rebootstrap with a rolling snapshot as shown above.&lt;/p&gt;
+&lt;h3 id=&#34;update-eli-lua-interpreter&#34;&gt;Update eli (Lua Interpreter)&lt;/h3&gt;
+&lt;p&gt;If you encounter &amp;ldquo;illegal instruction&amp;rdquo; or other low-level errors, update eli:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check current version&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;eli -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Update to latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/alis-is/eli/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;eli version should be &lt;code&gt;0.36.3&lt;/code&gt; or higher.&lt;/p&gt;
+&lt;h3 id=&#34;shell-path-issues-after-update&#34;&gt;Shell Path Issues After Update&lt;/h3&gt;
+&lt;p&gt;If &lt;code&gt;tezbake&lt;/code&gt; commands fail after an update, refresh your shell&amp;rsquo;s path cache:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;hash&lt;/span&gt; -r
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is needed because tezbake moved to &lt;code&gt;/usr/local/bin/tezbake&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/h3&gt;
+&lt;p&gt;If your TezSign device becomes unresponsive or you see timeout errors, try resetting the USB port before rebooting the machine:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced usb-port-reset
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This often recovers the device without requiring a full system restart.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Setup &amp;amp; Operations:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1380,9 +1451,21 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# private - assumes private environment, all operations are allowed&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mode: auto
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;start-tezpeak-and-connect-to-it&#34;&gt;Start TezPeak and connect to it&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --peak
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ SECURITY WARNING: Private Mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;strong&gt;private&lt;/strong&gt; mode, anyone with access to your TezPeak instance can &lt;strong&gt;control your baker&lt;/strong&gt; (start, stop, and manage services). Only use private mode when:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TezPeak is bound to &lt;code&gt;127.0.0.1&lt;/code&gt; (localhost only), or&lt;/li&gt;
+&lt;li&gt;TezPeak is behind a firewall/VPN and not publicly accessible&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you need remote access, use &lt;code&gt;public&lt;/code&gt; mode and manage your baker via CLI when needed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+## Start TezPeak and connect to it
+
+```bash
+tezbake start --peak
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you&amp;rsquo;re connecting to the TezPeak GUI from a different computer, you&amp;rsquo;ll need to open a web browser and navigate to &lt;code&gt;http://&amp;lt;your-baker-ip&amp;gt;:8733&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re connecting from the same computer, you can use &lt;code&gt;http://127.0.0.1:8733&lt;/code&gt; or &lt;code&gt;http://localhost:8733&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;tezpeak-example-screenshot&#34;&gt;TezPeak example screenshot&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezpeakexample.png&#34; alt=&#34;TezPeak example screenshot&#34;&gt;&lt;/p&gt;

@@ -322,6 +322,23 @@ every payout
 &lt;li&gt;This section refers to network parameters to fetch information about
 the baker in order to compile rewards and payouts &lt;strong&gt;Do not edit
 unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Configure Multiple RPCs for Reliability&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To avoid RPC failures during payouts, configure multiple RPC endpoints in your &lt;code&gt;config.hjson&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;network: {
+    rpc_pool: [
+        &amp;#34;https://rpc.tzkt.io/mainnet&amp;#34;
+        &amp;#34;https://rpc.tzbeta.net/&amp;#34;
+        &amp;#34;https://eu.rpc.tez.capital&amp;#34;
+        &amp;#34;https://us.rpc.tez.capital&amp;#34;
+        &amp;#34;https://prod.tcinfra.net/rpc/mainnet&amp;#34;
+    ]
+    tzkt_url: &amp;#34;https://api.tzkt.io&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;TezPay will automatically try the next RPC if one fails.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;11&#34;&gt;
 &lt;li&gt;Over delegation projection prohibits you from over paying beyond
 your delegation limit &lt;strong&gt;Do not edit unless you are an experience
 user&lt;/strong&gt;&lt;/li&gt;
@@ -649,6 +666,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;applications&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# path to tezpay ami package, either absolute or relative to parent directory peak&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# `pay` is the correct value to use when both tezpay and tezpeak are installed as modules within tezbake instance.&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ⚠️ IMPORTANT: Use &amp;#34;pay&amp;#34; NOT &amp;#34;tezpay&amp;#34; when using TezBake integration!&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;tezpay&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;pay&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;payout_wallet&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;tz1X7U9XxVz6NDxL4DSZhijME61PW45bYUJE&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -847,6 +865,16 @@ line of code and one additional confirmation while it runs.&lt;/p&gt;
 &lt;/table&gt;
 &lt;p&gt;Running in continual mode will start its first payment a little bit after the current cycle (one during which you launched it) finishes and the next one begins (usually around 30-60 minutes after the beginning of the new cycle).&lt;/p&gt;
 &lt;p&gt;If you would like to start in continual mode but still need to pay your delegators for last cycle, run the command from Step 3. first and then launch TezPay in continual mode.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT: Protocol Upgrades&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;TezPay continual mode will &lt;strong&gt;stop&lt;/strong&gt; when a Tezos protocol upgrade occurs. After a protocol upgrade:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Run a dry-run for the first cycle after the upgrade: &lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check for any errors in the output&lt;/li&gt;
+&lt;li&gt;If successful, manually pay the first cycle: &lt;code&gt;./tezpay pay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Restart continual mode: &lt;code&gt;./tezpay continual&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;summary-tezpay&#34;&gt;Summary: TezPay&lt;/h2&gt;
 &lt;p&gt;TezPay is an application that allows for easy payouts for public

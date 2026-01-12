@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Peak GUI">
 <meta itemprop="description" content="Manage your Tezos baker with TezPeak&rsquo;s graphical web interface">
 
-<meta itemprop="wordCount" content="504">
+<meta itemprop="wordCount" content="568">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Peak GUI"/>
 <meta name="twitter:description" content="Manage your Tezos baker with TezPeak&rsquo;s graphical web interface"/>
@@ -367,7 +367,6 @@
         <li><a href="#setup-tezpeak-configuration">Setup TezPeak configuration</a></li>
       </ul>
     </li>
-    <li><a href="#start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</a></li>
     <li><a href="#tezpeak-example-screenshot">TezPeak example screenshot</a></li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
@@ -522,9 +521,21 @@
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># private - assumes private environment, all operations are allowed</span>
 </span></span><span style="display:flex;"><span>mode: auto
 </span></span><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">}</span>
-</span></span></code></pre></div><h2 id="start-tezpeak-and-connect-to-it">Start TezPeak and connect to it</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start --peak
-</span></span></code></pre></div><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
+</span></span></code></pre></div><blockquote>
+<p><strong>⚠️ SECURITY WARNING: Private Mode</strong></p>
+<p>In <strong>private</strong> mode, anyone with access to your TezPeak instance can <strong>control your baker</strong> (start, stop, and manage services). Only use private mode when:</p>
+<ul>
+<li>TezPeak is bound to <code>127.0.0.1</code> (localhost only), or</li>
+<li>TezPeak is behind a firewall/VPN and not publicly accessible</li>
+</ul>
+<p>If you need remote access, use <code>public</code> mode and manage your baker via CLI when needed.</p>
+</blockquote>
+<pre tabindex="0"><code>
+## Start TezPeak and connect to it
+
+```bash
+tezbake start --peak
+</code></pre><p>If you&rsquo;re connecting to the TezPeak GUI from a different computer, you&rsquo;ll need to open a web browser and navigate to <code>http://&lt;your-baker-ip&gt;:8733</code>.</p>
 <p>If you&rsquo;re connecting from the same computer, you can use <code>http://127.0.0.1:8733</code> or <code>http://localhost:8733</code>.</p>
 <h2 id="tezpeak-example-screenshot">TezPeak example screenshot</h2>
 <p><img src="/tezbake/tutorial/tezpeakexample.png" alt="TezPeak example screenshot"></p>

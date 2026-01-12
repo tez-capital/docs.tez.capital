@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezBake, Octez binaries, and protocol versions safely">
 
-<meta itemprop="wordCount" content="628">
+<meta itemprop="wordCount" content="659">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezBake, Octez binaries, and protocol versions safely"/>
@@ -463,7 +463,11 @@
 <p>First update your tezbake binary to the latest version, depending on your computer architecture:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo sh /tmp/install.sh
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you may be prompted for sudo password</span>
-</span></span></code></pre></div><p>Then update the rest of the TezBake software stack:</p>
+</span></span></code></pre></div><blockquote>
+<p><strong>💡 TIP: Refresh Your Shell Path</strong></p>
+<p>After updating the tezbake binary, run <code>hash -r</code> to refresh your shell&rsquo;s command path cache. This ensures your shell uses the newly installed version immediately.</p>
+</blockquote>
+<p>Then update the rest of the TezBake software stack:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade -s
 </span></span></code></pre></div><blockquote>
 <p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>

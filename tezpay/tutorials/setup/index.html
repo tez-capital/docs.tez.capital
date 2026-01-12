@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Setup">
 <meta itemprop="description" content="How to setup TezPay">
 
-<meta itemprop="wordCount" content="1452">
+<meta itemprop="wordCount" content="1495">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Setup"/>
 <meta name="twitter:description" content="How to setup TezPay"/>
@@ -736,6 +736,23 @@ every payout
 <li>This section refers to network parameters to fetch information about
 the baker in order to compile rewards and payouts <strong>Do not edit
 unless you are an experienced user</strong></li>
+</ol>
+<blockquote>
+<p><strong>💡 TIP: Configure Multiple RPCs for Reliability</strong></p>
+<p>To avoid RPC failures during payouts, configure multiple RPC endpoints in your <code>config.hjson</code>:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">network: {
+    rpc_pool: [
+        &#34;https://rpc.tzkt.io/mainnet&#34;
+        &#34;https://rpc.tzbeta.net/&#34;
+        &#34;https://eu.rpc.tez.capital&#34;
+        &#34;https://us.rpc.tez.capital&#34;
+        &#34;https://prod.tcinfra.net/rpc/mainnet&#34;
+    ]
+    tzkt_url: &#34;https://api.tzkt.io&#34;
+}
+</code></pre><p>TezPay will automatically try the next RPC if one fails.</p>
+</blockquote>
+<ol start="11">
 <li>Over delegation projection prohibits you from over paying beyond
 your delegation limit <strong>Do not edit unless you are an experience
 user</strong></li>
