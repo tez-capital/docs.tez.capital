@@ -173,7 +173,7 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;p&gt;You must register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive for over 3 days&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 2 cycles (~2 days)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You do NOT need to register if your baker has been inactive for less than 3 days. Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
@@ -398,7 +398,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;You must register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive beyond the inactivity period (3 cycles - about 1 hour on fast testnets like Seoulnet, or 3 days on Ghostnet)&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive beyond the inactivity period (2 cycles - about 40 minutes on fast testnets like Seoulnet, or ~2 days on Ghostnet)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
