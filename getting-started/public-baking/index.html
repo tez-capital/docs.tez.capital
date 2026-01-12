@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezos Public Baking">
 <meta itemprop="description" content="How to Setup a Public Baker on Tezos">
 
-<meta itemprop="wordCount" content="640">
+<meta itemprop="wordCount" content="655">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezos Public Baking"/>
 <meta name="twitter:description" content="How to Setup a Public Baker on Tezos"/>
@@ -458,10 +458,11 @@
 </blockquote>
 <p><strong><code>edge_of_baking_over_staking</code></strong> (default: 1, range: 0-1)</p>
 <ul>
-<li>Controls how staking rewards are split between you and your stakers</li>
-<li>Value of 1 (100%): You keep all rewards from your own stake (stakers get their proportional share)</li>
-<li>Value of 0: You share all rewards proportionally with stakers</li>
-<li>Most public bakers use the default of 1</li>
+<li>Your fee on staker rewards (similar to a delegation fee)</li>
+<li>Value of 1 (100%): You keep all staker rewards as fee (stakers receive nothing)</li>
+<li>Value of 0.1 (10%): You take 10% fee, stakers keep 90% of their proportional rewards</li>
+<li>Value of 0: No fee, stakers receive their full proportional rewards</li>
+<li>Public bakers typically set this lower (e.g., 0.05-0.15) to attract stakers</li>
 </ul>
 <p>Configure these via <a href="https://gov.tez.capital">TezGov</a> or CLI. Changes take effect after 5 cycles (~5 days).</p>
 <p>A public baker has to contact two entities within the Tezos ecosystem to be added to the list of public bakers within each of their ecosystems. The entities in question all have their own methods to determine your public baker details, such as your fee and payment policies, via self-reporting. You will be asked to self-report your details to each of the following entities:</p>
