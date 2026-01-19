@@ -2226,5 +2226,65 @@ Use:&lt;br&gt;
       </description>
     </item>
     
+    <item>
+      <title>Tezbake: Baking With Multiple Instances</title>
+      <link>/tezbake/tutorials/baking-with-multi-instance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/baking-with-multi-instance/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;TezBake supports managing multiple independent instances on a single machine. This is useful for running multiple networks (e.g., Mainnet and Ghostnet) or maintaining separate configurations.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;tezbake instance&lt;/code&gt; command (alias &lt;code&gt;i&lt;/code&gt;) allows you to interact with these instances easily.&lt;/p&gt;
+&lt;h2 id=&#34;command-cheatsheet&#34;&gt;Command Cheatsheet&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Task&lt;/th&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;List Instances&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance list&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Run Command on Instance&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance &amp;lt;alias&amp;gt; &amp;lt;command&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Example: Start &amp;lsquo;ghostnet&amp;rsquo;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance ghostnet start&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Example: Check Log&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance ghostnet node log -f&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;listing-instances&#34;&gt;Listing Instances&lt;/h2&gt;
+&lt;p&gt;To see all available instances:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will display a list of all named instances found in &lt;code&gt;/bake-buddy/instances&lt;/code&gt; as well as the &lt;code&gt;default&lt;/code&gt; instance if one exists in the root &lt;code&gt;/bake-buddy&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h2 id=&#34;running-commands&#34;&gt;Running Commands&lt;/h2&gt;
+&lt;p&gt;All &lt;code&gt;tezbake&lt;/code&gt; commands available for the default instance can be run on a named instance by prefixing them with &lt;code&gt;tezbake instance &amp;lt;alias&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance &amp;lt;alias&amp;gt; &amp;lt;any-tezbake-command&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Examples:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Start the &amp;lsquo;ghostnet&amp;rsquo; instance:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance ghostnet start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Upgrade the &amp;lsquo;mainnet&amp;rsquo; instance:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance mainnet upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;View logs for the node on &amp;rsquo;testnet&amp;rsquo; instance:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance testnet node log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This acts exactly as if you were running &lt;code&gt;tezbake ...&lt;/code&gt; but targets the specific instance&amp;rsquo;s directory and configuration.&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

@@ -18,21 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Baking with DAL | docs.tez.capital</title>
-<meta name="description" content="TezBake Baking Tutorial for DAL">
-<meta property="og:title" content="Baking with DAL" />
-<meta property="og:description" content="TezBake Baking Tutorial for DAL" />
+<title>Baking With Multiple Instances | docs.tez.capital</title>
+<meta name="description" content="How to manage and switch between multiple TezBake instances.">
+<meta property="og:title" content="Baking With Multiple Instances" />
+<meta property="og:description" content="How to manage and switch between multiple TezBake instances." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tezbake/tutorials/baking-with-dal/" /><meta property="article:section" content="tezbake" />
+<meta property="og:url" content="/tezbake/tutorials/baking-with-multi-instance/" /><meta property="article:section" content="tezbake" />
 
 
-<meta itemprop="name" content="Baking with DAL">
-<meta itemprop="description" content="TezBake Baking Tutorial for DAL">
+<meta itemprop="name" content="Baking With Multiple Instances">
+<meta itemprop="description" content="How to manage and switch between multiple TezBake instances.">
 
-<meta itemprop="wordCount" content="598">
+<meta itemprop="wordCount" content="186">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Baking with DAL"/>
-<meta name="twitter:description" content="TezBake Baking Tutorial for DAL"/>
+<meta name="twitter:title" content="Baking With Multiple Instances"/>
+<meta name="twitter:description" content="How to manage and switch between multiple TezBake instances."/>
 
 
 
@@ -142,8 +142,8 @@
   <a href="/tezbake/tutorials/bootstrap-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbootstrap-node"><span class="">Bootstrap Node</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsfailover-procedure-li">
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialsbaking-with-dal-li">
-  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="td-sidebar-nav-active-item">Baking with DAL</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
+  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-peak-gui-li">
   <a href="/tezbake/tutorials/baking-with-peak-gui/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-peak-gui"><span class="">Baking with Peak GUI</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
@@ -154,8 +154,8 @@
   <a href="/tezbake/tutorials/baking-with-prism/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-prism"><span class="">Baking with Prism Tunneling</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsmissing-attestations-li">
   <a href="/tezbake/tutorials/missing-attestations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsmissing-attestations"><span class="">Missing Attestations in Baking</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-multi-instance-li">
-  <a href="/tezbake/tutorials/baking-with-multi-instance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-multi-instance"><span class="">Baking With Multiple Instances</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialsbaking-with-multi-instance-li">
+  <a href="/tezbake/tutorials/baking-with-multi-instance/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-multi-instance"><span class="td-sidebar-nav-active-item">Baking With Multiple Instances</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbakereference-li">
@@ -355,10 +355,10 @@
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezbake/tutorials/baking-with-dal.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezbake/tutorials/baking-with-dal.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezbake/tutorials/baking-with-dal.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Baking%20with%20DAL" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezbake/tutorials/baking-with-multi-instance.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezbake/tutorials/baking-with-multi-instance.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezbake/tutorials/baking-with-multi-instance.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Baking%20With%20Multiple%20Instances" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/tez-capital/docs.tez.capital/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -366,15 +366,10 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#dal-rewards-and-penalties">DAL Rewards and Penalties</a></li>
-    <li><a href="#new-tezbake-setup-with-dal">New TezBake Setup with DAL</a></li>
-    <li><a href="#existing-tezbake-setup">Existing TezBake Setup</a></li>
-    <li><a href="#after-dal-setup">After DAL Setup</a></li>
-    <li><a href="#remote-dal-setup">Remote DAL Setup</a></li>
-    <li><a href="#quick-troubleshooting">Quick Troubleshooting</a></li>
-    <li><a href="#verify-dal-operation">Verify DAL Operation</a></li>
-    <li><a href="#related-guides">Related Guides</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#command-cheatsheet">Command Cheatsheet</a></li>
+    <li><a href="#listing-instances">Listing Instances</a></li>
+    <li><a href="#running-commands">Running Commands</a></li>
   </ul>
 </nav>
       </div>
@@ -413,13 +408,13 @@
     <a href="/tezbake/tutorials/">TezBake Tutorials</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/tezbake/tutorials/baking-with-dal/" aria-disabled="true" class="btn-link disabled">Baking with DAL</a>
+    <a href="/tezbake/tutorials/baking-with-multi-instance/" aria-disabled="true" class="btn-link disabled">Baking With Multiple Instances</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Baking with DAL</h1>
+	<h1>Baking With Multiple Instances</h1>
 	
 	<header class="article-meta">
 		
@@ -436,100 +431,53 @@
 
 		
 	</header>    
-	<p>Follow along on Youtube!
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/0EEgEHFl40Y" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-</p>
-<h2 id="introduction">Introduction</h2>
-<p>The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.</p>
-<p>For more details on DAL, see <a href="https://tezos.gitlab.io/shell/dal_overview.html">Tezos DAL Overview</a>.</p>
-<h2 id="dal-rewards-and-penalties">DAL Rewards and Penalties</h2>
-<p>Running a DAL node directly impacts your baking income:</p>
-<p><strong>Reward Impact:</strong></p>
-<ul>
-<li>DAL attestations account for approximately <strong>10% of total block rewards</strong> (2,275 out of 22,757 reward weight units)</li>
-<li>Successfully attesting to DAL shards earns you this portion of rewards</li>
-<li>Missing DAL attestations means losing ~10% of your potential baking income</li>
-</ul>
-<p><strong>How It Works:</strong></p>
-<ol>
-<li>When data is published to the DAL, it&rsquo;s split into &ldquo;shards&rdquo; distributed across bakers</li>
-<li>Your baker must download and verify shards assigned to you within the attestation lag period</li>
-<li>Your baker then declares whether it successfully obtained the shards (via the attestation operation)</li>
-<li>If enough bakers attest to availability, the data blob is marked as available</li>
-</ol>
-<p><strong>Attestation Lag:</strong>
-The protocol defines an attestation lag period during which bakers must download and verify their assigned shards. Your DAL node must be online and synchronized to meet this deadline. The lag gives bakers time to fetch data before they must attest.</p>
-<p><strong>No Slashing for DAL Failures:</strong>
-Unlike double baking/attestation, failing to run DAL does not result in slashing of your stake. You simply miss out on the DAL portion of rewards.</p>
-<blockquote>
-<p><strong>⚠️ WARNING: IP Address Exposure Risk</strong></p>
-<p>The security implications for bakers in the DAL network are highlighted in the <a href="https://octez.tezos.com/docs/shell/dal_overview.html">official Octez documentation</a>.</p>
-<p><strong>Risk:</strong>
-Since a baker&rsquo;s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.</p>
-<p><strong>Mitigation:</strong>
-The core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node&rsquo;s identity.</p>
-<p><strong>Solution for Separate Machines:</strong>
-If you wish to run TezBake with DAL on a separate machine, consider using <a href="https://docs.tez.capital/tezbake/tutorials/baking-with-prism/">TezBake Prism Tunneling</a>, which is designed for setups across multiple hosts.</p>
-</blockquote>
-<h2 id="new-tezbake-setup-with-dal">New TezBake Setup with DAL</h2>
-<p>You can set up TezBake with DAL integration from scratch. Follow these steps:</p>
-<ol>
-<li><strong>Run setup with DAL integration:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --with-dal
-</span></span></code></pre></div><ol start="2">
-<li>
-<p>Proceed with your usual setup steps (ledger integration, baker registration, etc.).</p>
-</li>
-<li>
-<p>Continue to the <a href="#after-dal-setup">After DAL Setup</a> section.</p>
-</li>
-</ol>
+	<h2 id="overview">Overview</h2>
+<p>TezBake supports managing multiple independent instances on a single machine. This is useful for running multiple networks (e.g., Mainnet and Ghostnet) or maintaining separate configurations.</p>
+<p>The <code>tezbake instance</code> command (alias <code>i</code>) allows you to interact with these instances easily.</p>
+<h2 id="command-cheatsheet">Command Cheatsheet</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List Instances</td>
+<td><code>tezbake instance list</code></td>
+</tr>
+<tr>
+<td>Run Command on Instance</td>
+<td><code>tezbake instance &lt;alias&gt; &lt;command&gt;</code></td>
+</tr>
+<tr>
+<td>Example: Start &lsquo;ghostnet&rsquo;</td>
+<td><code>tezbake instance ghostnet start</code></td>
+</tr>
+<tr>
+<td>Example: Check Log</td>
+<td><code>tezbake instance ghostnet node log -f</code></td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h2 id="existing-tezbake-setup">Existing TezBake Setup</h2>
-<p>If you already have TezBake running without DAL, follow these steps:</p>
-<ol>
-<li><strong>Install DAL:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --dal
-</span></span></code></pre></div><h2 id="after-dal-setup">After DAL Setup</h2>
-<ol>
-<li><strong>Inject attester profiles:</strong></li>
-</ol>
-<p>This step does not require interaction with your Ledger:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles --auto
-</span></span></code></pre></div><p>If the above command fails, specify your <strong>baker key</strong> (not consensus key):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake update-dal-profiles &lt;your-baker-key&gt;
-</span></span></code></pre></div><ol start="2">
-<li><strong>Restart TezBake to apply changes:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><h2 id="remote-dal-setup">Remote DAL Setup</h2>
-<p>Follow the Prism setup steps here: <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
-<h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
-<p>If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --dal
-</span></span><span style="display:flex;"><span>tezbake setup --node  <span style="color:#8f5902;font-style:italic"># choose &#39;yes&#39; to merge config when prompted</span>
-</span></span><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><h2 id="verify-dal-operation">Verify DAL Operation</h2>
-<p>Ensure your DAL process is correctly running by checking logs:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log dal -f
-</span></span></code></pre></div><p>Your logs should indicate the DAL is receiving block levels. Also, verify the TezBake baker logs are error-free regarding DAL integration:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log baker -f
-</span></span></code></pre></div><p>For additional DAL checks, refer to the <a href="https://tezos.gitlab.io/shell/dal_overview.html">Nomadic Labs DAL Tutorial</a>.</p>
-<hr>
-<h2 id="related-guides">Related Guides</h2>
-<ul>
-<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Complete setup guide</li>
-<li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - Check DAL and baker logs</li>
-<li><a href="/tezbake/tutorials/updating/">Updating</a> - Keep TezBake up to date</li>
-</ul>
-<hr>
-<p>Any questions/comments/concerns? Please contact the Tez Capital team on
-<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
+<h2 id="listing-instances">Listing Instances</h2>
+<p>To see all available instances:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake instance list
+</span></span></code></pre></div><p>This will display a list of all named instances found in <code>/bake-buddy/instances</code> as well as the <code>default</code> instance if one exists in the root <code>/bake-buddy</code> directory.</p>
+<h2 id="running-commands">Running Commands</h2>
+<p>All <code>tezbake</code> commands available for the default instance can be run on a named instance by prefixing them with <code>tezbake instance &lt;alias&gt;</code>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake instance &lt;alias&gt; &lt;any-tezbake-command&gt;
+</span></span></code></pre></div><p><strong>Examples:</strong></p>
+<p>Start the &lsquo;ghostnet&rsquo; instance:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake instance ghostnet start
+</span></span></code></pre></div><p>Upgrade the &lsquo;mainnet&rsquo; instance:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake instance mainnet upgrade
+</span></span></code></pre></div><p>View logs for the node on &rsquo;testnet&rsquo; instance:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake instance testnet node log
+</span></span></code></pre></div><p>This acts exactly as if you were running <code>tezbake ...</code> but targets the specific instance&rsquo;s directory and configuration.</p>
 
 	
 	
