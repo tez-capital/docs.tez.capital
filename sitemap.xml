@@ -74,6 +74,10 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_info/</loc>
   </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_instance/</loc>
+  </url><url>
+    <loc>/tezbake/reference/cmd/tezbake_instance_list/</loc>
+  </url><url>
     <loc>/tezbake/reference/cmd/tezbake_list-ledgers/</loc>
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_node/</loc>
