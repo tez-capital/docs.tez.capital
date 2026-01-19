@@ -600,12 +600,12 @@ Copyright © 2026 tez.capital&lt;/p&gt;
   -f, --force                        Force key import. (overwrites existing)
   -h, --help                         help for setup-ledger
       --hwm string                   High watermark to be used during baking.
-      --import-key [string][=true]   Import key from ledger (optionally specify derivation path) (default )
+      --import-key [string][=true]   Import key from ledger (optionally specify derivation path)
       --key-alias string             Alias ofkey to be imported (default &amp;#34;baker&amp;#34;)
       --ledger-id string             Ledger id to import key from (affects import-key only)
       --no-udev string               Skip udev rules installation. (linux only)
       --node                         Import key to node (affects import-key only)
-      --platform [string][=true]     Prepare platform for ledger (optionally specify platform to override) (default )
+      --platform [string][=true]     Prepare platform for ledger (optionally specify platform to override)
       --protocol string              Protocol hash to be used during setup-ledger.
       --signer                       Import key to signer (affects import-key only)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
@@ -675,13 +675,13 @@ Copyright © 2026 tez.capital&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -f, --force                        Force key import. (overwrites existing)
   -h, --help                         help for setup-tezsign
-      --import-key [string][=true]   Import key from tezsign (optionally specify derivation path) (default )
+      --import-key [string][=true]   Import key from tezsign (optionally specify derivation path)
       --init                         Initialize tezsign configuration.
       --key-alias string             Alias ofkey to be imported (default &amp;#34;baker&amp;#34;)
       --no-udev string               Skip udev rules installation. (linux only)
       --node                         Import key to node (affects import-key only)
       --password                     Setup tezsign unlock password.
-      --platform [string][=true]     Prepare platform for tezsign (optionally specify platform to override) (default )
+      --platform [string][=true]     Prepare platform for tezsign (optionally specify platform to override)
       --signer                       Import key to signer (affects import-key only)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options-inherited-from-parent-commands&#34;&gt;Options inherited from parent commands&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;  -l, --log-level string       Sets output log format (json/text/auto) (default &amp;#34;info&amp;#34;)
