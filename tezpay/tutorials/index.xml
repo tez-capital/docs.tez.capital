@@ -113,7 +113,7 @@ return the system architecture&lt;code&gt;arm64&lt;/code&gt; or &lt;code&gt;amd6
 &lt;/table&gt;
 &lt;p&gt;If you would rather utilize CLI to download the application you will need
 to change directory (cd) to the TezPay directory created in step 1 in
-the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh&lt;/code&gt;&lt;/p&gt;
+the terminal, &lt;strong&gt;then&lt;/strong&gt; use command &lt;code&gt;wget -q https://pay.tez.capital/install -O /tmp/install.sh &amp;amp;&amp;amp; sh /tmp/install.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;See example code below (&lt;em&gt;note: input begins after last &amp;lsquo;%&amp;rsquo; character&lt;/em&gt;):&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1030,7 +1030,7 @@ a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/p&gt;
         &lt;h2 id=&#34;keeping-tezpay-up-to-date&#34;&gt;Keeping TezPay Up-to-Date&lt;/h2&gt;
 &lt;p&gt;For access to future releases via Linux CLI, run the following command from within the folder where tezpay is located:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; tezpay
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/tez-capital/tezpay/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://pay.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
