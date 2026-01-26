@@ -487,7 +487,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;h3 id=&#34;sample-shopping-lists&#34;&gt;Sample shopping lists&lt;/h3&gt;
 &lt;h4 id=&#34;general-supplies-for-both-rpi-and-radxa&#34;&gt;General Supplies (for both RPi and Radxa)&lt;/h4&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Dual Micro SD Card Reader&lt;/strong&gt; (2 slots) - For easy SD card cloning and backups. Having two slots allows direct card-to-card cloning without intermediate steps. &lt;a href=&#34;https://a.co/d/iOrBvk6&#34;&gt;https://a.co/d/iOrBvk6&lt;/a&gt; or similar dual-slot reader.&lt;/li&gt;
+&lt;li&gt;Dual Micro SD Card Reader (2 slots) - For easy SD card cloning and backups. Having two slots allows direct card-to-card cloning without intermediate steps. &lt;a href=&#34;https://a.co/d/iOrBvk6&#34;&gt;https://a.co/d/iOrBvk6&lt;/a&gt; or similar dual-slot reader.&lt;/li&gt;
 &lt;li&gt;High-endurance Micro SD Cards (8GB+) - Get at least 3: one for baking, one backup clone, one spare. Samsung PRO Endurance or SanDisk Max Endurance or similar recommended.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;radxa-zero-3&#34;&gt;Radxa Zero 3&lt;/h4&gt;
@@ -567,7 +567,9 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;2-generate-your-baking-keys-directly-on-the-device&#34;&gt;2. Generate your baking keys directly on the device&lt;/h3&gt;
 &lt;p&gt;Generate your baking keys directly on the hardware. In this example, we will generate keys for Consensus and DAL (i.e., companion key).&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using companion app&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# PLEASE NOTE YOU WILL BE USING EITHER THE TOP COMMAND OR THE BOTTOM COMMAND DEPENDING WHERE YOU&amp;#39;RE SETTING UP THE GADGET&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using companion app&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezsign-host new consensus companion
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Using TezBake&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign new consensus companion

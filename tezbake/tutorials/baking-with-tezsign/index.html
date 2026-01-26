@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="2756">
+<meta itemprop="wordCount" content="2779">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -506,7 +506,7 @@
 <h3 id="sample-shopping-lists">Sample shopping lists</h3>
 <h4 id="general-supplies-for-both-rpi-and-radxa">General Supplies (for both RPi and Radxa)</h4>
 <ol>
-<li><strong>Dual Micro SD Card Reader</strong> (2 slots) - For easy SD card cloning and backups. Having two slots allows direct card-to-card cloning without intermediate steps. <a href="https://a.co/d/iOrBvk6">https://a.co/d/iOrBvk6</a> or similar dual-slot reader.</li>
+<li>Dual Micro SD Card Reader (2 slots) - For easy SD card cloning and backups. Having two slots allows direct card-to-card cloning without intermediate steps. <a href="https://a.co/d/iOrBvk6">https://a.co/d/iOrBvk6</a> or similar dual-slot reader.</li>
 <li>High-endurance Micro SD Cards (8GB+) - Get at least 3: one for baking, one backup clone, one spare. Samsung PRO Endurance or SanDisk Max Endurance or similar recommended.</li>
 </ol>
 <h4 id="radxa-zero-3">Radxa Zero 3</h4>
@@ -586,7 +586,9 @@
 </blockquote>
 <h3 id="2-generate-your-baking-keys-directly-on-the-device">2. Generate your baking keys directly on the device</h3>
 <p>Generate your baking keys directly on the hardware. In this example, we will generate keys for Consensus and DAL (i.e., companion key).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using companion app</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># PLEASE NOTE YOU WILL BE USING EITHER THE TOP COMMAND OR THE BOTTOM COMMAND DEPENDING WHERE YOU&#39;RE SETTING UP THE GADGET</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using companion app</span>
 </span></span><span style="display:flex;"><span>./tezsign-host new consensus companion
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Using TezBake</span>
 </span></span><span style="display:flex;"><span>tezbake tezsign new consensus companion
