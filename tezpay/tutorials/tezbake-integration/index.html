@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="521">
+<meta itemprop="wordCount" content="717">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -251,6 +251,8 @@
   <a href="/tezpay/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialsupdating"><span class="">Updating</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialstrd-migration-li">
   <a href="/tezpay/tutorials/trd-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialstrd-migration"><span class="">TRD to TezPay Migration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpaytutorialstroubleshooting-li">
+  <a href="/tezpay/tutorials/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpaytutorialstroubleshooting"><span class="">Troubleshooting</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayconfiguration-li">
@@ -380,6 +382,13 @@
     <li><a href="#managing-payouts">Managing Payouts</a></li>
     <li><a href="#automatic-continual-payouts">Automatic (Continual) Payouts</a></li>
     <li><a href="#starting--stopping-tezpay-continual-service">Starting &amp; Stopping TezPay (continual service)</a></li>
+    <li><a href="#protocol-upgrade-handling">Protocol Upgrade Handling</a>
+      <ul>
+        <li><a href="#what-happens-during-protocol-upgrades">What Happens During Protocol Upgrades</a></li>
+        <li><a href="#restart-procedure-after-protocol-upgrade">Restart Procedure After Protocol Upgrade</a></li>
+      </ul>
+    </li>
+    <li><a href="#catching-up-missed-payments">Catching Up Missed Payments</a></li>
     <li><a href="#tezpay-information-continual-service">TezPay Information (continual service)</a></li>
     <li><a href="#removing-the-pay-module">Removing the Pay Module</a></li>
     <li><a href="#references-and-advanced-configuration">References and Advanced Configuration</a></li>
@@ -459,12 +468,28 @@
 <td><code>tezbake setup --pay</code></td>
 </tr>
 <tr>
+<td>Upgrade TezPay Only</td>
+<td><code>tezbake upgrade --pay</code></td>
+</tr>
+<tr>
 <td>Verify Installation</td>
 <td><code>tezbake apps</code></td>
 </tr>
 <tr>
 <td>Generate Payouts</td>
 <td><code>tezbake pay generate-payouts</code></td>
+</tr>
+<tr>
+<td>Pay Delegators</td>
+<td><code>tezbake pay pay</code></td>
+</tr>
+<tr>
+<td>Pay with Previous Cycles</td>
+<td><code>tezbake pay pay --include-previous-cycles N</code></td>
+</tr>
+<tr>
+<td>View TezPay Logs</td>
+<td><code>tezbake pay log</code> or <code>tezbake pay log -f</code></td>
 </tr>
 <tr>
 <td>Check Continual Payout Status</td>
@@ -601,6 +626,45 @@ Please follow the steps below to create your configuration and wallet or remote 
 </ul>
 </li>
 </ul>
+<hr>
+<h2 id="protocol-upgrade-handling">Protocol Upgrade Handling</h2>
+<p>TezPay automatically pauses continual payouts when a Tezos protocol upgrade occurs. This is a safety feature to ensure payout accuracy under the new protocol.</p>
+<h3 id="what-happens-during-protocol-upgrades">What Happens During Protocol Upgrades</h3>
+<ol>
+<li>TezPay detects the protocol change</li>
+<li>Continual mode stops processing payments</li>
+<li>The service remains running but inactive</li>
+</ol>
+<h3 id="restart-procedure-after-protocol-upgrade">Restart Procedure After Protocol Upgrade</h3>
+<ol>
+<li>
+<p><strong>Update TezPay to the latest version:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Run a dry-run to verify payouts:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake pay generate-payouts
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Check for any errors in the output</strong></p>
+</li>
+<li>
+<p><strong>If satisfied, restart the service:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start --pay
+</span></span></code></pre></div></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The service may already be running but not processing. The start command ensures it resumes processing.</p>
+</blockquote>
+<hr>
+<h2 id="catching-up-missed-payments">Catching Up Missed Payments</h2>
+<p>If payments were missed (due to downtime, protocol upgrades, or errors), use the <code>--include-previous-cycles</code> flag:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check last 5 cycles for missed payments (dry run first)</span>
+</span></span><span style="display:flex;"><span>tezbake pay generate-payouts --include-previous-cycles <span style="color:#0000cf;font-weight:bold">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Actually pay missed cycles</span>
+</span></span><span style="display:flex;"><span>tezbake pay pay --include-previous-cycles <span style="color:#0000cf;font-weight:bold">5</span>
+</span></span></code></pre></div><p>This scans previous cycles for any payouts that weren&rsquo;t completed and includes them in the current batch.</p>
 <hr>
 <h2 id="tezpay-information-continual-service">TezPay Information (continual service)</h2>
 <p>View detailed information:</p>

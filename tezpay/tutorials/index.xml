@@ -423,12 +423,28 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;td&gt;&lt;code&gt;tezbake setup --pay&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;Upgrade TezPay Only&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake upgrade --pay&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;Verify Installation&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;tezbake apps&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Generate Payouts&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;tezbake pay generate-payouts&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pay Delegators&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake pay pay&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pay with Previous Cycles&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake pay pay --include-previous-cycles N&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;View TezPay Logs&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake pay log&lt;/code&gt; or &lt;code&gt;tezbake pay log -f&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Check Continual Payout Status&lt;/td&gt;
@@ -565,6 +581,45 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;protocol-upgrade-handling&#34;&gt;Protocol Upgrade Handling&lt;/h2&gt;
+&lt;p&gt;TezPay automatically pauses continual payouts when a Tezos protocol upgrade occurs. This is a safety feature to ensure payout accuracy under the new protocol.&lt;/p&gt;
+&lt;h3 id=&#34;what-happens-during-protocol-upgrades&#34;&gt;What Happens During Protocol Upgrades&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;TezPay detects the protocol change&lt;/li&gt;
+&lt;li&gt;Continual mode stops processing payments&lt;/li&gt;
+&lt;li&gt;The service remains running but inactive&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;restart-procedure-after-protocol-upgrade&#34;&gt;Restart Procedure After Protocol Upgrade&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Update TezPay to the latest version:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Run a dry-run to verify payouts:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay generate-payouts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check for any errors in the output&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;If satisfied, restart the service:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The service may already be running but not processing. The start command ensures it resumes processing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;catching-up-missed-payments&#34;&gt;Catching Up Missed Payments&lt;/h2&gt;
+&lt;p&gt;If payments were missed (due to downtime, protocol upgrades, or errors), use the &lt;code&gt;--include-previous-cycles&lt;/code&gt; flag:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check last 5 cycles for missed payments (dry run first)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay generate-payouts --include-previous-cycles &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Actually pay missed cycles&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay pay --include-previous-cycles &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This scans previous cycles for any payouts that weren&amp;rsquo;t completed and includes them in the current batch.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;tezpay-information-continual-service&#34;&gt;TezPay Information (continual service)&lt;/h2&gt;
 &lt;p&gt;View detailed information:&lt;/p&gt;
@@ -1172,6 +1227,98 @@ Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Full setup guide&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Payout commands and options&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up payout alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezpay: Troubleshooting</title>
+      <link>/tezpay/tutorials/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/tutorials/troubleshooting/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;common-errors-and-solutions&#34;&gt;Common Errors and Solutions&lt;/h2&gt;
+&lt;h3 id=&#34;failed-to-apply-batch&#34;&gt;&amp;ldquo;failed to apply batch&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; Usually RPC connectivity issues during payment broadcast.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Check your RPC configuration&lt;/li&gt;
+&lt;li&gt;Add multiple RPCs to &lt;code&gt;rpc_pool&lt;/code&gt; for redundancy (see &lt;a href=&#34;#rpc-configuration&#34;&gt;RPC Configuration&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Retry the payment - may be transient&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;rpc-timeout-errors&#34;&gt;RPC Timeout Errors&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Error:&lt;/strong&gt; &lt;code&gt;failed to fetch head metadata - Get &amp;quot;https://...&amp;quot;: context deadline exceeded&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; The configured RPC is not responding in time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Add multiple RPCs to your &lt;code&gt;config.hjson&lt;/code&gt; (see below)&lt;/li&gt;
+&lt;li&gt;Check if your configured RPC is responsive&lt;/li&gt;
+&lt;li&gt;Consider using local RPC if available&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;extension-loading-error-stream-closed&#34;&gt;Extension Loading Error: &amp;ldquo;stream closed&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Error:&lt;/strong&gt; &lt;code&gt;failed to load extension: stream closed&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; Using the entire sample config with incompatible options.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; Start with minimal config, only add options you need:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  baker_address: &amp;#34;tz1YourBakerAddress&amp;#34;
+  payout_fee: 0.05
+  min_payout: 1
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h3 id=&#34;payment-not-recorded-after-crash&#34;&gt;Payment Not Recorded After Crash&lt;/h3&gt;
+&lt;p&gt;If TezPay crashes mid-payout, check the reports directory. TezPay tracks each batch - completed batches are recorded and won&amp;rsquo;t be duplicated.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To verify:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls /bake-buddy/pay/reports/&amp;lt;cycle&amp;gt;/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Each successfully broadcast batch is recorded. Failed batches can be retried safely.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rpc-configuration&#34;&gt;RPC Configuration&lt;/h2&gt;
+&lt;p&gt;RPC timeouts are the #1 cause of payment failures. Configure multiple RPC endpoints for reliability:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;network: {
+    rpc_pool: [
+        &amp;#34;https://rpc.tzkt.io/mainnet&amp;#34;
+        &amp;#34;https://rpc.tzbeta.net/&amp;#34;
+        &amp;#34;https://eu.rpc.tez.capital&amp;#34;
+        &amp;#34;https://us.rpc.tez.capital&amp;#34;
+        &amp;#34;https://prod.tcinfra.net/rpc/mainnet&amp;#34;
+    ]
+    tzkt_url: &amp;#34;https://api.tzkt.io&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;TezPay automatically tries the next RPC if one fails. This is &lt;strong&gt;strongly recommended&lt;/strong&gt; for production use.&lt;/p&gt;
+&lt;h3 id=&#34;check-your-current-rpc-configuration&#34;&gt;Check Your Current RPC Configuration&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /bake-buddy/pay/config.hjson &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep -A &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt; rpc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If no &lt;code&gt;rpc_pool&lt;/code&gt; is configured, TezPay uses &lt;code&gt;https://eu.rpc.tez.capital/&lt;/code&gt; by default.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;viewing-logs&#34;&gt;Viewing Logs&lt;/h2&gt;
+&lt;p&gt;To diagnose issues, check the TezPay logs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# View recent logs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay log
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Follow logs in real-time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay log -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;after-protocol-upgrades&#34;&gt;After Protocol Upgrades&lt;/h2&gt;
+&lt;p&gt;TezPay automatically pauses continual payouts during protocol upgrades. See &lt;a href=&#34;/tezpay/tutorials/tezbake-integration/#protocol-upgrade-handling&#34;&gt;Protocol Upgrade Handling&lt;/a&gt; for restart instructions.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;catching-up-missed-payments&#34;&gt;Catching Up Missed Payments&lt;/h2&gt;
+&lt;p&gt;If payments were missed, use the &lt;code&gt;--include-previous-cycles&lt;/code&gt; flag:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check last 5 cycles for missed payments&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay pay --include-previous-cycles &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;See &lt;a href=&#34;/tezpay/tutorials/tezbake-integration/#catching-up-missed-payments&#34;&gt;Catching Up Missed Payments&lt;/a&gt; for details.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;TezBake Pay Module Setup&lt;/a&gt; - Full integration guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Manual payout guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/configuration/examples/&#34;&gt;Configuration Examples&lt;/a&gt; - Sample configs&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
