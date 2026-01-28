@@ -314,6 +314,8 @@
   <a href="/tezgov/tutorials/voting-on-proposals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsvoting-on-proposals"><span class="">&gt; Voting on Proposals</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialsinjecting-proposals-li">
   <a href="/tezgov/tutorials/injecting-proposals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsinjecting-proposals"><span class="">Injecting Proposals</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialsmanaging-baker-settings-li">
+  <a href="/tezgov/tutorials/managing-baker-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsmanaging-baker-settings"><span class="">Managing Baker Settings</span></a>
 </li>
   </ul>
 </li>
@@ -632,7 +634,7 @@
 <p>Link the keys stored on your TezSign device to TezBake&rsquo;s configuration using local aliases.</p>
 <p>Depending on the context of your setup, you will determine how to name your TezSign wallet aliases within TezBake itself.</p>
 <p>When you&rsquo;re first switching to a new consensus key or to tz4 baking, you will already have a key called <code>baker</code>. This is the default key that always gets used in TezBake. In addition to this key, you will also import your consensus and companion keys, from TezSign. Once you are actively using your TezSign keys, you can then import the <code>consensus</code> key as the <code>baker</code> key as described below.</p>
-<p>If you&rsquo;re aleady baking using tz4 keys, it&rsquo;s recommended to alias your <code>consensus</code> key on the TezSign signer to the <code>baker</code> key.</p>
+<p>If you&rsquo;re already baking using tz4 keys, it&rsquo;s recommended to alias your <code>consensus</code> key on the TezSign signer to the <code>baker</code> key.</p>
 <p>The desired end stake of your TezBake signing experience is to use <code>baker</code> for <code>consensus</code> and to use the TezSign backend directly (see below). This way there are no missing keys reported by <code>tezbake info</code>. You need to ensure the migration to this desired state is performed one step at a time, respecting the in-between states.</p>
 <p><strong>Syntax:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>&lt;tezsign key alias&gt; --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>&lt;octez key alias&gt; <span style="color:#ce5c00;font-weight:bold">[</span>--force<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -670,7 +672,7 @@ NOTE: Only the import alias from <code>--key-alias=&lt;THIS ALIAS&gt;</code> is 
 <blockquote>
 <p><strong>⚠️ WARNING: Testing &amp; Power Considerations</strong></p>
 <p><strong>Testing Period:</strong>
-It&rsquo;s highly recommended to setup TezSign, activate it on the blockchain, and wait 2-3 cycles to ensure stability before relying on it for production baking.</p>
+It&rsquo;s highly recommended to setup TezSign, activate it on the blockchain, and wait 3 cycles to ensure stability before relying on it for production baking.</p>
 <p><strong>Power Issues:</strong>
 In some cases, connecting the TezSign gadget only via the OTG USB port may not provide consistent power, causing the device to go offline. Solutions:</p>
 <ul>
@@ -724,7 +726,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 </span></span></code></pre></div><p>The easiest way to activate your newly generated keys is by using the <a href="https://gov.tez.capital/">TezGov</a> web portal. Connect with your manager Ledger or similar and within the <code>Baker Management</code> area, set your consensus and companion key details. You will need your BLpk&rsquo;s, first, and after filling them out, the prompt will ask you for your PoP&rsquo;s.</p>
 <blockquote>
 <p><strong>⏱️ Key Activation Timeline</strong></p>
-<p>After registering your keys on-chain, they will activate in <strong>2-3 cycles (~2-3 days)</strong>. You can verify the activation status:</p>
+<p>After registering your keys on-chain, they will activate in <strong>3 cycles (~3 days)</strong>. You can verify the activation status:</p>
 <ul>
 <li>On TzKT: <code>https://tzkt.io/&lt;your_tz1_address&gt;/secondary-keys</code></li>
 <li>Via CLI: <code>tezbake info --signer</code></li>
@@ -829,7 +831,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <ol>
 <li><strong>Have a backup SD card ready</strong> - Insert your cloned card into a spare device</li>
 <li><strong>Never run two devices with the same keys simultaneously</strong> - This causes double-signing and slashing</li>
-<li>If no backup exists, use your manager Ledger via <a href="https://gov.tez.capital/">TezGov</a> to set a new consensus key (takes 2-3 cycles to activate)</li>
+<li>If no backup exists, use your manager Ledger via <a href="https://gov.tez.capital/">TezGov</a> to set a new consensus key (takes 3 cycles to activate)</li>
 </ol>
 <h3 id="recommended-redundancy">Recommended Redundancy</h3>
 <ul>

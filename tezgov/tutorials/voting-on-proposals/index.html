@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Voting on Proposals">
 <meta itemprop="description" content="How to vote on Tezos protocol proposals using the TezGov portal">
 
-<meta itemprop="wordCount" content="874">
+<meta itemprop="wordCount" content="884">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Voting on Proposals"/>
 <meta name="twitter:description" content="How to vote on Tezos protocol proposals using the TezGov portal"/>
@@ -314,6 +314,8 @@
   <a href="/tezgov/tutorials/voting-on-proposals/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsvoting-on-proposals"><span class="td-sidebar-nav-active-item">&gt; Voting on Proposals</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialsinjecting-proposals-li">
   <a href="/tezgov/tutorials/injecting-proposals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsinjecting-proposals"><span class="">Injecting Proposals</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialsmanaging-baker-settings-li">
+  <a href="/tezgov/tutorials/managing-baker-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsmanaging-baker-settings"><span class="">Managing Baker Settings</span></a>
 </li>
   </ul>
 </li>
@@ -451,7 +453,7 @@
 <h2 id="tezos-proposal-voting">Tezos proposal voting</h2>
 <p>The Tezos proposal process consists of 5 stages, each of which lasts for 14 cycles (~14 days). Briefly, the proposal process is as follows:</p>
 <ol>
-<li><em>Proposal.</em> If no proposal gets more than 5% of the state to vote for it, the proposal process repeats indefinitely. As soon as a proposal gets 5% of the state to vote for it, the proposal process moves to the next stage. In cases where there are multiple 5%+ proposals on the table, the proposal with the most votes wins.</li>
+<li><em>Proposal.</em> If no proposal gets more than 5% of the stake to vote for it, the proposal process repeats indefinitely. As soon as a proposal gets 5% of the stake to vote for it, the proposal process moves to the next stage. In cases where there are multiple 5%+ proposals on the table, the proposal with the most votes wins.</li>
 <li><em>Exploration</em> Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
 <li><em>Cooldown</em> The proposal is tested on a dedicated test network to make sure it migrates and runs. Dapp developers make sure this proposal doesn&rsquo;t break their dapps.</li>
 <li><em>Promotion</em> Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the <em>Proposal</em> stage.</li>
@@ -493,7 +495,7 @@
 <ul>
 <li><strong>We highly recommend using the direct Ledger login at the top. This method allows you to see the specific details of your vote on your Ledger screen.</strong></li>
 <li>Use the Remote (signer) method if you have a signer somewhere on your LAN or local computer. This is an option for advanced users.</li>
-<li>Use the Beacon method if you are using a Beacon enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method</li>
+<li>Use the Beacon method if you are using a Beacon-enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method.</li>
 </ul>
 <p><img src="/tezgov/tutorial/tezgovHome.png" alt="TezGov login home screen"></p>
 <p>Once logged in you&rsquo;ll see the TezGov home screen. You can see the current cycle, the current proposal, the current voting period, and the current voting period progress. You can also see the current proposal status and the current proposal details.</p>
@@ -507,12 +509,13 @@
 <p>After finished, you&rsquo;ll be able to click on the confirmation link for your vote.</p>
 <p><img src="/tezgov/tutorial/tezgovPromotionConfirm3.png" alt="TezGov login home screen"></p>
 <h3 id="cooldown-period">Cooldown Period</h3>
-<p>During the cooldown period you will period name <code>Cooldown</code> in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.</p>
+<p>During the cooldown period you will see the period name <code>Cooldown</code> in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.</p>
 <p><img src="/tezgov/tutorial/tezgovCooldown.png" alt="TezGov Cooldown period"></p>
 <hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
 <li><a href="/tezgov/tutorials/injecting-proposals/">Injecting Proposals</a> - Submit new proposals</li>
+<li><a href="/tezgov/tutorials/managing-baker-settings/">Managing Baker Settings</a> - Configure staking parameters and keys</li>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Set up your baker</li>
 <li><a href="/getting-started/what-is-baking/">What is Baking?</a> - Understand Tezos consensus</li>
 </ul>
