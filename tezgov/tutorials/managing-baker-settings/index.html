@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Managing Baker Settings">
 <meta itemprop="description" content="How to configure staking parameters, consensus keys, and manage your baker via TezGov">
 
-<meta itemprop="wordCount" content="1133">
+<meta itemprop="wordCount" content="1156">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Managing Baker Settings"/>
 <meta name="twitter:description" content="How to configure staking parameters, consensus keys, and manage your baker via TezGov"/>
@@ -508,7 +508,7 @@
 <tr>
 <td><strong>Limit of staking over baking</strong></td>
 <td>Maximum external stake you&rsquo;ll accept, relative to your own stake</td>
-<td>0 to 5; by default new bakers do not accept external stake</td>
+<td>0 to 9 (default: 0, meaning no external stakers accepted)</td>
 </tr>
 <tr>
 <td><strong>Edge of baking over staking</strong></td>
@@ -519,7 +519,7 @@
 </table>
 <h3 id="understanding-the-limits">Understanding the Limits</h3>
 <ul>
-<li><strong>Staking limit of 5</strong> means you can accept external stakers up to 5× your own frozen stake</li>
+<li><strong>Staking limit</strong> determines how much external stake you accept relative to your own (e.g., limit of 5 = up to 5× your frozen stake; maximum allowed is 9)</li>
 <li><strong>Edge of 0.10</strong> means you keep 10% of staking rewards as your fee</li>
 <li><strong>Delegation limit</strong> is always 9× your frozen stake (not configurable)</li>
 </ul>
@@ -625,7 +625,7 @@
 <p>Unstaking is a multi-step process due to the protocol&rsquo;s security requirements:</p>
 <ol>
 <li><strong>Initiate unstake</strong>: Request to unstake an amount</li>
-<li><strong>Waiting period</strong>: Funds are &ldquo;frozen unstaked&rdquo; for <strong>4 cycles</strong> (~5-6 days)</li>
+<li><strong>Waiting period</strong>: Funds are &ldquo;frozen unstaked&rdquo; for <strong>2+1 cycles</strong> (~3 days on Tallinn). If you unstake during cycle 1000, you can finalize in cycle 1003.</li>
 <li><strong>Finalize</strong>: After the waiting period, finalize to make funds spendable</li>
 </ol>
 <p><strong>To unstake:</strong></p>

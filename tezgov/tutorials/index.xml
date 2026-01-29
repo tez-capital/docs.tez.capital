@@ -195,7 +195,7 @@
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;Limit of staking over baking&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;Maximum external stake you&amp;rsquo;ll accept, relative to your own stake&lt;/td&gt;
-&lt;td&gt;0 to 5; by default new bakers do not accept external stake&lt;/td&gt;
+&lt;td&gt;0 to 9 (default: 0, meaning no external stakers accepted)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;strong&gt;Edge of baking over staking&lt;/strong&gt;&lt;/td&gt;
@@ -206,7 +206,7 @@
 &lt;/table&gt;
 &lt;h3 id=&#34;understanding-the-limits&#34;&gt;Understanding the Limits&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Staking limit of 5&lt;/strong&gt; means you can accept external stakers up to 5× your own frozen stake&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Staking limit&lt;/strong&gt; determines how much external stake you accept relative to your own (e.g., limit of 5 = up to 5× your frozen stake; maximum allowed is 9)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Edge of 0.10&lt;/strong&gt; means you keep 10% of staking rewards as your fee&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Delegation limit&lt;/strong&gt; is always 9× your frozen stake (not configurable)&lt;/li&gt;
 &lt;/ul&gt;
@@ -312,7 +312,7 @@
 &lt;p&gt;Unstaking is a multi-step process due to the protocol&amp;rsquo;s security requirements:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Initiate unstake&lt;/strong&gt;: Request to unstake an amount&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Waiting period&lt;/strong&gt;: Funds are &amp;ldquo;frozen unstaked&amp;rdquo; for &lt;strong&gt;4 cycles&lt;/strong&gt; (~5-6 days)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Waiting period&lt;/strong&gt;: Funds are &amp;ldquo;frozen unstaked&amp;rdquo; for &lt;strong&gt;2+1 cycles&lt;/strong&gt; (~3 days on Tallinn). If you unstake during cycle 1000, you can finalize in cycle 1003.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Finalize&lt;/strong&gt;: After the waiting period, finalize to make funds spendable&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;To unstake:&lt;/strong&gt;&lt;/p&gt;
