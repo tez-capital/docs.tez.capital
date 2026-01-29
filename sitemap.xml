@@ -16,6 +16,8 @@
   </url><url>
     <loc>/getting-started/</loc>
   </url><url>
+    <loc>/tezpeak/tutorials/setup/</loc>
+  </url><url>
     <loc>/</loc>
   </url><url>
     <loc>/tezbake/tutorials/</loc>
@@ -25,6 +27,8 @@
     <loc>/tezgov/tutorials/</loc>
   </url><url>
     <loc>/tezpay/tutorials/</loc>
+  </url><url>
+    <loc>/tezpeak/tutorials/</loc>
   </url><url>
     <loc>/tezsign/tutorials/</loc>
   </url><url>
@@ -41,6 +45,8 @@
     <loc>/tezpay/configuration/</loc>
   </url><url>
     <loc>/tezgov/tutorials/injecting-proposals/</loc>
+  </url><url>
+    <loc>/tezpeak/tutorials/managing-payouts/</loc>
   </url><url>
     <loc>/tezwatch/tutorials/monitoring-transactions/</loc>
   </url><url>
@@ -61,8 +67,6 @@
     <loc>/tezgov/tutorials/managing-baker-settings/</loc>
   </url><url>
     <loc>/tezpay/configuration/examples/sample/</loc>
-  </url><url>
-    <loc>/tezpay/tutorials/setup-peak-gui/</loc>
   </url><url>
     <loc>/tezpay/configuration/examples/starter/</loc>
   </url><url>
@@ -166,6 +170,8 @@
   </url><url>
     <loc>/tezgov/</loc>
   </url><url>
+    <loc>/tezpeak/</loc>
+  </url><url>
     <loc>/tezwatch/</loc>
   </url><url>
     <loc>/tezbake/tutorials/troubleshooting/</loc>
@@ -183,8 +189,6 @@
     <loc>/tezbake/tutorials/baking-with-dal/</loc>
   </url><url>
     <loc>/tezpay/tutorials/troubleshooting/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/baking-with-peak-gui/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-docker/</loc>
   </url><url>
