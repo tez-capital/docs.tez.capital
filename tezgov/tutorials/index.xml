@@ -503,7 +503,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;liquidity_baking_toggle_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;adaptive_issuance_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After editing, restart: &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;What is Adaptive Issuance?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Adaptive Issuance is a Tezos protocol feature that dynamically adjusts block rewards based on the global staking ratio. When more tez is staked, rewards decrease; when less is staked, rewards increase. This creates an equilibrium that balances security with inflation.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;on&amp;quot;&lt;/code&gt; = Support adaptive issuance&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;off&amp;quot;&lt;/code&gt; = Oppose adaptive issuance&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;pass&amp;quot;&lt;/code&gt; = Abstain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After editing, restart: &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ TezGov does NOT handle per-block votes - those are configured on your node.&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;protocol-voting-issues&#34;&gt;Protocol Voting Issues&lt;/h2&gt;

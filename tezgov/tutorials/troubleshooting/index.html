@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems">
 
-<meta itemprop="wordCount" content="759">
+<meta itemprop="wordCount" content="816">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems"/>
@@ -114,6 +114,8 @@
   <a href="/getting-started/what-is-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedwhat-is-baking"><span class="">&gt; What is Tezos Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedpublic-baking-li">
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedledger-vs-tezsign-li">
+  <a href="/getting-started/ledger-vs-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedledger-vs-tezsign"><span class="">Ledger vs TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
@@ -541,7 +543,14 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>After editing, restart: <code>tezbake stop &amp;&amp; tezbake start</code></p>
+</span></span></code></pre></div><p><strong>What is Adaptive Issuance?</strong></p>
+<p>Adaptive Issuance is a Tezos protocol feature that dynamically adjusts block rewards based on the global staking ratio. When more tez is staked, rewards decrease; when less is staked, rewards increase. This creates an equilibrium that balances security with inflation.</p>
+<ul>
+<li><code>&quot;on&quot;</code> = Support adaptive issuance</li>
+<li><code>&quot;off&quot;</code> = Oppose adaptive issuance</li>
+<li><code>&quot;pass&quot;</code> = Abstain</li>
+</ul>
+<p>After editing, restart: <code>tezbake stop &amp;&amp; tezbake start</code></p>
 <p><strong>⚠️ TezGov does NOT handle per-block votes - those are configured on your node.</strong></p>
 <hr>
 <h2 id="protocol-voting-issues">Protocol Voting Issues</h2>

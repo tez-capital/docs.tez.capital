@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="717">
+<meta itemprop="wordCount" content="914">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -114,6 +114,8 @@
   <a href="/getting-started/what-is-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedwhat-is-baking"><span class="">&gt; What is Tezos Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedpublic-baking-li">
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedledger-vs-tezsign-li">
+  <a href="/getting-started/ledger-vs-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedledger-vs-tezsign"><span class="">Ledger vs TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
@@ -394,7 +396,11 @@
       </ul>
     </li>
     <li><a href="#managing-payouts">Managing Payouts</a></li>
-    <li><a href="#automatic-continual-payouts">Automatic (Continual) Payouts</a></li>
+    <li><a href="#automatic-continual-payouts">Automatic (Continual) Payouts</a>
+      <ul>
+        <li><a href="#setting-the-payout-interval">Setting the Payout Interval</a></li>
+      </ul>
+    </li>
     <li><a href="#starting--stopping-tezpay-continual-service">Starting &amp; Stopping TezPay (continual service)</a></li>
     <li><a href="#protocol-upgrade-handling">Protocol Upgrade Handling</a>
       <ul>
@@ -619,6 +625,33 @@ Please follow the steps below to create your configuration and wallet or remote 
 <code>tezbake pay continual disable</code></p>
 </li>
 </ul>
+<h3 id="setting-the-payout-interval">Setting the Payout Interval</h3>
+<p>When using TezBake integration, the payout interval is configured in <code>/bake-buddy/pay/app.json</code> within the <code>CONTINUAL</code> configuration block.</p>
+<p>Example <code>/bake-buddy/pay/app.json</code>:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">{
+  &#34;configuration&#34;: {
+    CONTINUAL: {
+      interval: 7
+      interval_trigger_offset: 0
+      include_previous_cycles: 7
+    }
+  },
+  &#34;id&#34;: &#34;bb-default-pay&#34;,
+  &#34;type&#34;: {
+    &#34;id&#34;: &#34;tzc.tezpay&#34;,
+    &#34;version&#34;: &#34;latest&#34;
+  },
+  &#34;user&#34;: &#34;primate&#34;
+}
+</code></pre><p><strong>CONTINUAL options:</strong></p>
+<ul>
+<li><code>interval</code> - aggregate and pay every N cycles. Cycles must complete before being paid (e.g., interval <code>7</code> pays cycles 1-7 during cycle 8, then cycles 8-14 during cycle 15, etc.)</li>
+<li><code>interval_trigger_offset</code> - shifts the interval start to align payments with your preferred cycle. For example, if it&rsquo;s currently cycle 10 and you want to start paying during cycle 11 for the previous 7 cycles, then continue every 7 cycles, use offset <code>3</code>. This works because 7 is the end of the default interval, and adding 3 makes 10 the end of the interval. Instead of cycles 1-7 being paid, cycles 3-10 are paid.</li>
+<li><code>include_previous_cycles</code> - number of past cycles before the current interval to check for missed payments. If any are detected, they will be included in the current batch.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> The <code>--interval</code> CLI flag does not work with TezBake integration. You must configure the interval in <code>app.json</code>.</p>
+</blockquote>
 <hr>
 <h2 id="starting--stopping-tezpay-continual-service">Starting &amp; Stopping TezPay (continual service)</h2>
 <blockquote>

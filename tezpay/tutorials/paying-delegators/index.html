@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Paying Delegators">
 <meta itemprop="description" content="How to Pay Delegators Using TezPay">
 
-<meta itemprop="wordCount" content="1126">
+<meta itemprop="wordCount" content="1147">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Paying Delegators"/>
 <meta name="twitter:description" content="How to Pay Delegators Using TezPay"/>
@@ -114,6 +114,8 @@
   <a href="/getting-started/what-is-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedwhat-is-baking"><span class="">&gt; What is Tezos Baking</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedpublic-baking-li">
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedledger-vs-tezsign-li">
+  <a href="/getting-started/ledger-vs-tezsign/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedledger-vs-tezsign"><span class="">Ledger vs TezSign</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbest-practices-li">
   <a href="/getting-started/best-practices/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbest-practices"><span class="">Tezos Baking Best Practices</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedslashing-explained-li">
@@ -567,12 +569,13 @@ have been broadcasted in the terminal (ie, the example above did not
 send notifications because that was not set up).</p>
 <h3 id="using-tezpay-paying-multiple-cycles-at-a-time">Using TezPay: Paying multiple cycles at a time</h3>
 <p>TezPay provides bakers a way to aggregate multiple cycles and pay delegators in a lumpsum fashion.</p>
-<p>Using the <code>--interval</code> argument you can specify how many cycles you want to include in each payment. Let&rsquo;s say you want to use an interval of 7 days. The start of every interval is cycle 1. This means that if it&rsquo;s currently cycle 65, you can pay for cycles 56-62 by default.</p>
-<p>If it&rsquo;s currently cycle 65 and you would like to pay for cycles 58-64 and the continue paying for cycles 65-71, 72-78, 79-85 etc. you can use the <code>--interval-trigger-offset</code> argument with the value of 2. This shifts the interval start to cycles 65, 72 and 79 instead the original blocks 1,</p>
-<p>Here&rsquo;s a sample for an aggregated payment every 7 cycles with offset 2:</p>
-<p><code>./tezpay pay --interval 7 --interval-trigger-offset 2</code></p>
-<p>Instead of using the <code>--interval-trigger-offset</code> argument, you can also simply just specify your payment cycle manually and the inteval will be counted from there.</p>
-<p>Again, it&rsquo;s cycle 65 and you&rsquo;d like ot pay cycles 56-62.</p>
+<p>Using the <code>--interval</code> argument you can specify how many cycles you want to aggregate into each payment. Cycles must complete before they can be paid. For example, with interval <code>7</code>, cycles 1-7 are paid during cycle 8, then cycles 8-14 are paid during cycle 15, and so on.</p>
+<p><strong>Shifting the interval with <code>--interval-trigger-offset</code>:</strong></p>
+<p>By default, intervals align to cycle 1. The offset lets you shift this alignment to match your preferred schedule. For example, if it&rsquo;s currently cycle 10 and you want to start paying during cycle 11 for the previous 7 cycles, then continue every 7 cycles, use offset <code>3</code>. This works because 7 is the end of the default interval, and adding 3 makes 10 the end of the interval. Instead of cycles 1-7 being paid, cycles 3-10 are paid.</p>
+<p><code>./tezpay pay --interval 7 --interval-trigger-offset 3</code></p>
+<p><strong>Alternative: specify the cycle manually</strong></p>
+<p>Instead of calculating an offset, you can specify the payment cycle directly with <code>--cycle</code> and the interval will be counted from there.</p>
+<p>For example, if it&rsquo;s cycle 65 and you&rsquo;d like to pay cycles 56-62:</p>
 <p><code>./tezpay pay --interval 7 --cycle 63</code></p>
 <p>If you&rsquo;re worried about failed or partially successful payments, you can utilize the <code>--include-previous-cycles</code> argument. This checks X cycle in the past, before the first cycle of your interval, for any failed payments and includes them in the current payment batch.</p>
 <p><code>./tezpay pay --interval 7 --include-previous-cycles 7</code></p>

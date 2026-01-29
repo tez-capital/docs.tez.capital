@@ -561,6 +561,33 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;code&gt;tezbake pay continual disable&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;setting-the-payout-interval&#34;&gt;Setting the Payout Interval&lt;/h3&gt;
+&lt;p&gt;When using TezBake integration, the payout interval is configured in &lt;code&gt;/bake-buddy/pay/app.json&lt;/code&gt; within the &lt;code&gt;CONTINUAL&lt;/code&gt; configuration block.&lt;/p&gt;
+&lt;p&gt;Example &lt;code&gt;/bake-buddy/pay/app.json&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    CONTINUAL: {
+      interval: 7
+      interval_trigger_offset: 0
+      include_previous_cycles: 7
+    }
+  },
+  &amp;#34;id&amp;#34;: &amp;#34;bb-default-pay&amp;#34;,
+  &amp;#34;type&amp;#34;: {
+    &amp;#34;id&amp;#34;: &amp;#34;tzc.tezpay&amp;#34;,
+    &amp;#34;version&amp;#34;: &amp;#34;latest&amp;#34;
+  },
+  &amp;#34;user&amp;#34;: &amp;#34;primate&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;CONTINUAL options:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;interval&lt;/code&gt; - aggregate and pay every N cycles. Cycles must complete before being paid (e.g., interval &lt;code&gt;7&lt;/code&gt; pays cycles 1-7 during cycle 8, then cycles 8-14 during cycle 15, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;interval_trigger_offset&lt;/code&gt; - shifts the interval start to align payments with your preferred cycle. For example, if it&amp;rsquo;s currently cycle 10 and you want to start paying during cycle 11 for the previous 7 cycles, then continue every 7 cycles, use offset &lt;code&gt;3&lt;/code&gt;. This works because 7 is the end of the default interval, and adding 3 makes 10 the end of the interval. Instead of cycles 1-7 being paid, cycles 3-10 are paid.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;include_previous_cycles&lt;/code&gt; - number of past cycles before the current interval to check for missed payments. If any are detected, they will be included in the current batch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;--interval&lt;/code&gt; CLI flag does not work with TezBake integration. You must configure the interval in &lt;code&gt;app.json&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -779,12 +806,13 @@ have been broadcasted in the terminal (ie, the example above did not
 send notifications because that was not set up).&lt;/p&gt;
 &lt;h3 id=&#34;using-tezpay-paying-multiple-cycles-at-a-time&#34;&gt;Using TezPay: Paying multiple cycles at a time&lt;/h3&gt;
 &lt;p&gt;TezPay provides bakers a way to aggregate multiple cycles and pay delegators in a lumpsum fashion.&lt;/p&gt;
-&lt;p&gt;Using the &lt;code&gt;--interval&lt;/code&gt; argument you can specify how many cycles you want to include in each payment. Let&amp;rsquo;s say you want to use an interval of 7 days. The start of every interval is cycle 1. This means that if it&amp;rsquo;s currently cycle 65, you can pay for cycles 56-62 by default.&lt;/p&gt;
-&lt;p&gt;If it&amp;rsquo;s currently cycle 65 and you would like to pay for cycles 58-64 and the continue paying for cycles 65-71, 72-78, 79-85 etc. you can use the &lt;code&gt;--interval-trigger-offset&lt;/code&gt; argument with the value of 2. This shifts the interval start to cycles 65, 72 and 79 instead the original blocks 1,&lt;/p&gt;
-&lt;p&gt;Here&amp;rsquo;s a sample for an aggregated payment every 7 cycles with offset 2:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;./tezpay pay --interval 7 --interval-trigger-offset 2&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Instead of using the &lt;code&gt;--interval-trigger-offset&lt;/code&gt; argument, you can also simply just specify your payment cycle manually and the inteval will be counted from there.&lt;/p&gt;
-&lt;p&gt;Again, it&amp;rsquo;s cycle 65 and you&amp;rsquo;d like ot pay cycles 56-62.&lt;/p&gt;
+&lt;p&gt;Using the &lt;code&gt;--interval&lt;/code&gt; argument you can specify how many cycles you want to aggregate into each payment. Cycles must complete before they can be paid. For example, with interval &lt;code&gt;7&lt;/code&gt;, cycles 1-7 are paid during cycle 8, then cycles 8-14 are paid during cycle 15, and so on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shifting the interval with &lt;code&gt;--interval-trigger-offset&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;By default, intervals align to cycle 1. The offset lets you shift this alignment to match your preferred schedule. For example, if it&amp;rsquo;s currently cycle 10 and you want to start paying during cycle 11 for the previous 7 cycles, then continue every 7 cycles, use offset &lt;code&gt;3&lt;/code&gt;. This works because 7 is the end of the default interval, and adding 3 makes 10 the end of the interval. Instead of cycles 1-7 being paid, cycles 3-10 are paid.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;./tezpay pay --interval 7 --interval-trigger-offset 3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Alternative: specify the cycle manually&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Instead of calculating an offset, you can specify the payment cycle directly with &lt;code&gt;--cycle&lt;/code&gt; and the interval will be counted from there.&lt;/p&gt;
+&lt;p&gt;For example, if it&amp;rsquo;s cycle 65 and you&amp;rsquo;d like to pay cycles 56-62:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;./tezpay pay --interval 7 --cycle 63&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re worried about failed or partially successful payments, you can utilize the &lt;code&gt;--include-previous-cycles&lt;/code&gt; argument. This checks X cycle in the past, before the first cycle of your interval, for any failed payments and includes them in the current payment batch.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;./tezpay pay --interval 7 --include-previous-cycles 7&lt;/code&gt;&lt;/p&gt;
