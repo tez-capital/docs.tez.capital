@@ -443,5 +443,239 @@
       </description>
     </item>
     
+    <item>
+      <title>Tezgov: Troubleshooting</title>
+      <link>/tezgov/tutorials/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezgov/tutorials/troubleshooting/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;tezgov-troubleshooting&#34;&gt;TezGov Troubleshooting&lt;/h2&gt;
+&lt;p&gt;TezGov (&lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;) is used for protocol voting, staking management, and baker configuration. Most issues involve Ledger connectivity or understanding the two different voting systems.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ledger-connection-issues&#34;&gt;Ledger Connection Issues&lt;/h2&gt;
+&lt;h3 id=&#34;transaction-not-trusted-warning&#34;&gt;&amp;ldquo;Transaction Not Trusted&amp;rdquo; Warning&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; Voting from your baking machine while the baker is running. The new Ledger Wallet app can&amp;rsquo;t share the device with the running baker process.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Perform voting via TezGov&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Alternative:&lt;/strong&gt; Use a secondary Ledger with the same seed on a different machine.&lt;/p&gt;
+&lt;h3 id=&#34;failed-to-open-device&#34;&gt;&amp;ldquo;Failed to Open Device&amp;rdquo;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Ensure &lt;strong&gt;Wallet&lt;/strong&gt; app is open (not Baking app)&lt;/li&gt;
+&lt;li&gt;Reconnect USB cable&lt;/li&gt;
+&lt;li&gt;Try different USB port&lt;/li&gt;
+&lt;li&gt;Restart browser&lt;/li&gt;
+&lt;li&gt;Try incognito/private window&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;browser-requirements&#34;&gt;Browser Requirements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Use Chromium-based browsers&lt;/strong&gt; (Chrome, Brave, Edge)&lt;/li&gt;
+&lt;li&gt;Firefox may have WebUSB issues with Ledger&lt;/li&gt;
+&lt;li&gt;Clear cache with &lt;code&gt;Ctrl+Shift+R&lt;/code&gt; (or &lt;code&gt;Cmd+Shift+R&lt;/code&gt; on Mac) if UI is stale&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;expert-mode-required&#34;&gt;Expert Mode Required&lt;/h3&gt;
+&lt;p&gt;Some operations require Expert Mode in Ledger settings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Settings → Expert mode → Enable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;two-types-of-voting-important&#34;&gt;Two Types of Voting (Important!)&lt;/h2&gt;
+&lt;p&gt;Tezos has &lt;strong&gt;two completely different voting mechanisms&lt;/strong&gt;. Don&amp;rsquo;t confuse them!&lt;/p&gt;
+&lt;h3 id=&#34;1-protocol-amendment-voting-via-tezgov&#34;&gt;1. Protocol Amendment Voting (via TezGov)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;What:&lt;/strong&gt; Voting on protocol upgrades (e.g., Paris, Quebec)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;When:&lt;/strong&gt; During Exploration and Promotion periods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How:&lt;/strong&gt; Cast YAY/NAY/PASS ballot on TezGov&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-per-block-voting-via-vote-filejson&#34;&gt;2. Per-Block Voting (via vote-file.json)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;What:&lt;/strong&gt; Liquidity Baking toggle + Adaptive Issuance toggle&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;When:&lt;/strong&gt; Every block you bake&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How:&lt;/strong&gt; Edit config file on your baking node&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;/bake-buddy/node/data/vote-file.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;liquidity_baking_toggle_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;adaptive_issuance_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After editing, restart: &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ TezGov does NOT handle per-block votes - those are configured on your node.&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;protocol-voting-issues&#34;&gt;Protocol Voting Issues&lt;/h2&gt;
+&lt;h3 id=&#34;vote-not-counting&#34;&gt;Vote Not Counting&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Common mistake:&lt;/strong&gt; Clicking &amp;ldquo;Signal&amp;rdquo; instead of the actual vote button.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Signal&lt;/strong&gt; (bottom of page): Shows preference to delegators only, NOT an on-chain vote&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UPVOTE/YAY/NAY/PASS&lt;/strong&gt; (top): Actual on-chain vote&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; Click the actual vote button at the top of the proposal.&lt;/p&gt;
+&lt;h3 id=&#34;voting-periods&#34;&gt;Voting Periods&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Period&lt;/th&gt;
+&lt;th&gt;Can Vote?&lt;/th&gt;
+&lt;th&gt;Duration&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Proposal&lt;/td&gt;
+&lt;td&gt;UPVOTE only&lt;/td&gt;
+&lt;td&gt;~14 days&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Exploration&lt;/td&gt;
+&lt;td&gt;YAY/NAY/PASS&lt;/td&gt;
+&lt;td&gt;~14 days&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Cooldown&lt;/td&gt;
+&lt;td&gt;No voting&lt;/td&gt;
+&lt;td&gt;~14 days&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Promotion&lt;/td&gt;
+&lt;td&gt;YAY/NAY/PASS&lt;/td&gt;
+&lt;td&gt;~14 days&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Adoption&lt;/td&gt;
+&lt;td&gt;No voting&lt;/td&gt;
+&lt;td&gt;~14 days&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;check-current-voting-period&#34;&gt;Check Current Voting Period&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client show voting period
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;staking-issues&#34;&gt;Staking Issues&lt;/h2&gt;
+&lt;h3 id=&#34;setting-staking-parameters&#34;&gt;Setting Staking Parameters&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Via TezGov:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Login at &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Navigate to Baker Management&lt;/li&gt;
+&lt;li&gt;Set your parameters:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;limit_of_staking_over_baking&lt;/code&gt;: 0-5x your stake&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edge_of_baking_over_staking&lt;/code&gt;: 0.0-1.0 (your fee, e.g., 0.1 = 10%)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Via CLI:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; delegate parameters &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; &amp;lt;tz_address&amp;gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --limit-of-staking-over-baking &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --edge-of-baking-over-staking 0.10
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;parameters-not-taking-effect&#34;&gt;Parameters Not Taking Effect&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Changes take &lt;strong&gt;2-3 cycles (~3-5 days)&lt;/strong&gt; to activate&lt;/li&gt;
+&lt;li&gt;External stakes are treated as delegation until parameters are set&lt;/li&gt;
+&lt;li&gt;Default: Stakers NOT accepted until you explicitly set parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;decimal-unstaking-issues&#34;&gt;Decimal Unstaking Issues&lt;/h3&gt;
+&lt;p&gt;If unstaking decimal amounts fails:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workaround:&lt;/strong&gt; Try whole numbers instead&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pending-balance-quirks&#34;&gt;Pending Balance Quirks&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;TezGov may not display pending balance correctly&lt;/li&gt;
+&lt;li&gt;Staking a small amount may pull from pending balance unexpectedly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;key-management&#34;&gt;Key Management&lt;/h2&gt;
+&lt;h3 id=&#34;setting-consensuscompanion-keys&#34;&gt;Setting Consensus/Companion Keys&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Generate POP on your baker:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client create bls proof &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client create bls proof &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; companion
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; → Baker Management&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set consensus key: Paste tz4 address + POP&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set companion key: Paste tz4 address + POP&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;key-activation-timing&#34;&gt;Key Activation Timing&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Activation delay:&lt;/strong&gt; 2-3 cycles (~3-5 days)&lt;/li&gt;
+&lt;li&gt;Register in cycle N → Live in cycle N+3&lt;/li&gt;
+&lt;li&gt;Check status: &lt;a href=&#34;https://tzkt.io/YOUR_TZ1/secondary-keys&#34;&gt;https://tzkt.io/YOUR_TZ1/secondary-keys&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;common-key-mistakes&#34;&gt;Common Key Mistakes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;❌ Setting keys in wrong order (consensus vs companion)&lt;/li&gt;
+&lt;li&gt;❌ Running same consensus key on two machines simultaneously&lt;/li&gt;
+&lt;li&gt;✅ Always verify on TzKT before and after changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;baker-reactivation&#34;&gt;Baker Reactivation&lt;/h2&gt;
+&lt;p&gt;If your baker becomes inactive:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;TezGov&amp;rdquo; in top left&lt;/li&gt;
+&lt;li&gt;Find &amp;ldquo;Reactivate&amp;rdquo; button&lt;/li&gt;
+&lt;li&gt;Confirm transaction on Ledger&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can also reactivate by simply resuming baking - if you attest &amp;gt;67% of assigned work, the baker automatically reactivates.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;browser-issues&#34;&gt;Browser Issues&lt;/h2&gt;
+&lt;h3 id=&#34;ui-not-loading-or-stale-data&#34;&gt;UI Not Loading or Stale Data&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Hard refresh: &lt;code&gt;Ctrl+Shift+R&lt;/code&gt; (Windows/Linux) or &lt;code&gt;Cmd+Shift+R&lt;/code&gt; (Mac)&lt;/li&gt;
+&lt;li&gt;Try incognito mode&lt;/li&gt;
+&lt;li&gt;Check browser console (&lt;code&gt;F12&lt;/code&gt;) for errors&lt;/li&gt;
+&lt;li&gt;Try a different Chromium-based browser&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;cors-or-network-errors&#34;&gt;CORS or Network Errors&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Check if you&amp;rsquo;re behind a corporate firewall&lt;/li&gt;
+&lt;li&gt;Try from a different network&lt;/li&gt;
+&lt;li&gt;Disable browser extensions temporarily&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;alternative-interfaces&#34;&gt;Alternative Interfaces&lt;/h2&gt;
+&lt;p&gt;If TezGov isn&amp;rsquo;t working, you can use CLI commands directly:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check voting period&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client show voting period
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Submit proposal (Proposal period only)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client submit proposals &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; &amp;lt;delegate&amp;gt; &amp;lt;proposal_hash&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Cast ballot (Exploration/Promotion only)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client submit ballot &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; &amp;lt;delegate&amp;gt; &amp;lt;proposal_hash&amp;gt; &amp;lt;yea&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;nay&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;pass&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For staking operations, you can also use &lt;a href=&#34;https://stake.tezos.com&#34;&gt;https://stake.tezos.com&lt;/a&gt; as an alternative.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mica--eu-considerations&#34;&gt;MiCA / EU Considerations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MiCA regulations cover &lt;strong&gt;custodial&lt;/strong&gt; services only&lt;/li&gt;
+&lt;li&gt;Decentralized non-custodial staking is NOT covered&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Staking-only&lt;/strong&gt; mode (no payouts) is legally simpler for EU bakers&lt;/li&gt;
+&lt;li&gt;You cannot disable delegations (protocol limitation)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;Voting on Proposals&lt;/a&gt; - Complete voting guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/managing-baker-settings/&#34;&gt;Managing Baker Settings&lt;/a&gt; - Staking parameters&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/injecting-proposals/&#34;&gt;Injecting Proposals&lt;/a&gt; - Submit new proposals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

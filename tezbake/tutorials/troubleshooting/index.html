@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezBake issues and solutions for installation errors and runtime problems">
 
-<meta itemprop="wordCount" content="672">
+<meta itemprop="wordCount" content="963">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezBake issues and solutions for installation errors and runtime problems"/>
@@ -316,6 +316,8 @@
   <a href="/tezgov/tutorials/injecting-proposals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsinjecting-proposals"><span class="">Injecting Proposals</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialsmanaging-baker-settings-li">
   <a href="/tezgov/tutorials/managing-baker-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialsmanaging-baker-settings"><span class="">Managing Baker Settings</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezgovtutorialstroubleshooting-li">
+  <a href="/tezgov/tutorials/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezgovtutorialstroubleshooting"><span class="">Troubleshooting</span></a>
 </li>
   </ul>
 </li>
@@ -387,6 +389,17 @@
       </ul>
     </li>
     <li><a href="#related-guides">Related Guides</a></li>
+    <li><a href="#dal-troubleshooting">DAL Troubleshooting</a>
+      <ul>
+        <li><a href="#command-translation-octez--tezbake">Command Translation: Octez → TezBake</a></li>
+        <li><a href="#quick-dal-status-check">Quick DAL Status Check</a></li>
+        <li><a href="#step-by-step-dal-verification">Step-by-Step DAL Verification</a></li>
+        <li><a href="#no-common-protocol-errors">&ldquo;No Common Protocol&rdquo; Errors</a></li>
+        <li><a href="#dal-connection-issues">DAL Connection Issues</a></li>
+        <li><a href="#firewallnat">Firewall/NAT</a></li>
+        <li><a href="#dal-and-ledger">DAL and Ledger</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -530,6 +543,86 @@
 <li><a href="/getting-started/best-practices/">Best Practices</a> - Prevent common issues</li>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - TezSign-specific setup</li>
 </ul>
+<hr>
+<hr>
+<h2 id="dal-troubleshooting">DAL Troubleshooting</h2>
+<p>The Data Availability Layer (DAL) accounts for ~10% of baking rewards. If your DAL isn&rsquo;t working properly, you&rsquo;re missing out on income.</p>
+<h3 id="command-translation-octez--tezbake">Command Translation: Octez → TezBake</h3>
+<p>When reading official <a href="https://octez.tezos.com/docs/shell/dal_run.html">Octez DAL documentation</a>, translate commands:</p>
+<table>
+<thead>
+<tr>
+<th>Octez Command</th>
+<th>TezBake Equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>octez-client ...</code></td>
+<td><code>tezbake node client ...</code></td>
+</tr>
+<tr>
+<td><code>octez-node config ...</code></td>
+<td><code>tezbake node config ...</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="quick-dal-status-check">Quick DAL Status Check</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info --dal
+</span></span></code></pre></div><p><strong>Note:</strong> &ldquo;Status down&rdquo; is normal immediately after start/restart. Give it time to sync.</p>
+<h3 id="step-by-step-dal-verification">Step-by-Step DAL Verification</h3>
+<p><strong>1. Check connected peers:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://localhost:10732/p2p/points/info?connected
+</span></span></code></pre></div><p>Expected: List of connected DAL nodes. Empty = connection problem.</p>
+<p><strong>2. Check topic subscriptions:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://localhost:10732/p2p/gossipsub/topics
+</span></span></code></pre></div><p>Expected: Topics like <code>{&quot;slot_index&quot;:N,&quot;pkh&quot;:&quot;tz1...&quot;}</code>.</p>
+<p><strong>3. Check shard assignments:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client rpc get /chains/main/blocks/head/context/dal/shards?delegates<span style="color:#ce5c00;font-weight:bold">=</span>&lt;YOUR_TZ1&gt;
+</span></span></code></pre></div><p>Expected: Your address with shard indexes.</p>
+<p><strong>4. Verify on Explorus:</strong></p>
+<p>Check <a href="https://explorus.io/consensus_ops">Explorus Consensus Ops</a> for your baker:</p>
+<ul>
+<li><strong>2/2</strong> = Attesting all slots ✅</li>
+<li><strong>0/2</strong> = Not attesting (issue with DAL)</li>
+<li><strong>Empty</strong> = No shards assigned or not connected</li>
+</ul>
+<h3 id="no-common-protocol-errors">&ldquo;No Common Protocol&rdquo; Errors</h3>
+<p><strong>Symptoms:</strong> DAL logs show <code>cancelled</code> or <code>no common protocol</code>.</p>
+<p><strong>Root Cause:</strong> Usually the underlying L1 node, not the DAL itself.</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info  <span style="color:#8f5902;font-style:italic"># Check full status</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If node has sync issues:</span>
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
+</span></span></code></pre></div><h3 id="dal-connection-issues">DAL Connection Issues</h3>
+<p>If no peers are connecting:</p>
+<ol>
+<li>
+<p><strong>Upgrade TezBake:</strong> <code>tezbake upgrade</code></p>
+</li>
+<li>
+<p><strong>Check bootstrap connection:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client --endpoint http://127.0.0.1:10732 rpc get /p2p/gossipsub/connections <span style="color:#000;font-weight:bold">|</span> jq <span style="color:#4e9a06">&#34;.[].connection.bootstrap&#34;</span>
+</span></span></code></pre></div><p>At least one should show <code>true</code>.</p>
+</li>
+<li>
+<p><strong>Restart:</strong> <code>tezbake stop &amp;&amp; tezbake start</code></p>
+</li>
+</ol>
+<h3 id="firewallnat">Firewall/NAT</h3>
+<p><strong>DAL Ports:</strong></p>
+<ul>
+<li><strong>11732</strong> — P2P (recommended to open)</li>
+<li><strong>10732</strong> — RPC (local only)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Allow DAL P2P if behind firewall</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 11732/tcp comment <span style="color:#4e9a06">&#34;DAL P2P&#34;</span>
+</span></span></code></pre></div><blockquote>
+<p>DAL can work without a public IP, but connectivity improves with port forwarding.</p>
+</blockquote>
+<h3 id="dal-and-ledger">DAL and Ledger</h3>
+<p>Ensure <strong>Tezos Baking app v2.5.0+</strong> for DAL attestation support.</p>
+<p>For complete DAL setup, see <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a>.</p>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
