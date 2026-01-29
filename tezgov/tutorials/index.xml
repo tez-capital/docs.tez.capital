@@ -280,7 +280,7 @@
 &lt;ol&gt;
 &lt;li&gt;Log into &lt;a href=&#34;https://gov.tez.capital&#34;&gt;TezGov&lt;/a&gt; with your baker&amp;rsquo;s key&lt;/li&gt;
 &lt;li&gt;Navigate to the &lt;strong&gt;Baker Settings&lt;/strong&gt; or &lt;strong&gt;Delegate Parameters&lt;/strong&gt; section&lt;/li&gt;
-&lt;li&gt;Set your desired &lt;strong&gt;Limit of staking over baking&lt;/strong&gt; (0-5)&lt;/li&gt;
+&lt;li&gt;Set your desired &lt;strong&gt;Limit of staking over baking&lt;/strong&gt; (0-9)&lt;/li&gt;
 &lt;li&gt;Set your desired &lt;strong&gt;Edge of baking over staking&lt;/strong&gt; (e.g., 0.10 for 10%)&lt;/li&gt;
 &lt;li&gt;Click &lt;strong&gt;Update Parameters&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Confirm the transaction on your Ledger&lt;/li&gt;
@@ -562,7 +562,7 @@
 &lt;li&gt;Navigate to Baker Management&lt;/li&gt;
 &lt;li&gt;Set your parameters:
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;limit_of_staking_over_baking&lt;/code&gt;: 0-5x your stake&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;limit_of_staking_over_baking&lt;/code&gt;: 0-9x your stake&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;edge_of_baking_over_staking&lt;/code&gt;: 0.0-1.0 (your fee, e.g., 0.1 = 10%)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
