@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Bootstrap Node">
 <meta itemprop="description" content="How to bootstrap your Tezos node quickly using blockchain snapshots">
 
-<meta itemprop="wordCount" content="617">
+<meta itemprop="wordCount" content="616">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bootstrap Node"/>
 <meta name="twitter:description" content="How to bootstrap your Tezos node quickly using blockchain snapshots"/>
@@ -482,8 +482,7 @@
 <p><strong>ℹ️ INFO:</strong> The <code>&lt;block_hash&gt;</code> argument is optional but encouraged for security verification. If you don&rsquo;t want to bother with this protection, use the second method below which will also be faster.</p>
 </blockquote>
 <p>Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
-<a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a>
-<a href="https://tzstats.com/">https://tzstats.com/</a></p>
+<a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a></p>
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <p>Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&rsquo;t have a choice and must make such trade-offs when time is of the essence.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop

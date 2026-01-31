@@ -96,8 +96,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
-&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
-&lt;a href=&#34;https://tzstats.com/&#34;&gt;https://tzstats.com/&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.&lt;/p&gt;
 &lt;h3 id=&#34;start-tezos-node&#34;&gt;Start Tezos node&lt;/h3&gt;
 &lt;p&gt;After importing the snapshot, you need to start your node and wait until it&amp;rsquo;s fully synchronized before importing your Ledger key.&lt;/p&gt;
@@ -109,7 +108,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;The level is the current block height (block number) on the blockchain. To verify your node is synchronized:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Check the level shown by &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Once they match, your node is fully synced and you can proceed&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Both blockchain explorers also provide Ghostnet and Testnet views. Make sure you&amp;rsquo;re looking at the correct network (mainnet).&lt;/p&gt;
@@ -360,8 +359,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
-&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
-&lt;a href=&#34;https://tzstats.com/&#34;&gt;https://tzstats.com/&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.&lt;/p&gt;
 &lt;h3 id=&#34;start-tezos-node&#34;&gt;Start Tezos node&lt;/h3&gt;
 &lt;p&gt;After importing the snapshot, you need to start your node and wait until it&amp;rsquo;s fully synchronized before importing your Ledger key.&lt;/p&gt;
@@ -373,7 +371,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;The level is the current block height (block number) on the blockchain. To verify your node is synchronized:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Check the level shown by &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;https://tzstats.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Compare it to the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Once they match, your node is fully synced and you can proceed&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Both blockchain explorers also provide Ghostnet and testnet views. Make sure you&amp;rsquo;re looking at the correct network.&lt;/p&gt;
@@ -917,7 +915,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://bake.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;what-should-i-do-after-updating&#34;&gt;What should I do after updating?&lt;/h2&gt;
-&lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://TzStats.com&#34;&gt;https://TzStats.com&lt;/a&gt; and &lt;a href=&#34;https://TzKT.io&#34;&gt;https://TzKT.io&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After all updates and changes to your Tezos node, always ensure your baking process continues successfully by monitoring its performance on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Check your TezBake stack versions to ensure they are up to date:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version --all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the expected Octez version along with the release date of the binaries.&lt;/p&gt;
@@ -1221,8 +1219,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, use the second method below which will also be faster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
-&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;
-&lt;a href=&#34;https://tzstats.com/&#34;&gt;https://tzstats.com/&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://tzkt.io/blocks&#34;&gt;https://tzkt.io/blocks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.&lt;/p&gt;
 &lt;p&gt;Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&amp;rsquo;t have a choice and must make such trade-offs when time is of the essence.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
@@ -1268,7 +1265,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup computer with TezBake installed (but not started)&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup TezSign device or Ledger (not authorized for baking)&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Document your baker&amp;rsquo;s public key hash (tz1/tz2/tz3/tz4 address)&lt;/li&gt;
-&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Know your current block level (check &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;TzStats&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Know your current block level (check &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;failover-steps&#34;&gt;Failover Steps&lt;/h2&gt;
 &lt;h3 id=&#34;step-1-confirm-primary-is-down&#34;&gt;Step 1: Confirm Primary is Down&lt;/h3&gt;

@@ -19,20 +19,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Tezos Public Baking | docs.tez.capital</title>
-<meta name="description" content="How to Setup a Public Baker on Tezos">
+<meta name="description" content="Complete guide to running a public baker on Tezos">
 <meta property="og:title" content="Tezos Public Baking" />
-<meta property="og:description" content="How to Setup a Public Baker on Tezos" />
+<meta property="og:description" content="Complete guide to running a public baker on Tezos" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/getting-started/public-baking/" /><meta property="article:section" content="getting-started" />
 
 
 <meta itemprop="name" content="Tezos Public Baking">
-<meta itemprop="description" content="How to Setup a Public Baker on Tezos">
+<meta itemprop="description" content="Complete guide to running a public baker on Tezos">
 
-<meta itemprop="wordCount" content="660">
+<meta itemprop="wordCount" content="914">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezos Public Baking"/>
-<meta name="twitter:description" content="How to Setup a Public Baker on Tezos"/>
+<meta name="twitter:description" content="Complete guide to running a public baker on Tezos"/>
 
 
 
@@ -384,13 +384,32 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#public-baking">Public Baking</a>
+    <li><a href="#public-baking">Public Baking</a></li>
+    <li><a href="#understanding-delegation">Understanding Delegation</a>
       <ul>
         <li><a href="#what-is-delegation">What is Delegation?</a></li>
-        <li><a href="#what-is-staking">What is Staking?</a></li>
+        <li><a href="#why-delegators-choose-public-bakers">Why Delegators Choose Public Bakers</a></li>
+        <li><a href="#delegation-capacity">Delegation Capacity</a></li>
+      </ul>
+    </li>
+    <li><a href="#understanding-staking">Understanding Staking</a>
+      <ul>
         <li><a href="#configuring-staker-acceptance">Configuring Staker Acceptance</a></li>
       </ul>
     </li>
+    <li><a href="#reward-distribution">Reward Distribution</a>
+      <ul>
+        <li><a href="#who-pays-whom">Who Pays Whom</a></li>
+      </ul>
+    </li>
+    <li><a href="#automating-delegator-payments">Automating Delegator Payments</a>
+      <ul>
+        <li><a href="#available-configuration-options">Available Configuration Options</a></li>
+      </ul>
+    </li>
+    <li><a href="#registering-as-a-public-baker">Registering as a Public Baker</a></li>
+    <li><a href="#recommended-settings-for-new-public-bakers">Recommended Settings for New Public Bakers</a></li>
+    <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
       </div>
@@ -451,17 +470,88 @@
 	</header>    
 	<h2 id="public-baking">Public Baking</h2>
 <p>Public baking and private baking are the same thing from the perspective of the blockchain. The only difference is that a public baker has announced themselves to the Tezos community and is willing to accept delegations. A private baker is not willing to accept delegations from delegators. A private baker cannot stop these delegations from occurring but a private baker is not expected to pay out rewards to delegators.</p>
+<hr>
+<h2 id="understanding-delegation">Understanding Delegation</h2>
 <h3 id="what-is-delegation">What is Delegation?</h3>
-<p>When you delegate your tez to a baker, your tokens never leave your wallet - you retain full ownership and control. The baker gains increased baking power from your delegated tez and shares the baking rewards with you. On Tezos, bakers are paid directly by the blockchain for themselves as well as for their delegators. Each baker determines their own fee structure and payment policies. We recommend using TezPay payment software to automate reward distribution to delegators.</p>
-<h3 id="what-is-staking">What is Staking?</h3>
-<p>With the <a href="https://research-development.nomadic-labs.com/adaptive-issuance-paris.html#the-new-staker-role">Adaptive Issuance</a> protocol upgrade, bakers can now accept stakers in addition to delegators. Staking differs from delegation in several important ways:</p>
+<p>When you delegate your tez to a baker, your tokens never leave your wallet - you retain full ownership and control. The baker gains increased baking power from your delegated tez and shares the baking rewards with you. On Tezos, bakers are paid directly by the blockchain for themselves as well as for their delegators. Each baker determines their own fee structure and payment policies.</p>
+<h3 id="why-delegators-choose-public-bakers">Why Delegators Choose Public Bakers</h3>
+<p>Delegators want:</p>
 <ul>
-<li><strong>Funds are locked</strong> - Staked tez is frozen and cannot be moved. Unstaking takes <strong>2+1 cycles</strong> (~3 days on Tallinn): if you unstake during cycle 1000, you can finalize in cycle 1003</li>
-<li><strong>Higher rewards</strong> - Stakers earn approximately 3x the rewards of delegators due to the additional commitment and risk</li>
-<li><strong>Slashing risk</strong> - Stakers share in slashing penalties proportionally if the baker double bakes or double attests. See <a href="/getting-started/slashing-explained/">Slashing Explained</a> for details</li>
-<li><strong>Direct protocol payment</strong> - Stakers are paid directly by the protocol without baker intervention, unlike delegators who rely on the baker to distribute rewards</li>
-<li><strong>Greater baking power</strong> - Staked tez counts as 1.0 toward the baker&rsquo;s capacity, while delegated tez counts as ≈0.33</li>
+<li><strong>Passive income</strong> without running infrastructure</li>
+<li><strong>Liquidity</strong> - funds never locked, can spend/transfer anytime</li>
+<li><strong>Zero slashing risk</strong> - delegators cannot be slashed</li>
+<li><strong>Reliable payouts</strong> - consistent, predictable reward distribution</li>
 </ul>
+<h3 id="delegation-capacity">Delegation Capacity</h3>
+<p>The protocol enforces a <strong>9x delegation limit</strong> relative to your frozen stake:</p>
+<table>
+<thead>
+<tr>
+<th>Your Frozen Stake</th>
+<th>Maximum Delegations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10,000 XTZ</td>
+<td>90,000 XTZ</td>
+</tr>
+<tr>
+<td>50,000 XTZ</td>
+<td>450,000 XTZ</td>
+</tr>
+<tr>
+<td>100,000 XTZ</td>
+<td>900,000 XTZ</td>
+</tr>
+</tbody>
+</table>
+<p>If you exceed this limit (overdelegation), excess delegators earn reduced or no rewards.</p>
+<hr>
+<h2 id="understanding-staking">Understanding Staking</h2>
+<p>With the <a href="https://research-development.nomadic-labs.com/adaptive-issuance-paris.html#the-new-staker-role">Adaptive Issuance</a> protocol upgrade, bakers can now accept stakers in addition to delegators. Staking differs from delegation in several important ways:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Delegators</th>
+<th>Stakers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Funds locked</td>
+<td>No</td>
+<td>Yes (frozen)</td>
+</tr>
+<tr>
+<td>Baking power</td>
+<td>0.33 per tez</td>
+<td>1.0 per tez</td>
+</tr>
+<tr>
+<td>Rewards</td>
+<td>~1x (base rate)</td>
+<td>~3x delegator rate</td>
+</tr>
+<tr>
+<td>Slashing risk</td>
+<td>None</td>
+<td>Yes (proportional)</td>
+</tr>
+<tr>
+<td>Payment method</td>
+<td>Baker distributes</td>
+<td>Protocol pays directly</td>
+</tr>
+<tr>
+<td>Unstaking time</td>
+<td>Instant</td>
+<td>~3 days</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/getting-started/slashing-explained/">Slashing Explained</a> for details on slashing risks.</p>
 <h3 id="configuring-staker-acceptance">Configuring Staker Acceptance</h3>
 <p>Bakers control whether and how much external stake they accept via two parameters:</p>
 <p><strong><code>limit_of_staking_over_baking</code></strong> (default: 0, max: 9)</p>
@@ -489,20 +579,163 @@
 <li>Public bakers typically set this lower (e.g., 0.05-0.15) to attract stakers</li>
 </ul>
 <p>Configure these via <a href="https://gov.tez.capital">TezGov</a> or CLI. Changes take effect after 5 cycles (~5 days).</p>
-<p>A public baker has to contact two entities within the Tezos ecosystem to be added to the list of public bakers within each of their ecosystems. The entities in question all have their own methods to determine your public baker details, such as your fee and payment policies, via self-reporting. You will be asked to self-report your details to each of the following entities:</p>
+<hr>
+<h2 id="reward-distribution">Reward Distribution</h2>
+<h3 id="who-pays-whom">Who Pays Whom</h3>
+<table>
+<thead>
+<tr>
+<th>Recipient</th>
+<th>Who Pays</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baker (own stake)</td>
+<td>Protocol</td>
+<td>Direct payment each cycle</td>
+</tr>
+<tr>
+<td>Stakers</td>
+<td>Protocol</td>
+<td>Automatic, no baker action needed</td>
+</tr>
+<tr>
+<td>Delegators</td>
+<td><strong>Baker</strong></td>
+<td>You must distribute using payment software</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Point:</strong> Staker rewards are handled automatically by the protocol. Delegator rewards require you to actively distribute them.</p>
+<hr>
+<h2 id="automating-delegator-payments">Automating Delegator Payments</h2>
+<p><a href="/tezpay/tutorials/setup/">TezPay</a> makes delegator reward distribution fully automatic. You can:</p>
 <ul>
-<li><a href="https://tzstats.com">https://tzstats.com</a> (Trilitech)
-<ul>
-<li>The best place to contact them is: <a href="mailto:tzstats@trili.tech">tzstats@trili.tech</a></li>
+<li><strong>Run completely hands-off</strong> - TezPay pays delegators automatically after each cycle</li>
+<li><strong>Integrate with TezBake</strong> - One command adds the pay module to your existing baker setup</li>
+<li><strong>Pay on your schedule</strong> - Every cycle, weekly, or any interval you choose</li>
 </ul>
-</li>
+<h3 id="available-configuration-options">Available Configuration Options</h3>
+<p>TezPay gives you full control over your payout policies:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Custom fees per delegator</strong></td>
+<td>Give friends 0% fee, loyal delegators a discount, or set any rate per address</td>
+</tr>
+<tr>
+<td><strong>Payment timing</strong></td>
+<td>Control min/max delay after cycle end to spread out transactions</td>
+</tr>
+<tr>
+<td><strong>Payout mode</strong></td>
+<td>Pay based on ideal (expected) or actual (what you earned) rewards</td>
+</tr>
+<tr>
+<td><strong>Minimum payout threshold</strong></td>
+<td>Skip tiny payouts below a threshold to save on transaction fees</td>
+</tr>
+<tr>
+<td><strong>Minimum delegator balance</strong></td>
+<td>Filter out dust delegations</td>
+</tr>
+<tr>
+<td><strong>Delegator filtering</strong></td>
+<td>Whitelist or blacklist specific addresses</td>
+</tr>
+<tr>
+<td><strong>Income splitting</strong></td>
+<td>Split baker rewards between multiple wallets</td>
+</tr>
+<tr>
+<td><strong>Payout redirection</strong></td>
+<td>Send a delegator&rsquo;s rewards to a different address</td>
+</tr>
+<tr>
+<td><strong>Batched payments</strong></td>
+<td>Aggregate multiple cycles into single payouts</td>
+</tr>
+<tr>
+<td><strong>Notifications</strong></td>
+<td>Get alerts via Discord, Telegram, Twitter, or email</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="/tezpay/tutorials/setup/">TezPay Setup</a> for complete configuration details.</p>
+<hr>
+<h2 id="registering-as-a-public-baker">Registering as a Public Baker</h2>
+<p>To appear in wallets and explorer listings, register with:</p>
+<ul>
 <li><a href="https://tzkt.io">https://tzkt.io</a> / <a href="https://baking-bad.org">https://baking-bad.org</a> (Baking Bad)
 <ul>
-<li>The best places to contact them are: <a href="https://t.me/baking_bad_chat">https://t.me/baking_bad_chat</a> and <a href="https://discord.gg/aG8XKuwsQd">https://discord.gg/aG8XKuwsQd</a></li>
+<li>Contact: <a href="https://t.me/baking_bad_chat">https://t.me/baking_bad_chat</a> or <a href="https://discord.gg/aG8XKuwsQd">https://discord.gg/aG8XKuwsQd</a></li>
 </ul>
 </li>
 </ul>
-<p>Most wallets and services on Tezos pull their baker information from one of these sources, mostly from TzKT. If you are not listed on TzKT, you will not be listed on most wallets and services on Tezos.</p>
+<p><strong>You&rsquo;ll need to provide:</strong></p>
+<ul>
+<li>Baker address</li>
+<li>Fee percentage</li>
+<li>Payment frequency</li>
+<li>Minimum delegation</li>
+<li>Contact information</li>
+</ul>
+<p>Most wallets and services on Tezos pull their baker information from TzKT. If you are not listed on TzKT, you will not be listed on most wallets and services.</p>
+<hr>
+<h2 id="recommended-settings-for-new-public-bakers">Recommended Settings for New Public Bakers</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommended Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fee</td>
+<td>5-10%</td>
+<td>Competitive but sustainable</td>
+</tr>
+<tr>
+<td>Minimum payout</td>
+<td>0.5-1 XTZ</td>
+<td>Balance between tx costs and fairness</td>
+</tr>
+<tr>
+<td>Minimum balance</td>
+<td>10-100 XTZ</td>
+<td>Filter dust delegations</td>
+</tr>
+<tr>
+<td>Payment frequency</td>
+<td>Every cycle or weekly</td>
+<td>Delegators prefer frequent payouts</td>
+</tr>
+<tr>
+<td>Baker pays tx fees</td>
+<td>Yes</td>
+<td>More attractive to delegators</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="related-guides">Related Guides</h2>
+<ul>
+<li><a href="/tezpay/tutorials/setup/">TezPay Setup</a> - Installation and configuration</li>
+<li><a href="/tezpay/tutorials/tezbake-integration/">TezBake Integration</a> - Automate with your baker</li>
+<li><a href="/tezpay/tutorials/notifications/">Notifications</a> - Set up payout alerts</li>
+<li><a href="/getting-started/slashing-explained/">Slashing Explained</a> - Understand the risks</li>
+<li><a href="/getting-started/best-practices/">Best Practices</a> - Operational guidelines</li>
+</ul>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on
 <a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>

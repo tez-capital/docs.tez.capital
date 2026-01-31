@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Setup">
 <meta itemprop="description" content="How to setup TezPay">
 
-<meta itemprop="wordCount" content="1505">
+<meta itemprop="wordCount" content="2025">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Setup"/>
 <meta name="twitter:description" content="How to setup TezPay"/>
@@ -396,6 +396,7 @@
       <ul>
         <li><a href="#setup-step-1a-configuration-file-simple">Setup: Step 1a: Configuration File (simple)</a></li>
         <li><a href="#setup-step-1b-configuration-file-advanced">Setup: Step 1b: Configuration File (advanced)</a></li>
+        <li><a href="#advanced-configuration-examples">Advanced Configuration Examples</a></li>
         <li><a href="#setup-step-2-private-key-file">Setup: Step 2: Private-Key File</a></li>
         <li><a href="#setup-summary">Setup: Summary</a></li>
       </ul>
@@ -481,6 +482,8 @@
 <ul>
 <li><a href="#setup-step-1a-configuration-file-simple">Step 1a: Configuration File (simple)</a></li>
 <li><a href="#setup-step-1b-configuration-file-advanced">Step 1b: Configuration File (advanced)</a></li>
+<li><a href="#advanced-configuration-examples">Advanced Configuration Examples</a></li>
+<li><a href="#other-configuration-options">Other Configuration Options</a></li>
 <li><a href="#setup-step-2-private-key-file">Step 2: Private-Key File</a></li>
 </ul>
 </li>
@@ -786,6 +789,135 @@ has paid 100XTZ in rewards for latest cycle&rsquo;</em> <strong>We will cover th
 in a separate section</strong>
 <em>see appendix X</em> and platforms supported are <em><strong>Twitter, Discord, and E-mail</strong></em></li>
 </ol>
+<hr>
+<h3 id="advanced-configuration-examples">Advanced Configuration Examples</h3>
+<p>The following examples show common configuration patterns you can add to your <code>config.hjson</code>.</p>
+<h4 id="custom-fees-for-specific-delegators">Custom Fees for Specific Delegators</h4>
+<p>You can set custom fee rates for individual delegators using two methods:</p>
+<p><strong>Method A: Full Override</strong></p>
+<p>Use <code>delegators.overrides</code> for complete control over a delegator&rsquo;s settings:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  overrides: {
+    tz1YourFriendAddress: {
+      fee: 0         // 0% fee - friend pays no fee
+    }
+    tz1SpecialDelegator: {
+      fee: 0.02      // 2% custom fee (lower than your default)
+    }
+  }
+}
+</code></pre><p><strong>Method B: Fee Shortcut</strong></p>
+<p>Use <code>delegators.fee_overrides</code> for a simpler syntax when you only need to change fees:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  fee_overrides: {
+    0: [&#34;tz1FriendAddress1&#34;, &#34;tz1FriendAddress2&#34;]     // 0% fee (no fee)
+    0.02: [&#34;tz1LoyalDelegator&#34;]                       // 2% fee
+    0.5: [&#34;tz1Address1&#34;]                              // 50% fee
+    1: [&#34;tz1CharityAddress&#34;]                          // 100% fee (all to baker)
+  }
+}
+</code></pre><blockquote>
+<p><strong>💡 TIP:</strong> Use Method B (<code>fee_overrides</code>) when you only need to change fees. Use Method A (<code>overrides</code>) when you also need to change other settings like <code>minimum_balance</code> or <code>maximum_balance</code> for a delegator.</p>
+</blockquote>
+<h4 id="payment-timing-after-cycle-completion">Payment Timing After Cycle Completion</h4>
+<p>Control when TezPay sends payments after a cycle ends using the <code>payouts</code> section:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">payouts: {
+  minimum_delay_blocks: 10     // Wait at least 10 blocks after cycle ends
+  maximum_delay_blocks: 250    // Pay within 250 blocks maximum
+}
+</code></pre><p><strong>Why this matters:</strong></p>
+<ul>
+<li>TezPay picks a random time between the minimum and maximum delay</li>
+<li>This spreads out payout transactions across the network</li>
+<li>Prevents congestion if many bakers pay simultaneously at cycle end</li>
+</ul>
+<p><strong>Timing reference</strong> (at 6 seconds per block):</p>
+<table>
+<thead>
+<tr>
+<th>Blocks</th>
+<th>Approximate Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>1 minute</td>
+</tr>
+<tr>
+<td>50</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>250</td>
+<td>25 minutes</td>
+</tr>
+</tbody>
+</table>
+<p>The default values work well for most bakers. Adjust only if you have specific timing requirements.</p>
+<h4 id="other-configuration-options">Other Configuration Options</h4>
+<p>TezPay has many more options available. Here&rsquo;s a quick reference to help you know what&rsquo;s possible:</p>
+<p><strong>Payout Mode (<code>payouts.payout_mode</code>):</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">payouts: {
+  payout_mode: ideal    // &#39;ideal&#39; (default) or &#39;actual&#39;
+}
+</code></pre><ul>
+<li><code>ideal</code> — Pay based on what delegators <em>should</em> have earned (rarely used but availablea)</li>
+<li><code>actual</code> — Pay based on what the baker <em>actually</em> earned (accounts for missed blocks/attestations)</li>
+</ul>
+<p><strong>Who Pays Transaction Fees (<code>payouts</code>):</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">payouts: {
+  baker_pays_transaction_fee: true      // Baker covers tx fees (default: true)
+  baker_pays_allocation_fee: true       // Baker covers allocation fees for new accounts
+}
+</code></pre><p><strong>Delegator Filtering (<code>delegators</code>):</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  // Only pay these specific addresses (leave empty to pay everyone)
+  prefilter: [
+    &#34;tz1WhitelistedAddress1&#34;
+    &#34;tz1WhitelistedAddress2&#34;
+  ]
+
+  // Never pay these addresses (rewards redistributed to others)
+  ignore: [
+    &#34;tz1BlacklistedAddress&#34;
+    &#34;tz1burnburnburnburnburnburnburjAYjjX&#34;
+  ]
+}
+</code></pre><p><strong>Redirect Payouts to Different Address:</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  overrides: {
+    tz1OriginalDelegator: {
+      recipient: &#34;tz1DifferentPayoutAddress&#34;    // Send their rewards here instead
+    }
+  }
+}
+</code></pre><p><strong>Cap Delegator Balance (Overdelegation Management):</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  overrides: {
+    tz1LargeDelegator: {
+      maximum_balance: 100000    // Only count up to 100k tez of their balance
+    }
+  }
+}
+</code></pre><p><strong>Minimum Balance &amp; Small Reward Handling:</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">delegators: {
+  requirements: {
+    minimum_balance: 1                           // Delegators need at least 1 tez
+    below_minimum_reward_destination: everyone   // &#39;everyone&#39; or &#39;none&#39;
+  }
+}
+</code></pre><ul>
+<li><code>everyone</code> — Redistribute small rewards to other delegators</li>
+<li><code>none</code> — Small rewards go to the baker</li>
+</ul>
+<p><strong>Overdelegation Protection:</strong></p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">overdelegation: {
+  protect: true    // Prevent paying more than you can cover (recommended)
+}
+</code></pre><blockquote>
+<p><strong>📚 Full Reference:</strong> See the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">complete sample configuration</a> for all available options including notifications, extensions, and network settings.</p>
+</blockquote>
 <hr>
 <h3 id="setup-step-2-private-key-file">Setup: Step 2: Private-Key File</h3>
 <p>The Private Key file is used to sign the transaction(s) that will

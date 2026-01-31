@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL">
 
-<meta itemprop="wordCount" content="2293">
+<meta itemprop="wordCount" content="2290">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL"/>
@@ -534,8 +534,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p><strong>ℹ️ INFO:</strong> The <code>&lt;block_hash&gt;</code> argument is optional but encouraged for security verification. If you don&rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.</p>
 </blockquote>
 <p>Verify the hash/checksum provided by the snapshot provider to ensure the snapshot is valid. You can find the correct hashes for all blocks on Tezos blockchain explorers such as:
-<a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a>
-<a href="https://tzstats.com/">https://tzstats.com/</a></p>
+<a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a></p>
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <h3 id="start-tezos-node">Start Tezos node</h3>
 <p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
@@ -547,7 +546,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>The level is the current block height (block number) on the blockchain. To verify your node is synchronized:</p>
 <ol>
 <li>Check the level shown by <code>tezbake info</code></li>
-<li>Compare it to the latest block on <a href="https://tzkt.io">https://tzkt.io</a> or <a href="https://tzstats.com">https://tzstats.com</a></li>
+<li>Compare it to the latest block on <a href="https://tzkt.io">https://tzkt.io</a></li>
 <li>Once they match, your node is fully synced and you can proceed</li>
 </ol>
 <p><strong>ℹ️ INFO:</strong> Both blockchain explorers also provide Ghostnet and Testnet views. Make sure you&rsquo;re looking at the correct network (mainnet).</p>
