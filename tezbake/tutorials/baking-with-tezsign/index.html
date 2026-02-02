@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="2979">
+<meta itemprop="wordCount" content="3028">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -706,11 +706,15 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <p>TezSign USB gadget mode may have issues with USB 3.0 (xHCI) controllers. Symptoms include:</p>
 <ul>
 <li><code>error -110</code> (timeout) or <code>error -62</code> (device not accepting address) in <code>dmesg</code></li>
+<li>Device gets no power or doesn&rsquo;t boot</li>
 <li>Device never appears in <code>lsusb</code></li>
 <li>5-second timeout errors</li>
 </ul>
 <p><strong>Solutions (try in order):</strong></p>
 <ol>
+<li>
+<p><strong>Check your USB cable</strong> - A faulty or low-quality cable is a common cause of these errors. Try a different cable, preferably a short, high-quality data cable (not a charge-only cable). The cables in the shopping lists above are tested and recommended.</p>
+</li>
 <li>
 <p><strong>Use a USB 2.0 port</strong> if your machine has one (check <code>lspci | grep -i usb</code> for EHCI)</p>
 </li>
@@ -728,7 +732,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 </li>
 </ol>
 <p>To enter BIOS from Linux: <code>sudo systemctl reboot --firmware-setup</code></p>
-<ol start="4">
+<ol start="5">
 <li><strong>USB Reset Command</strong> if device stops responding:
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced usb-port-reset
 </span></span><span style="display:flex;"><span>tezbake stop --signer <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start --signer

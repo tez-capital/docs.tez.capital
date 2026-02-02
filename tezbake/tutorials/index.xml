@@ -661,11 +661,15 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;TezSign USB gadget mode may have issues with USB 3.0 (xHCI) controllers. Symptoms include:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;error -110&lt;/code&gt; (timeout) or &lt;code&gt;error -62&lt;/code&gt; (device not accepting address) in &lt;code&gt;dmesg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Device gets no power or doesn&amp;rsquo;t boot&lt;/li&gt;
 &lt;li&gt;Device never appears in &lt;code&gt;lsusb&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;5-second timeout errors&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Solutions (try in order):&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check your USB cable&lt;/strong&gt; - A faulty or low-quality cable is a common cause of these errors. Try a different cable, preferably a short, high-quality data cable (not a charge-only cable). The cables in the shopping lists above are tested and recommended.&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Use a USB 2.0 port&lt;/strong&gt; if your machine has one (check &lt;code&gt;lspci | grep -i usb&lt;/code&gt; for EHCI)&lt;/p&gt;
 &lt;/li&gt;
@@ -683,7 +687,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;To enter BIOS from Linux: &lt;code&gt;sudo systemctl reboot --firmware-setup&lt;/code&gt;&lt;/p&gt;
-&lt;ol start=&#34;4&#34;&gt;
+&lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;&lt;strong&gt;USB Reset Command&lt;/strong&gt; if device stops responding:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced usb-port-reset
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop --signer &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start --signer
