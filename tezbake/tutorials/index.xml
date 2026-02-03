@@ -461,15 +461,6 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ KNOWN ISSUE: Multiple Bakers on One Device&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Running multiple bakers (e.g., mainnet + testnet) on a single TezSign device can cause occasional missed attestations (1-2 per few hours). If you bake for multiple networks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Use a &lt;strong&gt;dedicated TezSign device&lt;/strong&gt; for each network&lt;/li&gt;
-&lt;li&gt;Or accept occasional misses on the less critical network&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Single-baker setups (one baker with consensus + companion keys) are &lt;strong&gt;not affected&lt;/strong&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/a&gt;&lt;/li&gt;
