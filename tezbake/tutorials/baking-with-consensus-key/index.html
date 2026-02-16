@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="TezBake Baking Tutorial for using a Consensus Key">
 
-<meta itemprop="wordCount" content="1070">
+<meta itemprop="wordCount" content="1014">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="TezBake Baking Tutorial for using a Consensus Key"/>
@@ -146,6 +146,8 @@
   <a href="/tezbake/tutorials/bootstrap-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbootstrap-node"><span class="">Bootstrap Node</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsfailover-procedure-li">
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
+  <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
   <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
@@ -540,61 +542,14 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 </blockquote>
 <p>This will import your consensus key Ledger device and authorize it for baking. Leave the baking app running on the Ledger device.</p>
 <h3 id="modify-the-baking-configuration">Modify the baking configuration</h3>
-<p>Open the TezBake node configuration file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/app.json
-</span></span></code></pre></div><p>Inside the <code>&quot;configuration&quot;</code> object, add the following key-value pair:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;additional_key_aliases&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#4e9a06">&#34;consensus&#34;</span> <span style="color:#ce5c00;font-weight:bold">]</span>
-</span></span></code></pre></div><p>Here an example of a file with the consensus key alias added:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;configuration&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;BAKER_STARTUP_ARGS&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#4e9a06">&#34;--dal-node&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#4e9a06">&#34;http://127.0.0.1:10732/&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">],</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;CONFIG_FILE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#204a87;font-weight:bold">&#34;p2p&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#204a87;font-weight:bold">&#34;bootstrap-peers&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#4e9a06">&#34;boot.tzbeta.net&#34;</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#000;font-weight:bold">],</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#204a87;font-weight:bold">&#34;limits&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;connection-timeout&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;expected-connections&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">40</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;max-connections&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;max_known_peer_ids&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>                                                <span style="color:#0000cf;font-weight:bold">320</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                                <span style="color:#0000cf;font-weight:bold">240</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#000;font-weight:bold">],</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;max_known_points&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>                                                <span style="color:#0000cf;font-weight:bold">320</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                                                <span style="color:#0000cf;font-weight:bold">240</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#000;font-weight:bold">],</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;min-connections&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">20</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#204a87;font-weight:bold">&#34;listen-addr&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;[::]:9732&#34;</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#204a87;font-weight:bold">&#34;shell&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#204a87;font-weight:bold">&#34;chain_validator&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                                        <span style="color:#204a87;font-weight:bold">&#34;synchronisation_threshold&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">6</span>
-</span></span><span style="display:flex;"><span>                                <span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;NODE_TYPE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;baker&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;VOTE_FILE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;additional_key_aliases&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-</span></span><span style="display:flex;"><span>                        <span style="color:#4e9a06">&#34;consensus&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">]</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;bb-default-node&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;id&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;xtz.node&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&#34;version&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;latest&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">},</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&#34;user&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;bb&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Re-run the TezBake upgrade and merge your configuration when asked:</p>
+<p>Add the consensus key alias so the baker knows to inject it alongside your default baker key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;consensus&#34;]&#39;</span>
+</span></span></code></pre></div><p>You can verify it was set:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span></code></pre></div><blockquote>
+<p><strong>📖 See <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> for the full reference</strong> on managing key aliases, including the difference between <code>additional_key_aliases</code> and <code>key_aliases</code>.</p>
+</blockquote>
+<p>Re-run the TezBake upgrade and merge your configuration when asked:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
 </span></span><span style="display:flex;"><span>tezbake upgrade
 </span></span><span style="display:flex;"><span>tezbake start

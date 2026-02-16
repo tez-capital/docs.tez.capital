@@ -18,21 +18,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Monitoring Transactions | docs.tez.capital</title>
-<meta name="description" content="TezWatch Balances &amp;amp; Transactions Tutorial">
-<meta property="og:title" content="Monitoring Transactions" />
-<meta property="og:description" content="TezWatch Balances &amp; Transactions Tutorial" />
+<title>Key Aliases | docs.tez.capital</title>
+<meta name="description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups">
+<meta property="og:title" content="Key Aliases" />
+<meta property="og:description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tezwatch/tutorials/monitoring-transactions/" /><meta property="article:section" content="tezwatch" />
+<meta property="og:url" content="/tezbake/tutorials/key-aliases/" /><meta property="article:section" content="tezbake" />
 
 
-<meta itemprop="name" content="Monitoring Transactions">
-<meta itemprop="description" content="TezWatch Balances &amp; Transactions Tutorial">
+<meta itemprop="name" content="Key Aliases">
+<meta itemprop="description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups">
 
-<meta itemprop="wordCount" content="367">
+<meta itemprop="wordCount" content="479">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Monitoring Transactions"/>
-<meta name="twitter:description" content="TezWatch Balances &amp; Transactions Tutorial"/>
+<meta name="twitter:title" content="Key Aliases"/>
+<meta name="twitter:description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups"/>
 
 
 
@@ -122,10 +122,10 @@
   <a href="/getting-started/slashing-explained/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedslashing-explained"><span class="">Slashing Explained</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbake-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbake-li">
   <a href="/tezbake/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezbake"><span class="">TezBake</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezbaketutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezbaketutorials-li">
   <a href="/tezbake/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezbaketutorials"><span class="">TezBake Tutorials</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-on-mainnet-li">
@@ -146,8 +146,8 @@
   <a href="/tezbake/tutorials/bootstrap-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbootstrap-node"><span class="">Bootstrap Node</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsfailover-procedure-li">
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
-  <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialskey-aliases-li">
+  <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="td-sidebar-nav-active-item">Key Aliases</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
   <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
@@ -338,16 +338,16 @@
   </ul>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezwatch-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezwatch-li">
   <a href="/tezwatch/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezwatch"><span class="">TezWatch</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezwatchtutorials-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezwatchtutorials-li">
   <a href="/tezwatch/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezwatchtutorials"><span class="">TezWatch Tutorials</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezwatchtutorialssetup-li">
   <a href="/tezwatch/tutorials/setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezwatchtutorialssetup"><span class="">&gt; Setup</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezwatchtutorialsmonitoring-transactions-li">
-  <a href="/tezwatch/tutorials/monitoring-transactions/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezwatchtutorialsmonitoring-transactions"><span class="td-sidebar-nav-active-item">Monitoring Transactions</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezwatchtutorialsmonitoring-transactions-li">
+  <a href="/tezwatch/tutorials/monitoring-transactions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezwatchtutorialsmonitoring-transactions"><span class="">Monitoring Transactions</span></a>
 </li>
   </ul>
 </li>
@@ -377,10 +377,10 @@
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezwatch/tutorials/monitoring-transactions.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezwatch/tutorials/monitoring-transactions.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezwatch/tutorials/monitoring-transactions.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
-  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Monitoring%20Transactions" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/tez-capital/docs.tez.capital_content/tree/main//en/tezbake/tutorials/key-aliases.md" class="td-page-meta--view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> View page source</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/edit/main//en/tezbake/tutorials/key-aliases.md" class="td-page-meta--edit" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Edit this page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/new/main//en/tezbake/tutorials/key-aliases.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" class="td-page-meta--child" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square fa-fw"></i> Create child page</a>
+  <a href="https://github.com/tez-capital/docs.tez.capital_content/issues/new?title=Key%20Aliases" class="td-page-meta--issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create documentation issue</a>
   <a href="https://github.com/tez-capital/docs.tez.capital/issues/new" class="td-page-meta--project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-list-check fa-fw"></i> Create project issue</a>
   
 </div>
@@ -388,10 +388,30 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#how-to-monitor-tezos-balances-and-transactions-with-tezwatch">How to monitor Tezos balances and transactions with TezWatch</a>
+    <li><a href="#recommended-additional_key_aliases">Recommended: <code>additional_key_aliases</code></a>
       <ul>
-        <li><a href="#transfers-examples">Transfers Examples</a></li>
-        <li><a href="#balances-example">Balances Example</a></li>
+        <li><a href="#add-aliases">Add aliases</a></li>
+        <li><a href="#view-current-aliases">View current aliases</a></li>
+        <li><a href="#remove-a-specific-alias">Remove a specific alias</a></li>
+        <li><a href="#clear-all-additional-aliases">Clear all additional aliases</a></li>
+      </ul>
+    </li>
+    <li><a href="#advanced-key_aliases">Advanced: <code>key_aliases</code></a>
+      <ul>
+        <li><a href="#set-key-aliases-replaces-defaults">Set key aliases (replaces defaults)</a></li>
+        <li><a href="#add-a-single-alias">Add a single alias</a></li>
+        <li><a href="#remove-a-single-alias">Remove a single alias</a></li>
+        <li><a href="#view-current-aliases-1">View current aliases</a></li>
+        <li><a href="#clear-and-return-to-default-behavior">Clear and return to default behavior</a></li>
+      </ul>
+    </li>
+    <li><a href="#which-should-i-use">Which Should I Use?</a></li>
+    <li><a href="#migration-from-additional_key_aliaseslist">Migration from <code>additional_key_aliases.list</code></a></li>
+    <li><a href="#common-examples">Common Examples</a>
+      <ul>
+        <li><a href="#consensus-key--dal-companion">Consensus key + DAL companion</a></li>
+        <li><a href="#consensus-key-only-already-on-tz4bls">Consensus key only (already on tz4/BLS)</a></li>
+        <li><a href="#verify-everything-is-set">Verify everything is set</a></li>
       </ul>
     </li>
     <li><a href="#related-guides">Related Guides</a></li>
@@ -427,19 +447,19 @@
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="/tezwatch/">TezWatch</a>
+    <a href="/tezbake/">TezBake</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/tezwatch/tutorials/">TezWatch Tutorials</a>
+    <a href="/tezbake/tutorials/">TezBake Tutorials</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/tezwatch/tutorials/monitoring-transactions/" aria-disabled="true" class="btn-link disabled">Monitoring Transactions</a>
+    <a href="/tezbake/tutorials/key-aliases/" aria-disabled="true" class="btn-link disabled">Key Aliases</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Monitoring Transactions</h1>
+	<h1>Key Aliases</h1>
 	
 	<header class="article-meta">
 		
@@ -456,103 +476,125 @@
 
 		
 	</header>    
-	<h2 id="how-to-monitor-tezos-balances-and-transactions-with-tezwatch">How to monitor Tezos balances and transactions with TezWatch</h2>
-<p>Using TezWatch you can keep an eye on transactions to and from baker wallets or baker payment wallets with flexibility.</p>
-<p>You can monitor some of the following aspects:</p>
-<ul>
-<li>Transfers in/out in amounts greater than X but less than Y</li>
-<li>Notify when balance falls below X</li>
-</ul>
-<blockquote>
-<p>If you want to remain anonymous, you can create a new Discord account and join our Discord server using that account. Then you can DM the TezWatch bot from that account and what with it in private.</p>
-</blockquote>
-<p>To get all &ldquo;sources&rdquo; and &ldquo;events&rdquo; use the <code>/events</code> command</p>
+	<h1 id="key-aliases">Key Aliases</h1>
+<p>When baking with TezBake, the baker automatically injects your default baker key. If you use additional keys — such as a separate consensus key or a DAL companion key — you need to register them as key aliases so the baker knows about them.</p>
+<p>There are two approaches:</p>
 <table>
 <thead>
 <tr>
-<th><img src="/tezwatch/tutorial/tezwatchSlashEvents.png" alt="Slash Events"></th>
-</tr>
-</thead>
-</table>
-<p>Here are the descriptions of all the key variables you will need to configure to monitor balances and transactions:</p>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Available Options</th>
-<th>Description</th>
+<th>Method</th>
+<th>Behavior</th>
+<th>Use when&hellip;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>source</code></td>
-<td><code>wallet</code></td>
-<td>The general area of interest. <code>staking</code> is related to activities that validate on the chain and <code>chain</code> is related to general chain progression</td>
+<td><code>additional_key_aliases</code></td>
+<td>Adds keys <strong>on top of</strong> the default baker key</td>
+<td>You want to keep the default baker key and add extra keys</td>
 </tr>
 <tr>
-<td><code>event</code></td>
-<td><code>transfer</code>, <code>balance-updated</code></td>
-<td>These are the specific staking events that you&rsquo;re interested in being notified for. Each event has its own unique subscription tier. All <code>missed*</code> ones are TIER 0 or FREE</td>
-</tr>
-<tr>
-<td><code>conditions</code> for transfers</td>
-<td><code>tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:in</code>, <code>tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:in&gt;1</code>, <code>tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:50&gt;in&gt;1</code></td>
-<td>Be nofified for all incoming transactions, all incoming transactions over 1 or all transactions smaller than 1 but larger than 50</td>
-</tr>
-<tr>
-<td><code>conditions</code> for balance-updated</td>
-<td><code>tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:50&gt;balance</code></td>
-<td>Be nofidied for all incoming transactions, all incoming transactions over X or all transactions smaller than X but larger than Y</td>
+<td><code>key_aliases</code></td>
+<td><strong>Replaces</strong> the default key list entirely</td>
+<td>You need full control over which keys are injected</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Please note that some TezWatch features are considered premium and will in the future require a subscription. The freemium features indicated as TIER 0 will always be available for free to the Tezos ecosystem.</p>
-</blockquote>
-<h3 id="transfers-examples">Transfers Examples</h3>
-<p>Here&rsquo;s an example of subscribing to all incoming transactions to the wallet tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv</p>
-<table>
-<thead>
-<tr>
-<th><img src="/tezwatch/tutorial/tezwatchIncoming.png" alt="Incoming transfer"></th>
-</tr>
-</thead>
-</table>
-<p>Here&rsquo;s an example of subscribing to incoming transactions to the wallet tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv of over 1 tez</p>
-<table>
-<thead>
-<tr>
-<th><img src="/tezwatch/tutorial/tezwatchIncomingMore1.png" alt="Incoming transfer"></th>
-</tr>
-</thead>
-</table>
-<p>Here&rsquo;s an example of subscribing to incoming transactions to the wallet tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv of over 1 tez but less than 50 tez</p>
-<table>
-<thead>
-<tr>
-<th><img src="/tezwatch/tutorial/tezwatchIncomingMore1Less50.png" alt="Incoming transfer"></th>
-</tr>
-</thead>
-</table>
-<h3 id="balances-example">Balances Example</h3>
-<p>Here&rsquo;s an example of subscribing to the wallet tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv&rsquo;s balance being below 50 tez.</p>
-<table>
-<thead>
-<tr>
-<th><img src="/tezwatch/tutorial/tezwatchBalance50.png" alt="Incoming transfer"></th>
-</tr>
-</thead>
-</table>
 <hr>
+<h2 id="recommended-additional_key_aliases">Recommended: <code>additional_key_aliases</code></h2>
+<p>This is the simplest and safest approach. Your default baker key continues to be injected automatically, and the aliases you specify are added alongside it.</p>
+<h3 id="add-aliases">Add aliases</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;bb1_consensus&#34;,&#34;bb1_dal&#34;]&#39;</span>
+</span></span></code></pre></div><h3 id="view-current-aliases">View current aliases</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span></code></pre></div><h3 id="remove-a-specific-alias">Remove a specific alias</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --remove configuration.additional_key_aliases <span style="color:#4e9a06">&#39;&#34;bb1_dal&#34;&#39;</span>
+</span></span></code></pre></div><h3 id="clear-all-additional-aliases">Clear all additional aliases</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --unset configuration.additional_key_aliases
+</span></span></code></pre></div><p>After any change, restart your baker:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><hr>
+<h2 id="advanced-key_aliases">Advanced: <code>key_aliases</code></h2>
+<p>Use <code>key_aliases</code> when you need <strong>complete control</strong> over which keys the baker uses.</p>
+<blockquote>
+<p><strong>⚠️ WARNING:</strong> When you set <code>key_aliases</code>, the default baker key is <strong>NOT</strong> automatically included. You must add it explicitly if you still want it injected.</p>
+</blockquote>
+<h3 id="set-key-aliases-replaces-defaults">Set key aliases (replaces defaults)</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.key_aliases <span style="color:#4e9a06">&#39;[&#34;bb1_consensus&#34;,&#34;bb1_dal&#34;]&#39;</span>
+</span></span></code></pre></div><h3 id="add-a-single-alias">Add a single alias</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --add configuration.key_aliases <span style="color:#4e9a06">&#39;&#34;bb2_dal&#34;&#39;</span>
+</span></span></code></pre></div><h3 id="remove-a-single-alias">Remove a single alias</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --remove configuration.key_aliases <span style="color:#4e9a06">&#39;&#34;bb2_dal&#34;&#39;</span>
+</span></span></code></pre></div><h3 id="view-current-aliases-1">View current aliases</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.key_aliases
+</span></span></code></pre></div><h3 id="clear-and-return-to-default-behavior">Clear and return to default behavior</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --unset configuration.key_aliases
+</span></span></code></pre></div><p>After any change, restart your baker:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div><hr>
+<h2 id="which-should-i-use">Which Should I Use?</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adding a consensus key alongside your baker</td>
+<td><code>additional_key_aliases</code></td>
+</tr>
+<tr>
+<td>Adding a DAL companion key alongside your baker</td>
+<td><code>additional_key_aliases</code></td>
+</tr>
+<tr>
+<td>Running multiple keys and need full control</td>
+<td><code>key_aliases</code></td>
+</tr>
+<tr>
+<td>Simple single-key baking setup</td>
+<td>Neither — TezBake handles it automatically</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong> If you want the baker to keep working as normal and just need to add a key, use <code>additional_key_aliases</code>. Only use <code>key_aliases</code> if you have a specific reason to override the default key injection behavior.</p>
+<hr>
+<h2 id="migration-from-additional_key_aliaseslist">Migration from <code>additional_key_aliases.list</code></h2>
+<blockquote>
+<p><strong>⚠️ DEPRECATED:</strong> The file-based method (<code>/bake-buddy/node/additional_key_aliases.list</code>) is deprecated. Migrate to the CLI-based configuration described above.</p>
+</blockquote>
+<p>If you currently have an <code>additional_key_aliases.list</code> file:</p>
+<ol>
+<li>Note the aliases in your file</li>
+<li>Set them via CLI:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;alias1&#34;,&#34;alias2&#34;]&#39;</span>
+</span></span></code></pre></div></li>
+<li>Delete the old file:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm /bake-buddy/node/additional_key_aliases.list
+</span></span></code></pre></div></li>
+<li>Restart:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span></code></pre></div></li>
+</ol>
+<hr>
+<h2 id="common-examples">Common Examples</h2>
+<h3 id="consensus-key--dal-companion">Consensus key + DAL companion</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;consensus&#34;,&#34;companion&#34;]&#39;</span>
+</span></span></code></pre></div><h3 id="consensus-key-only-already-on-tz4bls">Consensus key only (already on tz4/BLS)</h3>
+<p>If your consensus key is imported under the default <code>baker</code> alias, you only need to add the companion:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;companion&#34;]&#39;</span>
+</span></span></code></pre></div><h3 id="verify-everything-is-set">Verify everything is set</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span><span style="display:flex;"><span>tezbake info
+</span></span></code></pre></div><hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
-<li><a href="/tezwatch/tutorials/setup/">TezWatch Setup</a> - Initial bot configuration</li>
-<li><a href="/tezpay/tutorials/notifications/">TezPay Notifications</a> - Payout alerts</li>
-<li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - CLI monitoring</li>
+<li><a href="/tezbake/tutorials/baking-with-consensus-key/">Baking with Consensus Key</a> — Full consensus key setup</li>
+<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> — Hardware signing with multiple keys</li>
+<li><a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> — DAL node and companion key setup</li>
 </ul>
-<hr>
-<p>Any questions/comments/concerns? Please contact the Tez Capital team on
-<a href="https://discord.gg/cVGMA4MaNM">Discord</a> or <a href="https://t.me/tezcapital">Telegram</a></p>
 
 	
 	
