@@ -510,7 +510,7 @@
 &lt;li&gt;&lt;code&gt;&amp;quot;off&amp;quot;&lt;/code&gt; = Oppose adaptive issuance&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;&amp;quot;pass&amp;quot;&lt;/code&gt; = Abstain&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;After editing, restart: &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Changes take effect immediately — the baker reads the vote file each time it bakes a block. No restart required.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ TezGov does NOT handle per-block votes - those are configured on your node.&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;protocol-voting-issues&#34;&gt;Protocol Voting Issues&lt;/h2&gt;

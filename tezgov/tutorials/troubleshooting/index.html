@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems">
 
-<meta itemprop="wordCount" content="816">
+<meta itemprop="wordCount" content="828">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems"/>
@@ -554,7 +554,7 @@
 <li><code>&quot;off&quot;</code> = Oppose adaptive issuance</li>
 <li><code>&quot;pass&quot;</code> = Abstain</li>
 </ul>
-<p>After editing, restart: <code>tezbake stop &amp;&amp; tezbake start</code></p>
+<p>Changes take effect immediately — the baker reads the vote file each time it bakes a block. No restart required.</p>
 <p><strong>⚠️ TezGov does NOT handle per-block votes - those are configured on your node.</strong></p>
 <hr>
 <h2 id="protocol-voting-issues">Protocol Voting Issues</h2>

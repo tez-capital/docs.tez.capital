@@ -29,7 +29,7 @@
 <meta itemprop="name" content="&gt; Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL">
 
-<meta itemprop="wordCount" content="2290">
+<meta itemprop="wordCount" content="2300">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&gt; Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, Ledger, and DAL"/>
@@ -704,9 +704,8 @@ The watermark is simply a record of the lack block number your ledger helped to 
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/data/vote-file.json
 </span></span></code></pre></div><p>Example contents:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span><span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>After changes, restart your baker:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><h2 id="installation-advanced">Installation (Advanced)</h2>
+</span></span></code></pre></div><p>Changes take effect immediately — the baker reads the vote file each time it produces a block. No restart required.</p>
+<h2 id="installation-advanced">Installation (Advanced)</h2>
 <p>You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.</p>
 <p>Follow the steps in <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
 <p>As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.</p>

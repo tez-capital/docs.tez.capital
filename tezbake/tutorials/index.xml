@@ -262,9 +262,8 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nano /bake-buddy/node/data/vote-file.json
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example contents:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;adaptive_issuance_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;liquidity_baking_toggle_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After changes, restart your baker:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Changes take effect immediately — the baker reads the vote file each time it produces a block. No restart required.&lt;/p&gt;
+&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
 &lt;p&gt;Follow the steps in &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
@@ -1085,11 +1084,8 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;liquidity_baking_toggle_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;adaptive_issuance_vote&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Restart your baker for the changes to take effect:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Changes take effect immediately — the baker reads the vote file every time it produces a block. &lt;strong&gt;No restart required.&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;tezbake-defaults&#34;&gt;TezBake Defaults&lt;/h2&gt;
 &lt;p&gt;When you first set up TezBake, the vote file is created with these defaults:&lt;/p&gt;
 &lt;table&gt;
@@ -1116,7 +1112,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Per-block votes are NOT the same as protocol upgrade votes.&lt;/strong&gt; Protocol upgrade voting (YAY/NAY/PASS on proposals like Paris, Tallinn, etc.) is handled through &lt;a href=&#34;https://gov.tez.capital&#34;&gt;TezGov&lt;/a&gt;. Per-block votes are configured on your node.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;TezGov does NOT manage per-block votes.&lt;/strong&gt; You must edit the vote file manually on your baking node.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Changes take effect after restart.&lt;/strong&gt; Simply editing the file is not enough — you must restart the baker.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Changes take effect immediately.&lt;/strong&gt; The baker reads the vote file each time it bakes a block — no restart needed.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Your vote is public.&lt;/strong&gt; Anyone can see your per-block votes by inspecting the blocks you produce on a block explorer.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -1124,7 +1120,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;&lt;strong&gt;Q: What happens if I delete the vote file?&lt;/strong&gt;
 A: Your baker will use the protocol defaults, which may vary by upgrade. It&amp;rsquo;s best to always have an explicit vote file.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Q: Can I change my vote at any time?&lt;/strong&gt;
-A: Yes. Edit the file and restart. Your new vote will be included in the next block you produce.&lt;/p&gt;
+A: Yes. Just edit the file — your new vote will be picked up the next time you bake a block. No restart needed.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Q: Does my voting power depend on my stake?&lt;/strong&gt;
 A: Yes — bakers with more staking power produce more blocks and therefore cast more votes. The per-block vote mechanism is stake-weighted by nature.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Q: Where can I see the current LB and AI vote tallies?&lt;/strong&gt;

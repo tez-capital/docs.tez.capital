@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Per-Block Votes">
 <meta itemprop="description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker">
 
-<meta itemprop="wordCount" content="510">
+<meta itemprop="wordCount" content="523">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Per-Block Votes"/>
 <meta name="twitter:description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker"/>
@@ -539,11 +539,8 @@
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><ol start="3">
-<li><strong>Restart your baker for the changes to take effect:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><p>Changes take effect immediately — the baker reads the vote file every time it produces a block. <strong>No restart required.</strong></p>
+<hr>
 <h2 id="tezbake-defaults">TezBake Defaults</h2>
 <p>When you first set up TezBake, the vote file is created with these defaults:</p>
 <table>
@@ -570,7 +567,7 @@
 <ul>
 <li><strong>Per-block votes are NOT the same as protocol upgrade votes.</strong> Protocol upgrade voting (YAY/NAY/PASS on proposals like Paris, Tallinn, etc.) is handled through <a href="https://gov.tez.capital">TezGov</a>. Per-block votes are configured on your node.</li>
 <li><strong>TezGov does NOT manage per-block votes.</strong> You must edit the vote file manually on your baking node.</li>
-<li><strong>Changes take effect after restart.</strong> Simply editing the file is not enough — you must restart the baker.</li>
+<li><strong>Changes take effect immediately.</strong> The baker reads the vote file each time it bakes a block — no restart needed.</li>
 <li><strong>Your vote is public.</strong> Anyone can see your per-block votes by inspecting the blocks you produce on a block explorer.</li>
 </ul>
 <hr>
@@ -578,7 +575,7 @@
 <p><strong>Q: What happens if I delete the vote file?</strong>
 A: Your baker will use the protocol defaults, which may vary by upgrade. It&rsquo;s best to always have an explicit vote file.</p>
 <p><strong>Q: Can I change my vote at any time?</strong>
-A: Yes. Edit the file and restart. Your new vote will be included in the next block you produce.</p>
+A: Yes. Just edit the file — your new vote will be picked up the next time you bake a block. No restart needed.</p>
 <p><strong>Q: Does my voting power depend on my stake?</strong>
 A: Yes — bakers with more staking power produce more blocks and therefore cast more votes. The per-block vote mechanism is stake-weighted by nature.</p>
 <p><strong>Q: Where can I see the current LB and AI vote tallies?</strong>
