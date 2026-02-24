@@ -29,7 +29,7 @@
 <meta itemprop="name" content="FAQ">
 <meta itemprop="description" content="Frequently asked questions about Tezos baking with Tez Capital tools">
 
-<meta itemprop="wordCount" content="1224">
+<meta itemprop="wordCount" content="1256">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FAQ"/>
 <meta name="twitter:description" content="Frequently asked questions about Tezos baking with Tez Capital tools"/>
@@ -508,7 +508,7 @@
 <h3 id="how-do-i-know-if-dal-is-working">How do I know if DAL is working?</h3>
 <p>DAL (Data Availability Layer) participation is now <strong>mandatory</strong> for bakers. If your DAL node is not running or not attesting, you will see reduced rewards.</p>
 <p>Check DAL node status:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake status
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span></code></pre></div><p>Look for <code>dal-node</code> in the output — it should show as running. You can also check on <a href="https://tzkt.io">TzKT</a> by looking at your recent attestations; DAL attestations are indicated separately from regular attestations.</p>
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> If DAL was not part of your original TezBake installation, re-run the setup to add it. See <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a>.</p>
@@ -536,7 +536,7 @@
 </blockquote>
 <hr>
 <h3 id="how-do-i-check-if-my-baker-is-actually-baking">How do I check if my baker is actually baking?</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake status
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span></code></pre></div><p>This shows whether all services (node, baker, accuser, DAL node, TezSign/Ledger) are running.</p>
 <p>To verify your baker is actively participating:</p>
 <ol>
@@ -618,14 +618,14 @@
 <li>A service goes down</li>
 <li>Your baker is scheduled to bake soon</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup --add tezwatch
-</span></span></code></pre></div><p><strong>→ More:</strong> <a href="/tezwatch/">TezWatch documentation</a></p>
+<p>TezWatch is a standalone bot — set it up via the Discord or Telegram bot interface, not through TezBake. Head to the <a href="https://discord.gg/cVGMA4MaNM">Tez Capital Discord</a> <code>#tezwatch</code> channel and use the <code>/subscribe</code> slash command to get started.</p>
+<p><strong>→ More:</strong> <a href="/tezwatch/tutorials/setup/">TezWatch Setup</a></p>
 <hr>
 <h3 id="i-see-missed-endorsements--missed-attestations-in-my-stats--is-something-wrong">I see &ldquo;missed endorsements&rdquo; / &ldquo;missed attestations&rdquo; in my stats — is something wrong?</h3>
 <p>An occasional missed attestation is normal and expected (network latency, momentary CPU spike, etc.). The protocol requires only a <strong>67% attestation rate</strong> per cycle to receive full rewards.</p>
 <p>If you are consistently missing more than 33% of attestations, investigate:</p>
 <ul>
-<li>Is the baker process running? (<code>tezbake status</code>)</li>
+<li>Is the baker process running? (<code>tezbake info</code>)</li>
 <li>Is the signer (TezSign or Ledger) connected and responsive?</li>
 <li>Is the node fully synced?</li>
 <li>Is DAL running and keeping up?</li>
