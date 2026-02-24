@@ -490,10 +490,10 @@
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <p>Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&rsquo;t have a choice and must make such trade-offs when time is of the essence.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
-</span></span><span style="display:flex;"><span>tezbake bootstrap-node --no-check &lt;url&gt;
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node &lt;url&gt; --no-check
 </span></span><span style="display:flex;"><span>tezbake start
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># example:</span>
-</span></span><span style="display:flex;"><span>tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rolling
+</span></span><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling --no-check
 </span></span></code></pre></div><blockquote>
 <p><strong>💡 TIP:</strong> You can replace <code>eu</code> above with <code>us</code> or <code>asia</code> if you prefer to use a different mirror closer to you.</p>
 </blockquote>

@@ -1351,10 +1351,10 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
 &lt;p&gt;Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.&lt;/p&gt;
 &lt;p&gt;Using the second bootstrap method below is faster but it assumes you trust the source of the snapshot. Sometimes one doesn&amp;rsquo;t have a choice and must make such trade-offs when time is of the essence.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node --no-check &amp;lt;url&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; --no-check
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node --no-check https://snapshots.eu.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling --no-check
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
 &lt;/blockquote&gt;
