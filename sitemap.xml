@@ -4,19 +4,15 @@
   <url>
     <loc>/tezbake/tutorials/baking-on-mainnet/</loc>
   </url><url>
+    <loc>/getting-started/</loc>
+  </url><url>
     <loc>/tezbox/tutorials/setup/</loc>
   </url><url>
     <loc>/tezpay/tutorials/setup/</loc>
   </url><url>
-    <loc>/tezwatch/tutorials/setup/</loc>
-  </url><url>
-    <loc>/tezgov/tutorials/voting-on-proposals/</loc>
-  </url><url>
-    <loc>/getting-started/what-is-baking/</loc>
-  </url><url>
-    <loc>/getting-started/</loc>
-  </url><url>
     <loc>/tezpeak/tutorials/setup/</loc>
+  </url><url>
+    <loc>/tezwatch/tutorials/setup/</loc>
   </url><url>
     <loc>/</loc>
   </url><url>
@@ -36,9 +32,13 @@
   </url><url>
     <loc>/tezsign/tutorials/updating/</loc>
   </url><url>
-    <loc>/tezpay/tutorials/tezbake-integration/</loc>
+    <loc>/tezgov/tutorials/voting-on-proposals/</loc>
+  </url><url>
+    <loc>/getting-started/what-is-baking/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-on-testnets/</loc>
+  </url><url>
+    <loc>/getting-started/choose-your-setup/</loc>
   </url><url>
     <loc>/tezbox/tutorials/configuration/</loc>
   </url><url>
@@ -54,6 +54,8 @@
   </url><url>
     <loc>/tezbake/</loc>
   </url><url>
+    <loc>/tezpay/tutorials/tezbake-integration/</loc>
+  </url><url>
     <loc>/getting-started/public-baking/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-tezsign/</loc>
@@ -61,6 +63,8 @@
     <loc>/tezpay/configuration/examples/default/</loc>
   </url><url>
     <loc>/tezpay/extensions/</loc>
+  </url><url>
+    <loc>/getting-started/hardware-requirements/</loc>
   </url><url>
     <loc>/tezpay/extensions/reference/hooks/</loc>
   </url><url>
@@ -198,6 +202,8 @@
   </url><url>
     <loc>/tezbake/tutorials/baking-with-docker/</loc>
   </url><url>
+    <loc>/getting-started/glossary/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/baking-with-consensus-key/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-prism/</loc>
@@ -205,6 +211,10 @@
     <loc>/tezbake/tutorials/missing-attestations/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-multi-instance/</loc>
+  </url><url>
+    <loc>/changelog/</loc>
+  </url><url>
+    <loc>/faq/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>

@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezbake: &gt; Baking on Mainnet</title>
+      <title>Tezbake: Baking on Mainnet</title>
       <link>/tezbake/tutorials/baking-on-mainnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -29,6 +29,21 @@
   &lt;iframe src=&#34;https://www.youtube.com/embed/t85LjgpRtvc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ System Requirements&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 22.04+ or Debian 12+ (other Linux distributions may work but are untested)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; See &lt;a href=&#34;/getting-started/hardware-requirements/&#34;&gt;Hardware Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;macOS and Windows are &lt;strong&gt;not supported&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ubuntu 22.04+ or Debian 12+&lt;/strong&gt; Linux server or desktop with SSH access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers/delegators — see staking table below)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ledger hardware wallet&lt;/strong&gt; with Tezos Wallet app installed, OR a &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;TezSign device&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware meeting minimum specs:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;&lt;/li&gt;
@@ -47,6 +62,57 @@
 &lt;li&gt;&lt;a href=&#34;#installation-advanced&#34;&gt;Installation (Advanced)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#related-guides&#34;&gt;Related Guides&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;installation-checklist--time-estimates&#34;&gt;Installation Checklist &amp;amp; Time Estimates&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Step&lt;/th&gt;
+&lt;th&gt;Estimated Time&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;System setup (Ubuntu, user, firewall)&lt;/td&gt;
+&lt;td&gt;15-30 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Install TezBake&lt;/td&gt;
+&lt;td&gt;~2 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Setup node + DAL&lt;/td&gt;
+&lt;td&gt;~5 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Bootstrap node&lt;/td&gt;
+&lt;td&gt;30 min - 3 hours (depends on internet)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wait for sync&lt;/td&gt;
+&lt;td&gt;5-30 min after bootstrap&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Import keys&lt;/td&gt;
+&lt;td&gt;~10 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Register as baker&lt;/td&gt;
+&lt;td&gt;~5 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Stake XTZ&lt;/td&gt;
+&lt;td&gt;~5 min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Total active work&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;~1-4 hours&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; After registration, it takes up to &lt;strong&gt;2 cycles (~2 days)&lt;/strong&gt; before you receive your first baking rights.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Installing TezBake and using it to setup your Tezos baker is very simple. You will need the following tools:&lt;/p&gt;
@@ -130,27 +196,82 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;This naming convention is required because you&amp;rsquo;re managing your baker operations from a Ledger device using the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; interface.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---deprecated-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 2 - DEPRECATED) Import Ledger key to TezBake signer&lt;/h4&gt;
-&lt;p&gt;In order to get the most out of your Ledger, it&amp;rsquo;s now recommended to use the P-256 curve (tz3) for baking. This curve is faster than the default ed25519 curve (tz1). If you&amp;rsquo;re setting up a baker that already exists on the network, you can use the same curve as before. If you&amp;rsquo;re setting up a new baker, it&amp;rsquo;s recommended to use the P-256 curve.&lt;/p&gt;
-&lt;p&gt;You can import your Ledger key by running the following command:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Baking with a Ledger is no longer recommended for new bakers. TezSign is the preferred signing solution. These instructions remain for existing Ledger bakers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;derivation-path&#34;&gt;Derivation Path&lt;/h5&gt;
+&lt;p&gt;The derivation path controls which key on your Ledger is used for baking. You can specify any supported curve and path:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Path&lt;/th&gt;
+&lt;th&gt;Curve&lt;/th&gt;
+&lt;th&gt;Notes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;P-256/0h/0h&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tz3&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Recommended&lt;/strong&gt; — faster signing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ed25519/0h/0h&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tz1&lt;/td&gt;
+&lt;td&gt;Default — slower, widely supported&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;secp256k1/0h/0h&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;tz2&lt;/td&gt;
+&lt;td&gt;Alternative — faster than ed25519&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; P-256 and secp256k1 offer faster signing than ed25519. If you&amp;rsquo;re setting up a new baker, use P-256. If you&amp;rsquo;re migrating an existing baker, keep the same curve you&amp;rsquo;ve been using.&lt;/p&gt;
+&lt;p&gt;Using a non-default derivation path adds an extra layer of security but also complexity. Make sure your choice is clearly documented for your own records. To find out which key a given path corresponds to, go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and log in with Ledger — it shows the address for the default path.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;importing-the-key&#34;&gt;Importing the Key&lt;/h5&gt;
+&lt;p&gt;Make sure your Ledger has the &lt;strong&gt;Tezos Baking app&lt;/strong&gt; open before running this command.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Derivation path:&lt;/strong&gt; You can specify a custom path like &lt;code&gt;--import-key=&amp;quot;ed25519/0h/0h&amp;quot;&lt;/code&gt; (the default). P-256 and secp256k1 curves offer faster signing than ed25519.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;High Watermark (HWM):&lt;/strong&gt; &lt;code&gt;--hwm 1&lt;/code&gt; sets the starting block level for safety. The HWM is a security feature that prevents double baking by tracking the highest block your device has signed. For first-time setup, use &lt;code&gt;--hwm 1&lt;/code&gt;. If your device previously baked, set this to the current block height to prevent accidentally signing older blocks.
-If you&amp;rsquo;re importing for the second time after already trying again but failing, you can use &lt;code&gt;--force&lt;/code&gt; to force the import.
-Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;
-The ledger will ask you twice to confirm this operation. Make sure the baker you see on the ledger screen matches the one you want to use. If you don&amp;rsquo;t have this information yet, don&amp;rsquo;t worry. To get the address of the ledger that&amp;rsquo;s used by default simply go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and login with ledger, accepting the default derivation path.
-Putting the baker on a non-default derivation path provides an additional layer of security for your baker at the cost of extra complexity for you. Make sure your setup is clearly documented for your own records.
-If your device was used to bake before it might have a &amp;ldquo;high watermark&amp;rdquo; aka HWM. If you try to use this device on a testnet, it will not work because the block height on test networks usually starts with 1 while mainnet is up to over a couple of million blocks at the time of writing.
-If you used to bake on mainnet with the same ledger as you&amp;rsquo;re trying to use now but it&amp;rsquo;s been a while, it&amp;rsquo;s highly recommended to change the 1 above to the current block on the network that will be used for the device going forward.
-The watermark is simply a record of the lack block number your ledger helped to bake or attest. If you&amp;rsquo;re setting up a brand new device that&amp;rsquo;s not been used for baking before, there is no need to alter the default command above.
-&lt;strong&gt;What is Double Baking?&lt;/strong&gt; Running two bakers with the same key on the same network simultaneously. This means your key signs conflicting blocks or attestations, which is considered a malicious attack on the network. The protocol detects this and slashes (confiscates) your staked tez as punishment. See &lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; for penalty details.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Prevention - Critical Rules:&lt;/strong&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The Ledger will ask you &lt;strong&gt;twice&lt;/strong&gt; to confirm the operation. Check that the baker address shown on the Ledger screen is the one you intend to use.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; If you&amp;rsquo;re importing for the second time after a failed attempt, add &lt;code&gt;--force&lt;/code&gt; to override the previous import.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Ledger Baking App Behavior&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Never use bakers with the same seed on any network&lt;/strong&gt; - even different networks (mainnet vs testnet)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Never use your TezSign backup device to bake&lt;/strong&gt; - backup devices are only for emergency failover&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Always create testnet-specific devices&lt;/strong&gt; - use separate Ledger or TezSign devices dedicated to testnet&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Always use different computers for different functions&lt;/strong&gt; - one computer for mainnet baking, a separate computer for testnet baking&lt;/li&gt;
-&lt;li&gt;The HWM protection helps prevent accidental double baking, but careful operational procedures are your primary defense&lt;/li&gt;
+&lt;li&gt;The Ledger &lt;strong&gt;must&lt;/strong&gt; stay on the Tezos Baking app at all times while baking&lt;/li&gt;
+&lt;li&gt;The screensaver activating is normal — baking continues&lt;/li&gt;
+&lt;li&gt;Do &lt;strong&gt;NOT&lt;/strong&gt; open Ledger Live while baking — it will disconnect the signer&lt;/li&gt;
+&lt;li&gt;To vote or transfer funds, stop the baker first, switch apps, then switch back&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;high-watermark-hwm&#34;&gt;High Watermark (HWM)&lt;/h5&gt;
+&lt;p&gt;The &lt;code&gt;--hwm 1&lt;/code&gt; flag sets the High Watermark — a security counter stored on the Ledger that records the highest block level it has ever signed. The Ledger refuses to sign any block at or below this level, which prevents accidentally signing the same block twice.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;New baker / new device:&lt;/strong&gt; Use &lt;code&gt;--hwm 1&lt;/code&gt; (the default command above is safe).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Existing baker returning after a break:&lt;/strong&gt; Set &lt;code&gt;--hwm&lt;/code&gt; to the &lt;strong&gt;current block height&lt;/strong&gt; to prevent signing any historical blocks. You can find the current level at &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Migrating from mainnet to testnet:&lt;/strong&gt; Testnet block levels usually start at 1, which is below a mainnet HWM of millions. Use a testnet-specific device, never reuse a mainnet device.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; The HWM is device-specific. Each Ledger maintains its own watermark independently.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;verification&#34;&gt;Verification&lt;/h5&gt;
+&lt;p&gt;After importing, confirm the key was imported successfully:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Look for your baker address in the output. If it appears and the signer status shows as connected, the import was successful. See &lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; for a full explanation of the &lt;code&gt;tezbake info&lt;/code&gt; output.&lt;/p&gt;
+&lt;h5 id=&#34;-double-baking-prevention&#34;&gt;⚠️ Double Baking Prevention&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: Double Baking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is Double Baking?&lt;/strong&gt; Running two bakers with the same key on the same network simultaneously. This means your key signs conflicting blocks or attestations, which is treated as a malicious attack. The protocol detects this and &lt;strong&gt;slashes (confiscates) your staked tez&lt;/strong&gt; as punishment. See &lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; for penalty details.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Critical Rules:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Never run two bakers with the same key&lt;/strong&gt; — even briefly, even on different machines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Never use your TezSign backup device to bake&lt;/strong&gt; — backup devices are only for emergency failover&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Always use separate devices for testnet&lt;/strong&gt; — never reuse a mainnet Ledger or TezSign on a testnet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Always use separate computers per network&lt;/strong&gt; — one machine for mainnet, a different machine for testnet&lt;/li&gt;
+&lt;li&gt;The HWM helps prevent &lt;em&gt;accidental&lt;/em&gt; double baking, but careful operational procedures are your primary defense&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-3---insecure-import-soft-key-to-tezbake-node&#34;&gt;(Option 3 - INSECURE) Import Soft key to TezBake node&lt;/h4&gt;
@@ -246,7 +367,7 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;p&gt;Bakers cast two types of votes with every block they produce. TezBake configures sensible defaults, but you should understand what you&amp;rsquo;re voting for:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Liquidity Baking Toggle Vote:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Controls a protocol feature that mints ~5 tez per minute into a tez/tzBTC liquidity pool&lt;/li&gt;
+&lt;li&gt;Controls a protocol feature that mints approximately 2.5 tez per block into a tez/tzBTC liquidity pool&lt;/li&gt;
 &lt;li&gt;Options: &lt;code&gt;on&lt;/code&gt; (continue subsidy), &lt;code&gt;off&lt;/code&gt; (end subsidy), &lt;code&gt;pass&lt;/code&gt; (abstain)&lt;/li&gt;
 &lt;li&gt;If enough bakers vote &lt;code&gt;off&lt;/code&gt; over ~2000 blocks, the subsidy pauses&lt;/li&gt;
 &lt;li&gt;Default in TezBake: &lt;code&gt;on&lt;/code&gt;&lt;/li&gt;
@@ -267,6 +388,17 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
 &lt;p&gt;Follow the steps in &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;✅ &lt;strong&gt;Your baker is running!&lt;/strong&gt; Here&amp;rsquo;s what to set up next:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitor your baker&lt;/a&gt; — Track sync status and performance&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;Set up TezWatch alerts&lt;/a&gt; — Get notified about missed attestations&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;Configure TezPay&lt;/a&gt; — Automate delegator payouts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpeak/tutorials/setup/&#34;&gt;Install TezPeak dashboard&lt;/a&gt; — Visual monitoring interface&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;Set up TezGov&lt;/a&gt; — Participate in governance&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/best-practices/&#34;&gt;Review best practices&lt;/a&gt; — Security, UPS, monitoring&lt;/li&gt;
+&lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Next Steps:&lt;/strong&gt;&lt;/p&gt;
@@ -310,6 +442,13 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;li&gt;Ghostnet is the original Tezos testnet. It is a public testnet that is used by developers and users to test new features and applications before they are deployed on the mainnet. Ghostnet is a great way to get familiar with the Tezos ecosystem and to test your applications in a safe environment where the chain conditions are similar to mainnet.&lt;/li&gt;
 &lt;li&gt;Shadownet is similar to Ghostnet but it is a private testnet that is used by developers to test new features and applications before they are deployed on the mainnet. Shadownet is not open to the public and is only accessible to developers who are working on Tezos projects. Shadownet bakers are centrally selected by the core Tezos development team. Setting up a testnet bakery here is possible but not encouraged.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Linux OS installed&lt;/strong&gt; (Ubuntu 22.04+ recommended) with SSH or physical access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#download-and-install-tezbake&#34;&gt;TezBake binary&lt;/a&gt;&lt;/strong&gt; — download and install before running setup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test XTZ&lt;/strong&gt; from the &lt;a href=&#34;https://teztnets.com&#34;&gt;testnet faucet&lt;/a&gt; (no real funds required)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 8GB RAM minimum, SSD storage&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#preparation&#34;&gt;Preparation&lt;/a&gt;&lt;/li&gt;
@@ -329,10 +468,8 @@ The watermark is simply a record of the lack block number your ledger helped to 
 &lt;p&gt;All advanced TezBake configurations, including TezSign block signing apply here as well.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. It&amp;rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;What is the DAL?&lt;/strong&gt;
-The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;
+All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for setup instructions and details.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
@@ -349,10 +486,13 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Seoulnet example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/seoulnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/seoulnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Ghostnet example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling BL8Vq12HX6MJWkB6RLgQAYRKpKZ5fyMoLpWzAoQ6mh55gkKHiQU
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Get the current block hash from the snapshot provider&amp;rsquo;s website.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
 &lt;a href=&#34;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
@@ -454,12 +594,18 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;p&gt;This guide covers how to configure &lt;strong&gt;TezSign&lt;/strong&gt; (hardware signer) to work seamlessly with &lt;strong&gt;TezBake&lt;/strong&gt;. It assumes you&amp;rsquo;re setting up your hardware signer on the same machine as your baking machine, as part of an all-in-one setup. You do not have to use TezBake to setup TezSign; instead you can use the helper app.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Security First:&lt;/strong&gt; TezSign ensures your baking keys remain secure on hardware and never leave the device.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt; You must have a supported TezSign device ready.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;TezSign is provided without any guarantee. Use it at your own risk.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#download-and-install-tezbake&#34;&gt;TezBake installed&lt;/a&gt;&lt;/strong&gt; — TezBake must be set up on your baking machine before integrating TezSign&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A supported TezSign hardware device&lt;/strong&gt; — Radxa Zero 3W or Raspberry Pi Zero 2W (see shopping list in Phase 0)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SD card(s)&lt;/strong&gt; — at least 8GB, enterprise/endurance grade recommended; buy 3 (one active, one clone, one spare)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;USB cable&lt;/strong&gt; — a short, high-quality data cable to connect TezSign to your baking machine&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;#phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/a&gt;&lt;/li&gt;
@@ -828,23 +974,23 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;Initialize TezSign Platform&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;TezBake setup-tezsign --init --platform&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake setup-tezsign --init --platform&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Initialize Device&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;TezBake tezsign init&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake tezsign init&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Generate New Keys&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;TezBake tezsign new &amp;lt;key-name-1&amp;gt; &amp;lt;key-name-2&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake tezsign new &amp;lt;key-name-1&amp;gt; &amp;lt;key-name-2&amp;gt;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Import Key to TezBake&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;TezBake setup-tezsign --import-key=&amp;lt;tezsign-alias&amp;gt; --key-alias=&amp;lt;alias&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake setup-tezsign --import-key=&amp;lt;tezsign-alias&amp;gt; --key-alias=&amp;lt;alias&amp;gt;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Verify Keys&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;TezBake info&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake info&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -864,7 +1010,13 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
       <description>
         
         
-        &lt;h2 id=&#34;tezbake-updating&#34;&gt;TezBake Updating&lt;/h2&gt;
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Quick Reference&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Upgrade all components (Octez binaries + ami/eli)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake restart    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Restart services after upgrade&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a full stack upgrade including the tezbake binary itself, see &lt;a href=&#34;#c-update-the-entire-tezbake-stack&#34;&gt;Method C&lt;/a&gt; below.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;tezbake-updating&#34;&gt;TezBake Updating&lt;/h2&gt;
 &lt;p&gt;The TezBake software consists of four components:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;ami - App management engine: templating and orchestration - &lt;a href=&#34;https://github.com/alis-is/ami&#34;&gt;https://github.com/alis-is/ami&lt;/a&gt;&lt;/li&gt;
@@ -944,6 +1096,14 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
   &lt;iframe src=&#34;https://www.youtube.com/embed/tqqLNBo1OeE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Quick Reference&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info                    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Overall status snapshot&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log -f             &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# All node logs (live)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f       &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Baker logs only (live)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log node -f        &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Node sync logs only (live)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer log -f           &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Signer/Ledger logs (live)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h2&gt;
 &lt;p&gt;TezBake gives you the option to monitor all Tezos node and baking services. TezBake utilizes the journalctl utility included in most Linux distribution to store and manage its logging.  You can extract all logs for a node easily to diagnose any issues. This tutorial will walk you through the process of monitoring your TezBake node.&lt;/p&gt;
 &lt;hr&gt;
@@ -951,6 +1111,47 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;Run this command to get the status of your baker in a snapshot. After first setting up and starting the baker, you may need to give it a minute or 2 before the status display stops changing and missing some information. If you notice there is an error status on any of the fields after around 3-5 minutes of starting the services, seek out help in the Tez Capital community as there is something that probably needs tweaking.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbakeInfo.png&#34; alt=&#34;Info screen showing status of node services and Ledger&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;understanding-tezbake-info-output&#34;&gt;Understanding &lt;code&gt;tezbake info&lt;/code&gt; Output&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;tezbake info&lt;/code&gt; command shows a snapshot of your baker&amp;rsquo;s health. Here&amp;rsquo;s what a healthy output looks like and what each field means:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Node:
+  synchronized:     true          ← MUST be true before importing keys or registering
+  level:            7,432,881     ← Should match the latest block on https://tzkt.io
+  network:          mainnet
+
+Baker:
+  baker_registered: true          ← true once you&amp;#39;ve run register-key or used TezGov
+  baker_active:     true          ← true once you have baking rights (up to 2 cycles after registration)
+  next_baking:      in 4h 12m     ← your next scheduled block production slot
+
+Signer:
+  status:           connected     ← MUST be &amp;#34;connected&amp;#34; — if &amp;#34;disconnected&amp;#34;, check your signer device
+  type:             ledger        ← or &amp;#34;tezsign&amp;#34; depending on your setup
+  address:          tz3Abc...     ← your baker&amp;#39;s public key address
+
+Services:
+  node:             running       ← all services should show &amp;#34;running&amp;#34;
+  baker:            running
+  accuser:          running
+  signer:           running
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; If you just started the baker, give it 1-2 minutes for all fields to populate. Some fields like &lt;code&gt;baker_active&lt;/code&gt; and &lt;code&gt;next_baking&lt;/code&gt; only appear after full synchronization.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;healthy-baker-checklist&#34;&gt;Healthy Baker Checklist&lt;/h3&gt;
+&lt;p&gt;Use this checklist to confirm your baker is operating correctly:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;code&gt;synchronized: true&lt;/code&gt; — node is fully caught up with the chain&lt;/li&gt;
+&lt;li&gt;✅ &lt;code&gt;level&lt;/code&gt; matches the latest block on &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;✅ &lt;code&gt;baker_registered: true&lt;/code&gt; — registration transaction confirmed on-chain&lt;/li&gt;
+&lt;li&gt;✅ &lt;code&gt;signer: connected&lt;/code&gt; — signing device is reachable and responding&lt;/li&gt;
+&lt;li&gt;✅ All services show &lt;code&gt;running&lt;/code&gt; (node, baker, accuser, signer)&lt;/li&gt;
+&lt;li&gt;✅ No error messages in &lt;code&gt;tezbake node log -f&lt;/code&gt; output&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING:&lt;/strong&gt; If &lt;code&gt;synchronized&lt;/code&gt; is &lt;code&gt;false&lt;/code&gt;, your baker is not attesting. Do not register or import keys until your node is fully synced. Monitor the &lt;code&gt;level&lt;/code&gt; field and compare it to &lt;a href=&#34;https://tzkt.io&#34;&gt;https://tzkt.io&lt;/a&gt; until they match.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; If &lt;code&gt;signer&lt;/code&gt; shows &lt;code&gt;disconnected&lt;/code&gt;, check that your Ledger is unlocked with the Tezos Baking app open (or that your TezSign device is powered on and connected). Run &lt;code&gt;tezbake signer log -f&lt;/code&gt; for details.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;monitor-tezbake-logs&#34;&gt;Monitor TezBake logs&lt;/h2&gt;
 &lt;h3 id=&#34;monitor-full-tezbake-node-and-baker-logs-in-real-time&#34;&gt;Monitor full TezBake node and baker logs in real time&lt;/h3&gt;
 &lt;p&gt;Using the command below shows everything your baker is doing on a second-by-second basis. If there is a problem to be discovered, it will be mentioned here.&lt;/p&gt;
@@ -1138,7 +1339,54 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
       <description>
         
         
-        &lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+        &lt;h2 id=&#34;error-quick-reference&#34;&gt;Error Quick Reference&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Error / Symptom&lt;/th&gt;
+&lt;th&gt;Jump To&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Installation fails or hangs&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#installation-errors&#34;&gt;Installation Errors&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node stuck syncing / won&amp;rsquo;t sync&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#blockchain-errors&#34;&gt;Blockchain Errors&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Plugin or package issues&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#clear-cache&#34;&gt;Clear Cache&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node storage errors / can&amp;rsquo;t start&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Full disk / no space left&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#full-disk&#34;&gt;Full Disk&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ldquo;illegal instruction&amp;rdquo; / low-level errors&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#update-eli-lua-interpreter&#34;&gt;Update eli&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TezSign USB timeout / not responding&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DAL not attesting / no peers&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Missing attestations&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
 &lt;p&gt;Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
 &lt;h3 id=&#34;installation-errors&#34;&gt;Installation errors&lt;/h3&gt;
 &lt;p&gt;If you encounter an installation issue, run the setup command again with the &lt;code&gt;--log-level=trace&lt;/code&gt; option, for example:&lt;/p&gt;
@@ -1322,17 +1570,39 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
   &lt;iframe src=&#34;https://www.youtube.com/embed/2BQZ1SY3PD4&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Quick Reference&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Fast, trusts source&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;TezBake installed and configured&lt;/a&gt;&lt;/strong&gt; — TezBake must already be set up on your machine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Your baker stopped&lt;/strong&gt; — always run &lt;code&gt;tezbake stop&lt;/code&gt; before bootstrapping to avoid data corruption&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;tezbake-bootstrapping&#34;&gt;TezBake Bootstrapping&lt;/h2&gt;
 &lt;p&gt;To bootstrap your TezBake node means to download someone else&amp;rsquo;s snapshot of the blockchain and import it into your node. This is much faster than synchronizing the blockchain from scratch. There is a way to quickly bootstrap your node using a snapshot and a way to bootstrap your node using a snapshot and a block hash. The latter is the most reliable and robust method but it is also the slowest. The former is faster but it assumes you trust the source of the snapshot.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Please be aware that bootstrapping your node could result in your nonce revelation to fail and for you to forfeit your attestation rights for the cycle.&lt;/strong&gt; This is because by default we&amp;rsquo;re using rolling snapshots which don&amp;rsquo;t export full blocks for past cycles by default. If your node baked a special kind of block during the last cycle, it may be asked to provide its nonce to the network. To do so, it needs to have the &lt;code&gt;.tezos-client&lt;/code&gt; data intact from the last cycle and it needs to have the full blocks for the last cycle.&lt;/p&gt;
-&lt;p&gt;To remedy this situation and to never risk forfeiting your attestation rights for a whole cycle, you have to use a snapshot that&amp;rsquo;s at least 5-6 days old (from today), when bootstrapping a node. You also have to not wipe out or to move your &lt;code&gt;.tezos-client&lt;/code&gt; directory. This way you&amp;rsquo;ll always have at least 1 cycle+ of full blocks in your node&amp;rsquo;s database as well as the nonce file on disk. The downside of this method is that it will slow down your bootstrap process by the amount of time it takes to download the full blocks for the past 1 cycle+, which can be up to 2 hours on some slow home networks.&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: Nonce Forfeiture Risk&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Re-bootstrapping your node mid-cycle can cause you to forfeit attestation rights for an entire cycle — meaning lost income.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;To minimize risk:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use a snapshot that is &lt;strong&gt;at least 5-6 days old&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Do &lt;strong&gt;NOT&lt;/strong&gt; delete your &lt;code&gt;.tezos-client&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;If possible, wait until a cycle boundary&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See the &lt;a href=&#34;#nonce-forfeiture-explained&#34;&gt;detailed explanation below&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;bootstrap-using-a-snapshot&#34;&gt;Bootstrap using a snapshot&lt;/h3&gt;
 &lt;p&gt;You can get Tezos node snapshots in the following place run by the Tezos Foundation&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://snapshots.tzinit.org/&#34;&gt;https://snapshots.tzinit.org/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;Before bootstrapping your node, made sure to stop your node as shown below.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Using the first bootstrap method below ensures that the snapshot is checked for consistency both programmatically and by your checking the blockchain explorer(s) to confirm the block hash. This is the most reliable and robust method but it it also the slowest.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Before bootstrapping your node, make sure to stop your node as shown below.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Using the first bootstrap method below ensures that the snapshot is checked for consistency both programmatically and by your checking the blockchain explorer(s) to confirm the block hash. This is the most reliable and robust method but it is also the slowest.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
@@ -1358,6 +1628,25 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can replace &lt;code&gt;eu&lt;/code&gt; above with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; if you prefer to use a different mirror closer to you.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;nonce-forfeiture-explained&#34;&gt;Nonce Forfeiture Explained&lt;/h2&gt;
+&lt;p&gt;When a baker produces certain blocks, it commits a &lt;strong&gt;nonce&lt;/strong&gt; — a random number that must be revealed in the following cycle. This is part of Tezos&amp;rsquo; on-chain randomness mechanism.&lt;/p&gt;
+&lt;p&gt;Bootstrapping your node replaces the blockchain data with a snapshot. If you use a &lt;strong&gt;recent snapshot&lt;/strong&gt; (less than 5-6 days old) and &lt;strong&gt;wipe your &lt;code&gt;.tezos-client&lt;/code&gt; directory&lt;/strong&gt;, two things go wrong:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The node loses the full block history&lt;/strong&gt; for the current cycle — it no longer has the data needed to reveal the nonce.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The nonce file is deleted&lt;/strong&gt; from &lt;code&gt;.tezos-client&lt;/code&gt;, so the baker can no longer prove what it committed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When the reveal deadline arrives, your baker cannot respond. The protocol treats this as a forfeiture and you lose your attestation rewards for that cycle.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why a 5-6 day old snapshot helps:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Tezos cycles last roughly 2-3 days. By using a snapshot that is at least 5-6 days old, you ensure that the imported blockchain already contains the full block history for at least one complete past cycle — so any outstanding nonce reveals are already covered in the snapshot.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Why keeping &lt;code&gt;.tezos-client&lt;/code&gt; matters:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The nonce file lives inside &lt;code&gt;.tezos-client&lt;/code&gt;. As long as you don&amp;rsquo;t delete this directory, your baker retains its nonce commitments across the bootstrap and can reveal them when required.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; The downside of using an older snapshot is a slower bootstrap — it takes extra time to sync the additional blocks (up to 2 hours on slow home networks). This trade-off is worth it to protect your income.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;→ Return to &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; to continue setup&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
@@ -1682,6 +1971,12 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.&lt;/p&gt;
 &lt;p&gt;For more details on DAL, see &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Tezos DAL Overview&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;TezBake installed and running&lt;/a&gt;&lt;/strong&gt; — your baker must already be set up on mainnet or testnet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezBake version 0.18.6+&lt;/strong&gt; and &lt;strong&gt;Octez 24.0+&lt;/strong&gt; — required for current mainnet (Tallinn protocol); verify with &lt;code&gt;tezbake version --all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sufficient disk space and bandwidth&lt;/strong&gt; — the DAL node downloads and verifies shard data continuously&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;version-requirements&#34;&gt;Version Requirements&lt;/h2&gt;
 &lt;p&gt;DAL requires specific minimum versions to function correctly. These requirements change with protocol upgrades.&lt;/p&gt;
 &lt;table&gt;
@@ -1784,6 +2079,22 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For additional DAL checks, refer to the &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Nomadic Labs DAL Tutorial&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;verifying-dal-is-running&#34;&gt;Verifying DAL is Running&lt;/h2&gt;
+&lt;p&gt;After setup, verify your DAL node is operational:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check DAL status in output&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Signs of a healthy DAL:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DAL section appears in &lt;code&gt;tezbake info&lt;/code&gt; output&lt;/li&gt;
+&lt;li&gt;DAL companion key is registered (check via your baker&amp;rsquo;s page on tzkt.io)&lt;/li&gt;
+&lt;li&gt;No &amp;ldquo;connection refused&amp;rdquo; errors in DAL logs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;common-dal-issues&#34;&gt;Common DAL Issues&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Port conflicts:&lt;/strong&gt; DAL uses port 10732 by default. Check for conflicts:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ss -tlnp &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10732&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Companion key not imported:&lt;/strong&gt; If DAL shows as running but not attesting:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client list signing scheme
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify your DAL companion key appears in the list.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Complete setup guide&lt;/li&gt;
@@ -1806,11 +2117,18 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
       <description>
         
         
-        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;Docker installed&lt;/a&gt;&lt;/strong&gt; — Docker Engine must be installed and running on your system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux operating system&lt;/strong&gt; — Ubuntu 22.04+ or Debian 12+ recommended; macOS and Windows are not supported&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers — see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#stake-your-baking-xtz-security-deposit&#34;&gt;Baking on Mainnet&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already have installed Docker as shown here: &lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;https://docs.docker.com/engine/install&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. The Docker container includes DAL support, but you must ensure it&amp;rsquo;s properly configured. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;
+All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for setup instructions and details.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
@@ -1848,7 +2166,7 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;ul&gt;
 &lt;li&gt;Once imported, you can see your baker address by running &lt;code&gt;tezbake info&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;The ledger will ask you twice to confirm this operation - ensure the baker address matches the one you want to use&lt;/li&gt;
-&lt;li&gt;To get the default ledger address, go to &lt;a href=&#34;https://kukai.app&#34;&gt;https://kukai.app&lt;/a&gt; and login with ledger, accepting the default derivation path&lt;/li&gt;
+&lt;li&gt;To get the default ledger address, go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and login with ledger, accepting the default derivation path&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ BLS Signatures:&lt;/strong&gt;
 BLS (i.e. bip) signatures offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.&lt;/p&gt;
@@ -1872,12 +2190,13 @@ Putting the baker on a non-default derivation path provides an additional layer 
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---insecure-import-soft-key-to-tezbake-signer&#34;&gt;(Option 2 - INSECURE) Import Soft key to TezBake signer&lt;/h4&gt;
 &lt;p&gt;First, generate the baker key for TezBake signer:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer - gen keys baker
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer gen-keys baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make sure to backup your key in a secure location. You can get the key by running the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /bake-buddy/signer/data/.tezos-signer/secret_keys
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then, import the baker public key hash to TezBake node:&lt;/p&gt;
 &lt;p&gt;Get the tz1-tz3 address which is the hashed public key of the baker key:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Note: &amp;#39;public_key_hashs&amp;#39; is the actual Octez filename (not &amp;#39;hashes&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /bake-buddy/signer/data/.tezos-signer/public_key_hashs
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Import the hashed key to the TezBake node:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client import secret key baker http://127.0.0.1:20090/tz1bcSYEMKBoMnsACXzixn5bmzcdYjagqjZF
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
@@ -1893,12 +2212,12 @@ Putting the baker on a non-default derivation path provides an additional layer 
 &lt;p&gt;Registration is NOT necessary if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;This is already an active baker ledger being set up on a failover machine&lt;/li&gt;
-&lt;li&gt;The baker has not been inactive for over 3 days&lt;/li&gt;
+&lt;li&gt;The baker has not been inactive for over 2 cycles (~2 days)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;You MUST register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive for over 3 days&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive for over 2 cycles (~2 days)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
@@ -1957,6 +2276,13 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;li&gt;&lt;a href=&#34;#pre-bls-deprecated-ledger-consensus-key-setup&#34;&gt;PRE-BLS (DEPRECATED) Ledger Consensus key setup&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Running baker on mainnet or testnet&lt;/a&gt;&lt;/strong&gt; — your baker must already be set up and actively baking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#download-and-install-tezbake&#34;&gt;TezBake installed&lt;/a&gt;&lt;/strong&gt; — latest version required&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For tz4/BLS setup (recommended):&lt;/strong&gt; A &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;TezSign hardware device&lt;/a&gt; to generate secure consensus and companion keys&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For deprecated Ledger setup:&lt;/strong&gt; A second Ledger device to use as the consensus key signer&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already followed one of the following tutorials:&lt;/p&gt;
 &lt;ul&gt;
@@ -2200,95 +2526,95 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;h2 id=&#34;step-3-edit-application-configurations&#34;&gt;Step 3: Edit Application Configurations&lt;/h2&gt;
 &lt;h3 id=&#34;if-node-is-public-prism-endpoint-dal-ran-independently&#34;&gt;If Node is Public Prism Endpoint (DAL ran independently)&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Node&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;listen&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.0.0.0:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;dal&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;signer&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;DAL&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;remote&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;node&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Signer&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;remote&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;node&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;listen&amp;#34;: &amp;#34;0.0.0.0:20080&amp;#34;,
+      &amp;#34;dal&amp;#34;: true,
+      &amp;#34;signer&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;DAL&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;remote&amp;#34;: &amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;,
+      &amp;#34;node&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Signer&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;remote&amp;#34;: &amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;,
+      &amp;#34;node&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;h3 id=&#34;if-node-is-public-prism-endpoint-dal-ran-on-the-same-host-as-the-node&#34;&gt;If Node is Public Prism Endpoint (DAL ran on the same host as the node)&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Node&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;listen&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.0.0.0:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;signer&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Signer&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;remote&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;node&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;listen&amp;#34;: &amp;#34;0.0.0.0:20080&amp;#34;,
+      &amp;#34;signer&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Signer&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;remote&amp;#34;: &amp;#34;&amp;lt;node-ip&amp;gt;:20080&amp;#34;,
+      &amp;#34;node&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;h3 id=&#34;if-dal-is-public-prism-endpoint&#34;&gt;If DAL is Public Prism Endpoint&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;DAL&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;listen&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0.0.0.0:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;node&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Node&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;configuration&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PRISM&amp;#34;: &lt;/span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;dal_remote&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;lt;dal-ip&amp;gt;:20080&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;dal&amp;#34;: &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# ...&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;listen&amp;#34;: &amp;#34;0.0.0.0:20080&amp;#34;,
+      &amp;#34;node&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;Node&amp;rsquo;s &lt;code&gt;app.json&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  &amp;#34;configuration&amp;#34;: {
+    # ...
+    &amp;#34;PRISM&amp;#34;: {
+      &amp;#34;dal_remote&amp;#34;: &amp;#34;&amp;lt;dal-ip&amp;gt;:20080&amp;#34;,
+      &amp;#34;dal&amp;#34;: true
+    }
+    # ...
+  }
+  # ...
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Signer does not require a Prism section in this layout.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -2469,8 +2795,8 @@ Run &lt;code&gt;timedatectl status&lt;/code&gt; to check your system clock&amp;r
 &lt;li&gt;&lt;strong&gt;Is your setup healthy?&lt;/strong&gt;&lt;br&gt;
 Use:&lt;br&gt;
 &lt;code&gt;tezbake info&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;tezbake node logs -f&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;tezbake signer logs -f&lt;/code&gt;&lt;/li&gt;
+&lt;code&gt;tezbake node log -f&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;tezbake signer log -f&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Look for signs of delay, network errors, or system load.&lt;/p&gt;
 &lt;hr&gt;

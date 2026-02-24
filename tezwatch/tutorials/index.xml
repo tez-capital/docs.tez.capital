@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezwatch: &gt; Setup</title>
+      <title>Tezwatch: Setup</title>
       <link>/tezwatch/tutorials/setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -24,7 +24,13 @@
       <description>
         
         
-        &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Running baker on mainnet&lt;/a&gt;&lt;/strong&gt; — TezWatch monitors an active baker; you need a tz1 baker address to subscribe to alerts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://discord.com&#34;&gt;Discord account&lt;/a&gt;&lt;/strong&gt; — TezWatch delivers notifications via Discord DMs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Join the Tez Capital Discord&lt;/a&gt;&lt;/strong&gt; — setup is done in the &lt;code&gt;#tezwatch&lt;/code&gt; channel using slash commands&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;Setting up TezWatch currently requires you to have a &lt;a href=&#34;https://Discord.com&#34;&gt;https://Discord.com&lt;/a&gt; account. If you don&amp;rsquo;t have one, please create one before proceeding.&lt;/p&gt;
 &lt;p&gt;You will also need to join our &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt;. This is where you will configure TezWatch. You can also ask questions and get support from the Tez Capital team and other Tezos bakers, stakers and delegators. After you join, make sure to self-select the &amp;ldquo;TezBake&amp;rdquo; role in order to get access to the &lt;a href=&#34;https://discord.gg/94dnM2AcRw&#34;&gt;#tezwatch&lt;/a&gt; channel.&lt;/p&gt;
 &lt;p&gt;The idea here is to have the Discord mobile app on your phone and/or the Discord desktop app on your computer. You will need to be logged in to your Discord account on the device you want to receive notifications on. TezWatch will use Discord to tag you in a DM (Direct Message) based on your configuration. For example, you may not care if you miss a single attestation but you care if you miss 10 attestation in a row or a block.&lt;/p&gt;
@@ -92,6 +98,14 @@
 &lt;/thead&gt;
 &lt;/table&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;✅ &lt;strong&gt;TezWatch is configured!&lt;/strong&gt; You&amp;rsquo;ll receive Discord alerts for your baker. Consider these additional monitoring tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/monitoring-transactions/&#34;&gt;Monitor transactions&lt;/a&gt; — Track wallet balances and incoming/outgoing transfers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpeak/tutorials/setup/&#34;&gt;Install TezPeak dashboard&lt;/a&gt; — Visual web dashboard for baker status and TezPay management&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Check logs via CLI&lt;/a&gt; — Real-time log monitoring directly on your baker&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/monitoring-transactions/&#34;&gt;Monitoring Transactions&lt;/a&gt; - Track balances and transfers&lt;/li&gt;
@@ -155,12 +169,12 @@
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;conditions&lt;/code&gt; for transfers&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:in&lt;/code&gt;, &lt;code&gt;tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:in&amp;gt;1&lt;/code&gt;, &lt;code&gt;tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:50&amp;gt;in&amp;gt;1&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Be nofified for all incoming transactions, all incoming transactions over 1 or all transactions smaller than 1 but larger than 50&lt;/td&gt;
+&lt;td&gt;Be notified for all incoming transactions, all incoming transactions over 1 or all transactions smaller than 1 but larger than 50&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;conditions&lt;/code&gt; for balance-updated&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;tz1UGkfyrT9yBt6U5PV7Qeui3pt3a8jffoWv:50&amp;gt;balance&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Be nofidied for all incoming transactions, all incoming transactions over X or all transactions smaller than X but larger than Y&lt;/td&gt;
+&lt;td&gt;Be notified for all incoming transactions, all incoming transactions over X or all transactions smaller than X but larger than Y&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

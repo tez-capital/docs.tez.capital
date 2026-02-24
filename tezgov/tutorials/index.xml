@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Tezgov: &gt; Voting on Proposals</title>
+      <title>Tezgov: Voting on Proposals</title>
       <link>/tezgov/tutorials/voting-on-proposals/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -49,6 +49,13 @@
 &lt;/ul&gt;
 &lt;p&gt;This design ensures governance can continue even if some bakers stop participating, while still requiring meaningful consensus.&lt;/p&gt;
 &lt;p&gt;We recommend you read more about the Tezos Voting process here: &lt;a href=&#34;https://tezos.gitlab.io/active/voting.html&#34;&gt;https://tezos.gitlab.io/active/voting.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Running baker on mainnet&lt;/a&gt;&lt;/strong&gt; — you must be an active registered baker with staked funds to have voting power&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Staked XTZ&lt;/strong&gt; — at least 6000 XTZ staked to meet the minimum bond requirement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ledger hardware wallet&lt;/strong&gt; with the Tezos &lt;strong&gt;Wallet&lt;/strong&gt; app installed (not the Baking app) — required for signing votes on TezGov&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://gov.tez.capital&#34;&gt;TezGov web portal access&lt;/a&gt;&lt;/strong&gt; — works best with Chromium-based browsers (Chrome, Brave, Edge)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;proposal-voting-with-tezgov&#34;&gt;Proposal voting with TezGov&lt;/h2&gt;
 &lt;p&gt;TezGov allows you to participate in Tezos proposal voting with your Ledger hardware wallet.&lt;/p&gt;
 &lt;ul&gt;
@@ -77,20 +84,28 @@
 &lt;li&gt;Use the Remote (signer) method if you have a signer somewhere on your LAN or local computer. This is an option for advanced users.&lt;/li&gt;
 &lt;li&gt;Use the Beacon method if you are using a Beacon-enabled wallet like Temple or Kukai. In this case you will not see the exact details of your vote on your Ledger screen and you will instead be asked to sign an arbitrary blob message. This method also works fine but it is inherently less secure than the direct Ledger method.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovHome.png&#34; alt=&#34;TezGov login home screen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovHome.png&#34; alt=&#34;TezGov login page showing connection method options including Ledger, Remote signer, and Beacon&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Once logged in you&amp;rsquo;ll see the TezGov home screen. You can see the current cycle, the current proposal, the current voting period, and the current voting period progress. You can also see the current proposal status and the current proposal details.&lt;/p&gt;
 &lt;h3 id=&#34;exploration-and-promotion-periods&#34;&gt;Exploration and Promotion Periods&lt;/h3&gt;
 &lt;p&gt;During the exploration and promotion periods you will see the period name &lt;code&gt;Exploration&lt;/code&gt; or &lt;code&gt;Promotion&lt;/code&gt; in the middle of the page. You can vote for the current proposal by clicking the &lt;code&gt;NAY&lt;/code&gt;, &lt;code&gt;PASS&lt;/code&gt; or &lt;code&gt;YAY&lt;/code&gt; buttons.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotion.png&#34; alt=&#34;TezGov login home screen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotion.png&#34; alt=&#34;TezGov Promotion period screen showing NAY, PASS, and YAY voting buttons for the current proposal&#34;&gt;&lt;/p&gt;
 &lt;p&gt;You will be asked to confirm the vote on your Ledger device.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm.png&#34; alt=&#34;TezGov login home screen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm.png&#34; alt=&#34;TezGov vote confirmation prompt asking user to confirm their vote choice on the Ledger device&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Once confirmed, the page will refresh within 30 seconds.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm2.png&#34; alt=&#34;TezGov login home screen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm2.png&#34; alt=&#34;TezGov page refreshing after vote confirmation, displaying updated vote status&#34;&gt;&lt;/p&gt;
 &lt;p&gt;After finished, you&amp;rsquo;ll be able to click on the confirmation link for your vote.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm3.png&#34; alt=&#34;TezGov login home screen&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovPromotionConfirm3.png&#34; alt=&#34;TezGov vote complete screen showing confirmation link to view the on-chain voting transaction&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;cooldown-period&#34;&gt;Cooldown Period&lt;/h3&gt;
 &lt;p&gt;During the cooldown period you will see the period name &lt;code&gt;Cooldown&lt;/code&gt; in the middle of the page and you will not be able to vote until the next period. The time remaining is also reflected on the page.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/tezgov/tutorial/tezgovCooldown.png&#34; alt=&#34;TezGov Cooldown period&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
+&lt;p&gt;✅ &lt;strong&gt;Your vote is cast!&lt;/strong&gt; Explore other governance and baker management options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/injecting-proposals/&#34;&gt;Inject a proposal&lt;/a&gt; — Submit your own protocol upgrade proposal&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/managing-baker-settings/&#34;&gt;Manage baker settings&lt;/a&gt; — Configure staking parameters, consensus keys, and fees&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;Set up TezWatch alerts&lt;/a&gt; — Get notified if your baker misses attestations&lt;/li&gt;
+&lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
@@ -322,7 +337,7 @@
 &lt;li&gt;Enter the amount to unstake&lt;/li&gt;
 &lt;li&gt;Click &lt;strong&gt;Unstake&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Confirm on your Ledger&lt;/li&gt;
-&lt;li&gt;Wait 4 cycles&lt;/li&gt;
+&lt;li&gt;Wait 3 cycles (~3 days)&lt;/li&gt;
 &lt;li&gt;Return to finalize the unstake&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
@@ -452,7 +467,46 @@
       <description>
         
         
-        &lt;h2 id=&#34;tezgov-troubleshooting&#34;&gt;TezGov Troubleshooting&lt;/h2&gt;
+        &lt;h2 id=&#34;error-quick-reference&#34;&gt;Error Quick Reference&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Error / Symptom&lt;/th&gt;
+&lt;th&gt;Jump To&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ldquo;Transaction Not Trusted&amp;rdquo; warning&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#transaction-not-trusted-warning&#34;&gt;Transaction Not Trusted&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ldquo;Failed to Open Device&amp;rdquo; / can&amp;rsquo;t connect Ledger&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#failed-to-open-device&#34;&gt;Failed to Open Device&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vote not counting / clicked wrong button&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#protocol-voting-issues&#34;&gt;Protocol Voting Issues&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Staking parameters not taking effect&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#staking-issues&#34;&gt;Staking Issues&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Consensus/companion key not activating&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#key-management&#34;&gt;Key Management&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Baker inactive / needs reactivation&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#baker-reactivation&#34;&gt;Baker Reactivation&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TezGov page not loading / stale UI&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#browser-issues&#34;&gt;Browser Issues&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;tezgov-troubleshooting&#34;&gt;TezGov Troubleshooting&lt;/h2&gt;
 &lt;p&gt;TezGov (&lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt;) is used for protocol voting, staking management, and baker configuration. Most issues involve Ledger connectivity or understanding the two different voting systems.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ledger-connection-issues&#34;&gt;Ledger Connection Issues&lt;/h2&gt;
@@ -580,7 +634,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --edge-of-baking-over-staking 0.10
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;parameters-not-taking-effect&#34;&gt;Parameters Not Taking Effect&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Changes take &lt;strong&gt;2-3 cycles (~3-5 days)&lt;/strong&gt; to activate&lt;/li&gt;
+&lt;li&gt;Changes take &lt;strong&gt;5 cycles (~5 days)&lt;/strong&gt; to activate&lt;/li&gt;
 &lt;li&gt;External stakes are treated as delegation until parameters are set&lt;/li&gt;
 &lt;li&gt;Default: Stakers NOT accepted until you explicitly set parameters&lt;/li&gt;
 &lt;/ul&gt;
@@ -615,7 +669,7 @@
 &lt;/ol&gt;
 &lt;h3 id=&#34;key-activation-timing&#34;&gt;Key Activation Timing&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Activation delay:&lt;/strong&gt; 2-3 cycles (~3-5 days)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Activation delay:&lt;/strong&gt; 3 cycles (~3 days)&lt;/li&gt;
 &lt;li&gt;Register in cycle N → Live in cycle N+3&lt;/li&gt;
 &lt;li&gt;Check status: &lt;a href=&#34;https://tzkt.io/YOUR_TZ1/secondary-keys&#34;&gt;https://tzkt.io/YOUR_TZ1/secondary-keys&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
