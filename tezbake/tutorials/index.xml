@@ -296,7 +296,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;li&gt;Your baker has been inactive for over 2 cycles (~2 days)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;You do NOT need to register if your baker has been inactive for less than 3 days. Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
+&lt;p&gt;You do NOT need to register if your baker has been inactive for less than 2 cycles (~2 days). Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking.&lt;/p&gt;
@@ -1638,7 +1638,7 @@ A: Block explorers like &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; s
 &lt;/ol&gt;
 &lt;p&gt;When the reveal deadline arrives, your baker cannot respond. The protocol treats this as a forfeiture and you lose your attestation rewards for that cycle.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Why a 5-6 day old snapshot helps:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Tezos cycles last roughly 2-3 days. By using a snapshot that is at least 5-6 days old, you ensure that the imported blockchain already contains the full block history for at least one complete past cycle — so any outstanding nonce reveals are already covered in the snapshot.&lt;/p&gt;
+&lt;p&gt;Tezos cycles last approximately 1 day (on Tallinn). By using a snapshot that is at least 5-6 days old, you ensure that the imported blockchain already contains the full block history for at least one complete past cycle — so any outstanding nonce reveals are already covered in the snapshot.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Why keeping &lt;code&gt;.tezos-client&lt;/code&gt; matters:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The nonce file lives inside &lt;code&gt;.tezos-client&lt;/code&gt;. As long as you don&amp;rsquo;t delete this directory, your baker retains its nonce commitments across the bootstrap and can reveal them when required.&lt;/p&gt;
 &lt;blockquote&gt;

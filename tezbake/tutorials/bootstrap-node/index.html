@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Bootstrap Node">
 <meta itemprop="description" content="How to bootstrap your Tezos node quickly using blockchain snapshots">
 
-<meta itemprop="wordCount" content="771">
+<meta itemprop="wordCount" content="773">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bootstrap Node"/>
 <meta name="twitter:description" content="How to bootstrap your Tezos node quickly using blockchain snapshots"/>
@@ -542,7 +542,7 @@
 </ol>
 <p>When the reveal deadline arrives, your baker cannot respond. The protocol treats this as a forfeiture and you lose your attestation rewards for that cycle.</p>
 <p><strong>Why a 5-6 day old snapshot helps:</strong></p>
-<p>Tezos cycles last roughly 2-3 days. By using a snapshot that is at least 5-6 days old, you ensure that the imported blockchain already contains the full block history for at least one complete past cycle — so any outstanding nonce reveals are already covered in the snapshot.</p>
+<p>Tezos cycles last approximately 1 day (on Tallinn). By using a snapshot that is at least 5-6 days old, you ensure that the imported blockchain already contains the full block history for at least one complete past cycle — so any outstanding nonce reveals are already covered in the snapshot.</p>
 <p><strong>Why keeping <code>.tezos-client</code> matters:</strong></p>
 <p>The nonce file lives inside <code>.tezos-client</code>. As long as you don&rsquo;t delete this directory, your baker retains its nonce commitments across the bootstrap and can reveal them when required.</p>
 <blockquote>
