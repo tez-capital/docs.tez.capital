@@ -29,7 +29,7 @@
 <meta itemprop="name" content="FAQ">
 <meta itemprop="description" content="Frequently asked questions about Tezos baking with Tez Capital tools">
 
-<meta itemprop="wordCount" content="1256">
+<meta itemprop="wordCount" content="1265">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FAQ"/>
 <meta name="twitter:description" content="Frequently asked questions about Tezos baking with Tez Capital tools"/>
@@ -622,7 +622,7 @@
 <p><strong>→ More:</strong> <a href="/tezwatch/tutorials/setup/">TezWatch Setup</a></p>
 <hr>
 <h3 id="i-see-missed-endorsements--missed-attestations-in-my-stats--is-something-wrong">I see &ldquo;missed endorsements&rdquo; / &ldquo;missed attestations&rdquo; in my stats — is something wrong?</h3>
-<p>An occasional missed attestation is normal and expected (network latency, momentary CPU spike, etc.). The protocol requires only a <strong>67% attestation rate</strong> per cycle to receive full rewards.</p>
+<p>An occasional missed attestation is normal and expected (network latency, momentary CPU spike, etc.). Rewards are proportional to attestations made. However, bakers who fall below <strong>67% participation</strong> for 2 consecutive cycles risk <strong>deactivation</strong> (automatic removal from baking).</p>
 <p>If you are consistently missing more than 33% of attestations, investigate:</p>
 <ul>
 <li>Is the baker process running? (<code>tezbake info</code>)</li>

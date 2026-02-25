@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Glossary">
 <meta itemprop="description" content="Definitions of key Tezos baking terms and concepts">
 
-<meta itemprop="wordCount" content="1290">
+<meta itemprop="wordCount" content="1296">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Glossary"/>
 <meta name="twitter:description" content="Definitions of key Tezos baking terms and concepts"/>
@@ -489,7 +489,7 @@
 <p>A protocol mechanism that dynamically adjusts the rate of new XTZ issued as baking rewards based on the percentage of total supply that is staked. When more XTZ is staked, issuance decreases; when less is staked, issuance increases to incentivise participation. Introduced in the Paris protocol.</p>
 <hr>
 <h3 id="attestation">Attestation</h3>
-<p>An operation broadcast by a baker to certify that a block they observed is valid and should be included in the chain. Attestations replaced the older term <em>endorsements</em>. Bakers must maintain a 67% attestation success rate per cycle or face reduced rewards. See also: <a href="#rights">Rights</a>, <a href="#cycle">Cycle</a>.</p>
+<p>An operation broadcast by a baker to certify that a block they observed is valid and should be included in the chain. Attestations replaced the older term <em>endorsements</em>. Bakers who fall below 67% participation for 2 consecutive cycles risk deactivation. Rewards are earned proportionally for each attestation made. See also: <a href="#rights">Rights</a>, <a href="#cycle">Cycle</a>.</p>
 <hr>
 <h3 id="baker">Baker</h3>
 <p>A Tezos node operator who participates in consensus by producing blocks and broadcasting attestations. Bakers stake XTZ as collateral. In return the protocol rewards them with newly issued XTZ each cycle. A baker can also accept delegations and stakers from the community. See <a href="/getting-started/what-is-baking/">What is Baking?</a></p>

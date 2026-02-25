@@ -367,7 +367,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;Bakers cast two types of votes with every block they produce. TezBake configures sensible defaults, but you should understand what you&amp;rsquo;re voting for:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Liquidity Baking Toggle Vote:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Controls a protocol feature that mints approximately 2.5 tez per block into a tez/tzBTC liquidity pool&lt;/li&gt;
+&lt;li&gt;Controls a protocol feature that mints 5 tez per minute (0.5 tez per block at 6-second block times) into a tez/tzBTC liquidity pool&lt;/li&gt;
 &lt;li&gt;Options: &lt;code&gt;on&lt;/code&gt; (continue subsidy), &lt;code&gt;off&lt;/code&gt; (end subsidy), &lt;code&gt;pass&lt;/code&gt; (abstain)&lt;/li&gt;
 &lt;li&gt;If enough bakers vote &lt;code&gt;off&lt;/code&gt; over ~2000 blocks, the subsidy pauses&lt;/li&gt;
 &lt;li&gt;Default in TezBake: &lt;code&gt;on&lt;/code&gt;&lt;/li&gt;
@@ -1211,7 +1211,7 @@ Services:
 &lt;hr&gt;
 &lt;h2 id=&#34;the-two-per-block-votes&#34;&gt;The Two Per-Block Votes&lt;/h2&gt;
 &lt;h3 id=&#34;1-liquidity-baking-lb-toggle&#34;&gt;1. Liquidity Baking (LB) Toggle&lt;/h3&gt;
-&lt;p&gt;Liquidity Baking is a protocol feature that mints approximately &lt;strong&gt;2.5 tez per block&lt;/strong&gt; into a tez/tzBTC liquidity pool on-chain. This subsidy has been active since the Granada protocol upgrade (2021).&lt;/p&gt;
+&lt;p&gt;Liquidity Baking is a protocol feature that mints &lt;strong&gt;5 tez per minute&lt;/strong&gt; (0.5 tez per block at 6-second block times) into a tez/tzBTC liquidity pool on-chain. This subsidy has been active since the Granada protocol upgrade (2021).&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

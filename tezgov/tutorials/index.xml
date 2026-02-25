@@ -688,7 +688,7 @@
 &lt;li&gt;Find &amp;ldquo;Reactivate&amp;rdquo; button&lt;/li&gt;
 &lt;li&gt;Confirm transaction on Ledger&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can also reactivate by simply resuming baking - if you attest &amp;gt;67% of assigned work, the baker automatically reactivates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can also reactivate by simply resuming baking - if you resume attesting above 67% of assigned slots, the baker automatically reactivates.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;browser-issues&#34;&gt;Browser Issues&lt;/h2&gt;
 &lt;h3 id=&#34;ui-not-loading-or-stale-data&#34;&gt;UI Not Loading or Stale Data&lt;/h3&gt;
