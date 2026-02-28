@@ -29,7 +29,7 @@
 <meta itemprop="name" content="What&#39;s New">
 <meta itemprop="description" content="Recent changes to Tez Capital tools and documentation">
 
-<meta itemprop="wordCount" content="575">
+<meta itemprop="wordCount" content="635">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="What&#39;s New"/>
 <meta name="twitter:description" content="Recent changes to Tez Capital tools and documentation"/>
@@ -399,6 +399,11 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#whats-new">What&rsquo;s New</a></li>
+    <li><a href="#2026">2026</a>
+      <ul>
+        <li><a href="#documentation-reverting-from-tz4-to-tz1tz3-keys">Documentation: Reverting from tz4 to tz1/tz3 Keys</a></li>
+      </ul>
+    </li>
     <li><a href="#2025">2025</a>
       <ul>
         <li><a href="#dal-now-mandatory-for-bakers">DAL Now Mandatory for Bakers</a></li>
@@ -471,6 +476,10 @@
 	</header>    
 	<h2 id="whats-new">What&rsquo;s New</h2>
 <p>A reverse-chronological log of significant changes to Tez Capital tools, the Tezos protocol, and this documentation. Subscribe to <a href="https://t.me/tezcapital">Tez Capital on Telegram</a> or <a href="https://discord.gg/cVGMA4MaNM">Discord</a> to stay up to date.</p>
+<hr>
+<h2 id="2026">2026</h2>
+<h3 id="documentation-reverting-from-tz4-to-tz1tz3-keys">Documentation: Reverting from tz4 to tz1/tz3 Keys</h3>
+<p><strong>What changed:</strong> Added a new section to <a href="/tezbake/tutorials/baking-with-consensus-key/">Baking with Consensus Key</a> explaining how to revert from tz4/BLS (TezSign) back to tz1/tz3 signing. Key steps: re-import your tz1/tz3 key, set both consensus and companion keys to the same tz1/tz3 address via TezGov, wait 3 cycles, then remove the companion alias from TezBake config.</p>
 <hr>
 <h2 id="2025">2025</h2>
 <h3 id="dal-now-mandatory-for-bakers">DAL Now Mandatory for Bakers</h3>

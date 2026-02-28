@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1068">
+<meta itemprop="wordCount" content="1337">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -410,6 +410,15 @@
         <li><a href="#confirm-the-consensus-key-is-working">Confirm the consensus key is working</a></li>
       </ul>
     </li>
+    <li><a href="#reverting-from-tz4bls-back-to-tz1tz3-keys">Reverting from tz4/BLS Back to tz1/tz3 Keys</a>
+      <ul>
+        <li><a href="#1-import-your-tz1tz3-key-into-tezbake">1. Import your tz1/tz3 key into TezBake</a></li>
+        <li><a href="#2-set-both-consensus-and-companion-keys-on-tezgov">2. Set both consensus and companion keys on TezGov</a></li>
+        <li><a href="#3-wait-3-cycles-3-days-for-activation">3. Wait 3 cycles (~3 days) for activation</a></li>
+        <li><a href="#4-remove-companion-from-additional_key_aliases">4. Remove companion from additional_key_aliases</a></li>
+        <li><a href="#5-optional-remove-tezsign-backend">5. (Optional) Remove TezSign backend</a></li>
+      </ul>
+    </li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
@@ -501,6 +510,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <li><a href="#preparation">Preparation</a></li>
 <li><a href="#blstz4-consensus-and-companion-key-setup">BLS/tz4 Consensus and Companion key setup</a></li>
 <li><a href="#pre-bls-deprecated-ledger-consensus-key-setup">PRE-BLS (DEPRECATED) Ledger Consensus key setup</a></li>
+<li><a href="#reverting-from-tz4bls-back-to-tz1tz3-keys">Reverting from tz4/BLS back to tz1/tz3 keys</a></li>
 </ol>
 <hr>
 <h2 id="prerequisites">Prerequisites</h2>
@@ -591,6 +601,42 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 </span></span><span style="display:flex;"><span>Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26 bb baker<span style="color:#ce5c00;font-weight:bold">[</span>2428547<span style="color:#ce5c00;font-weight:bold">]</span>: Dec <span style="color:#0000cf;font-weight:bold">18</span> 05:14:26.449:   <span style="color:#0000cf;font-weight:bold">0</span>
 </span></span></code></pre></div><p>To view your baker logs, run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log baker -f
+</span></span></code></pre></div><hr>
+<h2 id="reverting-from-tz4bls-back-to-tz1tz3-keys">Reverting from tz4/BLS Back to tz1/tz3 Keys</h2>
+<p>If you were baking with tz4 keys (via TezSign) and want to revert to a tz1/tz3 key (Ledger or soft key), follow these steps.</p>
+<blockquote>
+<p><strong>ℹ️ INFO:</strong> tz1/tz3 keys do not require a separate companion key. When reverting, you set both the consensus key and the companion key to the same tz1/tz3 address — this effectively removes the tz4 companion requirement.</p>
+</blockquote>
+<h3 id="1-import-your-tz1tz3-key-into-tezbake">1. Import your tz1/tz3 key into TezBake</h3>
+<p>If you previously removed your tz1/tz3 key, re-import it. For a Ledger key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span> --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
+</span></span></code></pre></div><p>Or for a soft key, import it under the appropriate alias.</p>
+<h3 id="2-set-both-consensus-and-companion-keys-on-tezgov">2. Set both consensus and companion keys on TezGov</h3>
+<p>Go to <a href="https://gov.tez.capital">gov.tez.capital</a> → Baker Management.</p>
+<p>Set <strong>both</strong> fields to your tz1/tz3 address:</p>
+<ul>
+<li><strong>Consensus key</strong> → your tz1/tz3 address</li>
+<li><strong>Companion key</strong> → the <strong>same</strong> tz1/tz3 address</li>
+</ul>
+<p>Setting the companion key to the same tz1/tz3 address as the consensus key tells the protocol you are no longer using a separate tz4 companion.</p>
+<h3 id="3-wait-3-cycles-3-days-for-activation">3. Wait 3 cycles (~3 days) for activation</h3>
+<p>The new key assignment takes effect after 3 cycles. Monitor activation status:</p>
+<ul>
+<li>On TzKT: <code>https://tzkt.io/&lt;your_tz1_address&gt;/secondary-keys</code></li>
+<li>Via CLI: <code>tezbake info</code></li>
+</ul>
+<h3 id="4-remove-companion-from-additional_key_aliases">4. Remove companion from additional_key_aliases</h3>
+<p>Once the new keys are active, remove the companion alias since it is no longer needed:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --remove configuration.additional_key_aliases <span style="color:#4e9a06">&#39;&#34;companion&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><h3 id="5-optional-remove-tezsign-backend">5. (Optional) Remove TezSign backend</h3>
+<p>If you switched to the direct TezSign backend, revert it:</p>
+<ol>
+<li>Open <code>/bake-buddy/signer/app.json</code> and remove the <code>&quot;BACKEND&quot;: &quot;tezsign&quot;</code> line from the <code>configuration</code> block.</li>
+<li>Apply and restart:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --signer
+</span></span><span style="display:flex;"><span>tezbake stop --signer <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start --signer
 </span></span></code></pre></div><hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
