@@ -2375,14 +2375,20 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;p&gt;If you previously removed your tz1/tz3 key, re-import it. For a Ledger key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Or for a soft key, import it under the appropriate alias.&lt;/p&gt;
-&lt;h3 id=&#34;2-set-both-consensus-and-companion-keys-on-tezgov&#34;&gt;2. Set both consensus and companion keys on TezGov&lt;/h3&gt;
+&lt;h3 id=&#34;2-set-both-consensus-and-companion-keys&#34;&gt;2. Set both consensus and companion keys&lt;/h3&gt;
+&lt;p&gt;You can do this via TezGov (recommended) or the CLI.&lt;/p&gt;
+&lt;h4 id=&#34;option-a-tezgov-recommended&#34;&gt;Option A: TezGov (recommended)&lt;/h4&gt;
 &lt;p&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; → Baker Management.&lt;/p&gt;
 &lt;p&gt;Set &lt;strong&gt;both&lt;/strong&gt; fields to your tz1/tz3 address:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Consensus key&lt;/strong&gt; → your tz1/tz3 address&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Companion key&lt;/strong&gt; → the &lt;strong&gt;same&lt;/strong&gt; tz1/tz3 address&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Setting the companion key to the same tz1/tz3 address as the consensus key tells the protocol you are no longer using a separate tz4 companion.&lt;/p&gt;
+&lt;h4 id=&#34;option-b-cli&#34;&gt;Option B: CLI&lt;/h4&gt;
+&lt;p&gt;Replace &lt;code&gt;&amp;lt;tz1_alias&amp;gt;&lt;/code&gt; with the alias you imported your tz1/tz3 key under (e.g. &lt;code&gt;consensus&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; consensus key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to &amp;lt;tz1_alias&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to &amp;lt;tz1_alias&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setting the companion key to the same tz1/tz3 address as the consensus key tells the protocol you are no longer using a separate tz4 companion.&lt;/p&gt;
 &lt;h3 id=&#34;3-wait-3-cycles-3-days-for-activation&#34;&gt;3. Wait 3 cycles (~3 days) for activation&lt;/h3&gt;
 &lt;p&gt;The new key assignment takes effect after 3 cycles. Monitor activation status:&lt;/p&gt;
 &lt;ul&gt;

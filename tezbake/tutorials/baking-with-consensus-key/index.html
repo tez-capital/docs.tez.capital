@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1337">
+<meta itemprop="wordCount" content="1385">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -413,7 +413,7 @@
     <li><a href="#reverting-from-tz4bls-back-to-tz1tz3-keys">Reverting from tz4/BLS Back to tz1/tz3 Keys</a>
       <ul>
         <li><a href="#1-import-your-tz1tz3-key-into-tezbake">1. Import your tz1/tz3 key into TezBake</a></li>
-        <li><a href="#2-set-both-consensus-and-companion-keys-on-tezgov">2. Set both consensus and companion keys on TezGov</a></li>
+        <li><a href="#2-set-both-consensus-and-companion-keys">2. Set both consensus and companion keys</a></li>
         <li><a href="#3-wait-3-cycles-3-days-for-activation">3. Wait 3 cycles (~3 days) for activation</a></li>
         <li><a href="#4-remove-companion-from-additional_key_aliases">4. Remove companion from additional_key_aliases</a></li>
         <li><a href="#5-optional-remove-tezsign-backend">5. (Optional) Remove TezSign backend</a></li>
@@ -611,14 +611,20 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p>If you previously removed your tz1/tz3 key, re-import it. For a Ledger key:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span> --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
 </span></span></code></pre></div><p>Or for a soft key, import it under the appropriate alias.</p>
-<h3 id="2-set-both-consensus-and-companion-keys-on-tezgov">2. Set both consensus and companion keys on TezGov</h3>
+<h3 id="2-set-both-consensus-and-companion-keys">2. Set both consensus and companion keys</h3>
+<p>You can do this via TezGov (recommended) or the CLI.</p>
+<h4 id="option-a-tezgov-recommended">Option A: TezGov (recommended)</h4>
 <p>Go to <a href="https://gov.tez.capital">gov.tez.capital</a> → Baker Management.</p>
 <p>Set <strong>both</strong> fields to your tz1/tz3 address:</p>
 <ul>
 <li><strong>Consensus key</strong> → your tz1/tz3 address</li>
 <li><strong>Companion key</strong> → the <strong>same</strong> tz1/tz3 address</li>
 </ul>
-<p>Setting the companion key to the same tz1/tz3 address as the consensus key tells the protocol you are no longer using a separate tz4 companion.</p>
+<h4 id="option-b-cli">Option B: CLI</h4>
+<p>Replace <code>&lt;tz1_alias&gt;</code> with the alias you imported your tz1/tz3 key under (e.g. <code>consensus</code>):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> consensus key <span style="color:#204a87;font-weight:bold">for</span> baker to &lt;tz1_alias&gt;
+</span></span><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> companion key <span style="color:#204a87;font-weight:bold">for</span> baker to &lt;tz1_alias&gt;
+</span></span></code></pre></div><p>Setting the companion key to the same tz1/tz3 address as the consensus key tells the protocol you are no longer using a separate tz4 companion.</p>
 <h3 id="3-wait-3-cycles-3-days-for-activation">3. Wait 3 cycles (~3 days) for activation</h3>
 <p>The new key assignment takes effect after 3 cycles. Monitor activation status:</p>
 <ul>
