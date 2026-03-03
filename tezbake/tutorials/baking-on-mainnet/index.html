@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="3156">
+<meta itemprop="wordCount" content="2977">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -116,6 +116,8 @@
   <a href="/getting-started/choose-your-setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedchoose-your-setup"><span class="">Choose Your Setup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedpublic-baking-li">
   <a href="/getting-started/public-baking/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedpublic-baking"><span class="">Tezos Public Baking</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedbaker-key-architecture-li">
+  <a href="/getting-started/baker-key-architecture/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedbaker-key-architecture"><span class="">Baker Key Architecture</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedhardware-requirements-li">
   <a href="/getting-started/hardware-requirements/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-getting-startedhardware-requirements"><span class="">Hardware Requirements</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-getting-startedledger-vs-tezsign-li">
@@ -639,49 +641,18 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
 <hr>
 <h4 id="understanding-baker-key-roles">Understanding Baker Key Roles</h4>
-<p>Before choosing your signing setup, it&rsquo;s essential to understand the three key roles in Tezos baking. These apply to <strong>all baker setups</strong> — TezSign, Ledger, and soft keys alike.</p>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Purpose</th>
-<th>Key type</th>
-<th>Changeable?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Manager key</strong></td>
-<td>Your baker&rsquo;s permanent identity. Controls funds, governance votes, staking, and has exclusive authority to set or rotate the consensus and companion keys.</td>
-<td>Any (tz1/tz2/tz3/tz4)</td>
-<td>❌ Never — this is your baker address forever</td>
-</tr>
-<tr>
-<td><strong>Consensus key</strong></td>
-<td>Signs blocks and attestations on behalf of the manager. By default this is the same address as the manager key. Can be rotated to a separate key at any time without changing your baker address.</td>
-<td>Any (tz1/tz2/tz3/tz4)</td>
-<td>✅ Yes — rotate anytime</td>
-</tr>
-<tr>
-<td><strong>Companion key</strong></td>
-<td><strong>Mandatory when your consensus key is tz4 (BLS).</strong> Signs DAL-specific content in consensus operations. Think of it as &ldquo;the DAL key.&rdquo; Always a separate tz4 key.</td>
-<td>tz4 only</td>
-<td>✅ Yes — rotate anytime</td>
-</tr>
-</tbody>
-</table>
-<p><strong>The Recommended Architecture: Ledger (manager) + TezSign (consensus + companion)</strong></p>
-<p>The recommended setup separates security responsibilities:</p>
-<ul>
-<li><strong>Ledger</strong> = manager key. Stays cold. You use it only when you need to vote, stake/unstake, or rotate your signing keys. Since Ledger does not support tz4, it holds a tz1/tz2/tz3 address.</li>
-<li><strong>TezSign</strong> = tz4 consensus key + tz4 companion key. Signs every block and attestation 24/7. Keys never leave the hardware device.</li>
-</ul>
-<p>This architecture means your funds are never exposed to the hot signing path. Even if your TezSign device were compromised, an attacker cannot transfer your funds — only the manager key (Ledger) can do that.</p>
+<p>Before choosing your signing setup, it&rsquo;s essential to understand the three key roles in Tezos baking — <strong>manager</strong>, <strong>consensus</strong>, and <strong>companion</strong> — and how they relate to each other. These apply to <strong>all baker setups</strong>, not just TezBake.</p>
 <blockquote>
-<p><strong>ℹ️ The manager always controls consensus.</strong> The Ledger (manager) is what you connect with in <a href="https://gov.tez.capital">TezGov</a> to register your TezSign keys on-chain. After registration, TezSign handles all block signing automatically — but the Ledger remains essential for any future key rotation or governance action.</p>
+<p><strong>📖 See <a href="/getting-started/baker-key-architecture/">Baker Key Architecture</a> for the full explanation</strong>, including the recommended Ledger + TezSign architecture, key lifecycle, registration process, and common misunderstandings.</p>
 </blockquote>
+<p><strong>Quick summary:</strong></p>
+<ul>
+<li><strong>Manager key</strong> — Your permanent baker address. Controls funds, governance, and has sole authority to set/rotate consensus and companion keys.</li>
+<li><strong>Consensus key</strong> — Signs blocks and attestations. Defaults to the manager key; can be rotated to a separate key (e.g. TezSign tz4).</li>
+<li><strong>Companion key</strong> — <strong>Mandatory when consensus key is tz4.</strong> Signs DAL payloads. Always a separate tz4 key.</li>
+</ul>
 <blockquote>
-<p><strong>⚠️ If your consensus key is tz4, a companion key is mandatory.</strong> Without it, your baker will attest without DAL payloads, forfeiting ~10% of baking rewards.</p>
+<p><strong>⚠️ If your consensus key is tz4, a companion key is mandatory.</strong> Without it, your baker forfeits ~10% of baking rewards.</p>
 </blockquote>
 <hr>
 <h4 id="option-1---recommended-import-tezsign-consensus-and-companion-keys">(Option 1 - RECOMMENDED) Import TezSign consensus and companion keys</h4>
