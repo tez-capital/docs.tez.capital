@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1683">
+<meta itemprop="wordCount" content="1560">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -561,37 +561,11 @@ All bakers are required to run a DAL node. See <a href="/tezbake/tutorials/bakin
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
 <h4 id="import-soft-key-to-tezbake">Import Soft key to TezBake</h4>
 <blockquote>
-<p><strong>ℹ️ Understanding the Three Key Roles</strong></p>
-<p>Before proceeding, it&rsquo;s important to understand how the three key roles relate to each other:</p>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Alias</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Manager key</strong></td>
-<td><code>baker</code></td>
-<td>Your primary baker address. Controls funds, governance votes, staking, and has the authority to set or change your consensus and companion keys. This is permanent — it cannot be changed.</td>
-</tr>
-<tr>
-<td><strong>Consensus key</strong></td>
-<td><code>baker</code> (initially)</td>
-<td>Signs blocks and attestations. By default this is the same address as the manager key. You can later rotate it to a separate key without changing your manager address.</td>
-</tr>
-<tr>
-<td><strong>Companion key</strong></td>
-<td><code>companion</code></td>
-<td>A separate tz4 key required when your consensus key is tz4. Handles DAL-specific signing. Always distinct from the manager and consensus keys.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>In this soft key setup:</strong> the <code>baker</code> key is your manager key AND your consensus key — both roles live at the same tz4 address. The manager always controls consensus: it can delegate consensus signing to a different key, but until you do, manager = consensus.</p>
+<p><strong>ℹ️ Key Roles: Manager / Consensus / Companion</strong></p>
+<p>Tezos baking uses three distinct key roles. For a full explanation, see <a href="/tezbake/tutorials/baking-on-mainnet/#understanding-baker-key-roles">Baking on Mainnet — Understanding Baker Key Roles</a>.</p>
+<p><strong>In this soft key testnet setup:</strong> the <code>baker</code> key is your manager address AND your initial consensus key — both roles live at the same tz4 address.</p>
 <p><strong>⚠️ WARNING: Companion Key is Mandatory</strong></p>
-<p>When using a tz4 (BLS) key as your manager/consensus key, you <strong>must</strong> also register a separate tz4 companion key. The companion key is mandatory for DAL attestation. Without it, your baker will produce attestations without DAL payloads and you will forfeit ~10% of your baking rewards.</p>
+<p>When using a tz4 (BLS) key as your manager/consensus key, you <strong>must</strong> also register a separate tz4 companion key. Without it, your baker will forfeit ~10% of baking rewards.</p>
 </blockquote>
 <p><strong>Step 1 — Generate the baker key (this becomes your manager address AND initial consensus key):</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias baker
