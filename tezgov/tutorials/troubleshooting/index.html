@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems">
 
-<meta itemprop="wordCount" content="898">
+<meta itemprop="wordCount" content="829">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezGov issues and solutions for Ledger, voting, and staking problems"/>
@@ -413,7 +413,7 @@
     <li><a href="#two-types-of-voting-important">Two Types of Voting (Important!)</a>
       <ul>
         <li><a href="#1-protocol-amendment-voting-via-tezgov">1. Protocol Amendment Voting (via TezGov)</a></li>
-        <li><a href="#2-per-block-voting-via-vote-filejson">2. Per-Block Voting (via vote-file.json)</a></li>
+        <li><a href="#2-per-block-voting-configured-on-your-node">2. Per-Block Voting (configured on your node)</a></li>
       </ul>
     </li>
     <li><a href="#protocol-voting-issues">Protocol Voting Issues</a>
@@ -588,26 +588,19 @@
 <li><strong>How:</strong> Cast YAY/NAY/PASS ballot on TezGov</li>
 <li><strong>URL:</strong> <a href="https://gov.tez.capital">https://gov.tez.capital</a></li>
 </ul>
-<h3 id="2-per-block-voting-via-vote-filejson">2. Per-Block Voting (via vote-file.json)</h3>
+<h3 id="2-per-block-voting-configured-on-your-node">2. Per-Block Voting (configured on your node)</h3>
 <ul>
-<li><strong>What:</strong> Liquidity Baking toggle + Adaptive Issuance toggle</li>
+<li><strong>What:</strong> Liquidity Baking toggle vote</li>
 <li><strong>When:</strong> Every block you bake</li>
-<li><strong>How:</strong> Edit config file on your baking node</li>
-<li><strong>Location:</strong> <code>/bake-buddy/node/data/vote-file.json</code></li>
+<li><strong>How (supported path):</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p><strong>What is Adaptive Issuance?</strong></p>
-<p>Adaptive Issuance is a Tezos protocol feature that dynamically adjusts block rewards based on the global staking ratio. When more tez is staked, rewards decrease; when less is staked, rewards increase. This creates an equilibrium that balances security with inflation.</p>
-<ul>
-<li><code>&quot;on&quot;</code> = Support adaptive issuance</li>
-<li><code>&quot;off&quot;</code> = Oppose adaptive issuance</li>
-<li><code>&quot;pass&quot;</code> = Abstain</li>
-</ul>
-<p>Changes take effect immediately — the baker reads the vote file each time it bakes a block. No restart required.</p>
-<p><strong>⚠️ TezGov does NOT handle per-block votes - those are configured on your node.</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify configuration.VOTE_FILE.liquidity_baking_toggle_vote pass
+</span></span><span style="display:flex;"><span>tezbake node show configuration.VOTE_FILE.liquidity_baking_toggle_vote
+</span></span></code></pre></div><p>Accepted values: <code>on</code>, <code>off</code>, <code>pass</code>.</p>
+<p>Apply node config immediately only if needed:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --node
+</span></span></code></pre></div><p><strong>⚠️ TezGov does NOT handle per-block LB vote configuration.</strong></p>
+<p>See: <a href="/tezbake/tutorials/per-block-votes/">Per-Block Votes</a></p>
 <hr>
 <h2 id="protocol-voting-issues">Protocol Voting Issues</h2>
 <h3 id="vote-not-counting">Vote Not Counting</h3>

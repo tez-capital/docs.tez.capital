@@ -19,20 +19,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Per-Block Votes | docs.tez.capital</title>
-<meta name="description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker">
+<meta name="description" content="How to configure your baker&amp;rsquo;s Liquidity Baking per-block vote with supported TezBake commands">
 <meta property="og:title" content="Per-Block Votes" />
-<meta property="og:description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker" />
+<meta property="og:description" content="How to configure your baker&rsquo;s Liquidity Baking per-block vote with supported TezBake commands" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tezbake/tutorials/per-block-votes/" /><meta property="article:section" content="tezbake" />
 
 
 <meta itemprop="name" content="Per-Block Votes">
-<meta itemprop="description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker">
+<meta itemprop="description" content="How to configure your baker&rsquo;s Liquidity Baking per-block vote with supported TezBake commands">
 
-<meta itemprop="wordCount" content="530">
+<meta itemprop="wordCount" content="170">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Per-Block Votes"/>
-<meta name="twitter:description" content="How to configure Liquidity Baking and Adaptive Issuance votes on your baker"/>
+<meta name="twitter:description" content="How to configure your baker&rsquo;s Liquidity Baking per-block vote with supported TezBake commands"/>
 
 
 
@@ -400,17 +400,12 @@
             <div class="td-toc">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-two-per-block-votes">The Two Per-Block Votes</a>
-      <ul>
-        <li><a href="#1-liquidity-baking-lb-toggle">1. Liquidity Baking (LB) Toggle</a></li>
-        <li><a href="#2-adaptive-issuance-toggle">2. Adaptive Issuance Toggle</a></li>
-      </ul>
-    </li>
-    <li><a href="#how-to-view-your-current-votes">How to View Your Current Votes</a></li>
-    <li><a href="#how-to-change-your-votes">How to Change Your Votes</a></li>
-    <li><a href="#tezbake-defaults">TezBake Defaults</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#configure-the-liquidity-baking-vote">Configure the Liquidity Baking Vote</a></li>
+    <li><a href="#verify-the-current-value">Verify the Current Value</a></li>
+    <li><a href="#apply-node-config-only-if-needed">Apply Node Config (Only If Needed)</a></li>
     <li><a href="#important-notes">Important Notes</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#whats-next">What&rsquo;s Next</a></li>
   </ul>
 </nav>
       </div>
@@ -473,125 +468,41 @@
 		
 	</header>    
 	<h1 id="per-block-votes">Per-Block Votes</h1>
-<p>Every time your baker produces a block, it casts two automatic votes embedded in the block header. These are separate from <a href="https://gov.tez.capital">protocol upgrade voting via TezGov</a> — per-block votes are configured directly on your baking node.</p>
-<hr>
-<h2 id="the-two-per-block-votes">The Two Per-Block Votes</h2>
-<h3 id="1-liquidity-baking-lb-toggle">1. Liquidity Baking (LB) Toggle</h3>
-<p>Liquidity Baking is a protocol feature that mints <strong>5 tez per minute</strong> (0.5 tez per block at 6-second block times) into a tez/tzBTC liquidity pool on-chain. This subsidy has been active since the Granada protocol upgrade (2021).</p>
-<table>
-<thead>
-<tr>
-<th>Vote</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&quot;on&quot;</code></td>
-<td>Continue the LB subsidy (default)</td>
-</tr>
-<tr>
-<td><code>&quot;off&quot;</code></td>
-<td>Vote to end the LB subsidy</td>
-</tr>
-<tr>
-<td><code>&quot;pass&quot;</code></td>
-<td>Abstain from this vote</td>
-</tr>
-</tbody>
-</table>
-<p><strong>How it works:</strong> If enough bakers vote <code>&quot;off&quot;</code> over a rolling window of approximately 2,000 blocks, the protocol will pause the subsidy. If the vote flips back, it resumes.</p>
-<h3 id="2-adaptive-issuance-toggle">2. Adaptive Issuance Toggle</h3>
-<p>Adaptive Issuance dynamically adjusts block rewards based on the network&rsquo;s global staking ratio. The protocol targets approximately <strong>50% of total tez staked</strong>:</p>
+<p>This page documents the <em>currently supported</em> TezBake workflow for per-block voting.</p>
+<p>At this time, use this guide for the <em>Liquidity Baking toggle vote</em> only.</p>
+<p>Per-block votes are separate from <a href="https://gov.tez.capital">protocol upgrade voting via TezGov</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>When the staking ratio is <strong>below</strong> the target → rewards <strong>increase</strong> to incentivize staking</li>
-<li>When the staking ratio is <strong>above</strong> the target → rewards <strong>decrease</strong> to reduce inflation</li>
+<li>TezBake installed and running</li>
+<li>Access to the baker host shell</li>
+<li><code>sudo</code> access (if your deployment requires it)</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Vote</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&quot;on&quot;</code></td>
-<td>Support adaptive issuance (default)</td>
-</tr>
-<tr>
-<td><code>&quot;off&quot;</code></td>
-<td>Oppose adaptive issuance</td>
-</tr>
-<tr>
-<td><code>&quot;pass&quot;</code></td>
-<td>Abstain from this vote</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="how-to-view-your-current-votes">How to View Your Current Votes</h2>
-<p>Your votes are stored in a JSON file on your baking node:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /bake-buddy/node/data/vote-file.json
-</span></span></code></pre></div><p>Example output:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><hr>
-<h2 id="how-to-change-your-votes">How to Change Your Votes</h2>
-<ol>
-<li><strong>Edit the vote file:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/data/vote-file.json
-</span></span></code></pre></div><ol start="2">
-<li><strong>Set your preferred values:</strong></li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;on&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Changes take effect immediately — the baker reads the vote file every time it produces a block. <strong>No restart required.</strong></p>
-<hr>
-<h2 id="tezbake-defaults">TezBake Defaults</h2>
-<p>When you first set up TezBake, the vote file is created with these defaults:</p>
-<table>
-<thead>
-<tr>
-<th>Vote</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Liquidity Baking</td>
-<td><code>&quot;on&quot;</code></td>
-</tr>
-<tr>
-<td>Adaptive Issuance</td>
-<td><code>&quot;on&quot;</code></td>
-</tr>
-</tbody>
-</table>
-<p>These defaults reflect the current community consensus. You are free to change them at any time.</p>
-<hr>
+<h2 id="configure-the-liquidity-baking-vote">Configure the Liquidity Baking Vote</h2>
+<p>Set your persisted vote value:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify configuration.VOTE_FILE.liquidity_baking_toggle_vote pass
+</span></span></code></pre></div><p>Accepted values are:</p>
+<ul>
+<li><code>on</code></li>
+<li><code>off</code></li>
+<li><code>pass</code></li>
+</ul>
+<h2 id="verify-the-current-value">Verify the Current Value</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.VOTE_FILE.liquidity_baking_toggle_vote
+</span></span></code></pre></div><h2 id="apply-node-config-only-if-needed">Apply Node Config (Only If Needed)</h2>
+<p>If you need to apply node configuration changes immediately, run:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --node
+</span></span></code></pre></div><p>If your vote file is already correct, a restart/apply is not required just to continue baking with that vote.</p>
 <h2 id="important-notes">Important Notes</h2>
 <ul>
-<li><strong>Per-block votes are NOT the same as protocol upgrade votes.</strong> Protocol upgrade voting (YAY/NAY/PASS on proposals like Paris, Tallinn, etc.) is handled through <a href="https://gov.tez.capital">TezGov</a>. Per-block votes are configured on your node.</li>
-<li><strong>TezGov does NOT manage per-block votes.</strong> You must edit the vote file manually on your baking node.</li>
-<li><strong>Changes take effect immediately.</strong> The baker reads the vote file each time it bakes a block — no restart needed.</li>
-<li><strong>Your vote is public.</strong> Anyone can see your per-block votes by inspecting the blocks you produce on a block explorer.</li>
+<li>Do <em>not</em> use TezGov for per-block LB vote configuration.</li>
+<li>This guide intentionally avoids unsupported/undocumented vote-file editing workflows.</li>
+<li>If TezBake adds first-class support for additional per-block vote fields, this page will be expanded.</li>
 </ul>
-<hr>
-<h2 id="faq">FAQ</h2>
-<p><strong>Q: What happens if I delete the vote file?</strong>
-A: Your baker will use the protocol defaults, which may vary by upgrade. It&rsquo;s best to always have an explicit vote file.</p>
-<p><strong>Q: Can I change my vote at any time?</strong>
-A: Yes. Just edit the file — your new vote will be picked up the next time you bake a block. No restart needed.</p>
-<p><strong>Q: Does my voting power depend on my stake?</strong>
-A: Yes — bakers with more staking power produce more blocks and therefore cast more votes. The per-block vote mechanism is stake-weighted by nature.</p>
-<p><strong>Q: Where can I see the current LB and AI vote tallies?</strong>
-A: Block explorers like <a href="https://tzkt.io">TzKT</a> show per-block vote distributions. You can also check the current state on <a href="https://tezos.systems">tezos.systems</a>.</p>
+<h2 id="whats-next">What&rsquo;s Next</h2>
+<ul>
+<li>Continue with <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a></li>
+<li>Review <a href="/tezgov/tutorials/cast-votes/">TezGov voting workflow</a> for protocol amendment votes</li>
+</ul>
 
 	
 	

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="2977">
+<meta itemprop="wordCount" content="2901">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -875,26 +875,16 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p><strong>ℹ️ INFO:</strong> The tz4 key referenced here is your baker&rsquo;s public key address (starts with tz4), not your consensus key or companion key.</p>
 </blockquote>
 <h3 id="baker-per-block-votes">Baker Per-Block Votes</h3>
-<p>Bakers cast two types of votes with every block they produce. TezBake configures sensible defaults, but you should understand what you&rsquo;re voting for:</p>
-<p><strong>Liquidity Baking Toggle Vote:</strong></p>
-<ul>
-<li>Controls a protocol feature that mints 5 tez per minute (0.5 tez per block at 6-second block times) into a tez/tzBTC liquidity pool</li>
-<li>Options: <code>on</code> (continue subsidy), <code>off</code> (end subsidy), <code>pass</code> (abstain)</li>
-<li>If enough bakers vote <code>off</code> over ~2000 blocks, the subsidy pauses</li>
-<li>Default in TezBake: <code>on</code></li>
-</ul>
-<p><strong>Adaptive Issuance Vote:</strong></p>
-<ul>
-<li>Controls whether the protocol adjusts reward rates based on the network&rsquo;s staked ratio</li>
-<li>The protocol targets 50% of tez staked; rewards increase when staking is low, decrease when high</li>
-<li>Options: <code>on</code>, <code>off</code>, <code>pass</code></li>
-<li>Default in TezBake: <code>on</code></li>
-</ul>
-<p>To view or modify your votes, edit the vote file:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /bake-buddy/node/data/vote-file.json
-</span></span></code></pre></div><p>Example contents:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span><span style="color:#204a87;font-weight:bold">&#34;adaptive_issuance_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">&#34;liquidity_baking_toggle_vote&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#4e9a06">&#34;on&#34;</span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>Changes take effect immediately — the baker reads the vote file each time it produces a block. No restart required.</p>
+<p>Per-block voting is separate from protocol amendment voting on TezGov.</p>
+<p>Use the supported TezBake command path for the Liquidity Baking vote:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify configuration.VOTE_FILE.liquidity_baking_toggle_vote pass
+</span></span></code></pre></div><p>Accepted values: <code>on</code>, <code>off</code>, <code>pass</code>.</p>
+<p>Verify current value:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.VOTE_FILE.liquidity_baking_toggle_vote
+</span></span></code></pre></div><p>If you need to apply node config changes immediately:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --node
+</span></span></code></pre></div><p>If your vote file is already correct, no restart/apply is required just to keep baking with that vote.</p>
+<p>For details, see <a href="/tezbake/tutorials/per-block-votes/">Per-Block Votes</a>.</p>
 <h2 id="installation-advanced">Installation (Advanced)</h2>
 <p>You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.</p>
 <p>Follow the steps in <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
