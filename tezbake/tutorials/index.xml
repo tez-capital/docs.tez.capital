@@ -1287,8 +1287,7 @@ Services:
       <description>
         
         
-        &lt;h1 id=&#34;per-block-votes&#34;&gt;Per-Block Votes&lt;/h1&gt;
-&lt;p&gt;This page documents the &lt;em&gt;currently supported&lt;/em&gt; TezBake workflow for per-block voting.&lt;/p&gt;
+        &lt;p&gt;This page documents the &lt;em&gt;currently supported&lt;/em&gt; TezBake workflow for per-block voting.&lt;/p&gt;
 &lt;p&gt;At this time, use this guide for the &lt;em&gt;Liquidity Baking toggle vote&lt;/em&gt; only.&lt;/p&gt;
 &lt;p&gt;Per-block votes are separate from &lt;a href=&#34;https://gov.tez.capital&#34;&gt;protocol upgrade voting via TezGov&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
