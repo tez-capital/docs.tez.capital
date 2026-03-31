@@ -2977,5 +2977,281 @@ Use:&lt;br&gt;
       </description>
     </item>
     
+    <item>
+      <title>Tezbake: Migrating from Kiln</title>
+      <link>/tezbake/tutorials/migrating-from-kiln/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/migrating-from-kiln/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;migrating-from-kiln-to-tezbake&#34;&gt;Migrating from Kiln to TezBake&lt;/h1&gt;
+&lt;p&gt;Kiln is being sunset. If you&amp;rsquo;re currently baking with Kiln, &lt;strong&gt;TezBake&lt;/strong&gt; by &lt;a href=&#34;https://tez.capital&#34;&gt;Tez Capital&lt;/a&gt; is the recommended migration path. It&amp;rsquo;s a modern, actively maintained baking tool that manages your entire stack — node, baker, signer, DAL — under one CLI.&lt;/p&gt;
+&lt;p&gt;This guide walks you through the migration step by step.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; TezBake runs on &lt;strong&gt;Linux only&lt;/strong&gt; (Ubuntu 22.04+ or Debian 12+ recommended). If you&amp;rsquo;re running Kiln on macOS, you&amp;rsquo;ll need to set up a Linux machine first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Linux machine&lt;/strong&gt; — Ubuntu 22.04+, Debian 12+, or similar (dedicated hardware recommended)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ledger&lt;/strong&gt; — Nano S Plus or Nano X (the same one you used with Kiln)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Your baker address&lt;/strong&gt; — the &lt;code&gt;tz1&lt;/code&gt;/&lt;code&gt;tz2&lt;/code&gt;/&lt;code&gt;tz3&lt;/code&gt; address you&amp;rsquo;re currently baking with&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Root/sudo access&lt;/strong&gt; on the Linux machine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hardware-minimums&#34;&gt;Hardware Minimums&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Component&lt;/th&gt;
+&lt;th&gt;Minimum&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CPU&lt;/td&gt;
+&lt;td&gt;3 cores (arm64 or x86-64)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RAM&lt;/td&gt;
+&lt;td&gt;8GB + 8GB swap (or 16GB RAM)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Storage&lt;/td&gt;
+&lt;td&gt;100GB SSD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Network&lt;/td&gt;
+&lt;td&gt;Reliable broadband, low latency&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pre-migration-checklist&#34;&gt;Pre-Migration Checklist&lt;/h2&gt;
+&lt;p&gt;Before touching anything, collect this information from your running Kiln setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Baker address&lt;/strong&gt; (&lt;code&gt;tz1...&lt;/code&gt;, &lt;code&gt;tz2...&lt;/code&gt;, or &lt;code&gt;tz3...&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Key type&lt;/strong&gt; (ed25519/secp256k1/p256) and how it&amp;rsquo;s stored (Ledger, software wallet)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Current cycle&lt;/strong&gt; — check on &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; or &lt;a href=&#34;https://tzstats.com&#34;&gt;TzStats&lt;/a&gt; to confirm your baker is active&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Pending nonce revelations&lt;/strong&gt; — if you have unrevealed nonces from the current cycle, wait for them to be revealed before migrating (or use a snapshot ≥5 days old during bootstrap)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Never run two bakers with the same key at the same time.&lt;/strong&gt; This causes double baking/attestation, which results in &lt;strong&gt;slashing&lt;/strong&gt; (loss of funds). Always stop Kiln completely before starting TezBake.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-by-step-migration&#34;&gt;Step-by-Step Migration&lt;/h2&gt;
+&lt;h3 id=&#34;1-note-your-baker-info&#34;&gt;1. Note Your Baker Info&lt;/h3&gt;
+&lt;p&gt;From your Kiln interface or config, record:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your baker&amp;rsquo;s &lt;code&gt;tz&lt;/code&gt; address&lt;/li&gt;
+&lt;li&gt;Whether you&amp;rsquo;re using a Ledger or software key&lt;/li&gt;
+&lt;li&gt;Your Ledger derivation path (if applicable — typically &lt;code&gt;ed25519/0h/0h&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-stop-kiln&#34;&gt;2. Stop Kiln&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Linux:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If running as a systemd service&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl stop kiln
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or if using the Kiln CLI&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kiln stop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;macOS (if migrating to a separate Linux machine):&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;launchctl stop tezos.kiln
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Confirm Kiln is fully stopped — no &lt;code&gt;octez-node&lt;/code&gt; or &lt;code&gt;octez-baker&lt;/code&gt; processes should be running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep -E &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;octez-node|octez-baker&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep -v grep
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This should return nothing.&lt;/p&gt;
+&lt;h3 id=&#34;3-install-tezbake&#34;&gt;3. Install TezBake&lt;/h3&gt;
+&lt;p&gt;On your Linux machine:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify installation:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-setup-tezbake&#34;&gt;4. Setup TezBake&lt;/h3&gt;
+&lt;p&gt;Run the setup with DAL support (recommended for all bakers):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup --with-dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This installs and configures:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;octez-node&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;octez-baker&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;octez-dal-node&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;octez-signer&lt;/code&gt; (if using remote signer)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-configure-your-ledger&#34;&gt;5. Configure Your Ledger&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect your Ledger to the Linux machine via USB&lt;/li&gt;
+&lt;li&gt;Open the &lt;strong&gt;Tezos Baking&lt;/strong&gt; app on the Ledger&lt;/li&gt;
+&lt;li&gt;Import your Ledger key:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup-ledger
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Follow the prompts to select your key and derivation path, then authorize it for baking on the Ledger.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You&amp;rsquo;ll need the &lt;strong&gt;Tezos Wallet&lt;/strong&gt; app (not Baking) for one-time operations like registration. Switch back to the &lt;strong&gt;Tezos Baking&lt;/strong&gt; app for ongoing baking.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Looking ahead:&lt;/strong&gt; Once you&amp;rsquo;re stable on TezBake with your Ledger, we recommend migrating to a &lt;strong&gt;TezSign&lt;/strong&gt; hardware signer with &lt;strong&gt;BLS/tz4 keys&lt;/strong&gt;. TezSign is a purpose-built signing device (~$20–30 in hardware) that outperforms Ledger for baking and supports the tz4 key type required by modern protocol features like DAL companion keys. This is a separate migration you can plan after you&amp;rsquo;re settled on TezBake — see the &lt;a href=&#34;https://github.com/tez-capital/tezsign&#34;&gt;TezSign documentation&lt;/a&gt; for details.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;6-bootstrap-the-node&#34;&gt;6. Bootstrap the Node&lt;/h3&gt;
+&lt;p&gt;Rather than syncing from scratch, bootstrap from a snapshot:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Regional mirrors are available — replace &lt;code&gt;eu&lt;/code&gt; with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; for faster downloads depending on your location.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If you have unrevealed nonces, use a snapshot that&amp;rsquo;s at least 5–6 days old to avoid nonce revelation issues.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Bootstrap takes anywhere from 10 minutes to an hour+ depending on your hardware and network speed.&lt;/p&gt;
+&lt;h3 id=&#34;7-start-baking&#34;&gt;7. Start Baking&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This starts the node, baker, DAL node, and signer as managed systemd services.&lt;/p&gt;
+&lt;h3 id=&#34;8-register-if-needed&#34;&gt;8. Register (If Needed)&lt;/h3&gt;
+&lt;p&gt;If your baker has been &lt;strong&gt;inactive for more than 3 days&lt;/strong&gt;, you may need to re-register:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake register-key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your baker is already active and was only briefly offline during migration, registration is &lt;strong&gt;not&lt;/strong&gt; required.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Ledger users:&lt;/strong&gt; Registration requires the &lt;strong&gt;Tezos Wallet&lt;/strong&gt; app. Switch back to &lt;strong&gt;Tezos Baking&lt;/strong&gt; app after registration.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;post-migration-verification&#34;&gt;Post-Migration Verification&lt;/h2&gt;
+&lt;p&gt;Run through each of these to confirm everything is working:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Overall status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Signer status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --signer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# DAL status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Node logs (watch for sync progress)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Baker logs (watch for attestations/baking)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;checklist&#34;&gt;Checklist&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;tezbake info&lt;/code&gt; shows node as &lt;strong&gt;synced&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;tezbake info --signer&lt;/code&gt; shows signer &lt;strong&gt;connected&lt;/strong&gt; and key loaded&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;tezbake info --dal&lt;/code&gt; shows DAL node &lt;strong&gt;running&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Baker is producing attestations (check logs or &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; No missed slots in the first few cycles after migration&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Your baker appears active on &lt;a href=&#34;https://tezos.systems&#34;&gt;tezos.systems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+&lt;h3 id=&#34;node-wont-sync&#34;&gt;Node won&amp;rsquo;t sync&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check node logs for errors&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If stuck, try re-bootstrapping&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.us.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ledger-not-connecting&#34;&gt;Ledger not connecting&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure Ledger is unlocked and &lt;strong&gt;Tezos Baking&lt;/strong&gt; app is open&lt;/li&gt;
+&lt;li&gt;Check USB connection — try a different port or cable&lt;/li&gt;
+&lt;li&gt;Make sure no other application (Ledger Live, etc.) is using the device&lt;/li&gt;
+&lt;li&gt;Verify with &lt;code&gt;sudo tezbake info --signer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;baker-not-producing-attestations&#34;&gt;Baker not producing attestations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Confirm the node is fully synced first (&lt;code&gt;tezbake info&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Check that your baker key is properly imported&lt;/li&gt;
+&lt;li&gt;Verify on &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; that your baker has upcoming rights&lt;/li&gt;
+&lt;li&gt;If recently migrated, rights may take 2+ cycles to appear&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;already-baking-or-double-baking-warnings&#34;&gt;&amp;ldquo;Already baking&amp;rdquo; or double-baking warnings&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Immediately stop&lt;/strong&gt; one of the bakers&lt;/li&gt;
+&lt;li&gt;Confirm Kiln is completely stopped on all machines&lt;/li&gt;
+&lt;li&gt;Never run the same key on two bakers simultaneously&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dal-issues&#34;&gt;DAL issues&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check DAL profiles&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Update DAL profiles if needed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake update-dal-profiles --auto
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;file-locations&#34;&gt;File Locations&lt;/h2&gt;
+&lt;p&gt;TezBake stores everything under &lt;code&gt;/bake-buddy/&lt;/code&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Component&lt;/th&gt;
+&lt;th&gt;Path&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Node data&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/bake-buddy/node/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Signer data&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/bake-buddy/signer/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DAL data&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/bake-buddy/dal/&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;useful-commands-reference&#34;&gt;Useful Commands Reference&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake info&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Overall status&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake start&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Start all services&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake stop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Stop all services&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake upgrade&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Update all components&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake node log -f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Follow node logs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake node log baker -f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Follow baker logs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake version --all&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Show all component versions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tezbake register-key&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Register as baker&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;further-resources&#34;&gt;Further Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tez Capital Docs:&lt;/strong&gt; &lt;a href=&#34;https://docs.tez.capital&#34;&gt;docs.tez.capital&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezPeak&lt;/strong&gt; (monitoring dashboard): Included with TezBake — access via browser after setup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezPay&lt;/strong&gt; (automated reward distribution): &lt;a href=&#34;https://github.com/tez-capital/tezpay&#34;&gt;github.com/tez-capital/tezpay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezGov&lt;/strong&gt; (governance &amp;amp; staking): &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community Support:&lt;/strong&gt; &lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Octez Documentation:&lt;/strong&gt; &lt;a href=&#34;https://octez.tezos.com/docs/introduction/tezos.html&#34;&gt;octez.tezos.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
