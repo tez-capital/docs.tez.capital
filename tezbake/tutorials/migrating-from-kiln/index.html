@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1064">
+<meta itemprop="wordCount" content="1068">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -502,15 +502,15 @@
 <p>Kiln is being sunset. If you&rsquo;re currently baking with Kiln, <strong>TezBake</strong> by <a href="https://tez.capital">Tez Capital</a> is the recommended migration path. It&rsquo;s a modern, actively maintained baking tool that manages your entire stack — node, baker, signer, DAL — under one CLI.</p>
 <p>This guide walks you through the migration step by step.</p>
 <blockquote>
-<p><strong>Important:</strong> TezBake runs on <strong>Linux only</strong> (Ubuntu 22.04+ or Debian 12+ recommended). If you&rsquo;re running Kiln on macOS, you&rsquo;ll need to set up a Linux machine first.</p>
+<p><strong>TezBake runs on Linux and macOS</strong> (Ubuntu 22.04+, Debian 12+, or macOS with Apple Silicon / Intel). Linux is recommended for production bakers, but macOS is fully supported.</p>
 </blockquote>
 <hr>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li><strong>Linux machine</strong> — Ubuntu 22.04+, Debian 12+, or similar (dedicated hardware recommended)</li>
+<li><strong>Linux or macOS machine</strong> — Ubuntu 22.04+, Debian 12+, or macOS (dedicated hardware recommended for production)</li>
 <li><strong>Ledger</strong> — Nano S Plus or Nano X (the same one you used with Kiln)</li>
 <li><strong>Your baker address</strong> — the <code>tz1</code>/<code>tz2</code>/<code>tz3</code> address you&rsquo;re currently baking with</li>
-<li><strong>Root/sudo access</strong> on the Linux machine</li>
+<li><strong>Root/sudo access</strong> on the machine</li>
 </ul>
 <h3 id="hardware-minimums">Hardware Minimums</h3>
 <table>
