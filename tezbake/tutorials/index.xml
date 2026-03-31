@@ -32,14 +32,14 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ System Requirements&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 22.04+ or Debian 12+ (other Linux distributions may work but are untested)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OS:&lt;/strong&gt; Ubuntu 22.04+, Debian 12+, or macOS (other Linux distributions may work but are untested)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; See &lt;a href=&#34;/getting-started/hardware-requirements/&#34;&gt;Hardware Requirements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;macOS and Windows are &lt;strong&gt;not supported&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Windows is &lt;strong&gt;not supported&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Ubuntu 22.04+ or Debian 12+&lt;/strong&gt; Linux server or desktop with SSH access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ubuntu 22.04+, Debian 12+, or macOS&lt;/strong&gt; — server or desktop with SSH access (Linux recommended for production)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers/delegators — see staking table below)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ledger hardware wallet&lt;/strong&gt; with Tezos Wallet app installed, OR a &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;TezSign device&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hardware meeting minimum specs:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
@@ -2116,7 +2116,7 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
         &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;Docker installed&lt;/a&gt;&lt;/strong&gt; — Docker Engine must be installed and running on your system&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Linux operating system&lt;/strong&gt; — Ubuntu 22.04+ or Debian 12+ recommended; macOS and Windows are not supported&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux or macOS&lt;/strong&gt; — Ubuntu 22.04+ or Debian 12+ recommended; macOS is also supported; Windows is not supported&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers — see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#stake-your-baking-xtz-security-deposit&#34;&gt;Baking on Mainnet&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
 &lt;/ul&gt;
