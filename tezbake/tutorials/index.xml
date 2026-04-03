@@ -3112,8 +3112,8 @@ Use:&lt;br&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;6-bootstrap-the-node&#34;&gt;6. Bootstrap the Node&lt;/h3&gt;
 &lt;p&gt;Rather than syncing from scratch, bootstrap from a snapshot:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.eu.tzinit.org/mainnet/rolling
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Regional mirrors are available — replace &lt;code&gt;eu&lt;/code&gt; with &lt;code&gt;us&lt;/code&gt; or &lt;code&gt;asia&lt;/code&gt; for faster downloads depending on your location.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TezBake automatically selects the fastest mirror for your region.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If you have unrevealed nonces, use a snapshot that&amp;rsquo;s at least 5–6 days old to avoid nonce revelation issues.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3162,7 +3162,7 @@ Use:&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If stuck, try re-bootstrapping&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.us.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ledger-not-connecting&#34;&gt;Ledger not connecting&lt;/h3&gt;
 &lt;ul&gt;
