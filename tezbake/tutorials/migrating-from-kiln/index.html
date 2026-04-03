@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1259">
+<meta itemprop="wordCount" content="1377">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -544,7 +544,12 @@
 <p>Before touching anything, collect this information from your running Kiln setup:</p>
 <ul>
 <li><input disabled="" type="checkbox"> <strong>Baker address</strong> (<code>tz1...</code>, <code>tz2...</code>, or <code>tz3...</code>)</li>
-<li><input disabled="" type="checkbox"> <strong>Key type</strong> (ed25519/secp256k1/p256) and how it&rsquo;s stored (Ledger, software wallet)</li>
+<li><input disabled="" type="checkbox"> <strong>Key type</strong> (ed25519/secp256k1/p256) and how it&rsquo;s stored (Ledger)</li>
+</ul>
+<blockquote>
+<p><strong>ℹ️</strong> This guide covers Ledger-based migrations. If you baked with a software key in Kiln, see the <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> guide for general setup instructions.</p>
+</blockquote>
+<ul>
 <li><input disabled="" type="checkbox"> <strong>Current cycle</strong> — check on <a href="https://tzkt.io">TzKT</a> or <a href="https://tzstats.com">TzStats</a> to confirm your baker is active</li>
 <li><input disabled="" type="checkbox"> <strong>Pending nonce revelations</strong> — if you have unrevealed nonces from the current cycle, wait for them to be revealed before migrating (or use a snapshot ≥5 days old during bootstrap)</li>
 </ul>
@@ -596,15 +601,19 @@
 <li>Open the <strong>Tezos Baking</strong> app on the Ledger</li>
 <li>Import your Ledger key:</li>
 </ol>
-<p>The command varies depending on your key type. Use the derivation path you recorded in Step 1:</p>
+<p>The command varies depending on your key type. <strong>Before copy-pasting</strong>, check two things:</p>
+<ol>
+<li><strong>Your derivation path from Step 1</strong> — the examples below use the default <code>0h/0h</code>. If your Kiln setup used a custom path (e.g. <code>ed25519/1h/2h</code>), you <strong>must</strong> substitute it. Using the wrong path imports a completely different key.</li>
+<li><strong>The current chain level</strong> — replace <code>&lt;CURRENT_LEVEL&gt;</code> below with the current block level from <a href="https://tzkt.io">TzKT</a> or your node. This sets the Ledger&rsquo;s high water mark (HWM), which prevents double-baking. <strong>Do not use <code>--hwm 1</code></strong> on a migration — that resets the Ledger&rsquo;s double-bake protection and could lead to slashing if your old baker isn&rsquo;t fully stopped.</li>
+</ol>
 <p><strong>tz1 (ed25519) — most common with Kiln:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ed25519/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ed25519/0h/0h&#34;</span> --authorize --hwm &lt;CURRENT_LEVEL&gt;
 </span></span></code></pre></div><p><strong>tz3 (P-256 / NIST):</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm &lt;CURRENT_LEVEL&gt;
 </span></span></code></pre></div><p><strong>tz2 (secp256k1):</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;secp256k1/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;secp256k1/0h/0h&#34;</span> --authorize --hwm &lt;CURRENT_LEVEL&gt;
 </span></span></code></pre></div><blockquote>
-<p><strong>💡</strong> The <code>0h/0h</code> part is the default derivation path. If your Kiln setup used a custom path (e.g. <code>ed25519/1h/0h</code>), substitute it here. The derivation path <strong>must</strong> match exactly or you&rsquo;ll import a different key.</p>
+<p><strong>💡 Finding the current level:</strong> Run <code>curl -s https://rpc.tzkt.io/mainnet/chains/main/blocks/head/header | grep '&quot;level&quot;'</code> or check <a href="https://tzkt.io">TzKT</a> — the block level is shown on the homepage. Round up by 10 to be safe (e.g. if current level is 7,500,000, use <code>--hwm 7500010</code>).</p>
 </blockquote>
 <p>Confirm on the Ledger screen when prompted to authorize the key for baking.</p>
 <blockquote>
