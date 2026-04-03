@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1068">
+<meta itemprop="wordCount" content="1208">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -558,8 +558,11 @@
 <ul>
 <li>Your baker&rsquo;s <code>tz</code> address</li>
 <li>Whether you&rsquo;re using a Ledger or software key</li>
-<li>Your Ledger derivation path (if applicable — typically <code>ed25519/0h/0h</code>)</li>
+<li>Your <strong>Ledger derivation path</strong> — this is critical. Kiln typically uses <code>ed25519/0h/0h</code> but yours may differ. Check your Kiln config or logs for the exact path. Using the wrong derivation path in TezBake will import a <strong>different key</strong> and your baker won&rsquo;t work.</li>
 </ul>
+<blockquote>
+<p><strong>💡 How to find your derivation path in Kiln:</strong> Check your Kiln configuration file or look for the <code>--ledger</code> flag in your running baker process (<code>ps aux | grep octez-baker</code>). The derivation path appears after the Ledger URI, e.g. <code>ledger://.../&lt;curve&gt;/&lt;path&gt;</code>.</p>
+</blockquote>
 <h3 id="2-stop-kiln">2. Stop Kiln</h3>
 <p><strong>Linux:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If running as a systemd service</span>
@@ -595,6 +598,11 @@
 </ol>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger
 </span></span></code></pre></div><p>Follow the prompts to select your key and derivation path, then authorize it for baking on the Ledger.</p>
+<blockquote>
+<p>⚠️ <strong>Verify the derivation path matches what you recorded in Step 1.</strong> If you use the wrong path, TezBake will import a different key than the one your baker is registered with. After setup, confirm the imported address matches your baker address:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake info --signer
+</span></span></code></pre></div><p>The <code>tz</code> address shown must match your baker address exactly. If it doesn&rsquo;t, re-run <code>setup-ledger</code> with the correct derivation path.</p>
+</blockquote>
 <blockquote>
 <p><strong>Note:</strong> You&rsquo;ll need the <strong>Tezos Wallet</strong> app (not Baking) for one-time operations like registration. Switch back to the <strong>Tezos Baking</strong> app for ongoing baking.</p>
 </blockquote>
