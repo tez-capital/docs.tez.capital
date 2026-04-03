@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1377">
+<meta itemprop="wordCount" content="1352">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -544,12 +544,7 @@
 <p>Before touching anything, collect this information from your running Kiln setup:</p>
 <ul>
 <li><input disabled="" type="checkbox"> <strong>Baker address</strong> (<code>tz1...</code>, <code>tz2...</code>, or <code>tz3...</code>)</li>
-<li><input disabled="" type="checkbox"> <strong>Key type</strong> (ed25519/secp256k1/p256) and how it&rsquo;s stored (Ledger)</li>
-</ul>
-<blockquote>
-<p><strong>ℹ️</strong> This guide covers Ledger-based migrations. If you baked with a software key in Kiln, see the <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> guide for general setup instructions.</p>
-</blockquote>
-<ul>
+<li><input disabled="" type="checkbox"> <strong>Key type</strong> (ed25519/secp256k1/p256) — stored on your Ledger</li>
 <li><input disabled="" type="checkbox"> <strong>Current cycle</strong> — check on <a href="https://tzkt.io">TzKT</a> or <a href="https://tzstats.com">TzStats</a> to confirm your baker is active</li>
 <li><input disabled="" type="checkbox"> <strong>Pending nonce revelations</strong> — if you have unrevealed nonces from the current cycle, wait for them to be revealed before migrating (or use a snapshot ≥5 days old during bootstrap)</li>
 </ul>
