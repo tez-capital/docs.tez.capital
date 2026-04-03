@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1208">
+<meta itemprop="wordCount" content="1259">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -596,10 +596,19 @@
 <li>Open the <strong>Tezos Baking</strong> app on the Ledger</li>
 <li>Import your Ledger key:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger
-</span></span></code></pre></div><p>Follow the prompts to select your key and derivation path, then authorize it for baking on the Ledger.</p>
+<p>The command varies depending on your key type. Use the derivation path you recorded in Step 1:</p>
+<p><strong>tz1 (ed25519) — most common with Kiln:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ed25519/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span></code></pre></div><p><strong>tz3 (P-256 / NIST):</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span></code></pre></div><p><strong>tz2 (secp256k1):</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;secp256k1/0h/0h&#34;</span> --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>💡</strong> The <code>0h/0h</code> part is the default derivation path. If your Kiln setup used a custom path (e.g. <code>ed25519/1h/0h</code>), substitute it here. The derivation path <strong>must</strong> match exactly or you&rsquo;ll import a different key.</p>
+</blockquote>
+<p>Confirm on the Ledger screen when prompted to authorize the key for baking.</p>
 <blockquote>
-<p>⚠️ <strong>Verify the derivation path matches what you recorded in Step 1.</strong> If you use the wrong path, TezBake will import a different key than the one your baker is registered with. After setup, confirm the imported address matches your baker address:</p>
+<p>⚠️ <strong>Verify the imported key matches your baker.</strong> After setup, check the address:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake info --signer
 </span></span></code></pre></div><p>The <code>tz</code> address shown must match your baker address exactly. If it doesn&rsquo;t, re-run <code>setup-ledger</code> with the correct derivation path.</p>
 </blockquote>
