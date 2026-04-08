@@ -206,6 +206,8 @@
   </url><url>
     <loc>/getting-started/glossary/</loc>
   </url><url>
+    <loc>/etherlink/tutorials/voting-on-proposals/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/baking-with-consensus-key/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-prism/</loc>
@@ -221,6 +223,8 @@
     <loc>/faq/</loc>
   </url><url>
     <loc>/categories/</loc>
+  </url><url>
+    <loc>/etherlink/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>
