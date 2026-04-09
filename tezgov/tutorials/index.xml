@@ -731,5 +731,178 @@
       </description>
     </item>
     
+    <item>
+      <title>Tezgov: Voting on Etherlink</title>
+      <link>/tezgov/tutorials/voting-on-etherlink-proposals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezgov/tutorials/voting-on-etherlink-proposals/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;etherlink-governance-overview&#34;&gt;Etherlink governance overview&lt;/h2&gt;
+&lt;p&gt;Etherlink is governed by Tezos bakers through an on-chain mechanism similar to Tezos protocol voting. Bakers vote on &lt;strong&gt;kernel upgrades&lt;/strong&gt; (slow or fast track) and &lt;strong&gt;sequencer operator changes&lt;/strong&gt; using a smart contract on Tezos layer 1.&lt;/p&gt;
+&lt;p&gt;The voting mechanics mirror Tezos governance:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Stage&lt;/th&gt;
+&lt;th&gt;Tezos&lt;/th&gt;
+&lt;th&gt;Etherlink (slow)&lt;/th&gt;
+&lt;th&gt;Etherlink (fast)&lt;/th&gt;
+&lt;th&gt;Etherlink (sequencer)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Submit/upvote proposals&lt;/td&gt;
+&lt;td&gt;✓&lt;/td&gt;
+&lt;td&gt;✓&lt;/td&gt;
+&lt;td&gt;✓&lt;/td&gt;
+&lt;td&gt;✓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Voting period&lt;/td&gt;
+&lt;td&gt;Exploration + Promotion&lt;/td&gt;
+&lt;td&gt;Proposal + Promotion&lt;/td&gt;
+&lt;td&gt;Proposal + Promotion&lt;/td&gt;
+&lt;td&gt;Proposal + Promotion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Quorum&lt;/td&gt;
+&lt;td&gt;Dynamic (20–70%)&lt;/td&gt;
+&lt;td&gt;5%&lt;/td&gt;
+&lt;td&gt;5% Proposal / 15% Promotion&lt;/td&gt;
+&lt;td&gt;1% Proposal / 8% Promotion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Supermajority&lt;/td&gt;
+&lt;td&gt;80%&lt;/td&gt;
+&lt;td&gt;75%&lt;/td&gt;
+&lt;td&gt;80%&lt;/td&gt;
+&lt;td&gt;75%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Testing&lt;/td&gt;
+&lt;td&gt;Cooldown + Adoption&lt;/td&gt;
+&lt;td&gt;Cooldown&lt;/td&gt;
+&lt;td&gt;Cooldown&lt;/td&gt;
+&lt;td&gt;Cooldown&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Period length&lt;/td&gt;
+&lt;td&gt;~14 days each&lt;/td&gt;
+&lt;td&gt;~4.5 days each&lt;/td&gt;
+&lt;td&gt;~8 hours each&lt;/td&gt;
+&lt;td&gt;~4.5 days each&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;All Etherlink governance is handled &lt;strong&gt;on Tezos L1&lt;/strong&gt; — you don&amp;rsquo;t need a separate Etherlink node or account. Your voting power is determined by the Tez staked with your baker.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Running baker on mainnet&lt;/a&gt;&lt;/strong&gt; — you must be an active registered baker with staked Tez&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Staked XTZ&lt;/strong&gt; — enough to meet the minimum bond requirement for your baker&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ledger hardware wallet&lt;/strong&gt; with the Tezos &lt;strong&gt;Wallet&lt;/strong&gt; app installed (not the Baking app)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://gov.tez.capital&#34;&gt;TezGov web portal access&lt;/a&gt;&lt;/strong&gt; — works best with Chromium-based browsers (Chrome, Brave, Edge)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Etherlink voting key&lt;/strong&gt; — your baker&amp;rsquo;s Etherlink voting key is derived from the same Ledger seed as your Tezos baker key. TezGov handles the derivation automatically when you vote on Etherlink proposals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;understanding-what-youre-voting-on&#34;&gt;Understanding what you&amp;rsquo;re voting on&lt;/h2&gt;
+&lt;p&gt;Etherlink has three separate governance tracks:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kernel (slow)&lt;/strong&gt; — For major kernel upgrades. ~4.5 days for Proposal, ~4.5 days for Promotion, then a ~1 day Cooldown. Designed for larger changes that need more evaluation time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Kernel (fast)&lt;/strong&gt; — For smaller, simpler, or urgent changes. ~8 hours per period. Higher quorum requirements (15% in Promotion vs 5% for slow). Code may be shared with only a subset of bakers before approval to avoid exposing unpatched vulnerabilities.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sequencer&lt;/strong&gt; — For selecting the sequencer operator. Same timing as slow kernel (~4.5 days each period). Passed proposals trigger a sequencer operator transition.&lt;/p&gt;
+&lt;p&gt;All three tracks use the same vote interface in TezGov — you&amp;rsquo;ll select which governance track you want to vote on.&lt;/p&gt;
+&lt;h2 id=&#34;proposal-voting-with-tezgov&#34;&gt;Proposal voting with TezGov&lt;/h2&gt;
+&lt;p&gt;TezGov allows you to participate in Etherlink governance using your Ledger hardware wallet, with the same login flow as Tezos mainnet voting.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 Use a secondary Ledger device&lt;/strong&gt; (with the same seed) to vote while your primary device is baking. Or briefly stop your baker, vote, then restart.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Voting while baking:&lt;/strong&gt; If you&amp;rsquo;re voting from your baking machine while your baker is running, stop the baker first:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vote via TezGov, then restart:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Failure to stop the baker may result in a &amp;ldquo;Transaction Not Trusted&amp;rdquo; error — the Ledger Wallet app cannot share the device with a running baker process.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-by-step&#34;&gt;Step-by-step&lt;/h2&gt;
+&lt;h3 id=&#34;1-connect-to-tezgov&#34;&gt;1. Connect to TezGov&lt;/h3&gt;
+&lt;p&gt;Navigate to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and log in using &lt;strong&gt;Ledger Direct&lt;/strong&gt; (recommended — you&amp;rsquo;ll see the transaction details on your Ledger screen before signing).&lt;/p&gt;
+&lt;p&gt;Alternatively use &lt;strong&gt;Remote signer&lt;/strong&gt; (if you have a signer on your LAN) or &lt;strong&gt;Beacon wallet&lt;/strong&gt; (Temple, Kukai, etc. — you won&amp;rsquo;t see specific vote details on the Ledger).&lt;/p&gt;
+&lt;h3 id=&#34;2-navigate-to-etherlink-governance&#34;&gt;2. Navigate to Etherlink Governance&lt;/h3&gt;
+&lt;p&gt;Once logged in, look for a &lt;strong&gt;governance selector&lt;/strong&gt; or tab in the TezGov interface that lets you switch between &lt;strong&gt;Tezos&lt;/strong&gt; and &lt;strong&gt;Etherlink&lt;/strong&gt; governance tracks.&lt;/p&gt;
+&lt;p&gt;Select the relevant Etherlink governance track (Kernel / Fast Kernel / Sequencer) based on which proposal you want to vote on.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡&lt;/strong&gt; Check &lt;a href=&#34;https://governance.etherlink.com&#34;&gt;governance.etherlink.com&lt;/a&gt; for a list of active proposals and their current period.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;3-review-the-proposal&#34;&gt;3. Review the Proposal&lt;/h3&gt;
+&lt;p&gt;During the &lt;strong&gt;Proposal period&lt;/strong&gt;, you&amp;rsquo;ll see the list of submitted kernel or sequencer proposals. Each proposal shows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The proposed kernel/sequencer version or address&lt;/li&gt;
+&lt;li&gt;The submitting baker&lt;/li&gt;
+&lt;li&gt;Current support (% of voting power gathered)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can submit a new proposal or upvote an existing one. Bakers can support up to &lt;strong&gt;20 proposals&lt;/strong&gt; in a single Proposal period.&lt;/p&gt;
+&lt;h3 id=&#34;4-vote&#34;&gt;4. Vote&lt;/h3&gt;
+&lt;p&gt;During the &lt;strong&gt;Promotion period&lt;/strong&gt;, the leading proposal is presented with &lt;strong&gt;YAY&lt;/strong&gt;, &lt;strong&gt;NAY&lt;/strong&gt;, and &lt;strong&gt;PASS&lt;/strong&gt; buttons.&lt;/p&gt;
+&lt;p&gt;Click your vote and confirm on your Ledger screen. Your voting power is proportional to your staked Tez — the more XTZ staked with your baker, the more weight your vote carries.&lt;/p&gt;
+&lt;p&gt;After confirmation, the page refreshes within ~30 seconds to reflect your vote.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ PASS votes count toward quorum&lt;/strong&gt; (participation requirement) but don&amp;rsquo;t affect the supermajority tally. If you want to support a proposal but don&amp;rsquo;t feel strongly, PASS is better than abstaining.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;5-cooldown-and-activation&#34;&gt;5. Cooldown and Activation&lt;/h3&gt;
+&lt;p&gt;After a successful Promotion vote, the &lt;strong&gt;Cooldown period&lt;/strong&gt; (~24 hours) begins. During Cooldown, no voting is possible — this gives developers and bakers time to adapt their infrastructure.&lt;/p&gt;
+&lt;p&gt;At the end of the Cooldown, any Etherlink user can trigger the kernel upgrade. The exact timing depends on when this trigger is called.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-voting-power-is-calculated&#34;&gt;How voting power is calculated&lt;/h2&gt;
+&lt;p&gt;Unlike Tezos mainnet where voting power is fixed at the start of a governance period, Etherlink&amp;rsquo;s voting power is determined by the &lt;strong&gt;baker&amp;rsquo;s staked Tez at the time of each individual vote&lt;/strong&gt;. This means:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Your voting power is dynamic — it reflects your current stake at the moment you cast each vote&lt;/li&gt;
+&lt;li&gt;If your stake changes mid-period (e.g., from unstaking or new delegations), your next vote uses the updated amount&lt;/li&gt;
+&lt;li&gt;All of your staked Tez counts, not just the frozen bond&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;synchronization-with-tezos-l1-governance&#34;&gt;Synchronization with Tezos L1 governance&lt;/h2&gt;
+&lt;p&gt;Etherlink governance periods are &lt;strong&gt;synchronized with Tezos L1 governance periods&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each Etherlink Proposal or Promotion period must fit entirely within a &lt;strong&gt;single Tezos governance period&lt;/strong&gt; — it cannot span two Tezos periods&lt;/li&gt;
+&lt;li&gt;This ensures each baker&amp;rsquo;s voting power is consistent throughout the Etherlink period&lt;/li&gt;
+&lt;li&gt;The start of a Tezos governance period always coincides with the start of an Etherlink Proposal or Promotion period&lt;/li&gt;
+&lt;li&gt;Because Etherlink periods are shorter than Tezos periods, multiple Etherlink periods can occur within one Tezos governance period&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This means timing is predictable: you can always check the current Tezos governance status to know where you are in the Etherlink cycle.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+&lt;h3 id=&#34;transaction-not-trusted-error&#34;&gt;&amp;ldquo;Transaction Not Trusted&amp;rdquo; error&lt;/h3&gt;
+&lt;p&gt;This happens when your Ledger is already in use by the baking app while trying to vote. Stop your baker before voting:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# vote via TezGov&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;no-etherlink-proposals-visible-in-tezgov&#34;&gt;No Etherlink proposals visible in TezGov&lt;/h3&gt;
+&lt;p&gt;Check &lt;a href=&#34;https://governance.etherlink.com&#34;&gt;governance.etherlink.com&lt;/a&gt; to confirm whether a Proposal or Promotion period is active. If no period is active, TezGov may not show Etherlink voting options. Voting is only possible during active periods.&lt;/p&gt;
+&lt;h3 id=&#34;voting-power-shows-zero-or-unexpected-value&#34;&gt;Voting power shows zero or unexpected value&lt;/h3&gt;
+&lt;p&gt;Your voting power is derived from your &lt;strong&gt;current staked Tez&lt;/strong&gt; — not your total baker balance. Make sure your baker has staked XTZ. Also verify you are connected with the correct Ledger account (and that it&amp;rsquo;s the right derivation path for your Etherlink voting key).&lt;/p&gt;
+&lt;h3 id=&#34;vote-not-registering-on-chain&#34;&gt;Vote not registering on-chain&lt;/h3&gt;
+&lt;p&gt;Votes are submitted as on-chain transactions to the Etherlink governance contract. If the transaction fails, check:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Is your baker active and staked?&lt;/li&gt;
+&lt;li&gt;Is the governance period still in the correct phase?&lt;/li&gt;
+&lt;li&gt;Is your Ledger transaction confirmed on-screen?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For support, contact the Tez Capital team on &lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;further-resources&#34;&gt;Further Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.etherlink.com/governance/how-is-etherlink-governed/&#34;&gt;Etherlink Governance Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://governance.etherlink.com&#34;&gt;Etherlink Governance Portal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;TezGov Voting on Mainnet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/managing-baker-settings/&#34;&gt;Managing Baker Settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>
