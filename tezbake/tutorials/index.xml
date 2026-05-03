@@ -482,9 +482,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
         
         &lt;h2 id=&#34;tezos-testnets&#34;&gt;Tezos Testnets&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Seoulnet is a simple and fast testnet with 20 minute cycles. It&amp;rsquo;s a great way to quickly test your baker setup and get familiar with the Tezos baking process. Seoulnet will be removed once the Tallinn upgrade is activated on mainnet. Each protocol upgrade on mainnet usually comes with a new testnet that has the same features and really fast cycles.&lt;/li&gt;
-&lt;li&gt;Ghostnet is the original Tezos testnet. It is a public testnet that is used by developers and users to test new features and applications before they are deployed on the mainnet. Ghostnet is a great way to get familiar with the Tezos ecosystem and to test your applications in a safe environment where the chain conditions are similar to mainnet.&lt;/li&gt;
-&lt;li&gt;Shadownet is similar to Ghostnet but it is a private testnet that is used by developers to test new features and applications before they are deployed on the mainnet. Shadownet is not open to the public and is only accessible to developers who are working on Tezos projects. Shadownet bakers are centrally selected by the core Tezos development team. Setting up a testnet bakery here is possible but not encouraged.&lt;/li&gt;
+&lt;li&gt;Bakingnet is the recommended testnet for most bakers. It is a long-running baker testnet that switches to new Tezos protocol proposals about one week before they go live on Mainnet, giving bakers time to test upgrades before production activation.&lt;/li&gt;
+&lt;li&gt;Tallinnnet is a protocol testnet with 20 minute cycles. Use it when you want rapid testing for setup, key activation, registration, or inactivity behavior.&lt;/li&gt;
+&lt;li&gt;Shadownet is a long-running testnet for application and staging tests. Do not set up a baker on Shadownet unless you have been explicitly invited or coordinated with the Shadownet operators. Bakingnet is the preferred baker testnet.&lt;/li&gt;
+&lt;li&gt;Ghostnet is the original Tezos testnet and is now deprecated. Prefer Bakingnet or Tallinnnet for new baker testing.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
@@ -521,23 +522,26 @@ All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorial
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://bake.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setup-tezos-node-signer-dal-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer, DAL and install tezbake dependencies&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Seoulnet setup:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/seoulnet.json
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Ghostnet setup:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/ghostnet.json
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Bakingnet setup (recommended for most bakers):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/bakingnet.json
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Tallinnnet setup (20 minute cycles for rapid testing):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/tallinnnet.json
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bootstrap-tezos-node&#34;&gt;Bootstrap Tezos node&lt;/h3&gt;
 &lt;p&gt;At this stage, it&amp;rsquo;s necessary to bootstrap your node, meaning to download a copy of the blockchain so you don&amp;rsquo;t have to synchronize block-by-block, which takes hours at best.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node &amp;lt;url&amp;gt; &amp;lt;block_hash&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Seoulnet example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/seoulnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Ghostnet example:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.eu.tzinit.org/ghostnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Bakingnet example:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/bakingnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Tallinnnet example:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/tallinnnet/rolling &amp;lt;BLOCK_HASH&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Get the current block hash from the snapshot provider&amp;rsquo;s website.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:
-&lt;a href=&#34;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&#34;&gt;https://snapshots.eu.tzinit.org/ghostnet/rolling.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Get the block hash and block level from the snapshot provider&amp;rsquo;s website:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://snapshots.tzinit.org/bakingnet/rolling.html&#34;&gt;https://snapshots.tzinit.org/bakingnet/rolling.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://snapshots.tzinit.org/tallinnnet/rolling.html&#34;&gt;https://snapshots.tzinit.org/tallinnnet/rolling.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;&amp;lt;block_hash&amp;gt;&lt;/code&gt; argument is optional but encouraged for security verification. If you don&amp;rsquo;t want to bother with this protection, you can skip it for a faster bootstrap.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -601,7 +605,7 @@ All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorial
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; consensus key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to companion
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; Both keys take effect after &lt;strong&gt;3 cycles&lt;/strong&gt;. On fast testnets like Seoulnet this is ~1 hour; on Ghostnet ~3 days. Monitor activation at:
+&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; Both keys take effect after &lt;strong&gt;3 cycles&lt;/strong&gt;. On 20 minute cycle testnets like Tallinnnet this is ~1 hour; on longer-cycle testnets it can take days. Monitor activation at:
 &lt;code&gt;https://tzkt.io/&amp;lt;your_baker_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Step 5 — Add the companion key alias to the baker configuration:&lt;/strong&gt;&lt;/p&gt;
@@ -609,15 +613,19 @@ All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorial
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;register-as-baker-on-the-tezos-blockchain-testnet&#34;&gt;Register as baker on the Tezos blockchain Testnet&lt;/h3&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
-&lt;p&gt;To secure your XTZ security deposit on Ghostnet you can use the faucet to get some free XTZ. You can find the faucet at &lt;a href=&#34;https://faucet.ghostnet.teztnets.com/&#34;&gt;https://faucet.ghostnet.teztnets.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Each Tezos testnet has a faucet over at &lt;a href=&#34;https://teztnets.com&#34;&gt;https://teztnets.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To secure your XTZ security deposit on a testnet, use the faucet for your chosen network to get free test XTZ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bakingnet: &lt;a href=&#34;https://faucet.bakingnet.teztnets.com&#34;&gt;https://faucet.bakingnet.teztnets.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tallinnnet: &lt;a href=&#34;https://faucet.tallinnnet.teztnets.com&#34;&gt;https://faucet.tallinnnet.teztnets.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Current Tezos testnet faucets are listed at &lt;a href=&#34;https://teztnets.com&#34;&gt;https://teztnets.com&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ When Registration is Required:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;You must register your baker if:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You&amp;rsquo;re setting up a new baker (first time)&lt;/li&gt;
-&lt;li&gt;Your baker has been inactive beyond the inactivity period (2 cycles - about 40 minutes on fast testnets like Seoulnet, or ~2 days on Ghostnet)&lt;/li&gt;
+&lt;li&gt;Your baker has been inactive beyond the inactivity period (2 cycles - about 40 minutes on 20 minute cycle testnets like Tallinnnet, or longer on standard-cycle testnets)&lt;/li&gt;
 &lt;li&gt;Your baking rights have stopped appearing in the schedule&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
