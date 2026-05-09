@@ -16,6 +16,29 @@
     
     
     <item>
+      <title>Tezbake: Advanced Configuration</title>
+      <link>/tezbake/reference/advanced-configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/reference/advanced-configuration/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;advanced-configuration&#34;&gt;Advanced Configuration&lt;/h1&gt;
+&lt;p&gt;TezBake stores runtime settings under the node configuration. Advanced users can inspect and customize those values with &lt;code&gt;tezbake node show&lt;/code&gt; and &lt;code&gt;tezbake node modify&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;customize-node-startup-arguments&#34;&gt;Customize node startup arguments&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;configuration.STARTUP_ARGS&lt;/code&gt; to pass additional arguments to the Octez node process.&lt;/p&gt;
+&lt;p&gt;For example, to set the node synchronization threshold to &lt;code&gt;0&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify configuration.STARTUP_ARGS &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;--synchronisation-threshold=0&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Restart TezBake after changing startup arguments so the node starts with the new configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake restart
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can verify the configured startup arguments with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.STARTUP_ARGS
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: tezbake</title>
       <link>/tezbake/reference/cmd/tezbake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
