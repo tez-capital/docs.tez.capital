@@ -564,7 +564,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Upgrade TezPay Only&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake upgrade --pay&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake upgrade --pay&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Verify Installation&lt;/td&gt;
@@ -588,23 +588,23 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Check Continual Payout Status&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake pay continual status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake pay continual status&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Enable Continual Payouts&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake pay continual enable&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake pay continual enable&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Disable Continual Payouts&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake pay continual disable&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake pay continual disable&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Start TezPay&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake pay start&lt;/code&gt; or &lt;code&gt;tezbake start --pay&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake pay start&lt;/code&gt; or &lt;code&gt;sudo tezbake start --pay&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Stop TezPay&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake pay stop&lt;/code&gt; or &lt;code&gt;tezbake stop --pay&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo tezbake pay stop&lt;/code&gt; or &lt;code&gt;sudo tezbake stop --pay&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;TezPay Information&lt;/td&gt;
@@ -695,15 +695,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Check current status:&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;tezbake pay continual status&lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;sudo tezbake pay continual status&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Enable continual payouts:&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;tezbake pay continual enable&lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;sudo tezbake pay continual enable&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Disable continual payouts:&lt;/strong&gt;&lt;br&gt;
-&lt;code&gt;tezbake pay continual disable&lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;sudo tezbake pay continual disable&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;setting-the-payout-interval&#34;&gt;Setting the Payout Interval&lt;/h3&gt;
@@ -733,7 +733,9 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;--interval&lt;/code&gt; CLI flag does not work with TezBake integration. You must configure the interval in &lt;code&gt;app.json&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;hr&gt;
+&lt;p&gt;After changing the &lt;code&gt;CONTINUAL&lt;/code&gt; block in &lt;code&gt;/bake-buddy/pay/app.json&lt;/code&gt;, apply the updated pay module configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake upgrade --pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.&lt;/p&gt;
@@ -742,15 +744,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Start TezPay:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;direct: &lt;code&gt;tezbake pay start&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;combined: &lt;code&gt;tezbake start --pay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;direct: &lt;code&gt;sudo tezbake pay start&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;combined: &lt;code&gt;sudo tezbake start --pay&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Stop TezPay:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;direct: &lt;code&gt;tezbake pay stop&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;combined: &lt;code&gt;tezbake stop --pay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;direct: &lt;code&gt;sudo tezbake pay stop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;combined: &lt;code&gt;sudo tezbake stop --pay&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -767,7 +769,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Update TezPay to the latest version:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake upgrade --pay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Run a dry-run to verify payouts:&lt;/strong&gt;&lt;/p&gt;
@@ -778,7 +780,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;If satisfied, restart the service:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --pay
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start --pay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;

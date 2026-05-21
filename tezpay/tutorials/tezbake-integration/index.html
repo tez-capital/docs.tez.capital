@@ -29,7 +29,7 @@
 <meta itemprop="name" content="TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="962">
+<meta itemprop="wordCount" content="996">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -512,7 +512,7 @@
 </tr>
 <tr>
 <td>Upgrade TezPay Only</td>
-<td><code>tezbake upgrade --pay</code></td>
+<td><code>sudo tezbake upgrade --pay</code></td>
 </tr>
 <tr>
 <td>Verify Installation</td>
@@ -536,23 +536,23 @@
 </tr>
 <tr>
 <td>Check Continual Payout Status</td>
-<td><code>tezbake pay continual status</code></td>
+<td><code>sudo tezbake pay continual status</code></td>
 </tr>
 <tr>
 <td>Enable Continual Payouts</td>
-<td><code>tezbake pay continual enable</code></td>
+<td><code>sudo tezbake pay continual enable</code></td>
 </tr>
 <tr>
 <td>Disable Continual Payouts</td>
-<td><code>tezbake pay continual disable</code></td>
+<td><code>sudo tezbake pay continual disable</code></td>
 </tr>
 <tr>
 <td>Start TezPay</td>
-<td><code>tezbake pay start</code> or <code>tezbake start --pay</code></td>
+<td><code>sudo tezbake pay start</code> or <code>sudo tezbake start --pay</code></td>
 </tr>
 <tr>
 <td>Stop TezPay</td>
-<td><code>tezbake pay stop</code> or <code>tezbake stop --pay</code></td>
+<td><code>sudo tezbake pay stop</code> or <code>sudo tezbake stop --pay</code></td>
 </tr>
 <tr>
 <td>TezPay Information</td>
@@ -643,15 +643,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 <ul>
 <li>
 <p><strong>Check current status:</strong><br>
-<code>tezbake pay continual status</code></p>
+<code>sudo tezbake pay continual status</code></p>
 </li>
 <li>
 <p><strong>Enable continual payouts:</strong><br>
-<code>tezbake pay continual enable</code></p>
+<code>sudo tezbake pay continual enable</code></p>
 </li>
 <li>
 <p><strong>Disable continual payouts:</strong><br>
-<code>tezbake pay continual disable</code></p>
+<code>sudo tezbake pay continual disable</code></p>
 </li>
 </ul>
 <h3 id="setting-the-payout-interval">Setting the Payout Interval</h3>
@@ -681,7 +681,9 @@ Please follow the steps below to create your configuration and wallet or remote 
 <blockquote>
 <p><strong>Note:</strong> The <code>--interval</code> CLI flag does not work with TezBake integration. You must configure the interval in <code>app.json</code>.</p>
 </blockquote>
-<hr>
+<p>After changing the <code>CONTINUAL</code> block in <code>/bake-buddy/pay/app.json</code>, apply the updated pay module configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake upgrade --pay
+</span></span></code></pre></div><hr>
 <h2 id="starting--stopping-tezpay-continual-service">Starting &amp; Stopping TezPay (continual service)</h2>
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> This applies only when continual payouts are enabled. Refer to the section above for instructions on enabling continual payouts.</p>
@@ -690,15 +692,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 <li>
 <p><strong>Start TezPay:</strong></p>
 <ul>
-<li>direct: <code>tezbake pay start</code></li>
-<li>combined: <code>tezbake start --pay</code></li>
+<li>direct: <code>sudo tezbake pay start</code></li>
+<li>combined: <code>sudo tezbake start --pay</code></li>
 </ul>
 </li>
 <li>
 <p><strong>Stop TezPay:</strong></p>
 <ul>
-<li>direct: <code>tezbake pay stop</code></li>
-<li>combined: <code>tezbake stop --pay</code></li>
+<li>direct: <code>sudo tezbake pay stop</code></li>
+<li>combined: <code>sudo tezbake stop --pay</code></li>
 </ul>
 </li>
 </ul>
@@ -715,7 +717,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 <ol>
 <li>
 <p><strong>Update TezPay to the latest version:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake upgrade --pay
 </span></span></code></pre></div></li>
 <li>
 <p><strong>Run a dry-run to verify payouts:</strong></p>
@@ -726,7 +728,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 </li>
 <li>
 <p><strong>If satisfied, restart the service:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start --pay
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake start --pay
 </span></span></code></pre></div></li>
 </ol>
 <blockquote>
