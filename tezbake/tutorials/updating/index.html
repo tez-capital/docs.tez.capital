@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezBake, Octez binaries, and protocol versions safely">
 
-<meta itemprop="wordCount" content="690">
+<meta itemprop="wordCount" content="698">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezBake, Octez binaries, and protocol versions safely"/>
@@ -481,7 +481,8 @@
 	<blockquote>
 <p><strong>Quick Reference</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade    <span style="color:#8f5902;font-style:italic"># Upgrade all components (Octez binaries + ami/eli)</span>
-</span></span><span style="display:flex;"><span>tezbake restart    <span style="color:#8f5902;font-style:italic"># Restart services after upgrade</span>
+</span></span><span style="display:flex;"><span>tezbake stop       <span style="color:#8f5902;font-style:italic"># Stop services after upgrade if needed</span>
+</span></span><span style="display:flex;"><span>tezbake start      <span style="color:#8f5902;font-style:italic"># Start services again</span>
 </span></span></code></pre></div><p>For a full stack upgrade including the tezbake binary itself, see <a href="#c-update-the-entire-tezbake-stack">Method C</a> below.</p>
 </blockquote>
 <h2 id="tezbake-updating">TezBake Updating</h2>

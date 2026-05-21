@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Advanced Configuration">
 <meta itemprop="description" content="Advanced TezBake CLI configuration and customization options">
 
-<meta itemprop="wordCount" content="84">
+<meta itemprop="wordCount" content="88">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Advanced Configuration"/>
 <meta name="twitter:description" content="Advanced TezBake CLI configuration and customization options"/>
@@ -474,8 +474,9 @@
 <p>Use <code>configuration.STARTUP_ARGS</code> to pass additional arguments to the Octez node process.</p>
 <p>For example, to set the node synchronization threshold to <code>0</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify configuration.STARTUP_ARGS <span style="color:#4e9a06">&#39;[&#34;--synchronisation-threshold=0&#34;]&#39;</span>
-</span></span></code></pre></div><p>Restart TezBake after changing startup arguments so the node starts with the new configuration:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake restart
+</span></span></code></pre></div><p>Stop and start TezBake after changing startup arguments so the node starts with the new configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><p>You can verify the configured startup arguments with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.STARTUP_ARGS
 </span></span></code></pre></div>

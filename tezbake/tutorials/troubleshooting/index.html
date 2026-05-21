@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezBake issues and solutions for installation errors and runtime problems">
 
-<meta itemprop="wordCount" content="1207">
+<meta itemprop="wordCount" content="1212">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezBake issues and solutions for installation errors and runtime problems"/>
@@ -556,7 +556,8 @@
 </span></span></code></pre></div><p>You can add <code>--log-level=trace</code> regardless of the setup type that&rsquo;s being attempted, whether it&rsquo;s on Ghostnet or some other testnet.</p>
 <h3 id="blockchain-errors">Blockchain errors</h3>
 <p>Sometimes, you will notice that <code>tezbake info</code> never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake restart
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
+</span></span><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><p>You may see an error like the one below, which indicates your node needs to be bootstrapped with a fresh copy of the Tezos blockchain.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>baker@baker-VirtualBox:~$ tezbake node log node -f
 </span></span><span style="display:flex;"><span>-- Logs begin at Wed 2022-05-18 14:16:28 CEST. --
@@ -709,7 +710,7 @@
 </span></span></code></pre></div><p>At least one should show <code>true</code>.</p>
 </li>
 <li>
-<p><strong>Restart TezBake:</strong> <code>tezbake restart</code></p>
+<p><strong>Restart TezBake:</strong> <code>tezbake stop &amp;&amp; tezbake start</code></p>
 </li>
 </ol>
 <h3 id="firewallnat">Firewall/NAT</h3>
