@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Key Aliases">
 <meta itemprop="description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups">
 
-<meta itemprop="wordCount" content="550">
+<meta itemprop="wordCount" content="574">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Key Aliases"/>
 <meta name="twitter:description" content="How to configure additional key aliases for consensus keys, DAL companion keys, and multi-key setups"/>
@@ -529,9 +529,10 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --remove configuration.additional_key_aliases <span style="color:#4e9a06">&#39;&#34;bb1_dal&#34;&#39;</span>
 </span></span></code></pre></div><h3 id="clear-all-additional-aliases">Clear all additional aliases</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --unset configuration.additional_key_aliases
-</span></span></code></pre></div><p>After any change, restart your baker:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><p>After any change, apply the updated configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><p>If your install uses different lifecycle commands, confirm the current command with <code>tezbake --help</code>.</p>
+<hr>
 <h2 id="advanced-key_aliases">Advanced: <code>key_aliases</code></h2>
 <p>Use <code>key_aliases</code> when you need <strong>complete control</strong> over which keys the baker uses.</p>
 <blockquote>
@@ -547,9 +548,10 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.key_aliases
 </span></span></code></pre></div><h3 id="clear-and-return-to-default-behavior">Clear and return to default behavior</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --unset configuration.key_aliases
-</span></span></code></pre></div><p>After any change, restart your baker:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><p>After any change, apply the updated configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><p>If your install uses different lifecycle commands, confirm the current command with <code>tezbake --help</code>.</p>
+<hr>
 <h2 id="which-should-i-use">Which Should I Use?</h2>
 <table>
 <thead>
@@ -592,8 +594,8 @@
 <li>Delete the old file:
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm /bake-buddy/node/additional_key_aliases.list
 </span></span></code></pre></div></li>
-<li>Restart:
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+<li>Apply the updated configuration:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
 </span></span></code></pre></div></li>
 </ol>
 <hr>

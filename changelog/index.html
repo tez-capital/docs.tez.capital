@@ -29,7 +29,7 @@
 <meta itemprop="name" content="What&#39;s New">
 <meta itemprop="description" content="Recent changes to Tez Capital tools and documentation">
 
-<meta itemprop="wordCount" content="845">
+<meta itemprop="wordCount" content="883">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="What&#39;s New"/>
 <meta name="twitter:description" content="Recent changes to Tez Capital tools and documentation"/>
@@ -497,6 +497,7 @@
 <li>If the TezSign consensus key is imported as the default <code>baker</code> alias, load only <code>[&quot;companion&quot;]</code>.</li>
 </ul>
 <p>Added verification steps for <code>tezbake info --dal</code> and the baker log warning that a tz4 key &ldquo;has not been provided to the baker.&rdquo;</p>
+<p>Follow-up: Replaced generic stop/start restart guidance in the key alias and DAL companion alias flows with <code>tezbake upgrade</code> plus a note to confirm install-specific lifecycle commands with <code>tezbake --help</code>. Also normalized generic full-node restart examples to <code>tezbake restart</code>.</p>
 <hr>
 <h3 id="documentation-removed-redundant-in-page-h1-per-block-votes">Documentation: Removed Redundant In-Page H1 (Per-Block Votes)</h3>
 <p><strong>What changed:</strong> Removed the duplicate <code># Per-Block Votes</code> heading from <a href="/tezbake/tutorials/per-block-votes/">Per-Block Votes</a>. Docsy already renders the page title from frontmatter, so this avoids repeated page titles in the UI.</p>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with DAL">
 <meta itemprop="description" content="Step-by-step guide to setting up the Tezos Data Availability Layer (DAL) node with TezBake for maximum baking rewards">
 
-<meta itemprop="wordCount" content="917">
+<meta itemprop="wordCount" content="924">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with DAL"/>
 <meta name="twitter:description" content="Step-by-step guide to setting up the Tezos Data Availability Layer (DAL) node with TezBake for maximum baking rewards"/>
@@ -593,16 +593,17 @@ If you wish to run TezBake with DAL on a separate machine, consider using <a hre
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;consensus&#34;,&#34;companion&#34;]&#39;</span>
 </span></span></code></pre></div><p>If you intentionally use other additional aliases, keep them in the JSON list when setting this value.</p>
 <ol start="3">
-<li><strong>Restart TezBake to apply changes:</strong></li>
+<li><strong>Apply the updated configuration:</strong></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
-</span></span></code></pre></div><h2 id="remote-dal-setup">Remote DAL Setup</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><p>If your install uses different lifecycle commands, confirm the current command with <code>tezbake --help</code>.</p>
+<h2 id="remote-dal-setup">Remote DAL Setup</h2>
 <p>Follow the Prism setup steps here: <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
 <h2 id="quick-troubleshooting">Quick Troubleshooting</h2>
 <p>If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake remove --dal
 </span></span><span style="display:flex;"><span>tezbake setup --node  <span style="color:#8f5902;font-style:italic"># choose &#39;yes&#39; to merge config when prompted</span>
-</span></span><span style="display:flex;"><span>tezbake stop <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start
+</span></span><span style="display:flex;"><span>tezbake restart
 </span></span></code></pre></div><h2 id="verify-dal-operation">Verify DAL Operation</h2>
 <p>Ensure your DAL process is correctly running by checking logs:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node log dal -f
