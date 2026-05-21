@@ -29,7 +29,7 @@
 <meta itemprop="name" content="What&#39;s New">
 <meta itemprop="description" content="Recent changes to Tez Capital tools and documentation">
 
-<meta itemprop="wordCount" content="767">
+<meta itemprop="wordCount" content="845">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="What&#39;s New"/>
 <meta name="twitter:description" content="Recent changes to Tez Capital tools and documentation"/>
@@ -409,6 +409,7 @@
     <li><a href="#whats-new">What&rsquo;s New</a></li>
     <li><a href="#2026">2026</a>
       <ul>
+        <li><a href="#documentation-clarified-tezsign-dal-companion-alias-setup">Documentation: Clarified TezSign DAL Companion Alias Setup</a></li>
         <li><a href="#documentation-removed-redundant-in-page-h1-per-block-votes">Documentation: Removed Redundant In-Page H1 (Per-Block Votes)</a></li>
         <li><a href="#documentation-per-block-vote-guidance-sweep">Documentation: Per-Block Vote Guidance Sweep</a></li>
         <li><a href="#documentation-corrected-per-block-votes-guide-tezbake">Documentation: Corrected Per-Block Votes Guide (TezBake)</a></li>
@@ -489,6 +490,14 @@
 <p>A reverse-chronological log of significant changes to Tez Capital tools, the Tezos protocol, and this documentation. Subscribe to <a href="https://t.me/tezcapital">Tez Capital on Telegram</a> or <a href="https://discord.gg/cVGMA4MaNM">Discord</a> to stay up to date.</p>
 <hr>
 <h2 id="2026">2026</h2>
+<h3 id="documentation-clarified-tezsign-dal-companion-alias-setup">Documentation: Clarified TezSign DAL Companion Alias Setup</h3>
+<p><strong>What changed:</strong> Updated <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a>, <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a>, <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a>, and <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> to make the BLS/tz4 alias decision explicit:</p>
+<ul>
+<li>If the TezSign consensus key is imported as <code>consensus</code>, load <code>[&quot;consensus&quot;,&quot;companion&quot;]</code>.</li>
+<li>If the TezSign consensus key is imported as the default <code>baker</code> alias, load only <code>[&quot;companion&quot;]</code>.</li>
+</ul>
+<p>Added verification steps for <code>tezbake info --dal</code> and the baker log warning that a tz4 key &ldquo;has not been provided to the baker.&rdquo;</p>
+<hr>
 <h3 id="documentation-removed-redundant-in-page-h1-per-block-votes">Documentation: Removed Redundant In-Page H1 (Per-Block Votes)</h3>
 <p><strong>What changed:</strong> Removed the duplicate <code># Per-Block Votes</code> heading from <a href="/tezbake/tutorials/per-block-votes/">Per-Block Votes</a>. Docsy already renders the page title from frontmatter, so this avoids repeated page titles in the UI.</p>
 <hr>

@@ -209,6 +209,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;li&gt;Use &lt;code&gt;companion&lt;/code&gt; as-is (for your companion key)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This naming convention is required because you&amp;rsquo;re managing your baker operations from a Ledger device using the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; interface.&lt;/p&gt;
+&lt;p&gt;When the TezSign guide asks which aliases to add to &lt;code&gt;configuration.additional_key_aliases&lt;/code&gt;, use only &lt;code&gt;[&amp;quot;companion&amp;quot;]&lt;/code&gt;. The consensus key is already loaded through the default &lt;code&gt;baker&lt;/code&gt; alias.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-2---deprecated-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 2 - DEPRECATED) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;blockquote&gt;
@@ -417,6 +418,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The tz4 key referenced here is your baker&amp;rsquo;s public key address (starts with tz4), not your consensus key or companion key.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;Verify both DAL profile and companion-key wiring:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the recommended TezSign setup above, &lt;code&gt;additional_key_aliases&lt;/code&gt; should include &lt;code&gt;companion&lt;/code&gt;. If the baker log says the active tz4 consensus key &amp;ldquo;has not been provided to the baker,&amp;rdquo; return to the TezSign alias configuration step and make sure the imported aliases match the aliases TezBake is loading.&lt;/p&gt;
 &lt;h3 id=&#34;baker-per-block-votes&#34;&gt;Baker Per-Block Votes&lt;/h3&gt;
 &lt;p&gt;Per-block voting is separate from protocol amendment voting on TezGov.&lt;/p&gt;
 &lt;p&gt;Use the supported TezBake command path for the Liquidity Baking vote:&lt;/p&gt;
@@ -826,16 +831,18 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;2-import-keys-to-tezbake-client&#34;&gt;2. Import Keys to TezBake client&lt;/h3&gt;
 &lt;p&gt;Link the keys stored on your TezSign device to TezBake&amp;rsquo;s configuration using local aliases.&lt;/p&gt;
-&lt;p&gt;Depending on the context of your setup, you will determine how to name your TezSign wallet aliases within TezBake itself.&lt;/p&gt;
-&lt;p&gt;When you&amp;rsquo;re first switching to a new consensus key or to tz4 baking, you will already have a key called &lt;code&gt;baker&lt;/code&gt;. This is the default key that always gets used in TezBake. In addition to this key, you will also import your consensus and companion keys, from TezSign. Once you are actively using your TezSign keys, you can then import the &lt;code&gt;consensus&lt;/code&gt; key as the &lt;code&gt;baker&lt;/code&gt; key as described below.&lt;/p&gt;
-&lt;p&gt;If you&amp;rsquo;re already baking using tz4 keys, it&amp;rsquo;s recommended to alias your &lt;code&gt;consensus&lt;/code&gt; key on the TezSign signer to the &lt;code&gt;baker&lt;/code&gt; key.&lt;/p&gt;
-&lt;p&gt;The desired end stake of your TezBake signing experience is to use &lt;code&gt;baker&lt;/code&gt; for &lt;code&gt;consensus&lt;/code&gt; and to use the TezSign backend directly (see below). This way there are no missing keys reported by &lt;code&gt;tezbake info&lt;/code&gt;. You need to ensure the migration to this desired state is performed one step at a time, respecting the in-between states.&lt;/p&gt;
+&lt;p&gt;The alias you choose with &lt;code&gt;--key-alias&lt;/code&gt; is the local Octez alias TezBake will load. Non-default aliases must later be listed in &lt;code&gt;configuration.additional_key_aliases&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you are first migrating to a new BLS/tz4 consensus key, keep your existing &lt;code&gt;baker&lt;/code&gt; key in place and import the TezSign consensus key as &lt;code&gt;consensus&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If your BLS/tz4 TezSign consensus key is already active, import that consensus key as &lt;code&gt;baker&lt;/code&gt;, because &lt;code&gt;baker&lt;/code&gt; is the default key TezBake loads automatically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The desired end state is to use &lt;code&gt;baker&lt;/code&gt; for your active TezSign consensus key and &lt;code&gt;companion&lt;/code&gt; for the DAL companion key. Move to that state one step at a time so the old active key keeps baking during the 3-cycle activation window.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Syntax:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;tezsign key alias&amp;gt; --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;octez key alias&amp;gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;--force&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example (Importing the Consensus and Companion Keys) &amp;ndash; IF MIGRATING TO BLS/tz4:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example (Importing the Consensus and Companion Keys &amp;ndash; IF ALREADY ON BLS/tz4:&lt;/strong&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Example (Importing the Consensus and Companion Keys) &amp;ndash; IF ALREADY ON BLS/tz4:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;companion
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
@@ -848,21 +855,34 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;h3 id=&#34;3-import-keys-to-tezbake-node-and-signer&#34;&gt;3. Import Keys to TezBake node and signer&lt;/h3&gt;
 &lt;p&gt;To bake with multiple keys (e.g., separate keys for consensus and DAL), you must register them as key aliases in the node configuration.&lt;/p&gt;
 &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; DAL needs the &lt;code&gt;companion&lt;/code&gt; alias loaded by the baker, not just unlocked in TezSign. If the companion key is missing from the baker configuration, your baker may attest without DAL payloads and lose DAL rewards.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ DEPRECATED:&lt;/strong&gt; The file-based method (&lt;code&gt;additional_key_aliases.list&lt;/code&gt;) is deprecated. Use the CLI commands below instead. See &lt;a href=&#34;/tezbake/tutorials/key-aliases/&#34;&gt;Key Aliases&lt;/a&gt; for the full reference.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;IF MIGRATING TO BLS/tz4:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;As per the example we used consensus and companion, add both aliases:&lt;/p&gt;
+&lt;p&gt;Choose the command that matches the aliases you imported in the previous step.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If your TezSign consensus key was imported as &lt;code&gt;consensus&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;NOTE: Later on when your &lt;code&gt;consensus&lt;/code&gt; key activates you can reimport it under &lt;code&gt;baker&lt;/code&gt; alias (the default one) with &lt;code&gt;--force&lt;/code&gt;. Then you can remove consensus from additional keys:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use this while migrating to BLS/tz4, when the active &lt;code&gt;baker&lt;/code&gt; key is still separate and the new TezSign consensus key is named &lt;code&gt;consensus&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Later, after your &lt;code&gt;consensus&lt;/code&gt; key activates, you can reimport it under the default &lt;code&gt;baker&lt;/code&gt; alias with &lt;code&gt;--force&lt;/code&gt;. Then you can remove &lt;code&gt;consensus&lt;/code&gt; from the additional keys:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --remove configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;consensus&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;NOTE: Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;gt;&lt;/code&gt; is relevant. The internal tezsign alias can differ.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Only the import alias from &lt;code&gt;--key-alias=&amp;lt;THIS ALIAS&amp;gt;&lt;/code&gt; is relevant. The internal TezSign alias can differ.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;IF ALREADY ON BLS/TZ4:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If your TezSign consensus key was imported as &lt;code&gt;baker&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;The consensus key is not listed because it&amp;rsquo;s the default assumed baking key by TezBake&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use this when your active BLS/tz4 consensus key is already the default &lt;code&gt;baker&lt;/code&gt; alias. The consensus key is not listed because TezBake loads &lt;code&gt;baker&lt;/code&gt; automatically.&lt;/p&gt;
+&lt;p&gt;Verify the node configuration and DAL status:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;configuration.key_aliases&lt;/code&gt; is usually unset or &lt;code&gt;null&lt;/code&gt;. If it is set, it replaces the default key list, so make sure it includes every key you need.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;configuration.additional_key_aliases&lt;/code&gt; includes &lt;code&gt;companion&lt;/code&gt;, and includes &lt;code&gt;consensus&lt;/code&gt; only if your TezSign consensus key was imported with &lt;code&gt;--key-alias=consensus&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tezbake info --dal&lt;/code&gt; reports the DAL node as operational.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker,&amp;rdquo; the tz4 signing alias set is incomplete. Recheck the &lt;code&gt;--key-alias&lt;/code&gt; value you imported and the matching &lt;code&gt;configuration.additional_key_aliases&lt;/code&gt; command above.&lt;/p&gt;
 &lt;h3 id=&#34;4-retrieve-public-keys--proofs--register-them-on-the-chain&#34;&gt;4. Retrieve Public Keys &amp;amp; Proofs &amp;amp; Register them on the chain&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ WARNING: Testing &amp;amp; Power Considerations&lt;/strong&gt;&lt;/p&gt;
@@ -946,7 +966,8 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-check-status&#34;&gt;2. Check Status&lt;/h3&gt;
 &lt;p&gt;Check that TezBake sees your new keys:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your keys appear in the info output, you are ready to bake!&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your keys appear in the info output and &lt;code&gt;tezbake info --dal&lt;/code&gt; shows the DAL node as operational, you are ready to bake. The baker log should no longer report that the active tz4 consensus key &amp;ldquo;has not been provided to the baker.&amp;rdquo;&lt;/p&gt;
 &lt;h3 id=&#34;3-unlock&#34;&gt;3. Unlock&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign unlock
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Select both keys and input the passphrase you chose when initializing the device.&lt;/p&gt;
@@ -1385,6 +1406,10 @@ Services:
 &lt;td&gt;&lt;a href=&#34;#dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td&gt;tz4 key &amp;ldquo;has not been provided to the baker&amp;rdquo;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td&gt;Missing attestations&lt;/td&gt;
 &lt;td&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
@@ -1499,6 +1524,22 @@ Services:
 &lt;h3 id=&#34;quick-dal-status-check&#34;&gt;Quick DAL Status Check&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &amp;ldquo;Status down&amp;rdquo; is normal immediately after start/restart. Give it time to sync.&lt;/p&gt;
+&lt;h3 id=&#34;missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Symptoms:&lt;/strong&gt; The baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker&amp;rdquo; and warns that the baker can only issue attestations without DAL content.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Root cause:&lt;/strong&gt; The keys may exist and be unlocked in TezSign, but one of the required aliases is not being loaded by the baker. This is different from a locked TezSign key.&lt;/p&gt;
+&lt;p&gt;Check the aliases TezBake is loading:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the recommended TezSign setup, where the active consensus key is imported as &lt;code&gt;baker&lt;/code&gt;, add only the companion:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your TezSign consensus key is imported as &lt;code&gt;consensus&lt;/code&gt;, load both aliases:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You want the DAL node to be operational and the old &amp;ldquo;has not been provided to the baker&amp;rdquo; warning to stop repeating.&lt;/p&gt;
 &lt;h3 id=&#34;step-by-step-dal-verification&#34;&gt;Step-by-Step DAL Verification&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1. Check connected peers:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl http://localhost:10732/p2p/points/info?connected
@@ -1939,14 +1980,17 @@ Services:
 &lt;hr&gt;
 &lt;h2 id=&#34;common-examples&#34;&gt;Common Examples&lt;/h2&gt;
 &lt;h3 id=&#34;consensus-key--dal-companion&#34;&gt;Consensus key + DAL companion&lt;/h3&gt;
+&lt;p&gt;Use this when your separate consensus key was imported as &lt;code&gt;consensus&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;consensus-key-only-already-on-tz4bls&#34;&gt;Consensus key only (already on tz4/BLS)&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;default-baker-consensus-key--dal-companion&#34;&gt;Default &lt;code&gt;baker&lt;/code&gt; consensus key + DAL companion&lt;/h3&gt;
 &lt;p&gt;If your consensus key is imported under the default &lt;code&gt;baker&lt;/code&gt; alias, you only need to add the companion:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;verify-everything-is-set&#34;&gt;Verify everything is set&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If &lt;code&gt;configuration.key_aliases&lt;/code&gt; is set, it replaces the default baker key list. Most setups should leave it unset or &lt;code&gt;null&lt;/code&gt; and use &lt;code&gt;additional_key_aliases&lt;/code&gt; instead. If the baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker,&amp;rdquo; the tz4 signing alias set is incomplete or &lt;code&gt;key_aliases&lt;/code&gt; is overriding the default &lt;code&gt;baker&lt;/code&gt; alias.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; — Full consensus key setup&lt;/li&gt;
@@ -2066,6 +2110,16 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the above command fails, specify your &lt;strong&gt;baker key&lt;/strong&gt; (not consensus key):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-key&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Verify the companion key alias is loaded by the baker:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you use a tz4/BLS consensus key, DAL also requires the companion key alias to be present in the baker configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the common TezSign setup where the active consensus key is imported as &lt;code&gt;baker&lt;/code&gt;, only &lt;code&gt;companion&lt;/code&gt; needs to be listed as an additional alias:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your TezSign consensus key is imported as &lt;code&gt;consensus&lt;/code&gt; instead of &lt;code&gt;baker&lt;/code&gt;, include both aliases:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you intentionally use other additional aliases, keep them in the JSON list when setting this value.&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Restart TezBake to apply changes:&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start

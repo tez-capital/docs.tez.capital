@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="2905">
+<meta itemprop="wordCount" content="2990">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -672,6 +672,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <li>Use <code>companion</code> as-is (for your companion key)</li>
 </ul>
 <p>This naming convention is required because you&rsquo;re managing your baker operations from a Ledger device using the <a href="https://gov.tez.capital">https://gov.tez.capital</a> interface.</p>
+<p>When the TezSign guide asks which aliases to add to <code>configuration.additional_key_aliases</code>, use only <code>[&quot;companion&quot;]</code>. The consensus key is already loaded through the default <code>baker</code> alias.</p>
 </blockquote>
 <h4 id="option-2---deprecated-import-ledger-key-to-tezbake-signer">(Option 2 - DEPRECATED) Import Ledger key to TezBake signer</h4>
 <blockquote>
@@ -880,6 +881,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 </span></span></code></pre></div><blockquote>
 <p><strong>ℹ️ INFO:</strong> The tz4 key referenced here is your baker&rsquo;s public key address (starts with tz4), not your consensus key or companion key.</p>
 </blockquote>
+<p>Verify both DAL profile and companion-key wiring:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info --dal
+</span></span><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span></code></pre></div><p>For the recommended TezSign setup above, <code>additional_key_aliases</code> should include <code>companion</code>. If the baker log says the active tz4 consensus key &ldquo;has not been provided to the baker,&rdquo; return to the TezSign alias configuration step and make sure the imported aliases match the aliases TezBake is loading.</p>
 <h3 id="baker-per-block-votes">Baker Per-Block Votes</h3>
 <p>Per-block voting is separate from protocol amendment voting on TezGov.</p>
 <p>Use the supported TezBake command path for the Liquidity Baking vote:</p>
