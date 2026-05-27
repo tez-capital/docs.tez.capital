@@ -865,7 +865,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use this while migrating to BLS/tz4, when the active &lt;code&gt;baker&lt;/code&gt; key is still separate and the new TezSign consensus key is named &lt;code&gt;consensus&lt;/code&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Later, after your &lt;code&gt;consensus&lt;/code&gt; key activates, use the later cleanup section below to load that key through the default &lt;code&gt;baker&lt;/code&gt; alias and remove the stale local &lt;code&gt;consensus&lt;/code&gt; alias.&lt;/p&gt;
+&lt;p&gt;Later, after your &lt;code&gt;consensus&lt;/code&gt; key activates, use the Later cleanup after on-chain activation section below to load that key through the default &lt;code&gt;baker&lt;/code&gt; alias and remove the stale local &lt;code&gt;consensus&lt;/code&gt; alias.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;If your TezSign consensus key was imported as &lt;code&gt;baker&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
@@ -999,6 +999,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client list known addresses
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer signer list known addresses
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected final state:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;configuration.additional_key_aliases&lt;/code&gt; is exactly &lt;code&gt;[&amp;quot;companion&amp;quot;]&lt;/code&gt;.&lt;/li&gt;
