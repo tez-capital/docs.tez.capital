@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="3355">
+<meta itemprop="wordCount" content="3406">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -432,7 +432,6 @@
         <li><a href="#1-enable-usb-access-on-the-baking-machine">1. Enable USB Access on the Baking Machine</a></li>
         <li><a href="#2-import-keys-to-tezbake-client">2. Import Keys to TezBake client</a></li>
         <li><a href="#3-import-keys-to-tezbake-node-and-signer">3. Import Keys to TezBake node and signer</a></li>
-        <li><a href="#transition-from-bakerconsensuscompanion-to-bakercompanion">Transition from <code>baker</code>/<code>consensus</code>/<code>companion</code> to <code>baker</code>/<code>companion</code></a></li>
         <li><a href="#4-retrieve-public-keys--proofs--register-them-on-the-chain">4. Retrieve Public Keys &amp; Proofs &amp; Register them on the chain</a></li>
         <li><a href="#5-reconfigure">5. Reconfigure</a></li>
       </ul>
@@ -442,6 +441,7 @@
         <li><a href="#1-restart-services">1. Restart Services</a></li>
         <li><a href="#2-check-status">2. Check Status</a></li>
         <li><a href="#3-unlock">3. Unlock</a></li>
+        <li><a href="#later-cleanup-after-on-chain-activation">Later cleanup after on-chain activation</a></li>
       </ul>
     </li>
     <li><a href="#advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</a></li>
@@ -701,7 +701,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;consensus&#34;,&#34;companion&#34;]&#39;</span>
 </span></span></code></pre></div><p>Use this while migrating to BLS/tz4, when the active <code>baker</code> key is still separate and the new TezSign consensus key is named <code>consensus</code>.</p>
 <blockquote>
-<p>Later, after your <code>consensus</code> key activates, use the transition cleanup section below to load that key through the default <code>baker</code> alias and remove the stale local <code>consensus</code> alias.</p>
+<p>Later, after your <code>consensus</code> key activates, use the later cleanup section below to load that key through the default <code>baker</code> alias and remove the stale local <code>consensus</code> alias.</p>
 </blockquote>
 <p><strong>If your TezSign consensus key was imported as <code>baker</code>:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;companion&#34;]&#39;</span>
@@ -718,30 +718,6 @@
 <li><code>tezbake info --dal</code> reports the DAL node as operational.</li>
 </ul>
 <p>If the baker log says a tz4 consensus key &ldquo;has not been provided to the baker,&rdquo; the tz4 signing alias set is incomplete. Recheck the <code>--key-alias</code> value you imported and the matching <code>configuration.additional_key_aliases</code> command above.</p>
-<h3 id="transition-from-bakerconsensuscompanion-to-bakercompanion">Transition from <code>baker</code>/<code>consensus</code>/<code>companion</code> to <code>baker</code>/<code>companion</code></h3>
-<p>Use this after the tz4 consensus key has activated on-chain and you want the active TezSign consensus key loaded through the default <code>baker</code> alias.</p>
-<p><strong>1. Re-import TezSign&rsquo;s consensus key as the default baker alias:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>baker --force
-</span></span></code></pre></div><p><strong>2. Keep only the DAL companion as an additional baker key:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;companion&#34;]&#39;</span>
-</span></span></code></pre></div><p><strong>3. Remove the stale consensus alias from the node wallet, if present:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client forget address consensus --force
-</span></span></code></pre></div><p><strong>4. Remove the stale consensus alias from the signer daemon wallet, if present:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer signer forget address consensus --force
-</span></span></code></pre></div><p><strong>5. Apply and verify:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
-</span></span><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
-</span></span><span style="display:flex;"><span>tezbake node client list known addresses
-</span></span><span style="display:flex;"><span>tezbake signer signer list known addresses
-</span></span><span style="display:flex;"><span>tezbake info
-</span></span></code></pre></div><p>Expected final state:</p>
-<ul>
-<li><code>configuration.additional_key_aliases</code> is exactly <code>[&quot;companion&quot;]</code>.</li>
-<li>Node known addresses include <code>baker</code> and <code>companion</code>.</li>
-<li>Signer daemon known addresses include <code>baker</code> and <code>companion</code>.</li>
-<li>No local Octez alias named <code>consensus</code> remains.</li>
-<li>The on-chain consensus key is unchanged; only local alias wiring changed.</li>
-</ul>
 <h3 id="4-retrieve-public-keys--proofs--register-them-on-the-chain">4. Retrieve Public Keys &amp; Proofs &amp; Register them on the chain</h3>
 <blockquote>
 <p><strong>⚠️ WARNING: Testing &amp; Power Considerations</strong></p>
@@ -842,6 +818,32 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <li><code>tezbake info</code> - Check general baker status</li>
 </ul>
 </blockquote>
+<h3 id="later-cleanup-after-on-chain-activation">Later cleanup after on-chain activation</h3>
+<p>Use this after the tz4 consensus key has activated on-chain and you want to transition from <code>baker</code>/<code>consensus</code>/<code>companion</code> to <code>baker</code>/<code>companion</code>, with the active TezSign consensus key loaded through the default <code>baker</code> alias.</p>
+<p>Do not run this during the 3-cycle activation window; keep <code>consensus</code> loaded until the tz4 consensus key is active on-chain.</p>
+<p><strong>1. Re-import TezSign&rsquo;s consensus key as the default baker alias:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>baker --force
+</span></span></code></pre></div><p><strong>2. Keep only the DAL companion as an additional baker key:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;companion&#34;]&#39;</span>
+</span></span></code></pre></div><p><strong>3. Remove the stale consensus alias from the node wallet, if present:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node client forget address consensus --force
+</span></span></code></pre></div><p><strong>4. Remove the stale consensus alias from the signer daemon wallet, if present:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer signer forget address consensus --force
+</span></span></code></pre></div><p><strong>5. Apply and verify:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade
+</span></span><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span><span style="display:flex;"><span>tezbake node client list known addresses
+</span></span><span style="display:flex;"><span>tezbake signer signer list known addresses
+</span></span><span style="display:flex;"><span>tezbake info
+</span></span></code></pre></div><p>Expected final state:</p>
+<ul>
+<li><code>configuration.additional_key_aliases</code> is exactly <code>[&quot;companion&quot;]</code>.</li>
+<li>Node known addresses include <code>baker</code> and <code>companion</code>.</li>
+<li>Signer daemon known addresses include <code>baker</code> and <code>companion</code>.</li>
+<li>No local Octez alias named <code>consensus</code> remains.</li>
+<li>The on-chain consensus key is unchanged; only local alias wiring changed.</li>
+</ul>
+<p>The TezSign device/internal key may still be named <code>consensus</code>; this cleanup only removes stale local Octez aliases from the node and signer daemon wallets.</p>
 <h2 id="advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</h2>
 <blockquote>
 <p><strong>⚠️ WARNING: Timing Matters</strong></p>
