@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1713">
+<meta itemprop="wordCount" content="1703">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -706,12 +706,10 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 </span></span><span style="display:flex;"><span>tezbake upgrade
 </span></span></code></pre></div><h3 id="5-optional-remove-tezsign-backend">5. (Optional) Remove TezSign backend</h3>
 <p>If you switched to the direct TezSign backend, revert it:</p>
-<ol>
-<li>Open <code>/bake-buddy/signer/app.json</code> and remove the <code>&quot;BACKEND&quot;: &quot;tezsign&quot;</code> line from the <code>configuration</code> block.</li>
-<li>Apply and restart:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --signer
-</span></span><span style="display:flex;"><span>tezbake stop --signer <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start --signer
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer modify --unset configuration.BACKEND
+</span></span><span style="display:flex;"><span>tezbake signer show configuration.BACKEND
+</span></span><span style="display:flex;"><span>tezbake upgrade --signer
+</span></span><span style="display:flex;"><span>tezbake start --signer
 </span></span></code></pre></div><hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>

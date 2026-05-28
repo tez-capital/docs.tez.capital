@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="3412">
+<meta itemprop="wordCount" content="3443">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -860,25 +860,19 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <p>After: <code>&lt;octez-node&gt;&lt;tezsign&gt;</code></p>
 <p>This setup offers slightly faster execution and lower latency by directly utilizing TezSign&rsquo;s hardware capabilities.</p>
 <p><strong>How to Enable:</strong></p>
-<ol>
-<li>Open the signer configuration file: <code>/bake-buddy/signer/app.json</code></li>
-<li>Add <code>BACKEND: tezsign</code> inside the <code>configuration</code> block:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#000">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#204a87;font-weight:bold">&#34;configuration&#34;: </span>{<span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">           </span><span style="color:#204a87;font-weight:bold">&#34;BACKEND&#34;: </span><span style="color:#4e9a06">&#34;tezsign&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">       </span>}<span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">// ...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><ol start="3">
-<li>Apply the changes:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --signer
-</span></span></code></pre></div><ol start="4">
-<li>Restart the service:</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop --signer <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> tezbake start --signer
-</span></span></code></pre></div><p><strong>To Revert:</strong>: Remove the <code>BACKEND</code> line from <code>app.json</code>, upgrade, and restart.</p>
-<h2 id="advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</h2>
+<p>Use the signer configuration CLI. You do not need to edit <code>/bake-buddy/signer/app.json</code> manually.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer modify configuration.BACKEND tezsign
+</span></span><span style="display:flex;"><span>tezbake signer show configuration.BACKEND
+</span></span><span style="display:flex;"><span>tezbake upgrade --signer
+</span></span><span style="display:flex;"><span>tezbake start --signer
+</span></span></code></pre></div><p>The <code>show</code> command should confirm that <code>configuration.BACKEND</code> is set to <code>tezsign</code> before you apply and restart the signer.</p>
+<p><strong>To Revert:</strong></p>
+<p>Unset the direct backend configuration, confirm it is no longer set to <code>tezsign</code>, then apply and restart:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer modify --unset configuration.BACKEND
+</span></span><span style="display:flex;"><span>tezbake signer show configuration.BACKEND
+</span></span><span style="display:flex;"><span>tezbake upgrade --signer
+</span></span><span style="display:flex;"><span>tezbake start --signer
+</span></span></code></pre></div><h2 id="advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</h2>
 <p>You can configure TezSign to unlock automatically by securely storing the device password.</p>
 <h3 id="steps-to-enable-automatic-unlock">Steps to Enable Automatic Unlock</h3>
 <ol>
