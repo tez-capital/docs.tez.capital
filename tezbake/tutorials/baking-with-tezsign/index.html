@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="3443">
+<meta itemprop="wordCount" content="3667">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -452,7 +454,7 @@
     </li>
     <li><a href="#disaster-recovery--failover">Disaster Recovery &amp; Failover</a>
       <ul>
-        <li><a href="#backup-your-sd-card">Backup Your SD Card</a></li>
+        <li><a href="#back-up-or-clone-your-tezsign-card">Back Up or Clone Your TezSign Card</a></li>
         <li><a href="#if-your-tezsign-device-fails">If Your TezSign Device Fails</a></li>
         <li><a href="#recommended-redundancy">Recommended Redundancy</a></li>
       </ul>
@@ -535,6 +537,7 @@
 <li><strong>A supported TezSign hardware device</strong> — Radxa Zero 3W or Raspberry Pi Zero 2W (see shopping list in Phase 0)</li>
 <li><strong>SD card(s)</strong> — at least 8GB, enterprise/endurance grade recommended; buy 3 (one active, one clone, one spare)</li>
 <li><strong>USB cable</strong> — a short, high-quality data cable to connect TezSign to your baking machine</li>
+<li><strong>A Linux backup path</strong> — macOS cannot mount the TezSign <code>data</code> partition correctly; use Linux for TezSign data backups and restores</li>
 </ul>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
@@ -545,6 +548,7 @@
 <li><a href="#phase-4-verify-and-bake">Phase 4: Verify and Bake</a></li>
 <li><a href="#advanced-direct-tezsign-backend">Advanced: Direct TezSign Backend</a></li>
 <li><a href="#advanced-automatic-unlock-for-tezsign">Advanced: Automatic Unlock for TezSign</a></li>
+<li><a href="#disaster-recovery--failover">Disaster Recovery &amp; Failover</a></li>
 </ol>
 <hr>
 <h2 id="phase-0-purchase-sbc-and-image-sd-card">Phase 0: Purchase SBC and image SD card</h2>
@@ -574,6 +578,7 @@
 <p>Navigate to the release page and download the latest image for your RPI or Radxa device: <a href="https://github.com/tez-capital/tezsign/releases">TezSign Releases</a></p>
 <p>Once downloaded, extract the image. The image will be around 1.5GB - 2GB once it&rsquo;s been extracted.</p>
 <p>Use <a href="https://etcher.balena.io/">Balena Etcher</a> (or a tool you are familiar with) to flash the gadget image to your SD card.</p>
+<p>The flashed card has three partitions on Linux: <code>app</code>, <code>boot</code>, and <code>data</code>. macOS does not mount the <code>data</code> partition correctly. The <code>data</code> partition contains the <code>tezsign</code> folder that you back up, restore, or transplant when moving to a newly flashed card. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> before updating, reflashing, or migrating a TezSign card.</p>
 <p>Once done, plug in the SD card into your gadget and connect it to your baking computer with just a single USB cable. A separate power source is not required. Use the data connection USB port (OTG port), not the power connection USB port.</p>
 <ul>
 <li>
@@ -649,8 +654,9 @@
 <li><strong>Consensus key</strong> - Used for block validation</li>
 <li><strong>Companion key</strong> - Used for DAL operations</li>
 </ul>
-<p><strong>💡 TIP: Backup Your SD Card</strong></p>
-<p>Now that your keys are on the TezSign device, use Balena Etcher or similar tool to clone the SD card. This backup will allow you to quickly recover if your original SD card fails.</p>
+<p><strong>💡 TIP: Back Up Your TezSign Data</strong></p>
+<p>Now that your keys are on the TezSign device, back up the whole <code>tezsign</code> folder from the Linux-only <code>data</code> partition. This is the folder you can restore to a newly flashed card when recovering from SD-card failure or migrating to a newer TezSign image.</p>
+<p>See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> for the exact Linux mount, copy, and restore steps. A full SD-card clone is also useful for fast failover, but the <code>data/tezsign</code> folder is the focused backup you need for image migrations.</p>
 </blockquote>
 <h2 id="phase-3-node-configuration">Phase 3: Node Configuration</h2>
 <blockquote>
@@ -892,9 +898,19 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 </span></span><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><hr>
 <h2 id="disaster-recovery--failover">Disaster Recovery &amp; Failover</h2>
-<h3 id="backup-your-sd-card">Backup Your SD Card</h3>
-<p>After successful setup, <strong>immediately clone your SD card</strong>:</p>
-<p><strong>Using Balena Etcher (recommended):</strong></p>
+<h3 id="back-up-or-clone-your-tezsign-card">Back Up or Clone Your TezSign Card</h3>
+<p>After successful setup, <strong>immediately back up your TezSign data</strong>:</p>
+<ol>
+<li>Remove the SD card from the TezSign device.</li>
+<li>Mount it on a Linux machine.</li>
+<li>Copy the whole <code>tezsign</code> folder from the <code>data</code> partition.</li>
+<li>Store the backup safely.</li>
+<li>Restore that folder to the <code>data</code> partition on a newly flashed card when needed.</li>
+</ol>
+<p>Follow the complete procedure here:</p>
+<p><strong><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></strong></p>
+<p>You can also keep a full SD-card clone for fast recovery:</p>
+<p><strong>Using Balena Etcher:</strong></p>
 <ol>
 <li>Select &ldquo;Clone Drive&rdquo;</li>
 <li>Choose source SD card → destination SD card</li>
@@ -903,11 +919,11 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <p><strong>Using dd:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dd <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">=</span>/dev/sdX <span style="color:#000">of</span><span style="color:#ce5c00;font-weight:bold">=</span>/path/to/backup.img <span style="color:#000">bs</span><span style="color:#ce5c00;font-weight:bold">=</span>4M <span style="color:#000">status</span><span style="color:#ce5c00;font-weight:bold">=</span>progress
 </span></span></code></pre></div><blockquote>
-<p><strong>💡 TIP:</strong> Keep at least 2 backup SD cards. Data on the card is encrypted with your master password, so clones are safe to store.</p>
+<p><strong>💡 TIP:</strong> Keep at least 2 backup SD cards. Data on the card is protected by your master password, but clones and folder backups should still be stored as sensitive signer material.</p>
 </blockquote>
 <h3 id="if-your-tezsign-device-fails">If Your TezSign Device Fails</h3>
 <ol>
-<li><strong>Have a backup SD card ready</strong> - Insert your cloned card into a spare device</li>
+<li><strong>Have a backup SD card ready</strong> - Insert your cloned card, or a newly flashed card with restored <code>data/tezsign</code>, into a spare device</li>
 <li><strong>Never run two devices with the same keys simultaneously</strong> - This causes double-signing and slashing</li>
 <li>If no backup exists, use your manager Ledger via <a href="https://gov.tez.capital/">TezGov</a> to set a new consensus key (takes 3 cycles to activate)</li>
 </ol>
@@ -926,6 +942,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 </ul>
 <p><strong>After Setup:</strong></p>
 <ul>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - SD-card data backup and migration</li>
 <li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - Monitor your baker</li>
 <li><a href="/tezbake/tutorials/troubleshooting/">Troubleshooting</a> - Common issues and solutions</li>
 <li><a href="/tezpay/tutorials/setup/">TezPay Setup</a> - Automate reward payments</li>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="2990">
+<meta itemprop="wordCount" content="3055">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -596,6 +598,7 @@
 <li><strong>TezSign remote signer device</strong> - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. <a href="/tezbake/tutorials/baking-with-tezsign">Learn more: Baking with TezSign</a>
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> Baking with a Ledger is no longer recommended for new bakers. It&rsquo;s still possible to bake with the Ledger but we recommend you implement TezSign right away.</p>
+<p>After generating keys on TezSign, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
 </blockquote>
 </li>
 </ol>
@@ -664,6 +667,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <h4 id="option-1---recommended-import-tezsign-consensus-and-companion-keys">(Option 1 - RECOMMENDED) Import TezSign consensus and companion keys</h4>
 <p>Follow the following guide and then proceed directly to <a href="#stake-your-baking-xtz-security-deposit">stake your XTZ</a>:</p>
 <p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
+<p>After you generate keys on the TezSign device, follow <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> so you have a Linux-readable <code>data/tezsign</code> backup before you rely on the device for production baking.</p>
 <blockquote>
 <p><strong>⚠️ WARNING: Key Alias Naming</strong></p>
 <p>When following the TezSign guide, use these alias names:</p>
@@ -923,6 +927,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p><strong>Advanced Configurations:</strong></p>
 <ul>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Detailed TezSign setup guide</li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - TezSign SD-card backup and migration</li>
 <li><a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> - Advanced DAL configurations</li>
 <li><a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a> - Distributed component setup</li>
 <li><a href="/tezbake/tutorials/baking-with-consensus-key/">Baking with Consensus Key</a> - Separate consensus key management</li>

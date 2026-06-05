@@ -16,6 +16,114 @@
     
     
     <item>
+      <title>Tezsign: Back Up and Restore TezSign Data</title>
+      <link>/tezsign/tutorials/back-up-and-restore-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/back-up-and-restore-data/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this procedure when you want to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Back up the keys and signer state from a TezSign SD card&lt;/li&gt;
+&lt;li&gt;Move a working TezSign setup to a newly flashed SD card&lt;/li&gt;
+&lt;li&gt;Migrate to a newer TezSign image or hardware architecture&lt;/li&gt;
+&lt;li&gt;Recover from a failing SD card by transplanting the TezSign data to a fresh card&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is an offline SD-card procedure. You remove the microSD card from the TezSign device, mount it on a Linux computer, copy the &lt;code&gt;tezsign&lt;/code&gt; folder from the &lt;code&gt;data&lt;/code&gt; partition, then restore that folder to the &lt;code&gt;data&lt;/code&gt; partition on another flashed card.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; macOS does not mount the TezSign &lt;code&gt;data&lt;/code&gt; partition correctly. Use a Linux computer, a Linux live USB, or a trusted Linux VM with direct access to the card reader.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;what-you-are-copying&#34;&gt;What You Are Copying&lt;/h2&gt;
+&lt;p&gt;A current TezSign image has three partitions. On Linux, you should see partitions labeled &lt;code&gt;app&lt;/code&gt;, &lt;code&gt;boot&lt;/code&gt;, and &lt;code&gt;data&lt;/code&gt;. The one you need is &lt;code&gt;data&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Inside the &lt;code&gt;data&lt;/code&gt; partition is a folder named &lt;code&gt;tezsign&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  tezsign/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Copy the entire &lt;code&gt;tezsign&lt;/code&gt; folder as one unit. Do not copy only individual files inside it.&lt;/p&gt;
+&lt;h2 id=&#34;before-you-begin&#34;&gt;Before You Begin&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Stop baking with this TezSign device before removing its SD card.&lt;/li&gt;
+&lt;li&gt;Disconnect the TezSign device from the baker machine.&lt;/li&gt;
+&lt;li&gt;Use a Linux machine you trust.&lt;/li&gt;
+&lt;li&gt;Have a backup destination ready, such as another drive or an encrypted folder.&lt;/li&gt;
+&lt;li&gt;Keep your TezSign master password safe. The backup is not useful without it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Critical:&lt;/strong&gt; Never run two TezSign devices, cards, or restored copies with the same keys at the same time. That can cause double signing and slashing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;find-the-data-partition&#34;&gt;Find the &lt;code&gt;data&lt;/code&gt; Partition&lt;/h2&gt;
+&lt;p&gt;Insert the TezSign microSD card into the Linux computer.&lt;/p&gt;
+&lt;p&gt;In a graphical file manager, the card may appear as several volumes. Look for the volume named &lt;code&gt;data&lt;/code&gt;. Ignore the &lt;code&gt;app&lt;/code&gt; and &lt;code&gt;boot&lt;/code&gt; partitions for this procedure.&lt;/p&gt;
+&lt;p&gt;From the command line, you can identify the partition labels with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lsblk -o NAME,LABEL,FSTYPE,SIZE,MOUNTPOINTS
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Find the row with &lt;code&gt;LABEL&lt;/code&gt; set to &lt;code&gt;data&lt;/code&gt;. If your desktop auto-mounted it, the mount point may look like &lt;code&gt;/media/$USER/data&lt;/code&gt; or &lt;code&gt;/run/media/$USER/data&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;back-up-the-tezsign-folder&#34;&gt;Back Up the &lt;code&gt;tezsign&lt;/code&gt; Folder&lt;/h2&gt;
+&lt;h3 id=&#34;option-a-file-manager&#34;&gt;Option A: File Manager&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the mounted &lt;code&gt;data&lt;/code&gt; partition.&lt;/li&gt;
+&lt;li&gt;Find the &lt;code&gt;tezsign&lt;/code&gt; folder at the top level of the partition.&lt;/li&gt;
+&lt;li&gt;Copy the whole &lt;code&gt;tezsign&lt;/code&gt; folder to your backup location.&lt;/li&gt;
+&lt;li&gt;Safely eject or unmount the SD card before removing it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;option-b-command-line&#34;&gt;Option B: Command Line&lt;/h3&gt;
+&lt;p&gt;Create a backup directory and copy the folder:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rsync -aHAX --info&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;progress2 /media/&lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;/data/tezsign/ &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups/tezsign/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sync
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your &lt;code&gt;data&lt;/code&gt; partition mounted somewhere else, replace &lt;code&gt;/media/$USER/data&lt;/code&gt; with the mount point shown by &lt;code&gt;lsblk&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For a portable archive, especially if you are storing the backup on a non-Linux filesystem, use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tar -C /media/&lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;/data -czf &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups/tezsign-&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;.tar.gz&amp;#34;&lt;/span&gt; tezsign
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sync
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;restore-to-a-newly-flashed-card&#34;&gt;Restore to a Newly Flashed Card&lt;/h2&gt;
+&lt;p&gt;Flash the new TezSign image to a fresh SD card first. Then insert that card into the Linux computer and open or mount its &lt;code&gt;data&lt;/code&gt; partition.&lt;/p&gt;
+&lt;p&gt;If you backed up the folder directly:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rsync -aHAX --delete &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups/tezsign/&amp;#34;&lt;/span&gt; /media/&lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;/data/tezsign/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sync
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you backed up a &lt;code&gt;.tar.gz&lt;/code&gt; archive:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo rm -rf /media/&lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;/data/tezsign
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tar -C /media/&lt;span style=&#34;color:#000&#34;&gt;$USER&lt;/span&gt;/data -xzf &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$HOME&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/tezsign-backups/tezsign-YYYYMMDD.tar.gz&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sync
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;code&gt;tezsign-YYYYMMDD.tar.gz&lt;/code&gt; with your actual backup file name.&lt;/p&gt;
+&lt;p&gt;When the restore is complete, safely eject or unmount the SD card before removing it.&lt;/p&gt;
+&lt;h2 id=&#34;verify-after-restore&#34;&gt;Verify After Restore&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Insert the restored SD card into the TezSign device.&lt;/li&gt;
+&lt;li&gt;Make sure the original TezSign device or original SD card is not also connected.&lt;/li&gt;
+&lt;li&gt;Connect the restored device to the baker machine.&lt;/li&gt;
+&lt;li&gt;Check that TezBake sees the device:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Unlock the restored keys:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign unlock
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify the baker and DAL status:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;safety-notes&#34;&gt;Safety Notes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.&lt;/li&gt;
+&lt;li&gt;Store at least one backup offline.&lt;/li&gt;
+&lt;li&gt;Label backups clearly so you know which baker and network they belong to.&lt;/li&gt;
+&lt;li&gt;Test a restored card only when the primary TezSign device is unplugged.&lt;/li&gt;
+&lt;li&gt;For routine disaster recovery, an SD-card clone is still useful. This &lt;code&gt;data/tezsign&lt;/code&gt; transplant is the focused backup you need for image migrations and fresh-card restores.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Full TezSign setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/updating/&#34;&gt;Updating TezSign&lt;/a&gt; - Firmware and application updates&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard baker setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; - Why duplicate signer operation is dangerous&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezsign: Updating</title>
       <link>/tezsign/tutorials/updating/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27,14 +135,15 @@
         &lt;h2 id=&#34;keeping-tezsign-up-to-date&#34;&gt;Keeping TezSign Up-to-Date&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ WARNING: Experimental Updater&lt;/strong&gt;
-The &lt;code&gt;tezsign_updater&lt;/code&gt; is currently experimental. &lt;strong&gt;Please backup all files from your data partition before proceeding.&lt;/strong&gt;
-&lt;strong&gt;IMPORTANT: Image Compatibility Note&lt;/strong&gt;
+The &lt;code&gt;tezsign_updater&lt;/code&gt; is currently experimental. Before updating or reflashing, &lt;strong&gt;back up the &lt;code&gt;data/tezsign&lt;/code&gt; folder&lt;/strong&gt; with &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;macOS does not mount the TezSign &lt;code&gt;data&lt;/code&gt; partition correctly. Use Linux to make this backup.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IMPORTANT: Image Compatibility Note&lt;/strong&gt;
 This update process &lt;strong&gt;only works if you are using an image from 21.11.2025 or newer&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;If you are using an older image:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Backup your data partition.&lt;/li&gt;
+&lt;li&gt;Back up the whole &lt;code&gt;tezsign&lt;/code&gt; folder from the &lt;code&gt;data&lt;/code&gt; partition.&lt;/li&gt;
 &lt;li&gt;Re-flash the SD card with the latest full image.&lt;/li&gt;
-&lt;li&gt;Copy your backed-up files into the dedicated &lt;code&gt;tezsign&lt;/code&gt; folder on the new data partition. (This is required due to a one-time layout change).&lt;/li&gt;
+&lt;li&gt;Copy the backed-up &lt;code&gt;tezsign&lt;/code&gt; folder into the &lt;code&gt;data&lt;/code&gt; partition on the new card. This is required due to a one-time layout change.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;update-procedure&#34;&gt;Update Procedure&lt;/h3&gt;
@@ -83,6 +192,7 @@ Once the update is complete, remove the SD card from your manager machine, inser
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - Linux-only data partition backup and restore&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Full TezSign setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard baker setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Fix common issues&lt;/li&gt;

@@ -133,6 +133,7 @@
 &lt;li&gt;&lt;strong&gt;TezSign remote signer device&lt;/strong&gt; - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Learn more: Baking with TezSign&lt;/a&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Baking with a Ledger is no longer recommended for new bakers. It&amp;rsquo;s still possible to bake with the Ledger but we recommend you implement TezSign right away.&lt;/p&gt;
+&lt;p&gt;After generating keys on TezSign, back up the &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition. See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -201,6 +202,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;h4 id=&#34;option-1---recommended-import-tezsign-consensus-and-companion-keys&#34;&gt;(Option 1 - RECOMMENDED) Import TezSign consensus and companion keys&lt;/h4&gt;
 &lt;p&gt;Follow the following guide and then proceed directly to &lt;a href=&#34;#stake-your-baking-xtz-security-deposit&#34;&gt;stake your XTZ&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After you generate keys on the TezSign device, follow &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; so you have a Linux-readable &lt;code&gt;data/tezsign&lt;/code&gt; backup before you rely on the device for production baking.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ WARNING: Key Alias Naming&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;When following the TezSign guide, use these alias names:&lt;/p&gt;
@@ -460,6 +462,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;&lt;strong&gt;Advanced Configurations:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Detailed TezSign setup guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - TezSign SD-card backup and migration&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; - Advanced DAL configurations&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; - Distributed component setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; - Separate consensus key management&lt;/li&gt;
@@ -699,6 +702,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;li&gt;&lt;strong&gt;A supported TezSign hardware device&lt;/strong&gt; — Radxa Zero 3W or Raspberry Pi Zero 2W (see shopping list in Phase 0)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;SD card(s)&lt;/strong&gt; — at least 8GB, enterprise/endurance grade recommended; buy 3 (one active, one clone, one spare)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;USB cable&lt;/strong&gt; — a short, high-quality data cable to connect TezSign to your baking machine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A Linux backup path&lt;/strong&gt; — macOS cannot mount the TezSign &lt;code&gt;data&lt;/code&gt; partition correctly; use Linux for TezSign data backups and restores&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
@@ -709,6 +713,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;li&gt;&lt;a href=&#34;#phase-4-verify-and-bake&#34;&gt;Phase 4: Verify and Bake&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#advanced-direct-tezsign-backend&#34;&gt;Advanced: Direct TezSign Backend&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#advanced-automatic-unlock-for-tezsign&#34;&gt;Advanced: Automatic Unlock for TezSign&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#disaster-recovery--failover&#34;&gt;Disaster Recovery &amp;amp; Failover&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;phase-0-purchase-sbc-and-image-sd-card&#34;&gt;Phase 0: Purchase SBC and image SD card&lt;/h2&gt;
@@ -738,6 +743,7 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;p&gt;Navigate to the release page and download the latest image for your RPI or Radxa device: &lt;a href=&#34;https://github.com/tez-capital/tezsign/releases&#34;&gt;TezSign Releases&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Once downloaded, extract the image. The image will be around 1.5GB - 2GB once it&amp;rsquo;s been extracted.&lt;/p&gt;
 &lt;p&gt;Use &lt;a href=&#34;https://etcher.balena.io/&#34;&gt;Balena Etcher&lt;/a&gt; (or a tool you are familiar with) to flash the gadget image to your SD card.&lt;/p&gt;
+&lt;p&gt;The flashed card has three partitions on Linux: &lt;code&gt;app&lt;/code&gt;, &lt;code&gt;boot&lt;/code&gt;, and &lt;code&gt;data&lt;/code&gt;. macOS does not mount the &lt;code&gt;data&lt;/code&gt; partition correctly. The &lt;code&gt;data&lt;/code&gt; partition contains the &lt;code&gt;tezsign&lt;/code&gt; folder that you back up, restore, or transplant when moving to a newly flashed card. See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; before updating, reflashing, or migrating a TezSign card.&lt;/p&gt;
 &lt;p&gt;Once done, plug in the SD card into your gadget and connect it to your baking computer with just a single USB cable. A separate power source is not required. Use the data connection USB port (OTG port), not the power connection USB port.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -813,8 +819,9 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;li&gt;&lt;strong&gt;Consensus key&lt;/strong&gt; - Used for block validation&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Companion key&lt;/strong&gt; - Used for DAL operations&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;💡 TIP: Backup Your SD Card&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Now that your keys are on the TezSign device, use Balena Etcher or similar tool to clone the SD card. This backup will allow you to quickly recover if your original SD card fails.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Back Up Your TezSign Data&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Now that your keys are on the TezSign device, back up the whole &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition. This is the folder you can restore to a newly flashed card when recovering from SD-card failure or migrating to a newer TezSign image.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; for the exact Linux mount, copy, and restore steps. A full SD-card clone is also useful for fast failover, but the &lt;code&gt;data/tezsign&lt;/code&gt; folder is the focused backup you need for image migrations.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;phase-3-node-configuration&#34;&gt;Phase 3: Node Configuration&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -1056,9 +1063,19 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;disaster-recovery--failover&#34;&gt;Disaster Recovery &amp;amp; Failover&lt;/h2&gt;
-&lt;h3 id=&#34;backup-your-sd-card&#34;&gt;Backup Your SD Card&lt;/h3&gt;
-&lt;p&gt;After successful setup, &lt;strong&gt;immediately clone your SD card&lt;/strong&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Using Balena Etcher (recommended):&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;back-up-or-clone-your-tezsign-card&#34;&gt;Back Up or Clone Your TezSign Card&lt;/h3&gt;
+&lt;p&gt;After successful setup, &lt;strong&gt;immediately back up your TezSign data&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Remove the SD card from the TezSign device.&lt;/li&gt;
+&lt;li&gt;Mount it on a Linux machine.&lt;/li&gt;
+&lt;li&gt;Copy the whole &lt;code&gt;tezsign&lt;/code&gt; folder from the &lt;code&gt;data&lt;/code&gt; partition.&lt;/li&gt;
+&lt;li&gt;Store the backup safely.&lt;/li&gt;
+&lt;li&gt;Restore that folder to the &lt;code&gt;data&lt;/code&gt; partition on a newly flashed card when needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Follow the complete procedure here:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;You can also keep a full SD-card clone for fast recovery:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Using Balena Etcher:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Select &amp;ldquo;Clone Drive&amp;rdquo;&lt;/li&gt;
 &lt;li&gt;Choose source SD card → destination SD card&lt;/li&gt;
@@ -1067,11 +1084,11 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;p&gt;&lt;strong&gt;Using dd:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo dd &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/dev/sdX &lt;span style=&#34;color:#000&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/path/to/backup.img &lt;span style=&#34;color:#000&#34;&gt;bs&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;4M &lt;span style=&#34;color:#000&#34;&gt;status&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;progress
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Keep at least 2 backup SD cards. Data on the card is encrypted with your master password, so clones are safe to store.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Keep at least 2 backup SD cards. Data on the card is protected by your master password, but clones and folder backups should still be stored as sensitive signer material.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;if-your-tezsign-device-fails&#34;&gt;If Your TezSign Device Fails&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Have a backup SD card ready&lt;/strong&gt; - Insert your cloned card into a spare device&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Have a backup SD card ready&lt;/strong&gt; - Insert your cloned card, or a newly flashed card with restored &lt;code&gt;data/tezsign&lt;/code&gt;, into a spare device&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Never run two devices with the same keys simultaneously&lt;/strong&gt; - This causes double-signing and slashing&lt;/li&gt;
 &lt;li&gt;If no backup exists, use your manager Ledger via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; to set a new consensus key (takes 3 cycles to activate)&lt;/li&gt;
 &lt;/ol&gt;
@@ -1090,6 +1107,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;After Setup:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - SD-card data backup and migration&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Monitor your baker&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Common issues and solutions&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Automate reward payments&lt;/li&gt;
@@ -1750,6 +1768,7 @@ Services:
 &lt;ul&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup computer with TezBake installed (but not started)&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Backup TezSign device or Ledger (not authorized for baking)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; For TezSign: cloned SD card or restored &lt;code&gt;data/tezsign&lt;/code&gt; folder ready for the backup device&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Document your baker&amp;rsquo;s public key hash (tz1/tz2/tz3/tz4 address)&lt;/li&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Know your current block level (check &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
@@ -1785,6 +1804,7 @@ Services:
 &lt;h3 id=&#34;step-5-setup-backup-signer&#34;&gt;Step 5: Setup Backup Signer&lt;/h3&gt;
 &lt;p&gt;Connect your backup signer to the backup computer:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;For TezSign:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If the backup SD card is newly flashed, restore the &lt;code&gt;tezsign&lt;/code&gt; folder from the &lt;code&gt;data&lt;/code&gt; partition backup before using it. See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Initialize if not already done&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -1882,6 +1902,7 @@ Services:
 &lt;li&gt;&lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; - Why double baking is dangerous&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Monitor your baker&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - TezSign setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - Restore TezSign data to a fresh card&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -2241,6 +2262,7 @@ All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorial
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;import-ledger-key-or-soft-key-and-register-as-baker&#34;&gt;Import Ledger key or soft key and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
 &lt;p&gt;You have the option to use a TezSign device, a Ledger hardware wallet, or a local unencrypted software key (soft key). TezSign is recommended for new bakers. Ledger remains a valid option for existing setups. See &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; for the recommended approach.&lt;/p&gt;
+&lt;p&gt;If you use TezSign, back up the &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition after key generation. See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;option-1-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
@@ -2447,6 +2469,8 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;h3 id=&#34;setup-steps&#34;&gt;Setup Steps&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Step 1 — Follow the TezSign guide to generate your consensus and companion keys on the device:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After the keys are generated, back up the whole &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition before relying on the device for production baking:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Step 2 — Register the keys on-chain using TezGov (recommended):&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Connect to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; with your &lt;strong&gt;Ledger&lt;/strong&gt; (manager key, Tezos Wallet app)&lt;/li&gt;
@@ -2553,6 +2577,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard setup guide&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Hardware signer setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - SD-card data backup and migration&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Check baker health&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;

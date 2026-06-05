@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Failover Procedure">
 <meta itemprop="description" content="How to safely switch to your backup baker when your primary fails">
 
-<meta itemprop="wordCount" content="678">
+<meta itemprop="wordCount" content="733">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Failover Procedure"/>
 <meta name="twitter:description" content="How to safely switch to your backup baker when your primary fails"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -502,6 +504,7 @@
 <ul>
 <li><input disabled="" type="checkbox"> Backup computer with TezBake installed (but not started)</li>
 <li><input disabled="" type="checkbox"> Backup TezSign device or Ledger (not authorized for baking)</li>
+<li><input disabled="" type="checkbox"> For TezSign: cloned SD card or restored <code>data/tezsign</code> folder ready for the backup device</li>
 <li><input disabled="" type="checkbox"> Document your baker&rsquo;s public key hash (tz1/tz2/tz3/tz4 address)</li>
 <li><input disabled="" type="checkbox"> Know your current block level (check <a href="https://tzkt.io">TzKT</a>)</li>
 </ul>
@@ -537,6 +540,7 @@
 <h3 id="step-5-setup-backup-signer">Step 5: Setup Backup Signer</h3>
 <p>Connect your backup signer to the backup computer:</p>
 <p><strong>For TezSign:</strong></p>
+<p>If the backup SD card is newly flashed, restore the <code>tezsign</code> folder from the <code>data</code> partition backup before using it. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Initialize if not already done</span>
 </span></span><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
 </span></span><span style="display:flex;"><span>
@@ -634,6 +638,7 @@
 <li><a href="/getting-started/slashing-explained/">Slashing Explained</a> - Why double baking is dangerous</li>
 <li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - Monitor your baker</li>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - TezSign setup</li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Restore TezSign data to a fresh card</li>
 </ul>
 <hr>
 <p>Any questions/comments/concerns? Please contact the Tez Capital team on

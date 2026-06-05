@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezos Baking Best Practices">
 <meta itemprop="description" content="Tezos Baking Best Practices">
 
-<meta itemprop="wordCount" content="707">
+<meta itemprop="wordCount" content="772">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezos Baking Best Practices"/>
 <meta name="twitter:description" content="Tezos Baking Best Practices"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -488,6 +490,7 @@
 <ul>
 <li>Two computers (see link above) with equal or equivalent hardware specs <em>(one optional)</em></li>
 <li><strong>TezSign device</strong> (recommended for new bakers) or Ledger Nano S Plus/Nano X hardware wallet. See <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> for setup</li>
+<li><strong>TezSign data backup</strong> if you use TezSign. Back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition after key generation. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></li>
 <li>One UPS battery backup <em>(optional)</em></li>
 </ul>
 <blockquote>
@@ -516,6 +519,7 @@
 </ul>
 </blockquote>
 <p>If you only have one hardware signer and it fails, you will be down until you get a replacement and set it up to bake.</p>
+<p>For TezSign, keep a current backup of the <code>data/tezsign</code> folder so you can restore it to a newly flashed SD card or migrate to a newer TezSign image without regenerating keys. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
 <h3 id="one-ups-battery-backup">One UPS battery backup</h3>
 <p>Having at least one UPS device which has your ISP connection and your baking computer connected to it is highly recommended. This will ensure that your baking computer will not be interrupted in the event of electrical failure up to the amount of time supported by your battery.  The bigger the battery, the more time your computer will keep baking when power fails.</p>
 <p>If your baking computer and your ISP are in different rooms or on different electrical outlets, you need to ensure that each one is independently supplied with UPS power.</p>

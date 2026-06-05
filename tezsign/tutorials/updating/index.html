@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezSign firmware and application">
 
-<meta itemprop="wordCount" content="316">
+<meta itemprop="wordCount" content="355">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezSign firmware and application"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="td-sidebar-nav-active-item">Updating</span></a>
 </li>
   </ul>
@@ -476,14 +478,15 @@
 	<h2 id="keeping-tezsign-up-to-date">Keeping TezSign Up-to-Date</h2>
 <blockquote>
 <p><strong>⚠️ WARNING: Experimental Updater</strong>
-The <code>tezsign_updater</code> is currently experimental. <strong>Please backup all files from your data partition before proceeding.</strong>
-<strong>IMPORTANT: Image Compatibility Note</strong>
+The <code>tezsign_updater</code> is currently experimental. Before updating or reflashing, <strong>back up the <code>data/tezsign</code> folder</strong> with <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
+<p>macOS does not mount the TezSign <code>data</code> partition correctly. Use Linux to make this backup.</p>
+<p><strong>IMPORTANT: Image Compatibility Note</strong>
 This update process <strong>only works if you are using an image from 21.11.2025 or newer</strong>.</p>
 <p><strong>If you are using an older image:</strong></p>
 <ol>
-<li>Backup your data partition.</li>
+<li>Back up the whole <code>tezsign</code> folder from the <code>data</code> partition.</li>
 <li>Re-flash the SD card with the latest full image.</li>
-<li>Copy your backed-up files into the dedicated <code>tezsign</code> folder on the new data partition. (This is required due to a one-time layout change).</li>
+<li>Copy the backed-up <code>tezsign</code> folder into the <code>data</code> partition on the new card. This is required due to a one-time layout change.</li>
 </ol>
 </blockquote>
 <h3 id="update-procedure">Update Procedure</h3>
@@ -532,6 +535,7 @@ Once the update is complete, remove the SD card from your manager machine, inser
 <hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Linux-only data partition backup and restore</li>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Full TezSign setup</li>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard baker setup</li>
 <li><a href="/tezbake/tutorials/troubleshooting/">Troubleshooting</a> - Fix common issues</li>

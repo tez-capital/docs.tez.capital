@@ -4,6 +4,8 @@
   <url>
     <loc>/tezbake/reference/advanced-configuration/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/back-up-and-restore-data/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/baking-on-mainnet/</loc>
   </url><url>
     <loc>/getting-started/</loc>
@@ -32,8 +34,6 @@
   </url><url>
     <loc>/tezwatch/tutorials/</loc>
   </url><url>
-    <loc>/tezsign/tutorials/updating/</loc>
-  </url><url>
     <loc>/tezgov/tutorials/voting-on-proposals/</loc>
   </url><url>
     <loc>/getting-started/what-is-baking/</loc>
@@ -59,6 +59,8 @@
     <loc>/tezpay/tutorials/tezbake-integration/</loc>
   </url><url>
     <loc>/getting-started/public-baking/</loc>
+  </url><url>
+    <loc>/tezsign/tutorials/updating/</loc>
   </url><url>
     <loc>/getting-started/baker-key-architecture/</loc>
   </url><url>

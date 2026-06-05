@@ -237,7 +237,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="td-sidebar-nav-active-item">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -403,6 +405,7 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#tezsign"><strong>TezSign</strong></a></li>
+    <li><a href="#backups-and-migrations">Backups and Migrations</a></li>
     <li><a href="#setup-options">Setup Options</a></li>
     <li><a href="#tutorials">Tutorials</a></li>
   </ul>
@@ -468,6 +471,13 @@
 <p>TezSign is a hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W. It connects via USB to your baking node and is designed to sign baking operations securely.</p>
 <p>For an overview of TezSign vs Ledger, see <a href="/getting-started/ledger-vs-tezsign/">Ledger vs TezSign</a>.</p>
 <hr>
+<h2 id="backups-and-migrations">Backups and Migrations</h2>
+<p>Before updating, reflashing, or migrating a TezSign SD card, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition:</p>
+<ul>
+<li><strong><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></strong></li>
+</ul>
+<p>This is the focused backup path for moving TezSign keys and signer state to a newly flashed card.</p>
+<hr>
 <h2 id="setup-options">Setup Options</h2>
 <ul>
 <li><strong>Same machine:</strong> Follow <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a></li>
@@ -486,6 +496,14 @@
     
     
     <hr class="panel-line">
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>
+                </h5>
+                <p></p>
+            </div>
         
             
             <div class="entry">

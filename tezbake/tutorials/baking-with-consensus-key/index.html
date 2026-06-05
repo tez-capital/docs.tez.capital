@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1703">
+<meta itemprop="wordCount" content="1745">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -609,6 +611,8 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <h3 id="setup-steps">Setup Steps</h3>
 <p><strong>Step 1 — Follow the TezSign guide to generate your consensus and companion keys on the device:</strong></p>
 <p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
+<p>After the keys are generated, back up the whole <code>tezsign</code> folder from the Linux-only <code>data</code> partition before relying on the device for production baking:</p>
+<p><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></p>
 <p><strong>Step 2 — Register the keys on-chain using TezGov (recommended):</strong></p>
 <ol>
 <li>Connect to <a href="https://gov.tez.capital">gov.tez.capital</a> with your <strong>Ledger</strong> (manager key, Tezos Wallet app)</li>
@@ -715,6 +719,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <ul>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard setup guide</li>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Hardware signer setup</li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - SD-card data backup and migration</li>
 <li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - Check baker health</li>
 </ul>
 <hr>

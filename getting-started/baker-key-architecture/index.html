@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baker Key Architecture">
 <meta itemprop="description" content="Understanding the three baker key roles — manager, consensus, and companion — and how they work together">
 
-<meta itemprop="wordCount" content="983">
+<meta itemprop="wordCount" content="1005">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baker Key Architecture"/>
 <meta name="twitter:description" content="Understanding the three baker key roles — manager, consensus, and companion — and how they work together"/>
@@ -241,7 +241,9 @@
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezsigntutorials-li">
   <a href="/tezsign/tutorials/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezsigntutorials"><span class="">TezSign Tutorials</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsback-up-and-restore-data-li">
+  <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
 </li>
   </ul>
@@ -597,7 +599,7 @@ No. The companion key must be a distinct tz4 address. However, you <em>can</em> 
 <p><strong>&ldquo;The companion key is optional&rdquo;</strong>
 It is optional only if your consensus key is tz1/tz2/tz3. If your consensus key is tz4, the companion key is mandatory for DAL participation. Skipping it means ~10% income loss.</p>
 <p><strong>&ldquo;Losing my TezSign means losing my baker&rdquo;</strong>
-No. Your manager key (Ledger) is the permanent baker identity. If TezSign is lost or fails, use your Ledger in TezGov to register a new consensus key. Your baker address, delegators, and stakers are unaffected — only the signing device changes.</p>
+No. Your manager key (Ledger) is the permanent baker identity. If TezSign is lost or fails, restore your <code>data/tezsign</code> backup to a newly flashed card, or use your Ledger in TezGov to register a new consensus key. Your baker address, delegators, and stakers are unaffected — only the signing device changes.</p>
 <hr>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
@@ -605,6 +607,7 @@ No. Your manager key (Ledger) is the permanent baker identity. If TezSign is los
 <li><a href="/getting-started/ledger-vs-tezsign/">Ledger vs TezSign</a> — Detailed comparison</li>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> — Full baker setup guide</li>
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> — TezSign hardware setup</li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> — TezSign SD-card backup and migration</li>
 <li><a href="/tezbake/tutorials/baking-with-consensus-key/">Baking with Consensus Key</a> — Activating tz4 consensus and companion keys</li>
 <li><a href="/tezgov/tutorials/managing-baker-settings/">Managing Baker Settings</a> — Setting keys via TezGov</li>
 </ul>
