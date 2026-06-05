@@ -241,6 +241,18 @@
   <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshardware-and-flashing-li">
+  <a href="/tezsign/tutorials/hardware-and-flashing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshardware-and-flashing"><span class="">Hardware and Flashing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsusb-power-reliability-li">
+  <a href="/tezsign/tutorials/usb-power-reliability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsusb-power-reliability"><span class="">USB and Power Reliability</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsalias-cleanup-after-activation-li">
+  <a href="/tezsign/tutorials/alias-cleanup-after-activation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsalias-cleanup-after-activation"><span class="">Alias Cleanup After Activation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshigh-watermark-recovery-li">
+  <a href="/tezsign/tutorials/high-watermark-recovery/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshigh-watermark-recovery"><span class="">High-Watermark Recovery</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsdirect-backend-li">
+  <a href="/tezsign/tutorials/direct-backend/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsdirect-backend"><span class="">Direct TezSign Backend</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsautomatic-unlock-li">
+  <a href="/tezsign/tutorials/automatic-unlock/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsautomatic-unlock"><span class="">Automatic Unlock</span></a>
 </li>
   </ul>
 </li>
@@ -407,7 +419,7 @@
     <li><a href="#tezsign"><strong>TezSign</strong></a></li>
     <li><a href="#backups-and-migrations">Backups and Migrations</a></li>
     <li><a href="#setup-options">Setup Options</a></li>
-    <li><a href="#tutorials">Tutorials</a></li>
+    <li><a href="#knowledge-base">Knowledge Base</a></li>
   </ul>
 </nav>
       </div>
@@ -472,19 +484,31 @@
 <p>For an overview of TezSign vs Ledger, see <a href="/getting-started/ledger-vs-tezsign/">Ledger vs TezSign</a>.</p>
 <hr>
 <h2 id="backups-and-migrations">Backups and Migrations</h2>
-<p>Before updating, reflashing, or migrating a TezSign SD card, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition:</p>
+<p>Before updating, reflashing, or migrating a TezSign SD card, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition.</p>
 <ul>
-<li><strong><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></strong></li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></li>
+<li><a href="/tezsign/tutorials/high-watermark-recovery/">High-Watermark Recovery</a></li>
 </ul>
 <p>This is the focused backup path for moving TezSign keys and signer state to a newly flashed card.</p>
 <hr>
 <h2 id="setup-options">Setup Options</h2>
 <ul>
-<li><strong>Same machine:</strong> Follow <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a></li>
+<li><strong>Mainnet baker:</strong> Follow <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a></li>
+<li><strong>TezSign setup hub:</strong> See <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a></li>
 <li><strong>Separate machine (remote signer):</strong> Follow <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></li>
 </ul>
 <hr>
-<h2 id="tutorials">Tutorials</h2>
+<h2 id="knowledge-base">Knowledge Base</h2>
+<ul>
+<li><a href="/tezsign/tutorials/hardware-and-flashing/">Hardware and Flashing</a> - Hardware, SD cards, and image flashing</li>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Backups, restores, and SD-card migration</li>
+<li><a href="/tezsign/tutorials/usb-power-reliability/">USB and Power Reliability</a> - USB, OTG, power, and BIOS troubleshooting</li>
+<li><a href="/tezsign/tutorials/alias-cleanup-after-activation/">Alias Cleanup After Activation</a> - Local alias cleanup after tz4 activation</li>
+<li><a href="/tezsign/tutorials/high-watermark-recovery/">High-Watermark Recovery</a> - HWM handling for failover and migration</li>
+<li><a href="/tezsign/tutorials/direct-backend/">Direct TezSign Backend</a> - Optional direct TezSign backend</li>
+<li><a href="/tezsign/tutorials/automatic-unlock/">Automatic Unlock</a> - Optional automatic unlock</li>
+<li><a href="/tezsign/tutorials/updating/">Updating</a> - TezSign image and app updates</li>
+</ul>
 
         <div class="section-index">
     
@@ -509,6 +533,54 @@
             <div class="entry">
                 <h5>
                     <a href="/tezsign/tutorials/updating/">Updating</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/hardware-and-flashing/">Hardware and Flashing</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/usb-power-reliability/">USB and Power Reliability</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/alias-cleanup-after-activation/">Alias Cleanup After Activation</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/high-watermark-recovery/">High-Watermark Recovery</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/direct-backend/">Direct TezSign Backend</a>
+                </h5>
+                <p></p>
+            </div>
+        
+            
+            <div class="entry">
+                <h5>
+                    <a href="/tezsign/tutorials/automatic-unlock/">Automatic Unlock</a>
                 </h5>
                 <p></p>
             </div>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="3116">
+<meta itemprop="wordCount" content="3722">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -245,6 +245,18 @@
   <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshardware-and-flashing-li">
+  <a href="/tezsign/tutorials/hardware-and-flashing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshardware-and-flashing"><span class="">Hardware and Flashing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsusb-power-reliability-li">
+  <a href="/tezsign/tutorials/usb-power-reliability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsusb-power-reliability"><span class="">USB and Power Reliability</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsalias-cleanup-after-activation-li">
+  <a href="/tezsign/tutorials/alias-cleanup-after-activation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsalias-cleanup-after-activation"><span class="">Alias Cleanup After Activation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshigh-watermark-recovery-li">
+  <a href="/tezsign/tutorials/high-watermark-recovery/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshigh-watermark-recovery"><span class="">High-Watermark Recovery</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsdirect-backend-li">
+  <a href="/tezsign/tutorials/direct-backend/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsdirect-backend"><span class="">Direct TezSign Backend</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsautomatic-unlock-li">
+  <a href="/tezsign/tutorials/automatic-unlock/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsautomatic-unlock"><span class="">Automatic Unlock</span></a>
 </li>
   </ul>
 </li>
@@ -427,6 +439,7 @@
     </li>
     <li><a href="#installation-advanced">Installation (Advanced)</a></li>
     <li><a href="#whats-next">What&rsquo;s Next</a></li>
+    <li><a href="#tezsign-follow-up-kbs">TezSign Follow-Up KBs</a></li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
@@ -506,7 +519,7 @@
 <ul>
 <li><strong>Ubuntu 22.04+, Debian 12+, or macOS</strong> — server or desktop with SSH access (Linux recommended for production)</li>
 <li><strong>Minimum 6000 XTZ</strong> for staking as security deposit (or 1000 XTZ with external stakers/delegators — see staking table below)</li>
-<li><strong>Ledger hardware wallet</strong> with Tezos Wallet app installed, OR a <a href="/tezbake/tutorials/baking-with-tezsign/">TezSign device</a></li>
+<li><strong>TezSign device</strong> for consensus and companion signing, plus a Ledger or other manager wallet for funds, staking, governance, and registering key changes</li>
 <li><strong>Hardware meeting minimum specs:</strong> 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband</li>
 </ul>
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -590,12 +603,12 @@
 <li>a low-latency, reliable broadband internet connection.</li>
 </ul>
 </li>
-<li>Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet app installed. This will be used for storing your funds, voting and changing your baking parameters.
+<li>Ledger Nano S Plus or Nano X hardware wallet with Tezos Wallet app installed. This remains your manager wallet for funds, staking, voting, and changing baking parameters.
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> You must use Ledger Live to install the Tezos Wallet app on your device.</p>
 </blockquote>
 </li>
-<li><strong>TezSign remote signer device</strong> - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. <a href="/tezbake/tutorials/baking-with-tezsign">Learn more: Baking with TezSign</a>
+<li><strong>TezSign remote signer device</strong> - A purpose-built hardware signer for Tezos baking, based on affordable single-board computers like Raspberry Pi Zero 2W (~$20-30 in hardware). Connects via USB to your baking node and is designed to do one thing perfectly: sign baking operations securely. TezSign supports tz4 signatures required by modern Tezos protocols, which Ledger devices no longer support for baking. Unlike a general-purpose Ledger wallet, TezSign can remain connected 24/7 dedicated solely to baking. <a href="/tezsign/tutorials/hardware-and-flashing/">TezSign hardware and flashing details</a>
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> Baking with a Ledger is no longer recommended for new bakers. It&rsquo;s still possible to bake with the Ledger but we recommend you implement TezSign right away.</p>
 <p>After generating keys on TezSign, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
@@ -631,7 +644,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a></p>
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <h3 id="start-tezos-node">Start Tezos node</h3>
-<p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
+<p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your signing keys.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
@@ -664,24 +677,73 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p><strong>⚠️ If your consensus key is tz4, a companion key is mandatory.</strong> Without it, your baker forfeits ~10% of baking rewards.</p>
 </blockquote>
 <hr>
-<h4 id="option-1---recommended-import-tezsign-consensus-and-companion-keys">(Option 1 - RECOMMENDED) Import TezSign consensus and companion keys</h4>
-<p>Follow the following guide and then proceed directly to <a href="#stake-your-baking-xtz-security-deposit">stake your XTZ</a>:</p>
-<p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
-<p>After you generate keys on the TezSign device, follow <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> so you have a Linux-readable <code>data/tezsign</code> backup before you rely on the device for production baking.</p>
+<h4 id="recommended-set-up-tezsign-consensus-and-companion-keys">(Recommended) Set up TezSign consensus and companion keys</h4>
+<p>TezSign is the recommended signing path for mainnet baking. Your Ledger remains the manager key for funds, staking, governance, and registering key changes. TezSign holds the online consensus and companion keys that sign blocks, attestations, and DAL payloads.</p>
+<h5 id="1-prepare-the-tezsign-device">1. Prepare the TezSign device</h5>
+<p>Use a Raspberry Pi Zero 2W or Radxa Zero 3W with a freshly flashed TezSign image. Connect the device to the baker host using the OTG/data USB port.</p>
+<p>For hardware choices, SD card recommendations, image flashing, and correct USB ports, see <a href="/tezsign/tutorials/hardware-and-flashing/">TezSign Hardware and Flashing</a>.</p>
+<h5 id="2-enable-usb-access">2. Enable USB access</h5>
+<p>Install the TezSign udev rules and add your user to the required group:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/tez-capital/tezsign/refs/heads/main/tools/add_udev_rules.sh <span style="color:#000;font-weight:bold">|</span> sudo bash
+</span></span><span style="display:flex;"><span>sudo usermod -aG plugdev <span style="color:#000">$USER</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>Ubuntu username note:</strong> Ubuntu does not allow capital letters in usernames.</p>
+</blockquote>
+<p>Log out and log back in so the group membership takes effect.</p>
+<h5 id="3-initialize-the-tezbake-tezsign-platform">3. Initialize the TezBake TezSign platform</h5>
+<p>This creates the TezSign signer configuration on the baker host:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
+</span></span></code></pre></div><h5 id="4-initialize-tezsign-and-generate-keys">4. Initialize TezSign and generate keys</h5>
+<p>Initialize the TezSign device:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign init
+</span></span></code></pre></div><p>You will be prompted to set the TezSign master/key decryption password. Save this password somewhere safe. It cannot be changed later, and the TezSign backup is not useful without it.</p>
+<p>Generate the consensus and companion keys directly on the TezSign device:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign new consensus companion
+</span></span></code></pre></div><p>The <code>consensus</code> key signs blocks and attestations. The <code>companion</code> key signs DAL payloads. Both are required for tz4/BLS baking.</p>
+<h5 id="5-back-up-the-tezsign-data">5. Back up the TezSign data</h5>
+<p>Before relying on the TezSign device for production baking, back up the whole <code>tezsign</code> folder from the Linux-only <code>data</code> partition and restore it to at least two TezSign-flashed backup SD cards:</p>
+<p><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></p>
+<p>This is not required to get a first baker running, but it is required for sane recovery.</p>
+<h5 id="6-import-tezsign-keys-into-tezbake">6. Import TezSign keys into TezBake</h5>
+<p>For the recommended Ledger-manager + TezSign-consensus setup, import the TezSign consensus key through the local <code>baker</code> alias and the DAL companion key through <code>companion</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>consensus --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>baker
+</span></span><span style="display:flex;"><span>tezbake setup-tezsign --import-key<span style="color:#ce5c00;font-weight:bold">=</span>companion --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>companion
+</span></span></code></pre></div><p>Tell the baker to load the DAL companion key in addition to the default <code>baker</code> key:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node modify --set configuration.additional_key_aliases <span style="color:#4e9a06">&#39;[&#34;companion&#34;]&#39;</span>
+</span></span><span style="display:flex;"><span>tezbake upgrade
+</span></span></code></pre></div><p>Verify the alias configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
+</span></span><span style="display:flex;"><span>tezbake info --dal
+</span></span></code></pre></div><p>The expected <code>configuration.additional_key_aliases</code> value is <code>[&quot;companion&quot;]</code>. The consensus key is already loaded through the default <code>baker</code> alias.</p>
+<h5 id="7-get-public-keys-and-proofs">7. Get public keys and proofs</h5>
+<p>To register TezSign keys on-chain, get the public keys and proofs of possession:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status --full
+</span></span></code></pre></div><p>Copy the <code>BLpk...</code> public key and proof of possession for both <code>consensus</code> and <code>companion</code>.</p>
+<h5 id="8-register-consensus-and-companion-keys-on-tezgov">8. Register consensus and companion keys on TezGov</h5>
+<p>Use <a href="https://gov.tez.capital/">TezGov</a> with your manager Ledger:</p>
+<ol>
+<li>Connect with the Ledger that controls your baker manager address.</li>
+<li>Open <strong>Baker Management -&gt; Keys</strong>.</li>
+<li>Set the consensus key using the TezSign consensus <code>BLpk...</code> and proof of possession.</li>
+<li>Set the companion key using the TezSign companion <code>BLpk...</code> and proof of possession.</li>
+<li>Confirm the operation on your Ledger.</li>
+</ol>
+<p>Both keys activate after 3 cycles. Your old signing setup remains active until the new keys take over. Do not remove or disable the old active signing setup during the activation window.</p>
+<p>Monitor activation at:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>https://tzkt.io/&lt;your_manager_address&gt;/secondary-keys
+</span></span></code></pre></div><h5 id="9-unlock-and-verify">9. Unlock and verify</h5>
+<p>After the TezSign keys are active, unlock them:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign unlock
+</span></span></code></pre></div><p>Check TezSign status and overall baker status:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign status
+</span></span><span style="display:flex;"><span>tezbake info
+</span></span><span style="display:flex;"><span>tezbake info --dal
+</span></span></code></pre></div><p>If the baker log says a tz4 consensus key &ldquo;has not been provided to the baker,&rdquo; recheck the <code>--key-alias</code> imports and <code>configuration.additional_key_aliases</code>.</p>
 <p>For TezSign backup, failover, or migration, you can set the high-watermark level for each TezSign signing alias before the backup signs again:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
 </span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
 </span></span></code></pre></div><p>Use the current chain level, or current level plus a small safety margin during failover. Replace <code>consensus</code> or <code>companion</code> if your TezSign device uses different key aliases.</p>
-<blockquote>
-<p><strong>⚠️ WARNING: Key Alias Naming</strong></p>
-<p>When following the TezSign guide, use these alias names:</p>
-<ul>
-<li>Use <code>baker</code> instead of <code>consensus</code> (for your consensus key)</li>
-<li>Use <code>companion</code> as-is (for your companion key)</li>
-</ul>
-<p>This naming convention is required because you&rsquo;re managing your baker operations from a Ledger device using the <a href="https://gov.tez.capital">https://gov.tez.capital</a> interface.</p>
-<p>When the TezSign guide asks which aliases to add to <code>configuration.additional_key_aliases</code>, use only <code>[&quot;companion&quot;]</code>. The consensus key is already loaded through the default <code>baker</code> alias.</p>
-</blockquote>
+<p>The options below are retained for compatibility and testing. New mainnet bakers should use the TezSign path above.</p>
 <h4 id="option-2---deprecated-import-ledger-key-to-tezbake-signer">(Option 2 - DEPRECATED) Import Ledger key to TezBake signer</h4>
 <blockquote>
 <p><strong>ℹ️ INFO:</strong> Baking with a Ledger is no longer recommended for new bakers. TezSign is the preferred signing solution. These instructions remain for existing Ledger bakers.</p>
@@ -919,6 +981,17 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <li><a href="/tezgov/tutorials/voting-on-proposals/">Set up TezGov</a> — Participate in governance</li>
 <li><a href="/getting-started/best-practices/">Review best practices</a> — Security, UPS, monitoring</li>
 </ol>
+<h2 id="tezsign-follow-up-kbs">TezSign Follow-Up KBs</h2>
+<p>These are not all required to get your first baker running, but you should not skip them. Do them after your baker is online and stable.</p>
+<ul>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Create ready backup cards and know how to restore them</li>
+<li><a href="/tezsign/tutorials/high-watermark-recovery/">High-Watermark Recovery</a> - Know how to set HWM levels for failover or migration</li>
+<li><a href="/tezsign/tutorials/usb-power-reliability/">USB and Power Reliability</a> - Fix power, cable, OTG, and host-controller issues before they become outages</li>
+<li><a href="/tezsign/tutorials/alias-cleanup-after-activation/">Alias Cleanup After Activation</a> - Clean up temporary aliases after tz4 keys activate</li>
+<li><a href="/tezsign/tutorials/direct-backend/">Direct TezSign Backend</a> - Optional backend simplification after TezSign is stable</li>
+<li><a href="/tezsign/tutorials/automatic-unlock/">Automatic Unlock</a> - Optional automatic unlock after you understand the tradeoff</li>
+<li><a href="/tezsign/tutorials/updating/">Updating TezSign</a> - Keep the TezSign image and app current</li>
+</ul>
 <hr>
 <h2 id="related-guides">Related Guides</h2>
 <p><strong>Next Steps:</strong></p>
@@ -930,7 +1003,8 @@ The DAL acts like an overflow area for data, where large amounts of information 
 </ul>
 <p><strong>Advanced Configurations:</strong></p>
 <ul>
-<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Detailed TezSign setup guide</li>
+<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - TezSign KB hub</li>
+<li><a href="/tezsign/tutorials/hardware-and-flashing/">Hardware and Flashing</a> - TezSign hardware and image flashing</li>
 <li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - TezSign SD-card backup and migration</li>
 <li><a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> - Advanced DAL configurations</li>
 <li><a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a> - Distributed component setup</li>

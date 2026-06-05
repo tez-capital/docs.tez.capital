@@ -141,7 +141,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Full TezSign setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main TezSign setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/updating/&#34;&gt;Updating TezSign&lt;/a&gt; - Firmware and application updates&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard baker setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; - Why duplicate signer operation is dangerous&lt;/li&gt;
@@ -193,7 +193,7 @@ If you do not have it already, download the &lt;code&gt;tezsign_updater&lt;/code
 &lt;p&gt;&lt;em&gt;Example command to download and make executable:&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;](&lt;/span&gt;https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; -O tezsign_updater &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x tezsign_updater
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64 -O tezsign_updater &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x tezsign_updater
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Run the Updater:&lt;/strong&gt;
 Execute the updater tool. It will automatically scan for viable SD cards, check partition layouts, and verify the existence of TezSign files.&lt;/li&gt;
@@ -223,11 +223,295 @@ Once the update is complete, remove the SD card from your manager machine, inser
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - Linux-only data partition backup and restore&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - Full TezSign setup&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard baker setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main TezSign setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Fix common issues&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: Hardware and Flashing</title>
+      <link>/tezsign/tutorials/hardware-and-flashing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/hardware-and-flashing/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;recommended-hardware&#34;&gt;Recommended Hardware&lt;/h2&gt;
+&lt;p&gt;The Radxa Zero 3W and Raspberry Pi Zero 2W are both good TezSign devices. Buy two devices if you want a ready spare for failover.&lt;/p&gt;
+&lt;p&gt;Use high-endurance microSD cards. An 8 GB card is enough. Keep at least one active card and at least two TezSign-flashed backup cards.&lt;/p&gt;
+&lt;h2 id=&#34;general-supplies&#34;&gt;General Supplies&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Dual microSD card reader with two slots, or at least one USB SD-card reader&lt;/li&gt;
+&lt;li&gt;High-endurance microSD cards, 8 GB or larger&lt;/li&gt;
+&lt;li&gt;Short, high-quality USB data cable&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Example dual-slot reader:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://a.co/d/iOrBvk6&#34;&gt;https://a.co/d/iOrBvk6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;radxa-zero-3w&#34;&gt;Radxa Zero 3W&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Radxa ZERO 3W RK3566 single-board computer&lt;/li&gt;
+&lt;li&gt;Radxa heatsink for Zero 3W / 3E&lt;/li&gt;
+&lt;li&gt;USB A to USB C data cable&lt;/li&gt;
+&lt;li&gt;Optional micro HDMI cable if you want to inspect the device screen&lt;/li&gt;
+&lt;li&gt;Optional independent USB-C power supply if OTG power is unreliable&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Use the farthest USB port for the OTG data connection.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbaketezsignRadxaOTG.png&#34; alt=&#34;Radxa Zero 3W&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Example parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Radxa ZERO 3W: &lt;a href=&#34;https://www.aliexpress.us/item/3256807428419499.html?gatewayAdapt=glo2usa4itemAdapt&#34;&gt;https://www.aliexpress.us/item/3256807428419499.html?gatewayAdapt=glo2usa4itemAdapt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Radxa heatsink: &lt;a href=&#34;https://www.aliexpress.us/item/3256806829446736.html?gatewayAdapt=glo2usa4itemAdapt&#34;&gt;https://www.aliexpress.us/item/3256806829446736.html?gatewayAdapt=glo2usa4itemAdapt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;USB A to USB C data cable: &lt;a href=&#34;https://www.aliexpress.us/item/3256805660336073.html?spm=a2g0o.productlist.main.11.31ce63d3dP4ICu&#34;&gt;https://www.aliexpress.us/item/3256805660336073.html?spm=a2g0o.productlist.main.11.31ce63d3dP4ICu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Optional micro HDMI cable: &lt;a href=&#34;https://www.walmart.com/ip/Micro-USB-to-HDMI-Cable-Micro-USB-to-HDMI-Adapters-Black-E7Z3/10094271646&#34;&gt;https://www.walmart.com/ip/Micro-USB-to-HDMI-Cable-Micro-USB-to-HDMI-Adapters-Black-E7Z3/10094271646&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Optional independent power supply: &lt;a href=&#34;https://radxa.com/products/accessories/power-pd-30w/&#34;&gt;https://radxa.com/products/accessories/power-pd-30w/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;raspberry-pi-zero-2w&#34;&gt;Raspberry Pi Zero 2W&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Raspberry Pi Zero 2W&lt;/li&gt;
+&lt;li&gt;Short USB to micro USB data cable&lt;/li&gt;
+&lt;li&gt;Optional mini HDMI cable if you want to inspect the device screen&lt;/li&gt;
+&lt;li&gt;Optional Raspberry Pi power supply if OTG power is unreliable&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Use the USB port between the power USB port and the mini HDMI port.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tezbake/tutorial/tezbaketezsignPiZeroOTG.png&#34; alt=&#34;Raspberry Pi Zero 2W&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Example parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Raspberry Pi Zero 2W: &lt;a href=&#34;https://www.pishop.us/product/raspberry-pi-zero-2-w/&#34;&gt;https://www.pishop.us/product/raspberry-pi-zero-2-w/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Short micro USB data cable: &lt;a href=&#34;https://www.amazon.com/CableCreation-Charger-Compatible-Chromecast-Android/dp/B013G4EAEI&#34;&gt;https://www.amazon.com/CableCreation-Charger-Compatible-Chromecast-Android/dp/B013G4EAEI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Optional mini HDMI cable: &lt;a href=&#34;https://www.walmart.com/ip/4K-HDMI-2-0-Cable-6ft-High-Speed-18Gbps-Mini-HDMI-HDMI-Cable-4K-60Hz-HDR-3D-2160P-1080P-Ethernet-Braided-Cord-32AWG-Audio-Return-ARC-Compatible-MacBo/14899622631&#34;&gt;https://www.walmart.com/ip/4K-HDMI-2-0-Cable-6ft-High-Speed-18Gbps-Mini-HDMI-HDMI-Cable-4K-60Hz-HDR-3D-2160P-1080P-Ethernet-Braided-Cord-32AWG-Audio-Return-ARC-Compatible-MacBo/14899622631&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Optional Raspberry Pi power supply: &lt;a href=&#34;https://www.canakit.com/raspberry-pi-adapter-power-supply-2-5a.html&#34;&gt;https://www.canakit.com/raspberry-pi-adapter-power-supply-2-5a.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;flash-the-tezsign-image&#34;&gt;Flash the TezSign Image&lt;/h2&gt;
+&lt;p&gt;Download the latest image for your device from &lt;a href=&#34;https://github.com/tez-capital/tezsign/releases&#34;&gt;TezSign Releases&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Extract the image after downloading it. The extracted image is usually around 1.5 GB to 2 GB.&lt;/p&gt;
+&lt;p&gt;Use &lt;a href=&#34;https://etcher.balena.io/&#34;&gt;Balena Etcher&lt;/a&gt; or another image flashing tool to flash the image to the microSD card.&lt;/p&gt;
+&lt;p&gt;On Linux, a current TezSign card has three partitions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;app&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boot&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;data&lt;/code&gt; partition contains the &lt;code&gt;tezsign&lt;/code&gt; folder used for backup, restore, and migration. macOS does not mount the &lt;code&gt;data&lt;/code&gt; partition correctly, so use Linux for TezSign data backup and restore work.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; before updating, reflashing, or migrating a TezSign card.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: USB and Power Reliability</title>
+      <link>/tezsign/tutorials/usb-power-reliability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/usb-power-reliability/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this KB if TezSign does not appear over USB, disconnects unexpectedly, fails to boot from host power, or shows USB timeout errors.&lt;/p&gt;
+&lt;h2 id=&#34;power-checklist&#34;&gt;Power Checklist&lt;/h2&gt;
+&lt;p&gt;In some cases, powering the TezSign device only through the OTG USB port may not provide consistent power.&lt;/p&gt;
+&lt;p&gt;Try these options:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use the dedicated power port on the TezSign device for independent power.&lt;/li&gt;
+&lt;li&gt;Use a powered USB hub on the OTG USB port.&lt;/li&gt;
+&lt;li&gt;Check host BIOS settings so the USB port stays powered.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;bios-settings&#34;&gt;BIOS Settings&lt;/h2&gt;
+&lt;p&gt;Check these settings on the baker host:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;USB power delivery in Soft Off state (S5): enabled&lt;/li&gt;
+&lt;li&gt;ErP Ready / EuP Ready / ErP Compliance: disabled&lt;/li&gt;
+&lt;li&gt;Deep S4/S5 / Deep Power Saving / Pseudo G3: disabled&lt;/li&gt;
+&lt;li&gt;Resume by USB Device / Power On by USB: enabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To enter BIOS from Linux:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl reboot --firmware-setup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;usb-30-controller-issues&#34;&gt;USB 3.0 Controller Issues&lt;/h2&gt;
+&lt;p&gt;TezSign USB gadget mode may have issues with USB 3.0 (xHCI) controllers.&lt;/p&gt;
+&lt;p&gt;Symptoms can include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;error -110&lt;/code&gt; or &lt;code&gt;error -62&lt;/code&gt; in &lt;code&gt;dmesg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Device gets no power or does not boot&lt;/li&gt;
+&lt;li&gt;Device never appears in &lt;code&gt;lsusb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Repeated timeout errors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Try these fixes in order:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use a different short, high-quality data cable. Avoid charge-only cables.&lt;/li&gt;
+&lt;li&gt;Use a USB 2.0 port if the host has one.&lt;/li&gt;
+&lt;li&gt;Place a USB 2.0 hub between the host and TezSign device to force USB 2.0 negotiation.&lt;/li&gt;
+&lt;li&gt;Check BIOS settings for xHCI mode, USB suspend, legacy USB support, and always-on USB power.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;reset-the-usb-port&#34;&gt;Reset the USB Port&lt;/h2&gt;
+&lt;p&gt;If the device stops responding:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced usb-port-reset
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop --signer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify status:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: Alias Cleanup After Activation</title>
+      <link>/tezsign/tutorials/alias-cleanup-after-activation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/alias-cleanup-after-activation/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this after your tz4 TezSign consensus key has activated on-chain and you want to transition from &lt;code&gt;baker&lt;/code&gt;/&lt;code&gt;consensus&lt;/code&gt;/&lt;code&gt;companion&lt;/code&gt; to &lt;code&gt;baker&lt;/code&gt;/&lt;code&gt;companion&lt;/code&gt;, with the active TezSign consensus key loaded through the default &lt;code&gt;baker&lt;/code&gt; alias.&lt;/p&gt;
+&lt;p&gt;Do not run this during the 3-cycle activation window. Keep &lt;code&gt;consensus&lt;/code&gt; loaded until the tz4 consensus key is active on-chain.&lt;/p&gt;
+&lt;h2 id=&#34;re-import-the-consensus-key-as-baker&#34;&gt;Re-Import the Consensus Key as &lt;code&gt;baker&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;consensus --key-alias&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;baker --force
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;keep-only-the-dal-companion-as-an-additional-key&#34;&gt;Keep Only the DAL Companion as an Additional Key&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;remove-the-stale-local-consensus-alias&#34;&gt;Remove the Stale Local &lt;code&gt;consensus&lt;/code&gt; Alias&lt;/h2&gt;
+&lt;p&gt;Remove the stale consensus alias from the node wallet, if present:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client forget address consensus --force
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Remove the stale consensus alias from the signer daemon wallet, if present:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer signer forget address consensus --force
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;apply-and-verify&#34;&gt;Apply and Verify&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client list known addresses
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer signer list known addresses
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected final state:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;configuration.additional_key_aliases&lt;/code&gt; is exactly &lt;code&gt;[&amp;quot;companion&amp;quot;]&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Node known addresses include &lt;code&gt;baker&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Signer daemon known addresses include &lt;code&gt;baker&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;No local Octez alias named &lt;code&gt;consensus&lt;/code&gt; remains.&lt;/li&gt;
+&lt;li&gt;The on-chain consensus key is unchanged; only local alias wiring changed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The TezSign device/internal key may still be named &lt;code&gt;consensus&lt;/code&gt;. This cleanup only removes stale local Octez aliases from the node and signer daemon wallets.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: High-Watermark Recovery</title>
+      <link>/tezsign/tutorials/high-watermark-recovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/high-watermark-recovery/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this during TezSign failover, SD-card restore, or migration when a backup TezSign card may resume signing for an active baker.&lt;/p&gt;
+&lt;p&gt;The high watermark (HWM) prevents a signer from signing at or below a level it has already signed. Setting it correctly reduces the risk of accidental double signing during recovery.&lt;/p&gt;
+&lt;h2 id=&#34;set-levels-for-each-signing-alias&#34;&gt;Set Levels for Each Signing Alias&lt;/h2&gt;
+&lt;p&gt;Use the current chain level, or current level plus a small safety margin such as &lt;code&gt;+10&lt;/code&gt; during failover:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run the command for each TezSign device key alias that signs for the baker. The common aliases are &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;. If you used different TezSign device aliases, replace them.&lt;/p&gt;
+&lt;p&gt;These are TezSign device key aliases, not necessarily the local Octez aliases loaded by the baker. For example, your TezSign device key may still be named &lt;code&gt;consensus&lt;/code&gt; even if TezBake loads it locally as &lt;code&gt;baker&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;failover-example&#34;&gt;Failover Example&lt;/h2&gt;
+&lt;p&gt;If the current level is &lt;code&gt;8000000&lt;/code&gt; and you want a small safety margin:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8000010&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8000010&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Do not lower a high-watermark level casually. Only change it when you are intentionally preparing a restored, migrated, or backup TezSign card to resume baking safely.&lt;/p&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - Restore the TezSign data folder&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/failover-procedure/&#34;&gt;Failover Procedure&lt;/a&gt; - Safe baker failover&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;Slashing Explained&lt;/a&gt; - Why duplicate signing is dangerous&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: Direct TezSign Backend</title>
+      <link>/tezsign/tutorials/direct-backend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/direct-backend/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this only after your TezSign keys are active and stable. Avoid switching to the direct TezSign backend during the initial 3-cycle activation window.&lt;/p&gt;
+&lt;p&gt;Before:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;octez-node -&amp;gt; octez-signer -&amp;gt; tezsign
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;octez-node -&amp;gt; tezsign
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The direct backend can reduce latency by bypassing the standard &lt;code&gt;octez-signer&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;enable-the-direct-backend&#34;&gt;Enable the Direct Backend&lt;/h2&gt;
+&lt;p&gt;Use the signer configuration CLI. You do not need to edit &lt;code&gt;/bake-buddy/signer/app.json&lt;/code&gt; manually.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer modify configuration.BACKEND tezsign
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer show configuration.BACKEND
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;show&lt;/code&gt; command should confirm that &lt;code&gt;configuration.BACKEND&lt;/code&gt; is set to &lt;code&gt;tezsign&lt;/code&gt; before you apply and restart the signer.&lt;/p&gt;
+&lt;h2 id=&#34;revert-to-the-default-backend&#34;&gt;Revert to the Default Backend&lt;/h2&gt;
+&lt;p&gt;Unset the direct backend configuration, confirm it is no longer set to &lt;code&gt;tezsign&lt;/code&gt;, then apply and restart:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer modify --unset configuration.BACKEND
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer show configuration.BACKEND
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezsign: Automatic Unlock</title>
+      <link>/tezsign/tutorials/automatic-unlock/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezsign/tutorials/automatic-unlock/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;when-to-use-this&#34;&gt;When to Use This&lt;/h2&gt;
+&lt;p&gt;Use this only after your TezSign setup is working and you understand the security tradeoff. Automatic unlock stores the TezSign password so TezBake can unlock the device after restarts.&lt;/p&gt;
+&lt;h2 id=&#34;enable-automatic-unlock&#34;&gt;Enable Automatic Unlock&lt;/h2&gt;
+&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --password
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Enter the TezSign master/key decryption password when prompted.&lt;/p&gt;
+&lt;p&gt;Apply the updated signer configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Restart if needed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;disable-automatic-unlock&#34;&gt;Disable Automatic Unlock&lt;/h2&gt;
+&lt;p&gt;Run the same command and submit an empty password when prompted:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --password
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;verify&#34;&gt;Verify&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --signer
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 

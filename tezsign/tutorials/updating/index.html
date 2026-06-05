@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezSign firmware and application">
 
-<meta itemprop="wordCount" content="355">
+<meta itemprop="wordCount" content="348">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezSign firmware and application"/>
@@ -245,6 +245,18 @@
   <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="td-sidebar-nav-active-item">Updating</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshardware-and-flashing-li">
+  <a href="/tezsign/tutorials/hardware-and-flashing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshardware-and-flashing"><span class="">Hardware and Flashing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsusb-power-reliability-li">
+  <a href="/tezsign/tutorials/usb-power-reliability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsusb-power-reliability"><span class="">USB and Power Reliability</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsalias-cleanup-after-activation-li">
+  <a href="/tezsign/tutorials/alias-cleanup-after-activation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsalias-cleanup-after-activation"><span class="">Alias Cleanup After Activation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshigh-watermark-recovery-li">
+  <a href="/tezsign/tutorials/high-watermark-recovery/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshigh-watermark-recovery"><span class="">High-Watermark Recovery</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsdirect-backend-li">
+  <a href="/tezsign/tutorials/direct-backend/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsdirect-backend"><span class="">Direct TezSign Backend</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsautomatic-unlock-li">
+  <a href="/tezsign/tutorials/automatic-unlock/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsautomatic-unlock"><span class="">Automatic Unlock</span></a>
 </li>
   </ul>
 </li>
@@ -506,7 +518,7 @@ If you do not have it already, download the <code>tezsign_updater</code> from th
 <p><em>Example command to download and make executable:</em></p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget <span style="color:#ce5c00;font-weight:bold">[</span>https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64<span style="color:#ce5c00;font-weight:bold">](</span>https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64<span style="color:#ce5c00;font-weight:bold">)</span> -O tezsign_updater <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x tezsign_updater
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget https://github.com/tez-capital/tezsign/releases/download/release-202512022318/tezsign_updater_linux_amd64 -O tezsign_updater <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x tezsign_updater
 </span></span></code></pre></div><ol start="5">
 <li><strong>Run the Updater:</strong>
 Execute the updater tool. It will automatically scan for viable SD cards, check partition layouts, and verify the existence of TezSign files.</li>
@@ -536,8 +548,7 @@ Once the update is complete, remove the SD card from your manager machine, inser
 <h2 id="related-guides">Related Guides</h2>
 <ul>
 <li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Linux-only data partition backup and restore</li>
-<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Full TezSign setup</li>
-<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard baker setup</li>
+<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Main TezSign setup</li>
 <li><a href="/tezbake/tutorials/troubleshooting/">Troubleshooting</a> - Fix common issues</li>
 </ul>
 <hr>

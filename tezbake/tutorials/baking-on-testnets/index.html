@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1503">
+<meta itemprop="wordCount" content="1658">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -245,6 +245,18 @@
   <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshardware-and-flashing-li">
+  <a href="/tezsign/tutorials/hardware-and-flashing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshardware-and-flashing"><span class="">Hardware and Flashing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsusb-power-reliability-li">
+  <a href="/tezsign/tutorials/usb-power-reliability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsusb-power-reliability"><span class="">USB and Power Reliability</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsalias-cleanup-after-activation-li">
+  <a href="/tezsign/tutorials/alias-cleanup-after-activation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsalias-cleanup-after-activation"><span class="">Alias Cleanup After Activation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshigh-watermark-recovery-li">
+  <a href="/tezsign/tutorials/high-watermark-recovery/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshigh-watermark-recovery"><span class="">High-Watermark Recovery</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsdirect-backend-li">
+  <a href="/tezsign/tutorials/direct-backend/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsdirect-backend"><span class="">Direct TezSign Backend</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsautomatic-unlock-li">
+  <a href="/tezsign/tutorials/automatic-unlock/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsautomatic-unlock"><span class="">Automatic Unlock</span></a>
 </li>
   </ul>
 </li>
@@ -425,6 +437,7 @@
       </ul>
     </li>
     <li><a href="#installation-advanced">Installation (Advanced)</a></li>
+    <li><a href="#tezsign-follow-up-kbs">TezSign Follow-Up KBs</a></li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
 </nav>
@@ -517,7 +530,10 @@
 </blockquote>
 </li>
 </ul>
-<p>All advanced TezBake configurations, including TezSign block signing apply here as well.</p>
+<p>TezSign block signing applies to testnets too. If you are testing TezSign, follow the TezSign setup steps in <a href="/tezbake/tutorials/baking-on-mainnet/#recommended-set-up-tezsign-consensus-and-companion-keys">Baking on Mainnet</a> after you run the testnet-specific <code>tezbake setup</code>, bootstrap, and sync steps below.</p>
+<blockquote>
+<p><strong>⚠️ Testnet Safety:</strong> Do not reuse a mainnet TezSign device, restored card, Ledger, or key material on a testnet. Use a separate testnet device/card or a soft-key testnet setup.</p>
+</blockquote>
 <hr>
 <blockquote>
 <p><strong>🚨 CRITICAL: DAL Node Mandatory</strong>
@@ -556,7 +572,7 @@ All bakers are required to run a DAL node. See <a href="/tezbake/tutorials/bakin
 <a href="https://tzkt.io/blocks">https://tzkt.io/blocks</a></p>
 <p>Simply search for the block level in the search field and verify the hash of the block matches the hash provided by the snapshot provider.</p>
 <h3 id="start-tezos-node">Start Tezos node</h3>
-<p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your Ledger key.</p>
+<p>After importing the snapshot, you need to start your node and wait until it&rsquo;s fully synchronized before importing your signing keys.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
 </span></span></code></pre></div><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
@@ -659,11 +675,23 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 <p>Follow the steps in <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a></p>
 <p>As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.</p>
 <hr>
+<h2 id="tezsign-follow-up-kbs">TezSign Follow-Up KBs</h2>
+<p>If you use TezSign on a testnet, these are not blockers for getting a test baker running, but they are the same habits you need before production:</p>
+<ul>
+<li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - Practice backup and restore on separate testnet cards</li>
+<li><a href="/tezsign/tutorials/high-watermark-recovery/">High-Watermark Recovery</a> - Learn HWM handling before mainnet failover</li>
+<li><a href="/tezsign/tutorials/usb-power-reliability/">USB and Power Reliability</a> - Debug hardware and USB issues</li>
+<li><a href="/tezsign/tutorials/alias-cleanup-after-activation/">Alias Cleanup After Activation</a> - Clean up temporary aliases after activation</li>
+<li><a href="/tezsign/tutorials/direct-backend/">Direct TezSign Backend</a> - Optional direct backend after the setup is stable</li>
+<li><a href="/tezsign/tutorials/automatic-unlock/">Automatic Unlock</a> - Optional automatic unlock after you understand the tradeoff</li>
+</ul>
+<hr>
 <h2 id="related-guides">Related Guides</h2>
 <p><strong>Production Baking:</strong></p>
 <ul>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Production setup guide</li>
 <li><a href="/getting-started/best-practices/">Best Practices</a> - Hardware and operational recommendations</li>
+<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - TezSign KB hub</li>
 </ul>
 <p><strong>After Setup:</strong></p>
 <ul>

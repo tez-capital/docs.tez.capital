@@ -70,6 +70,8 @@
   </url><url>
     <loc>/tezpay/extensions/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/hardware-and-flashing/</loc>
+  </url><url>
     <loc>/getting-started/hardware-requirements/</loc>
   </url><url>
     <loc>/tezpay/extensions/reference/hooks/</loc>
@@ -176,6 +178,10 @@
   </url><url>
     <loc>/tezbake/tutorials/updating/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/usb-power-reliability/</loc>
+  </url><url>
+    <loc>/tezsign/tutorials/alias-cleanup-after-activation/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/monitoring-logs-and-status/</loc>
   </url><url>
     <loc>/tezpay/tutorials/notifications/</loc>
@@ -183,6 +189,8 @@
     <loc>/tezgov/</loc>
   </url><url>
     <loc>/tezpeak/</loc>
+  </url><url>
+    <loc>/tezsign/tutorials/high-watermark-recovery/</loc>
   </url><url>
     <loc>/tezbake/tutorials/per-block-votes/</loc>
   </url><url>
@@ -194,6 +202,8 @@
   </url><url>
     <loc>/tezbake/tutorials/bootstrap-node/</loc>
   </url><url>
+    <loc>/tezsign/tutorials/direct-backend/</loc>
+  </url><url>
     <loc>/tezbake/tutorials/failover-procedure/</loc>
   </url><url>
     <loc>/tezbake/tutorials/key-aliases/</loc>
@@ -201,6 +211,8 @@
     <loc>/tezbox/</loc>
   </url><url>
     <loc>/tezpay/tutorials/trd-migration/</loc>
+  </url><url>
+    <loc>/tezsign/tutorials/automatic-unlock/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-dal/</loc>
   </url><url>

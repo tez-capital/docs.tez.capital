@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1783">
+<meta itemprop="wordCount" content="1798">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -245,6 +245,18 @@
   <a href="/tezsign/tutorials/back-up-and-restore-data/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsback-up-and-restore-data"><span class="">Back Up and Restore TezSign Data</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsupdating-li">
   <a href="/tezsign/tutorials/updating/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsupdating"><span class="">Updating</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshardware-and-flashing-li">
+  <a href="/tezsign/tutorials/hardware-and-flashing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshardware-and-flashing"><span class="">Hardware and Flashing</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsusb-power-reliability-li">
+  <a href="/tezsign/tutorials/usb-power-reliability/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsusb-power-reliability"><span class="">USB and Power Reliability</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsalias-cleanup-after-activation-li">
+  <a href="/tezsign/tutorials/alias-cleanup-after-activation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsalias-cleanup-after-activation"><span class="">Alias Cleanup After Activation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialshigh-watermark-recovery-li">
+  <a href="/tezsign/tutorials/high-watermark-recovery/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialshigh-watermark-recovery"><span class="">High-Watermark Recovery</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsdirect-backend-li">
+  <a href="/tezsign/tutorials/direct-backend/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsdirect-backend"><span class="">Direct TezSign Backend</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezsigntutorialsautomatic-unlock-li">
+  <a href="/tezsign/tutorials/automatic-unlock/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezsigntutorialsautomatic-unlock"><span class="">Automatic Unlock</span></a>
 </li>
   </ul>
 </li>
@@ -532,7 +544,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <ul>
 <li><strong><a href="/tezbake/tutorials/baking-on-mainnet/">Running baker on mainnet or testnet</a></strong> — your baker must already be set up and actively baking</li>
 <li><strong><a href="/tezbake/tutorials/baking-on-mainnet/#download-and-install-tezbake">TezBake installed</a></strong> — latest version required</li>
-<li><strong>For tz4/BLS setup (recommended):</strong> A <a href="/tezbake/tutorials/baking-with-tezsign/">TezSign hardware device</a> to generate secure consensus and companion keys</li>
+<li><strong>For tz4/BLS setup (recommended):</strong> A TezSign hardware device, set up through <a href="/tezbake/tutorials/baking-on-mainnet/#recommended-set-up-tezsign-consensus-and-companion-keys">Baking on Mainnet</a>, to generate secure consensus and companion keys</li>
 <li><strong>For deprecated Ledger setup:</strong> A second Ledger device to use as the consensus key signer</li>
 </ul>
 <h2 id="preparation">Preparation</h2>
@@ -609,8 +621,8 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p><strong>ℹ️ The manager always controls consensus.</strong> The manager key has sole authority to set or change the consensus and companion keys. The consensus key can sign blocks on the manager&rsquo;s behalf, but it cannot change its own registration.</p>
 </blockquote>
 <h3 id="setup-steps">Setup Steps</h3>
-<p><strong>Step 1 — Follow the TezSign guide to generate your consensus and companion keys on the device:</strong></p>
-<p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
+<p><strong>Step 1 — Follow the mainnet TezSign setup to generate your consensus and companion keys on the device:</strong></p>
+<p><a href="/tezbake/tutorials/baking-on-mainnet/#recommended-set-up-tezsign-consensus-and-companion-keys">Baking on Mainnet — TezSign consensus and companion keys</a></p>
 <p>After the keys are generated, back up the whole <code>tezsign</code> folder from the Linux-only <code>data</code> partition before relying on the device for production baking:</p>
 <p><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></p>
 <p>If you later restore or migrate that TezSign data to another card, set the high-watermark level for both TezSign signing aliases before the backup signs again:</p>
@@ -721,7 +733,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <h2 id="related-guides">Related Guides</h2>
 <ul>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard setup guide</li>
-<li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - Hardware signer setup</li>
+<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard setup guide with TezSign</li>
 <li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - SD-card data backup and migration</li>
 <li><a href="/tezbake/tutorials/monitoring-logs-and-status/">Monitoring Logs and Status</a> - Check baker health</li>
 </ul>
