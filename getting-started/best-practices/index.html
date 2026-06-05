@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Tezos Baking Best Practices">
 <meta itemprop="description" content="Tezos Baking Best Practices">
 
-<meta itemprop="wordCount" content="772">
+<meta itemprop="wordCount" content="794">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tezos Baking Best Practices"/>
 <meta name="twitter:description" content="Tezos Baking Best Practices"/>
@@ -515,6 +515,7 @@
 <li>Do not authorize the backup signer to bake before it&rsquo;s needed</li>
 <li>Do not import your baking wallet into your backup computer before it&rsquo;s needed</li>
 <li>Before changing any signer connections, always ensure only one device is baking</li>
+<li>For TezSign failover, set high-watermark levels for both <code>consensus</code> and <code>companion</code> with <code>tezbake tezsign advanced set-level &lt;alias&gt; &lt;level&gt;</code> before the backup signs</li>
 <li>Do not install TezBake on second computer before it&rsquo;s needed (setup takes just a few minutes with fast internet)</li>
 </ul>
 </blockquote>

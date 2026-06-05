@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="Run TezBake in a Docker container for isolated and portable Tezos baking">
 
-<meta itemprop="wordCount" content="1096">
+<meta itemprop="wordCount" content="1155">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="Run TezBake in a Docker container for isolated and portable Tezos baking"/>
@@ -519,6 +519,10 @@ All bakers are required to run a DAL node. See <a href="/tezbake/tutorials/bakin
 <p>Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.</p>
 <p>You have the option to use a TezSign device, a Ledger hardware wallet, or a local unencrypted software key (soft key). TezSign is recommended for new bakers. Ledger remains a valid option for existing setups. See <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> for the recommended approach.</p>
 <p>If you use TezSign, back up the <code>tezsign</code> folder from the Linux-only <code>data</code> partition after key generation. See <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a>.</p>
+<p>For TezSign backup, failover, or migration, set the high-watermark level for each TezSign signing alias before the backup signs again:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
+</span></span></code></pre></div><p>Use the current chain level, or current level plus a small safety margin during failover. Replace <code>consensus</code> or <code>companion</code> if your TezSign device uses different key aliases.</p>
 <p>You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
 <h4 id="option-1-import-ledger-key-to-tezbake-signer">(Option 1) Import Ledger key to TezBake signer</h4>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key --authorize --hwm <span style="color:#0000cf;font-weight:bold">1</span>

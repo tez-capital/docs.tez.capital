@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="3055">
+<meta itemprop="wordCount" content="3116">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -668,6 +668,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <p>Follow the following guide and then proceed directly to <a href="#stake-your-baking-xtz-security-deposit">stake your XTZ</a>:</p>
 <p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
 <p>After you generate keys on the TezSign device, follow <a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> so you have a Linux-readable <code>data/tezsign</code> backup before you rely on the device for production baking.</p>
+<p>For TezSign backup, failover, or migration, you can set the high-watermark level for each TezSign signing alias before the backup signs again:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
+</span></span></code></pre></div><p>Use the current chain level, or current level plus a small safety margin during failover. Replace <code>consensus</code> or <code>companion</code> if your TezSign device uses different key aliases.</p>
 <blockquote>
 <p><strong>⚠️ WARNING: Key Alias Naming</strong></p>
 <p>When following the TezSign guide, use these alias names:</p>

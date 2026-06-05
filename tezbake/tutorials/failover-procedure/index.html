@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Failover Procedure">
 <meta itemprop="description" content="How to safely switch to your backup baker when your primary fails">
 
-<meta itemprop="wordCount" content="733">
+<meta itemprop="wordCount" content="824">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Failover Procedure"/>
 <meta name="twitter:description" content="How to safely switch to your backup baker when your primary fails"/>
@@ -544,14 +544,19 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Initialize if not already done</span>
 </span></span><span style="display:flex;"><span>tezbake setup-tezsign --init --platform
 </span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set HWM for each TezSign signing alias</span>
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;current_level+10&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;current_level+10&gt;
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># The device should already have keys from initial setup</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Verify it&#39;s detected</span>
 </span></span><span style="display:flex;"><span>tezbake info
-</span></span></code></pre></div><p><strong>For Ledger:</strong></p>
+</span></span></code></pre></div><p>Replace <code>consensus</code> and <code>companion</code> if your TezSign device uses different key aliases. These are TezSign device aliases, not necessarily the local Octez aliases loaded by the baker.</p>
+<p><strong>For Ledger:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Import with HWM set to current block level + 10</span>
 </span></span><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key --authorize --hwm &lt;current_level+10&gt;
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ HWM Safety Margin</strong>: Setting HWM slightly above current level ensures your backup won&rsquo;t sign any block the primary might have signed.</p>
+<p><strong>ℹ️ HWM Safety Margin</strong>: Setting HWM slightly above current level ensures your backup won&rsquo;t sign any block the primary might have signed. For TezSign, set the level for every signing alias, commonly <code>consensus</code> and <code>companion</code>.</p>
 </blockquote>
 <h3 id="step-6-start-backup-baker">Step 6: Start Backup Baker</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
@@ -583,7 +588,13 @@
 </ol>
 <h3 id="update-hwm-on-repaired-primary">Update HWM on Repaired Primary</h3>
 <p>When the repaired machine becomes your backup:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set HWM to current level when you eventually need to use it</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set TezSign HWM to current level when you eventually need to use it</span>
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;current_level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;current_level&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># For Ledger, import or re-authorize with the current-level HWM</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># tezbake setup-ledger --platform --import-key --authorize --hwm &lt;current_level&gt;</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Don&#39;t pre-authorize - wait until needed</span>
 </span></span></code></pre></div><h2 id="emergency-cannot-access-primary">Emergency: Cannot Access Primary</h2>
 <p>If your primary is completely unreachable (fire, theft, hardware death):</p>

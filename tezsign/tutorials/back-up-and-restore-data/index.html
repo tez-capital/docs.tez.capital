@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Back Up and Restore TezSign Data">
 <meta itemprop="description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations">
 
-<meta itemprop="wordCount" content="1089">
+<meta itemprop="wordCount" content="1217">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Back Up and Restore TezSign Data"/>
 <meta name="twitter:description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations"/>
@@ -416,6 +416,7 @@
     <li><a href="#back-up-the-tezsign-folder-without-a-gui">Back Up the <code>tezsign</code> Folder without a GUI</a></li>
     <li><a href="#restore-to-a-newly-flashed-card">Restore to a Newly Flashed Card</a></li>
     <li><a href="#verify-after-restore">Verify After Restore</a></li>
+    <li><a href="#optional-set-high-watermark-levels">Optional: Set High-Watermark Levels</a></li>
     <li><a href="#safety-notes">Safety Notes</a></li>
     <li><a href="#related-guides">Related Guides</a></li>
   </ul>
@@ -576,7 +577,14 @@
 </span></span></code></pre></div><p>Then verify the baker and DAL status:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span><span style="display:flex;"><span>tezbake info --dal
-</span></span></code></pre></div><h2 id="safety-notes">Safety Notes</h2>
+</span></span></code></pre></div><h2 id="optional-set-high-watermark-levels">Optional: Set High-Watermark Levels</h2>
+<p>For extra safety during failover, recovery, or migration, you can set the TezSign high-watermark level before the restored card signs again.</p>
+<p>Use the current chain level, or the current level plus a small safety margin such as <code>+10</code> during failover:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
+</span></span></code></pre></div><p>Run the command for each TezSign key alias that signs for the baker. The common aliases are <code>consensus</code> and <code>companion</code>; if you used different TezSign device aliases, replace them. These are the TezSign device key aliases, not necessarily the local Octez aliases loaded by the baker.</p>
+<p>Do not lower a high-watermark level casually. Only change it when you are intentionally preparing a restored, migrated, or backup TezSign card to resume baking safely.</p>
+<h2 id="safety-notes">Safety Notes</h2>
 <ul>
 <li>Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.</li>
 <li>Keep at least two backup TezSign-flashed SD cards ready, plus additional backups if your operation needs them.</li>

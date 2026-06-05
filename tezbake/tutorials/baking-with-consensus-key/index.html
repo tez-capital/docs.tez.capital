@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1745">
+<meta itemprop="wordCount" content="1783">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -613,7 +613,10 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p><a href="/tezbake/tutorials/baking-with-tezsign">Baking with TezSign</a></p>
 <p>After the keys are generated, back up the whole <code>tezsign</code> folder from the Linux-only <code>data</code> partition before relying on the device for production baking:</p>
 <p><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></p>
-<p><strong>Step 2 — Register the keys on-chain using TezGov (recommended):</strong></p>
+<p>If you later restore or migrate that TezSign data to another card, set the high-watermark level for both TezSign signing aliases before the backup signs again:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
+</span></span></code></pre></div><p><strong>Step 2 — Register the keys on-chain using TezGov (recommended):</strong></p>
 <ol>
 <li>Connect to <a href="https://gov.tez.capital">gov.tez.capital</a> with your <strong>Ledger</strong> (manager key, Tezos Wallet app)</li>
 <li>Navigate to <strong>Baker Management → Keys</strong></li>

@@ -121,7 +121,14 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify the baker and DAL status:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;safety-notes&#34;&gt;Safety Notes&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;optional-set-high-watermark-levels&#34;&gt;Optional: Set High-Watermark Levels&lt;/h2&gt;
+&lt;p&gt;For extra safety during failover, recovery, or migration, you can set the TezSign high-watermark level before the restored card signs again.&lt;/p&gt;
+&lt;p&gt;Use the current chain level, or the current level plus a small safety margin such as &lt;code&gt;+10&lt;/code&gt; during failover:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run the command for each TezSign key alias that signs for the baker. The common aliases are &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;; if you used different TezSign device aliases, replace them. These are the TezSign device key aliases, not necessarily the local Octez aliases loaded by the baker.&lt;/p&gt;
+&lt;p&gt;Do not lower a high-watermark level casually. Only change it when you are intentionally preparing a restored, migrated, or backup TezSign card to resume baking safely.&lt;/p&gt;
+&lt;h2 id=&#34;safety-notes&#34;&gt;Safety Notes&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.&lt;/li&gt;
 &lt;li&gt;Keep at least two backup TezSign-flashed SD cards ready, plus additional backups if your operation needs them.&lt;/li&gt;

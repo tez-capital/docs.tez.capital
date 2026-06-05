@@ -203,6 +203,10 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;Follow the following guide and then proceed directly to &lt;a href=&#34;#stake-your-baking-xtz-security-deposit&#34;&gt;stake your XTZ&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After you generate keys on the TezSign device, follow &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; so you have a Linux-readable &lt;code&gt;data/tezsign&lt;/code&gt; backup before you rely on the device for production baking.&lt;/p&gt;
+&lt;p&gt;For TezSign backup, failover, or migration, you can set the high-watermark level for each TezSign signing alias before the backup signs again:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use the current chain level, or current level plus a small safety margin during failover. Replace &lt;code&gt;consensus&lt;/code&gt; or &lt;code&gt;companion&lt;/code&gt; if your TezSign device uses different key aliases.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ WARNING: Key Alias Naming&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;When following the TezSign guide, use these alias names:&lt;/p&gt;
@@ -1091,6 +1095,12 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Have a backup SD card ready&lt;/strong&gt; - Insert your cloned card, or a newly flashed card with restored &lt;code&gt;data/tezsign&lt;/code&gt;, into a spare device&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Never run two devices with the same keys simultaneously&lt;/strong&gt; - This causes double-signing and slashing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set high-watermark levels before baking if this is a failover or migration&lt;/strong&gt; - Use the current chain level, or current level plus a small safety margin:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Run this for each TezSign device key alias that signs for the baker. The common aliases are &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;; if you used different TezSign aliases, replace them.&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
 &lt;li&gt;If no backup exists, use your manager Ledger via &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; to set a new consensus key (takes 3 cycles to activate)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;recommended-redundancy&#34;&gt;Recommended Redundancy&lt;/h3&gt;
@@ -1098,6 +1108,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 &lt;li&gt;2 TezSign devices (one active, one backup)&lt;/li&gt;
 &lt;li&gt;At least 2 backup TezSign-flashed SD cards with restored &lt;code&gt;data/tezsign&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;TezSign master/key decryption password saved somewhere safe&lt;/li&gt;
+&lt;li&gt;Current HWM plan for &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt; before failover&lt;/li&gt;
 &lt;li&gt;Test backup periodically by booting on backup device (with primary &lt;strong&gt;unplugged&lt;/strong&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -1810,14 +1821,19 @@ Services:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Initialize if not already done&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-tezsign --init --platform
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Set HWM for each TezSign signing alias&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;current_level+10&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;current_level+10&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# The device should already have keys from initial setup&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify it&amp;#39;s detected&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For Ledger:&lt;/strong&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt; if your TezSign device uses different key aliases. These are TezSign device aliases, not necessarily the local Octez aliases loaded by the baker.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For Ledger:&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Import with HWM set to current block level + 10&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &amp;lt;current_level+10&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;ℹ️ HWM Safety Margin&lt;/strong&gt;: Setting HWM slightly above current level ensures your backup won&amp;rsquo;t sign any block the primary might have signed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ HWM Safety Margin&lt;/strong&gt;: Setting HWM slightly above current level ensures your backup won&amp;rsquo;t sign any block the primary might have signed. For TezSign, set the level for every signing alias, commonly &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;step-6-start-backup-baker&#34;&gt;Step 6: Start Backup Baker&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
@@ -1849,7 +1865,13 @@ Services:
 &lt;/ol&gt;
 &lt;h3 id=&#34;update-hwm-on-repaired-primary&#34;&gt;Update HWM on Repaired Primary&lt;/h3&gt;
 &lt;p&gt;When the repaired machine becomes your backup:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Set HWM to current level when you eventually need to use it&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Set TezSign HWM to current level when you eventually need to use it&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;current_level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;current_level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# For Ledger, import or re-authorize with the current-level HWM&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# tezbake setup-ledger --platform --import-key --authorize --hwm &amp;lt;current_level&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Don&amp;#39;t pre-authorize - wait until needed&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;emergency-cannot-access-primary&#34;&gt;Emergency: Cannot Access Primary&lt;/h2&gt;
 &lt;p&gt;If your primary is completely unreachable (fire, theft, hardware death):&lt;/p&gt;
@@ -2265,6 +2287,10 @@ All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorial
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
 &lt;p&gt;You have the option to use a TezSign device, a Ledger hardware wallet, or a local unencrypted software key (soft key). TezSign is recommended for new bakers. Ledger remains a valid option for existing setups. See &lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; for the recommended approach.&lt;/p&gt;
 &lt;p&gt;If you use TezSign, back up the &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition after key generation. See &lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For TezSign backup, failover, or migration, set the high-watermark level for each TezSign signing alias before the backup signs again:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use the current chain level, or current level plus a small safety margin during failover. Replace &lt;code&gt;consensus&lt;/code&gt; or &lt;code&gt;companion&lt;/code&gt; if your TezSign device uses different key aliases.&lt;/p&gt;
 &lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;option-1-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
@@ -2473,7 +2499,10 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;p&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign&#34;&gt;Baking with TezSign&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After the keys are generated, back up the whole &lt;code&gt;tezsign&lt;/code&gt; folder from the Linux-only &lt;code&gt;data&lt;/code&gt; partition before relying on the device for production baking:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Step 2 — Register the keys on-chain using TezGov (recommended):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you later restore or migrate that TezSign data to another card, set the high-watermark level for both TezSign signing aliases before the backup signs again:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level consensus &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced set-level companion &amp;lt;level&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Step 2 — Register the keys on-chain using TezGov (recommended):&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Connect to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; with your &lt;strong&gt;Ledger&lt;/strong&gt; (manager key, Tezos Wallet app)&lt;/li&gt;
 &lt;li&gt;Navigate to &lt;strong&gt;Baker Management → Keys&lt;/strong&gt;&lt;/li&gt;

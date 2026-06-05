@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="3740">
+<meta itemprop="wordCount" content="3815">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -926,6 +926,12 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <ol>
 <li><strong>Have a backup SD card ready</strong> - Insert your cloned card, or a newly flashed card with restored <code>data/tezsign</code>, into a spare device</li>
 <li><strong>Never run two devices with the same keys simultaneously</strong> - This causes double-signing and slashing</li>
+<li><strong>Set high-watermark levels before baking if this is a failover or migration</strong> - Use the current chain level, or current level plus a small safety margin:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
+</span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
+</span></span></code></pre></div><p>Run this for each TezSign device key alias that signs for the baker. The common aliases are <code>consensus</code> and <code>companion</code>; if you used different TezSign aliases, replace them.</p>
+<ol start="4">
 <li>If no backup exists, use your manager Ledger via <a href="https://gov.tez.capital/">TezGov</a> to set a new consensus key (takes 3 cycles to activate)</li>
 </ol>
 <h3 id="recommended-redundancy">Recommended Redundancy</h3>
@@ -933,6 +939,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <li>2 TezSign devices (one active, one backup)</li>
 <li>At least 2 backup TezSign-flashed SD cards with restored <code>data/tezsign</code></li>
 <li>TezSign master/key decryption password saved somewhere safe</li>
+<li>Current HWM plan for <code>consensus</code> and <code>companion</code> before failover</li>
 <li>Test backup periodically by booting on backup device (with primary <strong>unplugged</strong>)</li>
 </ul>
 <hr>
