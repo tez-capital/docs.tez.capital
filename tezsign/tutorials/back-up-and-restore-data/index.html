@@ -19,20 +19,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Back Up and Restore TezSign Data | docs.tez.capital</title>
-<meta name="description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations">
+<meta name="description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations">
 <meta property="og:title" content="Back Up and Restore TezSign Data" />
-<meta property="og:description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations" />
+<meta property="og:description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/tezsign/tutorials/back-up-and-restore-data/" /><meta property="article:section" content="tezsign" />
 
 
 <meta itemprop="name" content="Back Up and Restore TezSign Data">
-<meta itemprop="description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations">
+<meta itemprop="description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations">
 
-<meta itemprop="wordCount" content="1217">
+<meta itemprop="wordCount" content="1678">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Back Up and Restore TezSign Data"/>
-<meta name="twitter:description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations"/>
+<meta name="twitter:description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations"/>
 
 
 
@@ -421,7 +421,10 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#when-to-use-this">When to Use This</a></li>
-    <li><a href="#what-you-are-copying">What You Are Copying</a></li>
+    <li><a href="#choose-a-backup-method">Choose a Backup Method</a></li>
+    <li><a href="#clone-the-whole-sd-card">Clone the Whole SD Card</a></li>
+    <li><a href="#clone-by-making-an-image-first">Clone by Making an Image First</a></li>
+    <li><a href="#copy-the-datatezsign-folder">Copy the <code>data/tezsign</code> Folder</a></li>
     <li><a href="#before-you-begin">Before You Begin</a></li>
     <li><a href="#find-the-data-partition">Find the <code>data</code> Partition</a></li>
     <li><a href="#back-up-the-tezsign-folder-with-a-gui">Back Up the <code>tezsign</code> Folder with a GUI</a></li>
@@ -493,18 +496,74 @@
 		
 	</header>    
 	<h2 id="when-to-use-this">When to Use This</h2>
-<p>Use this procedure when you want to:</p>
+<p>Use this guide when you want to:</p>
 <ul>
 <li>Back up the keys and signer state from a TezSign SD card</li>
+<li>Clone a working TezSign SD card to make a ready spare</li>
 <li>Move a working TezSign setup to a newly flashed SD card</li>
 <li>Migrate to a newer TezSign image or hardware architecture</li>
 <li>Recover from a failing SD card by transplanting the TezSign data to a fresh card</li>
 </ul>
-<p>This is an offline SD-card procedure. You remove the microSD card from the TezSign device, mount it on a Linux computer, copy the <code>tezsign</code> folder from the <code>data</code> partition, then restore that folder to the <code>data</code> partition on another flashed card.</p>
+<p>These are offline SD-card procedures. You remove the microSD card from the TezSign device, use a computer to clone the whole card or copy the <code>tezsign</code> folder from the <code>data</code> partition, then restore the backup to another card.</p>
 <blockquote>
 <p><strong>Important:</strong> macOS does not mount the TezSign <code>data</code> partition correctly. Use a Linux computer, a Linux live USB, or a trusted Linux VM with direct access to the card reader.</p>
 </blockquote>
-<h2 id="what-you-are-copying">What You Are Copying</h2>
+<h2 id="choose-a-backup-method">Choose a Backup Method</h2>
+<p>There are two useful TezSign backup methods:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Best for</th>
+<th>What it copies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Clone the whole SD card</strong></td>
+<td>Fast same-image spare cards</td>
+<td>The entire card: <code>app</code>, <code>boot</code>, <code>data</code>, partition layout, TezSign image version, and keys</td>
+</tr>
+<tr>
+<td><strong>Copy <code>data/tezsign</code> only</strong></td>
+<td>Moving to a newly flashed card or newer TezSign generation</td>
+<td>Only the TezSign keys and signer state</td>
+</tr>
+</tbody>
+</table>
+<p>Cloning is the quickest way to create ready spare cards on the same TezSign image generation. It is not an upgrade path.</p>
+<blockquote>
+<p><strong>New-generation image warning:</strong> A full-card clone preserves the old image. It will not move you to the new TezSign image generation, and it will not work around an older image that cannot use the built-in update process. For that, flash the latest full image first, then restore the <code>data/tezsign</code> folder onto the new card.</p>
+</blockquote>
+<h2 id="clone-the-whole-sd-card">Clone the Whole SD Card</h2>
+<p>Use this when you want a bit-for-bit spare card for the same TezSign image version.</p>
+<p>The easiest setup is a computer with two SD-card slots, or two USB SD-card readers:</p>
+<ol>
+<li>Insert the working TezSign SD card as the source.</li>
+<li>Insert a blank target SD card of the same size or larger.</li>
+<li>Use a cloning or imaging tool to copy the source card to the target card.</li>
+<li>Safely eject both cards when the clone is complete.</li>
+<li>Label the clone clearly and store it offline.</li>
+</ol>
+<p>Tools people commonly use:</p>
+<ul>
+<li><a href="https://etcher.balena.io/">Balena Etcher</a> - use <strong>Clone drive</strong> if your version offers it, or use <strong>Flash from file</strong> after creating an image.</li>
+<li><a href="https://wiki.gnome.org/Apps/Disks">GNOME Disks</a> - a simple Linux GUI app that can create and restore disk images.</li>
+</ul>
+<p>Never boot the cloned card at the same time as the original for the same baker. A clone contains the same signing keys and signer state.</p>
+<h2 id="clone-by-making-an-image-first">Clone by Making an Image First</h2>
+<p>Use this two-step workflow if you have only one SD-card slot or one USB SD-card reader.</p>
+<ol>
+<li>Insert the working TezSign SD card.</li>
+<li>Use GNOME Disks or another disk imaging tool to create a full disk image from the SD card. Save the image somewhere secure with enough free space for the full card size.</li>
+<li>Safely eject the source card.</li>
+<li>Insert the new target SD card.</li>
+<li>Restore or flash the saved image to the target card. GNOME Disks can restore disk images; Balena Etcher can flash from an image file.</li>
+<li>Safely eject the target card, label it, and store it offline.</li>
+</ol>
+<p>Keep full-card images secure. They contain the TezSign <code>data</code> partition and therefore the encrypted signer keys.</p>
+<h2 id="copy-the-datatezsign-folder">Copy the <code>data/tezsign</code> Folder</h2>
+<p>Use this when you are moving keys and signer state to a freshly flashed TezSign card, especially when migrating to a newer TezSign image generation or hardware architecture.</p>
 <p>A current TezSign image has three partitions. On Linux, you should see partitions labeled <code>app</code>, <code>boot</code>, and <code>data</code>. The one you need is <code>data</code>.</p>
 <p>Inside the <code>data</code> partition is a folder named <code>tezsign</code>:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>data/
@@ -600,6 +659,8 @@
 <ul>
 <li>Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.</li>
 <li>Keep at least two backup TezSign-flashed SD cards ready, plus additional backups if your operation needs them.</li>
+<li>Use full-card clones for same-image ready spares.</li>
+<li>Use the <code>data/tezsign</code> transplant method when moving to a new TezSign image generation or architecture.</li>
 <li>Store backup cards offline and clearly labeled.</li>
 <li>Label backups clearly so you know which baker and network they belong to.</li>
 <li>Save the TezSign master/key decryption password somewhere safe and separate from the SD cards.</li>
@@ -611,7 +672,6 @@
 <ul>
 <li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Main TezSign setup</li>
 <li><a href="/tezsign/tutorials/updating/">Updating TezSign</a> - Firmware and application updates</li>
-<li><a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> - Standard baker setup</li>
 <li><a href="/getting-started/slashing-explained/">Slashing Explained</a> - Why duplicate signer operation is dangerous</li>
 </ul>
 <hr>
