@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="Run TezBake in a Docker container for isolated and portable Tezos baking">
 
-<meta itemprop="wordCount" content="1159">
+<meta itemprop="wordCount" content="1177">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="Run TezBake in a Docker container for isolated and portable Tezos baking"/>
@@ -156,8 +156,8 @@
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
   <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
-  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-without-dal-li">
+  <a href="/tezbake/tutorials/baking-without-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-without-dal"><span class="">Baking Without DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-tezbaketutorialsbaking-with-docker-li">
   <a href="/tezbake/tutorials/baking-with-docker/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-docker"><span class="td-sidebar-nav-active-item">Baking with Docker</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-consensus-key-li">
@@ -503,8 +503,8 @@
 <h2 id="preparation">Preparation</h2>
 <p>For this tutorial, you&rsquo;ll need to have already have installed Docker as shown here: <a href="https://docs.docker.com/engine/install">https://docs.docker.com/engine/install</a></p>
 <blockquote>
-<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong>
-All bakers are required to run a DAL node. See <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> for setup instructions and details.</p>
+<p><strong>DAL Included by Default</strong>
+DAL is part of the standard baker setup. If your Docker deployment intentionally runs without a local DAL node, see <a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a>. If you want DAL on another host or IP address, use <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a>.</p>
 </blockquote>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>

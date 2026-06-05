@@ -29,7 +29,7 @@
 <meta itemprop="name" content="What&#39;s New">
 <meta itemprop="description" content="Recent changes to Tez Capital tools and documentation">
 
-<meta itemprop="wordCount" content="890">
+<meta itemprop="wordCount" content="891">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="What&#39;s New"/>
 <meta name="twitter:description" content="Recent changes to Tez Capital tools and documentation"/>
@@ -156,8 +156,8 @@
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
   <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
-  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-without-dal-li">
+  <a href="/tezbake/tutorials/baking-without-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-without-dal"><span class="">Baking Without DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
   <a href="/tezbake/tutorials/baking-with-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-docker"><span class="">Baking with Docker</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-consensus-key-li">
@@ -505,7 +505,7 @@
 <hr>
 <h2 id="2026">2026</h2>
 <h3 id="documentation-clarified-tezsign-dal-companion-alias-setup">Documentation: Clarified TezSign DAL Companion Alias Setup</h3>
-<p><strong>What changed:</strong> Updated <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a>, <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a>, <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a>, and <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> to make the BLS/tz4 alias decision explicit:</p>
+<p><strong>What changed:</strong> Updated <a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a>, <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a>, the DAL setup notes, and <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> to make the BLS/tz4 alias decision explicit:</p>
 <ul>
 <li>If the TezSign consensus key is imported as <code>consensus</code>, load <code>[&quot;consensus&quot;,&quot;companion&quot;]</code>.</li>
 <li>If the TezSign consensus key is imported as the default <code>baker</code> alias, load only <code>[&quot;companion&quot;]</code>.</li>
@@ -607,7 +607,7 @@
 <li>Bakers currently using tz1 keys can continue without any changes</li>
 <li>To use tz4, you must set up or migrate to TezSign</li>
 </ul>
-<p><strong>→ See:</strong> <a href="/getting-started/glossary/#tz1--tz4-address-types">Glossary — tz1/tz4</a> | <a href="/getting-started/choose-your-setup/">Choose Your Setup</a></p>
+<p><strong>→ See:</strong> <a href="/getting-started/glossary/#tz1-tz4-address-types">Glossary — tz1/tz4</a> | <a href="/getting-started/choose-your-setup/">Choose Your Setup</a></p>
 <hr>
 <h3 id="tezpay-staker-aware-payouts">TezPay: Staker-Aware Payouts</h3>
 <p><strong>What changed:</strong> TezPay now correctly accounts for the staker/delegator split introduced by Adaptive Issuance. Staker rewards are distributed directly by the protocol; TezPay handles delegator rewards.</p>

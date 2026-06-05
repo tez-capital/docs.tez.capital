@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Mainnet">
 <meta itemprop="description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights">
 
-<meta itemprop="wordCount" content="3722">
+<meta itemprop="wordCount" content="3738">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Mainnet"/>
 <meta name="twitter:description" content="Complete guide to setting up a Tezos baker on mainnet with TezBake, from system preparation to first baking rights"/>
@@ -156,8 +156,8 @@
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
   <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
-  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-without-dal-li">
+  <a href="/tezbake/tutorials/baking-without-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-without-dal"><span class="">Baking Without DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
   <a href="/tezbake/tutorials/baking-with-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-docker"><span class="">Baking with Docker</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-consensus-key-li">
@@ -617,8 +617,9 @@
 </ol>
 <hr>
 <blockquote>
-<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong></p>
-<p>Running a DAL (Data Availability Layer) node is now <strong>mandatory</strong> for baking on the Tezos network. It&rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: <a href="/tezbake/tutorials/baking-with-dal">Baking with DAL</a></p>
+<p><strong>DAL Included by Default</strong></p>
+<p>DAL is part of the standard TezBake baker setup. The command below installs and configures it with the node, baker, and signer.</p>
+<p>If you intentionally need to run without a local DAL node, see <a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a>. If you want DAL on another host or IP address, use <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a>.</p>
 <p><strong>What is the DAL?</strong>
 The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.</p>
 </blockquote>
@@ -1006,8 +1007,8 @@ The DAL acts like an overflow area for data, where large amounts of information 
 <li><a href="/tezbake/tutorials/baking-with-tezsign/">Baking with TezSign</a> - TezSign KB hub</li>
 <li><a href="/tezsign/tutorials/hardware-and-flashing/">Hardware and Flashing</a> - TezSign hardware and image flashing</li>
 <li><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a> - TezSign SD-card backup and migration</li>
-<li><a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> - Advanced DAL configurations</li>
-<li><a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a> - Distributed component setup</li>
+<li><a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a> - Exception path when you intentionally disable DAL</li>
+<li><a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a> - Run node, DAL, and signer across separate hosts</li>
 <li><a href="/tezbake/tutorials/baking-with-consensus-key/">Baking with Consensus Key</a> - Separate consensus key management</li>
 </ul>
 <p><strong>Troubleshooting:</strong></p>

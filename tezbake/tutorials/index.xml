@@ -139,8 +139,9 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Running a DAL (Data Availability Layer) node is now &lt;strong&gt;mandatory&lt;/strong&gt; for baking on the Tezos network. It&amp;rsquo;s not currently mandatory to run the DAL on the same machine as your node or signer. Read more about advanced DAL configurations here: &lt;a href=&#34;/tezbake/tutorials/baking-with-dal&#34;&gt;Baking with DAL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DAL Included by Default&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;DAL is part of the standard TezBake baker setup. The command below installs and configures it with the node, baker, and signer.&lt;/p&gt;
+&lt;p&gt;If you intentionally need to run without a local DAL node, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;What is the DAL?&lt;/strong&gt;
 The DAL acts like an overflow area for data, where large amounts of information can be kept available to the network without overloading the core blockchain. This means Tezos can safely handle far more transactions and complex operations, because the rollups can rely on the DAL to make their data available for everyone to verify.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -528,8 +529,8 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - TezSign KB hub&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/hardware-and-flashing/&#34;&gt;Hardware and Flashing&lt;/a&gt; - TezSign hardware and image flashing&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - TezSign SD-card backup and migration&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; - Advanced DAL configurations&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; - Distributed component setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt; - Exception path when you intentionally disable DAL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; - Run node, DAL, and signer across separate hosts&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; - Separate consensus key management&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Troubleshooting:&lt;/strong&gt;&lt;/p&gt;
@@ -589,8 +590,9 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;
-All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for setup instructions and details.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DAL Included by Default&lt;/strong&gt;
+DAL is part of the standard testnet baker setup. The commands below include &lt;code&gt;--with-dal&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you intentionally need to test without a local DAL node, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
@@ -1280,7 +1282,7 @@ Services:
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;dal-and-ledger&#34;&gt;DAL and Ledger&lt;/h3&gt;
 &lt;p&gt;Ensure &lt;strong&gt;Tezos Baking app v2.5.0+&lt;/strong&gt; for DAL attestation support.&lt;/p&gt;
-&lt;p&gt;For complete DAL setup, see &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the standard setup path, see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt;. If you intentionally disabled local DAL, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
@@ -1700,171 +1702,90 @@ Services:
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; — Full consensus key setup&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; — Main TezSign setup flow&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; — DAL node and companion key setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt; — Exception path when you intentionally disable DAL&lt;/li&gt;
 &lt;/ul&gt;
 
       </description>
     </item>
     
     <item>
-      <title>Tezbake: Baking with DAL</title>
-      <link>/tezbake/tutorials/baking-with-dal/</link>
+      <title>Tezbake: Baking Without DAL</title>
+      <link>/tezbake/tutorials/baking-without-dal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/baking-with-dal/</guid>
+      <guid>/tezbake/tutorials/baking-without-dal/</guid>
       <description>
         
         
-        &lt;p&gt;Follow along on Youtube!
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/0EEgEHFl40Y&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;The Tezos Data Availability Layer (DAL) enhances network scalability by efficiently handling large volumes of data off-chain, providing essential support for rollups and other layer-2 solutions. This guide explains how to set up DAL locally alongside your TezBake baker.&lt;/p&gt;
-&lt;p&gt;For more details on DAL, see &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Tezos DAL Overview&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+        &lt;h2 id=&#34;default-setup-includes-dal&#34;&gt;Default Setup Includes DAL&lt;/h2&gt;
+&lt;p&gt;DAL is part of the standard TezBake baker setup. The mainnet and testnet setup guides install the node, baker, signer, and DAL together with &lt;code&gt;tezbake setup --with-dal&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Use this guide only when you intentionally need to run without a local DAL node. If you want DAL on another machine, another IP address, or another network segment, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; instead.&lt;/p&gt;
+&lt;h2 id=&#34;what-you-give-up&#34;&gt;What You Give Up&lt;/h2&gt;
+&lt;p&gt;Running without DAL is not a recommended steady-state setup for an active baker.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;TezBake installed and running&lt;/a&gt;&lt;/strong&gt; — your baker must already be set up on mainnet or testnet&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TezBake version 0.18.6+&lt;/strong&gt; and &lt;strong&gt;Octez 24.0+&lt;/strong&gt; — required for current mainnet (Tallinn protocol); verify with &lt;code&gt;tezbake version --all&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Sufficient disk space and bandwidth&lt;/strong&gt; — the DAL node downloads and verifies shard data continuously&lt;/li&gt;
+&lt;li&gt;Your baker will miss the DAL portion of baking rewards, currently about 10%.&lt;/li&gt;
+&lt;li&gt;Your baker may log warnings about attestations without DAL content.&lt;/li&gt;
+&lt;li&gt;Your setup will not help provide data availability for rollups and other DAL users.&lt;/li&gt;
+&lt;li&gt;This is not a slashing condition by itself, but it is still lost income and reduced network participation.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;version-requirements&#34;&gt;Version Requirements&lt;/h2&gt;
-&lt;p&gt;DAL requires specific minimum versions to function correctly. These requirements change with protocol upgrades.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Protocol&lt;/th&gt;
-&lt;th&gt;Octez Version&lt;/th&gt;
-&lt;th&gt;TezBake Version&lt;/th&gt;
-&lt;th&gt;Notes&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Tallinn&lt;/td&gt;
-&lt;td&gt;24.0+&lt;/td&gt;
-&lt;td&gt;0.18.6+&lt;/td&gt;
-&lt;td&gt;Current mainnet&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;Verify your versions:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version --all
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Check that your DAL is running latest version, same as all other binaries.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Version requirements change with protocol upgrades. After a protocol upgrade, update TezBake and verify your DAL is running the required version.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;dal-rewards-and-penalties&#34;&gt;DAL Rewards and Penalties&lt;/h2&gt;
-&lt;p&gt;Running a DAL node directly impacts your baking income:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Reward Impact:&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;when-this-makes-sense&#34;&gt;When This Makes Sense&lt;/h2&gt;
+&lt;p&gt;Use this only as an exception path:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;DAL attestations account for approximately &lt;strong&gt;10% of total block rewards&lt;/strong&gt; (2,275 out of 22,757 reward weight units)&lt;/li&gt;
-&lt;li&gt;Successfully attesting to DAL shards earns you this portion of rewards&lt;/li&gt;
-&lt;li&gt;Missing DAL attestations means losing ~10% of your potential baking income&lt;/li&gt;
+&lt;li&gt;Temporary recovery while you are fixing a DAL host, disk, bandwidth, or network issue&lt;/li&gt;
+&lt;li&gt;A test or lab setup where DAL participation is intentionally out of scope&lt;/li&gt;
+&lt;li&gt;A constrained environment where you accept the reward loss&lt;/li&gt;
+&lt;li&gt;A migration step before moving DAL to a separate host with Prism&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;How It Works:&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;When data is published to the DAL, it&amp;rsquo;s split into &amp;ldquo;shards&amp;rdquo; distributed across bakers&lt;/li&gt;
-&lt;li&gt;Your baker must download and verify shards assigned to you within the attestation lag period&lt;/li&gt;
-&lt;li&gt;Your baker then declares whether it successfully obtained the shards (via the attestation operation)&lt;/li&gt;
-&lt;li&gt;If enough bakers attest to availability, the data blob is marked as available&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Attestation Lag:&lt;/strong&gt;
-The protocol defines an attestation lag period during which bakers must download and verify their assigned shards. Your DAL node must be online and synchronized to meet this deadline. The lag gives bakers time to fetch data before they must attest.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;No Slashing for DAL Failures:&lt;/strong&gt;
-Unlike double baking/attestation, failing to run DAL does not result in slashing of your stake. You simply miss out on the DAL portion of rewards.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ WARNING: IP Address Exposure Risk&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The security implications for bakers in the DAL network are highlighted in the &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_overview.html&#34;&gt;official Octez documentation&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Risk:&lt;/strong&gt;
-Since a baker&amp;rsquo;s bandwidth in the DAL is proportional to their stake, it may be relatively straightforward to identify the IP address of a DAL node—especially for bakers with substantial stakes.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt;
-The core team advises running your DAL node on a different IP address than your L1 node. This separation helps prevent unintentional exposure of your node&amp;rsquo;s identity.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Solution for Separate Machines:&lt;/strong&gt;
-If you wish to run TezBake with DAL on a separate machine, consider using &lt;a href=&#34;https://docs.tez.capital/tezbake/tutorials/baking-with-prism/&#34;&gt;TezBake Prism Tunneling&lt;/a&gt;, which is designed for setups across multiple hosts.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;new-tezbake-setup-with-dal&#34;&gt;New TezBake Setup with DAL&lt;/h2&gt;
-&lt;p&gt;You can set up TezBake with DAL integration from scratch. Follow these steps:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Run setup with DAL integration:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;Proceed with your usual setup steps (ledger integration, baker registration, etc.).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Continue to the &lt;a href=&#34;#after-dal-setup&#34;&gt;After DAL Setup&lt;/a&gt; section.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;existing-tezbake-setup&#34;&gt;Existing TezBake Setup&lt;/h2&gt;
-&lt;p&gt;If you already have TezBake running without DAL, follow these steps:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Install DAL:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;If your reason is privacy or IP address exposure, do not remove DAL first. Prefer &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; so you can run DAL elsewhere while keeping DAL rewards.&lt;/p&gt;
+&lt;h2 id=&#34;new-setup-without-dal&#34;&gt;New Setup Without DAL&lt;/h2&gt;
+&lt;p&gt;For normal production setup, stop here and follow &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; or &lt;a href=&#34;/tezbake/tutorials/baking-on-testnets/&#34;&gt;Baking on Testnets&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you intentionally want a new setup without DAL, omit &lt;code&gt;--with-dal&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a testnet, keep the network configuration but omit &lt;code&gt;--with-dal&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/bakingnet.json
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node-configuration&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://configs.tez.capital/tallinnnet.json
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Continue with the normal key import, baker registration, and staking steps from the relevant setup guide.&lt;/p&gt;
+&lt;h2 id=&#34;remove-dal-from-an-existing-setup&#34;&gt;Remove DAL From an Existing Setup&lt;/h2&gt;
+&lt;p&gt;Stop TezBake before changing components:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Remove the DAL component:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Re-apply the node configuration without DAL:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If prompted to merge configuration, choose &lt;code&gt;yes&lt;/code&gt; unless you have a specific reason to discard your existing node settings.&lt;/p&gt;
+&lt;h2 id=&#34;verify-the-no-dal-state&#34;&gt;Verify the No-DAL State&lt;/h2&gt;
+&lt;p&gt;Check TezBake status:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Watch baker logs for DAL-related warnings so you understand the reward impact:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you disabled DAL temporarily, keep a note of why and when you plan to restore it.&lt;/p&gt;
+&lt;h2 id=&#34;restore-local-dal-later&#34;&gt;Restore Local DAL Later&lt;/h2&gt;
+&lt;p&gt;To return to the standard local DAL setup:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;after-dal-setup&#34;&gt;After DAL Setup&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Inject attester profiles:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This step does not require interaction with your Ledger:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles --auto
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the above command fails, specify your &lt;strong&gt;baker key&lt;/strong&gt; (not consensus key):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-key&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Verify the companion key alias is loaded by the baker:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;If you use a tz4/BLS consensus key, DAL also requires the companion key alias to be present in the baker configuration:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles --auto
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use a tz4/BLS consensus key, confirm the DAL companion key is loaded by the baker:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the common TezSign setup where the active consensus key is imported as &lt;code&gt;baker&lt;/code&gt;, only &lt;code&gt;companion&lt;/code&gt; needs to be listed as an additional alias:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your TezSign consensus key is imported as &lt;code&gt;consensus&lt;/code&gt; instead of &lt;code&gt;baker&lt;/code&gt;, include both aliases:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you intentionally use other additional aliases, keep them in the JSON list when setting this value.&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Apply the updated configuration:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your install uses different lifecycle commands, confirm the current command with &lt;code&gt;tezbake --help&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;remote-dal-setup&#34;&gt;Remote DAL Setup&lt;/h2&gt;
-&lt;p&gt;Follow the Prism setup steps here: &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;quick-troubleshooting&#34;&gt;Quick Troubleshooting&lt;/h2&gt;
-&lt;p&gt;If you encounter issues or require immediate help, execute these commands to revert changes and reinstall:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake remove --dal
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# choose &amp;#39;yes&amp;#39; to merge config when prompted&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;verify-dal-operation&#34;&gt;Verify DAL Operation&lt;/h2&gt;
-&lt;p&gt;Ensure your DAL process is correctly running by checking logs:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log dal -f
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Your logs should indicate the DAL is receiving block levels. Also, verify the TezBake baker logs are error-free regarding DAL integration:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For additional DAL checks, refer to the &lt;a href=&#34;https://tezos.gitlab.io/shell/dal_overview.html&#34;&gt;Nomadic Labs DAL Tutorial&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;verifying-dal-is-running&#34;&gt;Verifying DAL is Running&lt;/h2&gt;
-&lt;p&gt;After setup, verify your DAL node is operational:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check DAL status in output&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Signs of a healthy DAL:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DAL section appears in &lt;code&gt;tezbake info&lt;/code&gt; output&lt;/li&gt;
-&lt;li&gt;DAL companion key is registered (check via your baker&amp;rsquo;s page on tzkt.io)&lt;/li&gt;
-&lt;li&gt;No &amp;ldquo;connection refused&amp;rdquo; errors in DAL logs&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;common-dal-issues&#34;&gt;Common DAL Issues&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Port conflicts:&lt;/strong&gt; DAL uses port 10732 by default. Check for conflicts:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ss -tlnp &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10732&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Companion key not imported:&lt;/strong&gt; If DAL shows as running but not attesting:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client list signing scheme
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify your DAL companion key appears in the list.&lt;/p&gt;
-&lt;hr&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;run-dal-elsewhere&#34;&gt;Run DAL Elsewhere&lt;/h2&gt;
+&lt;p&gt;If your goal is to avoid exposing the same IP address for your L1 node and DAL node, or you want the DAL node on a different host, do not use the no-DAL path.&lt;/p&gt;
+&lt;p&gt;Use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; to connect TezBake components across hosts while keeping DAL enabled.&lt;/p&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Complete setup guide&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Check DAL and baker logs&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/updating/&#34;&gt;Updating&lt;/a&gt; - Keep TezBake up to date&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard setup with DAL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-testnets/&#34;&gt;Baking on Testnets&lt;/a&gt; - Testnet setup with DAL&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; - Run node, DAL, and signer across separate hosts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/key-aliases/&#34;&gt;Key Aliases&lt;/a&gt; - Confirm companion key alias configuration&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Debug DAL and baker issues&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -1892,8 +1813,8 @@ If you wish to run TezBake with DAL on a separate machine, consider using &lt;a 
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already have installed Docker as shown here: &lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;https://docs.docker.com/engine/install&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: DAL Node Mandatory&lt;/strong&gt;
-All bakers are required to run a DAL node. See &lt;a href=&#34;/tezbake/tutorials/baking-with-dal/&#34;&gt;Baking with DAL&lt;/a&gt; for setup instructions and details.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DAL Included by Default&lt;/strong&gt;
+DAL is part of the standard baker setup. If your Docker deployment intentionally runs without a local DAL node, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
@@ -2847,7 +2768,7 @@ Use:&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify installation:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-setup-tezbake&#34;&gt;4. Setup TezBake&lt;/h3&gt;
-&lt;p&gt;Run the setup with DAL support (recommended for all bakers):&lt;/p&gt;
+&lt;p&gt;Run the standard setup with DAL:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup --with-dal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This installs and configures:&lt;/p&gt;
 &lt;ul&gt;

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1658">
+<meta itemprop="wordCount" content="1682">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -156,8 +156,8 @@
   <a href="/tezbake/tutorials/failover-procedure/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsfailover-procedure"><span class="">Failover Procedure</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialskey-aliases-li">
   <a href="/tezbake/tutorials/key-aliases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialskey-aliases"><span class="">Key Aliases</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-dal-li">
-  <a href="/tezbake/tutorials/baking-with-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-dal"><span class="">Baking with DAL</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-without-dal-li">
+  <a href="/tezbake/tutorials/baking-without-dal/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-without-dal"><span class="">Baking Without DAL</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-docker-li">
   <a href="/tezbake/tutorials/baking-with-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezbaketutorialsbaking-with-docker"><span class="">Baking with Docker</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezbaketutorialsbaking-with-consensus-key-li">
@@ -536,8 +536,9 @@
 </blockquote>
 <hr>
 <blockquote>
-<p><strong>🚨 CRITICAL: DAL Node Mandatory</strong>
-All bakers are required to run a DAL node. See <a href="/tezbake/tutorials/baking-with-dal/">Baking with DAL</a> for setup instructions and details.</p>
+<p><strong>DAL Included by Default</strong>
+DAL is part of the standard testnet baker setup. The commands below include <code>--with-dal</code>.</p>
+<p>If you intentionally need to test without a local DAL node, see <a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a>. If you want DAL on another host or IP address, use <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a>.</p>
 </blockquote>
 <h2 id="installation-all-in-one">Installation (All-in-one)</h2>
 <h3 id="download-and-install-tezbake">Download and install tezbake</h3>
