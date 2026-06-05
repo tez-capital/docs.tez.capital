@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with TezSign">
 <meta itemprop="description" content="Integrating the TezSign hardware signer with your TezBake setup.">
 
-<meta itemprop="wordCount" content="3667">
+<meta itemprop="wordCount" content="3740">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with TezSign"/>
 <meta name="twitter:description" content="Integrating the TezSign hardware signer with your TezBake setup."/>
@@ -902,13 +902,14 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <p>After successful setup, <strong>immediately back up your TezSign data</strong>:</p>
 <ol>
 <li>Remove the SD card from the TezSign device.</li>
-<li>Mount it on a Linux machine.</li>
+<li>Insert it into a Linux computer&rsquo;s SD-card slot, or use a USB SD-card reader. If you do not have another Linux computer, the baker host itself is often the easiest option if it has a GUI.</li>
 <li>Copy the whole <code>tezsign</code> folder from the <code>data</code> partition.</li>
-<li>Store the backup safely.</li>
-<li>Restore that folder to the <code>data</code> partition on a newly flashed card when needed.</li>
+<li>Restore that folder to the <code>data</code> partition on at least two freshly flashed backup cards.</li>
+<li>Save the TezSign master/key decryption password somewhere safe.</li>
 </ol>
 <p>Follow the complete procedure here:</p>
 <p><strong><a href="/tezsign/tutorials/back-up-and-restore-data/">Back Up and Restore TezSign Data</a></strong></p>
+<p>If you use the baker host as a temporary staging computer, delete the temporary backup folder or archive after the backup cards are restored.</p>
 <p>You can also keep a full SD-card clone for fast recovery:</p>
 <p><strong>Using Balena Etcher:</strong></p>
 <ol>
@@ -919,7 +920,7 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <p><strong>Using dd:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo dd <span style="color:#204a87;font-weight:bold">if</span><span style="color:#ce5c00;font-weight:bold">=</span>/dev/sdX <span style="color:#000">of</span><span style="color:#ce5c00;font-weight:bold">=</span>/path/to/backup.img <span style="color:#000">bs</span><span style="color:#ce5c00;font-weight:bold">=</span>4M <span style="color:#000">status</span><span style="color:#ce5c00;font-weight:bold">=</span>progress
 </span></span></code></pre></div><blockquote>
-<p><strong>💡 TIP:</strong> Keep at least 2 backup SD cards. Data on the card is protected by your master password, but clones and folder backups should still be stored as sensitive signer material.</p>
+<p><strong>💡 TIP:</strong> Keep at least 2 backup TezSign-flashed SD cards. Data on the card is protected by your master password, but clones and folder backups should still be stored as sensitive signer material.</p>
 </blockquote>
 <h3 id="if-your-tezsign-device-fails">If Your TezSign Device Fails</h3>
 <ol>
@@ -930,7 +931,8 @@ In some cases, connecting the TezSign gadget only via the OTG USB port may not p
 <h3 id="recommended-redundancy">Recommended Redundancy</h3>
 <ul>
 <li>2 TezSign devices (one active, one backup)</li>
-<li>2+ cloned SD cards</li>
+<li>At least 2 backup TezSign-flashed SD cards with restored <code>data/tezsign</code></li>
+<li>TezSign master/key decryption password saved somewhere safe</li>
 <li>Test backup periodically by booting on backup device (with primary <strong>unplugged</strong>)</li>
 </ul>
 <hr>

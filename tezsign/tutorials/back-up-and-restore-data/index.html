@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Back Up and Restore TezSign Data">
 <meta itemprop="description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations">
 
-<meta itemprop="wordCount" content="718">
+<meta itemprop="wordCount" content="1089">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Back Up and Restore TezSign Data"/>
 <meta name="twitter:description" content="Copy the TezSign data folder from the SD card for backups, recovery, and hardware migrations"/>
@@ -412,12 +412,8 @@
     <li><a href="#what-you-are-copying">What You Are Copying</a></li>
     <li><a href="#before-you-begin">Before You Begin</a></li>
     <li><a href="#find-the-data-partition">Find the <code>data</code> Partition</a></li>
-    <li><a href="#back-up-the-tezsign-folder">Back Up the <code>tezsign</code> Folder</a>
-      <ul>
-        <li><a href="#option-a-file-manager">Option A: File Manager</a></li>
-        <li><a href="#option-b-command-line">Option B: Command Line</a></li>
-      </ul>
-    </li>
+    <li><a href="#back-up-the-tezsign-folder-with-a-gui">Back Up the <code>tezsign</code> Folder with a GUI</a></li>
+    <li><a href="#back-up-the-tezsign-folder-without-a-gui">Back Up the <code>tezsign</code> Folder without a GUI</a></li>
     <li><a href="#restore-to-a-newly-flashed-card">Restore to a Newly Flashed Card</a></li>
     <li><a href="#verify-after-restore">Verify After Restore</a></li>
     <li><a href="#safety-notes">Safety Notes</a></li>
@@ -505,12 +501,17 @@
 <ul>
 <li>Stop baking with this TezSign device before removing its SD card.</li>
 <li>Disconnect the TezSign device from the baker machine.</li>
-<li>Use a Linux machine you trust.</li>
+<li>Take the microSD card out of the Raspberry Pi or Radxa board.</li>
+<li>Insert it into a computer&rsquo;s SD-card slot, or use a USB SD-card reader.</li>
+<li>Use a Linux machine you trust. If you do not have another Linux computer, the baker host itself is often the easiest option, especially if it has a desktop GUI.</li>
 <li>Have a backup destination ready, such as another drive or an encrypted folder.</li>
-<li>Keep your TezSign master password safe. The backup is not useful without it.</li>
+<li>Keep your TezSign master/key decryption password safe. The backup is not useful without it.</li>
 </ul>
 <blockquote>
 <p><strong>Critical:</strong> Never run two TezSign devices, cards, or restored copies with the same keys at the same time. That can cause double signing and slashing.</p>
+</blockquote>
+<blockquote>
+<p><strong>Baker host note:</strong> If you use the baker machine itself as a temporary staging computer, delete the temporary backup folder or archive from the baker after you have restored it to your backup flashed card(s). Do not leave loose signer backups sitting on the baker host.</p>
 </blockquote>
 <h2 id="find-the-data-partition">Find the <code>data</code> Partition</h2>
 <p>Insert the TezSign microSD card into the Linux computer.</p>
@@ -518,35 +519,50 @@
 <p>From the command line, you can identify the partition labels with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsblk -o NAME,LABEL,FSTYPE,SIZE,MOUNTPOINTS
 </span></span></code></pre></div><p>Find the row with <code>LABEL</code> set to <code>data</code>. If your desktop auto-mounted it, the mount point may look like <code>/media/$USER/data</code> or <code>/run/media/$USER/data</code>.</p>
-<h2 id="back-up-the-tezsign-folder">Back Up the <code>tezsign</code> Folder</h2>
-<h3 id="option-a-file-manager">Option A: File Manager</h3>
+<h2 id="back-up-the-tezsign-folder-with-a-gui">Back Up the <code>tezsign</code> Folder with a GUI</h2>
+<p>This is the easiest method if the Linux machine has a desktop environment.</p>
 <ol>
 <li>Open the mounted <code>data</code> partition.</li>
 <li>Find the <code>tezsign</code> folder at the top level of the partition.</li>
-<li>Copy the whole <code>tezsign</code> folder to your backup location.</li>
+<li>Copy the whole <code>tezsign</code> folder to your backup location, or directly onto the <code>data</code> partition of another freshly flashed TezSign SD card.</li>
 <li>Safely eject or unmount the SD card before removing it.</li>
 </ol>
-<h3 id="option-b-command-line">Option B: Command Line</h3>
-<p>Create a backup directory and copy the folder:</p>
+<p>If you are using the baker host as the backup computer, treat any copied folder on that host as temporary. Once you have restored it to backup TezSign-flashed SD card(s), delete the temporary copy from the baker.</p>
+<h2 id="back-up-the-tezsign-folder-without-a-gui">Back Up the <code>tezsign</code> Folder without a GUI</h2>
+<p>Use this method on a headless Linux host over SSH or on a server without a graphical file manager.</p>
+<p>Insert the TezSign SD card and identify the <code>data</code> partition:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsblk -o NAME,LABEL,FSTYPE,SIZE,MOUNTPOINTS
+</span></span></code></pre></div><p>Create a mount point and mount the <code>data</code> partition. Replace <code>/dev/sdX3</code> with the actual partition device shown by <code>lsblk</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir -p /mnt/tezsign-data
+</span></span><span style="display:flex;"><span>sudo mount /dev/sdX3 /mnt/tezsign-data
+</span></span></code></pre></div><p>Create a temporary backup directory and copy the folder:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups&#34;</span>
-</span></span><span style="display:flex;"><span>sudo rsync -aHAX --info<span style="color:#ce5c00;font-weight:bold">=</span>progress2 /media/<span style="color:#000">$USER</span>/data/tezsign/ <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign/&#34;</span>
+</span></span><span style="display:flex;"><span>sudo rsync -aHAX --info<span style="color:#ce5c00;font-weight:bold">=</span>progress2 /mnt/tezsign-data/tezsign/ <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign/&#34;</span>
 </span></span><span style="display:flex;"><span>sync
-</span></span></code></pre></div><p>If your <code>data</code> partition mounted somewhere else, replace <code>/media/$USER/data</code> with the mount point shown by <code>lsblk</code>.</p>
-<p>For a portable archive, especially if you are storing the backup on a non-Linux filesystem, use:</p>
+</span></span></code></pre></div><p>For a portable archive, especially if you are storing the backup on a non-Linux filesystem, use this instead of the <code>rsync</code> copy:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups&#34;</span>
-</span></span><span style="display:flex;"><span>sudo tar -C /media/<span style="color:#000">$USER</span>/data -czf <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign-</span><span style="color:#204a87;font-weight:bold">$(</span>date +%Y%m%d<span style="color:#204a87;font-weight:bold">)</span><span style="color:#4e9a06">.tar.gz&#34;</span> tezsign
+</span></span><span style="display:flex;"><span>sudo tar -C /mnt/tezsign-data -czf <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign-</span><span style="color:#204a87;font-weight:bold">$(</span>date +%Y%m%d<span style="color:#204a87;font-weight:bold">)</span><span style="color:#4e9a06">.tar.gz&#34;</span> tezsign
 </span></span><span style="display:flex;"><span>sync
-</span></span></code></pre></div><h2 id="restore-to-a-newly-flashed-card">Restore to a Newly Flashed Card</h2>
+</span></span></code></pre></div><p>Unmount the card before removing it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount /mnt/tezsign-data
+</span></span></code></pre></div><p>If you are using the baker host as the temporary backup location, delete this folder or archive from the baker after restoring it to your backup card(s).</p>
+<h2 id="restore-to-a-newly-flashed-card">Restore to a Newly Flashed Card</h2>
 <p>Flash the new TezSign image to a fresh SD card first. Then insert that card into the Linux computer and open or mount its <code>data</code> partition.</p>
-<p>If you backed up the folder directly:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rsync -aHAX --delete <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign/&#34;</span> /media/<span style="color:#000">$USER</span>/data/tezsign/
+<p>If you are using a GUI, open the new card&rsquo;s <code>data</code> partition and copy the backed-up <code>tezsign</code> folder into it.</p>
+<p>If you are using the command line, mount the new card&rsquo;s <code>data</code> partition first. Replace <code>/dev/sdX3</code> with the actual new-card <code>data</code> partition shown by <code>lsblk</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkdir -p /mnt/tezsign-data
+</span></span><span style="display:flex;"><span>sudo mount /dev/sdX3 /mnt/tezsign-data
+</span></span></code></pre></div><p>If you backed up the folder directly, restore it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rsync -aHAX --delete <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign/&#34;</span> /mnt/tezsign-data/tezsign/
 </span></span><span style="display:flex;"><span>sync
 </span></span></code></pre></div><p>If you backed up a <code>.tar.gz</code> archive:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rm -rf /media/<span style="color:#000">$USER</span>/data/tezsign
-</span></span><span style="display:flex;"><span>sudo tar -C /media/<span style="color:#000">$USER</span>/data -xzf <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign-YYYYMMDD.tar.gz&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo rm -rf /mnt/tezsign-data/tezsign
+</span></span><span style="display:flex;"><span>sudo tar -C /mnt/tezsign-data -xzf <span style="color:#4e9a06">&#34;</span><span style="color:#000">$HOME</span><span style="color:#4e9a06">/tezsign-backups/tezsign-YYYYMMDD.tar.gz&#34;</span>
 </span></span><span style="display:flex;"><span>sync
 </span></span></code></pre></div><p>Replace <code>tezsign-YYYYMMDD.tar.gz</code> with your actual backup file name.</p>
-<p>When the restore is complete, safely eject or unmount the SD card before removing it.</p>
+<p>When the restore is complete, safely eject or unmount the SD card before removing it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo umount /mnt/tezsign-data
+</span></span></code></pre></div><p>Repeat this restore for each backup card you want ready.</p>
 <h2 id="verify-after-restore">Verify After Restore</h2>
 <ol>
 <li>Insert the restored SD card into the TezSign device.</li>
@@ -563,10 +579,13 @@
 </span></span></code></pre></div><h2 id="safety-notes">Safety Notes</h2>
 <ul>
 <li>Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.</li>
-<li>Store at least one backup offline.</li>
+<li>Keep at least two backup TezSign-flashed SD cards ready, plus additional backups if your operation needs them.</li>
+<li>Store backup cards offline and clearly labeled.</li>
 <li>Label backups clearly so you know which baker and network they belong to.</li>
+<li>Save the TezSign master/key decryption password somewhere safe and separate from the SD cards.</li>
 <li>Test a restored card only when the primary TezSign device is unplugged.</li>
-<li>For routine disaster recovery, an SD-card clone is still useful. This <code>data/tezsign</code> transplant is the focused backup you need for image migrations and fresh-card restores.</li>
+<li>For routine disaster recovery, ready-to-use TezSign-flashed backup cards are the goal. This <code>data/tezsign</code> transplant is the focused backup you need for image migrations and fresh-card restores.</li>
+<li>If you used the baker host as temporary staging, remove the transient backup copy from the baker after the restore is complete.</li>
 </ul>
 <h2 id="related-guides">Related Guides</h2>
 <ul>
