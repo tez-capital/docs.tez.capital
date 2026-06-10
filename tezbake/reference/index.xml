@@ -929,7 +929,7 @@ If no command is provided, enters an interactive shell environment for the insta
 &lt;p&gt;Upgrades BB instance.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;tezbake upgrade [flags]
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;options&#34;&gt;Options&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --branch string           Select package release branch you want to upgrade. (default &amp;#34;main&amp;#34;)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;      --branch string           Select package release branch you want to upgrade.
       --dal                     Upgrade dal.
       --dal-branch string       Sets dal branch.
       --dal-version string      Sets dal version.
