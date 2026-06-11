@@ -37,7 +37,7 @@
 &lt;li&gt;&lt;em&gt;Exploration&lt;/em&gt; Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the &lt;em&gt;Proposal&lt;/em&gt; stage.&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Cooldown&lt;/em&gt; The proposal is tested on a dedicated test network to make sure it migrates and runs. Dapp developers make sure this proposal doesn&amp;rsquo;t break their dapps.&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Promotion&lt;/em&gt; Proposal needs to hit quorum (between 20-70% based on participation history) and it needs to further hit an acceptance level of 80%+. If it fails to meet these thresholds, the process resets back to the &lt;em&gt;Proposal&lt;/em&gt; stage.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Adoption&lt;/em&gt; The proposal is officially accepted and goes into effect at the end of the &lt;em&gt;Adoption&lt;/em&gt; stage. The Ghostnet test network is upgraded as a final test before Mainnet adoption. Dapp developers make sure this proposal doesn&amp;rsquo;t break their dapps and make any necessary changes to their dapps.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Adoption&lt;/em&gt; The proposal is officially accepted and goes into effect at the end of the &lt;em&gt;Adoption&lt;/em&gt; stage. Protocol test networks are used before Mainnet adoption so bakers and application developers can verify that the proposal does not break their infrastructure.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;understanding-quorum&#34;&gt;Understanding Quorum&lt;/h3&gt;
 &lt;p&gt;The quorum requirement ensures sufficient participation before accepting proposals:&lt;/p&gt;
@@ -820,9 +820,9 @@
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ Voting while baking:&lt;/strong&gt; If you&amp;rsquo;re voting from your baking machine while your baker is running, stop the baker first:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vote via TezGov, then restart:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Failure to stop the baker may result in a &amp;ldquo;Transaction Not Trusted&amp;rdquo; error — the Ledger Wallet app cannot share the device with a running baker process.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -876,9 +876,9 @@
 &lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
 &lt;h3 id=&#34;transaction-not-trusted-error&#34;&gt;&amp;ldquo;Transaction Not Trusted&amp;rdquo; error&lt;/h3&gt;
 &lt;p&gt;This happens when your Ledger is already in use by the baking app while trying to vote. Stop your baker before voting:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# vote via TezGov&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;no-etherlink-proposals-visible-in-tezgov&#34;&gt;No Etherlink proposals visible in TezGov&lt;/h3&gt;
 &lt;p&gt;Check &lt;a href=&#34;https://governance.etherlink.com&#34;&gt;governance.etherlink.com&lt;/a&gt; to confirm whether a Proposal or Promotion period is active. If no period is active, TezGov may not show Etherlink voting options. Voting is only possible during active periods.&lt;/p&gt;
 &lt;h3 id=&#34;voting-power-shows-zero-or-unexpected-value&#34;&gt;Voting power shows zero or unexpected value&lt;/h3&gt;
@@ -890,7 +890,7 @@
 &lt;li&gt;Is the governance period still in the correct phase?&lt;/li&gt;
 &lt;li&gt;Is your Ledger transaction confirmed on-screen?&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;For support, contact the Tez Capital team on &lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For support, contact the Tez Capital team on &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;further-resources&#34;&gt;Further Resources&lt;/h2&gt;
 &lt;ul&gt;
@@ -898,8 +898,11 @@
 &lt;li&gt;&lt;a href=&#34;https://governance.etherlink.com&#34;&gt;Etherlink Governance Portal&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;TezGov Voting on Mainnet&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezgov/tutorials/managing-baker-settings/&#34;&gt;Managing Baker Settings&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>

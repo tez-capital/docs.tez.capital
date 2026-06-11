@@ -52,17 +52,15 @@
   </url><url>
     <loc>/tezwatch/tutorials/monitoring-transactions/</loc>
   </url><url>
+    <loc>/tezbake/reference/ports-and-firewall/</loc>
+  </url><url>
     <loc>/tezbake/reference/</loc>
   </url><url>
     <loc>/tezbake/</loc>
   </url><url>
     <loc>/tezpay/tutorials/tezbake-integration/</loc>
   </url><url>
-    <loc>/getting-started/public-baking/</loc>
-  </url><url>
     <loc>/tezsign/tutorials/updating/</loc>
-  </url><url>
-    <loc>/getting-started/baker-key-architecture/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-tezsign/</loc>
   </url><url>
@@ -72,11 +70,7 @@
   </url><url>
     <loc>/tezsign/tutorials/hardware-and-flashing/</loc>
   </url><url>
-    <loc>/getting-started/hardware-requirements/</loc>
-  </url><url>
     <loc>/tezpay/extensions/reference/hooks/</loc>
-  </url><url>
-    <loc>/getting-started/ledger-vs-tezsign/</loc>
   </url><url>
     <loc>/tezgov/tutorials/managing-baker-settings/</loc>
   </url><url>
@@ -138,7 +132,7 @@
   </url><url>
     <loc>/tezbake/reference/cmd/tezbake_vote/</loc>
   </url><url>
-    <loc>/getting-started/best-practices/</loc>
+    <loc>/getting-started/public-baking/</loc>
   </url><url>
     <loc>/tezpay/reference/cmd/tezpay/</loc>
   </url><url>
@@ -170,7 +164,7 @@
   </url><url>
     <loc>/tezpay/reference/</loc>
   </url><url>
-    <loc>/getting-started/slashing-explained/</loc>
+    <loc>/getting-started/best-practices/</loc>
   </url><url>
     <loc>/tezpay/</loc>
   </url><url>
@@ -186,9 +180,11 @@
   </url><url>
     <loc>/tezpay/tutorials/notifications/</loc>
   </url><url>
+    <loc>/getting-started/slashing-explained/</loc>
+  </url><url>
     <loc>/tezgov/</loc>
   </url><url>
-    <loc>/tezpeak/</loc>
+    <loc>/getting-started/baker-key-architecture/</loc>
   </url><url>
     <loc>/tezsign/tutorials/high-watermark-recovery/</loc>
   </url><url>
@@ -196,39 +192,45 @@
   </url><url>
     <loc>/tezwatch/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/troubleshooting/</loc>
-  </url><url>
     <loc>/tezpay/tutorials/updating/</loc>
-  </url><url>
-    <loc>/tezbake/tutorials/bootstrap-node/</loc>
   </url><url>
     <loc>/tezsign/tutorials/direct-backend/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/failover-procedure/</loc>
-  </url><url>
     <loc>/tezbake/tutorials/key-aliases/</loc>
   </url><url>
-    <loc>/tezbox/</loc>
+    <loc>/getting-started/ledger-vs-tezsign/</loc>
   </url><url>
     <loc>/tezpay/tutorials/trd-migration/</loc>
   </url><url>
     <loc>/tezsign/tutorials/automatic-unlock/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/baking-without-dal/</loc>
+    <loc>/tezbake/tutorials/bootstrap-node/</loc>
+  </url><url>
+    <loc>/getting-started/hardware-requirements/</loc>
+  </url><url>
+    <loc>/tezpeak/</loc>
   </url><url>
     <loc>/tezpay/tutorials/troubleshooting/</loc>
   </url><url>
-    <loc>/tezbake/tutorials/baking-with-docker/</loc>
+    <loc>/tezbake/tutorials/failover-procedure/</loc>
+  </url><url>
+    <loc>/tezbox/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/baking-without-dal/</loc>
   </url><url>
     <loc>/getting-started/glossary/</loc>
   </url><url>
     <loc>/tezgov/tutorials/voting-on-etherlink-proposals/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/baking-with-docker/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-consensus-key/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-prism/</loc>
   </url><url>
     <loc>/tezbake/tutorials/missing-attestations/</loc>
+  </url><url>
+    <loc>/tezbake/tutorials/troubleshooting/</loc>
   </url><url>
     <loc>/tezbake/tutorials/baking-with-multi-instance/</loc>
   </url><url>

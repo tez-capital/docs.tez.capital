@@ -24,8 +24,7 @@
       <description>
         
         
-        &lt;h1 id=&#34;advanced-configuration&#34;&gt;Advanced Configuration&lt;/h1&gt;
-&lt;p&gt;TezBake stores runtime settings under the node configuration. Advanced users can inspect and customize those values with &lt;code&gt;tezbake node show&lt;/code&gt; and &lt;code&gt;tezbake node modify&lt;/code&gt;.&lt;/p&gt;
+        &lt;p&gt;TezBake stores runtime settings under the node configuration. Advanced users can inspect and customize those values with &lt;code&gt;tezbake node show&lt;/code&gt; and &lt;code&gt;tezbake node modify&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;customize-node-startup-arguments&#34;&gt;Customize node startup arguments&lt;/h2&gt;
 &lt;p&gt;Use &lt;code&gt;configuration.STARTUP_ARGS&lt;/code&gt; to pass additional arguments to the Octez node process.&lt;/p&gt;
 &lt;p&gt;For example, to set the node synchronization threshold to &lt;code&gt;0&lt;/code&gt;:&lt;/p&gt;
@@ -35,7 +34,97 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can verify the configured startup arguments with:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.STARTUP_ARGS
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main TezBake setup flow&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/key-aliases/&#34;&gt;Key Aliases&lt;/a&gt; - Configure additional baker key aliases&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Common TezBake issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tezbake: Ports and Firewall</title>
+      <link>/tezbake/reference/ports-and-firewall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/reference/ports-and-firewall/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Use this page as a quick firewall reference for a TezBake baker host. Keep RPC and dashboard ports private unless you intentionally protect them with a VPN, reverse proxy, or other access control.&lt;/p&gt;
+&lt;h2 id=&#34;common-ports&#34;&gt;Common Ports&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Port&lt;/th&gt;
+&lt;th&gt;Protocol&lt;/th&gt;
+&lt;th&gt;Component&lt;/th&gt;
+&lt;th&gt;Exposure&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;9732&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;Tezos node P2P&lt;/td&gt;
+&lt;td&gt;Public inbound recommended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;8732&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;Tezos node RPC&lt;/td&gt;
+&lt;td&gt;Local/private only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;11732&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;DAL node P2P&lt;/td&gt;
+&lt;td&gt;Public inbound recommended&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;10732&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;DAL node RPC&lt;/td&gt;
+&lt;td&gt;Local/private only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;20080&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UDP&lt;/td&gt;
+&lt;td&gt;Prism tunnel endpoint&lt;/td&gt;
+&lt;td&gt;Open only on the configured Prism public endpoint&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;8733&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;TezPeak web UI&lt;/td&gt;
+&lt;td&gt;Local/private unless protected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;suggested-firewall-rules&#34;&gt;Suggested Firewall Rules&lt;/h2&gt;
+&lt;p&gt;For a basic Linux host using &lt;code&gt;ufw&lt;/code&gt;, open the public P2P ports:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow 9732/tcp comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Tezos P2P&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow 11732/tcp comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;DAL P2P&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If this host is the public endpoint for Prism, open the configured Prism UDP port:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow 20080/udp comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;TezBake Prism&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Do not expose &lt;code&gt;8732&lt;/code&gt;, &lt;code&gt;10732&lt;/code&gt;, or &lt;code&gt;8733&lt;/code&gt; directly to the public internet unless you have added separate access controls.&lt;/p&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/hardware-requirements/&#34;&gt;Hardware Requirements&lt;/a&gt; - Base network requirements&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt; - Remote component tunnels&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpeak/tutorials/setup/&#34;&gt;TezPeak Setup&lt;/a&gt; - Dashboard access&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;TezBake Troubleshooting&lt;/a&gt; - DAL connectivity checks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
       </description>
     </item>
     

@@ -42,7 +42,7 @@
 &lt;li&gt;&lt;strong&gt;Ubuntu 22.04+, Debian 12+, or macOS&lt;/strong&gt; — server or desktop with SSH access (Linux recommended for production)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers/delegators — see staking table below)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;TezSign device&lt;/strong&gt; for consensus and companion signing, plus a Ledger or other manager wallet for funds, staking, governance, and registering key changes&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hardware meeting minimum specs:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware meeting minimum specs:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 256GB SSD, reliable broadband&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 &lt;ol&gt;
@@ -121,7 +121,7 @@
 &lt;ul&gt;
 &lt;li&gt;3 CPU cores (arm64 or amd64/x86-64 architectures) – 2 are needed by the Octez node and 1 is needed by the Octez baker;&lt;/li&gt;
 &lt;li&gt;8GB RAM + 8GB swap (or 16GB RAM);&lt;/li&gt;
-&lt;li&gt;100GB SSD storage (or similar I/O performance);&lt;/li&gt;
+&lt;li&gt;256GB SSD storage (or similar I/O performance);&lt;/li&gt;
 &lt;li&gt;a low-latency, reliable broadband internet connection.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -147,7 +147,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
-&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
+&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/local/bin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://bake.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setup-tezos-node-signer-dal-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer, DAL and install tezbake dependencies&lt;/h3&gt;
@@ -470,9 +470,9 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;Your baker needs to register as a DAL attester to participate in the Data Availability Layer. This tells the network which DAL node to use for your baker.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles --auto
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If for some reason the auto method is not working, use the command below to bypass it.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-address&amp;gt; --force
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The tz4 key referenced here is your baker&amp;rsquo;s public key address (starts with tz4), not your consensus key or companion key.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Use your baker address here. In the recommended TezSign setup, this is usually your manager address (&lt;code&gt;tz1&lt;/code&gt;, &lt;code&gt;tz2&lt;/code&gt;, or &lt;code&gt;tz3&lt;/code&gt;), not your TezSign consensus key or companion key. Soft-key test setups may use a &lt;code&gt;tz4&lt;/code&gt; baker address.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Verify both DAL profile and companion-key wiring:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
@@ -596,7 +596,7 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;installation-all-in-one&#34;&gt;Installation (All-in-one)&lt;/h2&gt;
 &lt;h3 id=&#34;download-and-install-tezbake&#34;&gt;Download and install tezbake&lt;/h3&gt;
-&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/sbin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
+&lt;p&gt;To begin, run the script below, which will download the latest version of TezBake and copy it to your &lt;code&gt;/usr/local/bin&lt;/code&gt; directory. This script works with both x86_64 and arm64 architectures.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://bake.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you may be prompted for sudo password&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;setup-tezos-node-signer-dal-and-install-tezbake-dependencies&#34;&gt;Setup Tezos node, signer, DAL and install tezbake dependencies&lt;/h3&gt;
@@ -690,7 +690,7 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;register-as-baker-on-the-tezos-blockchain-testnet&#34;&gt;Register as baker on the Tezos blockchain Testnet&lt;/h3&gt;
-&lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
+&lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. The soft-key testnet setup above does not require a Ledger. If you are testing with a dedicated testnet Ledger, open the Ledger Tezos Wallet app only for registration and voting; use the Tezos Baking app for baking operations.&lt;/p&gt;
 &lt;p&gt;To secure your XTZ security deposit on a testnet, use the faucet for your chosen network to get free test XTZ:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bakingnet: &lt;a href=&#34;https://faucet.bakingnet.teztnets.com&#34;&gt;https://faucet.bakingnet.teztnets.com&lt;/a&gt;&lt;/li&gt;
@@ -710,7 +710,7 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a &lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;slashable&lt;/a&gt; security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
-&lt;p&gt;You can stake your security deposit by running the following command, after opening your Ledger Tezos Wallet app:&lt;/p&gt;
+&lt;p&gt;You can stake your security deposit by running the following command. If you are using a dedicated testnet Ledger, open the Ledger Tezos Wallet app for this operation.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client stake &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6000&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ Staking Options:&lt;/strong&gt;&lt;/p&gt;
@@ -724,8 +724,13 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-your-dal-attester-profile&#34;&gt;Import your DAL attester profile&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-tz4-key&amp;gt; --force
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles --auto
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If for some reason the auto method is not working, use the command below to bypass it.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles &amp;lt;your-baker-address&amp;gt; --force
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; Use your testnet baker address here. In the soft-key testnet setup above this may be a &lt;code&gt;tz4&lt;/code&gt; address, but TezBake also supports &lt;code&gt;tz1&lt;/code&gt;, &lt;code&gt;tz2&lt;/code&gt;, or &lt;code&gt;tz3&lt;/code&gt; baker addresses depending on the setup.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;installation-advanced&#34;&gt;Installation (Advanced)&lt;/h2&gt;
 &lt;p&gt;You can install different TezBake components on different systems. For example, you can have the Signer, Node and DAL on 3 different machines, all communicating together.&lt;/p&gt;
 &lt;p&gt;Follow the steps in &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;As with everything in life, complexity adds more failure points. Only separate the TezBake components if you have a compelling use case.&lt;/p&gt;
@@ -810,9 +815,10 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
         
         &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Quick Reference&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade    &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Upgrade all components (Octez binaries + ami/eli)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop       &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Stop services after upgrade if needed&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start      &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Start services again&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade                &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Upgrade all components (Octez binaries + ami/eli)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --branch next  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Switch to the next/RC branch when support asks&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop                   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Stop services after upgrade if needed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start                  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Start services again&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a full stack upgrade including the tezbake binary itself, see &lt;a href=&#34;#c-update-the-entire-tezbake-stack&#34;&gt;Method C&lt;/a&gt; below.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;tezbake-updating&#34;&gt;TezBake Updating&lt;/h2&gt;
@@ -832,6 +838,14 @@ You may start baking with as little as 1000 XTZ if you configure additional sour
 &lt;li&gt;(C) This upgrade method is used when you want to update the entire TezBake stack. If you have the time, this is the recommended method as it makes sure you get the latest version of all components.&lt;/li&gt;
 &lt;li&gt;(D) This upgrade method is used when you want to update the tezbake binary only. Sometimes we release new versions of tezbake that have fixes and new features to make your baker setup and operation easier. This upgrade method doesn&amp;rsquo;t take your baker down as the tezbake binary is not used during the baking process.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;switch-between-release-branches&#34;&gt;Switch between release branches&lt;/h3&gt;
+&lt;p&gt;If Tez Capital support asks you to move between the main and next release branches, use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --branch &amp;lt;main&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;next&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For example, to test the next or RC branch:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --branch next
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To return to the main branch:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --branch main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You do not need to manually edit &lt;code&gt;/bake-buddy/node/app.json&lt;/code&gt; or change the binary source type for this branch switch. When the &lt;code&gt;next&lt;/code&gt; branch would otherwise point at an older binary source, TezBake automatically uses the newer &lt;code&gt;main&lt;/code&gt; source instead.&lt;/p&gt;
 &lt;h2 id=&#34;a-update-ami--eli-and-octez-binaries&#34;&gt;(A) Update ami &amp;amp; eli and Octez binaries&lt;/h2&gt;
 &lt;p&gt;(updates components: #1, #2, #4)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade -s
@@ -974,6 +988,7 @@ Services:
 &lt;li&gt;Protocol is waiting to start. This means everyone is waiting for the new proposal to be activated on mainnet. Nothing needs to be done until the new protocol is activated&lt;/li&gt;
 &lt;li&gt;The baker process is running like normally. This means the new proposal has already activated and the TezBake needs to be updated to reflect it. There is no penalty for not updating unless you do not update in time for the next proposal. In other words, updating is only necessary when a proposal switch is about to happen. We still recommend that all Tezos bakers update their TezBake to the latest production version as soon as possible to get the latest Octez improvements.&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;The &lt;code&gt;baker-next&lt;/code&gt; and &lt;code&gt;accuser-next&lt;/code&gt; services are for the next protocol, not the next TezBake release branch. If Tez Capital support asks you to test the next or RC release branch, use &lt;code&gt;tezbake upgrade --branch next&lt;/code&gt;. See &lt;a href=&#34;/tezbake/tutorials/updating/&#34;&gt;Updating&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;monitor-full-tezbake-signer-logs-in-real-time&#34;&gt;Monitor full TezBake signer logs in real time&lt;/h3&gt;
 &lt;p&gt;Using the command below shows everything your Ledger is signing or trying to sign. If there is a hardware wallet issue, this log will confirm it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer log -f
@@ -987,7 +1002,7 @@ Services:
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Fix common issues&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Understanding missed attestations&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Set up Discord/Telegram alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Set up Discord alerts&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -1038,251 +1053,148 @@ Services:
 &lt;h2 id=&#34;whats-next&#34;&gt;What&amp;rsquo;s Next&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Continue with &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Review &lt;a href=&#34;/tezgov/tutorials/cast-votes/&#34;&gt;TezGov voting workflow&lt;/a&gt; for protocol amendment votes&lt;/li&gt;
+&lt;li&gt;Review &lt;a href=&#34;/tezgov/tutorials/voting-on-proposals/&#34;&gt;TezGov voting workflow&lt;/a&gt; for protocol amendment votes&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
-      <title>Tezbake: Troubleshooting</title>
-      <link>/tezbake/tutorials/troubleshooting/</link>
+      <title>Tezbake: Key Aliases</title>
+      <link>/tezbake/tutorials/key-aliases/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tezbake/tutorials/troubleshooting/</guid>
+      <guid>/tezbake/tutorials/key-aliases/</guid>
       <description>
         
         
-        &lt;h2 id=&#34;error-quick-reference&#34;&gt;Error Quick Reference&lt;/h2&gt;
+        &lt;p&gt;When baking with TezBake, the baker automatically injects your default baker key. If you use additional keys — such as a separate consensus key or a DAL companion key — you need to register them as key aliases so the baker knows about them.&lt;/p&gt;
+&lt;p&gt;There are two approaches:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Error / Symptom&lt;/th&gt;
-&lt;th&gt;Jump To&lt;/th&gt;
+&lt;th&gt;Method&lt;/th&gt;
+&lt;th&gt;Behavior&lt;/th&gt;
+&lt;th&gt;Use when&amp;hellip;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;Installation fails or hangs&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#installation-errors&#34;&gt;Installation Errors&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Adds keys &lt;strong&gt;on top of&lt;/strong&gt; the default baker key&lt;/td&gt;
+&lt;td&gt;You want to keep the default baker key and add extra keys&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Node stuck syncing / won&amp;rsquo;t sync&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#blockchain-errors&#34;&gt;Blockchain Errors&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Plugin or package issues&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#clear-cache&#34;&gt;Clear Cache&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Node storage errors / can&amp;rsquo;t start&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Full disk / no space left&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#full-disk&#34;&gt;Full Disk&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;ldquo;illegal instruction&amp;rdquo; / low-level errors&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#update-eli-lua-interpreter&#34;&gt;Update eli&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;TezSign USB timeout / not responding&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;DAL not attesting / no peers&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;tz4 key &amp;ldquo;has not been provided to the baker&amp;rdquo;&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;#missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Missing attestations&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;key_aliases&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Replaces&lt;/strong&gt; the default key list entirely&lt;/td&gt;
+&lt;td&gt;You need full control over which keys are injected&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
-&lt;p&gt;Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
-&lt;h3 id=&#34;installation-errors&#34;&gt;Installation errors&lt;/h3&gt;
-&lt;p&gt;If you encounter an installation issue, run the setup command again with the &lt;code&gt;--log-level=trace&lt;/code&gt; option, for example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --log-level&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;trace
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can add &lt;code&gt;--log-level=trace&lt;/code&gt; regardless of the setup type that&amp;rsquo;s being attempted, whether it&amp;rsquo;s on Ghostnet or some other testnet.&lt;/p&gt;
-&lt;h3 id=&#34;blockchain-errors&#34;&gt;Blockchain errors&lt;/h3&gt;
-&lt;p&gt;Sometimes, you will notice that &lt;code&gt;tezbake info&lt;/code&gt; never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may see an error like the one below, which indicates your node needs to be bootstrapped with a fresh copy of the Tezos blockchain.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;baker@baker-VirtualBox:~$ tezbake node log node -f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-- Logs begin at Wed 2022-05-18 14:16:28 CEST. --
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:31 baker-VirtualBox systemd&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Stopped bb-default-node node service.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:31 baker-VirtualBox systemd&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Started bb-default-node node service.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.414 - node.config.validation: the node configuration has been successfully validated.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: &lt;span style=&#34;color:#204a87&#34;&gt;read&lt;/span&gt; identity file &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;peer_id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; idqueYR61yjX8QfsiLru4FEZFSWi7m&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: starting the Tezos node v13.0 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;cb9f439e&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;chain&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; TEZOS_MAINNET&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: disabled &lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt; peer discovery
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node: shell-node initialization: bootstrapping
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.678 - node: shell-node initialization: p2p_maintain_started
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.678 - external_block_validator: initialized
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:33 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:33.599 - external_block_validator: block validator process started with pid &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5874&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store: the store is in an inconsistent state:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:   Error:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:     The block &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;current_head&amp;#39;&lt;/span&gt; is unexpectedly missing from the store.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store: attempting to restore the store&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s consistency...
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;common-fixes&#34;&gt;Common Fixes&lt;/h2&gt;
-&lt;h3 id=&#34;clear-cache&#34;&gt;Clear Cache&lt;/h3&gt;
-&lt;p&gt;If you encounter plugin or installation issues, clear the AMI cache:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ami --erase-cache &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ami --erase-cache
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/h3&gt;
-&lt;p&gt;If your node won&amp;rsquo;t sync or shows storage errors, you may need to clear the storage and rebootstrap:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Stop the node first&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Remove corrupted storage files&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf /bake-buddy/node/data/.tezos-node/daily_logs &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/context &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/lock &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/store
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Rebootstrap with a rolling snapshot&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;full-disk&#34;&gt;Full Disk&lt;/h3&gt;
-&lt;p&gt;Check disk usage and identify large directories:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check overall disk space&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;df -hT
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check TezBake directory sizes&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;du -sh /bake-buddy/node/data/.*
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A rolling node should typically be under 100GB. If significantly larger, clear the storage and rebootstrap with a rolling snapshot as shown above.&lt;/p&gt;
-&lt;h3 id=&#34;update-eli-lua-interpreter&#34;&gt;Update eli (Lua Interpreter)&lt;/h3&gt;
-&lt;p&gt;If you encounter &amp;ldquo;illegal instruction&amp;rdquo; or other low-level errors, update eli:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check current version&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;eli -v
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Update to latest&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/alis-is/eli/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;eli version should be &lt;code&gt;0.36.3&lt;/code&gt; or higher.&lt;/p&gt;
-&lt;h3 id=&#34;shell-path-issues-after-update&#34;&gt;Shell Path Issues After Update&lt;/h3&gt;
-&lt;p&gt;If &lt;code&gt;tezbake&lt;/code&gt; commands fail after an update, refresh your shell&amp;rsquo;s path cache:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;hash&lt;/span&gt; -r
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is needed because tezbake moved to &lt;code&gt;/usr/local/bin/tezbake&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/h3&gt;
-&lt;p&gt;If your TezSign device becomes unresponsive or you see timeout errors, try resetting the USB port before rebooting the machine:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced usb-port-reset
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This often recovers the device without requiring a full system restart.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Setup &amp;amp; Operations:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main setup guide&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Monitor your baker&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Debug attestation issues&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Getting Help:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/getting-started/best-practices/&#34;&gt;Best Practices&lt;/a&gt; - Prevent common issues&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - TezSign KB hub&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&#34;recommended-additional_key_aliases&#34;&gt;Recommended: &lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;This is the simplest and safest approach. Your default baker key continues to be injected automatically, and the aliases you specify are added alongside it.&lt;/p&gt;
+&lt;h3 id=&#34;add-aliases&#34;&gt;Add aliases&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;bb1_consensus&amp;#34;,&amp;#34;bb1_dal&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;view-current-aliases&#34;&gt;View current aliases&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-a-specific-alias&#34;&gt;Remove a specific alias&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --remove configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb1_dal&amp;#34;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clear-all-additional-aliases&#34;&gt;Clear all additional aliases&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --unset configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After any change, apply the updated configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your install uses different lifecycle commands, confirm the current command with &lt;code&gt;tezbake --help&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;advanced-key_aliases&#34;&gt;Advanced: &lt;code&gt;key_aliases&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;key_aliases&lt;/code&gt; when you need &lt;strong&gt;complete control&lt;/strong&gt; over which keys the baker uses.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING:&lt;/strong&gt; When you set &lt;code&gt;key_aliases&lt;/code&gt;, the default baker key is &lt;strong&gt;NOT&lt;/strong&gt; automatically included. You must add it explicitly if you still want it injected.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;set-key-aliases-replaces-defaults&#34;&gt;Set key aliases (replaces defaults)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;bb1_consensus&amp;#34;,&amp;#34;bb1_dal&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;add-a-single-alias&#34;&gt;Add a single alias&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --add configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb2_dal&amp;#34;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-a-single-alias&#34;&gt;Remove a single alias&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --remove configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb2_dal&amp;#34;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;view-current-aliases-1&#34;&gt;View current aliases&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clear-and-return-to-default-behavior&#34;&gt;Clear and return to default behavior&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --unset configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After any change, apply the updated configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your install uses different lifecycle commands, confirm the current command with &lt;code&gt;tezbake --help&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/h2&gt;
-&lt;p&gt;The Data Availability Layer (DAL) accounts for ~10% of baking rewards. If your DAL isn&amp;rsquo;t working properly, you&amp;rsquo;re missing out on income.&lt;/p&gt;
-&lt;h3 id=&#34;command-translation-octez--tezbake&#34;&gt;Command Translation: Octez → TezBake&lt;/h3&gt;
-&lt;p&gt;When reading official &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_run.html&#34;&gt;Octez DAL documentation&lt;/a&gt;, translate commands:&lt;/p&gt;
+&lt;h2 id=&#34;which-should-i-use&#34;&gt;Which Should I Use?&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Octez Command&lt;/th&gt;
-&lt;th&gt;TezBake Equivalent&lt;/th&gt;
+&lt;th&gt;Scenario&lt;/th&gt;
+&lt;th&gt;Method&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;octez-client ...&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake node client ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Adding a consensus key alongside your baker&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;octez-node config ...&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake node config ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Adding a DAL companion key alongside your baker&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Running multiple keys and need full control&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;key_aliases&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Simple single-key baking setup&lt;/td&gt;
+&lt;td&gt;Neither — TezBake handles it automatically&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;quick-dal-status-check&#34;&gt;Quick DAL Status Check&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &amp;ldquo;Status down&amp;rdquo; is normal immediately after start/restart. Give it time to sync.&lt;/p&gt;
-&lt;h3 id=&#34;missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Symptoms:&lt;/strong&gt; The baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker&amp;rdquo; and warns that the baker can only issue attestations without DAL content.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Root cause:&lt;/strong&gt; The keys may exist and be unlocked in TezSign, but one of the required aliases is not being loaded by the baker. This is different from a locked TezSign key.&lt;/p&gt;
-&lt;p&gt;Check the aliases TezBake is loading:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rule of thumb:&lt;/strong&gt; If you want the baker to keep working as normal and just need to add a key, use &lt;code&gt;additional_key_aliases&lt;/code&gt;. Only use &lt;code&gt;key_aliases&lt;/code&gt; if you have a specific reason to override the default key injection behavior.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;migration-from-additional_key_aliaseslist&#34;&gt;Migration from &lt;code&gt;additional_key_aliases.list&lt;/code&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ DEPRECATED:&lt;/strong&gt; The file-based method (&lt;code&gt;/bake-buddy/node/additional_key_aliases.list&lt;/code&gt;) is deprecated. Migrate to the CLI-based configuration described above.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you currently have an &lt;code&gt;additional_key_aliases.list&lt;/code&gt; file:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Note the aliases in your file&lt;/li&gt;
+&lt;li&gt;Set them via CLI:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;alias1&amp;#34;,&amp;#34;alias2&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Delete the old file:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm /bake-buddy/node/additional_key_aliases.list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Apply the updated configuration:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;common-examples&#34;&gt;Common Examples&lt;/h2&gt;
+&lt;h3 id=&#34;consensus-key--dal-companion&#34;&gt;Consensus key + DAL companion&lt;/h3&gt;
+&lt;p&gt;Use this when your separate consensus key was imported as &lt;code&gt;consensus&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;default-baker-consensus-key--dal-companion&#34;&gt;Default &lt;code&gt;baker&lt;/code&gt; consensus key + DAL companion&lt;/h3&gt;
+&lt;p&gt;If your consensus key is imported under the default &lt;code&gt;baker&lt;/code&gt; alias, you only need to add the companion:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you previously had &lt;code&gt;baker&lt;/code&gt; + &lt;code&gt;consensus&lt;/code&gt; + &lt;code&gt;companion&lt;/code&gt; and your tz4 key is now active, follow &lt;a href=&#34;/tezsign/tutorials/alias-cleanup-after-activation/&#34;&gt;Alias Cleanup After Activation&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;verify-everything-is-set&#34;&gt;Verify everything is set&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the recommended TezSign setup, where the active consensus key is imported as &lt;code&gt;baker&lt;/code&gt;, add only the companion:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your TezSign consensus key is imported as &lt;code&gt;consensus&lt;/code&gt;, load both aliases:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You want the DAL node to be operational and the old &amp;ldquo;has not been provided to the baker&amp;rdquo; warning to stop repeating.&lt;/p&gt;
-&lt;h3 id=&#34;step-by-step-dal-verification&#34;&gt;Step-by-Step DAL Verification&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;1. Check connected peers:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl http://localhost:10732/p2p/points/info?connected
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: List of connected DAL nodes. Empty = connection problem.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. Check topic subscriptions:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl http://localhost:10732/p2p/gossipsub/topics
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: Topics like &lt;code&gt;{&amp;quot;slot_index&amp;quot;:N,&amp;quot;pkh&amp;quot;:&amp;quot;tz1...&amp;quot;}&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. Check shard assignments:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client rpc get /chains/main/blocks/head/context/dal/shards?delegates&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;YOUR_TZ1&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: Your address with shard indexes.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4. Verify on Explorus:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Check &lt;a href=&#34;https://explorus.io/consensus_ops&#34;&gt;Explorus Consensus Ops&lt;/a&gt; for your baker:&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If &lt;code&gt;configuration.key_aliases&lt;/code&gt; is set, it replaces the default baker key list. Most setups should leave it unset or &lt;code&gt;null&lt;/code&gt; and use &lt;code&gt;additional_key_aliases&lt;/code&gt; instead. If the baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker,&amp;rdquo; the tz4 signing alias set is incomplete or &lt;code&gt;key_aliases&lt;/code&gt; is overriding the default &lt;code&gt;baker&lt;/code&gt; alias.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;2/2&lt;/strong&gt; = Attesting all slots ✅&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;0/2&lt;/strong&gt; = Not attesting (issue with DAL)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Empty&lt;/strong&gt; = No shards assigned or not connected&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; — Full consensus key setup&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; — Main TezSign setup flow&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt; — Exception path when you intentionally disable DAL&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;no-common-protocol-errors&#34;&gt;&amp;ldquo;No Common Protocol&amp;rdquo; Errors&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Symptoms:&lt;/strong&gt; DAL logs show &lt;code&gt;cancelled&lt;/code&gt; or &lt;code&gt;no common protocol&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Root Cause:&lt;/strong&gt; Usually the underlying L1 node, not the DAL itself.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check full status&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If node has sync issues:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;dal-connection-issues&#34;&gt;DAL Connection Issues&lt;/h3&gt;
-&lt;p&gt;If no peers are connecting:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Upgrade TezBake:&lt;/strong&gt; &lt;code&gt;tezbake upgrade&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Check bootstrap connection:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client --endpoint http://127.0.0.1:10732 rpc get /p2p/gossipsub/connections &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; jq &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;.[].connection.bootstrap&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At least one should show &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Restart TezBake:&lt;/strong&gt; &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;firewallnat&#34;&gt;Firewall/NAT&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;DAL Ports:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;11732&lt;/strong&gt; — P2P (recommended to open)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;10732&lt;/strong&gt; — RPC (local only)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Allow DAL P2P if behind firewall&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow 11732/tcp comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;DAL P2P&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;DAL can work without a public IP, but connectivity improves with port forwarding.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;dal-and-ledger&#34;&gt;DAL and Ledger&lt;/h3&gt;
-&lt;p&gt;Ensure &lt;strong&gt;Tezos Baking app v2.5.0+&lt;/strong&gt; for DAL attestation support.&lt;/p&gt;
-&lt;p&gt;For the standard setup path, see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt;. If you intentionally disabled local DAL, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
 &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
@@ -1443,7 +1355,7 @@ Services:
 &lt;li&gt;&lt;strong&gt;TezSign&lt;/strong&gt;: Unplug the USB cable from the primary computer&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ledger&lt;/strong&gt;: Unplug from primary and close the Baking app&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;If you cannot access the primary machine physically, wait at least 2-3 blocks (~20-30 seconds) after the last known signing before proceeding.&lt;/p&gt;
+&lt;p&gt;If you cannot access the primary machine physically, wait at least 2-3 blocks (~12-18 seconds at 6-second block times) after the last known signing before proceeding.&lt;/p&gt;
 &lt;h3 id=&#34;step-4-note-current-block-level&#34;&gt;Step 4: Note Current Block Level&lt;/h3&gt;
 &lt;p&gt;Check the current block level on a block explorer:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or use your backup node if synced&lt;/span&gt;
@@ -1571,144 +1483,6 @@ Services:
     </item>
     
     <item>
-      <title>Tezbake: Key Aliases</title>
-      <link>/tezbake/tutorials/key-aliases/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tezbake/tutorials/key-aliases/</guid>
-      <description>
-        
-        
-        &lt;h1 id=&#34;key-aliases&#34;&gt;Key Aliases&lt;/h1&gt;
-&lt;p&gt;When baking with TezBake, the baker automatically injects your default baker key. If you use additional keys — such as a separate consensus key or a DAL companion key — you need to register them as key aliases so the baker knows about them.&lt;/p&gt;
-&lt;p&gt;There are two approaches:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Method&lt;/th&gt;
-&lt;th&gt;Behavior&lt;/th&gt;
-&lt;th&gt;Use when&amp;hellip;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Adds keys &lt;strong&gt;on top of&lt;/strong&gt; the default baker key&lt;/td&gt;
-&lt;td&gt;You want to keep the default baker key and add extra keys&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;key_aliases&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;Replaces&lt;/strong&gt; the default key list entirely&lt;/td&gt;
-&lt;td&gt;You need full control over which keys are injected&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;recommended-additional_key_aliases&#34;&gt;Recommended: &lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;This is the simplest and safest approach. Your default baker key continues to be injected automatically, and the aliases you specify are added alongside it.&lt;/p&gt;
-&lt;h3 id=&#34;add-aliases&#34;&gt;Add aliases&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;bb1_consensus&amp;#34;,&amp;#34;bb1_dal&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;view-current-aliases&#34;&gt;View current aliases&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-a-specific-alias&#34;&gt;Remove a specific alias&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --remove configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb1_dal&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clear-all-additional-aliases&#34;&gt;Clear all additional aliases&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --unset configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After any change, apply the updated configuration:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your install uses different lifecycle commands, confirm the current command with &lt;code&gt;tezbake --help&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;advanced-key_aliases&#34;&gt;Advanced: &lt;code&gt;key_aliases&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;Use &lt;code&gt;key_aliases&lt;/code&gt; when you need &lt;strong&gt;complete control&lt;/strong&gt; over which keys the baker uses.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ WARNING:&lt;/strong&gt; When you set &lt;code&gt;key_aliases&lt;/code&gt;, the default baker key is &lt;strong&gt;NOT&lt;/strong&gt; automatically included. You must add it explicitly if you still want it injected.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;set-key-aliases-replaces-defaults&#34;&gt;Set key aliases (replaces defaults)&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;bb1_consensus&amp;#34;,&amp;#34;bb1_dal&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;add-a-single-alias&#34;&gt;Add a single alias&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --add configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb2_dal&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-a-single-alias&#34;&gt;Remove a single alias&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --remove configuration.key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#34;bb2_dal&amp;#34;&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;view-current-aliases-1&#34;&gt;View current aliases&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;clear-and-return-to-default-behavior&#34;&gt;Clear and return to default behavior&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --unset configuration.key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After any change, apply the updated configuration:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your install uses different lifecycle commands, confirm the current command with &lt;code&gt;tezbake --help&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;which-should-i-use&#34;&gt;Which Should I Use?&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Scenario&lt;/th&gt;
-&lt;th&gt;Method&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Adding a consensus key alongside your baker&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Adding a DAL companion key alongside your baker&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;additional_key_aliases&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Running multiple keys and need full control&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;key_aliases&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Simple single-key baking setup&lt;/td&gt;
-&lt;td&gt;Neither — TezBake handles it automatically&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;Rule of thumb:&lt;/strong&gt; If you want the baker to keep working as normal and just need to add a key, use &lt;code&gt;additional_key_aliases&lt;/code&gt;. Only use &lt;code&gt;key_aliases&lt;/code&gt; if you have a specific reason to override the default key injection behavior.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;migration-from-additional_key_aliaseslist&#34;&gt;Migration from &lt;code&gt;additional_key_aliases.list&lt;/code&gt;&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ DEPRECATED:&lt;/strong&gt; The file-based method (&lt;code&gt;/bake-buddy/node/additional_key_aliases.list&lt;/code&gt;) is deprecated. Migrate to the CLI-based configuration described above.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If you currently have an &lt;code&gt;additional_key_aliases.list&lt;/code&gt; file:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Note the aliases in your file&lt;/li&gt;
-&lt;li&gt;Set them via CLI:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;alias1&amp;#34;,&amp;#34;alias2&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;Delete the old file:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm /bake-buddy/node/additional_key_aliases.list
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;Apply the updated configuration:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;common-examples&#34;&gt;Common Examples&lt;/h2&gt;
-&lt;h3 id=&#34;consensus-key--dal-companion&#34;&gt;Consensus key + DAL companion&lt;/h3&gt;
-&lt;p&gt;Use this when your separate consensus key was imported as &lt;code&gt;consensus&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;default-baker-consensus-key--dal-companion&#34;&gt;Default &lt;code&gt;baker&lt;/code&gt; consensus key + DAL companion&lt;/h3&gt;
-&lt;p&gt;If your consensus key is imported under the default &lt;code&gt;baker&lt;/code&gt; alias, you only need to add the companion:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you previously had &lt;code&gt;baker&lt;/code&gt; + &lt;code&gt;consensus&lt;/code&gt; + &lt;code&gt;companion&lt;/code&gt; and your tz4 key is now active, follow &lt;a href=&#34;/tezsign/tutorials/alias-cleanup-after-activation/&#34;&gt;Alias Cleanup After Activation&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;verify-everything-is-set&#34;&gt;Verify everything is set&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If &lt;code&gt;configuration.key_aliases&lt;/code&gt; is set, it replaces the default baker key list. Most setups should leave it unset or &lt;code&gt;null&lt;/code&gt; and use &lt;code&gt;additional_key_aliases&lt;/code&gt; instead. If the baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker,&amp;rdquo; the tz4 signing alias set is incomplete or &lt;code&gt;key_aliases&lt;/code&gt; is overriding the default &lt;code&gt;baker&lt;/code&gt; alias.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-consensus-key/&#34;&gt;Baking with Consensus Key&lt;/a&gt; — Full consensus key setup&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; — Main TezSign setup flow&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt; — Exception path when you intentionally disable DAL&lt;/li&gt;
-&lt;/ul&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>Tezbake: Baking Without DAL</title>
       <link>/tezbake/tutorials/baking-without-dal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1803,12 +1577,15 @@ Services:
       <description>
         
         
-        &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Legacy / advanced path:&lt;/strong&gt; This page is for operators who already know they need a Dockerized TezBake deployment. New bakers should use the standard &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; flow with TezSign consensus and companion keys.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;Docker installed&lt;/a&gt;&lt;/strong&gt; — Docker Engine must be installed and running on your system&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Linux or macOS&lt;/strong&gt; — Ubuntu 22.04+ or Debian 12+ recommended; macOS is also supported; Windows is not supported&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Minimum 6000 XTZ&lt;/strong&gt; for staking as security deposit (or 1000 XTZ with external stakers — see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/#stake-your-baking-xtz-security-deposit&#34;&gt;Baking on Mainnet&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 100GB SSD, reliable broadband&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; 3 CPU cores, 8GB RAM + 8GB swap, 256GB SSD, reliable broadband&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
 &lt;p&gt;For this tutorial, you&amp;rsquo;ll need to have already have installed Docker as shown here: &lt;a href=&#34;https://docs.docker.com/engine/install&#34;&gt;https://docs.docker.com/engine/install&lt;/a&gt;&lt;/p&gt;
@@ -1849,7 +1626,7 @@ DAL is part of the standard baker setup. If your Docker deployment intentionally
 &lt;h4 id=&#34;option-1-import-ledger-key-to-tezbake-signer&#34;&gt;(Option 1) Import Ledger key to TezBake signer&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key --authorize --hwm &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; change ed to bip as needed for your individual needs; the default is ed25519/0h/0h which works just fine)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you have a custom derivation path, you can specify it as shown: (`--import-key=&amp;#34;ed25519/0h/0h&amp;#34;`; the default is ed25519/0h/0h which works just fine)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# `--hwm 1` works great if you&amp;#39;re setting up for the first time. If you&amp;#39;re setting up a device that&amp;#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If you&amp;#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
@@ -1859,8 +1636,8 @@ DAL is part of the standard baker setup. If your Docker deployment intentionally
 &lt;li&gt;The ledger will ask you twice to confirm this operation - ensure the baker address matches the one you want to use&lt;/li&gt;
 &lt;li&gt;To get the default ledger address, go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; and login with ledger, accepting the default derivation path&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;ℹ️ BLS Signatures:&lt;/strong&gt;
-BLS (i.e. bip) signatures offer greater flexibility and scalability for certain applications compared to the default ED25519 algorithm.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ Ledger Key Types:&lt;/strong&gt;
+Ledger baking supports tz1/tz2/tz3 key types. It does not provide tz4/BLS baking keys; use TezSign for tz4 consensus and companion keys.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;💡 TIP: Security:&lt;/strong&gt;
 Putting the baker on a non-default derivation path provides an additional layer of security at the cost of extra complexity. Make sure your setup is clearly documented for your own records.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;⚠️ High Watermark (HWM) Important Notes:&lt;/strong&gt;&lt;/p&gt;
@@ -2161,7 +1938,6 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard setup guide&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Standard setup guide with TezSign&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezsign/tutorials/back-up-and-restore-data/&#34;&gt;Back Up and Restore TezSign Data&lt;/a&gt; - SD-card data backup and migration&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Check baker health&lt;/li&gt;
 &lt;/ul&gt;
@@ -2305,8 +2081,8 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Example for Node:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --node &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote user@192.168.1.60:22 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote-auth key:/path/to/ssh/key
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  --node-remote-elevate sudo
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote-auth key:/path/to/ssh/key &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;  --node-remote-elevate sudo
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; You can combine both in a single command.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; If you&amp;rsquo;ve previously installed node or dal locally, remove it first:&lt;/p&gt;
@@ -2493,9 +2269,9 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 &lt;p&gt;For the Node key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node prism key-info --path&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/bake-buddy/node/prism/keys/node.prism
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the DAL key:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake dal prism key-info --path&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/bake-buddy/node/prism/keys/dal.prism
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake dal prism key-info --path&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/bake-buddy/dal/prism/keys/dal.prism
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the Node is the public Prism endpoint, use this command for the Signer key:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer prism key-info --path&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/bake-buddy/node/prism/keys/signer.prism
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer prism key-info --path&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/bake-buddy/signer/prism/keys/signer.prism
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;final-step-start-everything&#34;&gt;Final Step: Start Everything&lt;/h2&gt;
 &lt;p&gt;Once all keys and configs are in place, run:&lt;/p&gt;
@@ -2614,6 +2390,251 @@ Use:&lt;br&gt;
     </item>
     
     <item>
+      <title>Tezbake: Troubleshooting</title>
+      <link>/tezbake/tutorials/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezbake/tutorials/troubleshooting/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;error-quick-reference&#34;&gt;Error Quick Reference&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Error / Symptom&lt;/th&gt;
+&lt;th&gt;Jump To&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Installation fails or hangs&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#installation-errors&#34;&gt;Installation Errors&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node stuck syncing / won&amp;rsquo;t sync&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#blockchain-errors&#34;&gt;Blockchain Errors&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Plugin or package issues&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#clear-cache&#34;&gt;Clear Cache&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node storage errors / can&amp;rsquo;t start&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Full disk / no space left&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#full-disk&#34;&gt;Full Disk&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;ldquo;illegal instruction&amp;rdquo; / low-level errors&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#update-eli-lua-interpreter&#34;&gt;Update eli&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TezSign USB timeout / not responding&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DAL not attesting / no peers&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;tz4 key &amp;ldquo;has not been provided to the baker&amp;rdquo;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;#missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Missing attestations&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
+&lt;p&gt;Troubleshooting TezBake mostly comes in during the installation phase, when an error is encountered during the setup process.&lt;/p&gt;
+&lt;h3 id=&#34;installation-errors&#34;&gt;Installation errors&lt;/h3&gt;
+&lt;p&gt;If you encounter an installation issue, run the setup command again with the &lt;code&gt;--log-level=trace&lt;/code&gt; option, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --log-level&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;trace
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can add &lt;code&gt;--log-level=trace&lt;/code&gt; regardless of the setup type that&amp;rsquo;s being attempted, whether it&amp;rsquo;s on Ghostnet or some other testnet.&lt;/p&gt;
+&lt;h3 id=&#34;blockchain-errors&#34;&gt;Blockchain errors&lt;/h3&gt;
+&lt;p&gt;Sometimes, you will notice that &lt;code&gt;tezbake info&lt;/code&gt; never seems to show that you are able to fully synchronize your node. Upon looking at it you may find that your node is stuck on a certain block. This is usually due to a problem with the Tezos node itself. The Tezos node is a separate process from the TezBake process. If you are having issues with the Tezos node, you can try to restart it with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may see an error like the one below, which indicates your node needs to be bootstrapped with a fresh copy of the Tezos blockchain.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;baker@baker-VirtualBox:~$ tezbake node log node -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-- Logs begin at Wed 2022-05-18 14:16:28 CEST. --
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:31 baker-VirtualBox systemd&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Stopped bb-default-node node service.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:31 baker-VirtualBox systemd&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Started bb-default-node node service.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.414 - node.config.validation: the node configuration has been successfully validated.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: &lt;span style=&#34;color:#204a87&#34;&gt;read&lt;/span&gt; identity file &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;peer_id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; idqueYR61yjX8QfsiLru4FEZFSWi7m&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: starting the Tezos node v13.0 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;cb9f439e&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;chain&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; TEZOS_MAINNET&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node.main: disabled &lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt; peer discovery
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.415 - node: shell-node initialization: bootstrapping
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.678 - node: shell-node initialization: p2p_maintain_started
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:32.678 - external_block_validator: initialized
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:33 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:33.599 - external_block_validator: block validator process started with pid &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5874&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store: the store is in an inconsistent state:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:   Error:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:     The block &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;current_head&amp;#39;&lt;/span&gt; is unexpectedly missing from the store.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mai &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43 baker-VirtualBox node&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;5868&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: May &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;20&lt;/span&gt; 08:51:43.267 - node.store: attempting to restore the store&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s consistency...
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;common-fixes&#34;&gt;Common Fixes&lt;/h2&gt;
+&lt;h3 id=&#34;clear-cache&#34;&gt;Clear Cache&lt;/h3&gt;
+&lt;p&gt;If you encounter plugin or installation issues, clear the AMI cache:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ami --erase-cache &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo ami --erase-cache
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;corrupted-node-storage&#34;&gt;Corrupted Node Storage&lt;/h3&gt;
+&lt;p&gt;If your node won&amp;rsquo;t sync or shows storage errors, you may need to clear the storage and rebootstrap:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Stop the node first&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Remove corrupted storage files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf /bake-buddy/node/data/.tezos-node/daily_logs &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/context &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/lock &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;       /bake-buddy/node/data/.tezos-node/store
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Rebootstrap with a rolling snapshot&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;full-disk&#34;&gt;Full Disk&lt;/h3&gt;
+&lt;p&gt;Check disk usage and identify large directories:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check overall disk space&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;df -hT
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check TezBake directory sizes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;du -sh /bake-buddy/node/data/.*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A rolling node should typically be under 100GB. If significantly larger, clear the storage and rebootstrap with a rolling snapshot as shown above.&lt;/p&gt;
+&lt;h3 id=&#34;update-eli-lua-interpreter&#34;&gt;Update eli (Lua Interpreter)&lt;/h3&gt;
+&lt;p&gt;If you encounter &amp;ldquo;illegal instruction&amp;rdquo; or other low-level errors, update eli:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check current version&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;eli -v
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Update to latest&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://raw.githubusercontent.com/alis-is/eli/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;eli version should be &lt;code&gt;0.36.3&lt;/code&gt; or higher.&lt;/p&gt;
+&lt;h3 id=&#34;shell-path-issues-after-update&#34;&gt;Shell Path Issues After Update&lt;/h3&gt;
+&lt;p&gt;If &lt;code&gt;tezbake&lt;/code&gt; commands fail after an update, refresh your shell&amp;rsquo;s path cache:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;hash&lt;/span&gt; -r
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is needed because tezbake moved to &lt;code&gt;/usr/local/bin/tezbake&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;tezsign-usb-issues&#34;&gt;TezSign USB Issues&lt;/h3&gt;
+&lt;p&gt;If your TezSign device becomes unresponsive or you see timeout errors, try resetting the USB port before rebooting the machine:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign advanced usb-port-reset
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This often recovers the device without requiring a full system restart.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dal-troubleshooting&#34;&gt;DAL Troubleshooting&lt;/h2&gt;
+&lt;p&gt;The Data Availability Layer (DAL) accounts for ~10% of baking rewards. If your DAL isn&amp;rsquo;t working properly, you&amp;rsquo;re missing out on income.&lt;/p&gt;
+&lt;h3 id=&#34;command-translation-octez--tezbake&#34;&gt;Command Translation: Octez → TezBake&lt;/h3&gt;
+&lt;p&gt;When reading official &lt;a href=&#34;https://octez.tezos.com/docs/shell/dal_run.html&#34;&gt;Octez DAL documentation&lt;/a&gt;, translate commands:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Octez Command&lt;/th&gt;
+&lt;th&gt;TezBake Equivalent&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;octez-client ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake node client ...&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;octez-node config ...&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake node config ...&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;quick-dal-status-check&#34;&gt;Quick DAL Status Check&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &amp;ldquo;Status down&amp;rdquo; is normal immediately after start/restart. Give it time to sync.&lt;/p&gt;
+&lt;h3 id=&#34;missing-tz4-consensus-or-companion-alias&#34;&gt;Missing tz4 Consensus or Companion Alias&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Symptoms:&lt;/strong&gt; The baker log says a tz4 consensus key &amp;ldquo;has not been provided to the baker&amp;rdquo; and warns that the baker can only issue attestations without DAL content.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Root cause:&lt;/strong&gt; The keys may exist and be unlocked in TezSign, but one of the required aliases is not being loaded by the baker. This is different from a locked TezSign key.&lt;/p&gt;
+&lt;p&gt;Check the aliases TezBake is loading:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For the recommended TezSign setup, where the active consensus key is imported as &lt;code&gt;baker&lt;/code&gt;, add only the companion:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your TezSign consensus key is imported as &lt;code&gt;consensus&lt;/code&gt;, load both aliases:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;consensus&amp;#34;,&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then verify:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You want the DAL node to be operational and the old &amp;ldquo;has not been provided to the baker&amp;rdquo; warning to stop repeating.&lt;/p&gt;
+&lt;h3 id=&#34;step-by-step-dal-verification&#34;&gt;Step-by-Step DAL Verification&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1. Check connected peers:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl http://localhost:10732/p2p/points/info?connected
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: List of connected DAL nodes. Empty = connection problem.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Check topic subscriptions:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl http://localhost:10732/p2p/gossipsub/topics
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: Topics like &lt;code&gt;{&amp;quot;slot_index&amp;quot;:N,&amp;quot;pkh&amp;quot;:&amp;quot;tz1...&amp;quot;}&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Check shard assignments:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client rpc get /chains/main/blocks/head/context/dal/shards?delegates&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;YOUR_TZ1&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Expected: Your address with shard indexes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. Verify on Explorus:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Check &lt;a href=&#34;https://explorus.io/consensus_ops&#34;&gt;Explorus Consensus Ops&lt;/a&gt; for your baker:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;2/2&lt;/strong&gt; = Attesting all slots ✅&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;0/2&lt;/strong&gt; = Not attesting (issue with DAL)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Empty&lt;/strong&gt; = No shards assigned or not connected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;no-common-protocol-errors&#34;&gt;&amp;ldquo;No Common Protocol&amp;rdquo; Errors&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Symptoms:&lt;/strong&gt; DAL logs show &lt;code&gt;cancelled&lt;/code&gt; or &lt;code&gt;no common protocol&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Root Cause:&lt;/strong&gt; Usually the underlying L1 node, not the DAL itself.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check full status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If node has sync issues:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;dal-connection-issues&#34;&gt;DAL Connection Issues&lt;/h3&gt;
+&lt;p&gt;If no peers are connecting:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Upgrade TezBake:&lt;/strong&gt; &lt;code&gt;tezbake upgrade&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check bootstrap connection:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node client --endpoint http://127.0.0.1:10732 rpc get /p2p/gossipsub/connections &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; jq &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;.[].connection.bootstrap&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At least one should show &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Restart TezBake:&lt;/strong&gt; &lt;code&gt;tezbake stop &amp;amp;&amp;amp; tezbake start&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;firewallnat&#34;&gt;Firewall/NAT&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;DAL Ports:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;11732&lt;/strong&gt; — P2P (recommended to open)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;10732&lt;/strong&gt; — RPC (local only)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Allow DAL P2P if behind firewall&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo ufw allow 11732/tcp comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;DAL P2P&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;DAL can work without a public IP, but connectivity improves with port forwarding.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;dal-and-ledger&#34;&gt;DAL and Ledger&lt;/h3&gt;
+&lt;p&gt;Ensure &lt;strong&gt;Tezos Baking app v2.5.0+&lt;/strong&gt; for DAL attestation support.&lt;/p&gt;
+&lt;p&gt;For the standard setup path, see &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt;. If you intentionally disabled local DAL, see &lt;a href=&#34;/tezbake/tutorials/baking-without-dal/&#34;&gt;Baking Without DAL&lt;/a&gt;. If you want DAL on another host or IP address, use &lt;a href=&#34;/tezbake/tutorials/baking-with-prism/&#34;&gt;Baking with Prism&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Setup &amp;amp; Operations:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main setup guide&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/monitoring-logs-and-status/&#34;&gt;Monitoring Logs and Status&lt;/a&gt; - Monitor your baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/missing-attestations/&#34;&gt;Missing Attestations&lt;/a&gt; - Debug attestation issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Getting Help:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/getting-started/best-practices/&#34;&gt;Best Practices&lt;/a&gt; - Prevent common issues&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-with-tezsign/&#34;&gt;Baking with TezSign&lt;/a&gt; - TezSign KB hub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezbake: Baking With Multiple Instances</title>
       <link>/tezbake/tutorials/baking-with-multi-instance/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -2623,7 +2644,7 @@ Use:&lt;br&gt;
         
         
         &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;TezBake supports managing multiple independent instances on a single machine. This is useful for running multiple networks (e.g., Mainnet and Ghostnet) or maintaining separate configurations.&lt;/p&gt;
+&lt;p&gt;TezBake supports managing multiple independent instances on a single machine. This is useful for running multiple networks (e.g., Mainnet and Bakingnet) or maintaining separate configurations.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;tezbake instance&lt;/code&gt; command (alias &lt;code&gt;i&lt;/code&gt;) allows you to interact with these instances easily.&lt;/p&gt;
 &lt;h2 id=&#34;command-cheatsheet&#34;&gt;Command Cheatsheet&lt;/h2&gt;
 &lt;table&gt;
@@ -2643,12 +2664,12 @@ Use:&lt;br&gt;
 &lt;td&gt;&lt;code&gt;tezbake instance &amp;lt;alias&amp;gt; &amp;lt;command&amp;gt;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Example: Start &amp;lsquo;ghostnet&amp;rsquo;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake instance ghostnet start&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Example: Start &amp;lsquo;bakingnet&amp;rsquo;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance bakingnet start&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Example: Check Log&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;tezbake instance ghostnet node log -f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake instance bakingnet node log -f&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -2665,13 +2686,23 @@ Use:&lt;br&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance &amp;lt;alias&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;you will enter an interactive environment for that instance. All subsequent commands will be executed for the given instance only, until you exit the environment by typing &lt;code&gt;exit&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Examples:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Start the &amp;lsquo;ghostnet&amp;rsquo; instance:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance ghostnet start
+&lt;p&gt;Start the &amp;lsquo;bakingnet&amp;rsquo; instance:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance bakingnet start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Upgrade the &amp;lsquo;mainnet&amp;rsquo; instance:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance mainnet upgrade
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;View logs for the node on &amp;rsquo;testnet&amp;rsquo; instance:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake instance testnet node log
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This acts exactly as if you were running &lt;code&gt;tezbake ...&lt;/code&gt; but targets the specific instance&amp;rsquo;s directory and configuration.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-testnets/&#34;&gt;Baking on Testnets&lt;/a&gt; - Set up a non-mainnet baker&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; - Main TezBake setup flow&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezbake/tutorials/troubleshooting/&#34;&gt;Troubleshooting&lt;/a&gt; - Common TezBake issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -2685,16 +2716,18 @@ Use:&lt;br&gt;
       <description>
         
         
-        &lt;h1 id=&#34;migrating-from-kiln-to-tezbake&#34;&gt;Migrating from Kiln to TezBake&lt;/h1&gt;
+        &lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Migration path:&lt;/strong&gt; Use this guide only when moving an existing Kiln baker to TezBake. For a fresh setup, follow &lt;a href=&#34;/tezbake/tutorials/baking-on-mainnet/&#34;&gt;Baking on Mainnet&lt;/a&gt; and use TezSign for new tz4 consensus and companion keys.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Kiln is being sunset. If you&amp;rsquo;re currently baking with Kiln, &lt;strong&gt;TezBake&lt;/strong&gt; by &lt;a href=&#34;https://tez.capital&#34;&gt;Tez Capital&lt;/a&gt; is the recommended migration path. It&amp;rsquo;s a modern, actively maintained baking tool that manages your entire stack — node, baker, signer, DAL — under one CLI.&lt;/p&gt;
 &lt;p&gt;This guide walks you through the migration step by step.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;TezBake runs on Linux and macOS&lt;/strong&gt; (Ubuntu 24.04+, Debian 12+, or macOS with Apple Silicon / Intel). Linux is recommended for production bakers, but macOS is fully supported.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TezBake runs on Linux and macOS&lt;/strong&gt; (Ubuntu 22.04+, Debian 12+, or macOS with Apple Silicon / Intel). Linux is recommended for production bakers, but macOS is fully supported.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Linux or macOS machine&lt;/strong&gt; — Ubuntu 24.04+, Debian 12+, or macOS (dedicated hardware recommended for production)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux or macOS machine&lt;/strong&gt; — Ubuntu 22.04+, Debian 12+, or macOS (dedicated hardware recommended for production)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Ledger&lt;/strong&gt; — Nano S Plus or Nano X (the same one you used with Kiln)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Your baker address&lt;/strong&gt; — the &lt;code&gt;tz1&lt;/code&gt;/&lt;code&gt;tz2&lt;/code&gt;/&lt;code&gt;tz3&lt;/code&gt; address you&amp;rsquo;re currently baking with&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Root/sudo access&lt;/strong&gt; on the machine&lt;/li&gt;
@@ -2718,7 +2751,7 @@ Use:&lt;br&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Storage&lt;/td&gt;
-&lt;td&gt;100GB SSD&lt;/td&gt;
+&lt;td&gt;256GB SSD&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Network&lt;/td&gt;
@@ -2764,12 +2797,12 @@ Use:&lt;br&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This should return nothing.&lt;/p&gt;
 &lt;h3 id=&#34;3-install-tezbake&#34;&gt;3. Install TezBake&lt;/h3&gt;
 &lt;p&gt;On your Linux machine:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://github.com/tez-capital/tezbake/raw/main/install.sh -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://bake.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo sh /tmp/install.sh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify installation:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake version
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-setup-tezbake&#34;&gt;4. Setup TezBake&lt;/h3&gt;
 &lt;p&gt;Run the standard setup with DAL:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup --with-dal
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup --with-dal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This installs and configures:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;octez-node&lt;/code&gt;&lt;/li&gt;
@@ -2789,18 +2822,18 @@ Use:&lt;br&gt;
 &lt;li&gt;&lt;strong&gt;The current chain level&lt;/strong&gt; — replace &lt;code&gt;&amp;lt;CURRENT_LEVEL&amp;gt;&lt;/code&gt; below with the current block level from &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; or your node. This sets the Ledger&amp;rsquo;s high water mark (HWM), which prevents double-baking. &lt;strong&gt;Do not use &lt;code&gt;--hwm 1&lt;/code&gt;&lt;/strong&gt; on a migration — that resets the Ledger&amp;rsquo;s double-bake protection and could lead to slashing if your old baker isn&amp;rsquo;t fully stopped.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;tz1 (ed25519) — most common with Kiln:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ed25519/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ed25519/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;tz3 (P-256 / NIST):&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;P-256/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;tz2 (secp256k1):&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;secp256k1/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake setup-ledger --platform --import-key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;secp256k1/0h/0h&amp;#34;&lt;/span&gt; --authorize --hwm &amp;lt;CURRENT_LEVEL&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;💡 Finding the current level:&lt;/strong&gt; Run &lt;code&gt;curl -s https://rpc.tzkt.io/mainnet/chains/main/blocks/head/header | grep &#39;&amp;quot;level&amp;quot;&#39;&lt;/code&gt; or check &lt;a href=&#34;https://tzkt.io&#34;&gt;TzKT&lt;/a&gt; — the block level is shown on the homepage. Round up by 10 to be safe (e.g. if current level is 7,500,000, use &lt;code&gt;--hwm 7500010&lt;/code&gt;).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Confirm on the Ledger screen when prompted to authorize the key for baking.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;⚠️ &lt;strong&gt;Verify the imported key matches your baker.&lt;/strong&gt; After setup, check the address:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --signer
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --signer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;tz&lt;/code&gt; address shown must match your baker address exactly. If it doesn&amp;rsquo;t, re-run &lt;code&gt;setup-ledger&lt;/code&gt; with the correct derivation path.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
@@ -2811,18 +2844,18 @@ Use:&lt;br&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;6-bootstrap-the-node&#34;&gt;6. Bootstrap the Node&lt;/h3&gt;
 &lt;p&gt;Rather than syncing from scratch, bootstrap from a snapshot:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TezBake automatically selects the fastest mirror for your region.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; If you have unrevealed nonces, use a snapshot that&amp;rsquo;s at least 5–6 days old to avoid nonce revelation issues.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Bootstrap takes anywhere from 10 minutes to an hour+ depending on your hardware and network speed.&lt;/p&gt;
 &lt;h3 id=&#34;7-start-baking&#34;&gt;7. Start Baking&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This starts the node, baker, DAL node, and signer as managed systemd services.&lt;/p&gt;
 &lt;h3 id=&#34;8-register-if-needed&#34;&gt;8. Register (If Needed)&lt;/h3&gt;
-&lt;p&gt;If your baker has been &lt;strong&gt;inactive for more than 3 days&lt;/strong&gt;, you may need to re-register:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake register-key
+&lt;p&gt;If your baker has been &lt;strong&gt;inactive for more than 2 cycles&lt;/strong&gt;, you may need to re-register:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your baker is already active and was only briefly offline during migration, registration is &lt;strong&gt;not&lt;/strong&gt; required.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Ledger users:&lt;/strong&gt; Registration requires the &lt;strong&gt;Tezos Wallet&lt;/strong&gt; app. Switch back to &lt;strong&gt;Tezos Baking&lt;/strong&gt; app after registration.&lt;/p&gt;
@@ -2831,19 +2864,19 @@ Use:&lt;br&gt;
 &lt;h2 id=&#34;post-migration-verification&#34;&gt;Post-Migration Verification&lt;/h2&gt;
 &lt;p&gt;Run through each of these to confirm everything is working:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Overall status&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Signer status&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --signer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --signer
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# DAL status&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Node logs (watch for sync progress)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log -f
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Baker logs (watch for attestations/baking)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log baker -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log baker -f
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;checklist&#34;&gt;Checklist&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;tezbake info&lt;/code&gt; shows node as &lt;strong&gt;synced&lt;/strong&gt;&lt;/li&gt;
@@ -2857,18 +2890,18 @@ Use:&lt;br&gt;
 &lt;h2 id=&#34;troubleshooting&#34;&gt;Troubleshooting&lt;/h2&gt;
 &lt;h3 id=&#34;node-wont-sync&#34;&gt;Node won&amp;rsquo;t sync&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check node logs for errors&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake node log -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node log -f
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# If stuck, try re-bootstrapping&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ledger-not-connecting&#34;&gt;Ledger not connecting&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Ensure Ledger is unlocked and &lt;strong&gt;Tezos Baking&lt;/strong&gt; app is open&lt;/li&gt;
 &lt;li&gt;Check USB connection — try a different port or cable&lt;/li&gt;
 &lt;li&gt;Make sure no other application (Ledger Live, etc.) is using the device&lt;/li&gt;
-&lt;li&gt;Verify with &lt;code&gt;sudo tezbake info --signer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Verify with &lt;code&gt;tezbake info --signer&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;baker-not-producing-attestations&#34;&gt;Baker not producing attestations&lt;/h3&gt;
 &lt;ul&gt;
@@ -2885,11 +2918,11 @@ Use:&lt;br&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;dal-issues&#34;&gt;DAL issues&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Check DAL profiles&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake info --dal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake info --dal
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Update DAL profiles if needed&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake update-dal-profiles --auto
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo tezbake start
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake update-dal-profiles --auto
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; tezbake start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;file-locations&#34;&gt;File Locations&lt;/h2&gt;
 &lt;p&gt;TezBake stores everything under &lt;code&gt;/bake-buddy/&lt;/code&gt;:&lt;/p&gt;
@@ -2963,12 +2996,15 @@ Use:&lt;br&gt;
 &lt;h2 id=&#34;further-resources&#34;&gt;Further Resources&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Tez Capital Docs:&lt;/strong&gt; &lt;a href=&#34;https://docs.tez.capital&#34;&gt;docs.tez.capital&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TezPeak&lt;/strong&gt; (monitoring dashboard): Included with TezBake — access via browser after setup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TezPeak&lt;/strong&gt; (monitoring dashboard): &lt;a href=&#34;/tezpeak/tutorials/setup/&#34;&gt;Install TezPeak&lt;/a&gt; after TezBake setup if you want a browser dashboard&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;TezPay&lt;/strong&gt; (automated reward distribution): &lt;a href=&#34;https://github.com/tez-capital/tezpay&#34;&gt;github.com/tez-capital/tezpay&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;TezGov&lt;/strong&gt; (governance &amp;amp; staking): &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Community Support:&lt;/strong&gt; &lt;a href=&#34;https://discord.gg/tezcapital&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community Support:&lt;/strong&gt; &lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Tez Capital Discord&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Octez Documentation:&lt;/strong&gt; &lt;a href=&#34;https://octez.tezos.com/docs/introduction/tezos.html&#34;&gt;octez.tezos.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
+&lt;a href=&#34;https://discord.gg/cVGMA4MaNM&#34;&gt;Discord&lt;/a&gt; or &lt;a href=&#34;https://t.me/tezcapital&#34;&gt;Telegram&lt;/a&gt;&lt;/p&gt;
 
       </description>
     </item>

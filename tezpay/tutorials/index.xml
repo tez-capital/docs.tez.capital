@@ -146,8 +146,8 @@ Tezpay)&lt;/li&gt;
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;preparation-step-3---payout-wallet-optional&#34;&gt;Preparation: Step 3 - Payout Wallet (optional)&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Lastly&lt;/strong&gt;, you will need to download the create a new wallet and
-retrieve the private key. We will be using the Temple Wallet extension
+&lt;p&gt;&lt;strong&gt;Lastly&lt;/strong&gt;, you will need to create a new wallet and retrieve the
+private key. We will be using the Temple Wallet extension
 to create a new wallet and to get the private key. If you already have a
 payout wallet, or know how, skip this section.&lt;/p&gt;
 &lt;ul&gt;
@@ -258,7 +258,7 @@ address and percentage to split. This example does not split, where
 the baker in order to compile rewards and payouts - &lt;strong&gt;Do not edit
 unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Over delegation projection prohibits you from over paying beyond
-your delegation limit - &lt;strong&gt;Do not edit unless you are an experience
+your delegation limit - &lt;strong&gt;Do not edit unless you are an experienced
 user&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This is as basic configuration file for running the TezPay
@@ -342,13 +342,13 @@ unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
 &lt;/blockquote&gt;
 &lt;ol start=&#34;11&#34;&gt;
 &lt;li&gt;Over delegation projection prohibits you from over paying beyond
-your delegation limit &lt;strong&gt;Do not edit unless you are an experience
+your delegation limit &lt;strong&gt;Do not edit unless you are an experienced
 user&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;This section allows for automatic notifications/messages to be sent
 to specific platforms in order to broadcast messages (ie &lt;em&gt;&amp;lsquo;Bakery
 has paid 100XTZ in rewards for latest cycle&amp;rsquo;&lt;/em&gt; &lt;strong&gt;We will cover this
-in a separate section&lt;/strong&gt;
-&lt;em&gt;see appendix X&lt;/em&gt; and platforms supported are &lt;em&gt;&lt;strong&gt;Twitter, Discord, and E-mail&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+in a separate section&lt;/strong&gt;). See &lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt;
+for supported Twitter, Discord, Telegram, and email examples.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;advanced-configuration-examples&#34;&gt;Advanced Configuration Examples&lt;/h3&gt;
@@ -423,7 +423,7 @@ in a separate section&lt;/strong&gt;
   payout_mode: ideal    // &amp;#39;ideal&amp;#39; (default) or &amp;#39;actual&amp;#39;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ideal&lt;/code&gt; — Pay based on what delegators &lt;em&gt;should&lt;/em&gt; have earned (rarely used but availablea)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ideal&lt;/code&gt; — Pay based on what delegators &lt;em&gt;should&lt;/em&gt; have earned&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;actual&lt;/code&gt; — Pay based on what the baker &lt;em&gt;actually&lt;/em&gt; earned (accounts for missed blocks/attestations)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Who Pays Transaction Fees (&lt;code&gt;payouts&lt;/code&gt;):&lt;/strong&gt;&lt;/p&gt;
@@ -513,7 +513,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Generate a test payout&lt;/a&gt; — Verify everything works before going live&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;Integrate with TezBake&lt;/a&gt; — Automate payout scheduling as a managed service&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Set up notifications&lt;/a&gt; — Get payout confirmations via Discord, Twitter, or email&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Set up notifications&lt;/a&gt; — Get payout confirmations via Discord, Telegram, Twitter, or email&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
@@ -522,7 +522,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run your first payout&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/tezbake-integration/&#34;&gt;TezBake Integration&lt;/a&gt; - Automate payouts with TezBake&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpeak/tutorials/setup/&#34;&gt;TezPeak Setup&lt;/a&gt; - Manage payouts with a graphical web dashboard&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up Discord/Twitter/email alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/notifications/&#34;&gt;Notifications&lt;/a&gt; - Set up Discord/Telegram/Twitter/email alerts&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Configuration:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -658,13 +658,20 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;p&gt;Inside &lt;code&gt;/bake-buddy/pay&lt;/code&gt;, create a new file called exactly &lt;code&gt;config.hjson&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Start with the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter Configuration&lt;/a&gt; and enhance it from the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;Sample Configuration&lt;/a&gt; if needed.&lt;/p&gt;
 &lt;p&gt;Minimal starter example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;baker_address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;tz1-your-baker-wallet-address&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;payout_fee&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0.05&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;// 5% fee&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;delegator_pays_xfer_fee&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;min_payout&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;// minimum payout 1 XTZ&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;}&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-2-setting-up-the-wallet-or-remote-signer-file&#34;&gt;Step 2: Setting Up the Wallet or Remote Signer File&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  baker: &amp;#34;tz1-your-baker-wallet-address&amp;#34;
+  payouts: {
+    fee: 0.05
+    baker_pays_transaction_fee: true
+    minimum_payout_amount: 1
+  }
+  delegators: {
+    requirements: {
+      minimum_balance: 0.5
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-2-setting-up-the-wallet-or-remote-signer-file&#34;&gt;Step 2: Setting Up the Wallet or Remote Signer File&lt;/h3&gt;
 &lt;p&gt;You have two options:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Private key file&lt;/strong&gt;, or&lt;/li&gt;
@@ -722,7 +729,7 @@ Please follow the steps below to create your configuration and wallet or remote 
     &amp;#34;id&amp;#34;: &amp;#34;tzc.tezpay&amp;#34;,
     &amp;#34;version&amp;#34;: &amp;#34;latest&amp;#34;
   },
-  &amp;#34;user&amp;#34;: &amp;#34;primate&amp;#34;
+  &amp;#34;user&amp;#34;: &amp;#34;tezos&amp;#34;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;CONTINUAL options:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -883,7 +890,7 @@ delegator from their stake, and other data (see below).&lt;/p&gt;
 &lt;p&gt;The command to generate a payout table is as follows (always remember to be in the
 &lt;em&gt;tezpay&lt;/em&gt; directory:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This will generate a payout table, as exampled below:&lt;/p&gt;
+&lt;p&gt;This will generate a payout table, as shown below:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -929,7 +936,7 @@ table, similar to the table(s) from step 1.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage19.png&#34; alt=&#34;Output and subseqant request for confirmation while running TezPay.&#34;&gt;&lt;/th&gt;
+&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/tezpayImage19.png&#34; alt=&#34;Output and subsequent request for confirmation while running TezPay.&#34;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
@@ -1018,105 +1025,135 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
       <description>
         
         
-        &lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
-&lt;p&gt;Notifications can be automatically sent out when payouts are generated using TezPay. The text are configured in the config.json file, however there are preliminary steps needed in order to be able to utilize these features. This section will review the necessary steps and information needed from platforms that allow for auto-notifications sent via TezPay. &lt;strong&gt;This tutorial is meant for individuals that have zero experience with interacting with these systems - feel free to skip sections if you are an advanced user.&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;TezPay can send notifications after payouts are generated. Notification settings live in your TezPay &lt;code&gt;config.hjson&lt;/code&gt; file under the &lt;code&gt;notifications&lt;/code&gt; list.&lt;/p&gt;
+&lt;p&gt;Add only the notification blocks you actually use. Keep API tokens, webhook URLs, and SMTP passwords private.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;twitter&#34;&gt;Twitter&lt;/h3&gt;
-&lt;p&gt;A Baker can use TezPay to automatically send notifications that payments have been made. This allows for ease of communications for the public baker to the delegates and we will walk through steps to allow for this here. There will be two sections:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;1. Twitter Setup
-2. TezPay config.json file setup
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;twitter-setup&#34;&gt;Twitter Setup&lt;/h4&gt;
-&lt;p&gt;In order to setup twitter, be sure you are signed in on a browser window to your twitter account.&lt;/p&gt;
+&lt;h2 id=&#34;notification-configuration&#34;&gt;Notification Configuration&lt;/h2&gt;
+&lt;p&gt;Each notification entry has a &lt;code&gt;type&lt;/code&gt; and a &lt;code&gt;message_template&lt;/code&gt;. TezPay sends the configured message when the notification runs.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: discord
+    webhook_url: &amp;#34;https://discord.com/api/webhooks/...&amp;#34;
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After editing &lt;code&gt;config.hjson&lt;/code&gt;, test the notification path:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezpay test-notify
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you run TezPay through TezBake, run the command from the TezPay environment or use the equivalent TezBake pay command for your installation.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;discord&#34;&gt;Discord&lt;/h2&gt;
+&lt;p&gt;Use a Discord webhook when you want TezPay to post payout messages into a channel.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;While being signed into Twitter in a separate browser, navigate to &lt;a href=&#34;https://developer.twitter.com/&#34;&gt;https://developer.twitter.com/&lt;/a&gt; and select &amp;lsquo;Developer Portal&amp;rsquo; in the top menu- the developer portal site where you will set up your development account and get the required information for the config.json file and set up permissions.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage0.png&#34; alt=&#34;Navigate to the Twitter Development Portal website&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;You will then need to fill in some basic information in order to enable the Development Portal profile to be active. be sure that all of the information is correct (if you use multiple twitter accounts be sure the one you want to enable for notifications is the correct one).
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage1.png&#34; alt=&#34;Fill in Basic information to set up a Developer Account for Twitter&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Once you submit the information for your development profile - you will need to accept the Terms and Conditions.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage2.png&#34; alt=&#34;Accept Terms and Conditions to Proceed&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;After accepting Terms and Conditions - you will need to verify your e-mail address that you provided by clicking the link in the e-mail sent from Twitter.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage3.png&#34; alt=&#34;Verify the e-mail used for your twitter account - you may need to set this up in Twitter before hand if not done&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Once you verify your email - this will automatically link you back to your Developer Portal Site and prompt you for an &amp;lsquo;App Name&amp;rsquo; (see TezPay Notif in screen capture).
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage4.png&#34; alt=&#34;Name your APP on Twitter Development Portal website&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Once you name your App - you will be given 3 separate Keys. These will be used in order to call the Twitter profile that you are looking to send Notifcations to - and sign for the permissions. Be sure to have these saved in a secure place - they will be used later. Once you have the keys secured, click &amp;lsquo;Dashboard&amp;rsquo; button in lower right.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage5.png&#34; alt=&#34;Save the Keys for your Twitter Development Profile and App&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;You will now be in your Twitter Development Dashboard and see the App you created (for this example TezPayNotifs). Click the &amp;lsquo;gear&amp;rsquo; icon to continue set-up.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage6.png&#34; alt=&#34;Click the gear icon on the app you created for twitter notifications for TezPay and continue to setup your app.&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Navigate to &amp;lsquo;User Authentication Settings&amp;rsquo; section and click &amp;lsquo;Set-up&amp;rsquo; to continue.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage7.png&#34; alt=&#34;Navigate to User authentication setting and click &amp;amp;lsquo;Set up&amp;amp;rsquo;&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;We will fill out the required items for the form under User Authentication settings as follows:
-i. App Permissions: Select &amp;lsquo;Read and write&amp;rsquo;
-ii. Type of App: Select &amp;lsquo;Web App, Automated App or Bot&amp;rsquo;
-iii. App Info:
-a. Callback URI/Redirect URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#34;&gt;https://www.TezPayisthebest.com/&lt;/a&gt;&amp;rsquo;
-b. Website URL: this can be anything but for this example we will use &amp;lsquo;&lt;a href=&#34;https://www.TezPayisthebest.com/&#34;&gt;https://www.TezPayisthebest.com/&lt;/a&gt;&amp;rsquo;
-iv. Click &amp;lsquo;save&amp;rsquo; when finished.
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage8.png&#34; alt=&#34;Select the outlined toggles under App Permissions &amp;amp; Type of App, then fill in a website for App Info&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;You will then get your Client ID and Client Secret - copy and save both of these with your other Keys attained earlier. Click &amp;lsquo;Done&amp;rsquo;
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage9.png&#34; alt=&#34;Copy the Client ID and Client Secret&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;This will bring you back to the main screen of the App - navigate to the &amp;lsquo;Keys and Tokens&amp;rsquo; toggle at the top of the page. Now, &amp;lsquo;Generate&amp;rsquo; an Access Token and secret - write these down and then once you have confirmed you will be ready to edit the config.json in TezPay. Note - be sure the Access Token and Secret has &amp;lsquo;read and write&amp;rsquo; permission (see image below). For the Next step - setting up the config.json - you will need four items:
-a. API Key and Secret (also known as Consumer Key/Secret)
-b. Access Token and Secret&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;In Discord, open the target channel settings.&lt;/li&gt;
+&lt;li&gt;Go to &lt;strong&gt;Integrations&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Webhooks&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Create a webhook and copy its URL.&lt;/li&gt;
+&lt;li&gt;Add this block to &lt;code&gt;config.hjson&lt;/code&gt;:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage10.png&#34; alt=&#34;Generate your Acces Token and Access Token Secret - and then verify the information.&#34;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: discord
+    webhook_url: &amp;#34;https://discord.com/api/webhooks/&amp;lt;webhook-id&amp;gt;/&amp;lt;webhook-token&amp;gt;&amp;#34;
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can also split the webhook into &lt;code&gt;webhook_id&lt;/code&gt; and &lt;code&gt;webhook_token&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: discord
+    webhook_id: &amp;#34;&amp;lt;webhook-id&amp;gt;&amp;#34;
+    webhook_token: &amp;#34;&amp;lt;webhook-token&amp;gt;&amp;#34;
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For private operator alerts, set &lt;code&gt;admin: true&lt;/code&gt; on a separate Discord notification block.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id=&#34;tezpay-configjson-setup-for-twitter-notifications&#34;&gt;TezPay config.json Setup for Twitter Notifications&lt;/h4&gt;
-&lt;p&gt;We will use the API Key and Secret as well as the Access Token and Secret to edit the Config file to allow for permissions and calls to push notifcations upon each successful payout.&lt;/p&gt;
+&lt;h2 id=&#34;telegram&#34;&gt;Telegram&lt;/h2&gt;
+&lt;p&gt;Use Telegram notifications when you want TezPay to send payout messages to one or more Telegram chats.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;You will add the following code block at the base of the config.json file to enable the notifications for TezPay. Note that the message_template can be anything and you can use the &lt;code&gt;&amp;lt;Cyle&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;Delegators&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;DistributedRewards&amp;gt;&lt;/code&gt; terms to automatically fill in these terms for each cycle.
-&lt;code&gt;notifications: [&lt;/code&gt;
-&lt;code&gt;{&lt;/code&gt;
-&lt;code&gt;access_token: Your_Acces_Token&lt;/code&gt;
-&lt;code&gt;access_token_secret: Your_Access_Token_Secret&lt;/code&gt;
-&lt;code&gt;consumer_key: Your_Consumer_Key&lt;/code&gt;
-&lt;code&gt;consumer_secret: Your_Consumer_Key_Secret&lt;/code&gt;
-&lt;code&gt;message_template: Rewards for &amp;lt;Cycle&amp;gt; have been paid to &amp;lt;Delegators&amp;gt; delegates in amount of &amp;lt;DistributedRewards&amp;gt; using #TezPay.👀 XTZ baked with #TezBake! We donate to wallet tz1R2GnBudU97Lra8Q3VDG7cUooNvUQ9ghCs to fund future development in Tezos. #cerberusbakery #tezos.&lt;/code&gt;
-&lt;code&gt;type: twitter&lt;/code&gt;
-&lt;code&gt;}&lt;/code&gt;
-&lt;code&gt;]&lt;/code&gt;
-&lt;img src=&#34;/tezpay/tutorial/twitterNotificationimage11.png&#34; alt=&#34;Fill in the information for the config.json file with your information&#34;&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Once you have filled in the necessary information - you have setup Notifications for Twitter! Test the notification by using command:
-a. &lt;code&gt;tezpay test-notify&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Create a Telegram bot with &lt;a href=&#34;https://t.me/BotFather&#34;&gt;BotFather&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Save the bot API token.&lt;/li&gt;
+&lt;li&gt;Add the bot to the chat that should receive payout notifications.&lt;/li&gt;
+&lt;li&gt;Get the chat ID for each receiver.&lt;/li&gt;
+&lt;li&gt;Add this block to &lt;code&gt;config.hjson&lt;/code&gt;:&lt;/li&gt;
 &lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: telegram
+    api_token: &amp;#34;&amp;lt;telegram-bot-api-token&amp;gt;&amp;#34;
+    receivers: [
+      -1234567890
+    ]
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;twitter&#34;&gt;Twitter&lt;/h2&gt;
+&lt;p&gt;Use Twitter notifications when you want TezPay to post payout announcements from a Twitter/X account.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sign in to the account that should post payout notifications.&lt;/li&gt;
+&lt;li&gt;Open the &lt;a href=&#34;https://developer.twitter.com/&#34;&gt;Twitter/X Developer Portal&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Create an app with write permission.&lt;/li&gt;
+&lt;li&gt;Generate and save the consumer key, consumer secret, access token, and access token secret.&lt;/li&gt;
+&lt;li&gt;Add this block to &lt;code&gt;config.hjson&lt;/code&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: twitter
+    access_token: &amp;#34;&amp;lt;access-token&amp;gt;&amp;#34;
+    access_token_secret: &amp;#34;&amp;lt;access-token-secret&amp;gt;&amp;#34;
+    consumer_key: &amp;#34;&amp;lt;consumer-key&amp;gt;&amp;#34;
+    consumer_secret: &amp;#34;&amp;lt;consumer-secret&amp;gt;&amp;#34;
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Twitter/X developer settings change over time. If the portal labels differ, look for app permissions, user authentication settings, and access token generation.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;email&#34;&gt;Email&lt;/h2&gt;
+&lt;p&gt;Use email notifications when you want TezPay to send payout messages through an SMTP server.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: email
+    sender: &amp;#34;baker@example.com&amp;#34;
+    smtp_server: &amp;#34;smtp.example.com:465&amp;#34;
+    smtp_identity: &amp;#34;&amp;#34;
+    smtp_username: &amp;#34;baker@example.com&amp;#34;
+    smtp_password: &amp;#34;&amp;lt;smtp-password&amp;gt;&amp;#34;
+    recipients: [
+      &amp;#34;delegate-one@example.com&amp;#34;
+      &amp;#34;delegate-two@example.com&amp;#34;
+    ]
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Use an app-specific SMTP password when your email provider supports it.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multiple-notifications&#34;&gt;Multiple Notifications&lt;/h2&gt;
+&lt;p&gt;You can configure multiple notification targets in the same &lt;code&gt;notifications&lt;/code&gt; list:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;notifications: [
+  {
+    type: discord
+    webhook_url: &amp;#34;https://discord.com/api/webhooks/...&amp;#34;
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+  {
+    type: email
+    sender: &amp;#34;baker@example.com&amp;#34;
+    smtp_server: &amp;#34;smtp.example.com:465&amp;#34;
+    smtp_identity: &amp;#34;&amp;#34;
+    smtp_username: &amp;#34;baker@example.com&amp;#34;
+    smtp_password: &amp;#34;&amp;lt;smtp-password&amp;gt;&amp;#34;
+    recipients: [
+      &amp;#34;delegate@example.com&amp;#34;
+    ]
+    message_template: &amp;#34;Rewards have been paid with TezPay.&amp;#34;
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;h2 id=&#34;related-guides&#34;&gt;Related Guides&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/setup/&#34;&gt;TezPay Setup&lt;/a&gt; - Initial TezPay configuration&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/tezpay/tutorials/paying-delegators/&#34;&gt;Paying Delegators&lt;/a&gt; - Run payouts manually or continuously&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Discord/Telegram baker alerts&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tezwatch/tutorials/setup/&#34;&gt;TezWatch Setup&lt;/a&gt; - Discord baker alerts&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;Any questions/comments/concerns? Please contact the Tez Capital team on
@@ -1356,9 +1393,11 @@ Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; Using the entire sample config with incompatible options.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; Start with minimal config, only add options you need. Start with this minimal config to verify TezPay works, then add advanced options:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
-    baker_address: &amp;#34;tz1YOUR_BAKER_ADDRESS&amp;#34;
-    payout_fee: 0.05
-    min_payout: 1
+    baker: &amp;#34;tz1YOUR_BAKER_ADDRESS&amp;#34;
+    payouts: {
+        fee: 0.05
+        minimum_payout_amount: 1
+    }
     network: {
         rpc_pool: [
             &amp;#34;https://eu.rpc.tez.capital&amp;#34;
