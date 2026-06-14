@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezPay issues and solutions">
 
-<meta itemprop="wordCount" content="424">
+<meta itemprop="wordCount" content="495">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezPay issues and solutions"/>
@@ -428,6 +428,7 @@
         <li><a href="#failed-to-apply-batch">&ldquo;failed to apply batch&rdquo;</a></li>
         <li><a href="#rpc-timeout-errors">RPC Timeout Errors</a></li>
         <li><a href="#extension-loading-error-stream-closed">Extension Loading Error: &ldquo;stream closed&rdquo;</a></li>
+        <li><a href="#remote-signer-still-using-local-private-key-mode">Remote Signer Still Using Local Private Key Mode</a></li>
         <li><a href="#payment-not-recorded-after-crash">Payment Not Recorded After Crash</a></li>
       </ul>
     </li>
@@ -523,6 +524,10 @@
 <td><a href="#extension-loading-error-stream-closed">Extension Loading Error</a></td>
 </tr>
 <tr>
+<td>Logs mention <code>payout_wallet_private.key</code> with a remote signer</td>
+<td><a href="#remote-signer-still-using-local-private-key-mode">Remote Signer Still Using Local Private Key Mode</a></td>
+</tr>
+<tr>
 <td>Payment missing after crash</td>
 <td><a href="#payment-not-recorded-after-crash">Payment Not Recorded After Crash</a></td>
 </tr>
@@ -575,6 +580,13 @@
     }
 }
 </code></pre><hr>
+<h3 id="remote-signer-still-using-local-private-key-mode">Remote Signer Still Using Local Private Key Mode</h3>
+<p><strong>Symptom:</strong> TezPay logs mention <code>payout_wallet_private.key</code>, even though <code>remote_signer.hjson</code> exists.</p>
+<p><strong>Cause:</strong> TezPay is still using <code>local-private-key</code> mode. The remote signer file is only loaded when <code>config.hjson</code> sets the wallet mode to <code>remote-signer</code>.</p>
+<p><strong>Solution:</strong> In the <code>config.hjson</code> used by TezPay, set:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">wallet_mode: remote-signer
+</code></pre><p>For TezBake integration, that file is <code>/bake-buddy/pay/config.hjson</code>.</p>
+<hr>
 <h3 id="payment-not-recorded-after-crash">Payment Not Recorded After Crash</h3>
 <p>If TezPay crashes mid-payout, check the reports directory. TezPay tracks each batch - completed batches are recorded and won&rsquo;t be duplicated.</p>
 <p><strong>To verify:</strong></p>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Setup">
 <meta itemprop="description" content="Step-by-step guide to installing and configuring TezPay for automated delegator reward payouts on Tezos">
 
-<meta itemprop="wordCount" content="2061">
+<meta itemprop="wordCount" content="2125">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup"/>
 <meta name="twitter:description" content="Step-by-step guide to installing and configuring TezPay for automated delegator reward payouts on Tezos"/>
@@ -435,6 +435,7 @@
         <li><a href="#setup-step-1a-configuration-file-simple">Setup: Step 1a: Configuration File (simple)</a></li>
         <li><a href="#setup-step-1b-configuration-file-advanced">Setup: Step 1b: Configuration File (advanced)</a></li>
         <li><a href="#advanced-configuration-examples">Advanced Configuration Examples</a></li>
+        <li><a href="#setup-wallet-mode">Setup: Wallet Mode</a></li>
         <li><a href="#setup-step-2-private-key-file">Setup: Step 2: Private-Key File</a></li>
         <li><a href="#setup-summary">Setup: Summary</a></li>
       </ul>
@@ -523,6 +524,7 @@
 <li><a href="#setup-step-1b-configuration-file-advanced">Step 1b: Configuration File (advanced)</a></li>
 <li><a href="#advanced-configuration-examples">Advanced Configuration Examples</a></li>
 <li><a href="#other-configuration-options">Other Configuration Options</a></li>
+<li><a href="#setup-wallet-mode">Wallet Mode</a></li>
 <li><a href="#setup-step-2-private-key-file">Step 2: Private-Key File</a></li>
 </ul>
 </li>
@@ -957,6 +959,18 @@ for supported Twitter, Discord, Telegram, and email examples.</li>
 </code></pre><blockquote>
 <p><strong>📚 Full Reference:</strong> See the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">complete sample configuration</a> for all available options including notifications, extensions, and network settings.</p>
 </blockquote>
+<hr>
+<h3 id="setup-wallet-mode">Setup: Wallet Mode</h3>
+<p>Choose which payout wallet engine TezPay loads in your <code>config.hjson</code>:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson"># Local private key wallet
+wallet_mode: local-private-key
+
+# Remote signer wallet
+wallet_mode: remote-signer
+</code></pre><p>Use <code>local-private-key</code> with <code>payout_wallet_private.key</code>. Use <code>remote-signer</code> with <code>remote_signer.hjson</code>.</p>
+<p>Creating <code>remote_signer.hjson</code> is not enough by itself. <code>config.hjson</code> must also set:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">wallet_mode: remote-signer
+</code></pre><p>If TezPay logs mention <code>payout_wallet_private.key</code>, TezPay is still using <code>local-private-key</code> mode, even if <code>remote_signer.hjson</code> exists.</p>
 <hr>
 <h3 id="setup-step-2-private-key-file">Setup: Step 2: Private-Key File</h3>
 <p>The Private Key file is used to sign the transaction(s) that will
