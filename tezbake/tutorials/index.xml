@@ -242,7 +242,18 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;To register TezSign keys on-chain, get the public keys and proofs of possession:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign status --full
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Copy the &lt;code&gt;BLpk...&lt;/code&gt; public key and proof of possession for both &lt;code&gt;consensus&lt;/code&gt; and &lt;code&gt;companion&lt;/code&gt;.&lt;/p&gt;
-&lt;h5 id=&#34;8-register-consensus-and-companion-keys-on-tezgov&#34;&gt;8. Register consensus and companion keys on TezGov&lt;/h5&gt;
+&lt;h5 id=&#34;8-register-the-manager-address-as-baker&#34;&gt;8. Register the manager address as baker&lt;/h5&gt;
+&lt;p&gt;Before setting the TezSign consensus or companion keys, register your manager address as a baker on-chain. Use the Ledger manager key that controls your baker address.&lt;/p&gt;
+&lt;p&gt;Use &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; with your manager Ledger:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect with the Ledger that controls your baker manager address.&lt;/li&gt;
+&lt;li&gt;Use the &lt;strong&gt;Become a Baker&lt;/strong&gt; button.&lt;/li&gt;
+&lt;li&gt;Confirm the operation on your Ledger.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For the recommended Ledger-manager path, TezGov is the safest route because the manager Ledger signs the registration. Use the CLI only if the local &lt;code&gt;baker&lt;/code&gt; alias is your manager key, not the imported TezSign consensus key:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If your manager address is already an active baker and baking rights still appear in the schedule, you do not need to register it again.&lt;/p&gt;
+&lt;h5 id=&#34;9-set-consensus-and-companion-keys-on-tezgov&#34;&gt;9. Set consensus and companion keys on TezGov&lt;/h5&gt;
 &lt;p&gt;Use &lt;a href=&#34;https://gov.tez.capital/&#34;&gt;TezGov&lt;/a&gt; with your manager Ledger:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Connect with the Ledger that controls your baker manager address.&lt;/li&gt;
@@ -254,7 +265,7 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;p&gt;Both keys activate after 3 cycles. Your old signing setup remains active until the new keys take over. Do not remove or disable the old active signing setup during the activation window.&lt;/p&gt;
 &lt;p&gt;Monitor activation at:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://tzkt.io/&amp;lt;your_manager_address&amp;gt;/secondary-keys
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;9-unlock-and-verify&#34;&gt;9. Unlock and verify&lt;/h5&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;10-unlock-and-verify&#34;&gt;10. Unlock and verify&lt;/h5&gt;
 &lt;p&gt;After the TezSign keys are active, unlock them:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake tezsign unlock
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Check TezSign status and overall baker status:&lt;/p&gt;
@@ -364,39 +375,18 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address companion --show-secret
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Store these in a secure, offline location. Never share them.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Step 3 — Get the public key (BLpk) and Proof of Possession (POP) for each key:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The POP is a cryptographic proof that you own the private key. It is required when registering tz4 keys on-chain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3 — Get the baker address and companion key details:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Use the &lt;code&gt;baker&lt;/code&gt; address for funding and baker registration. Then get the companion key&amp;rsquo;s public key and Proof of Possession (POP). The POP is a cryptographic proof that you own the private key, and it is required when setting a tz4 companion key on-chain.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address baker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client get proof of possession &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address companion
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client get proof of possession &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; companion
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP output for both keys — you will need them in the next step.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Step 4 — Register the consensus and companion keys:&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;option-a-tezgov-recommended&#34;&gt;Option A: TezGov (recommended)&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; and connect with your baker&amp;rsquo;s manager key (Ledger Wallet app)&lt;/li&gt;
-&lt;li&gt;Navigate to &lt;strong&gt;Baker Management → Keys&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Set your &lt;strong&gt;Consensus Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;baker&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Set your &lt;strong&gt;Companion Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;companion&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Confirm both operations on your Ledger&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;option-b-cli&#34;&gt;Option B: CLI&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; consensus key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to baker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to companion
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; Both keys take effect after &lt;strong&gt;3 cycles (~3 days)&lt;/strong&gt;. Monitor activation at:
-&lt;code&gt;https://tzkt.io/&amp;lt;your_baker_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Step 5 — Add the companion key alias to the baker configuration:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify it was set:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;register-as-baker-on-the-tezos-mainnet&#34;&gt;Register as baker on the Tezos Mainnet&lt;/h3&gt;
-&lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, you must use the Tezos Baking app.&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note the baker address and the companion &lt;code&gt;BLpk...&lt;/code&gt; public key plus POP output. You will need the companion values after the baker is registered.&lt;/p&gt;
+&lt;h3 id=&#34;register-as-baker-on-the-tezos-mainnet&#34;&gt;Register as baker on the Tezos Mainnet&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step 4 — Register as baker on-chain before setting the companion key:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. If you are using a Ledger manager, temporarily open the Ledger Tezos Wallet app to register your key as a baker (&lt;strong&gt;note&lt;/strong&gt;: as well as when voting). For all other baker operations, use the Tezos Baking app.&lt;/p&gt;
 &lt;h4 id=&#34;using-tezgov&#34;&gt;Using TezGov&lt;/h4&gt;
-&lt;p&gt;Use the &lt;code&gt;Become a Baker&lt;/code&gt; button on the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; portal.&lt;/p&gt;
+&lt;p&gt;Use the &lt;code&gt;Become a Baker&lt;/code&gt; button on the &lt;a href=&#34;https://gov.tez.capital&#34;&gt;https://gov.tez.capital&lt;/a&gt; portal with your baker manager address.&lt;/p&gt;
 &lt;h4 id=&#34;using-cli-not-recommended&#34;&gt;Using CLI (not recommended)&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
@@ -409,7 +399,27 @@ The DAL acts like an overflow area for data, where large amounts of information 
 &lt;/ul&gt;
 &lt;p&gt;You do NOT need to register if your baker has been inactive for less than 2 cycles (~2 days). Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step 5 — Set the companion key:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Do not set the consensus key to &lt;code&gt;baker&lt;/code&gt; in this soft-key setup. The &lt;code&gt;baker&lt;/code&gt; key is already the manager key and initial consensus key after baker registration. Set only the separate &lt;code&gt;companion&lt;/code&gt; key, and do this after &lt;code&gt;tezbake register-key&lt;/code&gt; or the TezGov &lt;strong&gt;Become a Baker&lt;/strong&gt; operation succeeds.&lt;/p&gt;
+&lt;h4 id=&#34;option-a-tezgov-recommended&#34;&gt;Option A: TezGov (recommended)&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; and connect with your baker&amp;rsquo;s manager key.&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;Baker Management -&amp;gt; Keys&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Set your &lt;strong&gt;Companion Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;companion&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Confirm the operation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;option-b-cli&#34;&gt;Option B: CLI&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to companion
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; The companion key takes effect after &lt;strong&gt;3 cycles (~3 days)&lt;/strong&gt;. Monitor activation at:
+&lt;code&gt;https://tzkt.io/&amp;lt;your_baker_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Step 6 — Add the companion key alias to the baker configuration:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify it was set:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node show configuration.additional_key_aliases
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a slashable security deposit that you will get back when you stop baking.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Staking Requirements:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The minimum bond to get baking rights is &lt;strong&gt;6000 XTZ&lt;/strong&gt;. However, you have several options to meet this requirement:&lt;/p&gt;
@@ -643,7 +653,7 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;import-baking-keys-and-register-as-baker&#34;&gt;Import baking keys and register as baker&lt;/h3&gt;
 &lt;p&gt;Now that your node is in full sync, you can proceed with the most important part: (1) your baker parameters import into your baker node and (2) submit your baker registration on the blockchain.&lt;/p&gt;
-&lt;p&gt;You will have to first fund your baker address with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
+&lt;p&gt;After you generate the baker address below, fund it with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.&lt;/p&gt;
 &lt;h4 id=&#34;import-soft-key-to-tezbake&#34;&gt;Import Soft key to TezBake&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;ℹ️ Key Roles: Manager / Consensus / Companion&lt;/strong&gt;&lt;/p&gt;
@@ -662,39 +672,20 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address companion --show-secret
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Store these in a secure, offline location. Never share them.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Step 3 — Get the public key (BLpk) and Proof of Possession (POP) for each key:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The POP is a cryptographic proof that you own the private key. It is required when registering tz4 keys on-chain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3 — Get the baker address and companion key details:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Use the &lt;code&gt;baker&lt;/code&gt; address for funding and baker registration. Then get the companion key&amp;rsquo;s public key and Proof of Possession (POP). The POP is a cryptographic proof that you own the private key, and it is required when setting a tz4 companion key on-chain.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address baker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client get proof of possession &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client show address companion
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client get proof of possession &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; companion
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP output for both keys — you will need them in the next step.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Step 4 — Register the consensus and companion keys:&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&#34;option-a-tezgov-recommended&#34;&gt;Option A: TezGov (recommended)&lt;/h5&gt;
-&lt;ol&gt;
-&lt;li&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; and connect with your baker&amp;rsquo;s manager key&lt;/li&gt;
-&lt;li&gt;Navigate to &lt;strong&gt;Baker Management → Keys&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Set your &lt;strong&gt;Consensus Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;baker&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Set your &lt;strong&gt;Companion Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;companion&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Confirm both operations&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h5 id=&#34;option-b-cli&#34;&gt;Option B: CLI&lt;/h5&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; consensus key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to baker
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to companion
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; Both keys take effect after &lt;strong&gt;3 cycles&lt;/strong&gt;. On 20 minute cycle testnets like Tallinnnet this is ~1 hour; on longer-cycle testnets it can take days. Monitor activation at:
-&lt;code&gt;https://tzkt.io/&amp;lt;your_baker_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Step 5 — Add the companion key alias to the baker configuration:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;register-as-baker-on-the-tezos-blockchain-testnet&#34;&gt;Register as baker on the Tezos blockchain Testnet&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note the baker address and the companion &lt;code&gt;BLpk...&lt;/code&gt; public key plus POP output. You will need the companion values after the baker is registered.&lt;/p&gt;
+&lt;h3 id=&#34;register-as-baker-on-the-tezos-blockchain-testnet&#34;&gt;Register as baker on the Tezos blockchain Testnet&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step 4 — Register as baker on-chain before setting the companion key:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;For this step your node level must be synced with the latest block on the blockchain explorer. The soft-key testnet setup above does not require a Ledger. If you are testing with a dedicated testnet Ledger, open the Ledger Tezos Wallet app only for registration and voting; use the Tezos Baking app for baking operations.&lt;/p&gt;
 &lt;p&gt;To secure your XTZ security deposit on a testnet, use the faucet for your chosen network to get free test XTZ:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Bakingnet: &lt;a href=&#34;https://faucet.bakingnet.teztnets.com&#34;&gt;https://faucet.bakingnet.teztnets.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Tallinnnet: &lt;a href=&#34;https://faucet.tallinnnet.teztnets.com&#34;&gt;https://faucet.tallinnnet.teztnets.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://teztnets.com/ushuaianet-about&#34;&gt;Ushuaianet&lt;/a&gt;: &lt;a href=&#34;https://faucet.ushuaianet.teztnets.com&#34;&gt;https://faucet.ushuaianet.teztnets.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Current Tezos testnet faucets are listed at &lt;a href=&#34;https://teztnets.com&#34;&gt;https://teztnets.com&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake register-key
@@ -708,7 +699,25 @@ DAL is part of the standard testnet baker setup. The commands below include &lt;
 &lt;/ul&gt;
 &lt;p&gt;Check your baking rights schedule to confirm if re-registration is needed.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step 5 — Set the companion key:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Do not set the consensus key to &lt;code&gt;baker&lt;/code&gt; in this soft-key setup. The &lt;code&gt;baker&lt;/code&gt; key is already the manager key and initial consensus key after baker registration. Set only the separate &lt;code&gt;companion&lt;/code&gt; key, and do this after &lt;code&gt;tezbake register-key&lt;/code&gt; succeeds.&lt;/p&gt;
+&lt;h5 id=&#34;option-a-tezgov-recommended&#34;&gt;Option A: TezGov (recommended)&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to &lt;a href=&#34;https://gov.tez.capital&#34;&gt;gov.tez.capital&lt;/a&gt; and connect with your baker&amp;rsquo;s manager key&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;Baker Management → Keys&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Set your &lt;strong&gt;Companion Key&lt;/strong&gt;: paste the &lt;code&gt;BLpk...&lt;/code&gt; public key and POP for &lt;code&gt;companion&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Confirm the operation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;option-b-cli&#34;&gt;Option B: CLI&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; companion key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker to companion
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⏱️ Activation:&lt;/strong&gt; The companion key takes effect after &lt;strong&gt;3 cycles&lt;/strong&gt;. On 20 minute cycle testnets like &lt;a href=&#34;https://teztnets.com/ushuaianet-about&#34;&gt;Ushuaianet&lt;/a&gt; this is ~1 hour; on longer-cycle testnets it can take days. Monitor activation at:
+&lt;code&gt;https://tzkt.io/&amp;lt;your_baker_address&amp;gt;/secondary-keys&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Step 6 — Add the companion key alias to the baker configuration:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake node modify --set configuration.additional_key_aliases &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;[&amp;#34;companion&amp;#34;]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;stake-your-baking-xtz-security-deposit&#34;&gt;Stake your baking XTZ security deposit&lt;/h3&gt;
 &lt;p&gt;To bake on the Tezos network, you need to stake your XTZ security deposit. This is a &lt;a href=&#34;/getting-started/slashing-explained/&#34;&gt;slashable&lt;/a&gt; security deposit that you will get back when you stop baking. The minimum bond to get baking rights is currently set at 6000 XTZ.&lt;/p&gt;
 &lt;p&gt;You can stake your security deposit by running the following command. If you are using a dedicated testnet Ledger, open the Ledger Tezos Wallet app for this operation.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake signer client stake &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6000&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; baker
