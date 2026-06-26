@@ -29,7 +29,7 @@
 <meta itemprop="name" content="TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="1087">
+<meta itemprop="wordCount" content="1111">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -290,7 +290,9 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayconfiguration-li">
   <a href="/tezpay/configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpayconfiguration"><span class="">Configuration</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplesdefault-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationtestnet-starter-configs-li">
+  <a href="/tezpay/configuration/testnet-starter-configs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationtestnet-starter-configs"><span class="">Testnet Starter Configs</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplesdefault-li">
   <a href="/tezpay/configuration/examples/default/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationexamplesdefault"><span class="">default</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplessample-li">
   <a href="/tezpay/configuration/examples/sample/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationexamplessample"><span class="">sample</span></a>
@@ -622,16 +624,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 <p>New users should follow these steps for proper setup:</p>
 <h3 id="step-1-creating-the-configuration-file-confighjson">Step 1: Creating the Configuration File (<code>config.hjson</code>)</h3>
 <p>Inside <code>/bake-buddy/pay</code>, create a new file called exactly <code>config.hjson</code>.</p>
-<p>Start with the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson">Starter Configuration</a> and enhance it from the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">Sample Configuration</a> if needed.</p>
+<p>Start with the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson">Starter Configuration</a> or a ready testnet config from <a href="/tezpay/configuration/testnet-starter-configs/">TezPay Testnet Starter Configs</a>. Enhance it from the <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">Sample Configuration</a> if needed.</p>
 <p>Minimal starter example:</p>
 <pre tabindex="0"><code class="language-hjson" data-lang="hjson">{
   baker: &#34;tz1-your-baker-wallet-address&#34;
 
   # Choose which payout wallet engine TezPay loads.
   # Use local-private-key with payout_wallet_private.key, or remote-signer with remote_signer.hjson.
-  wallet_mode: local-private-key
-
   payouts: {
+    wallet_mode: local-private-key
     fee: 0.05
     baker_pays_transaction_fee: true
     minimum_payout_amount: 1
@@ -645,10 +646,14 @@ Please follow the steps below to create your configuration and wallet or remote 
 </code></pre><h3 id="step-2-setting-up-the-wallet-or-remote-signer-file">Step 2: Setting Up the Wallet or Remote Signer File</h3>
 <p>Choose the wallet mode in <code>/bake-buddy/pay/config.hjson</code> before creating the matching wallet file:</p>
 <pre tabindex="0"><code class="language-hjson" data-lang="hjson"># Local private key wallet
-wallet_mode: local-private-key
+payouts: {
+  wallet_mode: local-private-key
+}
 
 # Remote signer wallet
-wallet_mode: remote-signer
+payouts: {
+  wallet_mode: remote-signer
+}
 </code></pre><p>You have two options:</p>
 <ul>
 <li><strong>Private key file</strong>, or</li>
@@ -664,8 +669,10 @@ wallet_mode: remote-signer
 </blockquote>
 <p><strong>Option B: Remote Signer (<code>remote_signer.hjson</code>):</strong></p>
 <p>Create file named exactly <code>remote_signer.hjson</code> inside <code>/bake-buddy/pay</code>.</p>
-<p>Creating <code>remote_signer.hjson</code> is not enough by itself. <code>/bake-buddy/pay/config.hjson</code> must also set:</p>
-<pre tabindex="0"><code class="language-hjson" data-lang="hjson">wallet_mode: remote-signer
+<p>Creating <code>remote_signer.hjson</code> is not enough by itself. <code>/bake-buddy/pay/config.hjson</code> must also set <code>payouts.wallet_mode</code>:</p>
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">payouts: {
+  wallet_mode: remote-signer
+}
 </code></pre><p>See <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/remote_signer.sample.hjson">Remote Signer Sample</a>.</p>
 <p>If TezPay logs mention <code>payout_wallet_private.key</code>, TezPay is still using <code>local-private-key</code> mode, even if <code>remote_signer.hjson</code> exists. This same wallet-mode behavior also applies when running TezPay without TezBake integration.</p>
 <hr>
@@ -798,6 +805,7 @@ wallet_mode: remote-signer
 <li><strong>Default:</strong> <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.default.hjson">config.default.hjson</a></li>
 <li><strong>Starter:</strong> <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson">config.starter.hjson</a></li>
 <li><strong>Advanced Sample:</strong> <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson">config.sample.hjson</a></li>
+<li><strong>Testnet Starters:</strong> <a href="/tezpay/configuration/testnet-starter-configs/">Bakingnet and Ushuaianet</a></li>
 </ul>
 <p>Detailed configuration guide: <a href="https://github.com/tez-capital/tezpay/blob/main/docs/configuration/">TezPay Configuration Documentation</a></p>
 <hr>

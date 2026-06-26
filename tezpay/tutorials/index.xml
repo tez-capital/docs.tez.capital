@@ -44,6 +44,7 @@
 &lt;li&gt;&lt;a href=&#34;#setup-step-1a-configuration-file-simple&#34;&gt;Step 1a: Configuration File (simple)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#setup-step-1b-configuration-file-advanced&#34;&gt;Step 1b: Configuration File (advanced)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#advanced-configuration-examples&#34;&gt;Advanced Configuration Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#testnet-starter-configs&#34;&gt;Testnet Starter Configs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#other-configuration-options&#34;&gt;Other Configuration Options&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#setup-wallet-mode&#34;&gt;Wallet Mode&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#setup-step-2-private-key-file&#34;&gt;Step 2: Private-Key File&lt;/a&gt;&lt;/li&gt;
@@ -283,7 +284,7 @@ custom file as well - but should be done by experienced users.&lt;/p&gt;
 &lt;em&gt;Blue are comments about Configuration File objects&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;💡 TIP: Start Simple&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The example below is a more advanced configuration file showcasing several customization features. For most bakers, a simpler configuration is recommended. See &lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;TezPay Starter Configuration&lt;/a&gt; which works for 90% of bakers.&lt;/p&gt;
+&lt;p&gt;The example below is a more advanced configuration file showcasing several customization features. For most bakers, a simpler configuration is recommended. See &lt;a href=&#34;https://docs.tez.capital/tezpay/configuration/examples/starter/&#34;&gt;TezPay Starter Configuration&lt;/a&gt; for mainnet, or &lt;a href=&#34;/tezpay/configuration/testnet-starter-configs/&#34;&gt;TezPay Testnet Starter Configs&lt;/a&gt; for Bakingnet and Ushuaianet.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Paste your &lt;strong&gt;Baker&lt;/strong&gt; wallet in between the quotes&lt;/li&gt;
@@ -341,6 +342,8 @@ unless you are an experienced user&lt;/strong&gt;&lt;/li&gt;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;TezPay will automatically try the next RPC if one fails.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h4 id=&#34;testnet-starter-configs&#34;&gt;Testnet Starter Configs&lt;/h4&gt;
+&lt;p&gt;For testnet payouts, start from the ready configs in &lt;a href=&#34;/tezpay/configuration/testnet-starter-configs/&#34;&gt;TezPay Testnet Starter Configs&lt;/a&gt;. They include network-specific RPC, TzKT, and explorer settings for Bakingnet and Ushuaianet.&lt;/p&gt;
 &lt;ol start=&#34;11&#34;&gt;
 &lt;li&gt;Over delegation projection prohibits you from over paying beyond
 your delegation limit &lt;strong&gt;Do not edit unless you are an experienced
@@ -484,13 +487,19 @@ for supported Twitter, Discord, Telegram, and email examples.&lt;/li&gt;
 &lt;h3 id=&#34;setup-wallet-mode&#34;&gt;Setup: Wallet Mode&lt;/h3&gt;
 &lt;p&gt;Choose which payout wallet engine TezPay loads in your &lt;code&gt;config.hjson&lt;/code&gt;:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;# Local private key wallet
-wallet_mode: local-private-key
+payouts: {
+  wallet_mode: local-private-key
+}
 
 # Remote signer wallet
-wallet_mode: remote-signer
+payouts: {
+  wallet_mode: remote-signer
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Use &lt;code&gt;local-private-key&lt;/code&gt; with &lt;code&gt;payout_wallet_private.key&lt;/code&gt;. Use &lt;code&gt;remote-signer&lt;/code&gt; with &lt;code&gt;remote_signer.hjson&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Creating &lt;code&gt;remote_signer.hjson&lt;/code&gt; is not enough by itself. &lt;code&gt;config.hjson&lt;/code&gt; must also set:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;wallet_mode: remote-signer
+&lt;p&gt;Creating &lt;code&gt;remote_signer.hjson&lt;/code&gt; is not enough by itself. &lt;code&gt;config.hjson&lt;/code&gt; must also set &lt;code&gt;payouts.wallet_mode&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;payouts: {
+  wallet_mode: remote-signer
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If TezPay logs mention &lt;code&gt;payout_wallet_private.key&lt;/code&gt;, TezPay is still using &lt;code&gt;local-private-key&lt;/code&gt; mode, even if &lt;code&gt;remote_signer.hjson&lt;/code&gt; exists.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;setup-step-2-private-key-file&#34;&gt;Setup: Step 2: Private-Key File&lt;/h3&gt;
@@ -669,16 +678,15 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;p&gt;New users should follow these steps for proper setup:&lt;/p&gt;
 &lt;h3 id=&#34;step-1-creating-the-configuration-file-confighjson&#34;&gt;Step 1: Creating the Configuration File (&lt;code&gt;config.hjson&lt;/code&gt;)&lt;/h3&gt;
 &lt;p&gt;Inside &lt;code&gt;/bake-buddy/pay&lt;/code&gt;, create a new file called exactly &lt;code&gt;config.hjson&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Start with the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter Configuration&lt;/a&gt; and enhance it from the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;Sample Configuration&lt;/a&gt; if needed.&lt;/p&gt;
+&lt;p&gt;Start with the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter Configuration&lt;/a&gt; or a ready testnet config from &lt;a href=&#34;/tezpay/configuration/testnet-starter-configs/&#34;&gt;TezPay Testnet Starter Configs&lt;/a&gt;. Enhance it from the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;Sample Configuration&lt;/a&gt; if needed.&lt;/p&gt;
 &lt;p&gt;Minimal starter example:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
   baker: &amp;#34;tz1-your-baker-wallet-address&amp;#34;
 
   # Choose which payout wallet engine TezPay loads.
   # Use local-private-key with payout_wallet_private.key, or remote-signer with remote_signer.hjson.
-  wallet_mode: local-private-key
-
   payouts: {
+    wallet_mode: local-private-key
     fee: 0.05
     baker_pays_transaction_fee: true
     minimum_payout_amount: 1
@@ -692,10 +700,14 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-2-setting-up-the-wallet-or-remote-signer-file&#34;&gt;Step 2: Setting Up the Wallet or Remote Signer File&lt;/h3&gt;
 &lt;p&gt;Choose the wallet mode in &lt;code&gt;/bake-buddy/pay/config.hjson&lt;/code&gt; before creating the matching wallet file:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;# Local private key wallet
-wallet_mode: local-private-key
+payouts: {
+  wallet_mode: local-private-key
+}
 
 # Remote signer wallet
-wallet_mode: remote-signer
+payouts: {
+  wallet_mode: remote-signer
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You have two options:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Private key file&lt;/strong&gt;, or&lt;/li&gt;
@@ -711,8 +723,10 @@ wallet_mode: remote-signer
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Option B: Remote Signer (&lt;code&gt;remote_signer.hjson&lt;/code&gt;):&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Create file named exactly &lt;code&gt;remote_signer.hjson&lt;/code&gt; inside &lt;code&gt;/bake-buddy/pay&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Creating &lt;code&gt;remote_signer.hjson&lt;/code&gt; is not enough by itself. &lt;code&gt;/bake-buddy/pay/config.hjson&lt;/code&gt; must also set:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;wallet_mode: remote-signer
+&lt;p&gt;Creating &lt;code&gt;remote_signer.hjson&lt;/code&gt; is not enough by itself. &lt;code&gt;/bake-buddy/pay/config.hjson&lt;/code&gt; must also set &lt;code&gt;payouts.wallet_mode&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;payouts: {
+  wallet_mode: remote-signer
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;See &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/remote_signer.sample.hjson&#34;&gt;Remote Signer Sample&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If TezPay logs mention &lt;code&gt;payout_wallet_private.key&lt;/code&gt;, TezPay is still using &lt;code&gt;local-private-key&lt;/code&gt; mode, even if &lt;code&gt;remote_signer.hjson&lt;/code&gt; exists. This same wallet-mode behavior also applies when running TezPay without TezBake integration.&lt;/p&gt;
 &lt;hr&gt;
@@ -845,6 +859,7 @@ wallet_mode: remote-signer
 &lt;li&gt;&lt;strong&gt;Default:&lt;/strong&gt; &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.default.hjson&#34;&gt;config.default.hjson&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Starter:&lt;/strong&gt; &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;config.starter.hjson&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Advanced Sample:&lt;/strong&gt; &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;config.sample.hjson&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testnet Starters:&lt;/strong&gt; &lt;a href=&#34;/tezpay/configuration/testnet-starter-configs/&#34;&gt;Bakingnet and Ushuaianet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Detailed configuration guide: &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/&#34;&gt;TezPay Configuration Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1426,6 +1441,7 @@ Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
     baker: &amp;#34;tz1YOUR_BAKER_ADDRESS&amp;#34;
     payouts: {
+        wallet_mode: local-private-key
         fee: 0.05
         minimum_payout_amount: 1
     }
@@ -1440,9 +1456,11 @@ Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
 &lt;h3 id=&#34;remote-signer-still-using-local-private-key-mode&#34;&gt;Remote Signer Still Using Local Private Key Mode&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Symptom:&lt;/strong&gt; TezPay logs mention &lt;code&gt;payout_wallet_private.key&lt;/code&gt;, even though &lt;code&gt;remote_signer.hjson&lt;/code&gt; exists.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; TezPay is still using &lt;code&gt;local-private-key&lt;/code&gt; mode. The remote signer file is only loaded when &lt;code&gt;config.hjson&lt;/code&gt; sets the wallet mode to &lt;code&gt;remote-signer&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cause:&lt;/strong&gt; TezPay is still using &lt;code&gt;local-private-key&lt;/code&gt; mode. The remote signer file is only loaded when &lt;code&gt;config.hjson&lt;/code&gt; sets &lt;code&gt;payouts.wallet_mode&lt;/code&gt; to &lt;code&gt;remote-signer&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt; In the &lt;code&gt;config.hjson&lt;/code&gt; used by TezPay, set:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;wallet_mode: remote-signer
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;payouts: {
+    wallet_mode: remote-signer
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For TezBake integration, that file is &lt;code&gt;/bake-buddy/pay/config.hjson&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;payment-not-recorded-after-crash&#34;&gt;Payment Not Recorded After Crash&lt;/h3&gt;

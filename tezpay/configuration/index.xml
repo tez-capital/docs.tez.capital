@@ -16,6 +16,91 @@
     
     
     <item>
+      <title>Tezpay: Testnet Starter Configs</title>
+      <link>/tezpay/configuration/testnet-starter-configs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tezpay/configuration/testnet-starter-configs/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Use these examples as &lt;code&gt;config.hjson&lt;/code&gt; for TezPay testnet payouts. Replace the baker address first, then adjust the payout fee, minimum payout amount, and delegator minimum balance for your own policy.&lt;/p&gt;
+&lt;p&gt;The examples use &lt;code&gt;payouts.wallet_mode: local-private-key&lt;/code&gt;, which expects a matching &lt;code&gt;payout_wallet_private.key&lt;/code&gt; file in the same TezPay folder. If you use a remote signer, change &lt;code&gt;payouts.wallet_mode&lt;/code&gt; to &lt;code&gt;remote-signer&lt;/code&gt; and provide &lt;code&gt;remote_signer.hjson&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;bakingnet&#34;&gt;Bakingnet&lt;/h2&gt;
+&lt;p&gt;Bakingnet is the recommended long-running baker testnet for most production-style testing. Current network details are listed on &lt;a href=&#34;https://teztnets.com/bakingnet-about&#34;&gt;Teztnets&lt;/a&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  tezpay_config_version: 0
+
+  baker: &amp;#34;tz1-your-bakingnet-baker-address&amp;#34;
+
+  payouts: {
+    wallet_mode: local-private-key
+    fee: 0.05
+    baker_pays_transaction_fee: true
+    minimum_payout_amount: 0.01
+  }
+
+  delegators: {
+    requirements: {
+      minimum_balance: 0.5
+    }
+  }
+
+  network: {
+    rpc_pool: [
+      &amp;#34;https://rpc.bakingnet.teztnets.com&amp;#34;
+    ]
+    tzkt_url: &amp;#34;https://api.bakingnet.tzkt.io/&amp;#34;
+    explorer: &amp;#34;https://bakingnet.tzkt.io/&amp;#34;
+  }
+
+  overdelegation: {
+    protect: true
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ushuaianet&#34;&gt;Ushuaianet&lt;/h2&gt;
+&lt;p&gt;Ushuaianet has short cycles and is useful for rapid setup, registration, activation, and payout testing. Current network details are listed on &lt;a href=&#34;https://teztnets.com/ushuaianet-about&#34;&gt;Teztnets&lt;/a&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
+  tezpay_config_version: 0
+
+  baker: &amp;#34;tz1-your-ushuaianet-baker-address&amp;#34;
+
+  payouts: {
+    wallet_mode: local-private-key
+    fee: 0.05
+    baker_pays_transaction_fee: true
+    minimum_payout_amount: 0.01
+  }
+
+  delegators: {
+    requirements: {
+      minimum_balance: 0.5
+    }
+  }
+
+  network: {
+    rpc_pool: [
+      &amp;#34;https://rpc.ushuaianet.teztnets.com&amp;#34;
+    ]
+    tzkt_url: &amp;#34;https://api.ushuaianet.tzkt.io/&amp;#34;
+    explorer: &amp;#34;https://ushuaianet.tzkt.io/&amp;#34;
+  }
+
+  overdelegation: {
+    protect: true
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;related-configs&#34;&gt;Related Configs&lt;/h2&gt;
+&lt;p&gt;For mainnet or advanced options, use the upstream TezPay examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;Advanced sample configuration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Tezpay: default</title>
       <link>/tezpay/configuration/examples/default/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Troubleshooting">
 <meta itemprop="description" content="Common TezPay issues and solutions">
 
-<meta itemprop="wordCount" content="495">
+<meta itemprop="wordCount" content="498">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Troubleshooting"/>
 <meta name="twitter:description" content="Common TezPay issues and solutions"/>
@@ -290,7 +290,9 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-tezpayconfiguration-li">
   <a href="/tezpay/configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-tezpayconfiguration"><span class="">Configuration</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplesdefault-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationtestnet-starter-configs-li">
+  <a href="/tezpay/configuration/testnet-starter-configs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationtestnet-starter-configs"><span class="">Testnet Starter Configs</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplesdefault-li">
   <a href="/tezpay/configuration/examples/default/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationexamplesdefault"><span class="">default</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-tezpayconfigurationexamplessample-li">
   <a href="/tezpay/configuration/examples/sample/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-tezpayconfigurationexamplessample"><span class="">sample</span></a>
@@ -570,6 +572,7 @@
 <pre tabindex="0"><code class="language-hjson" data-lang="hjson">{
     baker: &#34;tz1YOUR_BAKER_ADDRESS&#34;
     payouts: {
+        wallet_mode: local-private-key
         fee: 0.05
         minimum_payout_amount: 1
     }
@@ -584,9 +587,11 @@
 </code></pre><hr>
 <h3 id="remote-signer-still-using-local-private-key-mode">Remote Signer Still Using Local Private Key Mode</h3>
 <p><strong>Symptom:</strong> TezPay logs mention <code>payout_wallet_private.key</code>, even though <code>remote_signer.hjson</code> exists.</p>
-<p><strong>Cause:</strong> TezPay is still using <code>local-private-key</code> mode. The remote signer file is only loaded when <code>config.hjson</code> sets the wallet mode to <code>remote-signer</code>.</p>
+<p><strong>Cause:</strong> TezPay is still using <code>local-private-key</code> mode. The remote signer file is only loaded when <code>config.hjson</code> sets <code>payouts.wallet_mode</code> to <code>remote-signer</code>.</p>
 <p><strong>Solution:</strong> In the <code>config.hjson</code> used by TezPay, set:</p>
-<pre tabindex="0"><code class="language-hjson" data-lang="hjson">wallet_mode: remote-signer
+<pre tabindex="0"><code class="language-hjson" data-lang="hjson">payouts: {
+    wallet_mode: remote-signer
+}
 </code></pre><p>For TezBake integration, that file is <code>/bake-buddy/pay/config.hjson</code>.</p>
 <hr>
 <h3 id="payment-not-recorded-after-crash">Payment Not Recorded After Crash</h3>
