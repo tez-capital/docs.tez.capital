@@ -29,7 +29,7 @@
 <meta itemprop="name" content="TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="1111">
+<meta itemprop="wordCount" content="1108">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -532,7 +532,7 @@
 </tr>
 <tr>
 <td>Upgrade TezPay Only</td>
-<td><code>sudo tezbake upgrade --pay</code></td>
+<td><code>tezbake upgrade --pay</code></td>
 </tr>
 <tr>
 <td>Verify Installation</td>
@@ -728,7 +728,7 @@ payouts: {
 <p><strong>Note:</strong> The <code>--interval</code> CLI flag does not work with TezBake integration. You must configure the interval in <code>app.json</code>.</p>
 </blockquote>
 <p>After changing the <code>CONTINUAL</code> block in <code>/bake-buddy/pay/app.json</code>, apply the updated pay module configuration:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake upgrade --pay
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
 </span></span></code></pre></div><hr>
 <h2 id="starting--stopping-tezpay-continual-service">Starting &amp; Stopping TezPay (continual service)</h2>
 <blockquote>
@@ -763,7 +763,7 @@ payouts: {
 <ol>
 <li>
 <p><strong>Update TezPay to the latest version:</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake upgrade --pay
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
 </span></span></code></pre></div></li>
 <li>
 <p><strong>Run a dry-run to verify payouts:</strong></p>

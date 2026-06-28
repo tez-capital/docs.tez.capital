@@ -586,7 +586,7 @@ These three files will be used to run the application and payouts.&lt;/p&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Upgrade TezPay Only&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;sudo tezbake upgrade --pay&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tezbake upgrade --pay&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Verify Installation&lt;/td&gt;
@@ -782,7 +782,7 @@ payouts: {
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;--interval&lt;/code&gt; CLI flag does not work with TezBake integration. You must configure the interval in &lt;code&gt;app.json&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;After changing the &lt;code&gt;CONTINUAL&lt;/code&gt; block in &lt;code&gt;/bake-buddy/pay/app.json&lt;/code&gt;, apply the updated pay module configuration:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake upgrade --pay
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
 &lt;h2 id=&#34;starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay (continual service)&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -817,7 +817,7 @@ payouts: {
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Update TezPay to the latest version:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake upgrade --pay
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Run a dry-run to verify payouts:&lt;/strong&gt;&lt;/p&gt;
@@ -1217,9 +1217,8 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
 &lt;p&gt;Choose the update path that matches how TezPay is installed.&lt;/p&gt;
 &lt;h3 id=&#34;tezbake-integrated-tezpay&#34;&gt;TezBake Integrated TezPay&lt;/h3&gt;
 &lt;p&gt;If TezPay was installed through TezBake with &lt;code&gt;tezbake setup --pay&lt;/code&gt;, update the integrated pay module through TezBake:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo tezbake upgrade --pay
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you run TezBake as a privileged user already, the same upgrade path is &lt;code&gt;tezbake upgrade --pay&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;standalone-linux-cli&#34;&gt;Standalone Linux CLI&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;standalone-linux-cli&#34;&gt;Standalone Linux CLI&lt;/h3&gt;
 &lt;p&gt;For a standalone TezPay install, run the following command from within the folder where tezpay is located:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; tezpay
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget -q https://pay.tez.capital/install -O /tmp/install.sh &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sh /tmp/install.sh

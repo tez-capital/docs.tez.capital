@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezPay">
 
-<meta itemprop="wordCount" content="115">
+<meta itemprop="wordCount" content="97">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezPay"/>
@@ -498,9 +498,8 @@
 <p>Choose the update path that matches how TezPay is installed.</p>
 <h3 id="tezbake-integrated-tezpay">TezBake Integrated TezPay</h3>
 <p>If TezPay was installed through TezBake with <code>tezbake setup --pay</code>, update the integrated pay module through TezBake:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo tezbake upgrade --pay
-</span></span></code></pre></div><p>If you run TezBake as a privileged user already, the same upgrade path is <code>tezbake upgrade --pay</code>.</p>
-<h3 id="standalone-linux-cli">Standalone Linux CLI</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
+</span></span></code></pre></div><h3 id="standalone-linux-cli">Standalone Linux CLI</h3>
 <p>For a standalone TezPay install, run the following command from within the folder where tezpay is located:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">cd</span> tezpay
 </span></span><span style="display:flex;"><span>wget -q https://pay.tez.capital/install -O /tmp/install.sh <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sh /tmp/install.sh
