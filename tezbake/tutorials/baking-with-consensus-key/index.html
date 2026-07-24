@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Consensus Key">
 <meta itemprop="description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger">
 
-<meta itemprop="wordCount" content="1789">
+<meta itemprop="wordCount" content="1791">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Consensus Key"/>
 <meta name="twitter:description" content="Guide to setting up a separate consensus key and companion key for secure Tezos baking with TezSign or Ledger"/>
@@ -527,9 +527,9 @@
 </ul>
 <p><strong>In Practice:</strong></p>
 <p>When activating a Consensus Key, you must also have a Companion Key activated. Both keys are used together for baking simultaneously.</p>
-<p><strong>ℹ️ INFO - Video Outdated:</strong>
+<p><strong>ℹ️ INFO: Video Outdated</strong>
 The steps below have been updated, but the video does not include the &ldquo;Companion Key&rdquo; step which is now mandatory. Follow the written instructions to set both your consensus key and companion key.</p>
-<p><strong>ℹ️ INFO - tz1-3 Users:</strong>
+<p><strong>ℹ️ INFO: tz1-3 Users</strong>
 If you are baking with a tz1-3 key, you do NOT need a companion key. All instructions below assume tz4 consensus + companion. If using an old tz1-3 key, simply omit the companion key steps.</p>
 </blockquote>
 <p>Follow along on Youtube!
@@ -621,10 +621,10 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <li>The Ledger is what you connect with in <a href="https://gov.tez.capital">TezGov</a> to register your TezSign keys on-chain. After that, it only comes out for governance votes, staking changes, or key rotations.</li>
 </ul>
 <blockquote>
-<p><strong>⚠️ The companion key is mandatory when your consensus key is tz4.</strong> Both must be registered together. Without the companion key, your baker will attest without DAL payloads and forfeit ~10% of baking rewards.</p>
+<p><strong>⚠️ WARNING:</strong> The companion key is mandatory when your consensus key is tz4. Both must be registered together. Without the companion key, your baker will attest without DAL payloads and forfeit ~10% of baking rewards.</p>
 </blockquote>
 <blockquote>
-<p><strong>ℹ️ The manager always controls consensus.</strong> The manager key has sole authority to set or change the consensus and companion keys. The consensus key can sign blocks on the manager&rsquo;s behalf, but it cannot change its own registration.</p>
+<p><strong>ℹ️ INFO:</strong> The manager always controls consensus. The manager key has sole authority to set or change the consensus and companion keys. The consensus key can sign blocks on the manager&rsquo;s behalf, but it cannot change its own registration.</p>
 </blockquote>
 <h3 id="setup-steps">Setup Steps</h3>
 <p><strong>Step 1 — Follow the mainnet TezSign setup to generate your consensus and companion keys on the device:</strong></p>
@@ -654,7 +654,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <p>Run the following command to import the consensus key:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;P-256/0h/0h&#34;</span> --authorize --ledger-id <span style="color:#4e9a06">&#34;apple-banana-coconut-date&#34;</span> --hwm <span style="color:#0000cf;font-weight:bold">1</span> --key-alias<span style="color:#ce5c00;font-weight:bold">=</span>consensus
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ Configuration Notes:</strong></p>
+<p><strong>ℹ️ INFO: Configuration Notes</strong></p>
 <ul>
 <li>Replace the <code>--ledger-id</code> value with the 4-word ID of the Ledger you want to use for the consensus key</li>
 <li>We use the P-256 (tz3) curve for the consensus key because it&rsquo;s the fastest on Ledger hardware and the most portable option for both on-premise and cloud hardware security modules (HSMs)</li>
@@ -669,7 +669,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 </span></span></code></pre></div><p>You can verify it was set:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake node show configuration.additional_key_aliases
 </span></span></code></pre></div><blockquote>
-<p><strong>📖 See <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> for the full reference</strong> on managing key aliases, including the difference between <code>additional_key_aliases</code> and <code>key_aliases</code>.</p>
+<p><strong>ℹ️ INFO:</strong> See <a href="/tezbake/tutorials/key-aliases/">Key Aliases</a> for the full reference on managing key aliases, including the difference between <code>additional_key_aliases</code> and <code>key_aliases</code>.</p>
 </blockquote>
 <p>Re-run the TezBake upgrade and merge your configuration when asked:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
@@ -680,7 +680,7 @@ If you are baking with a tz1-3 key, you do NOT need a companion key. All instruc
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /bake-buddy/node/data/.tezos-client/public_keys
 </span></span></code></pre></div><p>The public key is the one in the <code>key</code> field.</p>
 <blockquote>
-<p><strong>ℹ️ Example:</strong> A public key for a tz3 address looks like: <code>p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY</code></p>
+<p><strong>ℹ️ INFO:</strong> A public key for a tz3 address looks like: <code>p2pk66fWs9UZ6T4nVTfHfV9PtuJje4xYBh2RVo4517a8VTj6Cny7ZXY</code></p>
 </blockquote>
 <p>To register the consensus key, run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> consensus key <span style="color:#204a87;font-weight:bold">for</span> baker to consensus

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Voting on Etherlink">
 <meta itemprop="description" content="How to vote on Etherlink kernel and sequencer upgrade proposals using TezGov">
 
-<meta itemprop="wordCount" content="1188">
+<meta itemprop="wordCount" content="1192">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Voting on Etherlink"/>
 <meta name="twitter:description" content="How to vote on Etherlink kernel and sequencer upgrade proposals using TezGov"/>
@@ -587,10 +587,11 @@
 <h2 id="proposal-voting-with-tezgov">Proposal voting with TezGov</h2>
 <p>TezGov allows you to participate in Etherlink governance using your Ledger hardware wallet, with the same login flow as Tezos mainnet voting.</p>
 <blockquote>
-<p><strong>💡 Use a secondary Ledger device</strong> (with the same seed) to vote while your primary device is baking. Or briefly stop your baker, vote, then restart.</p>
+<p><strong>💡 TIP:</strong> Use a secondary Ledger device with the same seed to vote while your primary device is baking. Or briefly stop your baker, vote, then restart.</p>
 </blockquote>
 <blockquote>
-<p><strong>⚠️ Voting while baking:</strong> If you&rsquo;re voting from your baking machine while your baker is running, stop the baker first:</p>
+<p><strong>⚠️ WARNING: Voting While Baking</strong></p>
+<p>If you&rsquo;re voting from your baking machine while your baker is running, stop the baker first:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
 </span></span></code></pre></div><p>Vote via TezGov, then restart:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start
@@ -605,7 +606,7 @@
 <p>Once logged in, look for a <strong>governance selector</strong> or tab in the TezGov interface that lets you switch between <strong>Tezos</strong> and <strong>Etherlink</strong> governance tracks.</p>
 <p>Select the relevant Etherlink governance track (Kernel / Fast Kernel / Sequencer) based on which proposal you want to vote on.</p>
 <blockquote>
-<p><strong>💡</strong> Check <a href="https://governance.etherlink.com">governance.etherlink.com</a> for a list of active proposals and their current period.</p>
+<p><strong>💡 TIP:</strong> Check <a href="https://governance.etherlink.com">governance.etherlink.com</a> for a list of active proposals and their current period.</p>
 </blockquote>
 <h3 id="3-review-the-proposal">3. Review the Proposal</h3>
 <p>During the <strong>Proposal period</strong>, you&rsquo;ll see the list of submitted kernel or sequencer proposals. Each proposal shows:</p>
@@ -620,7 +621,7 @@
 <p>Click your vote and confirm on your Ledger screen. Your voting power is proportional to your staked Tez — the more XTZ staked with your baker, the more weight your vote carries.</p>
 <p>After confirmation, the page refreshes within ~30 seconds to reflect your vote.</p>
 <blockquote>
-<p><strong>⚠️ PASS votes count toward quorum</strong> (participation requirement) but don&rsquo;t affect the supermajority tally. If you want to support a proposal but don&rsquo;t feel strongly, PASS is better than abstaining.</p>
+<p><strong>ℹ️ INFO:</strong> PASS votes count toward quorum (participation requirement) but don&rsquo;t affect the supermajority tally. If you want to support a proposal but don&rsquo;t feel strongly, PASS is better than abstaining.</p>
 </blockquote>
 <h3 id="5-cooldown-and-activation">5. Cooldown and Activation</h3>
 <p>After a successful Promotion vote, the <strong>Cooldown period</strong> (~24 hours) begins. During Cooldown, no voting is possible — this gives developers and bakers time to adapt their infrastructure.</p>

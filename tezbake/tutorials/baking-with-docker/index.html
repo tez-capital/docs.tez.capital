@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Docker">
 <meta itemprop="description" content="Run TezBake in a Docker container for isolated and portable Tezos baking">
 
-<meta itemprop="wordCount" content="1206">
+<meta itemprop="wordCount" content="1212">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Docker"/>
 <meta name="twitter:description" content="Run TezBake in a Docker container for isolated and portable Tezos baking"/>
@@ -500,7 +500,7 @@
 		
 	</header>    
 	<blockquote>
-<p><strong>⚠️ Legacy / advanced path:</strong> This page is for operators who already know they need a Dockerized TezBake deployment. New bakers should use the standard <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> flow with TezSign consensus and companion keys.</p>
+<p><strong>⚠️ WARNING: Legacy / Advanced Path:</strong> This page is for operators who already know they need a Dockerized TezBake deployment. New bakers should use the standard <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> flow with TezSign consensus and companion keys.</p>
 </blockquote>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
@@ -512,7 +512,7 @@
 <h2 id="preparation">Preparation</h2>
 <p>For this tutorial, you&rsquo;ll need to have already have installed Docker as shown here: <a href="https://docs.docker.com/engine/install">https://docs.docker.com/engine/install</a></p>
 <blockquote>
-<p><strong>DAL Included by Default</strong>
+<p><strong>ℹ️ INFO: DAL Included by Default</strong>
 DAL is part of the standard baker setup. If your Docker deployment intentionally runs without a local DAL node, see <a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a>. If you want DAL on another host or IP address, use <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a>.</p>
 </blockquote>
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -552,17 +552,17 @@ DAL is part of the standard baker setup. If your Docker deployment intentionally
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># `--hwm 1` works great if you&#39;re setting up for the first time. If you&#39;re setting up a device that&#39;s been used to bake before, you want to change this (`1`) to the current block height on the blockchain for your safety.</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># If you&#39;re importing for the second time after already trying again but failing, you can use `--force` to force the import.</span>
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ Verification &amp; Setup Notes:</strong></p>
+<p><strong>ℹ️ INFO: Verification and Setup Notes</strong></p>
 <ul>
 <li>Once imported, you can see your baker address by running <code>tezbake info</code></li>
 <li>The ledger will ask you twice to confirm this operation - ensure the baker address matches the one you want to use</li>
 <li>To get the default ledger address, go to <a href="https://gov.tez.capital">https://gov.tez.capital</a> and login with ledger, accepting the default derivation path</li>
 </ul>
-<p><strong>ℹ️ Ledger Key Types:</strong>
+<p><strong>ℹ️ INFO: Ledger Key Types</strong>
 Ledger baking supports tz1/tz2/tz3 key types. It does not provide tz4/BLS baking keys; use TezSign for tz4 consensus and companion keys.</p>
-<p><strong>💡 TIP: Security:</strong>
+<p><strong>💡 TIP: Security</strong>
 Putting the baker on a non-default derivation path provides an additional layer of security at the cost of extra complexity. Make sure your setup is clearly documented for your own records.</p>
-<p><strong>⚠️ High Watermark (HWM) Important Notes:</strong></p>
+<p><strong>⚠️ WARNING: High Watermark (HWM) Notes</strong></p>
 <ul>
 <li>If your device was used to bake before, it has a &ldquo;high watermark&rdquo; (HWM)</li>
 <li>If you try to use this device on a testnet, it will not work because testnet block heights usually start with 1 while mainnet is in the millions</li>
@@ -570,7 +570,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 <li>The watermark is a record of the last block number your ledger helped to bake or attest</li>
 <li>If setting up a brand new device not used for baking before, no need to alter the default command</li>
 </ul>
-<p><strong>🚨 CRITICAL: Prevent Double Baking:</strong></p>
+<p><strong>🚨 CRITICAL: Prevent Double Baking</strong></p>
 <ul>
 <li>Always ensure you&rsquo;re not accidentally going to double bake by using your production ledger/setup to bake on a testnet</li>
 <li>Double baking/attesting means having 2 different bakers with the same key on the same network</li>
@@ -598,7 +598,7 @@ Putting the baker on a non-default derivation path provides an additional layer 
 <p>For this step your node level must be synced with the latest block on the blockchain explorer. You must also temporarily open your Ledger Tezos Wallet app to register your key as a baker (<strong>note</strong>: as well as when voting). For all other baker operations, you must use the Tezos Baking app.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ When Registration is Required:</strong></p>
+<p><strong>ℹ️ INFO: When Registration Is Required</strong></p>
 <p>Registration is NOT necessary if:</p>
 <ul>
 <li>This is already an active baker ledger being set up on a failover machine</li>

@@ -589,7 +589,7 @@
 <li>Each staker&rsquo;s share is proportional to their individual contribution to the baker&rsquo;s staking balance</li>
 </ul>
 <blockquote>
-<p><strong>ℹ️ Important:</strong> The <code>edge_of_baking_over_staking</code> parameter affects <strong>reward distribution only</strong>, not slashing. Slashing is always proportional to stake regardless of edge setting.</p>
+<p><strong>ℹ️ INFO:</strong> The <code>edge_of_baking_over_staking</code> parameter affects <strong>reward distribution only</strong>, not slashing. Slashing is always proportional to stake regardless of edge setting.</p>
 </blockquote>
 <h3 id="overstaked-funds">Overstaked Funds</h3>
 <p>If stakers exceed the baker&rsquo;s <code>limit_of_staking_over_baking</code>, the excess is &ldquo;overstaked&rdquo; - it remains frozen and slashable but doesn&rsquo;t contribute to baking power. This is a bad scenario for stakers who get no benefit but still face slashing risk.</p>
@@ -609,7 +609,7 @@
 <li><strong>Slashing delay</strong>: 1 cycle - slashing is applied at the end of the cycle after denunciation</li>
 </ul>
 <blockquote>
-<p><strong>ℹ️ Note:</strong> The denunciation reward was reduced from 1/2 to 1/11 to prevent adversarial delegates from profiting by intentionally misbehaving and self-denouncing at the expense of their stakers.</p>
+<p><strong>ℹ️ INFO:</strong> The denunciation reward was reduced from 1/2 to 1/11 to prevent adversarial delegates from profiting by intentionally misbehaving and self-denouncing at the expense of their stakers.</p>
 </blockquote>
 <h2 id="the-forbidden-period">The Forbidden Period</h2>
 <p>Upon denunciation, a <strong>forbidden period</strong> begins immediately:</p>

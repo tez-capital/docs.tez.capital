@@ -192,7 +192,7 @@
 &lt;li&gt;&lt;strong&gt;Beacon Wallet&lt;/strong&gt;: Use Temple, Kukai, or other Beacon-enabled wallets. Note: You&amp;rsquo;ll sign a blob message rather than seeing specific details.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;💡 TIP&lt;/strong&gt;: Use the Tezos &lt;strong&gt;Wallet&lt;/strong&gt; app on your Ledger, not the Baking app. The Baking app cannot sign these operations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Use the Tezos &lt;strong&gt;Wallet&lt;/strong&gt; app on your Ledger, not the Baking app. The Baking app cannot sign these operations.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;setting-delegate-parameters&#34;&gt;Setting Delegate Parameters&lt;/h2&gt;
@@ -289,7 +289,7 @@
 &lt;li&gt;Delegators will see this status and can choose to stake instead if they want rewards&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;💡 TIP&lt;/strong&gt;: Delegators who want rewards from a staking-only baker should &lt;strong&gt;stake&lt;/strong&gt; their funds instead of delegating. Staked funds automatically receive protocol rewards.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Delegators who want rewards from a staking-only baker should &lt;strong&gt;stake&lt;/strong&gt; their funds instead of delegating. Staked funds automatically receive protocol rewards.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;how-to-set-parameters&#34;&gt;How to Set Parameters&lt;/h3&gt;
 &lt;ol&gt;
@@ -341,7 +341,7 @@
 &lt;li&gt;Return to finalize the unstake&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ NOTE&lt;/strong&gt;: If you have issues unstaking decimal amounts, try using whole numbers instead.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; If you have issues unstaking decimal amounts, try using whole numbers instead.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;setting-consensus-and-companion-keys&#34;&gt;Setting Consensus and Companion Keys&lt;/h2&gt;
@@ -681,7 +681,9 @@
 &lt;li&gt;Find &amp;ldquo;Reactivate&amp;rdquo; button&lt;/li&gt;
 &lt;li&gt;Confirm transaction on Ledger&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; You can also reactivate by simply resuming baking - if you resume attesting above 67% of assigned slots, the baker automatically reactivates.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; You can also reactivate by simply resuming baking - if you resume attesting above 67% of assigned slots, the baker automatically reactivates.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;browser-issues&#34;&gt;Browser Issues&lt;/h2&gt;
 &lt;h3 id=&#34;ui-not-loading-or-stale-data&#34;&gt;UI Not Loading or Stale Data&lt;/h3&gt;
@@ -816,10 +818,11 @@
 &lt;h2 id=&#34;proposal-voting-with-tezgov&#34;&gt;Proposal voting with TezGov&lt;/h2&gt;
 &lt;p&gt;TezGov allows you to participate in Etherlink governance using your Ledger hardware wallet, with the same login flow as Tezos mainnet voting.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;💡 Use a secondary Ledger device&lt;/strong&gt; (with the same seed) to vote while your primary device is baking. Or briefly stop your baker, vote, then restart.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Use a secondary Ledger device with the same seed to vote while your primary device is baking. Or briefly stop your baker, vote, then restart.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ Voting while baking:&lt;/strong&gt; If you&amp;rsquo;re voting from your baking machine while your baker is running, stop the baker first:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Voting While Baking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re voting from your baking machine while your baker is running, stop the baker first:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake stop
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Vote via TezGov, then restart:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake start
@@ -834,7 +837,7 @@
 &lt;p&gt;Once logged in, look for a &lt;strong&gt;governance selector&lt;/strong&gt; or tab in the TezGov interface that lets you switch between &lt;strong&gt;Tezos&lt;/strong&gt; and &lt;strong&gt;Etherlink&lt;/strong&gt; governance tracks.&lt;/p&gt;
 &lt;p&gt;Select the relevant Etherlink governance track (Kernel / Fast Kernel / Sequencer) based on which proposal you want to vote on.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;💡&lt;/strong&gt; Check &lt;a href=&#34;https://governance.etherlink.com&#34;&gt;governance.etherlink.com&lt;/a&gt; for a list of active proposals and their current period.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Check &lt;a href=&#34;https://governance.etherlink.com&#34;&gt;governance.etherlink.com&lt;/a&gt; for a list of active proposals and their current period.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;3-review-the-proposal&#34;&gt;3. Review the Proposal&lt;/h3&gt;
 &lt;p&gt;During the &lt;strong&gt;Proposal period&lt;/strong&gt;, you&amp;rsquo;ll see the list of submitted kernel or sequencer proposals. Each proposal shows:&lt;/p&gt;
@@ -849,7 +852,7 @@
 &lt;p&gt;Click your vote and confirm on your Ledger screen. Your voting power is proportional to your staked Tez — the more XTZ staked with your baker, the more weight your vote carries.&lt;/p&gt;
 &lt;p&gt;After confirmation, the page refreshes within ~30 seconds to reflect your vote.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ PASS votes count toward quorum&lt;/strong&gt; (participation requirement) but don&amp;rsquo;t affect the supermajority tally. If you want to support a proposal but don&amp;rsquo;t feel strongly, PASS is better than abstaining.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; PASS votes count toward quorum (participation requirement) but don&amp;rsquo;t affect the supermajority tally. If you want to support a proposal but don&amp;rsquo;t feel strongly, PASS is better than abstaining.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;5-cooldown-and-activation&#34;&gt;5. Cooldown and Activation&lt;/h3&gt;
 &lt;p&gt;After a successful Promotion vote, the &lt;strong&gt;Cooldown period&lt;/strong&gt; (~24 hours) begins. During Cooldown, no voting is possible — this gives developers and bakers time to adapt their infrastructure.&lt;/p&gt;

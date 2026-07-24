@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Updating">
 <meta itemprop="description" content="How to update TezBake, Octez binaries, and protocol versions safely">
 
-<meta itemprop="wordCount" content="796">
+<meta itemprop="wordCount" content="802">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Updating"/>
 <meta name="twitter:description" content="How to update TezBake, Octez binaries, and protocol versions safely"/>
@@ -500,7 +500,7 @@
 		
 	</header>    
 	<blockquote>
-<p><strong>Quick Reference</strong></p>
+<p><strong>ℹ️ INFO: Quick Reference</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade                <span style="color:#8f5902;font-style:italic"># Upgrade all components (Octez binaries + ami/eli)</span>
 </span></span><span style="display:flex;"><span>tezbake upgrade --branch next  <span style="color:#8f5902;font-style:italic"># Switch to the next/RC branch when support asks</span>
 </span></span><span style="display:flex;"><span>tezbake stop                   <span style="color:#8f5902;font-style:italic"># Stop services after upgrade if needed</span>
@@ -536,7 +536,7 @@
 <p>(updates components: #1, #2, #4)</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade -s
 </span></span></code></pre></div><blockquote>
-<p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
+<p><strong>ℹ️ INFO:</strong> The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>
 <h2 id="b-update-octez-binaries-only">(B) Update Octez binaries only</h2>
 <p>(updates components: #4)</p>
@@ -553,7 +553,7 @@
 <p>Then update the rest of the TezBake software stack:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade -s
 </span></span></code></pre></div><blockquote>
-<p>The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
+<p><strong>ℹ️ INFO:</strong> The <code>-s</code> flag is used when there is a need to manually upgrade the Octez storage. This is a rare case and is only needed when the Octez storage format changes. This flag is not needed for regular updates. Using the flag when there is no update to storage needed doesn&rsquo;t have an impact on your baker.</p>
 </blockquote>
 <h2 id="d-update-tezbake-only">(D) Update tezbake only</h2>
 <p>(updates components: #3)</p>

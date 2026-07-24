@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Bootstrap Node">
 <meta itemprop="description" content="How to bootstrap your Tezos node quickly using blockchain snapshots">
 
-<meta itemprop="wordCount" content="773">
+<meta itemprop="wordCount" content="777">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Bootstrap Node"/>
 <meta name="twitter:description" content="How to bootstrap your Tezos node quickly using blockchain snapshots"/>
@@ -503,7 +503,7 @@
 </div>
 </p>
 <blockquote>
-<p><strong>Quick Reference</strong></p>
+<p><strong>ℹ️ INFO: Quick Reference</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake stop
 </span></span><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling --no-check  <span style="color:#8f5902;font-style:italic"># Fast, trusts source</span>
 </span></span><span style="display:flex;"><span>tezbake start
@@ -519,7 +519,7 @@
 <blockquote>
 <p><strong>🚨 CRITICAL: Nonce Forfeiture Risk</strong></p>
 <p>Re-bootstrapping your node mid-cycle can cause you to forfeit attestation rights for an entire cycle — meaning lost income.</p>
-<p><strong>To minimize risk:</strong></p>
+<p><strong>⚠️ WARNING: To Minimize Risk</strong></p>
 <ol>
 <li>Use a snapshot that is <strong>at least 5-6 days old</strong></li>
 <li>Do <strong>NOT</strong> delete your <code>.tezos-client</code> directory</li>

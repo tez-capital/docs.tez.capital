@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Failover Procedure">
 <meta itemprop="description" content="How to safely switch to your backup baker when your primary fails">
 
-<meta itemprop="wordCount" content="829">
+<meta itemprop="wordCount" content="833">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Failover Procedure"/>
 <meta name="twitter:description" content="How to safely switch to your backup baker when your primary fails"/>
@@ -544,7 +544,9 @@
 </span></span><span style="display:flex;"><span>tezbake info
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Should show services as stopped</span>
 </span></span></code></pre></div><h3 id="step-3-disconnect-primary-signer">Step 3: Disconnect Primary Signer</h3>
-<p><strong>Critical step</strong> - physically ensure the primary cannot sign:</p>
+<blockquote>
+<p><strong>🚨 CRITICAL:</strong> Physically ensure the primary cannot sign before activating the backup.</p>
+</blockquote>
 <ul>
 <li><strong>TezSign</strong>: Unplug the USB cable from the primary computer</li>
 <li><strong>Ledger</strong>: Unplug from primary and close the Baking app</li>
@@ -574,7 +576,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Import with HWM set to current block level + 10</span>
 </span></span><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key --authorize --hwm &lt;current_level+10&gt;
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ HWM Safety Margin</strong>: Setting HWM slightly above current level ensures your backup won&rsquo;t sign any block the primary might have signed. For TezSign, set the level for every signing alias, commonly <code>consensus</code> and <code>companion</code>.</p>
+<p><strong>ℹ️ INFO: HWM Safety Margin:</strong> Setting HWM slightly above current level ensures your backup won&rsquo;t sign any block the primary might have signed. For TezSign, set the level for every signing alias, commonly <code>consensus</code> and <code>companion</code>.</p>
 </blockquote>
 <h3 id="step-6-start-backup-baker">Step 6: Start Backup Baker</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake start

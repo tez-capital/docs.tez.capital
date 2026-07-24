@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Back Up and Restore TezSign Data">
 <meta itemprop="description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations">
 
-<meta itemprop="wordCount" content="1678">
+<meta itemprop="wordCount" content="1687">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Back Up and Restore TezSign Data"/>
 <meta name="twitter:description" content="Clone TezSign SD cards or copy the data folder for backups, recovery, and hardware migrations"/>
@@ -512,7 +512,7 @@
 </ul>
 <p>These are offline SD-card procedures. You remove the microSD card from the TezSign device, use a computer to clone the whole card or copy the <code>tezsign</code> folder from the <code>data</code> partition, then restore the backup to another card.</p>
 <blockquote>
-<p><strong>Important:</strong> macOS does not mount the TezSign <code>data</code> partition correctly. Use a Linux computer, a Linux live USB, or a trusted Linux VM with direct access to the card reader.</p>
+<p><strong>⚠️ WARNING:</strong> macOS does not mount the TezSign <code>data</code> partition correctly. Use a Linux computer, a Linux live USB, or a trusted Linux VM with direct access to the card reader.</p>
 </blockquote>
 <h2 id="choose-a-backup-method">Choose a Backup Method</h2>
 <p>There are two useful TezSign backup methods:</p>
@@ -539,7 +539,8 @@
 </table>
 <p>Cloning is the quickest way to create ready spare cards on the same TezSign image generation. It is not an upgrade path.</p>
 <blockquote>
-<p><strong>New-generation image warning:</strong> A full-card clone preserves the old image. It will not move you to the new TezSign image generation, and it will not work around an older image that cannot use the built-in update process. For that, flash the latest full image first, then restore the <code>data/tezsign</code> folder onto the new card.</p>
+<p><strong>⚠️ WARNING: New-Generation Images</strong></p>
+<p>A full-card clone preserves the old image. It will not move you to the new TezSign image generation, and it will not work around an older image that cannot use the built-in update process. For that, flash the latest full image first, then restore the <code>data/tezsign</code> folder onto the new card.</p>
 </blockquote>
 <h2 id="clone-the-whole-sd-card">Clone the Whole SD Card</h2>
 <p>Use this when you want a bit-for-bit spare card for the same TezSign image version.</p>
@@ -556,7 +557,9 @@
 <li><a href="https://etcher.balena.io/">Balena Etcher</a> - use <strong>Clone drive</strong> if your version offers it, or use <strong>Flash from file</strong> after creating an image.</li>
 <li><a href="https://wiki.gnome.org/Apps/Disks">GNOME Disks</a> - a simple Linux GUI app that can create and restore disk images.</li>
 </ul>
-<p>Never boot the cloned card at the same time as the original for the same baker. A clone contains the same signing keys and signer state.</p>
+<blockquote>
+<p><strong>🚨 CRITICAL:</strong> Never boot the cloned card at the same time as the original for the same baker. A clone contains the same signing keys and signer state.</p>
+</blockquote>
 <h2 id="clone-by-making-an-image-first">Clone by Making an Image First</h2>
 <p>Use this two-step workflow if you have only one SD-card slot or one USB SD-card reader.</p>
 <ol>
@@ -586,10 +589,10 @@
 <li>Keep your TezSign master/key decryption password safe. The backup is not useful without it.</li>
 </ul>
 <blockquote>
-<p><strong>Critical:</strong> Never run two TezSign devices, cards, or restored copies with the same keys at the same time. That can cause double signing and slashing.</p>
+<p><strong>🚨 CRITICAL:</strong> Never run two TezSign devices, cards, or restored copies with the same keys at the same time. That can cause double signing and slashing.</p>
 </blockquote>
 <blockquote>
-<p><strong>Baker host note:</strong> If you use the baker machine itself as a temporary staging computer, delete the temporary backup folder or archive from the baker after you have restored it to your backup flashed card(s). Do not leave loose signer backups sitting on the baker host.</p>
+<p><strong>ℹ️ INFO: Baker Host Staging:</strong> If you use the baker machine itself as a temporary staging computer, delete the temporary backup folder or archive from the baker after you have restored it to your backup flashed card(s). Do not leave loose signer backups sitting on the baker host.</p>
 </blockquote>
 <h2 id="find-the-data-partition">Find the <code>data</code> Partition</h2>
 <p>Insert the TezSign microSD card into the Linux computer.</p>
@@ -660,7 +663,9 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake tezsign advanced set-level consensus &lt;level&gt;
 </span></span><span style="display:flex;"><span>tezbake tezsign advanced set-level companion &lt;level&gt;
 </span></span></code></pre></div><p>Run the command for each TezSign key alias that signs for the baker. The common aliases are <code>consensus</code> and <code>companion</code>; if you used different TezSign device aliases, replace them. These are the TezSign device key aliases, not necessarily the local Octez aliases loaded by the baker.</p>
-<p>Do not lower a high-watermark level casually. Only change it when you are intentionally preparing a restored, migrated, or backup TezSign card to resume baking safely.</p>
+<blockquote>
+<p><strong>⚠️ WARNING:</strong> Do not lower a high-watermark level casually. Only change it when you are intentionally preparing a restored, migrated, or backup TezSign card to resume baking safely.</p>
+</blockquote>
 <h2 id="safety-notes">Safety Notes</h2>
 <ul>
 <li>Treat the backup as sensitive signing material, even though the TezSign keys are protected by your master password.</li>

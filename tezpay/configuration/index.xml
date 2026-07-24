@@ -26,6 +26,46 @@
         
         &lt;p&gt;Use these examples as &lt;code&gt;config.hjson&lt;/code&gt; for TezPay testnet payouts. Replace the baker address first, then adjust the payout fee, minimum payout amount, and delegator minimum balance for your own policy.&lt;/p&gt;
 &lt;p&gt;The examples use &lt;code&gt;payouts.wallet_mode: local-private-key&lt;/code&gt;, which expects a matching &lt;code&gt;payout_wallet_private.key&lt;/code&gt; file in the same TezPay folder. If you use a remote signer, change &lt;code&gt;payouts.wallet_mode&lt;/code&gt; to &lt;code&gt;remote-signer&lt;/code&gt; and provide &lt;code&gt;remote_signer.hjson&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Keep Testnet Keys Separate&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Do not reuse mainnet payout keys, signer files, TezSign cards, Ledger devices, or funded baker wallets for testnet payout testing. Use separate testnet-only key material and a payout wallet that only holds test tez.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;choose-a-testnet&#34;&gt;Choose a Testnet&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Network&lt;/th&gt;
+&lt;th&gt;Best for&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Bakingnet&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Long-running, production-style payout testing&lt;/td&gt;
+&lt;td&gt;Slower feedback than short-cycle testnets&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Ushuaianet&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Fast setup, registration, activation, and payout tests&lt;/td&gt;
+&lt;td&gt;Short cycles are less representative of a steady production baker&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Use Ushuaianet when you need a quick end-to-end payout rehearsal. Use Bakingnet when you want a longer-running testnet setup that behaves more like an operational baker.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;before-you-use-a-config&#34;&gt;Before You Use a Config&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Replace &lt;code&gt;baker&lt;/code&gt; with your testnet baker address.&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Confirm &lt;code&gt;payouts.wallet_mode&lt;/code&gt; matches the wallet file you plan to use.&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Put &lt;code&gt;payout_wallet_private.key&lt;/code&gt; or &lt;code&gt;remote_signer.hjson&lt;/code&gt; in the same TezPay folder as &lt;code&gt;config.hjson&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Fund the payout wallet with test tez before trying a testnet payout.&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Run a dry-run first: &lt;code&gt;./tezpay generate-payouts&lt;/code&gt; for standalone TezPay, or &lt;code&gt;tezbake pay generate-payouts&lt;/code&gt; for TezBake integration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;rpc_pool&lt;/code&gt;, &lt;code&gt;tzkt_url&lt;/code&gt;, and &lt;code&gt;explorer&lt;/code&gt; values below are network-specific. Copy the whole block for the network you are testing rather than mixing endpoints between testnets.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;bakingnet&#34;&gt;Bakingnet&lt;/h2&gt;
 &lt;p&gt;Bakingnet is the recommended long-running baker testnet for most production-style testing. Current network details are listed on &lt;a href=&#34;https://teztnets.com/bakingnet-about&#34;&gt;Teztnets&lt;/a&gt;.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
@@ -60,6 +100,9 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;ushuaianet&#34;&gt;Ushuaianet&lt;/h2&gt;
 &lt;p&gt;Ushuaianet has short cycles and is useful for rapid setup, registration, activation, and payout testing. Current network details are listed on &lt;a href=&#34;https://teztnets.com/ushuaianet-about&#34;&gt;Teztnets&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt; Ushuaianet is the quickest path for checking that TezBake registration, TezPay configuration, and payout execution all line up before you repeat the process on a slower network.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-hjson&#34; data-lang=&#34;hjson&#34;&gt;{
   tezpay_config_version: 0
 
@@ -90,7 +133,18 @@
     protect: true
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;related-configs&#34;&gt;Related Configs&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;after-saving-confighjson&#34;&gt;After Saving &lt;code&gt;config.hjson&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Run a dry-run before sending any payments. Use the command that matches how TezPay is installed.&lt;/p&gt;
+&lt;p&gt;Standalone TezPay:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay generate-payouts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TezBake integration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay generate-payouts
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the dry-run output looks correct, send a small testnet payout before relying on continual mode.&lt;/p&gt;
+&lt;p&gt;Standalone TezPay:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;TezBake integration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake pay pay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;related-configs&#34;&gt;Related Configs&lt;/h2&gt;
 &lt;p&gt;For mainnet or advanced options, use the upstream TezPay examples:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.starter.hjson&#34;&gt;Starter configuration&lt;/a&gt;&lt;/li&gt;

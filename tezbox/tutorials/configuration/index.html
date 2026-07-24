@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Configuration">
 <meta itemprop="description" content="Configure TezBox sandbox settings, accounts, and protocol options">
 
-<meta itemprop="wordCount" content="752">
+<meta itemprop="wordCount" content="761">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configuration"/>
 <meta name="twitter:description" content="Configure TezBox sandbox settings, accounts, and protocol options"/>
@@ -502,14 +502,15 @@
 		
 	</header>    
 	<blockquote>
-<p><strong>⚠️ Protocol examples age quickly:</strong> The commands below demonstrate TezBox configuration patterns, but the shown protocol tags may not be current. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> and replace the image tag and protocol alias before starting new work.</p>
+<p><strong>⚠️ WARNING: Protocol Examples Age Quickly</strong></p>
+<p>The commands below demonstrate TezBox configuration patterns, but the shown protocol tags may not be current. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> and replace the image tag and protocol alias before starting new work.</p>
 </blockquote>
 <h2 id="tezbox-configuration-options">TezBox Configuration Options</h2>
 <h3 id="cicd-pipelines">CI/CD Pipelines</h3>
 <p>TezBox is commonly used in CI pipelines. If you can estimate the expected duration of a specific test and want to prevent CI from getting stuck, you can use the <code>--timeout=&lt;duration&gt;</code> option to limit how long the instance runs.
 Supported units: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</code> (hours). In case of a timeout, the container exits with an exit code of <code>2</code>.</p>
 <blockquote>
-<p>The timeout specifies how long the sandbox runs, excluding the bootstrap duration.</p>
+<p><strong>ℹ️ INFO:</strong> The timeout specifies how long the sandbox runs, excluding the bootstrap duration.</p>
 </blockquote>
 <h3 id="logs">Logs</h3>
 <p>Output from each service are stored in <code>/ascend/logs</code> within the container. To access the logs without entering the container, mount this directory from outside the container.</p>
@@ -519,12 +520,12 @@ Supported units: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</co
 </span></span></code></pre></div><p>For example:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -v /home/tezos/logs:/ascend/logs --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </span></span></code></pre></div><blockquote>
-<p><strong>⚠️ NOTE:</strong> The examples above use <code>parisbox</code> / <code>tezos-v20.3</code>. Replace with the current protocol version. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> for the latest tag.</p>
+<p><strong>⚠️ WARNING:</strong> The examples above use <code>parisbox</code> / <code>tezos-v20.3</code>. Replace with the current protocol version. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> for the latest tag.</p>
 </blockquote>
 <h3 id="overrides-and-configuration-through-mounted-volumes">Overrides and configuration through mounted volumes</h3>
 <p>You can override any configuration file by mounting your own file to the <code>/tezbox/overrides</code> directory. The file will be merged with the default configuration. If you want to replace the whole configuration or file without merging, you can mount it to the <code>/tezbox/configuration</code> directory. The configuration is merged with the overrides and the result is stored in the <code>/tezbox/context</code> directory during the initialization of the container.</p>
 <blockquote>
-<p>Array values are always replaced, not concatenated.</p>
+<p><strong>ℹ️ INFO:</strong> Array values are always replaced, not concatenated.</p>
 </blockquote>
 <p>For example if you want to adjust block times, you can create <code>sandbox-override-parameters.hjson</code> file with the following content:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>minimal_block_delay: <span style="color:#4e9a06">&#34;1&#34;</span> // minimal block delay in seconds, has to be quoted
@@ -536,7 +537,7 @@ Supported units: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</co
 <p>Optionally you can mount entire overrides/configuration directory to <code>/tezbox/overrides</code> or <code>/tezbox/configuration</code> to replace the whole configuration.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -v &lt;path-to-your-configuration-overrides&gt;:/tezbox/overrides ... ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </span></span></code></pre></div><blockquote>
-<p>Do not edit or mount configuration files in the <code>/tezbox/context</code> directory. They are generated automatically and should not be modified manually.</p>
+<p><strong>⚠️ WARNING:</strong> Do not edit or mount configuration files in the <code>/tezbox/context</code> directory. They are generated automatically and should not be modified manually.</p>
 </blockquote>
 <h3 id="accounts">Accounts</h3>
 <p>By default tezbox comes with these accounts:</p>
@@ -566,7 +567,7 @@ Supported units: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</co
 <p>Chain and protocol is automatically initialized only once during the first run. The chain and all runtime data are stored in <code>/tezbox/context/data</code> directory. If you want to persist your sandbox state just run it with mounted volume to <code>/tezbox/context/data</code> directory.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -v <span style="color:#204a87;font-weight:bold">$(</span><span style="color:#204a87">pwd</span><span style="color:#204a87;font-weight:bold">)</span>/sandbox-data:/tezbox/context/data -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </span></span></code></pre></div><blockquote>
-<p>To reset the state you can remove the <code>/tezbox/context/data/tezbox-initialized</code> file. After its removal all chain and client data will be removed and the chain will be reinitialized on the next run.</p>
+<p><strong>⚠️ WARNING:</strong> To reset the state you can remove the <code>/tezbox/context/data/tezbox-initialized</code> file. After its removal all chain and client data will be removed and the chain will be reinitialized on the next run.</p>
 </blockquote>
 <h3 id="flextesa-compatibility">Flextesa Compatibility</h3>
 <p>To maintain some level of compatibility with Flextesa, the <code>alice</code> and <code>bob</code> accounts are the same. The RPC port is exposed on ports 8732 and 20000. In addition, TezBox uses similar protocol aliases like <code>oxfordbox</code> and <code>parisbox</code>.</p>

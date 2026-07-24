@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baker Key Architecture">
 <meta itemprop="description" content="Understanding the three baker key roles — manager, consensus, and companion — and how they work together">
 
-<meta itemprop="wordCount" content="998">
+<meta itemprop="wordCount" content="999">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baker Key Architecture"/>
 <meta name="twitter:description" content="Understanding the three baker key roles — manager, consensus, and companion — and how they work together"/>
@@ -591,7 +591,7 @@ Companion key (TezSign)
 <li><strong>Wait 3 cycles (~3 days)</strong> for the new key to become active</li>
 </ol>
 <blockquote>
-<p><strong>ℹ️ Proof of Possession (PoP):</strong> A cryptographic proof that you own the private key corresponding to the public key you are registering. Required for all tz4 key registrations. Generated automatically by TezBake/TezSign during setup, or via <code>tezbake signer client get proof of possession for &lt;alias&gt;</code> for soft keys.</p>
+<p><strong>ℹ️ INFO: Proof of Possession (PoP):</strong> A cryptographic proof that you own the private key corresponding to the public key you are registering. Required for all tz4 key registrations. Generated automatically by TezBake/TezSign during setup, or via <code>tezbake signer client get proof of possession for &lt;alias&gt;</code> for soft keys.</p>
 </blockquote>
 <p>The manager key signs the on-chain operation that registers the new consensus/companion keys. The consensus and companion keys themselves only need to be available on the signing device — they do not need to be accessible by the client at registration time (only the PoP is needed).</p>
 <hr>

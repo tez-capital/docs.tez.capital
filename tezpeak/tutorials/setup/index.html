@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Setup">
 <meta itemprop="description" content="How to install and configure TezPeak for visual baker monitoring and TezPay management">
 
-<meta itemprop="wordCount" content="451">
+<meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup"/>
 <meta name="twitter:description" content="How to install and configure TezPeak for visual baker monitoring and TezPay management"/>
@@ -519,7 +519,7 @@
 </ul>
 <p>TezPeak supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time, combine both configurations in the same file as shown here: <a href="https://github.com/tez-capital/tezpeak">https://github.com/tez-capital/tezpeak</a></p>
 <blockquote>
-<p><strong>Note:</strong> tezbake version 0.18.0-beta minimum is required to use TezPeak.</p>
+<p><strong>ℹ️ INFO:</strong> TezBake version 0.18.0-beta minimum is required to use TezPeak.</p>
 </blockquote>
 <hr>
 <h2 id="installation">Installation</h2>
@@ -529,7 +529,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">cd</span> /bake-buddy/peak/ <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> touch config.hjson
 </span></span></code></pre></div><p>Open the <code>config.hjson</code> file with your favorite text editor.</p>
 <blockquote>
-<p>If you&rsquo;ve used JSON before but not HJSON, you can read more about it here: <a href="https://hjson.github.io/">https://hjson.github.io/</a></p>
+<p><strong>ℹ️ INFO:</strong> If you&rsquo;ve used JSON before but not HJSON, you can read more about it here: <a href="https://hjson.github.io/">https://hjson.github.io/</a>.</p>
 </blockquote>
 <hr>
 <h2 id="configuration-examples">Configuration Examples</h2>
@@ -595,7 +595,7 @@
     mode: auto
 }
 </code></pre><blockquote>
-<p><strong>⚠️ SECURITY WARNING: Private Mode</strong></p>
+<p><strong>⚠️ WARNING: Private Mode</strong></p>
 <p>In <strong>private</strong> mode, anyone with access to your TezPeak instance can <strong>control your baker</strong> (start, stop, and manage services). Only use private mode when:</p>
 <ul>
 <li>TezPeak is bound to <code>127.0.0.1</code> (localhost only), or</li>

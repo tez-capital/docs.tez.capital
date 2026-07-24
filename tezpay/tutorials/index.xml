@@ -104,9 +104,9 @@ amd64). For this example we will be using &lt;em&gt;arm64&lt;/em&gt;&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
-&lt;p&gt;Note: If you do not know the system architecture you can find out by
-opening a Terminal and executing the command &lt;code&gt;uname -m&lt;/code&gt;, and this will
-return the system architecture&lt;code&gt;arm64&lt;/code&gt; or &lt;code&gt;amd64&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; If you do not know the system architecture, open a terminal and run &lt;code&gt;uname -m&lt;/code&gt;. It returns &lt;code&gt;arm64&lt;/code&gt; or &lt;code&gt;amd64&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The example below displays &lt;em&gt;arm64&lt;/em&gt;&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -235,7 +235,9 @@ we will review:&lt;/p&gt;
 &lt;h3 id=&#34;setup-step-1a-configuration-file-simple&#34;&gt;Setup: Step 1a: Configuration File (simple)&lt;/h3&gt;
 &lt;p&gt;This section will review how to setup the configuration file
 (simple-version) to be used by the TezPay application.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensitive&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The configuration file must be named exactly &lt;code&gt;config.hjson&lt;/code&gt;. The file name is case-sensitive.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -272,7 +274,9 @@ custom file as well - but should be done by experienced users.&lt;/p&gt;
 &lt;h3 id=&#34;setup-step-1b-configuration-file-advanced&#34;&gt;Setup: Step 1b: Configuration File (advanced)&lt;/h3&gt;
 &lt;p&gt;This section will review how to setup the configuration file
 (advanced-version) to be used by the TezPay application.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Note: must have file name &lt;strong&gt;config.hjson&lt;/strong&gt;, case-sensitive&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The configuration file must be named exactly &lt;code&gt;config.hjson&lt;/code&gt;. The file name is case-sensitive.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -481,7 +485,7 @@ for supported Twitter, Discord, Telegram, and email examples.&lt;/li&gt;
   protect: true    // Prevent paying more than you can cover (recommended)
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;📚 Full Reference:&lt;/strong&gt; See the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;complete sample configuration&lt;/a&gt; for all available options including notifications, extensions, and network settings.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO: Full Reference:&lt;/strong&gt; See the &lt;a href=&#34;https://github.com/tez-capital/tezpay/blob/main/docs/configuration/config.sample.hjson&#34;&gt;complete sample configuration&lt;/a&gt; for all available options including notifications, extensions, and network settings.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;setup-wallet-mode&#34;&gt;Setup: Wallet Mode&lt;/h3&gt;
@@ -718,7 +722,7 @@ payouts: {
 &lt;p&gt;Insert your &lt;strong&gt;unencrypted&lt;/strong&gt; private key:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;edsk...yourprivatekeyhere...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;🚨 CRITICAL:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;🚨 CRITICAL: Payout Wallet Safety&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Use a dedicated wallet with minimal funds for payouts only. NEVER use your main baker wallet.&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Option B: Remote Signer (&lt;code&gt;remote_signer.hjson&lt;/code&gt;):&lt;/strong&gt;&lt;/p&gt;
@@ -779,7 +783,7 @@ payouts: {
 &lt;li&gt;&lt;code&gt;include_previous_cycles&lt;/code&gt; - number of past cycles before the current interval to check for missed payments. If any are detected, they will be included in the current batch.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;--interval&lt;/code&gt; CLI flag does not work with TezBake integration. You must configure the interval in &lt;code&gt;app.json&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The &lt;code&gt;--interval&lt;/code&gt; CLI flag does not work with TezBake integration. You must configure the interval in &lt;code&gt;app.json&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;After changing the &lt;code&gt;CONTINUAL&lt;/code&gt; block in &lt;code&gt;/bake-buddy/pay/app.json&lt;/code&gt;, apply the updated pay module configuration:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tezbake upgrade --pay
@@ -832,7 +836,7 @@ payouts: {
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The service may already be running but not processing. The start command ensures it resumes processing.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The service may already be running but not processing. The start command ensures it resumes processing.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;catching-up-missed-payments&#34;&gt;Catching Up Missed Payments&lt;/h2&gt;
@@ -940,7 +944,9 @@ delegator from their stake, and other data (see below).&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note: the Delegator &amp;amp; Recipient columns have been hidden&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; The Delegator and Recipient columns have been hidden in the screenshot.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;Represents the table of &lt;em&gt;invalid&lt;/em&gt; delegators that will &lt;strong&gt;not&lt;/strong&gt; be
 paid out due to not meeting specific thresholds (ie minimum payout
@@ -1022,7 +1028,7 @@ line of code and one additional confirmation while it runs.&lt;/p&gt;
 &lt;p&gt;Running in continual mode will start its first payment a little bit after the current cycle (one during which you launched it) finishes and the next one begins (usually around 30-60 minutes after the beginning of the new cycle).&lt;/p&gt;
 &lt;p&gt;If you would like to start in continual mode but still need to pay your delegators for last cycle, run the command from Step 3. first and then launch TezPay in continual mode.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ IMPORTANT: Protocol Upgrades&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Protocol Upgrades&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;TezPay continual mode will &lt;strong&gt;stop&lt;/strong&gt; when a Tezos protocol upgrade occurs. After a protocol upgrade:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Run a dry-run for the first cycle after the upgrade: &lt;code&gt;./tezpay generate-payouts&lt;/code&gt;&lt;/li&gt;
@@ -1281,7 +1287,7 @@ decentralizing the Tezos Blockchain.&lt;/p&gt;
 &lt;li&gt;TezPay has an import tool that can convert a standard &lt;code&gt;trd.yaml&lt;/code&gt; into a working &lt;code&gt;config.hjson&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt;
 This is just a quick start guide. For more comprehensive and detailed information about TezPay, you may want to check other guides and the command reference.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -1289,7 +1295,7 @@ This is just a quick start guide. For more comprehensive and detailed informatio
 &lt;h3 id=&#34;step-1-create-a-tezpay-instance-directory&#34;&gt;Step 1: Create a TezPay Instance Directory&lt;/h3&gt;
 &lt;p&gt;Choose a directory to store your TezPay instance.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP:&lt;/strong&gt;
 Use one folder per baker address, e.g., &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This directory will contain:&lt;/p&gt;
@@ -1305,7 +1311,7 @@ Use one folder per baker address, e.g., &lt;code&gt;/tezos/payouts/my-baker&lt;/
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;chmod +x ./tezpay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For Windows, the binary will be named &lt;code&gt;tezpay.exe&lt;/code&gt;. To make it executable, no additional steps are required on Windows.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt;
 Replacing the binary with the latest version is how you upgrade TezPay.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -1319,7 +1325,7 @@ Replacing the binary with the latest version is how you upgrade TezPay.&lt;/p&gt
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay import-configuration trd ./trd.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This creates &lt;code&gt;config.hjson&lt;/code&gt; based on your TRD settings.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt;
 Most standard TRD configs work out of the box. Edge cases might need adjustments.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;option-b-start-fresh&#34;&gt;Option B: Start Fresh&lt;/h4&gt;
@@ -1335,7 +1341,7 @@ Most standard TRD configs work out of the box. Edge cases might need adjustments
 &lt;p&gt;Run a dry run of the payouts:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay generate-payouts
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;This does not execute payouts.&lt;/strong&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO: Dry Run Only&lt;/strong&gt;
 It only shows what TezPay would distribute.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
@@ -1353,7 +1359,7 @@ It only shows what TezPay would distribute.&lt;/p&gt;
 &lt;p&gt;To run payouts continuously:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./tezpay continual
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Folder Location Tip:&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;💡 TIP: Folder Location&lt;/strong&gt;
 If you run TezPay as a service, place your payout folder &lt;strong&gt;outside of &lt;code&gt;/home&lt;/code&gt;&lt;/strong&gt; for reliable service access.
 Example: &lt;code&gt;/tezos/payouts/my-baker&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

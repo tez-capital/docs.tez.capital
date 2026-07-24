@@ -39,7 +39,7 @@
 &lt;/ul&gt;
 &lt;p&gt;TezPeak supports using TezBake and TezPay simultaneously or by themselves. To run them at the same time, combine both configurations in the same file as shown here: &lt;a href=&#34;https://github.com/tez-capital/tezpeak&#34;&gt;https://github.com/tez-capital/tezpeak&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; tezbake version 0.18.0-beta minimum is required to use TezPeak.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; TezBake version 0.18.0-beta minimum is required to use TezPeak.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -49,7 +49,7 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /bake-buddy/peak/ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; touch config.hjson
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Open the &lt;code&gt;config.hjson&lt;/code&gt; file with your favorite text editor.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you&amp;rsquo;ve used JSON before but not HJSON, you can read more about it here: &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ℹ️ INFO:&lt;/strong&gt; If you&amp;rsquo;ve used JSON before but not HJSON, you can read more about it here: &lt;a href=&#34;https://hjson.github.io/&#34;&gt;https://hjson.github.io/&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;configuration-examples&#34;&gt;Configuration Examples&lt;/h2&gt;
@@ -115,7 +115,7 @@
     mode: auto
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ SECURITY WARNING: Private Mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ WARNING: Private Mode&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In &lt;strong&gt;private&lt;/strong&gt; mode, anyone with access to your TezPeak instance can &lt;strong&gt;control your baker&lt;/strong&gt; (start, stop, and manage services). Only use private mode when:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;TezPeak is bound to &lt;code&gt;127.0.0.1&lt;/code&gt; (localhost only), or&lt;/li&gt;

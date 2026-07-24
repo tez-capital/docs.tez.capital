@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Migrating from Kiln">
 <meta itemprop="description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification">
 
-<meta itemprop="wordCount" content="1359">
+<meta itemprop="wordCount" content="1370">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Migrating from Kiln"/>
 <meta name="twitter:description" content="Step-by-step guide for Kiln users migrating to TezBake, covering Ledger setup, node bootstrap, and post-migration verification"/>
@@ -523,12 +523,12 @@
 		
 	</header>    
 	<blockquote>
-<p><strong>⚠️ Migration path:</strong> Use this guide only when moving an existing Kiln baker to TezBake. For a fresh setup, follow <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> and use TezSign for new tz4 consensus and companion keys.</p>
+<p><strong>⚠️ WARNING: Migration Path:</strong> Use this guide only when moving an existing Kiln baker to TezBake. For a fresh setup, follow <a href="/tezbake/tutorials/baking-on-mainnet/">Baking on Mainnet</a> and use TezSign for new tz4 consensus and companion keys.</p>
 </blockquote>
 <p>Kiln is being sunset. If you&rsquo;re currently baking with Kiln, <strong>TezBake</strong> by <a href="https://tez.capital">Tez Capital</a> is the recommended migration path. It&rsquo;s a modern, actively maintained baking tool that manages your entire stack — node, baker, signer, DAL — under one CLI.</p>
 <p>This guide walks you through the migration step by step.</p>
 <blockquote>
-<p><strong>TezBake runs on Linux and macOS</strong> (Ubuntu 22.04+, Debian 12+, or macOS with Apple Silicon / Intel). Linux is recommended for production bakers, but macOS is fully supported.</p>
+<p><strong>ℹ️ INFO:</strong> TezBake runs on Linux and macOS (Ubuntu 22.04+, Debian 12+, or macOS with Apple Silicon / Intel). Linux is recommended for production bakers, but macOS is fully supported.</p>
 </blockquote>
 <hr>
 <h2 id="prerequisites">Prerequisites</h2>
@@ -575,7 +575,7 @@
 <li><input disabled="" type="checkbox"> <strong>Pending nonce revelations</strong> — if you have unrevealed nonces from the current cycle, wait for them to be revealed before migrating (or use a snapshot ≥5 days old during bootstrap)</li>
 </ul>
 <blockquote>
-<p>⚠️ <strong>Never run two bakers with the same key at the same time.</strong> This causes double baking/attestation, which results in <strong>slashing</strong> (loss of funds). Always stop Kiln completely before starting TezBake.</p>
+<p><strong>🚨 CRITICAL:</strong> Never run two bakers with the same key at the same time. This causes double baking/attestation, which results in <strong>slashing</strong> (loss of funds). Always stop Kiln completely before starting TezBake.</p>
 </blockquote>
 <hr>
 <h2 id="step-by-step-migration">Step-by-Step Migration</h2>
@@ -587,7 +587,7 @@
 <li>Your <strong>Ledger derivation path</strong> — this is critical. Kiln typically uses <code>ed25519/0h/0h</code> but yours may differ. Check your Kiln config or logs for the exact path. Using the wrong derivation path in TezBake will import a <strong>different key</strong> and your baker won&rsquo;t work.</li>
 </ul>
 <blockquote>
-<p><strong>💡 How to find your derivation path in Kiln:</strong> Check your Kiln configuration file or look for the <code>--ledger</code> flag in your running baker process (<code>ps aux | grep octez-baker</code>). The derivation path appears after the Ledger URI, e.g. <code>ledger://.../&lt;curve&gt;/&lt;path&gt;</code>.</p>
+<p><strong>💡 TIP: Find Your Derivation Path in Kiln:</strong> Check your Kiln configuration file or look for the <code>--ledger</code> flag in your running baker process (<code>ps aux | grep octez-baker</code>). The derivation path appears after the Ledger URI, e.g. <code>ledger://.../&lt;curve&gt;/&lt;path&gt;</code>.</p>
 </blockquote>
 <h3 id="2-stop-kiln">2. Stop Kiln</h3>
 <p><strong>Linux:</strong></p>
@@ -634,26 +634,26 @@
 </span></span></code></pre></div><p><strong>tz2 (secp256k1):</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-ledger --platform --import-key<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;secp256k1/0h/0h&#34;</span> --authorize --hwm &lt;CURRENT_LEVEL&gt;
 </span></span></code></pre></div><blockquote>
-<p><strong>💡 Finding the current level:</strong> Run <code>curl -s https://rpc.tzkt.io/mainnet/chains/main/blocks/head/header | grep '&quot;level&quot;'</code> or check <a href="https://tzkt.io">TzKT</a> — the block level is shown on the homepage. Round up by 10 to be safe (e.g. if current level is 7,500,000, use <code>--hwm 7500010</code>).</p>
+<p><strong>💡 TIP: Finding the Current Level:</strong> Run <code>curl -s https://rpc.tzkt.io/mainnet/chains/main/blocks/head/header | grep '&quot;level&quot;'</code> or check <a href="https://tzkt.io">TzKT</a> - the block level is shown on the homepage. Round up by 10 to be safe (e.g. if current level is 7,500,000, use <code>--hwm 7500010</code>).</p>
 </blockquote>
 <p>Confirm on the Ledger screen when prompted to authorize the key for baking.</p>
 <blockquote>
-<p>⚠️ <strong>Verify the imported key matches your baker.</strong> After setup, check the address:</p>
+<p><strong>⚠️ WARNING:</strong> Verify the imported key matches your baker. After setup, check the address:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info --signer
 </span></span></code></pre></div><p>The <code>tz</code> address shown must match your baker address exactly. If it doesn&rsquo;t, re-run <code>setup-ledger</code> with the correct derivation path.</p>
 </blockquote>
 <blockquote>
-<p><strong>Note:</strong> You&rsquo;ll need the <strong>Tezos Wallet</strong> app (not Baking) for one-time operations like registration. Switch back to the <strong>Tezos Baking</strong> app for ongoing baking.</p>
+<p><strong>ℹ️ INFO:</strong> You&rsquo;ll need the <strong>Tezos Wallet</strong> app (not Baking) for one-time operations like registration. Switch back to the <strong>Tezos Baking</strong> app for ongoing baking.</p>
 </blockquote>
 <blockquote>
-<p><strong>Looking ahead:</strong> Once you&rsquo;re stable on TezBake with your Ledger, we recommend migrating to a <strong>TezSign</strong> hardware signer with <strong>BLS/tz4 keys</strong>. TezSign is a purpose-built signing device (~$20–30 in hardware) that outperforms Ledger for baking and supports the tz4 key type required by modern protocol features like DAL companion keys. This is a separate migration you can plan after you&rsquo;re settled on TezBake — see the <a href="https://github.com/tez-capital/tezsign">TezSign documentation</a> for details.</p>
+<p><strong>💡 TIP: Looking Ahead:</strong> Once you&rsquo;re stable on TezBake with your Ledger, we recommend migrating to a <strong>TezSign</strong> hardware signer with <strong>BLS/tz4 keys</strong>. TezSign is a purpose-built signing device (~$20-30 in hardware) that outperforms Ledger for baking and supports the tz4 key type required by modern protocol features like DAL companion keys. This is a separate migration you can plan after you&rsquo;re settled on TezBake - see the <a href="https://github.com/tez-capital/tezsign">TezSign documentation</a> for details.</p>
 </blockquote>
 <h3 id="6-bootstrap-the-node">6. Bootstrap the Node</h3>
 <p>Rather than syncing from scratch, bootstrap from a snapshot:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake bootstrap-node https://snapshots.tzinit.org/mainnet/rolling
 </span></span></code></pre></div><p>TezBake automatically selects the fastest mirror for your region.</p>
 <blockquote>
-<p><strong>Tip:</strong> If you have unrevealed nonces, use a snapshot that&rsquo;s at least 5–6 days old to avoid nonce revelation issues.</p>
+<p><strong>💡 TIP:</strong> If you have unrevealed nonces, use a snapshot that&rsquo;s at least 5-6 days old to avoid nonce revelation issues.</p>
 </blockquote>
 <p>Bootstrap takes anywhere from 10 minutes to an hour+ depending on your hardware and network speed.</p>
 <h3 id="7-start-baking">7. Start Baking</h3>
@@ -664,7 +664,7 @@
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><p>If your baker is already active and was only briefly offline during migration, registration is <strong>not</strong> required.</p>
 <blockquote>
-<p><strong>Ledger users:</strong> Registration requires the <strong>Tezos Wallet</strong> app. Switch back to <strong>Tezos Baking</strong> app after registration.</p>
+<p><strong>ℹ️ INFO:</strong> Ledger users: registration requires the <strong>Tezos Wallet</strong> app. Switch back to <strong>Tezos Baking</strong> app after registration.</p>
 </blockquote>
 <hr>
 <h2 id="post-migration-verification">Post-Migration Verification</h2>

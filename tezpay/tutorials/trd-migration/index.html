@@ -29,7 +29,7 @@
 <meta itemprop="name" content="TRD to TezPay Migration">
 <meta itemprop="description" content="Migrating from Tezos Reward Distributor to TezPay">
 
-<meta itemprop="wordCount" content="399">
+<meta itemprop="wordCount" content="404">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TRD to TezPay Migration"/>
 <meta name="twitter:description" content="Migrating from Tezos Reward Distributor to TezPay"/>
@@ -535,7 +535,7 @@
 <li>TezPay has an import tool that can convert a standard <code>trd.yaml</code> into a working <code>config.hjson</code>.</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong><br>
+<p><strong>ℹ️ INFO:</strong>
 This is just a quick start guide. For more comprehensive and detailed information about TezPay, you may want to check other guides and the command reference.</p>
 </blockquote>
 <hr>
@@ -543,7 +543,7 @@ This is just a quick start guide. For more comprehensive and detailed informatio
 <h3 id="step-1-create-a-tezpay-instance-directory">Step 1: Create a TezPay Instance Directory</h3>
 <p>Choose a directory to store your TezPay instance.</p>
 <blockquote>
-<p><strong>Tip:</strong><br>
+<p><strong>💡 TIP:</strong>
 Use one folder per baker address, e.g., <code>/tezos/payouts/my-baker</code>.</p>
 </blockquote>
 <p>This directory will contain:</p>
@@ -559,7 +559,7 @@ Use one folder per baker address, e.g., <code>/tezos/payouts/my-baker</code>.</p
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x ./tezpay
 </span></span></code></pre></div><p>For Windows, the binary will be named <code>tezpay.exe</code>. To make it executable, no additional steps are required on Windows.</p>
 <blockquote>
-<p><strong>Note:</strong><br>
+<p><strong>ℹ️ INFO:</strong>
 Replacing the binary with the latest version is how you upgrade TezPay.</p>
 </blockquote>
 <hr>
@@ -573,7 +573,7 @@ Replacing the binary with the latest version is how you upgrade TezPay.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay import-configuration trd ./trd.yaml
 </span></span></code></pre></div><p>This creates <code>config.hjson</code> based on your TRD settings.</p>
 <blockquote>
-<p><strong>Note:</strong><br>
+<p><strong>ℹ️ INFO:</strong>
 Most standard TRD configs work out of the box. Edge cases might need adjustments.</p>
 </blockquote>
 <h4 id="option-b-start-fresh">Option B: Start Fresh</h4>
@@ -589,7 +589,7 @@ Most standard TRD configs work out of the box. Edge cases might need adjustments
 <p>Run a dry run of the payouts:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay generate-payouts
 </span></span></code></pre></div><blockquote>
-<p><strong>This does not execute payouts.</strong><br>
+<p><strong>ℹ️ INFO: Dry Run Only</strong>
 It only shows what TezPay would distribute.</p>
 </blockquote>
 <hr>
@@ -607,7 +607,7 @@ It only shows what TezPay would distribute.</p>
 <p>To run payouts continuously:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./tezpay continual
 </span></span></code></pre></div><blockquote>
-<p><strong>Folder Location Tip:</strong>
+<p><strong>💡 TIP: Folder Location</strong>
 If you run TezPay as a service, place your payout folder <strong>outside of <code>/home</code></strong> for reliable service access.
 Example: <code>/tezos/payouts/my-baker</code></p>
 </blockquote>

@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Setup">
 <meta itemprop="description" content="How to run TezBox Docker container for local Tezos development">
 
-<meta itemprop="wordCount" content="418">
+<meta itemprop="wordCount" content="423">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup"/>
 <meta name="twitter:description" content="How to run TezBox Docker container for local Tezos development"/>
@@ -500,7 +500,8 @@
 		
 	</header>    
 	<blockquote>
-<p><strong>⚠️ Protocol examples age quickly:</strong> The commands below demonstrate the TezBox workflow, but the shown protocol tags may not be current. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> and replace the image tag and protocol alias before starting new work.</p>
+<p><strong>⚠️ WARNING: Protocol Examples Age Quickly</strong></p>
+<p>The commands below demonstrate the TezBox workflow, but the shown protocol tags may not be current. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> and replace the image tag and protocol alias before starting new work.</p>
 </blockquote>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -522,7 +523,7 @@ To get started with Podman, you can follow the instructions on the <a href="http
 <p>To run the TezBox container with the Paris protocol</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
 </span></span></code></pre></div><blockquote>
-<p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
+<p><strong>💡 TIP:</strong> You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v20.3 parisbox
@@ -531,14 +532,14 @@ To get started with Podman, you can follow the instructions on the <a href="http
 </span></span></code></pre></div><p>To view all available protocols available in the TezBox container, you can run the following command</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it --entrypoint tezbox ghcr.io/tez-capital/tezbox:tezos-v20.3 list-protocols
 </span></span></code></pre></div><blockquote>
-<p><strong>⚠️ NOTE:</strong> The examples above use <code>parisbox</code> / <code>tezos-v20.3</code>. Replace with the current protocol version. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> for the latest tag.</p>
+<p><strong>⚠️ WARNING:</strong> The examples above use <code>parisbox</code> / <code>tezos-v20.3</code>. Replace with the current protocol version. Check <a href="https://github.com/tez-capital/tezbox/pkgs/container/tezbox">TezBox releases</a> for the latest tag.</p>
 </blockquote>
 <h2 id="setup-tezbox-to-test-release-candidate-rc-protocols">Setup TezBox to test Release Candidate (RC) protocols</h2>
 <h3 id="qena42">Qena42</h3>
 <p>To run the TezBox container with the Qena42 protocol</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -it -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox
 </span></span></code></pre></div><blockquote>
-<p>You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
+<p><strong>💡 TIP:</strong> You can customize the port the container listens on by changing the <code>:8732</code> furthest to the right to a different port number, for example <code>0.0.0.0:8732:12732</code> will present the container on port 12732.</p>
 </blockquote>
 <p>You can also run the process in the background by adding the <code>-d</code> flag</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run -d -p 0.0.0.0:8732:8732 ghcr.io/tez-capital/tezbox:tezos-v21.0-rc4 qenabox

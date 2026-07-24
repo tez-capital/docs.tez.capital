@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking on Testnets">
 <meta itemprop="description" content="Using TezBake to bake on the Tezos testnets">
 
-<meta itemprop="wordCount" content="1792">
+<meta itemprop="wordCount" content="1806">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking on Testnets"/>
 <meta name="twitter:description" content="Using TezBake to bake on the Tezos testnets"/>
@@ -538,11 +538,11 @@
 </ul>
 <p>TezSign block signing applies to testnets too. If you are testing TezSign, follow the TezSign setup steps in <a href="/tezbake/tutorials/baking-on-mainnet/#recommended-set-up-tezsign-consensus-and-companion-keys">Baking on Mainnet</a> after you run the testnet-specific <code>tezbake setup</code>, bootstrap, and sync steps below.</p>
 <blockquote>
-<p><strong>⚠️ Testnet Safety:</strong> Do not reuse a mainnet TezSign device, restored card, Ledger, or key material on a testnet. Use a separate testnet device/card or a soft-key testnet setup.</p>
+<p><strong>⚠️ WARNING: Testnet Safety:</strong> Do not reuse a mainnet TezSign device, restored card, Ledger, or key material on a testnet. Use a separate testnet device/card or a soft-key testnet setup.</p>
 </blockquote>
 <hr>
 <blockquote>
-<p><strong>DAL Included by Default</strong>
+<p><strong>ℹ️ INFO: DAL Included by Default</strong>
 DAL is part of the standard testnet baker setup. The commands below include <code>--with-dal</code>.</p>
 <p>If you intentionally need to test without a local DAL node, see <a href="/tezbake/tutorials/baking-without-dal/">Baking Without DAL</a>. If you want DAL on another host or IP address, use <a href="/tezbake/tutorials/baking-with-prism/">Baking with Prism</a>.</p>
 </blockquote>
@@ -584,7 +584,7 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 </span></span></code></pre></div><p>After starting the node, run the following command over and over every few minutes and monitor the &ldquo;level&rdquo; displayed.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake info
 </span></span></code></pre></div><blockquote>
-<p><strong>Understanding &ldquo;Level&rdquo;</strong></p>
+<p><strong>ℹ️ INFO: Understanding &ldquo;Level&rdquo;</strong></p>
 <p>The level is the current block height (block number) on the blockchain. To verify your node is synchronized:</p>
 <ol>
 <li>Check the level shown by <code>tezbake info</code></li>
@@ -598,9 +598,9 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 <p>After you generate the baker address below, fund it with enough tez (6000 minimum) to cover the bond requirement. You can do this by sending tez from your main account or exchange to the baker address.</p>
 <h4 id="import-soft-key-to-tezbake">Import Soft key to TezBake</h4>
 <blockquote>
-<p><strong>ℹ️ Key Roles: Manager / Consensus / Companion</strong></p>
+<p><strong>ℹ️ INFO: Key Roles: Manager / Consensus / Companion</strong></p>
 <p>Tezos baking uses three distinct key roles. For a full explanation, see <a href="/tezbake/tutorials/baking-on-mainnet/#understanding-baker-key-roles">Baking on Mainnet — Understanding Baker Key Roles</a>.</p>
-<p><strong>In this soft key testnet setup:</strong> the <code>baker</code> key is your manager address AND your initial consensus key — both roles live at the same tz4 address.</p>
+<p><strong>ℹ️ INFO:</strong> In this soft key testnet setup, the <code>baker</code> key is your manager address AND your initial consensus key. Both roles live at the same tz4 address.</p>
 <p><strong>⚠️ WARNING: Companion Key is Mandatory</strong></p>
 <p>When using a tz4 (BLS) key as your manager/consensus key, you <strong>must</strong> also register a separate tz4 companion key. Without it, your baker will forfeit ~10% of baking rewards.</p>
 </blockquote>
@@ -609,7 +609,7 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 </span></span></code></pre></div><p><strong>Step 2 — Generate the companion key:</strong></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake setup-soft-wallet --generate bls --key-alias companion
 </span></span></code></pre></div><blockquote>
-<p><strong>💾 Backup both keys.</strong> You can retrieve each secret key with:</p>
+<p><strong>⚠️ WARNING: Back Up Both Keys:</strong> You can retrieve each secret key with:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client show address baker --show-secret
 </span></span><span style="display:flex;"><span>tezbake signer client show address companion --show-secret
 </span></span></code></pre></div><p>Store these in a secure, offline location. Never share them.</p>
@@ -632,7 +632,7 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 <p>Current Tezos testnet faucets are listed at <a href="https://teztnets.com">https://teztnets.com</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake register-key
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ When Registration is Required:</strong></p>
+<p><strong>ℹ️ INFO: When Registration Is Required</strong></p>
 <p>You must register your baker if:</p>
 <ul>
 <li>You&rsquo;re setting up a new baker (first time)</li>
@@ -653,7 +653,7 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 <h5 id="option-b-cli">Option B: CLI</h5>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client <span style="color:#204a87">set</span> companion key <span style="color:#204a87;font-weight:bold">for</span> baker to companion
 </span></span></code></pre></div><blockquote>
-<p><strong>⏱️ Activation:</strong> The companion key takes effect after <strong>3 cycles</strong>. On 20 minute cycle testnets like <a href="https://teztnets.com/ushuaianet-about">Ushuaianet</a> this is ~1 hour; on longer-cycle testnets it can take days. Monitor activation at:
+<p><strong>ℹ️ INFO: Activation:</strong> The companion key takes effect after <strong>3 cycles</strong>. On 20 minute cycle testnets like <a href="https://teztnets.com/ushuaianet-about">Ushuaianet</a> this is ~1 hour; on longer-cycle testnets it can take days. Monitor activation at:
 <code>https://tzkt.io/&lt;your_baker_address&gt;/secondary-keys</code></p>
 </blockquote>
 <p><strong>Step 6 — Add the companion key alias to the baker configuration:</strong></p>
@@ -664,9 +664,9 @@ DAL is part of the standard testnet baker setup. The commands below include <cod
 <p>You can stake your security deposit by running the following command. If you are using a dedicated testnet Ledger, open the Ledger Tezos Wallet app for this operation.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake signer client stake <span style="color:#0000cf;font-weight:bold">6000</span> <span style="color:#204a87;font-weight:bold">for</span> baker
 </span></span></code></pre></div><blockquote>
-<p><strong>ℹ️ Staking Options:</strong></p>
+<p><strong>ℹ️ INFO: Staking Options</strong></p>
 <p>Change 6000 to the amount you want to stake. The minimum security deposit is 6000 XTZ.</p>
-<p><strong>Alternative Configurations:</strong>
+<p><strong>💡 TIP: Alternative Configurations</strong>
 You may start baking with as little as 1000 XTZ if you configure additional sources:</p>
 <ul>
 <li>Set baking over staking multiplier to 5X + secure 5000 XTZ from stakers, OR</li>

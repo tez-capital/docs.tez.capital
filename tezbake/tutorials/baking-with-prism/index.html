@@ -29,7 +29,7 @@
 <meta itemprop="name" content="Baking with Prism Tunneling">
 <meta itemprop="description" content="Secure, low-latency tunneling between TezBake components using Prism.">
 
-<meta itemprop="wordCount" content="1103">
+<meta itemprop="wordCount" content="1108">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Baking with Prism Tunneling"/>
 <meta name="twitter:description" content="Secure, low-latency tunneling between TezBake components using Prism."/>
@@ -553,7 +553,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>⚠️ WARNING - Command Execution:</strong></p>
+<p><strong>⚠️ WARNING: Command Execution</strong></p>
 <ul>
 <li>All <code>tezbake</code> commands should be executed on the controller machine (usually the machine hosting the signer)</li>
 <li>Configuration edits (<code>app.json</code>) should be performed on their respective machines (Node, DAL, or Signer)</li>
@@ -749,7 +749,7 @@
 <h2 id="step-5-generate-and-distribute-prism-keys">Step 5: Generate and Distribute Prism Keys</h2>
 <p>To ensure encrypted and authenticated communication between components, generate a Prism CA and keys on a secure machine — usually the controller/signer host.</p>
 <blockquote>
-<p><strong>ℹ️ INFO: Key Generation:</strong></p>
+<p><strong>ℹ️ INFO: Key Generation</strong></p>
 <ul>
 <li>Only applications with a <code>PRISM</code> configuration in their <code>app.json</code> file can generate keys</li>
 <li>You must generate ALL <code>.prism</code> keys from the same <code>&lt;app&gt;</code> to ensure compatibility and proper authentication across components</li>
@@ -776,7 +776,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --name<span style="color:#ce5c00;font-weight:bold">=</span>tezos-signer <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>  --output<span style="color:#ce5c00;font-weight:bold">=</span>/bake-buddy/&lt;app&gt;/prism/keys/signer
 </span></span></code></pre></div><blockquote>
-<p><strong>You can validate the keys with:</strong></p>
+<p><strong>ℹ️ INFO:</strong> You can validate the keys with:</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake &lt;app&gt; prism key-info --path<span style="color:#ce5c00;font-weight:bold">=</span>&lt;key&gt;.prism
 </span></span></code></pre></div><p>You should see output similar to the following:</p>
@@ -811,7 +811,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>🚨 CRITICAL:</strong></p>
+<p><strong>🚨 CRITICAL: Protect the CA File</strong></p>
 <ul>
 <li>Do NOT copy or expose the CA file</li>
 <li>If the CA is compromised, regenerate ALL keys with a new CA immediately</li>

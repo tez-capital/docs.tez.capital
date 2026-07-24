@@ -29,7 +29,7 @@
 <meta itemprop="name" content="TezBake Pay Module Setup">
 <meta itemprop="description" content="Integrating TezPay with TezBake">
 
-<meta itemprop="wordCount" content="1108">
+<meta itemprop="wordCount" content="1113">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TezBake Pay Module Setup"/>
 <meta name="twitter:description" content="Integrating TezPay with TezBake"/>
@@ -664,7 +664,7 @@ payouts: {
 <p>Insert your <strong>unencrypted</strong> private key:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>edsk...yourprivatekeyhere...
 </span></span></code></pre></div><blockquote>
-<p><strong>🚨 CRITICAL:</strong></p>
+<p><strong>🚨 CRITICAL: Payout Wallet Safety</strong></p>
 <p><strong>Use a dedicated wallet with minimal funds for payouts only. NEVER use your main baker wallet.</strong></p>
 </blockquote>
 <p><strong>Option B: Remote Signer (<code>remote_signer.hjson</code>):</strong></p>
@@ -725,7 +725,7 @@ payouts: {
 <li><code>include_previous_cycles</code> - number of past cycles before the current interval to check for missed payments. If any are detected, they will be included in the current batch.</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> The <code>--interval</code> CLI flag does not work with TezBake integration. You must configure the interval in <code>app.json</code>.</p>
+<p><strong>ℹ️ INFO:</strong> The <code>--interval</code> CLI flag does not work with TezBake integration. You must configure the interval in <code>app.json</code>.</p>
 </blockquote>
 <p>After changing the <code>CONTINUAL</code> block in <code>/bake-buddy/pay/app.json</code>, apply the updated pay module configuration:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tezbake upgrade --pay
@@ -778,7 +778,7 @@ payouts: {
 </span></span></code></pre></div></li>
 </ol>
 <blockquote>
-<p><strong>Note:</strong> The service may already be running but not processing. The start command ensures it resumes processing.</p>
+<p><strong>ℹ️ INFO:</strong> The service may already be running but not processing. The start command ensures it resumes processing.</p>
 </blockquote>
 <hr>
 <h2 id="catching-up-missed-payments">Catching Up Missed Payments</h2>
