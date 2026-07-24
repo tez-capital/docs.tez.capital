@@ -660,7 +660,7 @@ Please follow the steps below to create your configuration and wallet or remote 
 &lt;li&gt;&lt;a href=&#34;#setup-guide-for-new-users&#34;&gt;Setup Guide for New Users&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#managing-payouts&#34;&gt;Managing Payouts&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#automatic-continual-payouts&#34;&gt;Automatic (Continual) Payouts&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#starting--stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#starting-stopping-tezpay-continual-service&#34;&gt;Starting &amp;amp; Stopping TezPay&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#removing-the-pay-module&#34;&gt;Removing the Pay Module&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
